@@ -1,7 +1,22 @@
 ﻿# The script of the game goes in this file.
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
+#Test: Custom Text Tags
+# init python:
+#
+#     def xpos_tag(tag, argument, contents):
+#
+#         size = int(argument) * 20
+#
+#         return [
+#                 (renpy.TEXT_TAG, u"size={}".format(size)),
+#             ] + contents + [
+#                 (renpy.TEXT_TAG, u"/size"),
+#             ]
+#
+#     config.custom_text_tags["xpos"] = xpos_tag
+
+
+# ===== Characters
 
 define w = Character("The Witch:")
 define t = Character("The Thief:")
@@ -227,20 +242,7 @@ init:
 image trees= "trees.png"
 
 
-#Test: Custom Text Tags
-# init python:
-#
-#     def xpos_tag(tag, argument, contents):
-#
-#         size = int(argument) * 20
-#
-#         return [
-#                 (renpy.TEXT_TAG, u"size={}".format(size)),
-#             ] + contents + [
-#                 (renpy.TEXT_TAG, u"/size"),
-#             ]
-#
-#     config.custom_text_tags["xpos"] = xpos_tag
+
 
 
 # The game starts here.

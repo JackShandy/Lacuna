@@ -1,15 +1,15 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While processing text tag {xpos=+50} in u'{size=+100}M{/size}{xpos=+50}an Clad in White:{/xpos}'.:
-  File "game/script.rpy", line 296, in script
-    miw "Poor woman. Let me be the Godfather."
-Exception: Unknown text tag u'xpos=+50'
+While processing text tag {/vspace} in u'{size=+100}M{/size}{vspace=30}an Clad in White:{/vspace}'.:
+  File "game/script.rpy", line 315, in script
+    miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
+Exception: u'/vspace' closes a text tag that isn't open.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 296, in script
-    miw "Poor woman. Let me be the Godfather."
+  File "game/script.rpy", line 315, in script
+    miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
   File "renpy/ast.py", line 715, in execute
     renpy.exports.say(who, what, *args, **kwargs)
   File "renpy/exports.py", line 1393, in say
@@ -66,11 +66,11 @@ Full traceback:
     virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
   File "renpy/text/text.py", line 607, in __init__
     self.paragraphs = self.segment(text.tokens, style, renders, text)
-  File "renpy/text/text.py", line 1218, in segment
-    raise Exception("Unknown text tag %r" % text)
-Exception: Unknown text tag u'xpos=+50'
+  File "renpy/text/text.py", line 998, in segment
+    raise Exception("%r closes a text tag that isn't open." % text)
+Exception: u'/vspace' closes a text tag that isn't open.
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Witch, the Thief, the Toad & the Mushroom 1.0
-Sat Aug  7 17:15:45 2021
+Sat Aug  7 17:50:47 2021

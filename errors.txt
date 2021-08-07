@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 246: expected 'simple_expression' not found.
-    show trees at at (xpos = 0.5, xanchor=0.5, ypos=0.5, yanchor=0.5)
+File "game/script.rpy", line 21: expected statement.
+    gui.name_ypos = -20
                   ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Aug  7 16:49:04 2021
+Sat Aug  7 17:55:34 2021
