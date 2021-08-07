@@ -68,7 +68,7 @@ define gui.interface_text_font = "DejaVuSans.ttf"
 define gui.text_size = 21
 
 ## The size of character names.
-define gui.name_text_size = 52
+define gui.name_text_size = 40
 
 ## The size of text in the game's user interface.
 define gui.interface_text_size = 11
@@ -96,7 +96,7 @@ define gui.game_menu_background = "gui/game_menu.png"
 ## time.
 
 ## The height of the textbox containing dialogue.
-define gui.textbox_height = 420
+define gui.textbox_height = 410
 
 ## The placement of the textbox vertically on the screen. 0.0 is the top, 0.5 is
 ## center, and 1.0 is the bottom.
@@ -105,8 +105,8 @@ define gui.textbox_yalign = 1.0
 
 ## The placement of the speaking character's name, relative to the textbox.
 ## These can be a whole number of pixels from the left or top, or 0.5 to center.
-define gui.name_xpos = 30
-define gui.name_ypos = -30
+define gui.name_xpos = 5
+define gui.name_ypos = -85
 
 ## The horizontal alignment of the character's name. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
@@ -130,7 +130,7 @@ define gui.namebox_tile = False
 ## number of pixels relative to the left or top side of the textbox, or 0.5 to
 ## center.
 define gui.dialogue_xpos = 110
-define gui.dialogue_ypos = 24
+define gui.dialogue_ypos = 30
 
 ## The maximum width of dialogue text, in pixels.
 define gui.dialogue_width = 400
