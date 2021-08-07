@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2981: expected ':' not found.
-    "/"Yeah, I figured./"":
-       ^
+File "game/script.rpy", line 246: expected 'simple_expression' not found.
+    show trees at at (xpos = 0.5, xanchor=0.5, ypos=0.5, yanchor=0.5)
+                  ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Tue Jun 29 20:00:15 2021
+Sat Aug  7 16:49:04 2021

@@ -219,6 +219,14 @@ define mushroomPale = False
 define mushroomDeathTale = False
 
 
+###==== Defining all images
+#The position to show the background illustrations
+init:
+    $ artPos = Position(xpos=0.5, xanchor=0.5, ypos=35, yanchor=0)
+
+image trees= "trees.png"
+
+
 # The game starts here.
 
 
@@ -235,6 +243,7 @@ label start:
 
     # Act 1, Chapter I: The 3 Godfathers
     scene bg page
+    show trees at artPos
     #play music "/audio/cottagegore.mp3"
     "This maybe happened, or maybe did not."
     "The time is long past, and much is forgot."
