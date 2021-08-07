@@ -3,27 +3,31 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define w = Character("The Witch")
-define t = Character("The Thief")
-define f = Character("The Toad")
-define m = Character("The Mushroom")
-define mum = Character("Mum")
-define r = Character("Mighty River")
-define y = Character("You")
-define d = Character("The Devil Himself")
-define g = Character("Your Dear Lord")
-define dg = Character("The Devil's Sooty Grandmother")
-define dth = Character ("Lady Death")
-define bc = Character ("Brildebrogue Chippingham")
-define sh = Character ("The Sparrow-Herder")
-define gm = Character("The Old Gloom-monger")
-define go = Character("The Young Goose-boy")
-define h = Character("The Hunter")
-define may = Character("The Mayor")
-define well = Character("The Thing in the Well")
-define sc = Character("Scraggs McKenzie, the Banksia Bounty Hunter")
-define boys = Character("The Boys")
-define p3 = Character("The Third Little Piggy")
+define w = Character("The Witch:")
+define t = Character("The Thief:")
+define f = Character("The Toad:")
+define m = Character("The Mushroom:")
+define mum = Character("Mum:")
+define miw = Character("Man Clad in White:")
+define mir = Character("Man Clad in Red:")
+define wib = Character("Woman Clad in Black:")
+define r = Character("Mighty River:")
+define y = Character("You:")
+define d = Character("The Devil Himself:")
+define g = Character("Your Dear Lord:")
+define dg = Character("The Devil's Sooty Grandmother:")
+define dth = Character ("Lady Death:")
+define bc = Character ("Brildebrogue Chippingham:")
+define sh = Character ("The Sparrow-Herder:")
+define gm = Character("The Old Gloom-monger:")
+define go = Character("The Young Goose-boy:")
+define h = Character("The Hunter:")
+define may = Character("The Mayor:")
+define well = Character("The Thing in the Well:")
+define sc = Character("Scraggs McKenzie, the Banksia Bounty Hunter:")
+define boys = Character("The Boys:")
+define p3 = Character("The Third Little Piggy:")
+
 #List of all persistent variables
 
 #Number of times the game has been played
@@ -230,7 +234,7 @@ label start:
     #show eileen happy
 
     # Act 1, Chapter I: The 3 Godfathers
-    scene bg rainforest
+    scene bg page
     #play music "/audio/cottagegore.mp3"
     "This maybe happened, or maybe did not."
     "The time is long past, and much is forgot."
@@ -280,16 +284,16 @@ label start:
     "(Is anything certain these days?)"
     "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
     "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
-    "Man Clad in White" "Poor woman. Let me be the Godfather."
-    "Man Clad in White" "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
-    "Man Clad in White" "I will only ask one thing: [He] must work hard, and earn every dollar, and obey me above all else."
+    miw "Poor woman. Let me be the Godfather."
+    miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
+    miw "I will only ask one thing: [He] must work hard, and earn every dollar, and obey me above all else."
     label firstMan:
             menu:
                 "Yes.":
-                    "Man Clad in White" "As I have foreseen."
+                    miw "As I have foreseen."
                     "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
-                    "Man Clad in White" "You will name [him] [povname]."
-                    "Man Clad in White" "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
+                    miw "You will name [him] [povname]."
+                    miw "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
                     mum "Alright. Make sure you're there for the christening on sunday."
                     "But He was already gone."
                     $godfather = "White"
@@ -300,24 +304,24 @@ label start:
                     "Then she turned away from Him and ran into the forest."
                     jump secondMan1
                 "Who are you?" if not firstManWho:
-                    "Man Clad in White" "I am your dear Lord."
+                    miw "I am your dear Lord."
                     $firstManWho = True
                     jump firstMan
     label secondMan1:
         "In the deeper darkness of the forest, she may or may not have met a man all in red."
         "(Can we be sure of anything but the greatness of G-d?)"
         "All the jewels of the earth fell from His right hand, and all the pleasures of the world fell from His left, and His other hand held all the wonders of the universe, and His other hand held a fat cigar, and His other hand held a long knife black as coal dust, and His other hand held the most intoxicating spices, such that the King of Kings would cry to taste them, and His other hand held a single dead rose, and His other hand was in his pocket and out of view."
-        "Man Clad in Red" "Poor woman. Let me be the Godfather."
-        "Man Clad in Red" "I'll make sure the child needs nothing, and wants everything. [He] will live in wealth and comfort for all of [his] days, and devour only the richest meats for every meal."
-        "Man Clad in Red" "I only have one condition: [He] must promise to obey no master, and scorn the rule of law, and do as [he] wilt every day of [his] life."
+        mir "Poor woman. Let me be the Godfather."
+        mir "I'll make sure the child needs nothing, and wants everything. [He] will live in wealth and comfort for all of [his] days, and devour only the richest meats for every meal."
+        mir "I only have one condition: [He] must promise to obey no master, and scorn the rule of law, and do as [he] wilt every day of [his] life."
         label secondMan2:
                 menu:
                     "Yes.":
                         mum "Beggars can't be choosers, I suppose."
-                        "Man Clad in Red" "Excellent!"
+                        mir "Excellent!"
                         "He let out a great shrieking cackle and placed His mark upon you."
-                        "Man Clad in Red" "You will name [him] [povname]."
-                        "Man Clad in Red" "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
+                        mir "You will name [him] [povname]."
+                        mir "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
                         mum "Alright. Just make sure you're there for the christening on sunday."
                         "But the Devil was already leaving. He struck his foot against the ground, which opened up and swallowed him immediately."
                         $godfather = "Red"
@@ -327,43 +331,43 @@ label start:
                         "She turned away from him, and raced deeper into the forest."
                         jump thirdMan1
                     "Who are you?" if not secondManWho:
-                        "Man Clad in Red" "I am the Devil."
+                        mir "I am the Devil."
                         $secondManWho = True
                         jump secondMan2
     label thirdMan1:
         "In the deepest darkness of the forst, there was or was not a handsome woman, broken-limbed and clad all in black."
         #"(What can any of us be certain of, except that the mercies of the Almighty are vaster than the deepest ocean and more numerous than all the pebbles on the land?)"
         "She had no hands."
-        "Woman Clad in Black" "Poor woman. Let me be the Godmother."
-        "Woman Clad in Black" "The child will have nothing. [He] will need nothing."
-        "Woman Clad in Black" "[He] need make no promises. I have no demands."
+        wib "Poor woman. Let me be the Godmother."
+        wib "The child will have nothing. [He] will need nothing."
+        wib "[He] need make no promises. I have no demands."
         label thirdMan2:
             menu:
                 "Yes.":
                     mum "You're just the right one. You take rich and poor without distinction."
-                    "Woman Clad in Black" "You did not have a choice."
+                    wib "You did not have a choice."
                     "In one swoop She bowed down and placed Her mark upon you."
-                    "Woman Clad in Black" "You will name [him] [povname]."
-                    "Woman Clad in Black" "At midnight on [his] eighteenth birthday, [he] will be mine."
-                    "Woman Clad in Black" "Keep [him] safe for me until I come for him. I will send three messengers before me, to announce my arrival. "
+                    wib "You will name [him] [povname]."
+                    wib "At midnight on [his] eighteenth birthday, [he] will be mine."
+                    wib "Keep [him] safe for me until I come for him. I will send three messengers before me, to announce my arrival. "
                     mum "Alright. Make sure you're there for the christening on sunday."
                     "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole."
                     $godfather = "Black"
                     jump chapter2
                 "No." if thirdManWho:
                     mum "I don't want you as the Godmother. You take men before it is their time."
-                    "Woman Clad in Black" "You should have thought of that sooner."
-                    "Woman Clad in Black" "There is no-one else left to take [him]."
+                    wib "You should have thought of that sooner."
+                    wib"There is no-one else left to take [him]."
                     "In one swoop She bowed down and placed Her mark upon you."
-                    "Woman Clad in Black" "You will name [him] [povname]."
-                    "Woman Clad in Black" "At midnight on [his] eighteenth birthday, [he] will be mine."
-                    "Woman Clad in Black" "Keep [him] safe for me until I come for him. I will send three messengers before me, to announce my arrival. "
+                    wib "You will name [him] [povname]."
+                    wib "At midnight on [his] eighteenth birthday, [he] will be mine."
+                    wib "Keep [him] safe for me until I come for him. I will send three messengers before me, to announce my arrival. "
                     mum "Alright then. Beggars can't be choosers. Make sure you're there for the christening on sunday."
                     "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole."
                     $godfather = "Black"
                     jump chapter2
                 "I don't know you." if not thirdManWho:
-                    "Woman Clad in Black" "Everybody knows me."
+                    wib "Everybody knows me."
                     "She tilted her head so that the moonlight fell on it, and your mother saw that it was true. It was Lady Death herself."
                     $thirdManWho = True
                     jump thirdMan2
