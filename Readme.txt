@@ -1,0 +1,1 @@
+This is a backup of the Lacuna project before I transferred everything to GitHub. I've kept this file in dropbox just in case something goes wrong with the GitHub transfer.
