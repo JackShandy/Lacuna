@@ -61,8 +61,11 @@ define gui.text_font = "fonts/BKANT.ttf"
 ## The font used for character names.
 define gui.name_text_font = "fonts/OzsWizard-TinWoodman.ttf"
 
+## The colour used for character names.
+define gui.name_text_color = u'#404040'
+
 ## The font used for out-of-game text.
-define gui.interface_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "fonts/BKANT.ttf"
 
 ## The size of normal dialogue text.
 define gui.text_size = 21
@@ -71,13 +74,13 @@ define gui.text_size = 21
 define gui.name_text_size = 40
 
 ## The size of text in the game's user interface.
-define gui.interface_text_size = 11
+define gui.interface_text_size = 21
 
 ## The size of labels in the game's user interface.
-define gui.label_text_size = 12
+define gui.label_text_size = 22
 
 ## The size of text on the notify screen.
-define gui.notify_text_size = 8
+define gui.notify_text_size = 18
 
 ## The size of the game's title.
 define gui.title_text_size = 24
@@ -225,7 +228,7 @@ define gui.choice_button_text_insensitive_color = "#444444"
 define gui.slot_button_width = 130
 define gui.slot_button_height = 97
 define gui.slot_button_borders = Borders(5, 5, 5, 5)
-define gui.slot_button_text_size = 7
+define gui.slot_button_text_size = 17
 define gui.slot_button_text_xalign = 0.5
 define gui.slot_button_text_idle_color = gui.idle_small_color
 define gui.slot_button_text_selected_idle_color = gui.selected_color

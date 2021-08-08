@@ -18,30 +18,31 @@
 
 # ===== Characters
 
-define w = Character("The Witch:")
-define t = Character("The Thief:")
-define f = Character("The Toad:")
-define m = Character("The Mushroom:")
-define mum = Character("Mum:")
-define miw = Character("{size=+100}M{/size}an Clad in White:", color = "#404040")
-define mir = Character("Man Clad in Red:")
-define wib = Character("Woman Clad in Black:")
-define r = Character("Mighty River:")
-define y = Character("You:")
-define d = Character("The Devil Himself:")
-define g = Character("Your Dear Lord:")
-define dg = Character("The Devil's Sooty Grandmother:")
-define dth = Character ("Lady Death:")
-define bc = Character ("Brildebrogue Chippingham:")
-define sh = Character ("The Sparrow-Herder:")
-define gm = Character("The Old Gloom-monger:")
-define go = Character("The Young Goose-boy:")
-define h = Character("The Hunter:")
-define may = Character("The Mayor:")
-define well = Character("The Thing in the Well:")
-define sc = Character("Scraggs McKenzie, the Banksia Bounty Hunter:")
-define boys = Character("The Boys:")
-define p3 = Character("The Third Little Piggy:")
+define w = Character("{size=+100}T{/size}he Witch:")
+define t = Character("{size=+100}T{/size}he Thief:")
+define f = Character("{size=+100}T{/size}he Toad:")
+define m = Character("{size=+100}T{/size}he Mushroom:")
+define mum = Character("{size=+100}M{/size}um:")
+define miw = Character("{size=+100}M{/size}an Clad in White:")
+define mir = Character("{size=+100}M{/size}an Clad in Red:")
+define wib = Character("{size=+100}Woman Clad in Black:")
+define mys = Character("{size=+100}M{/size}ysterious and possibly magical old woman:")
+define r = Character("{size=+100}M{/size}ighty River:")
+define y = Character("{size=+100}Y{/size}ou:")
+define d = Character("{size=+100}T{/size}he {size=+100}D{/size}evil {size=+100}H{/size}imself:")
+define g = Character("{size=+100}Y{/size}our {size=+100}D{/size}ear {size=+100}L{/size}ord:")
+define dg = Character("{size=+100}T{/size}he Devil's Sooty Grandmother:")
+define dth = Character ("{size=+100}Lady {size=+100}D{/size}eath:")
+define bc = Character ("{size=+100}B{/size}rildebrogue {size=+100}C{/size}hippingham:")
+define sh = Character ("{size=+100}T{/size}he Sparrow-Herder:")
+define gm = Character("{size=+100}T{/size}he Old Gloom-monger:")
+define go = Character("{size=+100}T{/size}he Young Goose-boy:")
+define h = Character("{size=+100}T{/size}he Hunter:")
+define may = Character("{size=+100}T{/size}he Mayor:")
+define well = Character("{size=+100}T{/size}he Thing in the Well:")
+define sc = Character("{size=+100}S{/size}craggs McKenzie, the Banksia Bounty Hunter:")
+define boys = Character("{size=+100}T{/size}he Boys:")
+define p3 = Character("{size=+100}T{/size}he Third Little Piggy:")
 
 #List of all persistent variables
 
@@ -246,6 +247,18 @@ image trees= "trees.png"
 
 
 # The game starts here.
+
+#Splash Screen - The front cover of the book that appears before the main menu.
+
+image cover = "cover.png"
+
+label splashscreen:
+    scene black
+    show cover with dissolve
+    with Pause(10)
+    #with easeinright
+    return
+
 
 
 
@@ -625,8 +638,8 @@ label chapter2:
     label thief1:
         "As you were walking down the road thusly, you came upon an old beggar-woman."
         "Her eyes were blind, and her back was crooked in 5 directions at once, and her hair floated all around her head like twisting grey fog, and she hobbled about with only the aid of an old cane to help her along."
-        "Mysterious and possibly magical old woman" "Ho, young traveller."
-        "Mysterious and possibly magical old woman" "Might you lend a hand for a frail old woman? The woods are dark tonight, and I thought I heard howling from the space between the trees."
+        mys "Ho, young traveller."
+        mys "Might you lend a hand for a frail old woman? The woods are dark tonight, and I thought I heard howling from the space between the trees."
 
         menu:
             #TK: Include option to kick over the old woman if you're the devil child
@@ -634,7 +647,7 @@ label chapter2:
                 $thiefArc +=1
                 $stuffStolen = True
                 "You took the old woman's arm to support her weight."
-                "Mysterious and possibly magical old woman" "FOOOOOL!"
+                mys "FOOOOOL!"
                 "In a flash her clothes tore asunder, and her mask fell to the ground, and you saw it was all nothing but a disguise."
                 "In her stead stood the cunning and terrible form of the Master Thief!"
                 "They were neither tall nor short, neither fat nor thin, neither pale nor tan."
