@@ -1,76 +1,20 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While processing text tag {/vspace} in u'{size=+100}M{/size}{vspace=30}an Clad in White:{/vspace}'.:
-  File "game/script.rpy", line 315, in script
-    miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
-Exception: u'/vspace' closes a text tag that isn't open.
+After initialization, but before game start.
+WindowsError: [Error 32] The process cannot access the file because it is being used by another process
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 315, in script
-    miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
-  File "renpy/ast.py", line 715, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "renpy/exports.py", line 1393, in say
-    who(what, *args, **kwargs)
-  File "renpy/character.py", line 1205, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "renpy/character.py", line 871, in do_display
-    **display_args)
-  File "renpy/character.py", line 621, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "renpy/ui.py", line 298, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 3101, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3611, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "renpy/display/core.py", line 2441, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 492, in renpy.display.render.render_screen
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 777, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 777, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 777, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/screen.py", line 681, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 777, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 1184, in render
-    st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 777, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 1184, in render
-    st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/text/text.py", line 2034, in render
-    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
-  File "renpy/text/text.py", line 607, in __init__
-    self.paragraphs = self.segment(text.tokens, style, renders, text)
-  File "renpy/text/text.py", line 998, in segment
-    raise Exception("%r closes a text tag that isn't open." % text)
-Exception: u'/vspace' closes a text tag that isn't open.
+  File "renpy/bootstrap.py", line 326, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 567, in main
+    renpy.dump.dump(False)
+  File "renpy/dump.py", line 260, in dump
+    os.rename(new, filename)
+WindowsError: [Error 32] The process cannot access the file because it is being used by another process
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Witch, the Thief, the Toad & the Mushroom 1.0
-Sat Aug  7 17:50:47 2021
+Sun Aug  8 15:22:07 2021
