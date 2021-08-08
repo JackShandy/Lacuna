@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 21: expected statement.
-    gui.name_ypos = -20
-                  ^
+File "game/screens.rpy", line 304: vbox expects a non-empty block.
+    if main_menu:
+                 ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Aug  7 17:55:34 2021
+Sun Aug  8 18:09:24 2021
