@@ -305,6 +305,9 @@ screen navigation():
 
             textbutton _("Start") action Start()
 
+            #Image button for the start menu
+            #imagebutton auto "gui/mm_start_%s.png"
+
         else:
 
             textbutton _("History") action ShowMenu("history")
