@@ -611,8 +611,10 @@ screen contents():
         hotspot (338,453,64,38) action [Hide("text_input_screen"),SetVariable("he", "they"),SetVariable("He", "They"),SetVariable("his", "their"),SetVariable("His", "Their"),SetVariable("him", "them"),SetVariable("Him", "Them"),SetVariable("Hes", "They are"),SetVariable("hes", "they are"),Jump("splashscreen2")]
 
         #if screenvar == True:
-
-        input default povname pos(195,416) length(20) color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30) changed name_func
+        #if persistent.nameSet == False:
+        input default persistent.povname pos(195,416) length(20) color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30) changed name_func
+        #else:
+            #text "{color=(25, 16, 0, 100)}{size=30}{font=Autography.otf}[persistent.povname]{/font}{/size}{/color}" #at #(195,416) #length(20) color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30)
             #povname = renpy.input("", length=32)
             #
 

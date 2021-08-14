@@ -15,18 +15,46 @@
 #
 #     config.custom_text_tags["xpos"] = xpos_tag
 
-# ===== Default player name
-init:
-    default povname = "Charlie"
+# ===== List of all persistent variables
 
+#Number of times the game has been played
+define persistent.timesPlayed = 0
+
+# Default player name (persistent)
+init:
+    default persistent.povname = "Charlie"
 
 init python:
     def name_func(newstring):
-        store.povname = newstring
+        store.persistent.povname = newstring
 
-    # style.input.caret = "my_caret"
-    # style.input.size = 60
-    # style.input.color = "#000"
+default persistent.nameSet = False
+
+define pov = Character("[persistent.povname]")
+
+# Default player name (non persistent)
+define povname = ""
+
+#Protagonist pronouns
+define he = "he"
+define He = "He"
+define his = "his"
+define His = "His"
+define him = "him"
+define Him = "Him"
+define Hes = "He's"
+define hes = "he's"
+
+#persistent pronouns
+default persistent.he = "he"
+default persistent.He = "He"
+default persistent.his = "his"
+default persistent.His = "His"
+default persistent.him = "him"
+default persistent.Him = "Him"
+default persistent.Hes = "Hes"
+default persistent.hes = "hes"
+
 
 # ===== Characters
 
@@ -56,21 +84,6 @@ define sc = Character("{size=+100}S{/size}craggs McKenzie, the Banksia Bounty Hu
 define boys = Character("{size=+100}T{/size}he Boys:")
 define p3 = Character("{size=+100}T{/size}he Third Little Piggy:")
 
-#List of all persistent variables
-
-#Number of times the game has been played
-define persistent.timesPlayed = 0
-#Character Name
-define pov = Character("[povname]")
-#Pronouns
-define he = "he"
-define He = "He"
-define his = "his"
-define His = "His"
-define him = "him"
-define Him = "Him"
-define Hes = "He's"
-define hes = "he's"
 
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
@@ -265,15 +278,39 @@ label splashscreen:
     show cover with dissolve
     with Pause(10)
     #TK: Include a page-flipping animation here.
-    call screen contents
-
-    #with easeinright
-    #return
+    if persistent.nameSet == False:
+        call screen contents
+    else:
+         #$povname = persistent.povname
+         #Using the persistent character info to define the temporary pronouns
+         #This is really just done so that I don't need to write [persistent.he] every time I use a pronoun
+         define he = persistent.he
+         define He = persistent.He
+         define his = persistent.his
+         define His = persistent.His
+         define him = persistent.him
+         define Him = persistent.Him
+         define Hes = persistent.Hes
+         define hes = persistent.hes
+         define povname = persistent.povname
+         #TK: show screen contents with easeinright
+         return
 
 #Main Menu - This is the label that transitions from the "This book belongs to" page to the main menu
 label splashscreen2:
     #TK: Include a page-flipping animation here.
     #Note: TK = To Do
+    #A persistent name has been set
+    $persistent.nameSet = True
+    $persistent.he = he
+    $persistent.He = He
+    $persistent.his = his
+    $persistent.His = His
+    $persistent.him = him
+    $persistent.Him = Him
+    $persistent.Hes = Hes
+    $persistent.hes = hes
+    $povname = persistent.povname
     return
 
 label start:
