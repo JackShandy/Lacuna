@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 304: vbox expects a non-empty block.
-    if main_menu:
-                 ^
+File "game/screens.rpy", line 615: u'alpha' is not a keyword argument or valid child for the input statement.
+    input default povname pos(195,416) length(20) color("#591c0c") alpha(100) font("fonts/Autography.otf") size(30) changed name_func
+                                                                        ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Aug  8 18:09:24 2021
+Sat Aug 14 16:35:21 2021

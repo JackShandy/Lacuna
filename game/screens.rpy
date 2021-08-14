@@ -579,6 +579,45 @@ style about_label_text:
     size gui.label_text_size
 
 
+## My screens #######################################################
+##
+##
+## Contents page ####
+
+screen contents():
+    #add "/images/contents.png"
+
+
+    default screenvar = False
+    imagemap:
+        #ground "contents.png"
+        auto "images/contents_%s.png"
+
+        #idle "c_name_idle.png"
+        #hover "c_name_hover.png"
+        #selected_idle "c_name_hover.png"
+
+        #Click the text box to enter text
+        #hotspot (195,424,207,28) action SetScreenVariable("screenvar",True)
+        #define gui.text_font = "fonts/ShoppingScript.ttf"
+
+        #She / Her pronoun button
+        hotspot (200,452,55,28) action [Hide("text_input_screen"), SetVariable("he", "she"), SetVariable("He", "She"), SetVariable("his", "her"), SetVariable("His", "Her"), SetVariable("him", "her"), SetVariable("Him", "Her"), SetVariable("Hes", "She's"), SetVariable("hes", "she's"), Jump("splashscreen2")]
+
+        #He / Him pronoun button
+        hotspot (272,454,53,36) action [Hide("text_input_screen"),SetVariable("he", "he"),SetVariable("He", "He"),SetVariable("his", "his"),SetVariable("His", "His"),SetVariable("him", "him"),SetVariable("Him", "Him"),SetVariable("Hes", "He's"),SetVariable("hes", "he's"),Jump("splashscreen2")]
+
+        #They / Them pronoun button
+        hotspot (338,453,64,38) action [Hide("text_input_screen"),SetVariable("he", "they"),SetVariable("He", "They"),SetVariable("his", "their"),SetVariable("His", "Their"),SetVariable("him", "them"),SetVariable("Him", "Them"),SetVariable("Hes", "They are"),SetVariable("hes", "they are"),Jump("splashscreen2")]
+
+        #if screenvar == True:
+
+        input default povname pos(195,416) length(20) color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30) changed name_func
+            #povname = renpy.input("", length=32)
+            #
+
+
+
 ## Load and Save screens #######################################################
 ##
 ## These screens are responsible for letting the player save the game and load

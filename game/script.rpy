@@ -15,6 +15,18 @@
 #
 #     config.custom_text_tags["xpos"] = xpos_tag
 
+# ===== Default player name
+init:
+    default povname = "Charlie"
+
+
+init python:
+    def name_func(newstring):
+        store.povname = newstring
+
+    # style.input.caret = "my_caret"
+    # style.input.size = 60
+    # style.input.color = "#000"
 
 # ===== Characters
 
@@ -241,92 +253,105 @@ init:
     $ artPos = Position(xpos=0.5, xanchor=0.5, ypos=35, yanchor=0)
 
 image trees= "trees.png"
-
-
-
+image cover = "cover.png"
 
 
 # The game starts here.
 
 #Splash Screen - The front cover of the book that appears before the main menu.
 
-image cover = "cover.png"
-
 label splashscreen:
     scene black
     show cover with dissolve
     with Pause(10)
+    #TK: Include a page-flipping animation here.
+    call screen contents
+
     #with easeinright
+    #return
+
+#Main Menu - This is the label that transitions from the "This book belongs to" page to the main menu
+label splashscreen2:
+    #TK: Include a page-flipping animation here.
+    #Note: TK = To Do
     return
-
-
-
 
 label start:
 
     #------------------------- Declaring variables used by the game.
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
+    # Contents page (allows the player to choose name and pronouns)
+    #Note: Show = show screen, call = pause everything else for the screen
+    # init python:
+    #     style.input.font = "fonts/ShoppingScript.ttf"
+    #     style.input.size = 30
+    #     style.input.color = "#160503"
 
-    #show eileen happy
+    #function for choosing the player's name
+
+    # python:
+    #     povname = renpy.input("", length=32)
+    #     povname = povname.strip()
+    #
+    #     if not povname:
+    #          povname = "Charlie"
 
     # Act 1, Chapter I: The 3 Godfathers
-    scene bg page
-    show trees at artPos
+    # scene bg page
+    # show trees at artPos
     #play music "/audio/cottagegore.mp3"
-    "This maybe happened, or maybe did not."
-    "The time is long past, and much is forgot."
-    python:
-        povname = renpy.input("This book belongs to:", length=32)
-        povname = povname.strip()
+    # "This maybe happened, or maybe did not."
+    # "The time is long past, and much is forgot."
+    #
+    # menu:
+    #     "Pronouns:"
+    #     "He / Him":
+    #         #"Good."
+    #         $he = "he"
+    #         $He = "He"
+    #         $his = "his"
+    #         $His = "His"
+    #         $him = "him"
+    #         $Him = "Him"
+    #         $Hes = "He's"
+    #         $hes = "he's"
+    #     "She / Her":
+    #         #"Good."
+    #         $he = "she"
+    #         $He = "She"
+    #         $his = "her"
+    #         $His = "Her"
+    #         $him = "her"
+    #         $Him = "Her"
+    #         $Hes = "She's"
+    #         $hes = "she's"
+    #     "They / Them":
+    #         #"Good."
+    #         $he = "they"
+    #         $He = "They"
+    #         $his = "their"
+    #         $His = "Their"
+    #         $him = "them"
+    #         $Him = "Them"
+    #         $Hes = "They are"
+    #         $hes = "they are"
+    label chapter1:
+        scene bg page
+        show trees at artPos
+        #play music "/audio/cottagegore.mp3"
+        "This maybe happened, or maybe did not."
+        "The time is long past, and much is forgot."
 
-        if not povname:
-             povname = "Vasilisa"
-
-    menu:
-        "Pronouns:"
-        "He / Him":
-            #"Good."
-            $he = "he"
-            $He = "He"
-            $his = "his"
-            $His = "His"
-            $him = "him"
-            $Him = "Him"
-            $Hes = "He's"
-            $hes = "he's"
-        "She / Her":
-            #"Good."
-            $he = "she"
-            $He = "She"
-            $his = "her"
-            $His = "Her"
-            $him = "her"
-            $Him = "Her"
-            $Hes = "She's"
-            $hes = "she's"
-        "They / Them":
-            #"Good."
-            $he = "they"
-            $He = "They"
-            $his = "their"
-            $His = "Their"
-            $him = "them"
-            $Him = "Them"
-            $Hes = "They are"
-            $hes = "they are"
-    #TK: Have a picture of the 12 kids. Kids disappear as you replay the game.
-    "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
-    "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran right out into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
-    "In the darkness of the forest, she may or may not have met a man in white."
-    "(Is anything certain these days?)"
-    "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
-    "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
-    miw "Poor woman. Let me be the Godfather."
-    miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
-    miw "I will only ask one thing: [He] must work hard, and earn every dollar, and obey me above all else."
+        #TK: Have a picture of the 12 kids. Kids disappear as you replay the game.
+        "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
+        "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran right out into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
+        "In the darkness of the forest, she may or may not have met a man in white."
+        "(Is anything certain these days?)"
+        "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
+        "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
+        miw "Poor woman. Let me be the Godfather."
+        miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
+        miw "I will only ask one thing: [He] must work hard, and earn every dollar, and obey me above all else."
     label firstMan:
             menu:
                 "Yes.":
