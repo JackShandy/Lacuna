@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 292: end of line expected.
-    show image firelight animated
-                         ^
+File "game/screens.rpy", line 341: u'Play' is not a keyword argument or valid child for the imagebutton statement.
+    imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action ShowMenu("help") Play("sound", "audio/page-flip.wav") hovered [ Play("sound", "audio/pencil.wav") ] 
+                                                                                                       ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Fri Aug 20 14:39:42 2021
+Fri Aug 20 17:06:40 2021
