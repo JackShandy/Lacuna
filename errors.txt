@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 617: expected a keyword argument, colon, or end of line.
-    text default "[persistent.povname]" pos(195,416) length(20) color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30)
-                 ^
+File "game/script.rpy", line 292: end of line expected.
+    show image firelight animated
+                         ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Aug 14 17:43:02 2021
+Fri Aug 20 14:39:42 2021

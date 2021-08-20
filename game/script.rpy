@@ -267,6 +267,20 @@ init:
 
 image trees= "trees.png"
 image cover = "cover.png"
+image firelight animated:
+    "firelight-1.png"
+    pause 0.1
+    "firelight-2.png"
+    pause 0.1
+    repeat
+
+
+###==== Defining all Audio
+
+## Sound effects
+define audio.pageFlip = "audio/page-flip.mp3"
+define audio.rain = "audio/rain.wav"
+define audio.fire = "audio/fire.mp3"
 
 
 # The game starts here.
@@ -275,9 +289,13 @@ image cover = "cover.png"
 
 label splashscreen:
     scene black
+    show firelight animated onlayer over_screens
     show cover with dissolve
+    play audio rain loop volume 0.5 fadein 1.0
+    play audio fire loop volume 0.5 fadein 1.0
     with Pause(10)
     #TK: Include a page-flipping animation here.
+    play sound pageFlip
     if persistent.nameSet == False:
         call screen contents
     else:
@@ -373,6 +391,8 @@ label start:
     #         $Hes = "They are"
     #         $hes = "they are"
     label chapter1:
+
+        #show firelight animated zorder 99
         scene bg page
         show trees at artPos
         #play music "/audio/cottagegore.mp3"
