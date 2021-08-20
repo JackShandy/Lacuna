@@ -1,42 +1,20 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "renpy/common/00start.rpy", line 213, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 498, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 498, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 508, in _execute_python_hide
-    renpy.load("_reload-2")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+After initialization, but before game start.
+WindowsError: [Error 32] The process cannot access the file because it is being used by another process
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 213, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 498, in script
-    python hide:
-  File "renpy/ast.py", line 922, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2218, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00keymap.rpy", line 498, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 508, in _execute_python_hide
-    renpy.load("_reload-2")
-  File "renpy/loadsave.py", line 767, in load
-    log.unfreeze(roots, label="_after_load")
-  File "renpy/python.py", line 2173, in unfreeze
-    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
-  File "renpy/python.py", line 2005, in rollback
-    self.load_failed()
-  File "renpy/python.py", line 1923, in load_failed
-    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "renpy/bootstrap.py", line 326, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 567, in main
+    renpy.dump.dump(False)
+  File "renpy/dump.py", line 260, in dump
+    os.rename(new, filename)
+WindowsError: [Error 32] The process cannot access the file because it is being used by another process
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Witch, the Thief, the Toad & the Mushroom 1.0
-Fri Aug 20 17:08:34 2021
+Fri Aug 20 17:20:27 2021

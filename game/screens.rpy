@@ -306,7 +306,7 @@ screen navigation():
             #textbutton _("Start") action Start()
 
             #Image button for the start menu
-            imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ] clicked [ Play("sound", "audio/page-flip.wav") ]
+            imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
 
         else:
 
@@ -317,9 +317,9 @@ screen navigation():
         #textbutton _("Load") action ShowMenu("load")
         #textbutton _("Preferences") action ShowMenu("preferences")
 
-        imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ] clicked [ Play("sound", "audio/page-flip.wav") ]
+        imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
 
-        imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ] clicked [ Play("sound", "audio/page-flip.wav") ]
+        imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
 
         if _in_replay:
 
@@ -331,14 +331,14 @@ screen navigation():
 
         #textbutton _("About") action ShowMenu("about")
 
-        imagebutton auto "gui/mm_about_%s.png" xpos 25 ypos 421 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ] clicked [ Play("sound", "audio/page-flip.wav") ]
+        imagebutton auto "gui/mm_about_%s.png" xpos 25 ypos 421 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
 
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## Help isn't necessary or relevant to mobile devices.
             #textbutton _("Help") action ShowMenu("help")
-            imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ] #clicked [ Play("sound", "audio/page-flip.wav") ]
+            imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
 
 
         if renpy.variant("pc"):
@@ -346,7 +346,7 @@ screen navigation():
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
             #textbutton _("Quit") action Quit(confirm=not main_menu)
-            imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ] clicked [ Play("sound", "audio/page-flip.wav") ]
+            imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
 
 
 style navigation_button is gui_button
@@ -609,15 +609,16 @@ screen contents():
         #Click the text box to enter text
         #hotspot (195,424,207,28) action SetScreenVariable("screenvar",True)
         #define gui.text_font = "fonts/ShoppingScript.ttf"
+            #imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
 
         #She / Her pronoun button
-        hotspot (200,452,55,28) action [Hide("text_input_screen"), SetVariable("he", "she"), SetVariable("He", "She"), SetVariable("his", "her"), SetVariable("His", "Her"), SetVariable("him", "her"), SetVariable("Him", "Her"), SetVariable("Hes", "She's"), SetVariable("hes", "she's"), Jump("splashscreen2")]
+        hotspot (200,452,55,28) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"), SetVariable("he", "she"), SetVariable("He", "She"), SetVariable("his", "her"), SetVariable("His", "Her"), SetVariable("him", "her"), SetVariable("Him", "Her"), SetVariable("Hes", "She's"), SetVariable("hes", "she's"), Jump("splashscreen2")]
 
         #He / Him pronoun button
-        hotspot (272,454,53,36) action [Hide("text_input_screen"),SetVariable("he", "he"),SetVariable("He", "He"),SetVariable("his", "his"),SetVariable("His", "His"),SetVariable("him", "him"),SetVariable("Him", "Him"),SetVariable("Hes", "He's"),SetVariable("hes", "he's"),Jump("splashscreen2")]
+        hotspot (272,454,53,36) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"),SetVariable("he", "he"),SetVariable("He", "He"),SetVariable("his", "his"),SetVariable("His", "His"),SetVariable("him", "him"),SetVariable("Him", "Him"),SetVariable("Hes", "He's"),SetVariable("hes", "he's"),Jump("splashscreen2")]
 
         #They / Them pronoun button
-        hotspot (338,453,64,38) action [Hide("text_input_screen"),SetVariable("he", "they"),SetVariable("He", "They"),SetVariable("his", "their"),SetVariable("His", "Their"),SetVariable("him", "them"),SetVariable("Him", "Them"),SetVariable("Hes", "They are"),SetVariable("hes", "they are"),Jump("splashscreen2")]
+        hotspot (338,453,64,38) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"),SetVariable("he", "they"),SetVariable("He", "They"),SetVariable("his", "their"),SetVariable("His", "Their"),SetVariable("him", "them"),SetVariable("Him", "Them"),SetVariable("Hes", "They are"),SetVariable("hes", "they are"),Jump("splashscreen2")]
 
         #if screenvar == True:
         #if persistent.nameSet == False:
