@@ -55,36 +55,6 @@ default persistent.Him = "Him"
 default persistent.Hes = "Hes"
 default persistent.hes = "hes"
 
-
-# ===== Characters
-
-define w = Character("{size=+100}T{/size}he Witch:")
-define t = Character("{size=+100}T{/size}he Thief:")
-define f = Character("{size=+100}T{/size}he Toad:")
-define m = Character("{size=+100}T{/size}he Mushroom:")
-define mum = Character("{size=+100}M{/size}um:")
-define miw = Character("{size=+100}M{/size}an Clad in White:")
-define mir = Character("{size=+100}M{/size}an Clad in Red:")
-define wib = Character("{size=+100}Woman Clad in Black:")
-define mys = Character("{size=+100}M{/size}ysterious and possibly magical old woman:")
-define r = Character("{size=+100}M{/size}ighty River:")
-define y = Character("{size=+100}Y{/size}ou:")
-define d = Character("{size=+100}T{/size}he {size=+100}D{/size}evil {size=+100}H{/size}imself:")
-define g = Character("{size=+100}Y{/size}our {size=+100}D{/size}ear {size=+100}L{/size}ord:")
-define dg = Character("{size=+100}T{/size}he Devil's Sooty Grandmother:")
-define dth = Character ("{size=+100}Lady {size=+100}D{/size}eath:")
-define bc = Character ("{size=+100}B{/size}rildebrogue {size=+100}C{/size}hippingham:")
-define sh = Character ("{size=+100}T{/size}he Sparrow-Herder:")
-define gm = Character("{size=+100}T{/size}he Old Gloom-monger:")
-define go = Character("{size=+100}T{/size}he Young Goose-boy:")
-define h = Character("{size=+100}T{/size}he Hunter:")
-define may = Character("{size=+100}T{/size}he Mayor:")
-define well = Character("{size=+100}T{/size}he Thing in the Well:")
-define sc = Character("{size=+100}S{/size}craggs McKenzie, the Banksia Bounty Hunter:")
-define boys = Character("{size=+100}T{/size}he Boys:")
-define p3 = Character("{size=+100}T{/size}he Third Little Piggy:")
-
-
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
 define secondManWho = False
@@ -272,7 +242,45 @@ image firelight animated:
     pause 0.1
     "firelight-2.png"
     pause 0.1
+    "firelight-3.png"
+    pause 0.1
+    "firelight-2.png"
+    pause 0.1
     repeat
+
+image witchName= "Names/witch.png"
+image thiefName= "Names/thief.png"
+image toadName= "Names/toad.png"
+image mushroomName= "Names/mushroom.png"
+image wibName = "Names/wib.png"
+
+# ===== Characters
+
+define w = Character("{image=witchName}{alt}The Witch:{/alt}")
+define t = Character("{image=thiefName}{alt}The Thief:{/alt}")
+define f = Character("{image=toadName}{alt}The Toad:{/alt}")
+define m = Character("{image=mushroomName}{alt}The Mushroom:{/alt}")
+define mum = Character("{size=+100}M{/size}um:")
+define miw = Character("{size=+100}M{/size}an Clad in White:")
+define mir = Character("{size=+100}M{/size}an Clad in Red:")
+define wib = Character("{image=wibName}{alt}The Woman Clad in Black:{/alt}")
+define mys = Character("{size=+100}M{/size}ysterious and possibly magical old woman:")
+define r = Character("{size=+100}M{/size}ighty River:")
+define y = Character("{size=+100}Y{/size}ou:")
+define d = Character("{size=+100}T{/size}he {size=+100}D{/size}evil {size=+100}H{/size}imself:")
+define g = Character("{size=+100}Y{/size}our {size=+100}D{/size}ear {size=+100}L{/size}ord:")
+define dg = Character("{size=+100}T{/size}he Devil's Sooty Grandmother:")
+define dth = Character ("{size=+100}Lady {size=+100}D{/size}eath:")
+define bc = Character ("{size=+100}B{/size}rildebrogue {size=+100}C{/size}hippingham:")
+define sh = Character ("{size=+100}T{/size}he Sparrow-Herder:")
+define gm = Character("{size=+100}T{/size}he Old Gloom-monger:")
+define go = Character("{size=+100}T{/size}he Young Goose-boy:")
+define h = Character("{size=+100}T{/size}he Hunter:")
+define may = Character("{size=+100}T{/size}he Mayor:")
+define well = Character("{size=+100}T{/size}he Thing in the Well:")
+define sc = Character("{size=+100}S{/size}craggs McKenzie, the Banksia Bounty Hunter:")
+define boys = Character("{size=+100}T{/size}he Boys:")
+define p3 = Character("{size=+100}T{/size}he Third Little Piggy:")
 
 
 ###==== Defining all Audio
