@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 341: u'Play' is not a keyword argument or valid child for the imagebutton statement.
-    imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action ShowMenu("help") Play("sound", "audio/page-flip.wav") hovered [ Play("sound", "audio/pencil.wav") ] 
-                                                                                                       ^
+File "game/screens.rpy", line 967: frame expects a non-empty block.
+    frame background None bottom_margin 50:
+                                           ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Fri Aug 20 17:06:40 2021
+Tue Sep 14 18:14:33 2021
