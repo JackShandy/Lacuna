@@ -964,8 +964,8 @@ screen history():
                         ## set.
                         if "color" in h.who_args:
                             text_color h.who_args["color"]
-                frame background None bottom_margin 50:
-                    $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
+
+                $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
                 text what:
                     substitute False
 

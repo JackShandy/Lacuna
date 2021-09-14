@@ -89,4 +89,4 @@ Exception: Fixed fit width (32767.0) is too large.
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Witch, the Thief, the Toad & the Mushroom 1.0
-Tue Sep 14 18:21:56 2021
+Tue Sep 14 18:48:24 2021
