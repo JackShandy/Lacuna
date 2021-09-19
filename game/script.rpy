@@ -252,17 +252,19 @@ image witchName= "Names/witch.png"
 image thiefName= "Names/thief.png"
 image toadName= "Names/toad.png"
 image mushroomName= "Names/mushroom.png"
+image mumName = "Names/mum.png"
 image wibName = "Names/wib.png"
-
+image miwName = "Names/miw.png"
+image mirName = "Names/mir.png"
 # ===== Characters
 
 define w = Character("{image=witchName}{alt}The Witch:{/alt}")
 define t = Character("{image=thiefName}{alt}The Thief:{/alt}")
 define f = Character("{image=toadName}{alt}The Toad:{/alt}")
 define m = Character("{image=mushroomName}{alt}The Mushroom:{/alt}")
-define mum = Character("{size=+100}M{/size}um:")
-define miw = Character("{size=+100}M{/size}an Clad in White:")
-define mir = Character("{size=+100}M{/size}an Clad in Red:")
+define mum = Character("{image=mumName}{alt}Mum:{/alt}")
+define miw = Character("{image=miwName}{alt}The Man Clad in White:{/alt}")
+define mir = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
 define wib = Character("{image=wibName}{alt}The Woman Clad in Black:{/alt}")
 define mys = Character("{size=+100}M{/size}ysterious and possibly magical old woman:")
 define r = Character("{size=+100}M{/size}ighty River:")
