@@ -256,6 +256,9 @@ image mumName = "Names/mum.png"
 image wibName = "Names/wib.png"
 image miwName = "Names/miw.png"
 image mirName = "Names/mir.png"
+image mysName = "Names/mys.png"
+image youName = "Names/you.png"
+image dgName = "Names/dg.png"
 # ===== Characters
 
 define w = Character("{image=witchName}{alt}The Witch:{/alt}")
@@ -266,13 +269,16 @@ define mum = Character("{image=mumName}{alt}Mum:{/alt}")
 define miw = Character("{image=miwName}{alt}The Man Clad in White:{/alt}")
 define mir = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
 define wib = Character("{image=wibName}{alt}The Woman Clad in Black:{/alt}")
-define mys = Character("{size=+100}M{/size}ysterious and possibly magical old woman:")
-define r = Character("{size=+100}M{/size}ighty River:")
-define y = Character("{size=+100}Y{/size}ou:")
-define d = Character("{size=+100}T{/size}he {size=+100}D{/size}evil {size=+100}H{/size}imself:")
-define g = Character("{size=+100}Y{/size}our {size=+100}D{/size}ear {size=+100}L{/size}ord:")
-define dg = Character("{size=+100}T{/size}he Devil's Sooty Grandmother:")
-define dth = Character ("{size=+100}Lady {size=+100}D{/size}eath:")
+define mys = Character("{image=mysName}{alt}Mysterious and possibly magical old woman:{/alt}")
+define y = Character("{image=youName}{alt}You:{/alt}")
+define dg = Character("{image=dgName}{alt}The Devil's Sooty Grandmother:{/alt}")
+
+#Note: deleted these, hopefully I got them all
+#define d = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
+#define g = Character("{image=miwName}{alt}The Man Clad in White:{/alt}")
+
+
+
 define bc = Character ("{size=+100}B{/size}rildebrogue {size=+100}C{/size}hippingham:")
 define sh = Character ("{size=+100}T{/size}he Sparrow-Herder:")
 define gm = Character("{size=+100}T{/size}he Old Gloom-monger:")
@@ -283,6 +289,9 @@ define well = Character("{size=+100}T{/size}he Thing in the Well:")
 define sc = Character("{size=+100}S{/size}craggs McKenzie, the Banksia Bounty Hunter:")
 define boys = Character("{size=+100}T{/size}he Boys:")
 define p3 = Character("{size=+100}T{/size}he Third Little Piggy:")
+
+define r = Character("{size=+100}M{/size}ighty River:")
+
 
 
 ###==== Defining all Audio
@@ -1707,14 +1716,14 @@ label mushroomFinale:
     "The awful feeling came over you that what the man said was true. Each day you spent in the underground kingdom was as a hundred years on earth."
     "You ran through the grey streets and parking lots and abandoned shopping centers and twisting underground toll roads and cracked bitumen roads and empty apartment complexes under the grim endless maze of freeways stacked above you that blotted out the grey sky above, but try as you might you couldn't find the way back to the kingdom you left."
     if godfather == "White":
-        g "Finally."
+        miw "Finally."
         "You felt a heavy hand fall on your shoulder. A great light shone behind you, to bright for you to turn and face it."
-        g "Long have I waited. Now, you will come with me."
+        miw "Long have I waited. Now, you will come with me."
         jump mushroomBox
     elif godfather == "Red":
-        d "Finally."
+        mir "Finally."
         "A crooked red hand fell on your shoulder, and you turned to see the cackling face of the old serpent himself."
-        d "Now you see that no matter how long you hide, none can escape the devil's clutches! Come with me, and we will laugh together in hell forever."
+        mir "Now you see that no matter how long you hide, none can escape the devil's clutches! Come with me, and we will laugh together in hell forever."
         jump mushroomBox
     else:
         label mushroomBox:
@@ -2210,13 +2219,13 @@ label thiefStory:
         "Father" "Inside all good people there dwells a golden soul, given by you, oh Lord. But as soon as you look, anyone can see this one has nothing but a hollow nest of spiders and rats inside. What trade can I teach such a one as this?"
         #TK: Some kind of text effect for g-d's speech
         t "The Lord thought on this, and said {b}\"Bring all your children before me.\"{/b} To the first child He said:"
-        g "{b}You shall become a powerful King.{/b}"
+        miw "{b}You shall become a powerful King.{/b}"
         t "Then to the second, and third, and so on down the line:"
-        g "{b}You shall become a Duke.{/b}"
-        g "{b}You, a rich Merchant.{/b}"
-        g "{b}You, a Tanner. You, a Shoemaker. You, a Butcher. You, a Beggar.{/b}"
+        miw "{b}You shall become a Duke.{/b}"
+        miw "{b}You, a rich Merchant.{/b}"
+        miw "{b}You, a Tanner. You, a Shoemaker. You, a Butcher. You, a Beggar.{/b}"
         t "Then He finally reached me at the end of the line."
-        g "{b}And you shall be a Thief.{/b}"
+        miw "{b}And you shall be a Thief.{/b}"
         t "My parents took me to the goblins to learn the art of Thievery as the Lord instructed."
         t "One of the Goblin Queens sat and talked with me for a long time. Then they went to my parents and said:"
         "Goblin Queen" "Your child will be taught well. We will keep them as an apprentice for one year."
@@ -2233,13 +2242,13 @@ label thiefStory:
         "Father" "Inside all good people there dwells a golden soul, given by you, oh Lord. But as soon as you look, anyone can see this one has nothing but a hollow nest of spiders and rats inside. What trade can I teach such a one as this?"
         #TK: Some kind of text effect for g-d's speech
         t "The Lord thought on this, and said {b}\"Bring all your children before me.\"{/b} To the first child He said:"
-        g "{b}You shall become a powerful King.{/b}"
+        miw "{b}You shall become a powerful King.{/b}"
         t "Then to the second, and third, and so on down the line:"
-        g "{b}You shall become a Duke.{/b}"
-        g "{b}You, a rich Merchant.{/b}"
-        g "{b}You, a Tanner. You, a Shoemaker. You, a Butcher. You, a Beggar.{/b}"
+        miw "{b}You shall become a Duke.{/b}"
+        miw "{b}You, a rich Merchant.{/b}"
+        miw "{b}You, a Tanner. You, a Shoemaker. You, a Butcher. You, a Beggar.{/b}"
         t "Then He finally reached me at the end of the line."
-        g "{b}And you shall be a Thief.{/b}"
+        miw "{b}And you shall be a Thief.{/b}"
         t "My parents took me to the goblins to learn the art of Thievery as the Lord instructed."
         t "One of the Goblin Queens sat and talked with me for a long time. Then they went to my parents and said:"
         "Goblin Queen" "Your child will be taught well. We will keep them as an apprentice for one year."
@@ -2271,7 +2280,7 @@ label thiefStory:
         "Just at that moment, the clock struck midnight."
         "The clouds parted and an unnatural sun shone through them,  bright as a searchlight in the dark of night."
         "You felt the hot rays of the Lord's gaze upon you, sweeping the line of people. Your skin blistered with sunburn as it struck you."
-        g "{b}Where is my godchild?{/b}"
+        miw "{b}Where is my godchild?{/b}"
         "Mother" "Yes. And where is my child?"
         "You felt the thief shake beside you."
         "Grizzled old goblin" "If you want 'em, you'll have to pick them out of the lineup!"
@@ -2280,7 +2289,7 @@ label thiefStory:
         if pig:
             "The pig looked up from the ground with anticipation and fear."
         "After a long time, His gaze moved on down the line, hovering over each in turn. Finally, He spoke."
-        g "These are the ones we seek."
+        miw "These are the ones we seek."
         "Rays of light beamed down on two cinnamon cockatiels at the very end of the line."
         "With a great shout, they burst into smoke, and revealed themselves to be goblins."
         "The whole line erupted into goblin smoke, and the two of you were revealed. In a flash, the goblins turned both the parents into hideous worms which squirmed away and were buried in the dirt. The Lord cursed in disgust and vanished back behind the clouds, and the whole train leapt up in great celebration."
@@ -2305,8 +2314,8 @@ label thiefStory:
         pov "There is none. There never was."
         if godfather == "Red":
             "Just then in a puff of smoke, the Devil appeared! Your Godfather had come for you at last."
-            d "Well done, my crooked little friends! Always good to see The Man Upstairs outsmarted yet again."
-            d "Come along now. The Hour of Ghosts is almost up, and I need you to clean out all the boilers of hell!"
+            mir "Well done, my crooked little friends! Always good to see The Man Upstairs outsmarted yet again."
+            mir "Come along now. The Hour of Ghosts is almost up, and I need you to clean out all the boilers of hell!"
             label devilNever:
                 menu:
                     "Never!":
@@ -2315,21 +2324,21 @@ label thiefStory:
                     "Very well. I'll come with you.":
                         t "Follow my lead."
                         t "May I come along too, oh Devil? Long have I wished to see the fires of Hell."
-                        d "Bah! We have so many thieves already. Why would I need another?"
+                        mir "Bah! We have so many thieves already. Why would I need another?"
                         t "But I am the sovereign of thieves, and all crooks owe me alliegance."
                         "And they proved it by stealing the Devil's golden tooth right out of his mouth. The Devil snatched it back with a snarl."
-                        d "Very well! A fine prize you shall make for my servants."
+                        mir "Very well! A fine prize you shall make for my servants."
                         "And the three of you set along the path to hell, with the Devil rubbing His hands gleefully. As you walked, you passed a cherry tree full of red fruits."
                         t "Devil, please, if I may make one last request... may you please climb up that tree and hand us some cherries?"
                         "Believing the two of you to be broken, the Devil agreed. But as soon as he was on the tree, the Thief whipped out a vial of salt. In a wink they drew a circle around the tree in chalk, and the old serpent was stuck to a branch as if He was glued to it."
                         "The Devil Himself (Wailing piteously)" "NOOOOOOOOOOOO!"
-                        d "Foolish mortal - you will pay dearly for this!"
+                        mir "Foolish mortal - you will pay dearly for this!"
                         t "Throw down my friend's contract, and I'll release you!"
                         "The Evil One refused for a long time, baring his teeth, wailing, and spreading an indescribable stench."
                         "But soon, the Hour of Ghosts was about to end, and the Goatfoot risked losing his reign forever, which wore Him down (As you can imagine)."
-                        d "Fine. Take it, then."
+                        mir "Fine. Take it, then."
                         "He unscrewed his left horn, took out a yellowed parchment and threw it down. You recognised it as your Mother's handwriting, and in an instant you tore it into a thousand pieces. You felt a great weight lift from you."
-                        d "Now let me go!"
+                        mir "Now let me go!"
                         menu:
                             "Let him go.":
                                 "You nodded to the Thief, and they use a pouch of mysterious coal dust to draw a circle around the tree."
@@ -2843,15 +2852,15 @@ label witchFinale:
             w "Librarians everywhere grew to fear me, and they called me The Girl Who Knew Everything."
             w "Soon the Devil Himself learned of my wisdom and pride, and grew jealous."
             w "\"I'll teach her a thing or two,\" he said, and whipped himself to my kingdom on the spot."
-            d "Oh Princess! I have need of your wisdom!"
-            d "If you are able to answer 3 riddles of mine, I will grant you a boon. But if you cannot answer, you must come serve me in hell."
+            mir "Oh Princess! I have need of your wisdom!"
+            mir "If you are able to answer 3 riddles of mine, I will grant you a boon. But if you cannot answer, you must come serve me in hell."
             w "\"I accept!\" I said, because there wasn't a single riddle in the world I had not eaten whole."
-            d "Poke your fingers in my eyes and I will open wide my jaws. Linen cloth, quills, or paper, my greedy lust devours them all. What am I?"
+            mir "Poke your fingers in my eyes and I will open wide my jaws. Linen cloth, quills, or paper, my greedy lust devours them all. What am I?"
             python:
                 answer1 = renpy.input("{i}Answer thee my riddles three:{/i}", length=8)
 
             if answer1 == "Scissors" or answer1 == "scissors" or answer1 == "Scissor" or answer1 == "scissor" or answer1 == "Shears" or answer1 == "shears" or answer1 == "Shear" or answer1 == "shear" or answer1 == "Clippers" or answer1 == "clippers" or answer1 == "Clipper" or answer1 == "clipper" or answer1 == "Cutters" or answer1 == "cutters" or answer1 == "Cutter" or answer1 == "cutter":
-                d "Arrrgh... that's right."
+                mir "Arrrgh... that's right."
                 w "The Devil ground his teeth and stomped his feet and fled from the tower."
                 w "He spent all night and all day thinking of a riddle to vex me, and on the 2nd night he came to my tower again, rubbing his long fingers together."
                 jump riddle2
@@ -2859,15 +2868,15 @@ label witchFinale:
                 jump devilWins
 
             label riddle2:
-                d "I have need of your wisdom again, O Princess."
-                d "You make me, but I hold you in my grasp. I terrify without limit, but disappear before dawn. What am I?"
+                mir "I have need of your wisdom again, O Princess."
+                mir "You make me, but I hold you in my grasp. I terrify without limit, but disappear before dawn. What am I?"
                 python:
                     answer2 = renpy.input("{i}Answer thee my riddles three:{/i}", length=9)
 
                 if answer2 == "Nightmare" or answer2 == "nightmare" or answer2 == "Nightmares" or answer2 == "nightmares" or answer2 == "Bad Dream" or answer2 == "Bad dream" or answer2 == "bad dream" or answer2 == "bad Dream" or answer2 == "Dream" or answer2 == "dream" or answer2 == "night terror" or answer2 == "Night Terror" or answer2 == "Night terror" or "night Terror":
-                    d "Correct again!"
+                    mir "Correct again!"
                     w "The Devil tore off his hat and threw it upon the ground and stomped on it, and tore at his clothes with anger, and fled from the tower again."
-                    d "This girl is too clever by half. But I have just the thing that'll show her."
+                    mir "This girl is too clever by half. But I have just the thing that'll show her."
                     w "That night as I slept he crawled into my bedroom through the chimney, and dropped the seed of a rose bush in my ear."
                     w "The seed quickly grew and grew inside my skull, until it cracked my head clean open."
                     w "As I awoke I saw there were roses in my ears and cracks in my crown. But worse still, my thoughts began to leak out of my head in dark heavy smoke."
@@ -2881,14 +2890,14 @@ label witchFinale:
                     jump devilWins
 
             label riddle3:
-                d "What gets broken when it's not kept?"
+                mir "What gets broken when it's not kept?"
                 #Have a weird text effect when you type in here
                 python:
                     answer3 =  renpy.input("{i}Answer thee my riddles three:{/i}", length=10)
                 w "I felt the answer, right there. I sweated and strained to remember it."
                 w "But no matter how I tried to hold it, the truth slipped from my hands."
                 w "\"I... do not know,\" I said."
-                d "A promise!"
+                mir "A promise!"
                 w "And the Devil cried out with glee, and he seized me at once and leapt into the fireplace and dragged me straight to hell."
                 w "And so it was that I came to serve the Devil for the rest of my days."
                 "You shook your head and wept to hear such a sorry tale, and all around you the tears hit the floor and turned into terrible shrieking imps that swarmed around the both of you, poking your soft legs and cackling cruelly at your misfortune."
@@ -2903,7 +2912,7 @@ label witchFinale:
             jump hell
 
     label devilWins:
-        d "Wrong!"
+        mir "Wrong!"
         w "The Devil cried out with glee, and he seized me at once and leapt into the fireplace and dragged me straight to hell."
         w "To punish me for my hubris, he dropped the seed of a rose bush in my ear as I slept that night in hell."
         w "The seed quickly grew and grew inside my skull, until it cracked my head clean open."
@@ -2943,7 +2952,7 @@ label witchFinale:
 
     "She quickly tucked you both into her skirts."
     "Soon, the Devil came home, and no sooner did he enter the house than he noticed the air was not pure."
-    d "Crinkle, crush, wailing and fleeing. I smell the flesh of a human being."
+    mir "Crinkle, crush, wailing and fleeing. I smell the flesh of a human being."
     "And he picked up the whole house and began to turn it over looking for the flesh he smelled."
     if godfather == "Red":
         "You shook to see your Godfather in the flesh at last."
@@ -2960,41 +2969,41 @@ label witchFinale:
                 $witchFree = True
                 call devilAnswers from _call_devilAnswers
                 dg "I dreamed that there was a young princess who knew everything. But she was tricked, and forced to pledge her soul to you. Do you think she can ever escape?"
-                d "Ha! If only she knew!"
-                d "Underneath this house is a fat old frog that holds her promise to me. If she kills it, she will be free. But that will never happen!"
+                mir "Ha! If only she knew!"
+                mir "Underneath this house is a fat old frog that holds her promise to me. If she kills it, she will be free. But that will never happen!"
                 jump devilSleeps
             "The Devil is my Godfather - how can I escape Him?" if not escapeGodfather and godfather == "Red":
                 $dgAsked += 1
                 $escapeGodfather = True
                 call devilAnswers from _call_devilAnswers_1
                 dg "I dreamed that a desperate mother once pledged her child to you, as the Godfather - and that you are bound to grab [him] up at midnight tonight. Can [he] evade you, do you think?"
-                d "Not on your life! None can escape the Devil!"
+                mir "Not on your life! None can escape the Devil!"
                 "He chuckled to himself gleefully."
                 if he == "they":
-                    d "Unless of course, [he] look me in the face and recite my second secret name, Belthuselah. But that will never happen!"
+                    mir "Unless of course, [he] look me in the face and recite my second secret name, Belthuselah. But that will never happen!"
                 else:
-                    d "Unless of course, [he] looks me in the face and recites my second secret name, Belthuselah. But that will never happen!"
+                    mir "Unless of course, [he] looks me in the face and recites my second secret name, Belthuselah. But that will never happen!"
                 jump devilSleeps
             "God is my Godfather - how can I escape Him?" if not escapeGodfather and godfather == "White":
                 $dgAsked += 1
                 call devilAnswers from _call_devilAnswers_2
                 $escapeGodfather = True
                 dg "I dreamed that a desperate young mother once pledged her child to God, as the Godfather - and that their child was bound to be taken by Him on [his] 18th birthday. Can [he] ever escape, do you think?"
-                d "Ha! That's easy."
+                mir "Ha! That's easy."
                 if $he = "they":
-                    d "The Lord is blind to the desperate. All [he] have to do is take on the disguise of an old leper, and God will walk right by."
+                    mir "The Lord is blind to the desperate. All [he] have to do is take on the disguise of an old leper, and God will walk right by."
                 else:
-                    d "The Lord is blind to the desperate. All [he] has to do is take on the disguise of an old leper, and God will walk right by."
-                d "But [$he]'ll never do that!"
+                    mir "The Lord is blind to the desperate. All [he] has to do is take on the disguise of an old leper, and God will walk right by."
+                mir "But [$he]'ll never do that!"
                 jump devilSleeps
             "Death is my Godmother - how can I escape Her?" if not escapeGodfather and godfather == "Black":
                 $dgAsked += 1
                 $escapeGodfather = True
                 call devilAnswers from _call_devilAnswers_3
                 dg "I dreamed that a desperate young mother once pledged her child to Death, as the Godmother - and that the child was bound to be taken by Her. Can [he] ever escape, do you think?"
-                d "Never."
+                mir "Never."
                 "The Devil grew somber."
-                d "There is no trick or cheat. When the child recieves Death's three messengers, [he] will have to go. And that will be that."
+                mir "There is no trick or cheat. When the child recieves Death's three messengers, [he] will have to go. And that will be that."
                 jump devilSleeps
             #"How can we escape hell?" if not escapeHell:
             #    $dgAsked += 1
@@ -3011,9 +3020,9 @@ label witchFinale:
                 $cureWitch = True
                 call devilAnswers from _call_devilAnswers_4
                 dg "I dreamed of a girl who had all her thoughts drift out of her head as heavy smoke. Do you think she could ever be cured?"
-                d "Ha! The fool! She can never be cured, and she will never know peace."
-                d "The only way she could help herself is to plant a garden in her hat, so that the flowers and herbs soak up the smoke and grow with her memories. Thus she will hold the barest part of her old knowledge."
-                d "But she'll never figure that out!"
+                mir "Ha! The fool! She can never be cured, and she will never know peace."
+                mir "The only way she could help herself is to plant a garden in her hat, so that the flowers and herbs soak up the smoke and grow with her memories. Thus she will hold the barest part of her old knowledge."
+                mir "But she'll never figure that out!"
                 jump devilSleeps
             #"How can I gain eternal life?":
                 #dg "I will ask the Devil. What else?"
@@ -3022,10 +3031,10 @@ label witchFinale:
                 $villageRich = True
                 call devilAnswers from _call_devilAnswers_5
                 dg "I dreamed of a poor and penniless village. Do you think they could ever claw their way out of poverty?"
-                d "Never, the pack of wretches! The gutter has a long and hungry groove, and it will not be satiated until they are pulled down into the mud like their forefathers before them!"
+                mir "Never, the pack of wretches! The gutter has a long and hungry groove, and it will not be satiated until they are pulled down into the mud like their forefathers before them!"
                 "He cackled in triumph."
-                d "Of course, there is one thing. Beneath the village well is an old mouse. If they bring it grapes, the well will flow with the most delicious wine forever after, and they will all live in luxury for the rest of their days."
-                d "But they'll all die never knowing a thing about that."
+                mir "Of course, there is one thing. Beneath the village well is an old mouse. If they bring it grapes, the well will flow with the most delicious wine forever after, and they will all live in luxury for the rest of their days."
+                mir "But they'll all die never knowing a thing about that."
                 jump devilSleeps
 
             #"How can I see that the Master Thief is brought to justice?":
@@ -3038,33 +3047,33 @@ label witchFinale:
                 call devilAnswers from _call_devilAnswers_6
                 dg "I dreamed of a child who looked out at the woods late at night and felt hollow. Why do you think that could be?"
                 "At this the Devil fell silent for a long time."
-                d "{color=#f00}Something{/color} lies under that child's house."
-                d "What it is, I do not know."
-                d "And if I knew, I wouldn't speak of it."
-                d "Do not concern yourself with this dream. Soon, you will forget it."
-                d "As will I."
+                mir "{color=#f00}Something{/color} lies under that child's house."
+                mir "What it is, I do not know."
+                mir "And if I knew, I wouldn't speak of it."
+                mir "Do not concern yourself with this dream. Soon, you will forget it."
+                mir "As will I."
                 jump devilSleeps
             #"What is the Snake my mother warned me about?":
                 #dg "I will ask the Devil. What else?"
     label devilAnswers:
         if dgAsked == 1:
             "In a flash, she seized one of the 3 golden hairs on his head and yanked it out. The Devil came awake with a howl of pain."
-            d "Ouch! What are you doing?"
+            mir "Ouch! What are you doing?"
             dg "I'm sorry, my grandson. I had a bad dream, and gripped hold of your hair."
             "The Devil was curious despite himself."
-            d "What did you dream?"
+            mir "What did you dream?"
         elif dgAsked == 2:
             "Then she tore out a second hair."
-            d "Hey! What are you doing?"
+            mir "Hey! What are you doing?"
             dg "I didn't mean it. I did it in a dream."
-            d "What did you dream this time?"
+            mir "What did you dream this time?"
         elif dgAsked == 3:
             "Then she grabbed hold of the third golden hair and yanked it out by the roots."
-            d "My last hair!"
+            mir "My last hair!"
             "The Devil lept up and stomped around the house, shouting vile curses, but she soon calmed him."
             dg "I'm sorry, my grandson. But what can you do against dreams?"
-            d "Hmph."
-            d "What was the dream this time?"
+            mir "Hmph."
+            mir "What was the dream this time?"
         return
     label devilSleeps:
         if dgAsked == 1:
@@ -3097,13 +3106,13 @@ label witchFinale:
             "In an instant, you flew right up the chimney and out into the Witch's cottage."
         if godfather == "Red":
             "Alas, as you tumbled onto the floor of the cottage, you heard the clock strike midnight, and you saw a pair of terrible red boots ahead of you."
-            d "Time's up, child!"
-            d "Now you are mine, just as your mother promised all those years ago."
-            d "I'll keep you in a cave to darn my socks, and brew my grandmother's tea, and bake bread for all the hungry souls of hell - and there's nothing you can do about it!"
+            mir "Time's up, child!"
+            mir "Now you are mine, just as your mother promised all those years ago."
+            mir "I'll keep you in a cave to darn my socks, and brew my grandmother's tea, and bake bread for all the hungry souls of hell - and there's nothing you can do about it!"
             if escapeGodfather == True:
                 menu:
                     "Belthuselah.":
-                        d "NOOOOOOOOOOOO! How? How did you discover my second and most secret name? Impossible!"
+                        mir "NOOOOOOOOOOOO! How? How did you discover my second and most secret name? Impossible!"
                         "In an instant, his spell over you broke. The Devil withered and shrank and spluttered with rage, until he grew as small as an ant, whereupon you kicked Him right into the fireplace and back to hell."
                         "With the Devil taken care of, you and the Witch looked over the cottage."
                         "It was a mess of flowers and plants and flopping animals, sprouting wildly every witch-way across the room."
@@ -3499,34 +3508,34 @@ label toadFinale:
     label frogEnding:
         if godfather == "White":
             #God rescues you, brildebrogue is smote
-            g "Be not afraid."
+            miw "Be not afraid."
             "A harsh light fell upon the room, and you looked up to see a whirl of wings and feathers and eyes and fire standing before you."
             "Brildebrogue dropped to his knees."
             bc "Lord, please...I have always been your faithful disciple."
-            g "That may be so."
-            g "But none may touch my grandchild and live."
+            miw "That may be so."
+            miw "But none may touch my grandchild and live."
             bc "N-now see here. I am Brildebrogue Chippingham, and I have never failed at anything in my-"
             "But the light fell upon him, and without even a scream, he was burnt up in an instant and gone forever."
-            g "Come with me now, my grandchild. It is time for you to take your rightful place in heaven."
+            miw "Come with me now, my grandchild. It is time for you to take your rightful place in heaven."
             f "Hold on just a second. How do we know you're really the Lord?"
-            g "Do not doubt my power. I am the wind in the sky and the old stones in the earth."
+            miw "Do not doubt my power. I am the wind in the sky and the old stones in the earth."
             f "Show us. Seeing is believing."
             "The Lord performed His feat and turned into a mighty wind. But just as He did so, the Toad opened the window, and the Lord blew right out of the tower and across the sea. With this, the toad slammed the window shut."
             f "Well. That takes care of that."
 
         if godfather == "Red":
             #The devil drags brildebrogue down to hell
-            d "Your time is up!"
+            mir "Your time is up!"
             "The Devil Himself exploded out of the floor in a flash of brimstone and soot."
             "As soon as he saw your Godfather, Brildebrogue went white as ash."
             bc "Wait- my contract isn't up yet. You told me I still had six years left."
-            d "That may be so."
-            d "But I never keep a bargain, and no-one messes with my grandchild and lives!"
+            mir "That may be so."
+            mir "But I never keep a bargain, and no-one messes with my grandchild and lives!"
             bc "N-now see here. I am Brildebrogue Chippingham, and I have never failed at anything in my-"
             "But with one cloven hoof the devil kicked him straight out the window, whereupon he fell screaming down the tower and into his grave and straight to Hell."
-            d "That takes care of that. Now come with me, my grandchild. All the wonders of Hell await!"
+            mir "That takes care of that. Now come with me, my grandchild. All the wonders of Hell await!"
             f "Hold on just a second. How do we know you're really the Devil?"
-            d "Ha! You dare doubt my power? I can grow tall as a fir tree and small as a mouse."
+            mir "Ha! You dare doubt my power? I can grow tall as a fir tree and small as a mouse."
             f "Prove it."
             "The Devil performed His feat. But just as He turned into a mouse, the Toad grabbed Him and stuffed Him in a sack and threw Him out the window, whereupon He fell screaming down the tower and into His grave and straight to Hell."
             f "Well. That takes care of that."
