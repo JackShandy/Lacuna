@@ -1,41 +1,40 @@
-Mon Sep 20 19:00:18 2021
+Wed Sep 29 17:34:52 2021
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
  
 
 Bootstrap to the start of init.init took 0.17s
-Early init took 0.01s
+Early init took 0.00s
 Loader init took 0.02s
-Loading error handling took 0.05s
-Loading script took 1.93s
-Loading save slot metadata. took 0.10s
+Loading error handling took 0.03s
+Loading script took 0.29s
+Loading save slot metadata. took 0.07s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.10s
+Running init code took 0.08s
 Loading analysis data took 0.04s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
-Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
-Dump and make backups. took 0.14s
+Dump and make backups. took 0.13s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.06s
+Initial gc. took 0.05s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.59s
+Creating interface object took 0.51s
 Cleaning stores took 0.00s
-Init translation took 0.10s
+Init translation took 0.08s
 Build styles took 0.01s
-Load screen analysis took 0.00s
-Analyze screens took 0.02s
-Save screen analysis took 0.10s
+Load screen analysis took 0.04s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
 Prepare screens took 0.12s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.05s
-Running _start took 0.01s
+Save bytecode. took 0.00s
+Running _start took 0.00s
 Performance test:
-Interface start took 0.14s
+Interface start took 0.13s
 
 Initializing gl renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -62,5 +61,4 @@ Texture testing:
 Screen sizes: virtual=(600, 850) physical=(689, 976) drawable=(689, 976)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 4.1608479023s
-controller: '030000004c050000c405000000016800' 'PS4 Controller' 1L
+Total time until interface ready: 2.17022204399s

@@ -252,13 +252,16 @@ image witchName= "Names/witch.png"
 image thiefName= "Names/thief.png"
 image toadName= "Names/toad.png"
 image mushroomName= "Names/mushroom.png"
-image mumName = "Names/mum.png"
-image wibName = "Names/wib.png"
-image miwName = "Names/miw.png"
-image mirName = "Names/mir.png"
-image mysName = "Names/mys.png"
-image youName = "Names/you.png"
-image dgName = "Names/dg.png"
+image mumName= "Names/mum.png"
+image wibName= "Names/wib.png"
+image miwName= "Names/miw.png"
+image mirName= "Names/mir.png"
+image mysName= "Names/mys.png"
+image youName= "Names/you.png"
+image dgName= "Names/dg.png"
+image bcName= "Names/bc.png"
+image hName= "Names/h.png"
+image gmName= "Names/gm.png"
 # ===== Characters
 
 define w = Character("{image=witchName}{alt}The Witch:{/alt}")
@@ -272,18 +275,18 @@ define wib = Character("{image=wibName}{alt}The Woman Clad in Black:{/alt}")
 define mys = Character("{image=mysName}{alt}Mysterious and possibly magical old woman:{/alt}")
 define y = Character("{image=youName}{alt}You:{/alt}")
 define dg = Character("{image=dgName}{alt}The Devil's Sooty Grandmother:{/alt}")
-
+define bc = Character ("{image=bcName}{alt}Brildebrogue Chippingham:{/alt}")
+define h = Character("{image=hName}{alt}The Hunter:{/alt}")
+define gm = Character("{image=gmName}{alt}The Old Gloom-monger:{/alt}")
 #Note: deleted these, hopefully I got them all
 #define d = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
 #define g = Character("{image=miwName}{alt}The Man Clad in White:{/alt}")
 
 
-
-define bc = Character ("{size=+100}B{/size}rildebrogue {size=+100}C{/size}hippingham:")
 define sh = Character ("{size=+100}T{/size}he Sparrow-Herder:")
-define gm = Character("{size=+100}T{/size}he Old Gloom-monger:")
+
 define go = Character("{size=+100}T{/size}he Young Goose-boy:")
-define h = Character("{size=+100}T{/size}he Hunter:")
+
 define may = Character("{size=+100}T{/size}he Mayor:")
 define well = Character("{size=+100}T{/size}he Thing in the Well:")
 define sc = Character("{size=+100}S{/size}craggs McKenzie, the Banksia Bounty Hunter:")
