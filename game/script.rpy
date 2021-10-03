@@ -262,6 +262,12 @@ image dgName= "Names/dg.png"
 image bcName= "Names/bc.png"
 image hName= "Names/h.png"
 image gmName= "Names/gm.png"
+image wellName= "Names/well.png"
+image scName= "Names/sc.png"
+image boysName= "Names/boys.png"
+image mayName= "Names/may.png"
+image goName= "Names/go.png"
+image shName= "Names/sh.png"
 # ===== Characters
 
 define w = Character("{image=witchName}{alt}The Witch:{/alt}")
@@ -278,22 +284,26 @@ define dg = Character("{image=dgName}{alt}The Devil's Sooty Grandmother:{/alt}")
 define bc = Character ("{image=bcName}{alt}Brildebrogue Chippingham:{/alt}")
 define h = Character("{image=hName}{alt}The Hunter:{/alt}")
 define gm = Character("{image=gmName}{alt}The Old Gloom-monger:{/alt}")
+define well = Character("{image=wellName}{alt}The Thing in the Well:{/alt}")
+define sc = Character("{image=scName}{alt}Scraggs McKenzie, the Banksia Bounty Hunter:{/alt}")
+define boys = Character("{image=boysName}{alt}The Boys:{/alt}")
+define may = Character("{image=mayName}{alt}The Mayor:{/alt}")
+define go = Character("{image=goName}{alt}The Young Goose-Girl:{/alt}")
+define sh = Character ("{image=shName}{alt}The Sparrow-Herder:{/alt}")
+
 #Note: deleted these, hopefully I got them all
 #define d = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
 #define g = Character("{image=miwName}{alt}The Man Clad in White:{/alt}")
 
 
-define sh = Character ("{size=+100}T{/size}he Sparrow-Herder:")
 
-define go = Character("{size=+100}T{/size}he Young Goose-boy:")
 
-define may = Character("{size=+100}T{/size}he Mayor:")
-define well = Character("{size=+100}T{/size}he Thing in the Well:")
-define sc = Character("{size=+100}S{/size}craggs McKenzie, the Banksia Bounty Hunter:")
-define boys = Character("{size=+100}T{/size}he Boys:")
-define p3 = Character("{size=+100}T{/size}he Third Little Piggy:")
 
-define r = Character("{size=+100}M{/size}ighty River:")
+
+
+#pretty sure I've removed these characters
+#define p3 = Character("{size=+100}T{/size}he Third Little Piggy:")
+#define r = Character("{size=+100}M{/size}ighty River:")
 
 
 
@@ -980,7 +990,7 @@ label chapter2:
                 jump villageExplore1
             "Sit down with the rest of the guests.":
                 "You took your place at the table."
-    "The Hunter was there, and the old Gloom-monger, and the young Goose-boy."
+    "The Hunter was there, and the old Gloom-monger, and the young Goose-girl."
     "The stars and the moon slowly arrived to take their places. The birds, and moths, and the soft mist of night all came and were seated."
     "But one guest was missing: No one had seen the Wild Witch of the Woods all night."
     "As the festival began a terrible concern and commotion went up amongst the guests, for we all know what terrible luck it is to spurn a witch."
@@ -1225,19 +1235,19 @@ label town:
                 gm "We're sure to fail. This whole plan is doomed."
                 go "Care to join us?"
                 jump villagersConvo
-            "Chat to the Goose-boy." if goosemongerChat <= 6:
+            "Chat to the Goose-girl." if goosemongerChat <= 6:
                 if goosemongerChat == 0:
                     go "Greetings, friend. Be careful of the crystal caverns to the north."
                 elif goosemongerChat == 1:
-                    go "It is said that the first of the Goose-boys, old crooked Belziah, attempted dark experiments there."
+                    go "It is said that the first of the Goose-girls, old crooked Belziah, attempted dark experiments there."
                 elif goosemongerChat == 2:
-                    go "He created abominable goose-faced men that even now infest the caverns, honking endlessly and plotting to turn the world to ruin."
+                    go "She created abominable goose-faced men that even now infest the caverns, honking endlessly and plotting to turn the world to ruin."
                 elif goosemongerChat == 3:
                     go "Sometimes, I dream of those caves."
                     go "Home of the Goose-folk! I can scarcely imagine it."
                 elif goosemongerChat == 4:
                     go "What would it be like to throw off my human skin and join them?"
-                    go "To honk in ecstasy with my brothers?"
+                    go "To honk in ecstasy with my sisters?"
                     go "To live every day with the fierce, honest joy of a goose?"
                 elif goosemongerChat == 5:
                     go "But they are just dreams. I would never have the courage."
@@ -1347,10 +1357,10 @@ label town:
 
 # Act 2, Chapter 2A: The Master Thief
 label thief2:
-    "Soon, you arrived at the young goose-boys house, which was overrun by honking geese who tore at the furniture and ransacked the pantry until he was at his wit's end."
+    "Soon, you arrived at the young goose-girls house, which was overrun by honking geese who tore at the furniture and ransacked the pantry until he was at his wit's end."
     if pig:
         "The pig quailed from the goose's wrath behind you."
-    "You nailed the chest down to the veranda while the goose-boy kept them at bay."
+    "You nailed the chest down to the veranda while the goose-girl kept them at bay."
     menu:
         "Lay bear traps around the chest.":
             "You got some bear traps from the Hunter's cart and placed them all around the chest, disguising them with leaves."
@@ -1371,7 +1381,7 @@ label thief2:
     "A fly landed on it."
     "One of the geese waddled up and began to lick it."
     go "Wait a second..."
-    "The goose-boy crawled out and cautiously dragged a finger over the chest, then stuck it in his mouth."
+    "The goose-girl crawled out and cautiously dragged a finger over the chest, then stuck it in his mouth."
     go "It's... icing!"
     "The entire chest had been replaced with a massive cake, baked to look exactly like the chest in every detail."
     if chest == "Traps":
