@@ -185,7 +185,7 @@ screen input(prompt):
             ypos gui.dialogue_ypos
 
             text prompt style "input_prompt"
-            input id "input"
+            input id "input" color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30)
 
 style input_prompt is default
 
