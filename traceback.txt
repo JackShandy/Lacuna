@@ -1,20 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-After initialization, but before game start.
-WindowsError: [Error 32] The process cannot access the file because it is being used by another process
+While running game code:
+  File "game/script.rpy", line 963, in script
+    menu:
+  File "game/script.rpy", line 974, in <module>
+    "If you lept from the moving carriage like a holy terror, turn to page 65." if Godfather=="Red":
+NameError: name 'Godfather' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 326, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 567, in main
-    renpy.dump.dump(False)
-  File "renpy/dump.py", line 260, in dump
-    os.rename(new, filename)
-WindowsError: [Error 32] The process cannot access the file because it is being used by another process
+  File "game/script.rpy", line 963, in script
+    menu:
+  File "renpy/ast.py", line 1642, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "renpy/exports.py", line 1004, in menu
+    condition = renpy.python.py_eval(condition)
+  File "renpy/python.py", line 2249, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2242, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 974, in <module>
+    "If you lept from the moving carriage like a holy terror, turn to page 65." if Godfather=="Red":
+NameError: name 'Godfather' is not defined
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Witch, the Thief, the Toad & the Mushroom 1.0
-Thu Sep 16 18:17:13 2021
+Tue Oct  5 15:59:02 2021

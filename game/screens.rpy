@@ -211,7 +211,7 @@ screen choice(items):
 
     vbox:
         for i in items:
-            textbutton i.caption action i.action
+            textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
 
 
 ## When this is true, menu captions will be spoken by the narrator. When false,
@@ -224,15 +224,16 @@ style choice_button is button
 style choice_button_text is button_text
 
 style choice_vbox:
-    xalign 0.5
-    ypos 127
-    yanchor 0.5
+    xalign 0#0.5
+    ypos 700#550#127
+    yanchor 0.6#0.45#0.5 %0.1
 
     spacing gui.choice_spacing
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
 
+#TD: Figure out how to make the style be in italics
 style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
 

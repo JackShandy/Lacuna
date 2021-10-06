@@ -104,6 +104,9 @@ define toadHelp = False
 define banquetChat = False
 define toadThief = False
 define toadFind = False
+define toadStole = False
+#TK: Test
+define toadStole2 = False
 
 #Conversation topics with the villagers
 define villagersPlan = False
@@ -248,6 +251,7 @@ image firelight animated:
     pause 0.1
     repeat
 
+##====Names
 image witchName= "Names/witch.png"
 image thiefName= "Names/thief.png"
 image toadName= "Names/toad.png"
@@ -268,8 +272,17 @@ image boysName= "Names/boys.png"
 image mayName= "Names/may.png"
 image goName= "Names/go.png"
 image shName= "Names/sh.png"
-# ===== Characters
+image egName= "Names/eg.png"
+image townName= "Names/town.png"
+image echidnaName= "Names/echidna.png"
+image echidna2Name= "Names/echidna2.png"
 
+##====Frippery
+image sword="sword.png"
+image hand= "gui/hand.png"
+image dot= "gui/dot.png"
+
+# ===== Characters
 define w = Character("{image=witchName}{alt}The Witch:{/alt}")
 define t = Character("{image=thiefName}{alt}The Thief:{/alt}")
 define f = Character("{image=toadName}{alt}The Toad:{/alt}")
@@ -279,7 +292,7 @@ define miw = Character("{image=miwName}{alt}The Man Clad in White:{/alt}")
 define mir = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
 define wib = Character("{image=wibName}{alt}The Woman Clad in Black:{/alt}")
 define mys = Character("{image=mysName}{alt}Mysterious and possibly magical old woman:{/alt}")
-define y = Character("{image=youName}{alt}You:{/alt}")
+define pov = Character("{image=youName}{alt}You:{/alt}")
 define dg = Character("{image=dgName}{alt}The Devil's Sooty Grandmother:{/alt}")
 define bc = Character ("{image=bcName}{alt}Brildebrogue Chippingham:{/alt}")
 define h = Character("{image=hName}{alt}The Hunter:{/alt}")
@@ -290,6 +303,11 @@ define boys = Character("{image=boysName}{alt}The Boys:{/alt}")
 define may = Character("{image=mayName}{alt}The Mayor:{/alt}")
 define go = Character("{image=goName}{alt}The Young Goose-Girl:{/alt}")
 define sh = Character ("{image=shName}{alt}The Sparrow-Herder:{/alt}")
+define eg = Character ("{image=egName}{alt}The Enigmatic Gentleman:{/alt}")
+define town = Character ("{image=townName}{alt}The Entire Town:{/alt}")
+define echidna = Character ("{image=echidnaName}{alt}Echidna (which happened to be passing by at just that moment):{/alt}")
+define echidna2 = Character ("{image=echidna2Name}{alt}Echidna (now holding a large sack):{/alt}")
+
 
 #Note: deleted these, hopefully I got them all
 #define d = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
@@ -433,17 +451,23 @@ label start:
 
         #TK: Have a picture of the 12 kids. Kids disappear as you replay the game.
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
-        "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran right out into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
+        "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
         "In the darkness of the forest, she may or may not have met a man in white."
         "(Is anything certain these days?)"
         "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
         "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
         miw "Poor woman. Let me be the Godfather."
         miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
-        miw "I will only ask one thing: [He] must work hard, and earn every dollar, and obey me above all else."
+
     label firstMan:
+            show hand onlayer transient:
+                yalign 0.7#0.743
+                xalign 0.5
             menu:
-                "Yes.":
+                miw "I will only ask one thing: [He] must work hard, and earn every dollar, and obey me above all else."
+                #"{image=sword}{space=15}If she said yes, turn to page 13.": #"Yes.":
+                #"{image=dot}{space=10}If she said yes, turn to page 13.": #"Yes.":
+                "If she said yes, turn to page 13.": #"Yes.":
                     miw "As I have foreseen."
                     "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
                     miw "You will name [him] [povname]."
@@ -452,52 +476,60 @@ label start:
                     "But He was already gone."
                     $godfather = "White"
                     jump chapter2
-                "No." if firstManWho:
+                "If she said no, turn to page 14." if firstManWho:#"No."
                     mum "Then I don't want you as the Godfather. You give to the rich, and take from the poor. You are no Lord of mine."
                     "(She said this because she didn't understand how wisely the Lord distributes wealth and poverty, using the invisible hand of the free market.)"
                     "Then she turned away from Him and ran into the forest."
                     jump secondMan1
-                "Who are you?" if not firstManWho:
-                    miw "I am your dear Lord."
+                "If she asked the mysterious figure who He was, turn to page 11." if not firstManWho:#"Who are you?"
+                    miw "I am your dear Lord." #TX more info
                     $firstManWho = True
                     jump firstMan
+
     label secondMan1:
         "In the deeper darkness of the forest, she may or may not have met a man all in red."
         "(Can we be sure of anything but the greatness of G-d?)"
         "All the jewels of the earth fell from His right hand, and all the pleasures of the world fell from His left, and His other hand held all the wonders of the universe, and His other hand held a fat cigar, and His other hand held a long knife black as coal dust, and His other hand held the most intoxicating spices, such that the King of Kings would cry to taste them, and His other hand held a single dead rose, and His other hand was in his pocket and out of view."
         mir "Poor woman. Let me be the Godfather."
         mir "I'll make sure the child needs nothing, and wants everything. [He] will live in wealth and comfort for all of [his] days, and devour only the richest meats for every meal."
-        mir "I only have one condition: [He] must promise to obey no master, and scorn the rule of law, and do as [he] wilt every day of [his] life."
         label secondMan2:
-                menu:
-                    "Yes.":
-                        mum "Beggars can't be choosers, I suppose."
-                        mir "Excellent!"
-                        "He let out a great shrieking cackle and placed His mark upon you."
-                        mir "You will name [him] [povname]."
-                        mir "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
-                        mum "Alright. Just make sure you're there for the christening on sunday."
-                        "But the Devil was already leaving. He struck his foot against the ground, which opened up and swallowed him immediately."
-                        $godfather = "Red"
-                        jump chapter2
-                    "No." if secondManWho:
-                        mum "Then I don't want you as the Godfather. You lie, and cheat, and lead good people astray."
-                        "She turned away from him, and raced deeper into the forest."
-                        jump thirdMan1
-                    "Who are you?" if not secondManWho:
-                        mir "I am the Devil."
-                        $secondManWho = True
-                        jump secondMan2
+            show hand onlayer transient:
+                yalign 0.71#0.743
+                xalign 0.5
+            menu:
+                mir "I only have one condition: [He] must promise to obey no master, and scorn the rule of law, and do as [he] wilt every day of [his] life."
+                "If she said yes, turn to page 21.":#"Yes.":
+                    mum "Beggars can't be choosers, I suppose."
+                    mir "Excellent!"
+                    "He let out a great shrieking cackle and placed His mark upon you."
+                    mir "You will name [him] [povname]."
+                    mir "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
+                    mum "Alright. Just make sure you're there for the christening on sunday."
+                    "But the Devil was already leaving. He struck his foot against the ground, which opened up and swallowed him immediately."
+                    $godfather = "Red"
+                    jump chapter2
+                "If she said no, turn to page 16." if secondManWho:
+                    mum "Then I don't want you as the Godfather. You lie, and cheat, and lead good people astray."
+                    "She turned away from him, and raced deeper into the forest."
+                    jump thirdMan1
+                "If she asked the mysterious figure who He was, turn to page 18." if not secondManWho:
+                    mir "Why, I am the Devil Himself."
+                    $secondManWho = True
+                    jump secondMan2
     label thirdMan1:
         "In the deepest darkness of the forst, there was or was not a handsome woman, broken-limbed and clad all in black."
         #"(What can any of us be certain of, except that the mercies of the Almighty are vaster than the deepest ocean and more numerous than all the pebbles on the land?)"
         "She had no hands."
         wib "Poor woman. Let me be the Godmother."
         wib "The child will have nothing. [He] will need nothing."
-        wib "[He] need make no promises. I have no demands."
+
         label thirdMan2:
+            show hand onlayer transient:
+                yalign 0.68#0.743
+                xalign 0.5
             menu:
-                "Yes.":
+                wib "[He] need make no promises. I have no demands."
+                "If she said yes, turn to page 17.":
                     mum "You're just the right one. You take rich and poor without distinction."
                     wib "You did not have a choice."
                     "In one swoop She bowed down and placed Her mark upon you."
@@ -508,7 +540,7 @@ label start:
                     "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole."
                     $godfather = "Black"
                     jump chapter2
-                "No." if thirdManWho:
+                "If she said no, turn to page 25." if thirdManWho:
                     mum "I don't want you as the Godmother. You take men before it is their time."
                     wib "You should have thought of that sooner."
                     wib"There is no-one else left to take [him]."
@@ -520,7 +552,8 @@ label start:
                     "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole."
                     $godfather = "Black"
                     jump chapter2
-                "I don't know you." if not thirdManWho:
+                "If she asked the mysterious figure who She was, turn to page 18." if not thirdManWho:
+                    mum "I don't know you."
                     wib "Everybody knows me."
                     "She tilted her head so that the moonlight fell on it, and your mother saw that it was true. It was Lady Death herself."
                     $thirdManWho = True
@@ -534,21 +567,22 @@ label chapter2:
         "You went to church every Sunday, and helped out around town every Saturday, and all the neighbours smiled and said \"That one has the mark of G-d on [him].\""
         "Your Godfather was as good as His word. He appeared at church for the christening, and blessed you."
         "You soon found luck was always in your favour, and everyone took to calling you \"Fortune's Favourite\"."
-        "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
     elif godfather == "Red":
         "And so you grew up as a wild and willful child, and your drove your mother to distraction with your wicked ways."
         "You obeyed no laws and no masters, and you roamed heedlessly across the hills and dales, cackling wildly and throwing mud in your wake, and all the neighbours said \"That one has the Devil's mark on [him],\" and shut their doors."
         "Your Godfather was as good as His word, although He could only watch the christening from outside the church window."
         #TK: Consider having your mother die from grief at your idleness
         "You soon found that you could scarcely trip over a stone without unearthing precious diamonds and gems, and your family became rich beyond the dreams of avarice."
-        "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
     elif godfather == "Black":
         "And so you grew up as a solemn and quiet child, and you made your mother sick with worry with your gloomy ways."
         "You ate very little, and said even less, and every night you would stalk quietly through the forest shadows or sit for long hours watching insects crawl in stagnant ponds, and all the neighbours said \"That one has the mark of Death on [him],\" and shut their doors."
-        "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
     label introMenu:
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
         menu:
-            "What were our neighbours like?" if not introNeighbours:
+            "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+            "If you want know about your neighbours, turn to page 26." if not introNeighbours:
                 $introNeighbours = True
                 "Ah! In fact, this river and all the woods around it were owned by a wise mushroom ambassador, who had owned these lands since before anyone could remember."
                 "She was often away brokering trade agreements and peace treaties and delicate alliances between the many trees and plants and old warring ferns of the forest, who were always butting heads over one thing or another."
@@ -557,7 +591,7 @@ label chapter2:
                 m "Ask not of what concerns you not, lest you hear what pleases you not."
                 "Your family accepted her wishes, and so you let each other be."
                 jump introMenu
-            "Was I happy there?" if not introHappy:
+            "If you wonder whether you were happy there, turn to page 19." if not introHappy:
                 $introHappy = True
                 if godfather == "Red":
                     "Well, it was a rich house, and you had everything you could ever want and more. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
@@ -567,7 +601,7 @@ label chapter2:
                 "Every year, the village would throw a great festival, for no reason anyone could name. On these nights you always felt sad and strange."
                 "You would avoid the festival and stare deep into the woods all through the night."
                 jump introMenu
-            "What happened then?":
+            "To continue the story, turn to page 34.":
                 if godfather == "Black":
                     "Alas, all too soon, the day of your 18th birthday arrived. You set about in wild terror, for you knew that your Godmother would own your immortal soul as as soon as the clock struck midnight."
                     "You had no doubt that She would soon send Her three messengers for you, and then take you down to the kingdom of ruin forever."
@@ -585,17 +619,23 @@ label chapter2:
     # Act 1, Chapter 3: The Mushroom.
     #You follow the mushroom and find a bunch of mushroom clones
     "As you walked down the road, you saw the wise mushroom moving through the deep darkness of the trees, her pale spores flowing in a train behind her."
-    "In her left hand she held a small lantern, and in her right hand she held a crooked knife stained green."
+    show hand onlayer transient:
+        yalign 0.7#0.743
+        xalign 0.5
     menu:
+        "In her left hand she held a small lantern, and in her right hand she held a crooked knife stained green."
         #TK: Include extra options if you have different grandparents (eg a wicked option if your godfather is the devil
-        "Follow her.":
+        "If you followed her, turn to page 25.":
             "You left the path and followed her from a distance."
             "She walked into the towering buttress roots of an ancient fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious sapphires and intricate engravings."
             m "Gorge, guzzle, gulp and grab; never shall this wound scab."
             $mushroomPassword = True
-            "With this, the door opened before her, and she vanished inside immediately."
+            show hand onlayer transient:
+                yalign 0.72#0.743
+                xalign 0.5
             menu:
-                "Enter the door.":
+                "With this, the door opened before her, and she vanished inside immediately."
+                "If you entered the door, turn to page 26.":
                     $mushroomArc +=1
                     $mushroomCavernSeen = True
                     "You quickly snuck inside before the door closed behind you."
@@ -608,16 +648,20 @@ label chapter2:
                     m "What are you doing back again?"
                     "The Mushroom popped up, startling you."
                     m "I told you never to darken my door again."
-                    m "Have some decency, traveller. I don't barge into your house and try to steal the untold riches of your domain."
                     #Picture of her eyes unfocusing.
                     "She looked off to the side."
                     m "Yes, I'm just telling them now. One second."
                     #m "You're that child from the marsh house, aren't you? It's wonderful to see you, I so rarely get visitors out here. Please have a seat. How is your mother? She looked run off her feet the last time I saw her. Must be a tough job looking after all of you (no offense intended, of course)."
                     #m "But where are my manners? Let me get you some tea. I only have chamomile at the moment, is that all right?"
-
+                    m "Have some decency, traveller. I don't barge into your house and try to steal the untold riches of your domain."
                     label mushroomWater:
+                        show hand onlayer transient:
+                            yalign 0.63#0.743
+                            xalign 0.5
                         menu:
-                            "I - ok, maybe I should get some water." if mushroomTea:
+                            m "What do you want now?"
+                            "If you accepted the water, turn to page 33." if mushroomTea:
+                                #TK fix this dialogue, sounds too modern.
                                 m "That sounds like a good idea."
                                 m "I'm sorry to be rude, I just get stressed out when people are randomly all up in my space. You know how it is."
                                 m "I'll get the water. Don't stress yourself. Have a seat wherever you want."
@@ -627,14 +671,13 @@ label chapter2:
                                 "An ominous glow shone through the crack beneath it. The wood was marked with strange and terrible sigils. You heard a low whispering beyond."
                                 #She immediately brightens up with a smile and a jingle.
                                 m "Be right back."
-                                "She left the room."
                                 jump basement
-                            "The me with the mask? What?" if mushroomTea and not mushroomBody:
+                            "If you asked about \"The you with the mask\", turn to page 31." if mushroomTea and not mushroomBody:
                                 m "Look... it's been a long day. I don't have time to explain your body to you."
                                 m "Again."
                                 $mushroomBody = True
                                 jump mushroomWater
-                            "I think you have me confused for someone else. I've never been here." if not mushroomConfuse:
+                            "If you told the mushroom you've never been here before, turn to page 29." if not mushroomConfuse:
                                 m "What? You were here just a minute ago. The you with the mask and the long legs."
                                 #"She looked at you with concern."
                                 m "Are you feeling well? Perhaps you should sit down. Have some water."
@@ -642,58 +685,63 @@ label chapter2:
                                 $mushroomConfuse = True
                                 $mushroomTea = True
                                 jump mushroomWater
-                            "Where you get all these riches from?" if not mushroomAllThis:
-                                m "All what?"
+                            "If you enquired about the untold riches of her domain (with the gleam of avarice in your heart) turn to page 30." if not mushroomAllThis:
                                 "She looked vaguely around the glittering splendor before you."
-                                m "Oh, this."
+                                m "Oh, this?"
                                 "She dismissed the mountains of jewels with a wave of her hand."
                                 m "I told you. All the wealth of the world falls to us in the end."
                                 $mushroomAllThis = True
                                 jump mushroomWater
-                            "I'm sorry for intruding." if not mushroomIntruding:
+                            "If you apologised for intruding and swore to make amends, turn to page 35." if not mushroomIntruding:
                                 m "An apology is as good to me as a beard to a turtle-dove."
                                 m "If you're so sorry, why don't you stop doing it?"
                                 $mushroomIntruding = True
                                 jump mushroomWater
                     label basement:
+                        show hand onlayer transient:
+                            yalign 0.67#0.743
+                            xalign 0.5
                         menu:
-                            "Go into the basement.":
-                                "Of course, you immediately disobeyed the mushroom and opened the basement door."
+                            "She left the room, trusting your kindness and good nature."
+                            "If you immediately disobeyed the mushroom and opened the basement door (in accordance with your wicked nature) turn to page 52.":
+                                "Of course you opened the basement door."
                                 "Within, you saw a most terrible sight."
                                 "Seven mushroom corpses hung in the room, each being feasted upon by a fat blue-tongued lizard."
                                 "Every one of them was identical to the lady Mushroom herself."
-                                menu:
-                                    "W-what is this?":
-                                        m "Fool!"
+                                pov "W-what is this?"
+                                m "Fool!"
                                 "The mushroom appeared from the earth before you with a terrible crash."
                                 m "You have asked about what concerns you not, and so you will hear what pleases you not!"
                                 $mushroomCurse = True
                                 m "I gave you fair warning. Now all your milk will spoil, all your bread will burn, your socks will always be wet, and you will live in torment for the rest of your days."
+                                pov "Noooooooo!"
                                 m "Don't say I didn't tell you so."
-                                menu:
-                                        "Noooooooo!":
-                                            "You cried out and set about wailing and tearing your clothes and beating yourself upon the ground in pitiful anguish."
-                                "\"Please, Lady Mushroom,\" you begged, \"Spare me your curse. If you do, I will tell you a story, the likes of which would cause you to go white with astonishment if you were to hear it.\" "
+                                "You cried out and set about wailing and tearing your clothes and beating yourself upon the ground in pitiful anguish."
+                                pov "Please, Lady Mushroom, spare me your curse. If you do, I will tell you a story, the likes of which would cause you to go white with astonishment if you were to hear it."
                                 m "Ha!"
                                 m "I've talked with the ferns, who saw the dinosaurs rise and fall."
                                 m "I am one with the mosses and lichens of the land who are even older still. I have talked to ancient trees who saw the great fires and the great floods and still stand."
-                                m "What could you possibly tell me that I don't already know?"
+                                show hand onlayer transient:
+                                    yalign 0.7#0.743
+                                    xalign 0.5
                                 menu:
-                                    "I'm on my way to the festival, and there will be people there from all over this great earth. Surely one of them will have a story you haven't heard before.":
-                                        "The Mushroom grew quiet as she thought over your proposal, and you prayed to the Most High (May He watch over us always) to deliver you from this terrible situation."
-                                    "I'm seeking a way to escape being taken by my Godfather, the Almighty Lord. Surely the story of my adventure will be unique enough for you." if godfather == "White":
-                                        "The Mushroom grew quiet as she thought over your proposal.."
-                                    "I'm seeking a way to escape my Godfather, Lucifer. Surely the story of my adventure will be unique enough for you." if godfather == "Red":
-                                        "The Mushroom grew quiet as she thought over your proposal, and you prayed to the Most High (May He watch over us always) to deliver you from this terrible situation."
-                                    "I'm seeking a way to escape my Godmother, Annihilation. Surely the story of my adventure will be unique enough for you." if godfather == "Black":
-                                        "The Mushroom grew quiet as she thought over your proposal, and you prayed to the Most High (May He watch over us always) to deliver you from this terrible situation."
+                                    m "What could you possibly tell me that I don't already know?"
+                                    "If you told her about the festival, turn to page 4.":
+                                        pov "I'm on my way to the festival, and there will be people there from all over this great earth. Surely one of them will have a story you haven't heard before."
+                                    "If you told her about your Godparent, turn to page 62.":
+                                        if godfather == "White":
+                                            pov "I'm seeking a way to escape being taken by my Godfather, the Almighty Lord. Surely the story of my adventure will be unique enough for you."
+                                        elif godfather == "Red":
+                                            pov "I'm seeking a way to escape my Godfather, Lucifer. Surely the story of my adventure will be unique enough for you."
+                                        elif godfather == "Black":
+                                            pov "I'm seeking a way to escape my Godmother, Annihilation. Surely the story of my adventure will be unique enough for you."
+                                "The Mushroom grew quiet as she thought over your proposal, and you prayed to the Most High (May He watch over us always) to deliver you from this terrible situation."
                                 m "Alright. I'll let you go."
                                 m "But be warned: If you fail to return to me this very night with the story you have promised me, then your punishment will be as tenfold."
                                 #m "When you die, your ghost will come back as a wild dog, and harry your mother and father all day and all night, nipping at their heels until they both fall into deep wells and turn into terrible black fish that will lie forever there at the bottom of those wells, moaning weakly and cursing their ungrateful child who has brought them such woe and devastation."
                                 m "All your spoons will stick in your drawers, and your eggs will hatch into foul geese, and your bowls and furniture will roll away down the hills, so that you will have nothing to do but sit on the floor and eat cold porridge with your hands and curse the day you ever decided to cross a mushroom!"
-                                menu:
-                                        "Noooooooo!":
-                                                "She struck the ground with her feet. It opened before her and she disappeared into it instantly."
+                                pov "Noooooooo!"
+                                "She struck the ground with her feet. It opened before her and she disappeared into it instantly."
                                 "You set about beating yourself and rolling around the floor in even more pitiful devastation and horror than before, tears streaming from your eyes at this terrible curse."
                                 "Thus you went on your way to the festival, fretting and worrying all the while."
                                 if godfather == "Black":
@@ -702,7 +750,7 @@ label chapter2:
                                     "Now you had two burdens: To escape the grip of your Godfather, and to find a story that could satisfy the disdainful Mushroom."
                                 "\"Never again,\" you cried to yourself, \"Will I ask of what concerns me not!\""
                                 jump thief1
-                            "Sit patiently and wait for your tea.":
+                            "If you sat patiently and waited for your tea, turn to page 86.":
                                 "In an unlikely turn of events, you sat there and waited patiently, paying no mind to the mysterious door."
                                 "(Some protagonist you turned out to be.)"
                                 "Soon, the mushroom returned with steaming cups of chamomile tea. You sipped gratefully, and felt the soothing warmth flow through to your bones."
@@ -731,7 +779,7 @@ label chapter2:
                                     m "Look, I'd better go. Sorry I couldn't help more."
                                     m "Take care of yourself, alright? All of yourself."
                                     "And before you could reply to this strange remark, she took your teacup and ushered you out of the door in an instant."
-                                    "You took up your bag and set off down the road once more."
+                                    "You took up your bag and set off down the road once more, pondering the mysterious ways of the mushroom."
                                     jump thief1
                     #"But in the center of the room you saw the most astonishing thing of all."
                     #"Looming over the whole cavern were 3 great pillars of twisted wood and oozing sap."
@@ -739,12 +787,12 @@ label chapter2:
                     #"The Mushroom took her knife and cut small pieces from her red cap, feeding it to the figures."
                     #"As she did so you saw her weep and wail bitterly, crying out aloud at her misfortune."
                     #INSERT: CHOICE
-                "Hurry back to the path.":
+                "If you went back to the path, turn to page 28.":
                     "You rushed back to the path, worried at any moment that you might be seen."
                     "\"Thank goodness,\" you thought to yourself, \"that I know not to ask of what concerns me not! That could led me to some kind of dangerous and magical adventure.\""
                     "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
                     jump thief1
-        "Ignore her and follow the path.":
+        "If you ignored her and followed the path like an honest christian, turn to page 42.":
             "You ignored her and kept on walking down the path, just as your mother taught you."
             jump thief1
 
@@ -753,11 +801,13 @@ label chapter2:
         "As you were walking down the road thusly, you came upon an old beggar-woman."
         "Her eyes were blind, and her back was crooked in 5 directions at once, and her hair floated all around her head like twisting grey fog, and she hobbled about with only the aid of an old cane to help her along."
         mys "Ho, young traveller."
-        mys "Might you lend a hand for a frail old woman? The woods are dark tonight, and I thought I heard howling from the space between the trees."
-
+        show hand onlayer transient:
+            yalign 0.72#0.743
+            xalign 0.5
         menu:
+            mys "Might you lend a hand for a frail old woman? The woods are dark tonight, and I thought I heard howling from the space between the trees."
             #TK: Include option to kick over the old woman if you're the devil child
-            "Help the old woman.":
+            "If you help the old woman, turn to page 73.":
                 $thiefArc +=1
                 $stuffStolen = True
                 "You took the old woman's arm to support her weight."
@@ -769,37 +819,42 @@ label chapter2:
                 t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
                 t "No law shall stand, no judge shall know peace and no cop shall sleep easy in their bed at night, for as long as my legs can run!"
                 "And with a shout of laughter they demonstrated this, running their long legs into the forest and out of sight."
-                "You tried to chase after them, but as soon as you took your first step you discovered that your clothes had been replaced with origami paper replicas, your belt was now an old piece of string, and you were wearing someone else's shoes."
                 label thiefChase:
+                    show hand onlayer transient:
+                        yalign 0.719#0.743
+                        xalign 0.5
                     menu:
-                        "Chase after them anyway.":
+                        #TK: Look at rewriting this line slightly to convey the meaning better
+                        "As soon as you tried to chase them you discovered that your clothes had been replaced with origami paper replicas, your belt was now an old piece of string, and you were wearing someone else's shoes."
+                        "If you chased after them anyway, turn to page 37.":
                             "You chased after the mocking laughter of the Master Thief, following the shadowy figure as they shed disguises, wigs, belts, and the old cane."
                             "Finally, you caught up to the figure in a forest clearing, and grabbed it tight."
-                            menu:
-                                "I've got you now, fiend!":
-                                    "You threw the figure onto the ground, laughing in triumph."
-                                    "But as soon as you did so, you realised it was nothing but a pig, wearing a wig and the raggedy cloak of the old woman."
-                                "Now you will face your just punishment, sure as the heavens declare the glory of G-d." if godfather == "White":
-                                    "You threw the figure onto the ground, laughing in triumph."
-                                    "But as soon as you did so, you realised it was nothing but a pig, wearing a wig and the raggedy cloak of the old woman."
-                                "You fool. You should never have tried to out-do me in wickedness." if godfather == "Red":
-                                    "You threw the figure onto the ground, laughing in triumph."
-                                    "But as soon as you did so, you realised it was nothing but a pig, wearing a wig and the raggedy cloak of the old woman."
+                            if godfather == "White":
+                                pov "Now you will face your just punishment, sure as the heavens declare the glory of G-d."
+                            elif godfather == "Red":
+                                pov "You wretched fool. You should never have tried to out-do me in wickedness."
+                            else:
+                                pov "I have my grip on you now, sure as Death has Her hand on us all."
+                            "You threw the figure to the ground, laughing in triumph."
+                            "But as soon as you did so, you realised it was nothing but a pig, wearing a wig and the raggedy cloak of the old woman."
                             "The Master Thief was gone."
-                            "Seeing your misfortune, the pig oinked at you sorrowfully and nuzzled you for comfort."
                             label thiefchase2:
+                                show hand onlayer transient:
+                                    yalign 0.69#0.743
+                                    xalign 0.5
                                 menu:
-                                    "Keep the pig.":
+                                    "Seeing your misfortune, the pig oinked at you sorrowfully and nuzzled you for comfort."
+                                    "If you kept the pig, turn to page 53.":
                                         "You picked up the pig and held it under the crook of your arm."
                                         "From that day on he would always be your loyal friend and ally, and the two of you would get through more scrapes and misadventures than I have time to relate tonight."
                                         $pig = True
-                                    "Let the pig run free and wild, as nature intended.":
+                                    "If you let the pig run free and wild, as nature intended, turn to page 8.":
                                         "With sorrow, you removed the cloak and wig, and gave the pig his freedom."
                                         "He oinked joyfully and fled off into the night. From there, he joined with the wild bush pigs, and founded a great kingdom that was as a scourge upon the earth."
                                         "Cruel indeed was the pig king, and countless innocents fell before his terrible iron hooves."
                                         "In the years to come, you would curse your impetuous decision to let that devil-pig free many times."
                                         "But that is a story for another day."
-                                    "Shout \"Noooooooooooo!\" more pitifully than ever before."  if pitiful == 4:
+                                    "If you shouted \"Noooooooooooo!\" more pitifully than ever before, turn to page 48."  if pitiful == 4:
                                         pov "{b}{i}NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                                         OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                                         OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -807,18 +862,17 @@ label chapter2:
                                         OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                                         OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                                         OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!{/b}{/i}"
-                                        "Pig" "Oink."
                                         $pitiful +=1
                                         jump thiefchase2
-                        "Shout \"Noooooooooooo!\" pitifully." if pitiful == 1:
+                        "If you shouted \"Noooooooooooo!\" pitifully, turn to page 45." if pitiful == 1:
                             pov "Noooooooooooo!"
                             $pitiful +=1
                             jump thiefChase
-                        "Shout \"Noooooooooooo!\" again, even more pitifully." if pitiful == 2:
+                        "If you shouted \"Noooooooooooo!\" again, even more pitifully, turn to page 46." if pitiful == 2:
                             pov "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!"
                             $pitiful +=1
                             jump thiefChase
-                        "Shout \"Noooooooooooo!\" again, as pitifully as you can."  if pitiful == 3:
+                        "If you shouted \"Noooooooooooo!\" again, as pitifully as one can shout, turn to page 47."  if pitiful == 3:
                             pov "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                             OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                             OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -829,16 +883,23 @@ label chapter2:
                             $pitiful +=1
                             jump thiefChase
 
-                        "Let them go.":
+                        "If you let them go, turn to page 27.":
                             "You walked sorrowfully back to the road, cursing the devil for your misfortune."
                 "As you trudged back to the road you discovered that all of your coins had been replaced with I.O.U.'s, the bread was now nothing but crumbs, and the meat was now a live possum with a label on it saying \"Ham\". It bit you and fled into the trees."
                 if godfather == "White":
                     "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Oh Lord, how could you treat your servant thus?\""
+                    "After a long time you drew yourself up from the ground and spoke to the trees."
+                    pov "Hear me now, Thief. With the Lord as my witness, I will not rest until you see justice."
                 if godfather == "Red":
                     "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Oh my Lord and Master, the Father of Lies, how could you forsake me? I, who have outdone all others in wickedness, and served you faithfully in evil for all these long years?\""
-                "But there was nothing to be done, and so you tightened your string around your waist and set off once more for the festival, vowing to take vengeance upon the Master Thief."
-
-            "Be on your way.":
+                    "After a long time you drew yourself up from the ground and spoke to the trees."
+                    pov "Hear me now, Thief. My godfather is the Devil, and my blood runs with nothing but spite, and I will not rest until the Devil grips His hands around your ankles and drags you straight down to hell where you belong."
+                if godfather == "Black":
+                    "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Lady Death, take me now!\""
+                    "After a long time you drew yourself up from the ground and spoke to the trees."
+                    pov "Hear me now, Thief. My godmother is the end of all things, and I will not rest until you have been dragged down into Her icy waters where you belong."
+                "But there was nothing to be done for now, and so you tightened your string around your waist and set off once more for the festival, vowing vengeance upon the Master Thief."
+            "If you refuse to aid her, turn to page 44.":
                 pov "I'm sorry ma'am, but I cannot help you. I've been told not to talk to strangers."
                 "\"Bah!\" cried the older woman, and stomped her foot on the ground."
                 "In a flash her clothes tore asunder, and her grey hair fell to the ground, and you saw it was all nothing but a disguise."
@@ -858,40 +919,41 @@ label chapter2:
     "The horses were pure white, with intricate porcelain and shining bridles made of fine-spun ropes laced with gold."
     "The carriage door was open to show a curtain of lush red silk, and behind the curtain you could see the shadow of a lean and graceful figure of noble bearing."
 
-    "Engimatic Gentleman" "Hold!"
+    eg "Hold!"
 
     "A rich, low voice like dark mahogany came from behind the curtains, showing the distinctive tones of one of good breeding and character. The horses slowed to walk beside you."
     "A slender hand holding a long cigarette holder emerged from the curtains and beckoned to you."
     "From inside the curtain you could smell rich spices, incense and thyme."
     "You felt a cool breeze across your face from inside the carriage, and saw the shadow of the man inside swilling a glass of brandy in his other hand."
-
-    "Engimatic Gentleman" "Where are you headed, fellow traveler?"
+    show hand onlayer transient:
+        yalign 0.63#0.743
+        xalign 0.5
     #Change: More impact from this choice. More mysterious and interesting sounding locations.
     menu:
-        "To the village.":
-            "Engimatic Gentleman" "Why, that's exactly where I'm going!"
-        "To the mountains of glass.":
-            "Engimatic Gentleman" "Nonsense! There's no reason to be travelling that way."
-            "Engimatic Gentleman" "I am heading to the village festival. You should join me."
-        "To the road of pins.":
-            "Engimatic Gentleman" "Nonsense! There's no reason to be travelling that way."
-            "Engimatic Gentleman" "I am heading to the village festival. You should join me."
-        "To the road of needles.":
-            "Engimatic Gentleman" "Nonsense! There's no reason to be travelling that way."
-            "Engimatic Gentleman" "I am heading to the village festival. You should join me."
-        "To the space between the trees.":
-            "Engimatic Gentleman" "Nonsense! There's no reason to be travelling that way."
-            "Engimatic Gentleman" "I am heading to the village festival. You should join me."
-        "Say nothing.":
-            "Engimatic Gentleman" "Now now, no need to be shy."
-            "Engimatic Gentleman" "I am heading to the village festival. You should join me."
-    "Engimatic Gentleman" "Come, ride along in my carriage, and we shall get there twice as fast."
-    "Engimatic Gentleman" "This is no night to be walking out alone. Haven't you heard there's {color=#f00}something{/color} in these woods?"
+        eg "Where are you headed, fellow traveler?"
+        "If you told him about the festival, turn to page 12.":
+            eg "Why, that's exactly where I'm going!"
+        "If you said \"The Glass Mountains\", turn to page 61.":
+            eg  "Nonsense! There's no reason to be travelling that way."
+            eg "I am heading to the village festival. You should join me."
+        "If you said \"The road of Pins and the road of Needles\", turn to page 61.":
+            eg  "Nonsense! There's no reason to be travelling that way."
+            eg "I am heading to the village festival. You should join me."
+        "If you said \"The space between the trees\", turn to page 61.":
+            eg "Nonsense! There's no reason to be travelling that way."
+            eg "I am heading to the village festival. You should join me."
+        "If you said nothing, turn to page 57.":
+            eg "Now now, no need to be shy."
+            eg "I am heading to the village festival. You should join me."
+    eg "Come, ride along in my carriage, and we shall get there twice as fast."
     if pig:
         "Your pig oinked at the carriage suspiciously."
-
+    show hand onlayer transient:
+        yalign 0.7#0.743
+        xalign 0.5
     menu:
-        "Accept the lift.":
+        eg "This is no night to be walking out alone. Haven't you heard there's {color=#f00}something{/color} in these woods?"
+        "If you accepted the lift, turn to page 54.":
             $toadArc +=1
             "You reached up to take the gentleman's hand, and he whisked you into the carriage."
             "The moment you were through the curtain you realised something was wrong."
@@ -901,54 +963,78 @@ label chapter2:
             f "Prickle! Crawl! Shudder and Wink! Be off at once. We have a festival to get to!"
             "The brilliant white horses tore off their clothes and revealed themselves to be a magpie, a rat, a bat and an old black cockatoo."
             "They cackled and gibbered to each other as they raced off down the road with you, bumping and rolling and pulling apart pinecones and causing terrible devastation as they went."
-            f "Well, are you impressed?d"
             #Change: ADD CHOICE
+            show hand onlayer transient:
+                yalign 0.66#0.743
+                xalign 0.5
             menu:
-                "Who are you?":
+                f "Well, are you impressed?"
+                "If you asked the Gentleman his name, turn to page 58.":
                     f "Brildebrogue Chippingham's the name. Of the Burpengary Chippinghams."
-                "Absolutely, sir. I'm stunned.":
+                "If you flattered the Toad, turn to page 63.":
+                    pov "Absolutely, sir. I'm stunned."
                     f "As is natural."
                     f "I find it's better to conceal my true beauty from the common-folk."
                     f "Were they to see the incandescent beauty of my true visage at first sight, I dare say they would fall to their knees and wail in shock, so transfixed would they be."
                     f "I would never be able to get anywhere without them pawing aat me and offering me their baked goods and falling about in ecstasy, you know how these people are."
                     f "But you, I believe, have sufficient grace to withstand my true beauty."
-            f "So, what brings you travelling this way?"
+                "If you lept from the moving carriage like a holy terror, turn to page 65." if godfather=="Red":
+                    $toadStole = True
+                    pov "Sir, you will regret the day you ever tangled with the Devil's Godchild."
+                    "With a single motion you stole all the valuables you could grab and lept from the carriage, tumbling onto the road below."
+                    f "What the - stop! Thief!"
+                    "But it was too late. You were already away and running into the woods, laughing with impish glee."
+                    "You looked down at your haul and found that you'd managed to swipe a lovely emerald broach in the shape of a dragonfly."
+                    "You hid it in your pocket and headed on your way."
+                    jump chapter6
+            show hand onlayer transient:
+                yalign 0.67#0.743
+                xalign 0.5
             menu:
-                "I'm searching for a way to escape my Godfather, the King of Kings." if godfather == "White":
-                    pov "He will be here to take me away at midnight, and I have no wish to leave."
-                    f "A sticky situation indeed!"
-                    f "I have talked with the Lord many times, of course."
-                    f "Why, just the other day He said to me, He said Brildebrogue! How did I ever manage to make one as handsome and charming as you? Why, even one with my own talents (which are quite decent of course, though nothing in comparison to your own gifts) can scarcely imagine bringing such a golden figure out of the fires of creation! At this I swung back my head in a great laugh, like so: HA! And my golden mane whipped around me in the wind, and all were charmed and chortled alongside me to see my wit and good humour, and we all joined together in an uprarious shout of laughter, such that the whole world could hear it - in fact I have no doubts that you must have heard it yourself, even out here in this backwater location, so loud was the sound, although perhaps you took it for a minor earthquake."
-                    f "Perhaps I could put in a good word for you with Him later. Pond scum?"
-                "I'm searching for a way to escape my Godfather, Old Scratch." if godfather == "Red":
-                    pov "He will be here to take me away at midnight, and I have no wish to leave."
-                    f "A sticky situation indeed!"
-                    f "I know the Black One well myself, in fact."
-                    f "Why just the other day I said to Him, I said Devil! How dare you twist the lives of these innocent souls here, tricking them into a terrible life of debauchery and ill-humour, just to suit your own devious and ill-concieved personal goals, when you could instead behave yourself and simply put things to rights like a well-mannered member of society such as myself? At my words, He shrank back with a most timiditous cowardice, and I saw Him gulp in nervous anxiety most profound, such was His fear of my great anger (which can be quite considerable when my dander is up, although of course I take care to remain in good humour for the purpose of conversing with polite gentlefolk such as yourself). In an instant, He swore never to do evil again, and scurried away over hill and dale without a backwards glance."
-                    f "Perhaps I could put in a good word for you with Him later. Pond scum?"
-                "I'm searching for a way to escape my Godmother, the Reaper." if godfather == "Black":
-                    pov "She told my mother she will soon send 3 messengers, and then take me away. But I have no wish to leave just yet."
-                    f "A sticky situation indeed!"
-                    f "Why, that reminds me of the situation when my own dear old mother was about to die."
-                    f "I've chatted with Death many times, of course, and so on this occasion I marched right on up to Her and said \"Unhand my mother, you ruffian! I cannot allow you to continue this wave of terror you have inflicted across the forest left and right, taking away women and old maids and children at will, rich and poor alike, before their time has come to pass! Release her at once, or I'll have to get extremely unpleasant with you (And you do NOT wish to see me when I'm being unpleasant, I assure you, such a thing has driven many hard men to tears!) At this stern talking-to from me, She released my mother at once with a sincere apology, and I need hardly say that She has not darkened our door again."
-                    f "Perhaps I could put in a good word for you with Her later. Pond scum?"
-                "Just travelling.":
+                f "So, what brings you travelling this way?"
+                "If you told the Toad about your Godparent, turn to page 67.":
+                    if godfather == "Red":
+                        pov "I'm searching for a way to escape my Godfather, the King of Kings."
+                        pov "He will be here to take me away at midnight, and I have no wish to leave."
+                        f "A sticky situation indeed!"
+                        f "I have talked with the Lord many times, of course."
+                        f "Why, just the other day He said to me, He said Brildebrogue! How did I ever manage to make one as handsome and charming as you? Why, even one with my own talents (which are quite decent of course, though nothing in comparison to your own gifts) can scarcely imagine bringing such a golden figure out of the fires of creation! At this I swung back my head in a great laugh, like so: HA! And my golden mane whipped around me in the wind, and all were charmed and chortled alongside me to see my wit and good humour, and we all joined together in an uprarious shout of laughter, such that the whole world could hear it - in fact I have no doubts that you must have heard it yourself, even out here in this backwater location, so loud was the sound, although perhaps you took it for a minor earthquake."
+                        f "Perhaps I could put in a good word for you with Him later. Pond scum?"
+                    if godfather == "White":
+                        pov "I'm searching for a way to escape my Godfather, Old Scratch."
+                        pov "He will be here to take me away at midnight, and I have no wish to leave."
+                        f "A sticky situation indeed!"
+                        f "I know the Black One well myself, in fact."
+                        f "Why just the other day I said to Him, I said Devil! How dare you twist the lives of these innocent souls here, tricking them into a terrible life of debauchery and ill-humour, just to suit your own devious and ill-concieved personal goals, when you could instead behave yourself and simply put things to rights like a well-mannered member of society such as myself? At my words, He shrank back with a most timiditous cowardice, and I saw Him gulp in nervous anxiety most profound, such was His fear of my great anger (which can be quite considerable when my dander is up, although of course I take care to remain in good humour for the purpose of conversing with polite gentlefolk such as yourself). In an instant, He swore never to do evil again, and scurried away over hill and dale without a backwards glance."
+                        f "Perhaps I could put in a good word for you with Him later. Pond scum?"
+                    if godfather == "Black":
+                        "I'm searching for a way to escape my Godmother, the Reaper."
+                        pov "She told my mother she will soon send 3 messengers, and then take me away. But I have no wish to leave just yet."
+                        f "A sticky situation indeed!"
+                        f "Why, that reminds me of the situation when my own dear old mother was about to die."
+                        f "I've chatted with Death many times, of course, and so on this occasion I marched right on up to Her and said \"Unhand my mother, you ruffian! I cannot allow you to continue this wave of terror you have inflicted across the forest left and right, taking away women and old maids and children at will, rich and poor alike, before their time has come to pass! Release her at once, or I'll have to get extremely unpleasant with you (And you do NOT wish to see me when I'm being unpleasant, I assure you, such a thing has driven many hard men to tears!) At this stern talking-to from me, She released my mother at once with a sincere apology, and I need hardly say that She has not darkened our door again."
+                        f "Perhaps I could put in a good word for you with Her later. Pond scum?"
+                "If you remained vague about your true plans, turn to page 71.":
+                    pov "Just... travelling, I suppose."
                     f "Fantastic! Nothing better than a spot of travelling. I've done quite a bit in my day, let me tell you."
                     f "Why just the other day I travelled to the living city of Brilochiorp, built on a turtle's back, where your dreams cast shadows and your thoughts chase after you in the mid-afternoon sun. I was there to discuss matters with the queen of the dream thieves, you see, a rascally beggar who had been running about the city fliching this dream and that right out of the heads of the poor citizens, so that they dreamed nothing and had no ideas and the city's art and culture stagnated to nothing! Well, we can't have this sort of thing going on, Brilebrogue, I said to myself, and so I paid the blighter a visit and gave her a stern talking-to, and no mistake. She renounced his ways in an instant and placed all the dreams back exactly where he found them, promising to reform her ways and be a better woman. Another successful adventure, all told."
                     f "But I'm sure your little festival will be quite quaint, too. Pond scum?"
-                "Stay silent.":
+                "If you said nothing, turn to page 74.":
                     f "No bother, then, keep your secrets to yourself."
                     f "I myself am excellent at keeping secrets. Why, just the other day the Brass Magician of the City of Pale Stones said to me, he said Brildebrogue! Can I trust you with a most powerful and deadly secret, such that it would destroy the heavens if it were to be released? Of course I gave him my assurances immediately, and thus he told me that the devil's seven daughters were locked below the city in chains, and could only be released with the most secret and magical word, \"Grolabicon\"! Of course if this were ever to be discovered and the daughters released, they would wreak such terrible havoc on the world as to bring the sun and stars falling from their place in the firmament, and it would be the eigth and final apocalypse come at last, which is why I gave him my word that I would keep the secret safe as houses, and I have never told anyone of the matter to this day."
                     f "Pond scum?"
-            "He offered a decanter of pondwater to you."
+            show hand onlayer transient:
+                yalign 0.67#0.743
+                xalign 0.5
             menu:
-                "Accept.": # (The choice of a kind and generous guest)
+                "He offered a decanter of pondwater to you."
+                "If you accepted (as any kind and generous guest would), turn to page 75.": # (The choice of a kind and generous guest)
                     #Change: Bad luck
                     "You knew better than to say no. After all, it\'s bad luck to refuse a gift from a toad."
                     "The pondwater was surprisingly delicious. It tasted of lavender honey, cold coffee, and long evenings by a shaded pool in the heat of summer."
                     "As you sipped it you felt a cool emerald chill pass through your whole body."
 
-                "Refuse.":# (The choice of a witless and ungrateful churl)
+                "If you refused (the action of a witless and ungrateful churl), turn to page 76.":
                     "\"No thank you,\" you said, like a fool. (Don't you know that it's bad luck to refuse a gift from a toad?)"
                     f "More for me, then!"
                     "And the toad greedily gulped down the pondwater, without comment on your obvious poor manners and lack of breeding."
@@ -956,29 +1042,37 @@ label chapter2:
             "The Toad rose out of his seat, leapt out through the curtains, and with a flourish offered his hand to help you down the carriage steps (which were made of old shoe-leather)."
             f "There you are!"
             f "Thank you gracefully for the wonderful company, and I wish you the best of luck with the festival!"
-
-        "Refuse the lift.":
+            jump chapter6
+        "If you refused the lift, turn to page 55.":
+            #TK: Different responses here based on your godparent
             pov "No thank you, Sir. My mother warned me not to talk to strangers."
-            "Engimatic Gentleman" "You would spurn me? ME? {b}Bridlebrogue Chippingham!?{/b}"
+            eg "You would spurn me? ME? {b}Bridlebrogue Chippingham!?{/b}"
             "The curtains parted and inside you saw a great ugly cane toad squatting in muck. The graceful arm that beckoned you from behind the curtain was nothing but a wooden prop in his swollen hand. He tossed it to the ground with disgust."
+            #TK: Fix this joke
             f "Why, I have half a mind to give your mother a good piece of my mind. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
-            "With a furious clap of his hand, he ordered the horses to ride on. They shrugged off their clothes and revealed themselves to be a magpie, a rat, a bat and an old black cockatoo. You realised that the brilliant carriage they pulled was nothing more than an old rotten squash."
+            "With a furious clap of his hand, he ordered the horses to ride on. The horses shrugged off their clothes and revealed themselves to be a magpie, a rat, a bat and an old black cockatoo. You realised that the brilliant carriage they pulled was nothing more than an old rotten squash."
             "They pulled it bouncing down the road, crashing and rolling and pulling apart pinecones and causing terrible devastation as they went, until they were down the road and out of sight."
             pov "Well! It's a good thing I know not to talk to strangers."
             "(A wise habit. The Lord knows this world is full of cheats and liars.)"
+            jump chapter6
+
     #---- Act 1, Chapter 6: The Village.
-    if mushroomArc == 0 and thiefArc == 0 and toadArc == 0:
-        "And so it was that you stayed on the path the whole way, following your mother's advice and never once being tempted by the offers of strangers."
-        "(Some protagonist you turned out to be.)"
-        "Finally, you arrived at the village."
-    else:
-        "And so you finally arrived at the village."
-    "The rich dark blanket of night was slowly and softly rolling over the town, and cooking fires lit up all across the hills, one by one."
-    "The town was overflowing with people bustling about and preparing for the festival, pulling up chairs and laying great tables around the enormous bonfire in the centre of town."
-    #CHANGE: THIS should all be an interactive adventure game moment.
+    label chapter6:
+        if mushroomArc == 0 and thiefArc == 0 and toadArc == 0:
+            "And so it was that you stayed on the path the whole way, following your mother's advice and never once being tempted by the offers of strangers."
+            "(Some protagonist you turned out to be.)"
+            "Finally, you arrived at the village."
+        else:
+            "And so you finally arrived at the village."
+        "The rich dark blanket of night was slowly and softly rolling over the town, and cooking fires lit up all across the hills, one by one."
+        #TK: look into doing this in an alternate way (with clickable backgrounds?)
     label villageExplore1:
+        show hand onlayer transient:
+            yalign 0.72#0.743
+            xalign 0.5
         menu:
-            "Look at the food." if not foodLook:
+            "The town was overflowing with people bustling about and preparing for the festival, pulling up chairs and laying great tables around the enormous bonfire in the centre of town."
+            "If you looked at the food, turn to page 36." if not foodLook:
                 $foodLook = True
                 "Over the bonfire was a great suckling pig being prepared on a spit, slathered in rosemary and garlic butter and herbs of all types, and stuffed with breadcrumbs and fresh figs and crisp walnuts and apples and all the fruits of the earth."
                 if pig:
@@ -988,7 +1082,7 @@ label chapter2:
                 "Great glass bowls of red sangria were placed at each table, filled with fresh oranges and giant yellow lemon slices, ground cinnamon and brandy and crisp sweet apples and ginger ale."
                 "For desert there were giant lemon meringue pies made from lemons as big as your fist, covered in fresh-whipped meringue from the Baker's parlour."
                 jump villageExplore1
-            "Sit down with the rest of the guests.":
+            "If you sat down with the rest of the guests without delay, turn to page 37.":
                 "You took your place at the table."
     "The Hunter was there, and the old Gloom-monger, and the young Goose-girl."
     "The stars and the moon slowly arrived to take their places. The birds, and moths, and the soft mist of night all came and were seated."
@@ -1003,7 +1097,7 @@ label chapter2:
     sh "The Master Thief has struck again!"
     sh "The entire suckling pig is missing. Quick - check your valuables!"
     "The whole town turned out their pockets and discovered that all their spare change had been taken and replaced with live rats, which shrieked and leapt away and ran into the forest."
-    "Entire town (wailing in most piteous woe)" "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    town "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -1017,22 +1111,30 @@ label chapter2:
 # Act 2: Chapter I - Chat and investigation
 #You can investigate the village and choose between 2 main pathways
 label village:
+    show hand onlayer transient:
+        yalign 0.7#0.743
+        xalign 0.5
     menu:
-        "Investigate the banquet.":
+        "You stood in the middle of the village as chaos and woe erupted around you."
+        "If you investigated the banquet, turn to page 64.":
             jump banquet
-        "Investigate the edge of town.":
+        "If you investigated the edge of town, turn to page 70.":
             jump town
 
 label banquet:
     "You walked down the tables of the village banquet. Some folks were gripping each other tight and crying out at the misfortune that had befallen their town. Others simply sat in glum silence."
     "The cane toad from the road was gulping down every morsel of food he could find, slurping from a full wineglass in each hand and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
     label banquetMenu:
+        show hand onlayer transient:
+            yalign 0.64#0.743
+            xalign 0.5
         menu:
-            "Chat to the woeful villagers." if not banquetChat:
+            "You looked over the tables."
+            "If you talked to the woeful villagers, turn to page 84." if not banquetChat:
                 "They paid no attention to you, but continued shaking their heads and wailing with wretched misery."
                 $banquetChat = True
                 jump banquetMenu
-            "Chat to the Sparrow-Herder."  if sparrowherderChat <= 4:
+            "If you talked to the Sparrow-Herder, turn to page 85."  if sparrowherderChat <= 4:
                 if sparrowherderChat == 0:
                     sh "G'day."
                     sh "The ruin to the south has many poisonous beasts. Be sure to carry Antidotes if you head that way."
@@ -1074,7 +1176,7 @@ label banquet:
                 #       sh "How do I know all this? The sparrows told me."
                 # $sparrowherderChat +=1
                 # jump banquetMenu
-            "Chat to the Mayor." if mayorChat <= 6:
+            "If you talked to the Mayor, turn to page 82." if mayorChat <= 6:
                 if mayorChat == 0:
                     may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
                 elif mayorChat == 1:
@@ -1104,47 +1206,59 @@ label banquet:
                 #p3 "Do you hear that? The howling?"
                 #p3 "You'd better get moving."
                 jump banquetMenu
-            "Chat to the Toad.":
-                if toadConvo2Spoke == False and toadArc == 0:
-                    f "Hello again, fellow traveler!"
-                    "He sprayed food over the table as he spoke."
-                    f "Do not be alarmed! I have already forgiven your poor manners in refusing my generous offer on the road."
-                elif toadConvo2Spoke == False and toadArc > 0:
-                    f "Good evening, my dear friend!"
-                    "He sprayed food over the table as he spoke."
-                    f "It warms my heart to see you again! Although we have known each other but a little time now, I already feel the bonds of our friendship have grown strong as the thickest iron, so warmed have I been by your gregarious companionship!"
-                    f "Please, take a seat beside me! I would count myself proud to sit amoung such distinguished company as yours."
-                elif toadConvo2Spoke:
-                    f "Ah, the traveller returns!"
-                    # if toadDecline:
-                    #     f "What say you, have you reconsidered my offer?"
-                    #     menu:
-                    #         "Accept, and head to the Witch\'s Cottage with the Toad.":
-                    #             f "Sensational! Stay close to me, and you won\'t have a thing to fear."
-                    #             f "It would be a brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
-                    #             "He flexed his arms for you. A tiny bump of muscle rose up."
-                    #             jump toad1
-                    #
-                    #         "Politely decline - for now, at least.":
-                    #             f "I understand. The Witch's fear quails even the most courageous heart."
-                    #             f "Not mine, of course! If you change your mind, I'll be here."
-                    #             $toadDecline = True
-                    #             jump banquetMenu
-                    #else:
-                    f "You {i}must{/i} try some of these prawns, they're simply to die for. A credit to your humble village!"
+            "If you talked to the Toad, turn to page 87." if not toadStole2:
+                if toadStole:
+                    f "You!"
+                    f "Hellion! Knave! You'll see justice for your crimes, or my name isn't Brildebrogue Chippingham!"
+                    "You quickly hid under the tablecloth until the toad became distracted by a passing prawn platter and gave you time to slip away."
+                    "Best avoid him for now."
+                    $toadStole2=True
+                    jump banquetMenu
+                else:
+                    if toadConvo2Spoke == False and toadArc == 0:
+                        f "Hello again, fellow traveler!"
+                        "He sprayed food over the table as he spoke."
+                        f "Do not be alarmed! I have already forgiven your poor manners in refusing my generous offer on the road."
+                    elif toadConvo2Spoke == False and toadArc > 0:
+                        f "Good evening, my dear friend!"
+                        "He sprayed food over the table as he spoke."
+                        f "It warms my heart to see you again! Although we have known each other but a little time now, I already feel the bonds of our friendship have grown strong as the thickest iron, so warmed have I been by your gregarious companionship!"
+                        f "Please, take a seat beside me! I would count myself proud to sit amoung such distinguished company as yours."
+                    elif toadConvo2Spoke:
+                        f "Ah, the traveller returns!"
+                        # if toadDecline:
+                        #     f "What say you, have you reconsidered my offer?"
+                        #     menu:
+                        #         "Accept, and head to the Witch\'s Cottage with the Toad.":
+                        #             f "Sensational! Stay close to me, and you won\'t have a thing to fear."
+                        #             f "It would be a brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
+                        #             "He flexed his arms for you. A tiny bump of muscle rose up."
+                        #             jump toad1
+                        #
+                        #         "Politely decline - for now, at least.":
+                        #             f "I understand. The Witch's fear quails even the most courageous heart."
+                        #             f "Not mine, of course! If you change your mind, I'll be here."
+                        #             $toadDecline = True
+                        #             jump banquetMenu
+                        #else:
+                        f "You {i}must{/i} try some of these prawns, they're simply to die for. A credit to your humble village!"
                 label toadConvo2:
+                    show hand onlayer transient:
+                        yalign 0.65#0.743
+                        xalign 0.5
                     $toadConvo2Spoke = True
                     menu:
-                        "How are you enjoying the feast?" if not toadFeast:
-                            f "Adequate, adequate."
+                        f "Try the crackling, it's marvelous."
+                        "If you asked about the feast, turn to page 89." if not toadFeast:
+                            f "Yes, it's adequate, perfectly adequate."
                             "He opened his mouth wide and devoured a flank of roast pork whole."
                             f "Nothing like the feasts back at Chippingham Manor, of course, you understand, nothing like them at all, but certainly adequate nonetheless, I have to say, if I do say so myself, needless to say, as the saying goes, to say nothing of this fine vintage!"
                             "He drained his wineglass in one gulp, then waved for more."
                             f "Why, it quite reminds me of when I was staying with the Sultana of Yolkorich, a land far to the south across the seas, completely made out of delectable food, you understand! The trees were made of licorice sticks, all the pillars were fine musk candy, the streams ran fresh with sparkling champagne, and the citizens would drive over the rocky roads on peppermint carriages drawn by mouth-watering omlette stallions. Well, one day I woke up and tucked into a hearty breakfast of raisin toast, smoked salmon and fried eggs, only to discover I had devoured the Sultana herself, along with her entire retinue! I had to make a hasty retreat from that situation, I'll tell you that much."
                             $toadFeast = True
                             jump toadConvo2
-                        "Do you plan to stay here long?" if not toadLong:
-                            f "No, not at all."
+                        "If you asked about his plans, turn to page 90." if not toadLong:
+                            f "Aha! Allow me to elucidate."
                             "He slurped noisily from his wineglass until it was empty. Then he slurped from the glass in his other hand and drained it, too."
                             f "I plan to track this Witch character down tonight, before she causes any more chaos."
                             f "We must help the poor, accursed people of this village! Already they panic, terrified that she will descend upon them and turn them all into beasts!"
@@ -1153,71 +1267,61 @@ label banquet:
                             f "{i}Transformed{/i}, you know. Keep that under your hat, very hush hush, you understand."
                             $toadLong = True
                             jump toadConvo2
-                        "Do you know how to find the Witch?" if toadLong and not toadFind:
+                        "If you asked for more information about the witch, turn to page 93." if toadLong and not toadFind:
                             $toadFind = True
                             f "I understand she lurks in a cottage in the darkest depths of the rainforest, where all fear to tread."
                             f "All except for Brildebrogue Chippingham, of course!"
                             "He attempted to give you a bold wink, but accidentally winked with both eyes at once. He was slowly sliding under the table as he talked."
                             f "What do you say? Care to join me?"
                             f "I hear she knows much, and consorts with the Devil Himself!"
-                            f "I need to lift this curse of mine, and surely she could help you out with... I don't know, whatever problem you have."
                             jump toadWitchJoin
                             label toadWitchJoin:
+                                show hand onlayer transient:
+                                    yalign 0.7#0.743
+                                    xalign 0.5
                                 menu:
-                                    "Accept, and head to the Witch\'s Cottage with the Toad.":
+                                    f "I need to lift this curse of mine, and surely she could help you out with... I don't know, whatever problem you have."
+                                    "If you accepted, and set off to the Witch\'s Cottage with the Toad, turn to page 105.":
                                         f "Sensational! Stay close to me, and you won\'t have a thing to fear."
                                         f "It would be the brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
                                         "He flexed his arms for you. A tiny bump of muscle rose up."
                                         f "Let us be off at once!"
                                         jump toad1
-
-                                    "Politely decline - for now, at least.":
+                                    "If you politely declined (for now, at least), turn to page 102.":
                                         f "I understand. The Witch's fear quails even the most courageous heart."
                                         f "Not mine, of course! If you change your mind, I'll be here."
                                         #$toadDecline = True
                                         jump toadConvo2
-                        "About the Witch..." if toadFind:
+                        "If you asked about the witch again, turn to page 93." if toadFind:
                             f "Ah, have you changed your mind?"
                             jump toadWitchJoin
-                            menu:
-                                "Accept, and head to the Witch\'s Cottage with the Toad.":
-                                    f "Sensational! Stay close to me, and you won\'t have a thing to fear."
-                                    f "It would be the brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
-                                    "He flexed his arms for you. A tiny bump of muscle rose up."
-                                    f "Let us be off at once!"
-                                    jump toad1
-                                "Politely decline - for now, at least.":
-                                    f "I understand. The Witch's fear quails even the most courageous heart."
-                                    f "Not mine, of course! If you change your mind, I'll be here."
-                                    #$toadDecline = True
-                                    jump toadConvo2
-                        "Aren't you going to do anything about all the stolen goods?" if toadLong and not toadThief:
+                        "If you asked him about the thief, turn to page 78." if toadLong and not toadThief:
                             $toadThief = True
+                            pov "Aren't you going to do anything about all the stolen goods?"
                             f "And risk the wrath of the Master Thief? Not on your life!"
                             may "I heard they stole a horse right out from under it's rider."
                             sh "I heard they stole the King of Spain right out from under his wife."
                             f "Well, I heard that every winter they shrink down to the size of a pin, and hide away in your house to steal all your odd socks and hairpins and loose change."
-                            f "Why do they do it? Why, to make a nest, of course. All the better to lure their suitor, the Devil!"
+                            f "Why do they do it? Why, to make a nest, of course. All the better to lure their suitor, THE DEVIL!"
                             jump toadConvo2
-                        "I need a way to escape my Godfather, the Lord. Can you help me?" if godfather== "White" and not toadHelp:
+                        "If you asked about your Godparent, turn to page 85." if not toadHelp:
+                            if godfather== "Black":
+                                pov "I need a way to escape my Godmother, Lady Death. Can you help me?"
+                                f "Possibly, possibly."
+                                f "Perhaps the witch will know something about it. You should join me in hunting her down!"
+                            elif godfather == "White":
+                                pov "I need a way to escape my Godfather, the Lord. Can you help me?"
+                                f "Possibly, possibly."
+                                f "Perhaps the witch will know something about it. You should join me in hunting her down!"
+                            elif godfather == "Red":
+                                pov "I need a way to escape my Godfather, the Devil. Can you help me?"
+                                f "I'm sure the witch would know something about that. Rumour is that she dances with the Devil on cold, moonless nights! You should join me in hunting her down."
                             $toadHelp = True
-                            f "Possibly, possibly."
-                            f "Perhaps the witch will know something about it. You should join me in hunting her down!"
                             jump toadConvo2
-                        "I need a way to escape my Godfather, the Devil. Can you help me?" if godfather== "Red" and not toadHelp:
-                            $toadHelp = True
-                            f "Possibly, possibly."
-                            f "I'm sure the witch would know something about that. Rumour is that she dances with the Devil on cold, moonless nights! You should join me in hunting her down."
-                            jump toadConvo2
-                        "I need a way to escape my Godmother, Lady Death. Can you help me?" if godfather== "Black" and not toadHelp:
-                            $toadHelp = True
-                            f "Possibly, possibly."
-                            f "Perhaps the witch will know something about it. You should join me in hunting her down!"
-                            jump toadConvo2
-                        "I'd best be going.":
+                        "If you made your excuses and left, turn to page 83.":
                             f "Return soon! You can't possibly leave without sampling some of this fine green mango salad over here, absolutely sensational!"
                             jump banquetMenu
-            "Return to the village square.":
+            "If you returned to the village square, go back to page 50.":
                 "You turned and walked back to the center of the village."
                 jump village
             #Then somehow that turns to stealing from the mushroom / helping the mushroom against the theif
@@ -1226,16 +1330,18 @@ label town:
     #TK: Add stuff to interact with relevant to the investigation into the False Hydra
     "You walked out to the edge of town, where villagers ran to and fro, searching for the Master Thief."
     "Fruit bats chirped and swirled overhead, fat with fresh mangos."
-    "Some of the villagers were strapping a large tarp over a cart."
     label townExplore:
+        show hand onlayer transient:
+            yalign 0.63#0.743
+            xalign 0.5
         menu:
-            "Investigate the tarp.":
+            "Some of the villagers were strapping down a tarp."
+            "If you investigated the tarp, turn to page 79.":
                 pov "What is this?"
                 h "Shhh! Keep your voice down. This is all part of our plan to catch that dastardly Master Thief."
                 gm "We're sure to fail. This whole plan is doomed."
-                go "Care to join us?"
                 jump villagersConvo
-            "Chat to the Goose-girl." if goosemongerChat <= 6:
+            "If you talked to the Goose-girl, turn to page 97." if goosemongerChat <= 6:
                 if goosemongerChat == 0:
                     go "Greetings, friend. Be careful of the crystal caverns to the north."
                 elif goosemongerChat == 1:
@@ -1256,7 +1362,7 @@ label town:
                     go "Their beauty was not made for us."
                 $goosemongerChat += 1
                 jump townExplore
-            "Chat to the Hunter." if hunterChat <=2:
+            "If you talked to the Hunter, turn to page 98." if hunterChat <=2:
                 if hunterChat == 0:
                     h "A {color=#f00}wolf{/color}? Don't be silly."
                 if hunterChat == 1:
@@ -1267,7 +1373,7 @@ label town:
                 jump townExplore
                 #A wolf?
                 # I th
-            "Chat to the Gloom-monger." if gloommongerChat <=6:
+            "If you talked to the Gloom-monger, turn to page 99." if gloommongerChat <=6:
                 #TK: Longer gloom-monger chat.
                 if gloommongerChat == 0:
                     gm "Give it up now. You're already doomed."
@@ -1285,59 +1391,67 @@ label town:
                     gm "In their left hand is a terrible light."
                 $gloommongerChat += 1
                 jump townExplore
-            "Look in the well." if wellChat <=1:
+            "If you looked in the well, turn to page 346." if wellChat <=1:
                 if wellChat == 0:
                     well "Evening."
                 elif wellChat == 1:
-                    well "Got any smokes?"
+                    show hand onlayer transient:
+                        yalign 0.7#0.743
+                        xalign 0.5
                     menu:
-                        "Yes.":
+                        well "Got any smokes?"
+                        "If you found some cigarettes for the thing, turn to page 367.":
                             well "Cheers."
-                        "No.":
+                        "If you refused, turn to page 368.":
                             well "No worries."
                 $wellChat += 1
                 jump townExplore
-            "Return to the village.":
+            "If you returned to the village, go back to page 50.":
                 "You turned and walked back to the village."
                 jump village
     label villagersConvo:
+        show hand onlayer transient:
+            yalign 0.63#0.743
+            xalign 0.5
         menu:
-            "How do you plan to catch the thief?" if not villagersPlan:
+            go "Care to join us?"
+            "If you asked how they planned to catch the thief, turn to page 66." if not villagersPlan:
                 h "With this!"
                 "The Hunter flexed their muscles and pulled back the tarp to reveal an ornate chest full of lustrous pebbles and stones."
                 go "We'll take this out to my house, and nail it to the veranda. Everyone knows that the Master Thief can't resist anything that's nailed down."
                 h "Exactly. And their love for shiny rocks is well-known."
-                "Hedgehog which just appeared out of nowhere" "A fine plan indeed, friends! There's no way this gorgeous \"Master Thief\" could ever detect this scheme."
+                echidna "A fine plan indeed, friends! There's no way this \"Master Thief\" I've heard so much about could ever detect this scheme, no matter how cunning and gorgeous they may be."
                 h "Thanks, friend. Your confidence means a lot."
                 $villagersPlan = True
                 jump villagersConvo
-            "Why do you want to catch the thief?" if not villagersCatch:
+            "If you asked why they planned to catch the thief, turn to page 68." if not villagersCatch:
                 h "They stole my courage!"
-                go "They stole my wisdom!"
-                gm "They stole my heart."
-                h "We can't let them just run around doing as they please and getting the Gloom-monger all hot and bothered. What if everyone decided to do that? It'd be anarchy!"
-                gm "Hot, sweaty anarchy."
+                gm "They stole my wisdom!"
+                go "They stole my heart."
+                h "We can't let them just run around doing as they please and getting the Goose-girl all hot and bothered. What if everyone decided to do that? It'd be anarchy!"
+                go "Hot, sweaty anarchy."
                 $villagersCatch = True
                 jump villagersConvo
-            "I need a way to escape my Godfather, the Lord. Do any of you know how I can do that?" if godfather== "White" and not villagersEscape:
-                gm "Hpmh. I advise you to give up immediately."
-                go "Well, it is said that the Master Thief has hidden from the Lord all their life. If anyone would know, they would."
-                h "Once we track the thief down, you could question them!"
+            "If you asked them about your Godparent, turn to page 77." if not villagersEscape:
+                if godfather== "White":
+                    pov "I need a way to escape my Godfather, the Lord. Do any of you know how I can do that?"
+                    gm "Hpmh. I advise you to give up immediately."
+                    go "Well, it is said that the Master Thief has hidden from the Lord all their life. If anyone would know, they would."
+                    h "Once we track the thief down, you could question them!"
+                elif godfather == "Red":
+                    pov "I need a way to escape my Godfather, the Devil. Do any of you know how I can do that?"
+                    gm "Hpmh. I advise you to give up immediately."
+                    go "Well, I have heard that the witch has sworn her soul to the devil. She would know how to help you, if anyone would."
+                    sh "If only she was here tonight! Oh, I can already feel her curse upon me."
+                elif godfather == "Black":
+                    pov "I need a way to escape my Godmother, Lady Death. Do any of you know how I can do that?"
+                    gm "Hpmh. I advise you to give up immediately."
+                    go "Well, as we all know, mushrooms are the fingers of death. That wise mushroom in the deep forest would know how to help you, if anyone would."
+                    sh "I heard that dastardly Master Thief was planning to steal from her this very night! We'd better get the trap laid before they have a chance."
                 $villagersEscape = True
                 jump villagersConvo
-            "I need a way to escape my Godfather, the Devil. Do any of you know how I can do that?" if godfather== "Red" and not villagersEscape:
-                gm "Hpmh. I advise you to give up immediately."
-                go "Well, I have heard that the witch has sworn her soul to the devil. She would know how to help you, if anyone would."
-                sh "If only she was here tonight! Oh, I can already feel her curse upon me."
-                $villagersEscape = True
-                jump villagersConvo
-            "I need a way to escape my Godmother, Lady Death. Do any of you know how I can do that?" if godfather== "Black" and not villagersEscape:
-                gm "Hpmh. I advise you to give up immediately."
-                go "Well, as we all know, mushrooms are the fingers of Lady Death. That wise mushroom in the deep forest would know how to help you, if anyone would."
-                sh "I heard that dastardly Master Thief was planning to steal from her this very night! We'd better get the trap laid before they have a chance."
-                $villagersEscape = True
-                jump villagersConvo
-            "Aren't you going to do anything about the Witch's Curse?" if villagersCatch and not villagersWitch:
+            "If you asked them about the Witch, turn to page 79." if villagersCatch and not villagersWitch:
+                pov "Are you going to do anything about the Witch's Curse?"
                 go "And risk the wrath of the Witch? Not on your life."
                 gm "I heard that she has fingers as long and fat as carpet snakes, and once you fall into her clutches, you'll never see daylight again."
                 go "I heard she has many children with the Devil, who are all evil."
@@ -1345,14 +1459,14 @@ label town:
                 h "This is why the most beautiful trees are always thunderstruck."
                 $villagersWitch = True
                 jump villagersConvo
-            "Accept their offer, and head off to catch the Master Thief with the villagers." if villagersPlan or villagersCatch:
+            "If you accepted their offer, and head off to catch the Master Thief, turn to page 124." if villagersPlan or villagersCatch:
                 h "Excellent! Let's be off at once."
                 "You all lept on the cart and rattled away down the road, leaving the old Gloom-monger behind."
                 gm "You're all doomed! Doooooooomed!"
                 h "Don't worry. He says that every time we go anywhere."
                 jump thief2
-            "I'd best be going.":
-                "The Sparrow-Herder" "No worries. Have a good one!"
+            "If you made your excuses and left (for now), turn to page 51.":
+                sh "No worries. Have a good one!"
                 jump townExplore
 
 # Act 2, Chapter 2A: The Master Thief
@@ -1360,23 +1474,26 @@ label thief2:
     "Soon, you arrived at the young goose-girls house, which was overrun by honking geese who tore at the furniture and ransacked the pantry until he was at his wit's end."
     if pig:
         "The pig quailed from the goose's wrath behind you."
-    "You nailed the chest down to the veranda while the goose-girl kept them at bay."
+    show hand onlayer transient:
+        yalign 0.67#0.743
+        xalign 0.5
     menu:
-        "Lay bear traps around the chest.":
+        "You nailed the chest down to the veranda while the goose-girl kept the geese at bay."
+        "If you set bear traps around the chest, turn to page 119.":
             "You got some bear traps from the Hunter's cart and placed them all around the chest, disguising them with leaves."
             $chest = "Traps"
-        "Carefully rig tripwires to bundles of tin cans around the chest.":
+        "If you rigged tripwires to bundles of tin cans around the chest, turn to page 112.":
             "You pulled thin tripwires all around the chest tied to old tin cans. As soon as anyone approached it the tin cans would rattle like crazy, alerting the waiting geese."
             $chest = "Tripwires"
-        "Place a terrible goose inside the chest itself.":
+        "If you placed a terrible goose inside the chest itself, turn to page 116.":
             "You picked up the orneriest goose from the pack and carefully placed it inside the chest, shielding your eyes as it pecked at you in rage."
             "As soon as it was inside the chest, you slammed it shut."
             $chest = "Goose"
     "Then you ducked behind a bush to watch the chest."
     h "Now we wait."
-    go "No way the Master Thief can get past us now."
-    "Hedgehog which just appeared out of nowhere" "Whoever this \"Master Thief\" is, they certainly sound like a cunning and charismatic scoundrel."
-    h "Indeed. We must all be on our guard."
+    go "No way the thief can get past us now."
+    echidna "I couldn't agree more, friends. This cunning and charismatic \"Master Thief\" character stands no chance against us."
+    h "Don't get cocky."
     "You lay there in silence, watching the chest."
     "A fly landed on it."
     "One of the geese waddled up and began to lick it."
@@ -1390,9 +1507,14 @@ label thief2:
         "You pulled at the tripwires to discover that every can was now a perfect cake replica of a tin can made from sponge and fondant."
     elif chest == "Goose":
         "You cut open the cake to find a fine meringue goose inside."
+    "The smell of chocolate wafted from behind you. You turned in horror."
     label thiefCake:
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
         menu:
-            "Wail in piteous woe yet again." if pitiful == 4:
+            "The goose-girl's entire cottage had been replaced with a gigantic gingerbread house."
+            "If you wailed in piteous woe yet again, turn to page 109." if pitiful == 4:
                 "All assembled (tearing at their clothes in woe)" "{i}NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -1402,35 +1524,44 @@ label thief2:
                 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!{/i}"
                 $pitiful +=1
                 jump thiefCake
-            "Ask your pig to find the culprit." if pig:
-                "The pig lept from your hands and began snuffling around in the grass. It soon began sniffing at the Hedgehog, grunting with suspicion."
-                "Hedgehog (Now holding a giant sack)" "Looks like the jig is up."
-                "As you looked around wildly, the Hedgehog ripped off their mask to reveal none other than the Master Thief."
+            "If you asked your pig to find the culprit, turn to page 136." if pig:
+                echidna2 "What a shame. Oh well! I'd best be off."
+                "The pig lept from your hands and began snuffling around in the grass. It soon began sniffing at the Echidna, grunting with suspicion."
+                echnida2 "Looks like the jig is up!"
+                "You lept for the Echidna, but it backflipped away just in time."
+                "Laughing maniacally, it ripped off it's mask to reveal none other than the Master Thief."
                 t "That's right, it was I all along! I have stolen the eyes of heaven and the hands of G-d, and now I use those hands to wreak mischief and misery upon this cursed earth!"
                 h "Stop them!"
                 "The thief fled into the forest, with you and the loyal pig sprinting after."
                 jump thiefChase2
-            "Take the cake as evidence." if not thiefChestCake:
+            "If you took the cake as evidence, turn to page 131." if not thiefChestCake:
                 "You grabbed a slice of the chest cake to present to the local magistrate."
                 "The goose hissed at your foolishness, then continued devouring the chest."
                 $thiefChestCake = True
                 jump thiefCake
-            "Search for the Master Thief.":
-                "You looked around wildly and spooted the Hedgehog creeping away into the forest with a giant sack over it's shoulder."
-                "Seeing you, it ripped off it's mask to reveal none other than the Master Thief."
-                t "That's right, it's me! I have stolen the eyes of heaven and the hands of god, and now I use those hands to wreak mischief and misery upon this cursed earth!"
+            "If you searched for the Master Thief, turn to page 130.":
+                "You looked around wildly."
+                echidna2 "What a shame. Oh well! I'd best be off."
+                pov "Wait just a second!"
+                "You lept for the Echidna, but it backflipped away just in time."
+                "Laughing maniacally, it ripped off it's mask to reveal none other than the Master Thief."
+                t "That's right, it was I all along! I have stolen the eyes of heaven and the hands of god, and now I use those hands to wreak mischief and misery upon this cursed earth!"
                 h "Stop them!"
-                "The thief fled into the forest, with you sprinting after."
                 jump thiefChase2
     label thiefChase2:
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
         menu:
-            "Chase after them as fast as you can.":
+            #TK: test this menu with the pig
+            "The thief fled into the forest, with you sprinting after."
+            "If you tried to chase after them, turn to page 135.":
                 "The thief led you on a merry chase, until you were deep into the forest with all the others behind you."
                 "You slowly closed the distance, until you finally lept forward and grabbed their cloak."
-            "Try to go around and cut them off.":
+            "If you tried to go around and cut them off, turn to page 136.":
                 "You ran deep into the forest, planning to lay an ambush for the thief. Soon, you left the others far behind."
                 "You lay in wait behind a bush until you heard their running footsteps. Then you lept out and grabbed them."
-            "Send your pig after them while you set an ambush." if pig:
+            "If you sent your pig after them while you set an ambush, turn to page 137." if pig:
                 "The pig chased after them furiously, grunting pig curses at the fleeing figure."
                 "You hid behind the bushes and lay in wait until you heard the thief's footsteps. Then you lept out and grabbed them as your pig squealed in triumph."
     "As you pulled at their cloak, it came away with a tearing sound, and the figure before you fell apart into dust."
@@ -1447,10 +1578,11 @@ label thief2:
     if pig:
         "Your pig oinked at them, moving to protect you."
     if stuffStolen:
-        menu:
-            "You! Give me back my stuff!":
-                "They laughed. As if from nowhere, your loaf of bread appeared in their hands. They tossed it up in the air, and before you could blink it had disappeared again."
-                t "I'll give it all back in time, don't worry. But first, I have an offer for you."
+        pov "You! Give me back my stuff!"
+        "They laughed. As if from nowhere, your loaf of bread appeared in their hands. They tossed it up in the air, and before you could blink it had disappeared again."
+        t "I'll give it all back in time, don't worry. But first, I have an offer for you."
+    else:
+        t "You gave me quite the chase. I have an offer you may be interested in."
     if godfather == "Red":
         t "You see, I've heard of you. They say you run wild over the hills, doing as you please and living in contempt of the law."
     elif godfather == "White":
@@ -1460,26 +1592,30 @@ label thief2:
         t "You see, I've heard of you. They say you're a strange one. You lurk out late at night and scare people."
     t "I know you live near the Mushroom, who is rich beyond the dreams of avarice."
     t "I plan to go there tonight and take her for all she's worth. Want to join?"
-    "They flashed you a charming smile."
     if stuffStolen:
         t "I'll give you all your things back. Promise."
     label thiefConvo:
+        show hand onlayer transient:
+            yalign 0.62#0.743
+            xalign 0.5
         menu:
-            "But isn't that wrong and evil?" if not thiefWrong:
+            "They flashed you a charming smile."
+            "If you tried to make the thief see the error of their ways, turn to page 142." if not thiefWrong:
+                pov "But isn't that wrong and evil?"
                 t "Of course!"
                 t "I was born evil, and I've only gotten more evil every day I'm alive."
                 t "But don't worry, the Mushroom cares nothing for money. It'll get much better use in our pockets."
                 $thiefWrong = True
                 jump thiefConvo
-            "Accept, and join the Master Thief on this daring Mushroom heist.":
+            "If you accepted, and joined the Master Thief on this daring Mushroom heist, turn to page 143.":
                 t "Wonderful! This will be a caper for the books."
                 t "You'd best be careful, though. I'm rotten to the core, and I'm sure to betray you sooner or later."
                 jump thief3
-            "Accept (but secretly plan to betray the Master Thief at a critical moment).":
+            "If you accepted, while secretly planning to betray the Master Thief at a critical moment, turn to page 143.":
                 t "Wonderful! This will be a caper for the books."
                 t "You'd best be careful, though. I'm rotten to the core, and I'm sure to betray you sooner or later."
                 jump thief3
-            "Refuse (and rush to warn the Mushroom of this impending theft).":
+            "If you refused, and rushed to warn the Mushroom of this impending theft, turn to page 144.":
                 t "Aha, I knew you'd see things my - wait, what did you say?"
                 "Before they could react, you slipped away from them and ran away into the woods, heading for the Mushroom's house."
                 "Soon you stood knocking at the Mushroom's door, panting for breath and covered in scrapes from the journey."

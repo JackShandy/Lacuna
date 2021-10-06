@@ -132,11 +132,11 @@ define gui.namebox_tile = False
 ## The placement of dialogue relative to the textbox. These can be a whole
 ## number of pixels relative to the left or top side of the textbox, or 0.5 to
 ## center.
-define gui.dialogue_xpos = 110
+define gui.dialogue_xpos = 50#110
 define gui.dialogue_ypos = 480
 
 ## The maximum width of dialogue text, in pixels.
-define gui.dialogue_width = 400
+define gui.dialogue_width = 500#400
 
 ## The horizontal alignment of the dialogue text. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
@@ -206,16 +206,17 @@ define gui.quick_button_text_selected_color = gui.accent_color
 ##
 ## Choice buttons are used in the in-game menus.
 
-define gui.choice_button_width = 371
+define gui.choice_button_width = None#371
 define gui.choice_button_height = None
 define gui.choice_button_tile = False
 define gui.choice_button_borders = Borders(47, 3, 47, 3)
-define gui.choice_button_text_font = gui.text_font
+define gui.choice_button_text_font = "fonts/book-antiqua-italic.ttf"#gui.text_font
 define gui.choice_button_text_size = gui.text_size
-define gui.choice_button_text_xalign = 0.5
-define gui.choice_button_text_idle_color = "#cccccc"
-define gui.choice_button_text_hover_color = "#ffffff"
-define gui.choice_button_text_insensitive_color = "#444444"
+#define gui.choice_button_text_yalign = 0
+define gui.choice_button_text_xalign = 0#0.5
+#define gui.choice_button_text_idle_color = "#cccccc"
+#define gui.choice_button_text_hover_color = "#ffffff"
+#define gui.choice_button_text_insensitive_color = "#444444"
 
 
 ## File Slot Buttons ###########################################################
