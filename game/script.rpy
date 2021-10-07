@@ -238,8 +238,10 @@ define mushroomDeathTale = False
 init:
     $ artPos = Position(xpos=0.5, xanchor=0.5, ypos=35, yanchor=0)
 
-image trees= "trees.png"
+##====Full Screen Images
 image cover = "cover.png"
+
+##====GUI Elements
 image firelight animated:
     "firelight-1.png"
     pause 0.1
@@ -251,11 +253,19 @@ image firelight animated:
     pause 0.1
     repeat
 
+##====Backgrounds
+image trees= "Backgrounds/trees.png"
+image nightbg= "Backgrounds/night.png"
+image cottagebg= "Backgrounds/cottage.png"
+
 ##====Names
 image witchName= "Names/witch.png"
 image thiefName= "Names/thief.png"
 image toadName= "Names/toad.png"
 image mushroomName= "Names/mushroom.png"
+image mushroom2Name= "Names/mushroom2.png"
+image mushroom3Name= "Names/mushroom3.png"
+image mushroom4Name= "Names/mushroom4.png"
 image mumName= "Names/mum.png"
 image wibName= "Names/wib.png"
 image miwName= "Names/miw.png"
@@ -277,6 +287,17 @@ image townName= "Names/town.png"
 image echidnaName= "Names/echidna.png"
 image echidna2Name= "Names/echidna2.png"
 image somName= "Names/som.png"
+image mysFrogName= "Names/mysFrog.png"
+image batName= "Names/bat.png"
+image ratName="Names/rat.png"
+image cockatooName="Names/cockatoo.png"
+image crowshrikeName="Names/crowshrike.png"
+image thiefMumName="Names/thiefmum.png"
+image goblin1Name="Names/goblin1.png"
+image goblin2Name="Names/goblin2.png"
+image goblin3Name="Names/goblin3.png"
+image goblin4Name="Names/goblin4.png"
+image goblinqueenName="Names/goblinqueen.png"
 
 ##====Frippery
 image sword="sword.png"
@@ -288,6 +309,9 @@ define w = Character("{image=witchName}{alt}The Witch:{/alt}")
 define t = Character("{image=thiefName}{alt}The Thief:{/alt}")
 define f = Character("{image=toadName}{alt}The Toad:{/alt}")
 define m = Character("{image=mushroomName}{alt}The Mushroom:{/alt}")
+define m2 = Character("{image=mushroom2Name}{alt}The Mushroom:{/alt}")
+define m3 = Character("{image=mushroom3Name}{alt}The Mushroom:{/alt}")
+define m4 = Character("{image=mushroom4Name}{alt}The Mushroom:{/alt}")
 define mum = Character("{image=mumName}{alt}Mum:{/alt}")
 define miw = Character("{image=miwName}{alt}The Man Clad in White:{/alt}")
 define mir = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
@@ -311,7 +335,17 @@ define echidna2 = Character ("{image=echidna2Name}{alt}Echidna (now holding a la
 define som = Character ("{image=somName}{alt}The Strange (and crooked) Old Man:{/alt}")
 #Note: blank character for particular scenes where I need it (eg to preserve the hand on brildebrogue chippingham's manor
 define blank = Character ("")
-
+define mysFrog = Character ("{image=mysfrogName}{alt}Mysterious (yet inexplicably handsome) Frog:{/alt}")
+define bat = Character ("{image=batName}{alt}The Bat:{/alt}")
+define rat = Character ("{image=ratName}{alt}The Rat:{/alt}")
+define cockatoo = Character ("{image=cockatooName}{alt}The Black Cockatoo:{/alt}")
+define crowshrike = Character ("{image=crowshrikeName}{alt}The Crow-Shrike:{/alt}")
+define thiefmum = Character ("{image=thiefMumName}{alt}The Thief's Mother:{/alt}")
+define goblin1 = Character ("{image=goblin1Name}{alt}Goblin:{/alt}")
+define goblin2 = Character ("{image=goblin2Name}{alt}Goblin:{/alt}")
+define goblin3 = Character ("{image=goblin3Name}{alt}Goblin:{/alt}")
+define goblin4 = Character ("{image=goblin4Name}{alt}Goblin:{/alt}")
+define goblinQueen = Character ("{image=goblinqueenName}{alt}The Goblin Queen:{/alt}")
 
 #Note: deleted these, hopefully I got them all
 #define d = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
@@ -448,7 +482,7 @@ label start:
 
         #show firelight animated zorder 99
         scene bg page
-        show trees at artPos
+        show nightbg at artPos
         #play music "/audio/cottagegore.mp3"
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
@@ -835,8 +869,8 @@ label chapter2:
                 mys "FOOOOOL!"
                 "In a flash her clothes tore asunder, and her mask fell to the ground, and you saw it was all nothing but a disguise."
                 "In her stead stood the cunning and terrible form of the Master Thief!"
-                "They were neither tall nor short, neither fat nor thin, neither pale nor tan."
-                "They wore a tricorn hat on their head, a midnight black cloak across their back, a silver mask across their eyes, and a cunning look on their sly face."
+                #"They were neither tall nor short, neither fat nor thin, neither pale nor tan."
+                "They wore a midnight cloak across their back and a cunning look on their sly face."
                 t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
                 t "No law shall stand, no judge shall know peace and no cop shall sleep easy in their bed at night, for as long as my legs can run!"
                 "And with a shout of laughter they demonstrated this, running their long legs into the forest and out of sight."
@@ -982,7 +1016,7 @@ label chapter2:
             "The incense you smelled was nothing but the reek of dirt and mud, the brandy was nothing but pondscum, the gleaming carriage was just a rotten old squash, and the graceful arm that beckoned you from behind the curtain was nothing but a wooden prop the Toad held in his swollen hand."
             "You turned to run, but it was too late. With a clap, the Toad commanded his steeds."
             f "Prickle! Crawl! Shudder and Wink! Be off at once. We have a festival to get to!"
-            "The brilliant white horses tore off their clothes and revealed themselves to be a magpie, a rat, a bat and an old black cockatoo."
+            "The brilliant white horses tore off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo."
             "They cackled and gibbered to each other as they raced off down the road with you, bumping and rolling and pulling apart pinecones and causing terrible devastation as they went."
             #Change: ADD CHOICE
             show hand onlayer transient:
@@ -1071,7 +1105,7 @@ label chapter2:
             "The curtains parted and inside you saw a great ugly cane toad squatting in muck. The graceful arm that beckoned you from behind the curtain was nothing but a wooden prop in his swollen hand. He tossed it to the ground with disgust."
             #TK: Fix this joke
             f "Why, I have half a mind to give your mother a good piece of my mind. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
-            "With a furious clap of his hand, he ordered the horses to ride on. The horses shrugged off their clothes and revealed themselves to be a magpie, a rat, a bat and an old black cockatoo. You realised that the brilliant carriage they pulled was nothing more than an old rotten squash."
+            "With a furious clap of his hand, he ordered the horses to ride on. The horses shrugged off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo. You realised that the brilliant carriage they pulled was nothing more than an old rotten squash."
             "They pulled it bouncing down the road, crashing and rolling and pulling apart pinecones and causing terrible devastation as they went, until they were down the road and out of sight."
             pov "Well! It's a good thing I know not to talk to strangers."
             "(A wise habit. The Lord knows this world is full of cheats and liars.)"
@@ -1724,26 +1758,26 @@ label mushroomFinale:
     m "Oh dear."
     "Another mushroom, identical to the lady, emerged from a side door."
     #TK: Extra portrait for multiple mushrooms
-    m "I know. It's awful to see [him] like this."
+    m2 "I know. It's awful to see [him] like this."
     "Another identical mushroom popped up."
-    m "You have to stop fighting yourself, dear. You're not well."
+    m3 "You have to stop fighting yourself, dear. You're not well."
     "Mushrooms swarmed up and surrounded you. Before you could blink, they'd surrounded you and took hold of your ankles and began to drag you down into the earth."
-    m "Shh. Shhh."
+    m4 "Shh. Shhh."
     "The Master Thief managed to wriggle out of their grasp and leap up out a nearby window."
     t "Au revoir, my friend!"
     "That was the last thing you saw before you were dragged underneath the earth."
     "You were pulled down through untold layers of earth by your ankles. You heard the mushrooms whisper around you."
     #TK: Have a house of leaves text effect for the many mushrooms
-    m "Everything's going to be ok.{vspace=30}                                             {w=0.4}You're safe here.{vspace=30}                                             {w=0.8}Shhhh."
+    m3 "Everything's going to be ok.{vspace=30}                                             {w=0.4}You're safe here.{vspace=30}                                             {w=0.8}Shhhh."
     "Soon, you emerged into a colossal underground kingdom lit with flickering silver light."
     "All around you pressed a throng of webcaps, milkcaps, scarlet elf caps, poisonpies, decievers, pinkgills, brittlegills, veiled ladies, lawyer's wigs, stinkhorns, earthstars, beefsteaks, chicken of the woods, earthballs, sculpted puffballs, yellowfoots, lungworts, brown-eyed wolves, golden-eyed umbrellas, Satan's bolete, false chanterelle's, death caps and destroying angels, and all members of the mysterious Dark Taxa, the dark matter fungi that lie unknown to mankind."
     "They all swept to and fro through a twisted city of endless tunnels. The shape of a giant, pale and broken mountain was barely visible looming over the city in the mist of spores."
     pov "I was helping you! Why have you kidnapped me?"
     m "You were hurting yourself."
-    m "Hurting yourself."
+    m2 "Hurting yourself."
     "Dozens of identical mushrooms pressed around you, speaking in soft, overlapping voices."
-    m "I think it might be best if you stay here until I know that you're safe.{vspace=30}                                             {w=0.4}Until I know you're safe.{vspace=30}                         {w=0.8}It's for the best, if you stay here."
-    m "I'll watch over you.{vspace=30}                                             {w=0.4}Over you.{vspace=30}                         {w=0.8}Watch over."
+    m3 "I think it might be best if you stay here until I know that you're safe.{vspace=30}                                             {w=0.4}Until I know you're safe.{vspace=30}                         {w=0.8}It's for the best, if you stay here."
+    m4 "I'll watch over you.{vspace=30}                                             {w=0.4}Over you.{vspace=30}                         {w=0.8}Watch over."
     "You were taken through a great palace of yellow chanterelles and dressed in robes of fine moss. Your room was lushly furnished with soft covers woven from black mushroom silk, and all the gems and gold and treasures of the earth were available to you."
     label mushroomPrison:
         show hand onlayer transient:
@@ -1753,9 +1787,8 @@ label mushroomFinale:
             m "You will be safe here."
             "If you asked where you were, turn to page 145." if not mushroomPlace:
                 "The mushroom looked at you sadly."
-                #As she talks, multiple mushrooms go in and out.
-                m "We've talked about this many times. Don't you remember?"
-                m "This is the kingdom of Lady Death. Mother of Mushrooms. I am her fingers, and we take all things on earth to her."
+                m2 "We've talked about this many times. Don't you remember?"
+                m3 "This is the kingdom of Lady Death. Mother of Mushrooms. I am her fingers, and we take all things on earth to her."
                 m "Would you like me to tell you the story again?"
                 $mushroomPlace = True
                 jump mushroomPrison
@@ -1763,18 +1796,18 @@ label mushroomFinale:
                 $mushroomDeathTale = True
                 "She sat down and began to tell you her tale."
                 m "Once upon a time, Death came for Our Dear Lord, as it was His appointed time."
-                m "He did not wish to go, and so they fought across the great sea of the world. We fought for forty days and forty nights, but eventually the Heavenly Father got the upper hand."
-                m "He broke Our Lady across the sky, and cut off Her hands, and threw me down into the deepest pit underground. I was so weak that we could not pull ourselves up."
+                m2 "He did not wish to go, and so they fought across the great sea of the world. We fought for forty days and forty nights, but eventually the Heavenly Father got the upper hand."
+                m3 "He broke Our Lady across the sky, and cut off Her hands, and threw me down into the deepest pit underground. I was so weak that we could not pull ourselves up."
                 m "\"What will become of the world,\" we asked ourselves, \"If I just lie here?\""
-                m "\"There will be no more deaths, and soon there'll be so many people in the world that they won't have the room to stand next to each other.\""
-                m "And so I extended Her long, broken arms, so that our fingers poked out of the soil."
-                m "These fingers are the Mushrooms."
+                m4 "\"There will be no more deaths, and soon there'll be so many people in the world that they won't have the room to stand next to each other.\""
+                m3 "And so I extended Her long, broken arms, so that our fingers poked out of the soil."
+                m2 "These fingers are the Mushrooms."
                 m "We provide food for the poor and the animals of the forest, and I support the plants and connect them together."
-                m "But most importantly, we do The Work."
-                m "I take hold of the dead and the dying, and the old wood and the old bones, and carry it all down to my kingdom, far underground."
-                m "I work slowly. We are patient. Soon, the work will be complete, and everything will rest here inside Her kingdom, as was intended when the world began."
+                m4 "But most importantly, we do The Work."
+                m2 "I take hold of the dead and the dying, and the old wood and the old bones, and carry it all down to my kingdom, far underground."
+                m3 "I work slowly. We are patient. Soon, the work will be complete, and everything will rest here inside Her kingdom, as was intended when the world began."
                 "The mushroom gestured to the pale mountain, looming over the city through the fog of spores."
-                m "My body still lies there, broken. It is what the hills and forests and continents are built on. She lies in great pain, and it is but rarely that I can walk among men as we once did."
+                m4 "My body still lies there, broken. It is what the hills and forests and continents are built on. She lies in great pain, and it is but rarely that I can walk among men as we once did."
                 if godfather == "Black":
                     m "It was a strange occasion indeed on which I walked the earth to become your godmother. I hope it was worth it."
                 jump mushroomPrison
@@ -1786,34 +1819,34 @@ label mushroomFinale:
                 jump mushroomPrison
             "If you enquired as to what the mushroom meant by \"All of yourself\", turn to page 162." if mushroomImprisoned and not mushroomMyself:
                 m "We've talked so often. And you have forgotten so much."
-                m "You're not well."
-                m "You argue with yourself. Fight yourself. Kill yourself. All the time."
+                m2 "You're not well."
+                m3 "You argue with yourself. Fight yourself. Kill yourself. All the time."
                 #m "You make things and then you charge yourself money to use them."
-                m "You make food and then give it to us to rot, while you lie starving."
-                m "You build houses and then leave them empty, while you die of cold on the streets."
-                m "We've had this conversation many times. I know you don't remember."
+                m4 "You make food and then give it to us to rot, while you lie starving."
+                m2 "You build houses and then leave them empty, while you die of cold on the streets."
+                m3 "We've had this conversation many times. I know you don't remember."
                 $mushroomMyself = True
                 jump mushroomPrison
             "If you tried to explain that each human being has their own separate sentience and experience of the world, turn to page 154." if mushroomMyself and not mushroomPerson:
                 pov "I think you're confused. Me and the thief and all those other people... they're separate. We aren't the same person."
                 m "I don't see it that way."
-                m "When you look at mushrooms on the surface, it may look like each one is a separate being."
-                m "But when you look underneath, you can see it. It's all one beast. Impossibly large. Under the earth."
+                m2 "When you look at mushrooms on the surface, it may look like each one is a separate being."
+                m3 "But when you look underneath, you can see it. It's all one beast. Impossibly large. Under the earth."
                 m "You're the same. You've just forgotten."
-                m "You can't see the shape of the great Human Being under the dirt."
+                m4 "You can't see the shape of the great Human Being under the dirt."
                 $mushroomPerson = True
                 jump mushroomPrison
             "If you asked for food, turn to page 149." if not mushroomFood:
-                m "Of course. One moment."
+                m3 "Of course. One moment."
                 "The mushrooms took one of their number out of the room. There was a chopping sound from outside. In moments, they returned with a rich mushroom stew."
                 #Mushroom missing chunks out of itself image maybe.
-                m "Here."
+                m2 "Here."
                 $mushroomFood = True
                 jump mushroomPrison
             "If you politely requested to be allowed out of the room, turn to page 147.":
-                m "Do you promise not to hurt any of your selves?"
+                m3 "Do you promise not to hurt any of your selves?"
                 pov "Um... yes, I do."
-                m "Alright, then. I will come with you."
+                m2 "Alright, then. I will come with you."
                 m "You can go anywhere in the kingdom. But if I ever feel that you're a danger to yourself, I'll have to take you back here."
                 jump mushroomKingdom
 
@@ -1840,26 +1873,26 @@ label mushroomFinale:
                     "As soon as you entered the palace a train of toadstools appeared, all in ceremonial garb. With silent steps, they surrounded you, bearing delicacies of mushroom risotto and crisp goose roasted in truffle butter and dark red wine and platters of mushroom bourguignon with roast potatoes, and set this wondrous feast before you. "
                     m "You HAVE to try the truffle aioli, that's my absolute favourite."
                     pov "You... eat mushrooms?"
-                    m "Of course. And one day they will eat me."
+                    m2 "Of course. And one day they will eat me."
                     "Never in your whole life had you sat down to such a marvelous feast, and you gorged yourself for days on end until they had to roll you out of the palace."
                     $mushroomFeast = True
                     jump mushroomExplore
                 "If you explored the root embassy, turn to page 139." if not mushroomEmbassy:
                     "The mushroom took you down to show you the great roots of the whole forest above you. Delicate fungal networks wove through every root, carrying vital letters and trade agreements and treaties to every plant in the woods."
                     "You spent days amoung them, learning their intricate customs. You realised that the forest you knew was an intricate web of delicate alliances between opposing factions that hated each other with bitter envy."
-                    m "Exhausting, isn't it? But it must be done."
-                    m "If we didn't do this, the whole forest would probably fall into all-out war. And then we'd never get The Work done."
+                    m3 "Exhausting, isn't it? But it must be done."
+                    m2 "If we didn't do this, the whole forest would probably fall into all-out war. And then we'd never get The Work done."
                     $mushroomEmbassy = True
                     jump mushroomExplore
                 "If you explored the lands in the shadow of the vast, pale mountain, turn to page 146." if not mushroomPale:
                     "The mushroom took you closer to the shape you saw from the palace. It loomed over you, larger than life. With a start, you saw that it was breathing."
-                    m "This is the Lady. She waits here, while we do The Work."
+                    m2 "This is the Lady. She waits here, while we do The Work."
                     pov "The Work?"
                     #m "Uh-huh." #We are the fingers of Lady Death. Our job is to push up through the surface and drag everything up there down to Her kingdom."
-                    m "We take all things down here, one by one. It's slow work. But already, those down here outnumber the ones above. We are more than halfway done."
-                    m "Someday, everyone and everything will be down here."
+                    m4 "We take all things down here, one by one. It's slow work. But already, those down here outnumber the ones above. We are more than halfway done."
+                    m3 "Someday, everyone and everything will be down here."
                     m "On that day, the Lady will draw her fingers down through the soil and back to her."
-                    m "The Work will finally be done."
+                    m3 "The Work will finally be done."
                     #m "So much to do before then. But then again, there's no need to rush. We have all the time in the world."
                     "You felt a strange peace in the shadow of the pale lady, and you stayed there with the mushroom for many days, looking out at the splendour of the world."
                     $mushroomPale = True
@@ -1878,8 +1911,12 @@ label mushroomFinale:
                     menu:
                         m "Do you have to go? Why not stay with me here?"
                         "If you changed your mind and decided to stay here underground, turn to page 127.":
-                            "For a long time, you thought over the Mushroom's proposal. Finally, you agreed. You and the mushroom stayed together for many long and happy years, roaming the ancient underground gardens of that fungal kingdom."
+                            "For a long time, you thought over the Mushroom's proposal. Finally, you agreed."
+                            show hand onlayer transient:
+                                yalign 0.72#0.743
+                                xalign 0.5
                             menu:
+                                "You and the mushroom stayed together for many long and happy years, roaming the ancient underground gardens of that fungal kingdom."
                                 "If you remained good friends with the mushroom, turn to page 155.":
                                     "You and the mushroom stayed the greatest of friends, talking all through the small hours together. After a long time, your mother and siblings came down to join you there, one by one."
                                 "If you married the mushroom, turn to page 156.":
@@ -1894,9 +1931,9 @@ label mushroomFinale:
                             jump end
                         "If you held fast to your desire to return to the world above, turn to page 164.":
                             pov "Don't think that I want to leave you. It's just that I must see my old parents and my old country."
-                            m "I see. Then we won't stand in your way. Take this to remember us by."
+                            m3 "I see. Then we won't stand in your way. Take this to remember us by."
                             "She handed you a black box tied with a tassel of red silk."
-                            m "This is the box of the jeweled hand, and it holds something very precious. Do not open it, no matter what happens."
+                            m4 "This is the box of the jeweled hand, and it holds something very precious. Do not open it, no matter what happens."
                             "And so you promised that you would never open the box, and the mushrooms took hold of you and bore you back up to the surface."
     "You blinked in the harsh light of the sun above, and found that your eyes had become almost blind in the darkness below. Your skin was pale and shrunken."
     "As you looked around, a strange anxiety gripped you. The ancient old strangler fig was gone. You couldn't see the blue door to the mushroom's domain."
@@ -2323,7 +2360,7 @@ label thiefFinale:
             "If you tried fighting off the mushrooms, turn to page 189." if not mushroomFight:
                 $mushroomFight = True
                 "You grabbed a nearby candlesnuff fungus and parried a thrust from the closest mushroom. But there were too many, and they began to push you and the thief towards the edge of the ragged hole in the floor."
-                m "And here I thought we were friends.  {vspace=30}                                             {w=0.4} thought we were friends.   {vspace=30}                                             {w=0.8}were friends.  "
+                m2 "And here I thought we were friends.  {vspace=30}                                             {w=0.4} thought we were friends.   {vspace=30}                                             {w=0.8}were friends.  "
                 jump thiefMushroomBattle
             "If you took the opportunity to steal some spare gems, turn to page 177." if not mushroomGems:
                 $mushroomGems = True
@@ -2333,7 +2370,7 @@ label thiefFinale:
             "If you ran for your life, turn to page 180" if not mushroomRun:
                 $mushroomRun = True
                 "You tried to run. But you were completely surrounded."
-                m "No-one escapes the Lady's embrace.  {vspace=30}                                             {w=0.4} Lady's embrace.   {vspace=30}                                             {w=0.8}No-one.  "
+                m3 "No-one escapes the Lady's embrace.  {vspace=30}                                             {w=0.4} Lady's embrace.   {vspace=30}                                             {w=0.8}No-one.  "
                 jump thiefMushroomBattle
             "If you lost all hope, turn to page 187.":
                 pov "There's too many of them!"
@@ -2354,7 +2391,7 @@ label thiefFinale:
                 "Some had the heads of bats, some had the paws of cats, six heads, three heads, five arms, ten tails, and they bristled with tails and wings and fur and scales."
                 "One crawled like a snail, one prowled like a wombat, one looked like seven doves tied together with string. All of them had a chaos of forms the likes of which you had never seen."
                 "A dozen hands clapped you on the back and drew you into the train carriage."
-                "Cheering goblin" "Have a drink with us! Any friend of the thief's is a friend of ours."
+                goblin1 "Have a drink with us! Any friend of the thief's is a friend of ours."
 
                 label goblinTrain:
                     show hand onlayer transient:
@@ -2376,26 +2413,26 @@ label thiefFinale:
                         "If you accepted a goblin beverage, turn to page 196." if not goblinDrink:
                             "The goblins poured you dozens of goblin brews, bubbling ales and steaming warm ciders, goblin wines that oozed with red fog and goblin brandies that froze and melted and froze again as you drank them."
                             "Foolishly, you drank deeply of the brews. From that day on, no other drink would ever be able to quench your thirst."
-                            "Goblin Bartender" "On the house! Just for tonight."
+                            goblin2 "On the house! Just for tonight."
                             $goblinDrink = True
                             jump goblinTrain
                         "If you went to find the Master Thief, turn to page 197.":
                             "You walked through the cramped corridors of the train and found yourself in a giant feast hall where they were celebrating the Master Thief at the head of the table."
-                            "Goblin with nine cat tails for arms" "Show us the loot!"
-                            "Goblin with four heads" "Yeah, what'd you get?"
+                            goblin3 "Show us the loot!"
+                            goblin1 "Yeah, what'd you get?"
                             "The thief nervously reached into their pockets and turned them out."
                             "All the precious gold and gemstones had turned into nothing but mud, sticks, rocks and lichen."
                             "A tumble of mould and webcaps and orange peel fungus dropped onto the table."
                             "The goblins stared in silence."
                             "Then erupted into wild cheers."
-                            "Bat-like Goblin" "These are some of the shiniest rocks I ever saw!"
-                            "Rat-like Goblin" "Now, look at that. That's a nice stick if ever I saw one, and I've seen quite some sticks in my time. That one's going in the nest for sure."
-                            "Fat Cat-like Goblin" "'Ow'd you get such good mould? This is the best mould haul I've seen since the great fungus caper of '48!"
-                            "The crowd quieted down as a grizzled old goblin with the head of a fish and the long swinging arms of a monkey called for a toast."
-                            "Grizzled old goblin" "Ahem! Hem Hem Hem!"
-                            "Grizzled old goblin" "I declare your apprentiship complete!"
-                            "Grizzled old goblin" "And so, with all the power invested in me, I hereby dub thee..."
-                            "Grizzled old goblin" "{b}The Junior Thief!{/b}"
+                            goblin1 "These are some of the shiniest rocks I ever saw!"
+                            goblin2 "Now, look at that. That's a nice stick if ever I saw one, and I've seen quite some sticks in my time. That one's going in the nest for sure."
+                            goblin1 "'Ow'd you get such good mould? This is the best mould haul I've seen since the great fungus caper of '48!"
+                            "The crowd quieted down as a grizzled old goblin called for a toast."
+                            goblin4 "Ahem! Hem Hem Hem!"
+                            goblin4 "I declare your apprentiship complete!"
+                            goblin4 "And so, with all the power invested in me, I hereby dub thee..."
+                            goblin4 "{b}The Junior Thief!{/b}"
                             "He held up the thief's hand and all the goblins cheered and danced and sang and rolled around in celebration."
                             "The thief smiled awkwardly. But for some reason, they didn't seem to share in the good mood. The smile quickly slid off their face, and they made an excuse to leave the party."
                             label goblinTrain2:
@@ -2443,8 +2480,8 @@ label thiefFinale:
                                                 "If you asked them about the ceremony, turn to page 169." if not thiefJunior:
                                                     $thiefJunior = True
                                                     pov "So... Junior? I thought you were the Master Thief."
-                                                    "Passing goblin with the head of a trout" "{i}Master{/i}? Oh Lord, that's a good one! Our young thief's been telling you some real porkies if you've picked that up!"
-                                                    "Passing goblin with the head of a trout" "They need to complete the seven year advanced traineeship to even become an Artisan Thief. Then they MIGHT be able to apply for their masters, if the queen thinks they're good enough!"
+                                                    goblin1 "{i}Master{/i}? Oh Lord, that's a good one! Our young thief's been telling you some real porkies if you've picked that up!"
+                                                    goblin1 "They need to complete the seven year advanced traineeship to even become an Artisan Thief. Then they MIGHT be able to apply for their masters, if the queen thinks they're good enough!"
                                                     "The goblin wiped tears of laughter from their eyes and headed back into the train, pulling a sack of coal behind them."
                                                     t "Um. Sorry about the deception."
                                                     t "My skill is nothing compared to the goblins. They can steal the thoughts from your head, quick as a wink."
@@ -2482,8 +2519,8 @@ label thiefFinale:
 label thiefStory:
     #TK: Needs more interactivity.
     if thiefShort:
-        t "Long ago, the Lord came to visit my parents. I heard my father gesture to me, and talk to The Lord of me thus:"
-        "Father" "Inside all good people there dwells a golden soul, given by you, oh Lord. But as soon as you look, anyone can see this one has nothing but a hollow nest of spiders and rats inside. What trade can I teach such a one as this?"
+        t "Long ago, the Lord came to visit my parents. I heard my mother gesture to me, and talk to The Lord of me thus:"
+        thiefmum "Inside all good people there dwells a golden soul, given by you, oh Lord. But as soon as you look, anyone can see this one has nothing but a hollow nest of spiders and rats inside. What trade can I teach such a one as this?"
         #TK: Some kind of text effect for g-d's speech
         t "The Lord thought on this, and said {b}\"Bring all your children before me.\"{/b} To the first child He said:"
         miw "{b}You shall become a powerful King.{/b}"
@@ -2495,9 +2532,9 @@ label thiefStory:
         miw "{b}And you shall be a Thief.{/b}"
         t "My parents took me to the goblins to learn the art of Thievery as the Lord instructed."
         t "One of the Goblin Queens sat and talked with me for a long time. Then they went to my parents and said:"
-        "Goblin Queen" "Your child will be taught well. We will keep them as an apprentice for one year."
-        "Goblin Queen" "Come back then, and if you can still recognize them, I won't take any money for my services and you can take them away."
-        "Goblin Queen" "But if you cannot recognise them, you must give me three hundred talers, and they must be allowed to go free and do as they will."
+        goblinQueen "Your child will be taught well. We will keep them as an apprentice for one year."
+        goblinQueen "Come back then, and if you can still recognize them, I won't take any money for my services and you can take them away."
+        goblinQueen "But if you cannot recognise them, you must give me three hundred talers, and they must be allowed to go free and do as they will."
         jump thiefStoryEnd
     else:
         t "My mother gave birth to 8 children - some beautiful, and some ugly."
@@ -2506,9 +2543,8 @@ label thiefStory:
         t "One was hidden under the straw, one under a wine barrel, one under the leather we used to cut our shoes, one under the cloth from which she made our clothes. And finally, I was placed in the coal chute."
         t "And so the Lord visited the house, and ended up staying there for many years."
         t "I saw Him often from the crack in the door to the coal chute. I cried to see His glory, and my tears carved trails of pale gold down my cheeks."
-        t "One day I heard my father talk of me to the Lord, saying \"What are we to do with this one?\""
-        "Father" "Inside all good people there dwells a golden soul, given by you, oh Lord. But as soon as you look, anyone can see this one has nothing but a hollow nest of spiders and rats inside. What trade can I teach such a one as this?"
-        #TK: Some kind of text effect for g-d's speech
+        t "One day I heard my mother talk of me to the Lord, saying \"What are we to do with this one?\""
+        thiefmum "Inside all good people there dwells a golden soul, given by you, oh Lord. But as soon as you look, anyone can see this one has nothing but a hollow nest of spiders and rats inside. What trade can I teach such a one as this?"
         t "The Lord thought on this, and said {b}\"Bring all your children before me.\"{/b} To the first child He said:"
         miw "{b}You shall become a powerful King.{/b}"
         t "Then to the second, and third, and so on down the line:"
@@ -2519,9 +2555,9 @@ label thiefStory:
         miw "{b}And you shall be a Thief.{/b}"
         t "My parents took me to the goblins to learn the art of Thievery as the Lord instructed."
         t "One of the Goblin Queens sat and talked with me for a long time. Then they went to my parents and said:"
-        "Goblin Queen" "Your child will be taught well. We will keep them as an apprentice for one year."
-        "Goblin Queen" "Come back then, and if you can still recognize them, I won't take any money for my services and you can take them away."
-        "Goblin Queen" "But if you cannot recognise them, you must give me three hundred talers, and they must be allowed to go free and do as they will."
+        goblinQueen "Your child will be taught well. We will keep them as an apprentice for one year."
+        goblinQueen "Come back then, and if you can still recognize them, I won't take any money for my services and you can take them away."
+        goblinQueen "But if you cannot recognise them, you must give me three hundred talers, and they must be allowed to go free and do as they will."
         jump thiefStoryEnd
     label thiefStoryEnd:
         t "My parents agreed, and went home. And now, that year has passed."
@@ -2554,9 +2590,9 @@ label thiefStory:
             "The clouds parted and an unnatural sun shone through them,  bright as a searchlight in the dark of night."
             "You felt the hot rays of the Lord's gaze upon you, sweeping the line of people. Your skin blistered with sunburn as it struck you."
             miw "{b}Where is my godchild?{/b}"
-            "Mother" "Yes. And where is my child?"
+            thiefmum "Yes. And where is my child?"
             "You felt the thief shake beside you."
-            "Grizzled old goblin" "If you want 'em, you'll have to pick them out of the lineup!"
+            goblin4 "If you want 'em, you'll have to pick them out of the lineup!"
             "The Lord's gaze moved down the branch, hovering over the thief in their form as a blackbird."
             "Their breath grew short, and they looked straight ahead, trying not to seem as though anything was wrong."
             if pig:
@@ -2577,7 +2613,7 @@ label thiefStory:
             if pig:
                 "The pig shook under your arm."
             "After a long time, she moved on down the line. She stepped away and conferred with her husband. Finally, she spoke."
-            "Mother" "This one is our child."
+            thiefmum "This one is our child."
             "She pointed to a cinnamon cockatiel on the very left of the line."
             "With a great shout, they burst into smoke, and revealed themselves to be goblins."
             "The whole line erupted into goblin smoke, and the two of you were revealed. In a flash, the goblins turned both the parents into pigs. The Lord cursed in disgust and vanished back behind the clouds, and the whole train leapt up in great celebration."
@@ -2843,29 +2879,29 @@ label toad1:
     "As you went down the road, the forest began to get darker and darker."
     "The trees closed in like a wall around you, and the moon and stars fled in fear."
     f "Nothing to fear, my friend! My boys will get us through this dark road, quick smart!"
-    "He waved the magpie, the rat, the bat and the old black cockatoo onwards. But instead of going faster, they slowed down and came to a stop."
+    "He waved the crow-shrike, the rat, the bat and the old black cockatoo onwards. But instead of going faster, they slowed down and came to a stop."
     f "What? Why are you stopping?"
-    "The Magpie" "Well... now seems as good a time as any."
-    "The Rat" "We've been meaning to have a bit of a chat with you, mate."
-    "The Bat" "About the payment situation."
+    crowshrike "Well... now seems as good a time as any."
+    rat "We've been meaning to have a bit of a chat with you, mate."
+    bat "About the payment situation."
     "The toad coughed nervously."
     f "I-I assure you fellows, the check is in the mail..."
-    "The Old Black Cockatoo" "Not good enough. Get him, boys!"
+    cockatoo "Not good enough. Get him, boys!"
     "And with that they fell on the toad and took him for all he was worth and dumped him on the side of the road."
     "Then they turned to you and respectfully escorted you from the carriage."
     show hand onlayer transient:
         yalign 0.7#0.743
         xalign 0.5
     menu:
-        "The Magpie" "Sorry about all that. You seem nice enough. Good luck with it."
+        crowshrike "Sorry about all that. You seem nice enough. Good luck with it."
         "If you asked for a lift, turn to page 231.":
-            "The Rat" "Yeah, nah."
-            "The Old Black Cockatoo" "I can't let the boys risk their necks with the Wild Witch of the Woods."
+            rat "Yeah, nah."
+            cockatoo "I can't let the boys risk their necks with the Wild Witch of the Woods."
             "They all shivered."
-            "The Magpie" "If you live through it, come get a drink with us sometime."
+            crowshrike "If you live through it, come get a drink with us sometime."
         "If you ask where they're headed, turn to page 232.":
-            "The Bat" "Back to the feast, I reckon."
-            "The Bat" "There's some mangos in the gutter with my name on them."
+            bat "Back to the feast, I reckon."
+            bat "There's some mangos in the gutter with my name on them."
     "They jumped in the old rotten squash and rode it away back to the village, leaving you both on the side of the road."
     f "...Uh..."
     f "A-another successful adventure! Good thing I was able to fight off those ruffians!"
@@ -3583,7 +3619,7 @@ label toadFinale:
     f "Watch out!"
     "A greedy magpie dove for you as you squirmed helplessly."
     "The Toad transformed into a gecko and grabbed you, dropping his tail."
-    "The Magpie grabbed the tail and flew off, before turning into a wallaby and falling back in the river."
+    "The magpie grabbed the tail and flew off, before turning into a wallaby and falling back in the river."
     f "Hold on! I know where to go!"
     "You felt yourself transform into a squirming tadpole. The toad changed into a sea bass and held you in his mouth, swimming for a point on the shore."
     "Just as his fins began to give out, you turned into a cat, and grabbed him and pulled you both up out of the water."
@@ -3629,16 +3665,16 @@ label toadFinale:
                 "Out from the light strode the most beautiful frog you'd ever seen."
                 "His skin was glimmering green like the wings of summer beetles, his muscles rippled with strength, his eyes threw out glances of fire, and he was dressed in a gorgeous midnight-blue suit."
                 "On each finger gleamed a golden ring inlaid with precious jadestone and chrysoprase and emeralds, and his finely-coiffed hair waved in the breeze with such beauty that none had ever seen the like, not even in a dream."
-                "Mysterious But Handsome Frog" "Are you quite alright?"
+                mysFrog "Are you quite alright?"
                 pov "Who are you?"
                 "The toad sighed."
                 f "This..."
                 #TK: Change to ???
                 f "...is Brildebrogue Chippingham."
-                "Brildebrogue Chippingham" "The very same!"
+                bc "The very same!"
                 "The frog beamed and helped you to your feet as you transformed into a garden rake."
-                "Brildebrogue Chippingham" "Say, that voice is awfully familiar..."
-                "Brildebrogue Chippingham" "Is that you, Blort?"
+                bc "Say, that voice is awfully familiar..."
+                bc "Is that you, Blort?"
                 #TK: Change to blort Bronkum
                 f "Yeah. Yeah, that's my real name."
                 f "I am Blort Bronkum, and I have never succeeded at anything in my life."
