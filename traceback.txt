@@ -1,31 +1,27 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'night.png'>:
-  File "game/script.rpy", line 486, in script
+While loading <'Image' u'Backgrounds/manorint.png'>:
+  File "game/script.rpy", line 432, in script
     "This maybe happened, or maybe did not."
-  File "renpy/common/000window.rpy", line 114, in _window_auto_callback
-    _window_show(auto=True)
-  File "renpy/common/000window.rpy", line 69, in _window_show
-    renpy.with_statement(trans)
-IOError: Couldn't find file 'night.png'.
+IOError: Couldn't find file 'Backgrounds/manorint.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 486, in script
+  File "game/script.rpy", line 432, in script
     "This maybe happened, or maybe did not."
-  File "renpy/ast.py", line 685, in execute
-    statement_name("say")
-  File "renpy/ast.py", line 46, in statement_name
-    i(name)
-  File "renpy/common/000window.rpy", line 114, in _window_auto_callback
-    _window_show(auto=True)
-  File "renpy/common/000window.rpy", line 69, in _window_show
-    renpy.with_statement(trans)
-  File "renpy/exports.py", line 1646, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "renpy/display/core.py", line 2610, in do_with
-    clear=clear)
+  File "renpy/ast.py", line 715, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "renpy/exports.py", line 1393, in say
+    who(what, *args, **kwargs)
+  File "renpy/character.py", line 1205, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "renpy/character.py", line 871, in do_display
+    **display_args)
+  File "renpy/character.py", line 621, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "renpy/display/core.py", line 3101, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
   File "renpy/display/core.py", line 3611, in interact_core
@@ -36,10 +32,6 @@ Full traceback:
   File "render.pyx", line 263, in renpy.display.render.render
   File "renpy/display/layout.py", line 777, in render
     surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/transition.py", line 367, in render
-    bottom = render(self.old_widget, width, height, st, at)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 263, in renpy.display.render.render
   File "renpy/display/layout.py", line 777, in render
@@ -70,9 +62,9 @@ Full traceback:
     surf = image.load()
   File "renpy/display/im.py", line 688, in load
     raise e
-IOError: Couldn't find file 'night.png'.
+IOError: Couldn't find file 'Backgrounds/manorint.png'.
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Witch, the Thief, the Toad & the Mushroom 1.0
-Thu Oct  7 20:46:38 2021
+Fri Oct  8 13:03:24 2021

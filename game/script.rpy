@@ -257,6 +257,19 @@ image firelight animated:
 image trees= "Backgrounds/trees.png"
 image nightbg= "Backgrounds/night.png"
 image cottagebg= "Backgrounds/cottage.png"
+image forestbg= "Backgrounds/forest.png"
+image darkforestbg= "Backgrounds/darkForest.png"
+image sunbg= "Backgrounds/sun.png"
+image winterbg= "Backgrounds/winter.png"
+image darkForestbg= "Backgrounds/darkForest.png"
+image darkForest2bg= "Backgrounds/darkForest2.png"
+
+image manorintbg= "Backgrounds/manor-int.png"
+image hellbg= "Backgrounds/hell.png"
+
+image townfeastbg= "Backgrounds/town-feast.png"
+image townoutbg= "Backgrounds/town-out.png"
+image treecanopybg= "Backgrounds/tree-canopy.png"
 
 ##====Names
 image witchName= "Names/witch.png"
@@ -420,72 +433,26 @@ label splashscreen2:
     return
 
 label start:
-
-    #------------------------- Declaring variables used by the game.
     show firelight animated onlayer over_screens
-    # Contents page (allows the player to choose name and pronouns)
-    #Note: Show = show screen, call = pause everything else for the screen
-    # init python:
-    #     style.input.font = "fonts/ShoppingScript.ttf"
-    #     style.input.size = 30
-    #     style.input.color = "#160503"
-
-    #function for choosing the player's name
-
-    # python:
-    #     povname = renpy.input("", length=32)
-    #     povname = povname.strip()
-    #
-    #     if not povname:
-    #          povname = "Charlie"
-
-    # Act 1, Chapter I: The 3 Godfathers
-    # scene bg page
-    # show trees at artPos
-    #play music "/audio/cottagegore.mp3"
-    # "This maybe happened, or maybe did not."
-    # "The time is long past, and much is forgot."
-    #
-    # menu:
-    #     "Pronouns:"
-    #     "He / Him":
-    #         #"Good."
-    #         $he = "he"
-    #         $He = "He"
-    #         $his = "his"
-    #         $His = "His"
-    #         $him = "him"
-    #         $Him = "Him"
-    #         $Hes = "He's"
-    #         $hes = "he's"
-    #     "She / Her":
-    #         #"Good."
-    #         $he = "she"
-    #         $He = "She"
-    #         $his = "her"
-    #         $His = "Her"
-    #         $him = "her"
-    #         $Him = "Her"
-    #         $Hes = "She's"
-    #         $hes = "she's"
-    #     "They / Them":
-    #         #"Good."
-    #         $he = "they"
-    #         $He = "They"
-    #         $his = "their"
-    #         $His = "Their"
-    #         $him = "them"
-    #         $Him = "Them"
-    #         $Hes = "They are"
-    #         $hes = "they are"
     label chapter1:
 
         #show firelight animated zorder 99
         scene bg page
-        show nightbg at artPos
+        show hellbg at artPos
         #play music "/audio/cottagegore.mp3"
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
+
+        ###=====================Testing Backgrounds
+        miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
+        mir "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
+        mum "Alright. Make sure you're there for the christening on sunday."
+        m "Ask not of what concerns you not, lest you hear what pleases you not."
+        mys "Ho, young traveller."
+        t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
+        eg "Where are you headed, fellow traveler?"
+        f "Prickle! Crawl! Shudder and Wink! Be off at once. We have a festival to get to!"
+
 
         #TK: Have a picture of the 12 kids. Kids disappear as you replay the game.
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
