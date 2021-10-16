@@ -1,70 +1,42 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'Backgrounds/manorint.png'>:
-  File "game/script.rpy", line 432, in script
-    "This maybe happened, or maybe did not."
-IOError: Couldn't find file 'Backgrounds/manorint.png'.
+While running game code:
+  File "renpy/common/00start.rpy", line 213, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 498, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 498, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 508, in _execute_python_hide
+    renpy.load("_reload-2")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 432, in script
-    "This maybe happened, or maybe did not."
-  File "renpy/ast.py", line 715, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "renpy/exports.py", line 1393, in say
-    who(what, *args, **kwargs)
-  File "renpy/character.py", line 1205, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "renpy/character.py", line 871, in do_display
-    **display_args)
-  File "renpy/character.py", line 621, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "renpy/ui.py", line 298, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 3101, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3611, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "renpy/display/core.py", line 2441, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 492, in renpy.display.render.render_screen
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 777, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 777, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 777, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/transform.py", line 933, in render
-    return transform_render(self, width, height, st, at)
-  File "accelerator.pyx", line 116, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 339, in render
-    surf = render(self.child, width, height, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/image.py", line 501, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "renpy/display/image.py", line 307, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/im.py", line 607, in render
-    return cache.get(self, render=True)
-  File "renpy/display/im.py", line 271, in get
-    surf = image.load()
-  File "renpy/display/im.py", line 688, in load
-    raise e
-IOError: Couldn't find file 'Backgrounds/manorint.png'.
+  File "renpy/common/00start.rpy", line 213, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 498, in script
+    python hide:
+  File "renpy/ast.py", line 922, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "renpy/python.py", line 2218, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 498, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 508, in _execute_python_hide
+    renpy.load("_reload-2")
+  File "renpy/loadsave.py", line 767, in load
+    log.unfreeze(roots, label="_after_load")
+  File "renpy/python.py", line 2173, in unfreeze
+    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
+  File "renpy/python.py", line 2005, in rollback
+    self.load_failed()
+  File "renpy/python.py", line 1923, in load_failed
+    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Witch, the Thief, the Toad & the Mushroom 1.0
-Fri Oct  8 13:03:24 2021
+Sat Oct 16 20:37:58 2021

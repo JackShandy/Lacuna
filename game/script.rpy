@@ -254,7 +254,7 @@ image firelight animated:
     repeat
 
 ##====Backgrounds
-image trees= "Backgrounds/trees.png"
+image treesbg= "Backgrounds/trees.png"
 image nightbg= "Backgrounds/night.png"
 image cottagebg= "Backgrounds/cottage.png"
 image forestbg= "Backgrounds/forest.png"
@@ -438,7 +438,7 @@ label start:
 
         #show firelight animated zorder 99
         scene bg page
-        show hellbg at artPos
+        show treesbg at artPos
         #play music "/audio/cottagegore.mp3"
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
@@ -4021,7 +4021,7 @@ label toadFinale:
     #Stuff for the devil, god, death
 
 label end:
-    "The End."
+    "THE END."
 
 
 

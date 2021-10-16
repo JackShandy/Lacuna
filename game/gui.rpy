@@ -91,7 +91,7 @@ define gui.title_text_size = 24
 ## The images used for the main and game menus.
 define gui.main_menu_background = "gui/main_menu.png"
 define gui.game_menu_background = "gui/game_menu.png"
-
+define gui.about_background = "gui/about.png"
 
 ## Dialogue ####################################################################
 ##
@@ -252,6 +252,9 @@ define gui.file_slot_rows = 2
 ## The position of the left side of the navigation buttons, relative to the left
 ## side of the screen.
 define gui.navigation_xpos = 19
+
+## The position of the Return button
+define gui.return_xpos = 50
 
 ## The vertical position of the skip indicator.
 define gui.skip_ypos = 5

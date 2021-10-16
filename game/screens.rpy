@@ -256,11 +256,14 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
+            #textbutton _("Menu") action MainMenu()
             textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
+            #Removing history for now
+            #textbutton _("History") action ShowMenu('history')
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
+            textbutton _("Load") action ShowMenu('load')
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
             textbutton _("Prefs") action ShowMenu('preferences')
@@ -309,45 +312,76 @@ screen navigation():
             #Image button for the start menu
             imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
 
+            imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
+
+            imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
+
+            if _in_replay:
+
+                textbutton _("End Replay") action EndReplay(confirm=True)
+
+            elif not main_menu:
+
+                textbutton _("Main Menu") action MainMenu()
+
+            #textbutton _("About") action ShowMenu("about")
+
+            imagebutton auto "gui/mm_about_%s.png" xpos 25 ypos 421 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
+
+            if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+
+                ## Help isn't necessary or relevant to mobile devices.
+                #textbutton _("Help") action ShowMenu("help")
+                imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
+
+            if renpy.variant("pc"):
+
+                ## The quit button is banned on iOS and unnecessary on Android and
+                ## Web.
+                #textbutton _("Quit") action Quit(confirm=not main_menu)
+                imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
+
         else:
 
-            textbutton _("History") action ShowMenu("history")
+            add "gui/bookmark.png"
+            #Main Menu
+            imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), MainMenu() hovered [ Play("sound", "audio/pencil.wav") ]
 
-            textbutton _("Save") action ShowMenu("save")
+            #Save
+            imagebutton auto "gui/mm_save_%s.png" xpos 22 ypos 283 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("save") hovered [ Play("sound", "audio/pencil.wav") ]
+
+            #Load
+            imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
+
+            #Preferences
+            imagebutton auto "gui/mm_pref2_%s.png" xpos 24 ypos 356 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
+
+            #About
+            imagebutton auto "gui/mm_about2_%s.png" xpos 22 ypos 389 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
+
+            #Help
+            imagebutton auto "gui/mm_help2_%s.png" xpos 23 ypos 430 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
+
+            #TK: Look at the game on smartphones, figure it out
+            if renpy.variant("pc"):
+
+                #Quit
+                imagebutton auto "gui/mm_quit2_%s.png" xpos 24 ypos 466 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
+
+            #TK: Remove commented out sections
+
+
+            #textbutton _("History") action ShowMenu("history")
+
+            #textbutton _("Save") action ShowMenu("save")
+
+
+
+
+
 
         #textbutton _("Load") action ShowMenu("load")
         #textbutton _("Preferences") action ShowMenu("preferences")
-
-        imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
-
-        imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
-
-        if _in_replay:
-
-            textbutton _("End Replay") action EndReplay(confirm=True)
-
-        elif not main_menu:
-
-            textbutton _("Main Menu") action MainMenu()
-
-        #textbutton _("About") action ShowMenu("about")
-
-        imagebutton auto "gui/mm_about_%s.png" xpos 25 ypos 421 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
-
-
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Help isn't necessary or relevant to mobile devices.
-            #textbutton _("Help") action ShowMenu("help")
-            imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
-
-
-        if renpy.variant("pc"):
-
-            ## The quit button is banned on iOS and unnecessary on Android and
-            ## Web.
-            #textbutton _("Quit") action Quit(confirm=not main_menu)
-            imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
 
 
 style navigation_button is gui_button
@@ -546,9 +580,9 @@ style game_menu_label_text:
     yalign 0.5
 
 style return_button:
-    xpos gui.navigation_xpos
+    xpos gui.return_xpos
     yalign 1.0
-    yoffset -14
+    yoffset -38  #-14
 
 
 ## About screen ################################################################
@@ -562,6 +596,12 @@ screen about():
 
     tag menu
 
+    add "/gui/about.png"
+
+    #add gui.about_background
+    #add "gui/about.png"
+    #background "gui/about.png"
+
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
     ## screen.
@@ -569,16 +609,15 @@ screen about():
 
         style_prefix "about"
 
-        vbox:
-
-            label "[config.name!t]"
-            text _("Version [config.version!t]\n")
-
+        vbox ypos 373:
+            #label "[config.name!t]"
+            #text _("Version [config.version!t]\n")
+            #yalign 0.5
             ## gui.about is usually set in options.rpy.
             if gui.about:
-                text "[gui.about!t]\n"
+                text "{alpha=0.9}{size=-4}[gui.about!t]\n{/size}{/alpha}" #
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("{alpha=0.9}{size=-4}Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]{/size}{/alpha}")
 
 
 style about_label is gui_label
@@ -775,7 +814,7 @@ screen preferences():
 
     use game_menu(_("Preferences"), scroll="viewport"):
 
-        vbox:
+        vbox xpos 30 ypos 20:
 
             hbox:
                 box_wrap True
