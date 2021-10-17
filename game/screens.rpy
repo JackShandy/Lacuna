@@ -233,7 +233,6 @@ style choice_vbox:
 style choice_button is default:
     properties gui.button_properties("choice_button")
 
-#TD: Figure out how to make the style be in italics
 style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
 
@@ -438,7 +437,7 @@ style main_menu_frame:
     xsize 132
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    #background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -470,10 +469,11 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
     style_prefix "game_menu"
 
-    if main_menu:
-        add gui.main_menu_background
-    else:
-        add gui.game_menu_background
+    #TK: This is going wrong somehow.
+    #if main_menu:
+        #add gui.main_menu_background
+    #else:
+        #add gui.game_menu_background
 
     frame:
         style "game_menu_outer_frame"
@@ -571,8 +571,9 @@ style game_menu_side:
     spacing 5
 
 style game_menu_label:
-    xpos 24
-    ysize 57
+    xpos 0#24
+    xalign -342
+    ypos 25#57
 
 style game_menu_label_text:
     size gui.title_text_size
@@ -605,7 +606,7 @@ screen about():
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
     ## screen.
-    use game_menu(_("About"), scroll="viewport"):
+    use game_menu(_(""), scroll="viewport"):
 
         style_prefix "about"
 
@@ -695,6 +696,9 @@ screen load():
 
 screen file_slots(title):
 
+    #Background image
+    add "/gui/save_menu.png"
+
     default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Automatic saves"), quick=_("Quick saves"))
 
     use game_menu(title):
@@ -708,7 +712,7 @@ screen file_slots(title):
             ## The page name, which can be edited by clicking on a button.
             button:
                 style "page_label"
-
+                #TK: Change? Maybe it shouldn't be possible to edit the page name?
                 key_events True
                 xalign 0.5
                 action page_name_value.Toggle()
@@ -719,10 +723,12 @@ screen file_slots(title):
 
             ## The grid of file slots.
             grid gui.file_slot_cols gui.file_slot_rows:
+                #style_prefix "page"
                 style_prefix "slot"
-
-                xalign 0.5
-                yalign 0.5
+                xalign 0#0.5
+                xpos 40
+                yalign 0 #0.5
+                ypos 218
 
                 spacing gui.slot_spacing
 
@@ -731,17 +737,27 @@ screen file_slots(title):
                     $ slot = i + 1
 
                     button:
-                        action FileAction(slot)
+
+                        action [FileAction(slot), Play("sound", "audio/pencil-2.wav")]
 
                         has vbox
 
-                        add FileScreenshot(slot) xalign 0.5
+                        #add FileScreenshot(slot) xalign 0.5
 
-                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")):
+                        text FileTime(slot, format=_("[persistent.povname]"), empty=_("")): #%A,
+                        #text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("")):
                             style "slot_time_text"
+                            font "fonts/Autography.otf"#gui.choice_button_text_font
 
-                        text FileSaveName(slot):
-                            style "slot_name_text"
+                        text FileTime(slot, format=_("{#file_time}%b %d. %H:%M"), empty=_("")): #%A,
+                        #text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("")):
+                            style "slot_time_text"
+                            xpos 237
+                            ypos -12
+                            font "fonts/Autography.otf"#gui.choice_button_text_font
+
+                        #text FileSaveName(slot):
+                            #style "slot_name_text"
 
                         key "save_delete" action FileDelete(slot)
 
@@ -779,6 +795,8 @@ style slot_button_text is gui_button_text
 style slot_time_text is slot_button_text
 style slot_name_text is slot_button_text
 
+
+
 style page_label:
     xpadding 24
     ypadding 2
@@ -812,9 +830,11 @@ screen preferences():
 
     tag menu
 
+    add "/images/bg page.png"
+
     use game_menu(_("Preferences"), scroll="viewport"):
 
-        vbox xpos 30 ypos 20:
+        vbox xpos 30 ypos 160: #20:
 
             hbox:
                 box_wrap True
@@ -1069,13 +1089,15 @@ screen help():
 
     tag menu
 
+    add "/images/bg page.png"
+
     default device = "keyboard"
 
     use game_menu(_("Help"), scroll="viewport"):
 
         style_prefix "help"
 
-        vbox:
+        vbox xpos 15 ypos 100: #20::
             spacing 8
 
             hbox:
@@ -1237,7 +1259,7 @@ screen confirm(message, yes_action, no_action):
 
     zorder 200
 
-    style_prefix "confirm"
+    style_prefix "choice"#"confirm"
 
     add "gui/overlay/confirm.png"
 
@@ -1246,18 +1268,24 @@ screen confirm(message, yes_action, no_action):
         vbox:
             xalign .5
             yalign .5
+            ypos 430
+            xpos 300
             spacing 15
 
             label _(message):
                 style "confirm_prompt"
+                #textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
+
+                #font "DejaVuSans.ttf"
+                #font "fonts/kawoszeh.ttf"
                 xalign 0.5
 
             hbox:
                 xalign 0.5
                 spacing 47
 
-                textbutton _("Yes") action yes_action
-                textbutton _("No") action no_action
+                textbutton _("Yes") action yes_action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
+                textbutton _("No") action no_action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
 
     ## Right-click and escape answer "no".
     key "game_menu" action no_action
@@ -1277,6 +1305,8 @@ style confirm_frame:
 
 style confirm_prompt_text:
     text_align 0.5
+
+    #font "fonts/Moms_typewriter.ttf"
     layout "subtitle"
 
 style confirm_button:

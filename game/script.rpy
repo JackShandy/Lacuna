@@ -316,6 +316,15 @@ image goblinqueenName="Names/goblinqueen.png"
 image sword="sword.png"
 image hand= "gui/hand.png"
 image dot= "gui/dot.png"
+image tornPage1="tornPage1.png"
+image tornPage1bg="tornPage1-bg.png"
+
+image tornPage2="tornPage2.png"
+image tornPage2bg="tornPage2-bg.png"
+
+image tornPage3="tornPage3.png"
+image tornPage3bg="tornPage3-bg.png"
+
 
 # ===== Characters
 define w = Character("{image=witchName}{alt}The Witch:{/alt}")
@@ -390,7 +399,7 @@ define audio.fire = "audio/fire.mp3"
 
 label splashscreen:
     scene black
-    show firelight animated onlayer over_screens
+    show firelight animated onlayer over_screens zorder 99
     show cover with dissolve
     play audio rain loop volume 0.5 fadein 1.0
     play audio fire loop volume 0.5 fadein 1.0
@@ -433,7 +442,7 @@ label splashscreen2:
     return
 
 label start:
-    show firelight animated onlayer over_screens
+    #show firelight animated onlayer over_screens
     label chapter1:
 
         #show firelight animated zorder 99
@@ -998,7 +1007,7 @@ label chapter2:
                     f "As is natural."
                     f "I find it's better to conceal my true beauty from the common-folk."
                     f "Were they to see the incandescent beauty of my true visage at first sight, I dare say they would fall to their knees and wail in shock, so transfixed would they be."
-                    f "I would never be able to get anywhere without them pawing aat me and offering me their baked goods and falling about in ecstasy, you know how these people are."
+                    f "I would never be able to get anywhere without them pawing at me and offering me their baked goods and falling about in ecstasy, you know how these people are."
                     f "But you, I believe, have sufficient grace to withstand my true beauty."
                 "If you lept from the moving carriage like a holy terror, turn to page 65." if godfather=="Red":
                     $toadStole = True
@@ -1020,21 +1029,33 @@ label chapter2:
                         pov "He will be here to take me away at midnight, and I have no wish to leave."
                         f "A sticky situation indeed!"
                         f "I have talked with the Lord many times, of course."
+                        show tornPage1 onlayer screens zorder 101
+                        show tornPage1bg onlayer screens zorder 99
                         f "Why, just the other day He said to me, He said Brildebrogue! How did I ever manage to make one as handsome and charming as you? Why, even one with my own talents (which are quite decent of course, though nothing in comparison to your own gifts) can scarcely imagine bringing such a golden figure out of the fires of creation! At this I swung back my head in a great laugh, like so: HA! And my golden mane whipped around me in the wind, and all were charmed and chortled alongside me to see my wit and good humour, and we all joined together in an uprarious shout of laughter, such that the whole world could hear it - in fact I have no doubts that you must have heard it yourself, even out here in this backwater location, so loud was the sound, although perhaps you took it for a minor earthquake."
+                        hide tornPage1 onlayer screens
+                        hide tornPage1bg onlayer screens
                         f "Perhaps I could put in a good word for you with Him later. Pond scum?"
                     if godfather == "White":
                         pov "I'm searching for a way to escape my Godfather, Old Scratch."
                         pov "He will be here to take me away at midnight, and I have no wish to leave."
                         f "A sticky situation indeed!"
                         f "I know the Black One well myself, in fact."
+                        show tornPage2 onlayer screens zorder 101
+                        show tornPage2bg onlayer screens zorder 99
                         f "Why just the other day I said to Him, I said Devil! How dare you twist the lives of these innocent souls here, tricking them into a terrible life of debauchery and ill-humour, just to suit your own devious and ill-concieved personal goals, when you could instead behave yourself and simply put things to rights like a well-mannered member of society such as myself? At my words, He shrank back with a most timiditous cowardice, and I saw Him gulp in nervous anxiety most profound, such was His fear of my great anger (which can be quite considerable when my dander is up, although of course I take care to remain in good humour for the purpose of conversing with polite gentlefolk such as yourself). In an instant, He swore never to do evil again, and scurried away over hill and dale without a backwards glance."
+                        hide tornPage2 onlayer screens
+                        hide tornPage2bg onlayer screens
                         f "Perhaps I could put in a good word for you with Him later. Pond scum?"
                     if godfather == "Black":
                         "I'm searching for a way to escape my Godmother, the Reaper."
                         pov "She told my mother she will soon send 3 messengers, and then take me away. But I have no wish to leave just yet."
                         f "A sticky situation indeed!"
                         f "Why, that reminds me of the situation when my own dear old mother was about to die."
+                        show tornPage1 onlayer screens zorder 101
+                        show tornPage1bg onlayer screens zorder 99
                         f "I've chatted with Death many times, of course, and so on this occasion I marched right on up to Her and said \"Unhand my mother, you ruffian! I cannot allow you to continue this wave of terror you have inflicted across the forest left and right, taking away women and old maids and children at will, rich and poor alike, before their time has come to pass! Release her at once, or I'll have to get extremely unpleasant with you (And you do NOT wish to see me when I'm being unpleasant, I assure you, such a thing has driven many hard men to tears!) At this stern talking-to from me, She released my mother at once with a sincere apology, and I need hardly say that She has not darkened our door again."
+                        hide tornPage1 onlayer screens
+                        hide tornPage1bg onlayer screens
                         f "Perhaps I could put in a good word for you with Her later. Pond scum?"
                 "If you remained vague about your true plans, turn to page 71.":
                     pov "Just... travelling, I suppose."
@@ -1070,8 +1091,11 @@ label chapter2:
             pov "No thank you, Sir. My mother warned me not to talk to strangers."
             eg "You would spurn me? ME? {b}Bridlebrogue Chippingham!?{/b}"
             "The curtains parted and inside you saw a great ugly cane toad squatting in muck. The graceful arm that beckoned you from behind the curtain was nothing but a wooden prop in his swollen hand. He tossed it to the ground with disgust."
-            #TK: Fix this joke
+            show tornPage3 onlayer screens zorder 101
+            show tornPage3bg onlayer screens zorder 99
             f "Why, I have half a mind to give your mother a good piece of my mind. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
+            hide tornPage3 onlayer screens
+            hide tornPage3bg onlayer screens
             "With a furious clap of his hand, he ordered the horses to ride on. The horses shrugged off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo. You realised that the brilliant carriage they pulled was nothing more than an old rotten squash."
             "They pulled it bouncing down the road, crashing and rolling and pulling apart pinecones and causing terrible devastation as they went, until they were down the road and out of sight."
             pov "Well! It's a good thing I know not to talk to strangers."
@@ -1276,7 +1300,12 @@ label banquet:
                             "He opened his mouth wide and devoured a flank of roast pork whole."
                             f "Nothing like the feasts back at Chippingham Manor, of course, you understand, nothing like them at all, but certainly adequate nonetheless, I have to say, if I do say so myself, needless to say, as the saying goes, to say nothing of this fine vintage!"
                             "He drained his wineglass in one gulp, then waved for more."
-                            f "Why, it quite reminds me of when I was staying with the Sultana of Yolkorich, a land far to the south across the seas, completely made out of delectable food, you understand! The trees were made of licorice sticks, all the pillars were fine musk candy, the streams ran fresh with sparkling champagne, and the citizens would drive over the rocky roads on peppermint carriages drawn by mouth-watering omlette stallions. Well, one day I woke up and tucked into a hearty breakfast of raisin toast, smoked salmon and fried eggs, only to discover I had devoured the Sultana herself, along with her entire retinue! I had to make a hasty retreat from that situation, I'll tell you that much."
+                            show tornPage1 onlayer screens zorder 101
+                            show tornPage1bg onlayer screens zorder 99
+                            f "Why, it quite reminds me of when I was staying with the Sultana of Yolkorich, a land far to the south across the seas, completely made out of delectable food, you understand! The trees were made of licorice sticks, all the pillars were fine musk candy, the streams ran fresh with sparkling champagne, and the citizens would drive over the rocky roads on peppermint carriages drawn by mouth-watering omlette stallions. Well, one day I woke up and tucked into a hearty breakfast of raisin toast, smoked salmon and fried eggs, only to discover I had devoured the Sultana herself, along with her entire retinue! I had to make a hasty retreat from that situation post-haste."
+                            hide tornPage1 onlayer screens
+                            hide tornPage1bg onlayer screens
+                            f "There was egg on my face, I can tell you!"
                             $toadFeast = True
                             jump toadConvo2
                         "If you asked about his plans, turn to page 90." if not toadLong:

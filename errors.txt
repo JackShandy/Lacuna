@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 817: u'Ypos' is not a keyword argument or valid child for the vbox statement.
-    vbox xpos 20 Ypos 20:
-                     ^
+File "game/screens.rpy", line 699: u'zorder' is not a keyword argument or valid child for the add statement.
+    add "/gui/save_menu.png" zorder 200
+                                   ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Oct 16 20:39:32 2021
+Sun Oct 17 17:24:05 2021
