@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 699: u'zorder' is not a keyword argument or valid child for the add statement.
-    add "/gui/save_menu.png" zorder 200
-                                   ^
+File "game/screens.rpy", line 348: u'Return' is not a keyword argument or valid child for the imagebutton statement.
+    imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), action Return() hovered [ Play("sound", "audio/pencil.wav") ]
+                                                                                                                                     ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Oct 17 17:24:05 2021
+Sun Oct 17 19:04:57 2021

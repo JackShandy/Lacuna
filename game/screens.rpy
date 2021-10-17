@@ -304,68 +304,74 @@ screen navigation():
 
         #spacing gui.navigation_spacing
 
+        # if main_menu:
+        #
+        #     #textbutton _("Start") action Start()
+        #
+        #     #Image button for the start menu
+        #     imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        #     imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        #     imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        #     if _in_replay:
+        #
+        #         textbutton _("End Replay") action EndReplay(confirm=True)
+        #
+        #     elif not main_menu:
+        #
+        #         textbutton _("Main Menu") action MainMenu()
+        #
+        #     #textbutton _("About") action ShowMenu("about")
+        #
+        #     imagebutton auto "gui/mm_about_%s.png" xpos 25 ypos 421 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        #     if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+        #
+        #         ## Help isn't necessary or relevant to mobile devices.
+        #         #textbutton _("Help") action ShowMenu("help")
+        #         imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        #     if renpy.variant("pc"):
+        #
+        #         ## The quit button is banned on iOS and unnecessary on Android and
+        #         ## Web.
+        #         #textbutton _("Quit") action Quit(confirm=not main_menu)
+        #         imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        # else:
+
+        add "gui/bookmark.png"
         if main_menu:
+            add "gui/saveCrossOff.png"
+            imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), Return() hovered [ Play("sound", "audio/pencil.wav") ]
 
-            #textbutton _("Start") action Start()
-
-            #Image button for the start menu
-            imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
-
-            imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
-
-            imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
-
-            if _in_replay:
-
-                textbutton _("End Replay") action EndReplay(confirm=True)
-
-            elif not main_menu:
-
-                textbutton _("Main Menu") action MainMenu()
-
-            #textbutton _("About") action ShowMenu("about")
-
-            imagebutton auto "gui/mm_about_%s.png" xpos 25 ypos 421 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
-
-            if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-                ## Help isn't necessary or relevant to mobile devices.
-                #textbutton _("Help") action ShowMenu("help")
-                imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
-
-            if renpy.variant("pc"):
-
-                ## The quit button is banned on iOS and unnecessary on Android and
-                ## Web.
-                #textbutton _("Quit") action Quit(confirm=not main_menu)
-                imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
 
         else:
-
-            add "gui/bookmark.png"
-            #Main Menu
             imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), MainMenu() hovered [ Play("sound", "audio/pencil.wav") ]
+        #Main Menu
 
-            #Save
-            imagebutton auto "gui/mm_save_%s.png" xpos 22 ypos 283 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("save") hovered [ Play("sound", "audio/pencil.wav") ]
+        #Save
+        imagebutton auto "gui/mm_save_%s.png" xpos 22 ypos 283 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("save") hovered [ Play("sound", "audio/pencil.wav") ]
 
-            #Load
-            imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
+        #Load
+        imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
 
-            #Preferences
-            imagebutton auto "gui/mm_pref2_%s.png" xpos 24 ypos 356 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
+        #Preferences
+        imagebutton auto "gui/mm_pref2_%s.png" xpos 24 ypos 356 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
 
-            #About
-            imagebutton auto "gui/mm_about2_%s.png" xpos 22 ypos 389 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
+        #About
+        imagebutton auto "gui/mm_about2_%s.png" xpos 22 ypos 389 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
 
-            #Help
-            imagebutton auto "gui/mm_help2_%s.png" xpos 23 ypos 430 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
+        #Help
+        imagebutton auto "gui/mm_help2_%s.png" xpos 23 ypos 430 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
 
-            #TK: Look at the game on smartphones, figure it out
-            if renpy.variant("pc"):
+        #TK: Look at the game on smartphones, figure it out
+        if renpy.variant("pc"):
 
-                #Quit
-                imagebutton auto "gui/mm_quit2_%s.png" xpos 24 ypos 466 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
+            #Quit
+            imagebutton auto "gui/mm_quit2_%s.png" xpos 24 ypos 466 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
 
             #TK: Remove commented out sections
 
@@ -413,7 +419,28 @@ screen main_menu():
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
+    #use navigation
+
+    imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
+
+    imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
+
+    imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
+
+    imagebutton auto "gui/mm_about_%s.png" xpos 25 ypos 421 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
+
+    if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+
+        ## Help isn't necessary or relevant to mobile devices.
+        #textbutton _("Help") action ShowMenu("help")
+        imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
+
+    if renpy.variant("pc"):
+
+        ## The quit button is banned on iOS and unnecessary on Android and
+        ## Web.
+        #textbutton _("Quit") action Quit(confirm=not main_menu)
+        imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
 
     if gui.show_name:
 

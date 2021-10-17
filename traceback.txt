@@ -63,4 +63,4 @@ AttributeError: 'NoneType' object has no attribute 'stores'
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Witch, the Thief, the Toad & the Mushroom 1.0
-Sun Oct 17 17:24:56 2021
+Sun Oct 17 19:05:05 2021
