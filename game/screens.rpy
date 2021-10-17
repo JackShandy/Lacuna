@@ -136,7 +136,8 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    #Not showing the text box
+    #background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
 
 style namebox:
     xpos gui.name_xpos
@@ -145,7 +146,8 @@ style namebox:
     ypos gui.name_ypos
     ysize gui.namebox_height
 
-    background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
+    #Not showing the name box
+    #background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
 
 style say_label:
@@ -183,7 +185,7 @@ screen input(prompt):
             ypos gui.dialogue_ypos
 
             text prompt style "input_prompt"
-            input id "input"
+            input id "input" color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30)
 
 style input_prompt is default
 
@@ -209,7 +211,7 @@ screen choice(items):
 
     vbox:
         for i in items:
-            textbutton i.caption action i.action
+            textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
 
 
 ## When this is true, menu captions will be spoken by the narrator. When false,
@@ -222,9 +224,9 @@ style choice_button is button
 style choice_button_text is button_text
 
 style choice_vbox:
-    xalign 0.5
-    ypos 405
-    yanchor 0.5
+    xalign 0#0.5
+    ypos 700#550#127
+    yanchor 0.6#0.45#0.5 %0.1
 
     spacing gui.choice_spacing
 
@@ -253,11 +255,14 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
+            #textbutton _("Menu") action MainMenu()
             textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
+            #Removing history for now
+            #textbutton _("History") action ShowMenu('history')
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
+            textbutton _("Load") action ShowMenu('load')
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
             textbutton _("Prefs") action ShowMenu('preferences')
@@ -291,48 +296,97 @@ style quick_button_text:
 
 screen navigation():
 
-    vbox:
+    fixed:
         style_prefix "navigation"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+        #xpos gui.navigation_xpos
+        #yalign 0.5
 
-        spacing gui.navigation_spacing
+        #spacing gui.navigation_spacing
 
+        # if main_menu:
+        #
+        #     #textbutton _("Start") action Start()
+        #
+        #     #Image button for the start menu
+        #     imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        #     imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        #     imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        #     if _in_replay:
+        #
+        #         textbutton _("End Replay") action EndReplay(confirm=True)
+        #
+        #     elif not main_menu:
+        #
+        #         textbutton _("Main Menu") action MainMenu()
+        #
+        #     #textbutton _("About") action ShowMenu("about")
+        #
+        #     imagebutton auto "gui/mm_about_%s.png" xpos 25 ypos 421 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        #     if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+        #
+        #         ## Help isn't necessary or relevant to mobile devices.
+        #         #textbutton _("Help") action ShowMenu("help")
+        #         imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        #     if renpy.variant("pc"):
+        #
+        #         ## The quit button is banned on iOS and unnecessary on Android and
+        #         ## Web.
+        #         #textbutton _("Quit") action Quit(confirm=not main_menu)
+        #         imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
+        #
+        # else:
+
+        add "gui/bookmark.png"
         if main_menu:
+            add "gui/saveCrossOff.png"
+            imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), Return() hovered [ Play("sound", "audio/pencil.wav") ]
 
-            textbutton _("Start") action Start()
 
         else:
+            imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), MainMenu() hovered [ Play("sound", "audio/pencil.wav") ]
+        #Main Menu
 
-            textbutton _("History") action ShowMenu("history")
+        #Save
+        imagebutton auto "gui/mm_save_%s.png" xpos 22 ypos 283 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("save") hovered [ Play("sound", "audio/pencil.wav") ]
 
-            textbutton _("Save") action ShowMenu("save")
+        #Load
+        imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
 
-        textbutton _("Load") action ShowMenu("load")
+        #Preferences
+        imagebutton auto "gui/mm_pref2_%s.png" xpos 24 ypos 356 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        #About
+        imagebutton auto "gui/mm_about2_%s.png" xpos 22 ypos 389 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
 
-        if _in_replay:
+        #Help
+        imagebutton auto "gui/mm_help2_%s.png" xpos 23 ypos 430 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
 
-            textbutton _("End Replay") action EndReplay(confirm=True)
-
-        elif not main_menu:
-
-            textbutton _("Main Menu") action MainMenu()
-
-        textbutton _("About") action ShowMenu("about")
-
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
-
+        #TK: Look at the game on smartphones, figure it out
         if renpy.variant("pc"):
 
-            ## The quit button is banned on iOS and unnecessary on Android and
-            ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+            #Quit
+            imagebutton auto "gui/mm_quit2_%s.png" xpos 24 ypos 466 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
+
+            #TK: Remove commented out sections
+
+
+            #textbutton _("History") action ShowMenu("history")
+
+            #textbutton _("Save") action ShowMenu("save")
+
+
+
+
+
+
+        #textbutton _("Load") action ShowMenu("load")
+        #textbutton _("Preferences") action ShowMenu("preferences")
 
 
 style navigation_button is gui_button
@@ -357,21 +411,42 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    style_prefix "main_menu"
-
     add gui.main_menu_background
 
     ## This empty frame darkens the main menu.
-    frame:
-        pass
+    #frame:
+        #style "main_menu_frame"
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
+    #use navigation
+
+    imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
+
+    imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
+
+    imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
+
+    imagebutton auto "gui/mm_about_%s.png" xpos 25 ypos 421 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
+
+    if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+
+        ## Help isn't necessary or relevant to mobile devices.
+        #textbutton _("Help") action ShowMenu("help")
+        imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
+
+    if renpy.variant("pc"):
+
+        ## The quit button is banned on iOS and unnecessary on Android and
+        ## Web.
+        #textbutton _("Quit") action Quit(confirm=not main_menu)
+        imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
 
     if gui.show_name:
 
         vbox:
+            style "main_menu_vbox"
+
             text "[config.name!t]":
                 style "main_menu_title"
 
@@ -386,17 +461,17 @@ style main_menu_title is main_menu_text
 style main_menu_version is main_menu_text
 
 style main_menu_frame:
-    xsize 420
+    xsize 132
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    #background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
-    xoffset -30
-    xmaximum 1200
+    xoffset -9
+    xmaximum 375
     yalign 1.0
-    yoffset -30
+    yoffset -9
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
@@ -421,10 +496,11 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
     style_prefix "game_menu"
 
-    if main_menu:
-        add gui.main_menu_background
-    else:
-        add gui.game_menu_background
+    #TK: This is going wrong somehow.
+    #if main_menu:
+        #add gui.main_menu_background
+    #else:
+        #add gui.game_menu_background
 
     frame:
         style "game_menu_outer_frame"
@@ -498,32 +574,33 @@ style return_button is navigation_button
 style return_button_text is navigation_button_text
 
 style game_menu_outer_frame:
-    bottom_padding 45
-    top_padding 180
+    bottom_padding 15
+    top_padding 57
 
     background "gui/overlay/game_menu.png"
 
 style game_menu_navigation_frame:
-    xsize 420
+    xsize 132
     yfill True
 
 style game_menu_content_frame:
-    left_margin 60
-    right_margin 30
-    top_margin 15
+    left_margin 19
+    right_margin 10
+    top_margin 5
 
 style game_menu_viewport:
-    xsize 1380
+    xsize 432
 
 style game_menu_vscrollbar:
     unscrollable gui.unscrollable
 
 style game_menu_side:
-    spacing 15
+    spacing 5
 
 style game_menu_label:
-    xpos 75
-    ysize 180
+    xpos 0#24
+    xalign -342
+    ypos 25#57
 
 style game_menu_label_text:
     size gui.title_text_size
@@ -531,9 +608,9 @@ style game_menu_label_text:
     yalign 0.5
 
 style return_button:
-    xpos gui.navigation_xpos
+    xpos gui.return_xpos
     yalign 1.0
-    yoffset -45
+    yoffset -38  #-14
 
 
 ## About screen ################################################################
@@ -547,23 +624,28 @@ screen about():
 
     tag menu
 
+    add "/gui/about.png"
+
+    #add gui.about_background
+    #add "gui/about.png"
+    #background "gui/about.png"
+
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
     ## screen.
-    use game_menu(_("About"), scroll="viewport"):
+    use game_menu(_(""), scroll="viewport"):
 
         style_prefix "about"
 
-        vbox:
-
-            label "[config.name!t]"
-            text _("Version [config.version!t]\n")
-
+        vbox ypos 373:
+            #label "[config.name!t]"
+            #text _("Version [config.version!t]\n")
+            #yalign 0.5
             ## gui.about is usually set in options.rpy.
             if gui.about:
-                text "[gui.about!t]\n"
+                text "{alpha=0.9}{size=-4}[gui.about!t]\n{/size}{/alpha}" #
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("{alpha=0.9}{size=-4}Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]{/size}{/alpha}")
 
 
 style about_label is gui_label
@@ -572,6 +654,48 @@ style about_text is gui_text
 
 style about_label_text:
     size gui.label_text_size
+
+
+## My screens #######################################################
+##
+##
+## Contents page ####
+
+screen contents():
+    #add "/images/contents.png"
+
+
+    default screenvar = False
+    imagemap:
+        #ground "contents.png"
+        auto "images/contents_%s.png"
+
+        #idle "c_name_idle.png"
+        #hover "c_name_hover.png"
+        #selected_idle "c_name_hover.png"
+
+        #Click the text box to enter text
+        #hotspot (195,424,207,28) action SetScreenVariable("screenvar",True)
+        #define gui.text_font = "fonts/ShoppingScript.ttf"
+            #imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
+
+        #She / Her pronoun button
+        hotspot (200,452,55,28) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"), SetVariable("he", "she"), SetVariable("He", "She"), SetVariable("his", "her"), SetVariable("His", "Her"), SetVariable("him", "her"), SetVariable("Him", "Her"), SetVariable("Hes", "She's"), SetVariable("hes", "she's"), Jump("splashscreen2")]
+
+        #He / Him pronoun button
+        hotspot (272,454,53,36) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"),SetVariable("he", "he"),SetVariable("He", "He"),SetVariable("his", "his"),SetVariable("His", "His"),SetVariable("him", "him"),SetVariable("Him", "Him"),SetVariable("Hes", "He's"),SetVariable("hes", "he's"),Jump("splashscreen2")]
+
+        #They / Them pronoun button
+        hotspot (338,453,64,38) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"),SetVariable("he", "they"),SetVariable("He", "They"),SetVariable("his", "their"),SetVariable("His", "Their"),SetVariable("him", "them"),SetVariable("Him", "Them"),SetVariable("Hes", "They are"),SetVariable("hes", "they are"),Jump("splashscreen2")]
+
+        #if screenvar == True:
+        #if persistent.nameSet == False:
+        input default persistent.povname pos(195,416) length(20) color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30) changed name_func
+        #else:
+            #text "{color=(25, 16, 0, 100)}{size=30}{font=Autography.otf}[persistent.povname]{/font}{/size}{/color}" #at #(195,416) #length(20) color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30)
+            #povname = renpy.input("", length=32)
+            #
+
 
 
 ## Load and Save screens #######################################################
@@ -599,6 +723,9 @@ screen load():
 
 screen file_slots(title):
 
+    #Background image
+    add "/gui/save_menu.png"
+
     default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Automatic saves"), quick=_("Quick saves"))
 
     use game_menu(title):
@@ -612,7 +739,7 @@ screen file_slots(title):
             ## The page name, which can be edited by clicking on a button.
             button:
                 style "page_label"
-
+                #TK: Change? Maybe it shouldn't be possible to edit the page name?
                 key_events True
                 xalign 0.5
                 action page_name_value.Toggle()
@@ -623,10 +750,12 @@ screen file_slots(title):
 
             ## The grid of file slots.
             grid gui.file_slot_cols gui.file_slot_rows:
+                #style_prefix "page"
                 style_prefix "slot"
-
-                xalign 0.5
-                yalign 0.5
+                xalign 0#0.5
+                xpos 40
+                yalign 0 #0.5
+                ypos 218
 
                 spacing gui.slot_spacing
 
@@ -635,17 +764,27 @@ screen file_slots(title):
                     $ slot = i + 1
 
                     button:
-                        action FileAction(slot)
+
+                        action [FileAction(slot), Play("sound", "audio/pencil-2.wav")]
 
                         has vbox
 
-                        add FileScreenshot(slot) xalign 0.5
+                        #add FileScreenshot(slot) xalign 0.5
 
-                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")):
+                        text FileTime(slot, format=_("[persistent.povname]"), empty=_("")): #%A,
+                        #text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("")):
                             style "slot_time_text"
+                            font "fonts/Autography.otf"#gui.choice_button_text_font
 
-                        text FileSaveName(slot):
-                            style "slot_name_text"
+                        text FileTime(slot, format=_("{#file_time}%b %d. %H:%M"), empty=_("")): #%A,
+                        #text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("")):
+                            style "slot_time_text"
+                            xpos 237
+                            ypos -12
+                            font "fonts/Autography.otf"#gui.choice_button_text_font
+
+                        #text FileSaveName(slot):
+                            #style "slot_name_text"
 
                         key "save_delete" action FileDelete(slot)
 
@@ -683,9 +822,11 @@ style slot_button_text is gui_button_text
 style slot_time_text is slot_button_text
 style slot_name_text is slot_button_text
 
+
+
 style page_label:
-    xpadding 75
-    ypadding 5
+    xpadding 24
+    ypadding 2
 
 style page_label_text:
     text_align 0.5
@@ -716,9 +857,11 @@ screen preferences():
 
     tag menu
 
+    add "/images/bg page.png"
+
     use game_menu(_("Preferences"), scroll="viewport"):
 
-        vbox:
+        vbox xpos 30 ypos 160: #20:
 
             hbox:
                 box_wrap True
@@ -828,13 +971,13 @@ style mute_all_button_text is check_button_text
 
 style pref_label:
     top_margin gui.pref_spacing
-    bottom_margin 3
+    bottom_margin 1
 
 style pref_label_text:
     yalign 1.0
 
 style pref_vbox:
-    xsize 338
+    xsize 106
 
 style radio_vbox:
     spacing gui.pref_button_spacing
@@ -857,18 +1000,18 @@ style check_button_text:
     properties gui.button_text_properties("check_button")
 
 style slider_slider:
-    xsize 525
+    xsize 165
 
 style slider_button:
     properties gui.button_properties("slider_button")
     yalign 0.5
-    left_margin 15
+    left_margin 5
 
 style slider_button_text:
     properties gui.button_text_properties("slider_button")
 
 style slider_vbox:
-    xsize 675
+    xsize 211
 
 
 ## History screen ##############################################################
@@ -973,14 +1116,16 @@ screen help():
 
     tag menu
 
+    add "/images/bg page.png"
+
     default device = "keyboard"
 
     use game_menu(_("Help"), scroll="viewport"):
 
         style_prefix "help"
 
-        vbox:
-            spacing 23
+        vbox xpos 15 ypos 100: #20::
+            spacing 8
 
             hbox:
 
@@ -1106,14 +1251,14 @@ style help_text is gui_text
 
 style help_button:
     properties gui.button_properties("help_button")
-    xmargin 12
+    xmargin 4
 
 style help_button_text:
     properties gui.button_text_properties("help_button")
 
 style help_label:
-    xsize 375
-    right_padding 30
+    xsize 118
+    right_padding 10
 
 style help_label_text:
     size gui.text_size
@@ -1141,7 +1286,7 @@ screen confirm(message, yes_action, no_action):
 
     zorder 200
 
-    style_prefix "confirm"
+    style_prefix "choice"#"confirm"
 
     add "gui/overlay/confirm.png"
 
@@ -1150,18 +1295,24 @@ screen confirm(message, yes_action, no_action):
         vbox:
             xalign .5
             yalign .5
-            spacing 45
+            ypos 430
+            xpos 300
+            spacing 15
 
             label _(message):
                 style "confirm_prompt"
+                #textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
+
+                #font "DejaVuSans.ttf"
+                #font "fonts/kawoszeh.ttf"
                 xalign 0.5
 
             hbox:
                 xalign 0.5
-                spacing 150
+                spacing 47
 
-                textbutton _("Yes") action yes_action
-                textbutton _("No") action no_action
+                textbutton _("Yes") action yes_action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
+                textbutton _("No") action no_action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
 
     ## Right-click and escape answer "no".
     key "game_menu" action no_action
@@ -1181,6 +1332,8 @@ style confirm_frame:
 
 style confirm_prompt_text:
     text_align 0.5
+
+    #font "fonts/Moms_typewriter.ttf"
     layout "subtitle"
 
 style confirm_button:
@@ -1205,7 +1358,7 @@ screen skip_indicator():
     frame:
 
         hbox:
-            spacing 9
+            spacing 3
 
             text _("Skipping")
 
@@ -1410,7 +1563,7 @@ style nvl_button_text:
 
 style pref_vbox:
     variant "medium"
-    xsize 675
+    xsize 211
 
 ## Since a mouse may not be present, we replace the quick menu with a version
 ## that uses fewer and bigger buttons that are easier to touch.
@@ -1459,7 +1612,7 @@ style game_menu_outer_frame:
 
 style game_menu_navigation_frame:
     variant "small"
-    xsize 510
+    xsize 160
 
 style game_menu_content_frame:
     variant "small"
@@ -1467,7 +1620,7 @@ style game_menu_content_frame:
 
 style pref_vbox:
     variant "small"
-    xsize 600
+    xsize 188
 
 style bar:
     variant "small"
@@ -1505,10 +1658,10 @@ style vslider:
     base_bar Frame("gui/phone/slider/vertical_[prefix_]bar.png", gui.vslider_borders, tile=gui.slider_tile)
     thumb "gui/phone/slider/vertical_[prefix_]thumb.png"
 
-style slider_pref_vbox:
+style slider_vbox:
     variant "small"
     xsize None
 
-style slider_pref_slider:
+style slider_slider:
     variant "small"
-    xsize 900
+    xsize 282

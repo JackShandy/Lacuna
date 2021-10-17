@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2981: expected ':' not found.
-    "/"Yeah, I figured./"":
-       ^
+File "game/screens.rpy", line 348: u'Return' is not a keyword argument or valid child for the imagebutton statement.
+    imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), action Return() hovered [ Play("sound", "audio/pencil.wav") ]
+                                                                                                                                     ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Tue Jun 29 20:00:15 2021
+Sun Oct 17 19:04:57 2021
