@@ -349,6 +349,7 @@ screen navigation():
 
 
         else:
+            #imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start("splashscreen") hovered [ Play("sound", "audio/pencil.wav") ]
             imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), MainMenu() hovered [ Play("sound", "audio/pencil.wav") ]
         #Main Menu
 
@@ -412,7 +413,10 @@ screen main_menu():
     tag menu
 
     add gui.main_menu_background
-
+    #$ renpy.music.play("audio/rain.wav", channel="ambient1", loop=True)
+    #$ renpy.music.play("audio/fire.mp3", channel="ambient2", loop=True) #fadein=0.5
+    #renpy.sound.play("audio/rain.wav", loop=True)
+    #renpy.sound.play("audio/fire.mp3", loop=True)
     ## This empty frame darkens the main menu.
     #frame:
         #style "main_menu_frame"

@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("The Witch, the Thief, the Toad & the Mushroom")
+define config.name = _("The Thief, the Toad, the Witch & the Mushroom")
 
 define config.layers = ['master', 'transient', 'screens', 'over_screens', 'overlay']
 
@@ -63,7 +63,7 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "audio/rain.wav"
 
 
 ## Transitions #################################################################

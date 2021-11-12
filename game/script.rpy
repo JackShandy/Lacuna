@@ -1,8 +1,10 @@
 ﻿# The script of the game goes in this file.
 
 #Test: Custom Text Tags
-# init python:
-#
+#Registering channel for ambient noise (Fire, rain)
+init python:
+    renpy.music.register_channel("ambient1","sfx",True,tight=True)
+    renpy.music.register_channel("ambient2","sfx",True,tight=True)
 #     def xpos_tag(tag, argument, contents):
 #
 #         size = int(argument) * 20
@@ -392,82 +394,101 @@ define audio.pageFlip = "audio/page-flip.mp3"
 define audio.rain = "audio/rain.wav"
 define audio.fire = "audio/fire.mp3"
 
+#screen music_screen:
+    #show firelight animated onlayer over_screens zorder 99
+    #zorder 99
+    #$ renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+    #$ renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    #python:
+    #       renpy.music.play("audio/rain.wav", fadeout=10.0, fadein=15.0)
 
 # The game starts here.
 
-#Splash Screen - The front cover of the book that appears before the main menu.
+#Splashscreen - The front cover of the book that appears before the main menu.
 
 label splashscreen:
     scene black
     show firelight animated onlayer over_screens zorder 99
     show cover with dissolve
-    play audio rain loop volume 0.5 fadein 1.0
-    play audio fire loop volume 0.5 fadein 1.0
+    #show screen music_screen
+    $ renpy.music.play("audio/rain.wav", fadein=0.5, channel="music", loop=True)
+    #Ambient rain loop
+    #play music rain loop volume fadein 1.0
+    #Ambient fireplace sounds loop
+    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    #play audio fire loop volume 0.5 fadein 1.0
     with Pause(10)
     #TK: Include a page-flipping animation here.
     play sound pageFlip
     if persistent.nameSet == False:
         call screen contents
     else:
-         #$povname = persistent.povname
-         #Using the persistent character info to define the temporary pronouns
-         #This is really just done so that I don't need to write [persistent.he] every time I use a pronoun
-         define he = persistent.he
-         define He = persistent.He
-         define his = persistent.his
-         define His = persistent.His
-         define him = persistent.him
-         define Him = persistent.Him
-         define Hes = persistent.Hes
-         define hes = persistent.hes
-         define povname = persistent.povname
-         #TK: show screen contents with easeinright
-         return
+        #$povname = persistent.povname
+        #Using the persistent character info to define the temporary pronouns
+        #This is really just done so that I don't need to write [persistent.he] every time I use a pronoun
+        define he = persistent.he
+        define He = persistent.He
+        define his = persistent.his
+        define His = persistent.His
+        define him = persistent.him
+        define Him = persistent.Him
+        define Hes = persistent.Hes
+        define hes = persistent.hes
+        define povname = persistent.povname
+        #TK: show screen contents with easeinright
+        #show screen main_menu
+        #$renpy.set_return_stack([])
+        #$renpy.set_return_stack([])
+        #$renpy.pop_call()
+        return
+        #$renpy.full_restart()
+
+#Before main menu: Making sure the animated firelight always displays
+label before_main_menu:
+    show firelight animated onlayer over_screens zorder 99
+    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    return
 
 #Main Menu - This is the label that transitions from the "This book belongs to" page to the main menu
-label splashscreen2:
-    #TK: Include a page-flipping animation here.
-    #Note: TK = To Do
-    #A persistent name has been set
-    $persistent.nameSet = True
-    $persistent.he = he
-    $persistent.He = He
-    $persistent.his = his
-    $persistent.His = His
-    $persistent.him = him
-    $persistent.Him = Him
-    $persistent.Hes = Hes
-    $persistent.hes = hes
-    $povname = persistent.povname
+# label splashscreen2:
+#     #TK: Include a page-flipping animation here.
+#     #Note: TK = To Do
+#     #A persistent name has been set
+#     $persistent.nameSet = True
+#     $persistent.he = he
+#     $persistent.He = He
+#     $persistent.his = his
+#     $persistent.His = His
+#     $persistent.him = him
+#     $persistent.Him = Him
+#     $persistent.Hes = Hes
+#     $persistent.hes = hes
+#     $povname = persistent.povname
+#     return
+
+label after_load:
+    play sound pageFlip
+    #$ renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+    #$ renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
     return
 
 label start:
-    #show firelight animated onlayer over_screens
-    label chapter1:
+    show firelight animated onlayer over_screens zorder 99
+    #$ renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+    $ renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
 
-        #show firelight animated zorder 99
+    label chapter1:
         scene bg page
         show treesbg at artPos
-        #play music "/audio/cottagegore.mp3"
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
-
-        ###=====================Testing Backgrounds
-        miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
-        mir "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
-        mum "Alright. Make sure you're there for the christening on sunday."
-        m "Ask not of what concerns you not, lest you hear what pleases you not."
-        mys "Ho, young traveller."
-        t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
-        eg "Where are you headed, fellow traveler?"
-        f "Prickle! Crawl! Shudder and Wink! Be off at once. We have a festival to get to!"
-
-
         #TK: Have a picture of the 12 kids. Kids disappear as you replay the game.
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
         "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
         "In the darkness of the forest, she may or may not have met a man in white."
         "(Is anything certain these days?)"
+
         "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
         "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
         miw "Poor woman. Let me be the Godfather."
@@ -490,7 +511,7 @@ label start:
                     show hand onlayer transient:
                         yalign 0.71#0.743
                         xalign 0.5
-                    "But He was already gone.{vspace=200}{i}In your notes, write down that you {b}You are the grandchild of the King of Kings.{/b}{/i}"
+                    "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the grandchild of the King of Kings.{/b}{/i}"
                     $godfather = "White"
                     jump chapter2
                 "If she said no, turn to page 14." if firstManWho:#"No."
@@ -523,9 +544,9 @@ label start:
                     mir "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
                     mum "Alright. Just make sure you're there for the christening on sunday."
                     show hand onlayer transient:
-                        yalign 0.77#0.743
+                        yalign 0.71#0.743
                         xalign 0.5
-                    "But the great deceiver was already leaving. He struck his foot against the ground, which opened up and swallowed him immediately.{vspace=190}{i}In your notes, write down that {b}You are the Devil's Grandchild.{/b}{/i}"
+                    "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Grandchild.{/b}{/i}"
                     $godfather = "Red"
                     jump chapter2
                 "If she said no, turn to page 16." if secondManWho:
@@ -555,12 +576,12 @@ label start:
                     "In one swoop She bowed down and placed Her mark upon you."
                     wib "You will name [him] [povname]."
                     wib "At midnight on [his] eighteenth birthday, [he] will be mine."
-                    wib "Keep [him] safe for me until I come for him. I will send three messengers before me, to announce my arrival. "
+                    wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
                     mum "Alright. Make sure you're there for the christening on sunday."
                     show hand onlayer transient:
                         yalign 0.77#0.743
                         xalign 0.5
-                    "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=190}{i}In your notes, write down that {b}You are Death's Grandchild.{/b}{/i}"
+                    "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Grandchild.{/b}{/i}"
                     $godfather = "Black"
                     jump chapter2
                 "If she said no, turn to page 25." if thirdManWho:
@@ -656,10 +677,10 @@ label chapter2:
             "You left the path and followed her from a distance."
             "She walked into the towering buttress roots of an ancient fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious sapphires and intricate engravings."
             show hand onlayer transient:
-                yalign 0.75#0.743
+                yalign 0.73#0.743
                 xalign 0.5
 
-            m "Gorge, guzzle, gulp and grab; never shall this wound scab.{vspace=200}{i}In your notes, write down that you {b}know the password.{/b}{/i}"
+            m "Gorge, guzzle, gulp and grab; never shall this wound scab.{vspace=160}{i}In your notes, write down that you {b}know the password.{/b}{/i}"
             $mushroomPassword = True
             show hand onlayer transient:
                 yalign 0.72#0.743
@@ -2303,7 +2324,7 @@ label thief3:
                     #TK: Double check my descriptions on the heat - is it consistently hot rainforest sweaty weather
                     "It was the hollow interior of an enormous strangler fig. A great cavern was formed inside it, cold as ice despite the heat outside."
                     "The floor of the cavern was piled with rubies and sapphires and glinting emeralds and solid gold pieces, larger than your fist."
-                    "All across the room were lush silks and pillars of precious metals of every type, and riches that would turn the king of kings green with envy."
+                    "All across the room were lush silks and pillars of precious metals of every type, and riches that would turn the King of Kings green with envy."
                     "You inhaled the rich dark scent of incense, and saw glimmering magenta smoke roll across the room and coat it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
                 t "Jackpot."
                 "The thief tied a rope around their waist, tied the other end to the doorknob, and began to lower themselves down to the treasure below."
@@ -3295,7 +3316,7 @@ label witchFinale:
                 "You looked through a hole in the cave wall and marvelled to see the imps cavorting in drunken song and dance beyond, each of them plotting to destroy the works of man and G-d."
                 "You quickly retreated for fear of being seen."
                 jump hell
-            "if you investigated the center of the cavern, turn to page 206.":
+            "If you investigated the center of the cavern, turn to page 206.":
                 "In the center of the cavern was a small, homely cottage. You peered in the window."
                 "The Devil was not home. But in a rocking chair in the corner you saw his old grandmother. She spotted you both at once."
     dg "Oh, my dears! You must be terribly lost. You'd better get out of here."
@@ -4137,5 +4158,6 @@ label end:
     #     "(Persistent): You drink the tea. You have drunk the tea. You will have drunken the tea. You will always have drunk this tea."
 
     # This ends the game.
-
+    #$ renpy.full_restart()
+    #jump splashscreen
     return
