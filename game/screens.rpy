@@ -185,7 +185,7 @@ screen input(prompt):
             ypos gui.dialogue_ypos
 
             text prompt style "input_prompt"
-            input id "input" color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30)
+            input id "input" color((25, 16, 0, 100)) font("fonts/journal.ttf") size(30)
 
 style input_prompt is default
 
@@ -694,9 +694,9 @@ screen contents():
 
         #if screenvar == True:
         #if persistent.nameSet == False:
-        input default persistent.povname pos(195,416) length(20) color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30) changed name_func
+        input default persistent.povname pos(215,410) length(19) color((25, 16, 0, 100)) font("fonts/journal.ttf") size(35) changed name_func
         #else:
-            #text "{color=(25, 16, 0, 100)}{size=30}{font=Autography.otf}[persistent.povname]{/font}{/size}{/color}" #at #(195,416) #length(20) color((25, 16, 0, 100)) font("fonts/Autography.otf") size(30)
+            #text "{color=(25, 16, 0, 100)}{size=30}{font=journal.ttf}[persistent.povname]{/font}{/size}{/color}" #at #(195,416) #length(20) color((25, 16, 0, 100)) font("fonts/journal.ttf") size(30)
             #povname = renpy.input("", length=32)
             #
 
@@ -778,14 +778,18 @@ screen file_slots(title):
                         text FileTime(slot, format=_("[persistent.povname]"), empty=_("")): #%A,
                         #text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("")):
                             style "slot_time_text"
-                            font "fonts/Autography.otf"#gui.choice_button_text_font
+                            font "fonts/journal.ttf"#gui.choice_button_text_font
+                            ypos 10
+                            xpos 60
+                            size 20
 
                         text FileTime(slot, format=_("{#file_time}%b %d. %H:%M"), empty=_("")): #%A,
                         #text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("")):
                             style "slot_time_text"
                             xpos 237
-                            ypos -12
-                            font "fonts/Autography.otf"#gui.choice_button_text_font
+                            ypos -15
+                            font "fonts/journal.ttf"#gui.choice_button_text_font
+                            size 20
 
                         #text FileSaveName(slot):
                             #style "slot_name_text"
@@ -1307,8 +1311,6 @@ screen confirm(message, yes_action, no_action):
                 style "confirm_prompt"
                 #textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
 
-                #font "DejaVuSans.ttf"
-                #font "fonts/kawoszeh.ttf"
                 xalign 0.5
 
             hbox:

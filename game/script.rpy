@@ -491,7 +491,6 @@ label start:
         show treesbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
-        #Test
         jump end
         #TK: Have a picture of the 12 kids. Kids disappear as you replay the game.
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
@@ -4141,16 +4140,25 @@ label end:
         ypos 160
     $ ui.text("{space=[ti]}1. {b}Front Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}This Book Belongs Too:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Hans Christian Andersen.{vspace=[tx]}{space=[ti]}6. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}7. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}8. {b}Inspirational Reading:{/b} 'The Wonderful Wizard of Oz' (1900), L. Frank Baum.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
-    $ ui.text("1. Test", xpos=50, ypos=150, xmaximum=520)
+
+    show text "{b}FONTS:{/b}":
+        xalign 0.5
+        #xpos 50
+        ypos 160
+    $ ui.text("{space=[ti]}1. {b}Oz's Wizard.{/b} Mario Arturo, 2012.{vspace=[tx]}{space=[ti]}2. {b}Journal.{/b} Fontourist, 2008.{vspace=[tx]}{space=[ti]}3. {b}Mom's Typewriter.{/b} Christoph Mueller, 1997.{vspace=[tx]}{space=[ti]}4. {b}Book Antiqua.{/b} Monotype Type Drawing Office, 1995.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
-
+    # $ ui.text("1. Test", xpos=50, ypos=150, xmaximum=520)
+    # $ renpy.pause ()    $ ui.text("1. Test", xpos=50, ypos=150, xmaximum=520)
+    #     $ renpy.pause ()
     #
-    # {space=[ti]}9. {b}The Mushroom:{/b} .{vspace=[tx]}
-    # {space=[ti]}10. {b}The Mushroom:{/b} .{vspace=[tx]}
 
 
 
 
+    # {space=[ti]}5. {b}The Mushroom:{/b} .{vspace=[tx]}
+
+
+    play sound pageFlip
     return
 
 
