@@ -242,6 +242,8 @@ init:
 
 ##====Full Screen Images
 image cover = "cover.png"
+image title = "title.png"
+#image credits = "acknowledgements.png"
 
 ##====GUI Elements
 image firelight animated:
@@ -327,6 +329,8 @@ image tornPage2bg="tornPage2-bg.png"
 image tornPage3="tornPage3.png"
 image tornPage3bg="tornPage3-bg.png"
 
+image stamp="stamp.png"
+
 
 # ===== Characters
 define w = Character("{image=witchName}{alt}The Witch:{/alt}")
@@ -410,14 +414,18 @@ label splashscreen:
     scene black
     show firelight animated onlayer over_screens zorder 99
     show cover with dissolve
-    #show screen music_screen
     $ renpy.music.play("audio/rain.wav", fadein=0.5, channel="music", loop=True)
+    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    with Pause(5)
+    play sound pageFlip
+    show title
+    with Pause(5)
+    #show screen music_screen
     #Ambient rain loop
     #play music rain loop volume fadein 1.0
     #Ambient fireplace sounds loop
-    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
     #play audio fire loop volume 0.5 fadein 1.0
-    with Pause(10)
+
     #TK: Include a page-flipping animation here.
     play sound pageFlip
     if persistent.nameSet == False:
@@ -483,6 +491,8 @@ label start:
         show treesbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
+        #Test
+        jump end
         #TK: Have a picture of the 12 kids. Kids disappear as you replay the game.
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
         "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
@@ -1010,8 +1020,8 @@ label chapter2:
             "You reached up to take the gentleman's hand, and he whisked you into the carriage."
             "The moment you were through the curtain you realised something was wrong."
             "Instead of the graceful and elegant nobleman you expected, you discovered a squat, ugly cane toad."
-            "The incense you smelled was nothing but the reek of dirt and mud, the brandy was nothing but pondscum, the gleaming carriage was just a rotten old squash, and the graceful arm that beckoned you from behind the curtain was nothing but a wooden prop the Toad held in his swollen hand."
-            "You turned to run, but it was too late. With a clap, the Toad commanded his steeds."
+            "The incense you smelled was nothing but the reek of dirt and mud, the brandy was nothing but pondscum, the gleaming carriage was just a rotten old squash, and the graceful arm that beckoned you from behind the curtain was nothing but a wooden prop the toad held in his swollen hand."
+            "You turned to run, but it was too late. With a clap, the toad commanded his steeds."
             f "Prickle! Crawl! Shudder and Wink! Be off at once. We have a festival to get to!"
             "The brilliant white horses tore off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo."
             "They cackled and gibbered to each other as they raced off down the road with you, bumping and rolling and pulling apart pinecones and causing terrible devastation as they went."
@@ -1023,7 +1033,7 @@ label chapter2:
                 f "Well, are you impressed?"
                 "If you asked the Gentleman his name, turn to page 58.":
                     f "Brildebrogue Chippingham's the name. Of the Burpengary Chippinghams."
-                "If you flattered the Toad, turn to page 63.":
+                "If you flattered the toad, turn to page 63.":
                     pov "Absolutely, sir. I'm stunned."
                     f "As is natural."
                     f "I find it's better to conceal my true beauty from the common-folk."
@@ -1044,7 +1054,7 @@ label chapter2:
                 xalign 0.5
             menu:
                 f "So, what brings you travelling this way?"
-                "If you told the Toad about your Godparent, turn to page 67.":
+                "If you told the toad about your Godparent, turn to page 67.":
                     if godfather == "Red":
                         pov "I'm searching for a way to escape my Godfather, the King of Kings."
                         pov "He will be here to take me away at midnight, and I have no wish to leave."
@@ -1103,7 +1113,7 @@ label chapter2:
                     f "More for me, then!"
                     "And the toad greedily gulped down the pondwater, without comment on your obvious poor manners and lack of breeding."
             "The old squash rattled about hither and thither through the forest, giving you bruises all over, but before you knew it you had arrived at the village square."
-            "The Toad rose out of his seat, leapt out through the curtains, and with a flourish offered his hand to help you down the carriage steps (which were made of old shoe-leather)."
+            "The toad rose out of his seat, leapt out through the curtains, and with a flourish offered his hand to help you down the carriage steps (which were made of old shoe-leather)."
             f "There you are!"
             f "Thank you gracefully for the wonderful company, and I wish you the best of luck with the festival!"
             jump chapter6
@@ -1273,7 +1283,7 @@ label banquet:
                 #p3 "Do you hear that? The howling?"
                 #p3 "You'd better get moving."
                 jump banquetMenu
-            "If you talked to the Toad, turn to page 87." if not toadStole2:
+            "If you talked to the toad, turn to page 87." if not toadStole2:
                 if toadStole:
                     f "You!"
                     f "Hellion! Knave! You'll see justice for your crimes, or my name isn't Brildebrogue Chippingham!"
@@ -1332,7 +1342,7 @@ label banquet:
                         "If you asked about his plans, turn to page 90." if not toadLong:
                             f "Aha! Allow me to elucidate."
                             "He slurped noisily from his wineglass until it was empty. Then he slurped from the glass in his other hand and drained it, too."
-                            f "I plan to track this Witch character down tonight, before she causes any more chaos."
+                            f "I plan to track this witch character down tonight, before she causes any more chaos."
                             f "We must help the poor, accursed people of this village! Already they panic, terrified that she will descend upon them and turn them all into beasts!"
                             "A tray of drinks came by and he swapped his old wineglasses out for new ones."
                             f "And between you and me, I have a curse of my own I need her to lift."
@@ -1353,14 +1363,14 @@ label banquet:
                                     xalign 0.5
                                 menu:
                                     f "I need to lift this curse of mine, and surely she could help you out with... I don't know, whatever problem you have."
-                                    "If you accepted, and set off to the Witch\'s Cottage with the Toad, turn to page 105.":
+                                    "If you accepted, and set off to the witch\'s Cottage with the toad, turn to page 105.":
                                         f "Sensational! Stay close to me, and you won\'t have a thing to fear."
                                         f "It would be the brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
                                         "He flexed his arms for you. A tiny bump of muscle rose up."
                                         f "Let us be off at once!"
                                         jump toad1
                                     "If you politely declined (for now, at least), turn to page 102.":
-                                        f "I understand. The Witch's fear quails even the most courageous heart."
+                                        f "I understand. The witch's fear quails even the most courageous heart."
                                         f "Not mine, of course! If you change your mind, I'll be here."
                                         #$toadDecline = True
                                         jump toadConvo2
@@ -1525,9 +1535,9 @@ label town:
                     sh "I heard that dastardly Master Thief was planning to steal from her this very night! We'd better get the trap laid before they have a chance."
                 $villagersEscape = True
                 jump villagersConvo
-            "If you asked them about the Witch, turn to page 79." if villagersCatch and not villagersWitch:
-                pov "Are you going to do anything about the Witch's Curse?"
-                go "And risk the wrath of the Witch? Not on your life."
+            "If you asked them about the witch, turn to page 79." if villagersCatch and not villagersWitch:
+                pov "Are you going to do anything about the witch's Curse?"
+                go "And risk the wrath of the witch? Not on your life."
                 gm "I heard that she has fingers as long and fat as carpet snakes, and once you fall into her clutches, you'll never see daylight again."
                 go "I heard she has many children with the Devil, who are all evil."
                 h "Well, I heard that all the trees of the woods are her children, but she regards them with vicious envy, and if any of them displease her by becoming too beautiful, she strikes them down!"
@@ -1721,7 +1731,7 @@ label mushroom1:
                 menu:
                     m "You know what I mean. The other you's."
                     #TK: more dialogue options here
-                    "If you ask the Mushroom to lift the curse, turn to page 140." if not mushroomCurseChat:
+                    "If you ask the mushroom to lift the curse, turn to page 140." if not mushroomCurseChat:
                         m "Well, your story could have done with some improvement."
                         m "The plot was all over the place, and the characterisation was flimsy at best."
                         m "But I suppose a deal's a deal. I swear I will not curse you with a mushroom's curse."
@@ -1944,6 +1954,7 @@ label mushroomFinale:
                                 "Long did your Godfather the Devil search for you, but never could he find you, hidden as you were in that undiscovered country."
                             elif godfather == "Black":
                                 "And so the promise came to pass, and you took your place with the woman clad all in black, just as she promised your mother all those years ago."
+                            call endStamp
                             "You stayed there at the side of the Pale Lady, forever and ever, until the final horn and the coming of the end of days."
                             jump end
                         "If you held fast to your desire to return to the world above, turn to page 164.":
@@ -1995,15 +2006,18 @@ label mushroomFinale:
                     "You untied the red silk and lifted the lid of the precious box."
                     "As soon as you did, all of your years rushed out of the box, and they came upon you at once. Your hair grew and turned white, your back twisted into a knot with age, your face wrinkled up and you fell down dead in an instant."
                     "Poor thing! Because of your disobediance, never would you live to see your mushroom again."
+                    call endStamp
                     "Little children, never be disobediant to those who are wiser than you, for disobediance is the mother of all misery and father of all woe."
                     jump end
                 "If you refused to open the box, even when all hope was lost, turn to page 179.":
                     if godfather == "White":
                         "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
+                        call endStamp
                         "And so the Lord took you, and you rested in the basement of His White House forever and ever, until the final horn and the coming of the end of days."
                         jump end
                     elif godfather == "Red":
                         "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
+                        call endStamp
                         "And so the Devil took you, and you were trapped as his servant in Hell forever and ever, until the final horn and the coming of the end of days."
                         jump end
                     else:
@@ -2012,6 +2026,7 @@ label mushroomFinale:
                         "As the light burnt you away, you felt something take ahold of you and draw you into the earth."
                         m "It's ok. It's just me."
                         m "You've returned."
+                        call endStamp
                         "The mushrooms took you down into the earth. There you stayed at the side of Lady Death, forever and ever, until the final horn and the coming of the end of days."
                         jump end
             #You can stay with the mushroom and explore the mushroom world, different areas
@@ -2033,7 +2048,12 @@ label mushroomFinale:
 # Act 2, Chapter 3B: Journey with the Thief
 label thief3:
     # if you accept, you sneak into the mushroom's house through fantasy traps and tricks (Swinging sawblades, magical traps, Ali Baba and the 40 thieves stuff.
-    "The Thief strode ahead on their long, thin legs, and you had to run to keep up. Their nimble fingers were constantly moving, grabbing leaves off the trees or small rocks from the ground to fiddle with, and they couldn't seem to keep a single part of their body still for even a second."
+    "The thief strode ahead on their long, thin legs, and you had to run to keep up. Their nimble fingers were constantly moving, grabbing leaves off the trees or small rocks from the ground to fiddle with, and they couldn't seem to keep a single part of their body still for even a second."
+    #TK: Backgrounds
+    "You walked past a river."
+    "You walked past an open field."
+    "You walked past the ruins of the 6th age, a grim reminder of the inevitable destruction fast approaching your world."
+    "You walked past a tree."
     t "So, tell me about yourself. Got a family? A pet? Likes, dislikes, hobbies, dreams, nightmares? If you were stranded on a desert island, which limb would you gnaw off first?"
     label thiefConvo3:
         if ThiefConvo3Options >= 3:
@@ -2182,7 +2202,7 @@ label thief3:
                         xalign 0.5
                     menu:
                         sc "You should have thought twice before trying to get past me and my boys."
-                        "If you asked the Thief if they'd ever heard of these ruffians, turn to page 172." if not scraggsBoys:
+                        "If you asked the thief if they'd ever heard of these ruffians, turn to page 172." if not scraggsBoys:
                             t "Never heard of him."
                             sc "What! Everyone's heard of Scraggs McKenzie and the boys."
                             boys "You know it, Scraggs! {vspace=30}                                             {w=0.4} Yeah! {vspace=30}                         {w=0.8}No-one messes with us!"
@@ -2242,7 +2262,7 @@ label thief3:
                         xalign 0.5
                     menu:
                         "The thief sprung to their feet, then faltered and fell against the wall."
-                        "If you tried to help the Thief, turn to page 182.":
+                        "If you tried to help the thief, turn to page 182.":
                             "You tore off one of your sleeves and bound it around the thief's arm as a bandage. They grumbled about it, but accepted your help."
                             t "You're wasting your time, I'm telling you."
                             t "One day soon I will make love to the ropemaker's daughter, and the croaking of ravens will be our music for the occasion, and the world will be a better place for it."
@@ -2345,7 +2365,7 @@ label thief3:
                         "You grabbed the scimitar and slashed through the rope in a single motion."
                         "The form of the thief fell down below. As it fell away, you saw it was nothing but a raggedy old cloak stuff with straw. You felt a sharp point at your back."
                         t "You're learning, my friend. But not quite quick enough. En Guarde!"
-                        "You whirled around and barely parried a slash from the Thief, but the force of the blow sent you tumbling away and onto a pile of sapphires."
+                        "You whirled around and barely parried a slash from the thief, but the force of the blow sent you tumbling away and onto a pile of sapphires."
                         "You pulled yourself up and fought fiercely across the glittering hills of treasure, gold pieces sliding away with every step."
                         "The Master Thief effortlessly riposted your blows with one hand, while the other hand darted around grabbing nearby gems."
                         jump mushroomFinale
@@ -2401,7 +2421,7 @@ label thiefFinale:
                 "It was swarming with wild and chaotic shapes of all manner of monsters, and you could see a team of things holding onto the front and laying tracks in front of the train as fast as they could as it swerved through the cavern, fungi leaping aside before it."
                 t "Grab on!"
                 "Behind you the mushrooms closed in, throwing puffballs that exploded in clouds of spores around you. You ran up to the side of the train as it clattered along."
-                "The Thief pushed you up to grab onto the side of the carriage, then you reached down and pulled them up beside you."
+                "The thief pushed you up to grab onto the side of the carriage, then you reached down and pulled them up beside you."
                 "The train whistled with full force, gathering speed until it smashed through the other wall of the cavern and shot through the trees of the forest, leaving the mushrooms behind."
                 t "Well! Did you ever doubt me?"
                 "From all across the train came a great cheer, and you looked around to see goblins of a thousand shapes emerge to hold up the thief in celebration."
@@ -2598,7 +2618,7 @@ label thiefStory:
                 pov "If your parents want to take you, they'll have to take both of us."
                 "The thief held your hand tight."
                 t "Thank you."
-        "In a few short hours, the Thief's mother and father came."
+        "In a few short hours, the thief's mother and father came."
         if godfather == "White" or godfather == "Red":
             "Midnight was approaching fast. You felt a cold chill come over you. Soon, your godfather would come and take you away."
         "The goblins lined up you and the thief with 12 other goblins on a tree branch, all of you shifted to become king parrots and sparrows and magpies and birds of every type."
@@ -2625,7 +2645,7 @@ label thiefStory:
             pov "There is none. There never was."
         else:
             "The thief's mother stood and stared for a long time, moving down the line slowly."
-            "As she looked over the Thief, you felt the hot, bright rays of the Lord's gaze upon you. The Thief held your hand tightly."
+            "As she looked over the thief, you felt the hot, bright rays of the Lord's gaze upon you. The thief held your hand tightly."
             "Their breath grew short, and they looked straight ahead, trying not to seem as though anything was wrong."
             if pig:
                 "The pig shook under your arm."
@@ -2660,7 +2680,7 @@ label thiefStory:
                             mir "Very well! A fine prize you shall make for my servants."
                             "And the three of you set along the path to hell, with the Devil rubbing His hands gleefully. As you walked, you passed a cherry tree full of red fruits."
                             t "Devil, please, if I may make one last request... may you please climb up that tree and hand us some cherries?"
-                            "Believing the two of you to be broken, the Devil agreed. But as soon as he was on the tree, the Thief whipped out a vial of salt. In a wink they drew a circle around the tree in chalk, and the old serpent was stuck to a branch as if He was glued to it."
+                            "Believing the two of you to be broken, the Devil agreed. But as soon as he was on the tree, the thief whipped out a vial of salt. In a wink they drew a circle around the tree in chalk, and the old serpent was stuck to a branch as if He was glued to it."
                             mir "NOOOOOOOOOOOO!"
                             mir "Foolish mortal - you will pay dearly for this!"
                             t "Throw down my friend's contract, and I'll release you!"
@@ -2674,7 +2694,7 @@ label thiefStory:
                             menu:
                                 mir "Now let me go!"
                                 "If you released the Devil to wreak havoc upon the world once more, turn to page 211.":
-                                    "You nodded to the Thief, and they use a pouch of mysterious coal dust to draw a circle around the tree."
+                                    "You nodded to the thief, and they use a pouch of mysterious coal dust to draw a circle around the tree."
                                     "The Devil was gone like the wind in an instant, cackling and spreading a terrible stench and causing misery and woe behind him for the rest of days."
                                     t "You're free now."
                                 "If you leave the Devil trapped in the cherry-tree forever, turn to page 224.":
@@ -2715,13 +2735,16 @@ label thiefStory:
                         jump thiefDeath
                 if goblinCelebrate and pig:
                     "Your pig wished you a fond farewell, and went to live in his kingdom in the blue mountains."
+                    call endStamp
                     "And if he has not died, he lives there still."
                     jump end
                 elif pig:
                     "Your pig watched over the wedding ceremony with tears in his eyes, and stayed with you there as your constant companion and friend."
+                    call endStamp
                     "And if you have not died, you live there still."
                     jump end
                 else:
+                    call endStamp
                     "And thus you stayed there forever more, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
                     jump end
             else:
@@ -2735,7 +2758,8 @@ label thiefStory:
                         if godfather == "Black":
                             jump thiefDeath
                         else:
-                            "There you stayed for the rest of your days, growing slowly older. On cold nights, you swear you could still hear the whistle of the Goblin Train, and the laughter of the Thief in the wind."
+                            "There you stayed for the rest of your days, growing slowly older. On cold nights, you swear you could still hear the whistle of the Goblin Train, and the laughter of the thief in the wind."
+                            call endStamp
                             "And then came an elephant with a very long snout, and it blew the story out."
                             jump end
                     "If you stayed on the goblin train with the thief forever after, turn to page 244.":
@@ -2749,13 +2773,16 @@ label thiefStory:
                                 jump thiefDeath
                         if goblinCelebrate and pig:
                             "Your pig wished you a fond farewell, and went to live in his kingdom in the blue mountains."
+                            call endStamp
                             "And if he has not died, he lives there still."
                             jump end
                         elif pig:
                             "Your pig watched over the wedding ceremony with tears in his eyes, and stayed with you there as your constant companion and friend."
+                            call endStamp
                             "And if you have not died, you live there still."
                             jump end
                         else:
+                            call endStamp
                             "Forever more, you rattled across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
                             jump end
     label thiefDeath:
@@ -2826,7 +2853,8 @@ label thiefStory:
                         pov "Alright. I'm ready"
                         m "No-one's ever ready. But there's no time left."
                         "She gently took you down to the kingdom of Death."
-                        "And you lie there still."
+                        call endStamp
+                        "And what happened after that, none who live can say."
                         #"And what happened to the Toad, you ask?"
                         #"He was never heard from again."
                         jump end
@@ -2834,7 +2862,7 @@ label thiefStory:
 # Act 2, Chapter 2B: Journey with the Toad
 label toad1:
     "He gulped down the rest of his plate and stumbled unsteadily away from the table."
-    "You both stepped into the Toad's squash carriage, and it went rattling away down the path into the great, dark forest."
+    "You both stepped into the toad's squash carriage, and it went rattling away down the path into the great, dark forest."
     #TK: Transition: Fade to black and then to the next scene.
     # "Before long you came to a great rushing river."
     # r "Halt! None may cross me and live!"
@@ -2955,14 +2983,14 @@ label toad1:
         #TK: Have more options here for the diffent godfathers
         "But he didn't get up."
         "If you helped the toad up, turn to page 235.":
-            "You reached to find the Toad, then grabbed his hand."
+            "You reached to find the toad, then grabbed his hand."
             "Even in the darkness, you saw him blush bright red."
             f "Well I - t-this is all most..."
             f "Hand-holding, before marriage? What will people say?"
             "You pulled him up out of the muck, and helped him take off his shirt and wrap it around his bad arm as a sling."
             f "Good, good. I'll lead you onward -"
             "He tried to walk forward, but his ankle buckled in and he nearly fell. You grabbed him and helped him onto your shoulder."
-            "Then the two of you walked onward, with the Toad leaning on you for support."
+            "Then the two of you walked onward, with the toad leaning on you for support."
     "Soon, you began to see a glimmer of silver light in the darkness."
     "The forest was covered in great puddles of water from the rains. The puddles shone with light."
     "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage."
@@ -2973,7 +3001,7 @@ label toad1:
             yalign 0.68#0.743
             xalign 0.5
         menu:
-            "The Toad gasped in terror at the sight."
+            "The toad gasped in terror at the sight."
             "If you looked into the puddle carefully, turn to page 236." if not puddleLook:
                 "You crawled to the edge and looked down into the puddle."
                 "The surface of the water was flat and still."
@@ -2989,7 +3017,7 @@ label toad1:
                 $puddleStick = True
                 jump puddle
             "If you jumped into the puddle, turn to page 207.":
-                "You grabbed the Toad's hand and and held it tight, then leaped into the puddle."
+                "You grabbed the toad's hand and and held it tight, then leaped into the puddle."
                 "The world flipped over."
                 "You felt the water pass over you, and a cool chill tingled all through your body."
                 "When you opened your eyes, you were standing right way up again."
@@ -2997,14 +3025,14 @@ label toad1:
                 "All around the puddle was a dense and terrible darkness. You didn't want to think about what might happen if you fell off into it."
                 "Past that, you could see a network of puddles, streams, lakes and estuaries. All shining silver like the puddle you were now standing on. A network of silver paths and blotches."
                 "At the center of the winding paths was the cottage, shining with light."
-    "The Toad was very quiet now. His fine suit was ruined with mud. He limped slowly forward and sat down."
+    "The toad was very quiet now. His fine suit was ruined with mud. He limped slowly forward and sat down."
     f "You'd... better go on. I'd just slow you down."
     show hand onlayer transient:
         yalign 0.7#0.743
         xalign 0.5
     menu:
         "He twisted his once-beautiful hat in shaking hands and looked down at the ground."
-        "If you encouraged the Toad, turn to page 214.":
+        "If you encouraged the toad, turn to page 214.":
             pov "Thanks for pretending to fall down back there."
             f "What?"
             pov "Well, I know you must have done it deliberately. Just so I would have something to do."
@@ -3018,10 +3046,10 @@ label toad1:
             pov "Of course!"
             "You slapped him across the back."
             pov "You're Brildebrogue Chippingham, and you've never failed at anything in your life."
-            "With this, the Toad wiped the tears from his eyes, and beamed."
-        "If you crushed the Toad's feelings, turn to page 220.":
+            "With this, the toad wiped the tears from his eyes, and beamed."
+        "If you crushed the toad's feelings, turn to page 220.":
             pov "You have. It would be better if you'd never come."
-            "The Toad winced and looked away, trying not to cry."
+            "The toad winced and looked away, trying not to cry."
             f "You're right. I'm sorry."
             f "I just..."
             f "I wanted to go on an adventure."
@@ -3181,9 +3209,9 @@ label witch1:
                 w "It's really gotten away from me, like, I kind of like the wild look, and I really love all the herbs and things growing along the outside, it adds a lot to the {i}mystique{/i} I guess, but realistically it looks that way because I literally can't get it under control, I try pretty hard but it always seems to just slip away from me, it's like... trying to hold on to fog or something, you know what I mean, right?"
                 w "But yeah, it's nice."
                 jump witchConvo1
-    "At that moment, the door smashed open and the Toad burst in."
+    "At that moment, the door smashed open and the toad burst in."
     "He was shrieking a wild war cry, waving a sword cane, and clearly terrified out of his mind."
-    "The Witch yelped and ducked back as he jabbed at her."
+    "The witch yelped and ducked back as he jabbed at her."
     f "Let my friend go, you wicked Curse-gobbler!"
     "The witch grabbed a crooked dagger, still gleaming with {color=#f00}wolf{/color}sbane from her potion work earlier, and parried his thrust."
     w "Do I know you?!"
@@ -3199,28 +3227,28 @@ label witch1:
         yalign 0.72#0.743
         xalign 0.5
     menu:
-        "Brilliant orchids and bromeliads and corpse flowers burst out all around the Witch and the Toad as they fought their way back and forth through the haze."
-        "If you helped the Witch, turn to page 281.":
+        "Brilliant orchids and bromeliads and corpse flowers burst out all around the witch and the toad as they fought their way back and forth through the haze."
+        "If you helped the witch, turn to page 281.":
             jump witchFinale
-        "If you helped the Toad, turn to page 203.":
+        "If you helped the toad, turn to page 203.":
             jump toadFinale
 
 # Act 3 Finale: The Witch.
 
 label witchFinale:
-    "You dived at the Witch and pushed her out of the way of the stabbing sword cane."
+    "You dived at the witch and pushed her out of the way of the stabbing sword cane."
     "You both went tumbling across the floor and into the fire. When you fell into the fireplace, you fell straight through the flames and down to Hell."
     #Some kind of transition here with SFX
     "Hell was dark and sooty, and the Devil was not home."
     w "Not again!"
     pov "Not again?"
-    "The Witch sighed as you both picked yourself up from the floor, battered and bruised."
+    "The witch sighed as you both picked yourself up from the floor, battered and bruised."
     show hand onlayer transient:
         yalign 0.72#0.743
         xalign 0.5
     menu:
         w "The truth is, I have worked for the devil all this time, and wrought his wicked works upon the world - though it pleased me none to do so."
-        "If you asked the Witch to tell her tale, turn to page 215.":
+        "If you asked the witch to tell her tale, turn to page 215.":
             w "Well, ok. I guess we don't have anything better to do."
             "You both sat down on a lump of brimstone together, and she began to tell you her tale."
             #"THE GIRL WHO KNEW EVERYTHING."
@@ -3344,7 +3372,7 @@ label witchFinale:
             xalign 0.5
         menu:
             dg "Quick now, you two. What questions do you have?"
-            "If you asked how to free the Witch, turn to page 240." if not witchFree:
+            "If you asked how to free the witch, turn to page 240." if not witchFree:
                 $dgAsked += 1
                 $witchFree = True
                 call devilAnswers from _call_devilAnswers
@@ -3398,7 +3426,7 @@ label witchFinale:
             #    d "But they'll never do that."
             #    jump devilSleeps
 
-            "If you asked how to cure the Witch's forgetfulness, turn to page 267." if not cureWitch:
+            "If you asked how to cure the witch's forgetfulness, turn to page 267." if not cureWitch:
                 $dgAsked += 1
                 $cureWitch = True
                 call devilAnswers from _call_devilAnswers_4
@@ -3480,13 +3508,13 @@ label witchFinale:
         #Answers to all your questions.
         #"NOTE: You get answers to all your questions and then see scenes where you use all the answers."
         if witchFree == True:
-            "You left the cottage and crawled down into the foundations beneath it. When you found the old frog squatting beneath it, the Witch speared it with her crooked dagger, killing it instantly."
+            "You left the cottage and crawled down into the foundations beneath it. When you found the old frog squatting beneath it, the witch speared it with her crooked finger, killing it instantly."
             "With that, she felt a great weight fall from her shoulders. You turned and saw that the Devil's mark was no longer on her."
             "Then you went to the cottage fireplace, threw in the three golden hairs from the Devil, and lept inside."
-            "In an instant, you flew right up the chimney and out into the Witch's cottage."
+            "In an instant, you flew right up the chimney and out into the witch's cottage."
         else:
             "And so you went to the cottage fireplace, threw in the three golden hairs from the Devil, and lept inside."
-            "In an instant, you flew right up the chimney and out into the Witch's cottage."
+            "In an instant, you flew right up the chimney and out into the witch's cottage."
         if godfather == "Red":
             "Alas, as you tumbled onto the floor of the cottage, you heard the clock strike midnight, and you saw a pair of terrible red boots ahead of you."
             mir "Time's up, child!"
@@ -3497,13 +3525,14 @@ label witchFinale:
                     pov "Belthuselah."
                     mir "NOOOOOOOOOOOO! How? How did you discover my second and most secret name? Impossible!"
                     "In an instant, his spell over you broke. The Devil withered and shrank and spluttered with rage, until he grew as small as an ant, whereupon you kicked Him right into the fireplace and back to hell."
-                    "With the Devil taken care of, you and the Witch looked over the cottage."
+                    "With the Devil taken care of, you and the witch looked over the cottage."
                     "It was a mess of flowers and plants and flopping animals, sprouting wildly every witch-way across the room."
                     "You rolled up your sleeves and slowly put the room to rights, until it was even more clean, warm and homely than it had been before."
                 "Otherwise, turn to page 297.":
                     "With a whoop, the Devil seized you and dragged you into the fireplace and straight to hell."
-                    "Sadly, you were trapped there. The witch mourns you still."
-                    "What of the Toad, you ask? I ate him up whole."
+                    "Sadly, you were trapped there forever after. The witch mourns you still."
+                    #"What of the toad, you ask? I ate him up whole."
+                    call endStamp
                     "When misfortune is after someone, they may try to hide in all sorts of places or flee across the whole wide world, but it will still know where to find them."
                     jump end
         elif godfather == "White":
@@ -3513,7 +3542,7 @@ label witchFinale:
             "It seared into your flesh as you huddled together on the floor, feeling His gaze searching for you as His heavy footfalls shook the house."
             "But He did not see you. And soon, you felt His light fade, and His gaze turned away, and His heavy footsteps fell away into the distance."
             "You and the witch clutched each other and laughed with terror and relief."
-            "With God taken care of, you and the Witch looked over the cottage."
+            "With God taken care of, you and the witch looked over the cottage."
             "It was a mess of flowers and plants and flopping animals, sprouting wildly every witch-way across the room."
             "You rolled up your sleeves and slowly put the room to rights, until it was even more clean, warm and homely than it had been before."
         elif godfather == "Black":
@@ -3527,7 +3556,7 @@ label witchFinale:
             "In an instant, the well began to flow with the richest and most satisfying red wine, and all throughout the village rejoiced."
             "The village soon prospered by selling the wine, and you and your family became rich beyond your wildest dreams."
         if cureWitch == True:
-            "You stayed with the Witch for a while after that, helping her with her forgetfulness."
+            "You stayed with the witch for a while after that, helping her with her forgetfulness."
             "Over time you cultivated a garden in her hat, using the knowledge you tricked out of the Devil."
             if godfather != "Black" and mushroomCurse == False:
                 "You told the wise old Mushroom the story of your misadventures in hell, and she loved it so much that she blessed you with a mushroom's blessing, so that you always had a green thumb."
@@ -3536,17 +3565,17 @@ label witchFinale:
             "Although she would never be the Girl Who Knew Everything again, she knew enough."
             if witchFree == False:
                 "Alas, despite everything you'd done, she still remained sworn to the Devil. Her promise to him was kept in a secret place that he guarded jealously, and you were never able to find it."
-                "Every Witch's sabbath, she was forced to ride away to dance on the peak of Bald Mountain, and commit all kinds of wicked and terrible acts in his name."
+                "Every witch's sabbath, she was forced to ride away to dance on the peak of Bald Mountain, and commit all kinds of wicked and terrible acts in his name."
                 "Still, you spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
             else:
                 "You spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
             "Finally, her garden was ready, and her cottage was just as it should be. She had recovered enough to take care of herself again."
         else:
-            "You stayed with the Witch for a while after that, trying to help her with her forgetfulness."
+            "You stayed with the witch for a while after that, trying to help her with her forgetfulness."
             "Sadly, you knew not how. She would never be the Girl Who Knew Everything again. You tried everything you could, but for the rest of her days, her thoughts were cursed to leak from her head in heavy smoke."
             if witchFree == False:
                 "Alas, despite everything you'd done, she still remained sworn to the Devil. Her promise to him was kept in a secret place that he guarded jealously, and you were never able to find it."
-                "Every Witch's sabbath, she was forced to ride away to dance on the peak of Bald Mountain, and commit all kinds of wicked and terrible acts in his name."
+                "Every witch's sabbath, she was forced to ride away to dance on the peak of Bald Mountain, and commit all kinds of wicked and terrible acts in his name."
             "Still, you spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
         show hand onlayer transient:
             yalign 0.72#0.743
@@ -3607,23 +3636,27 @@ label witchFinale:
                                         jump deathQuestions
                             "If you told them goodbye, turn to page 278.":
                                 m "No-one's ever ready. But there's no time left."
-                                "She gently took you down to the kingdom of Death, where you lie still."
-                                "And what happened to the Toad, you ask?"
-                                "He was never heard from again."
+                                call endStamp
+                                "She gently took you down to the kingdom of Death."
+                                "And what happened after that, none who live can say."
+                                #"And what happened to the toad, you ask?"
+                                #"He was never heard from again."
                                 jump end
                 else:
+                    call endStamp
                     "And so you lived there together in quiet happiness. If you have not died, you live there still."
-                    "And what happened to the Toad, you ask?"
-                    "He was never heard from again."
+                    #"And what happened to the toad, you ask?"
+                    #"He was never heard from again."
                     jump end
             "If you returned home, turn to page 261.":
                 "When it was time to leave, you wished the Witch a tearful farewell, and returned to your cottage with your family."
                 if godfather == "Black":
                     jump deathQuestions
                 else:
+                    call endStamp
                     "And so you lived there for many long, happy years, visiting the Witch each summer. If you have not died, you live there still."
-                    "And what happened to the Toad, you ask?"
-                    "He was never heard from again."
+                    #"And what happened to the toad, you ask?"
+                    #"He was never heard from again."
                     jump end
 # Act 3 Finale: The Toad.
 
@@ -3635,14 +3668,14 @@ label toadFinale:
     "You popped into a cat, then a fish, then back into a worm again."
     f "Watch out!"
     "A greedy magpie dove for you as you squirmed helplessly."
-    "The Toad transformed into a gecko and grabbed you, dropping his tail."
+    "The toad transformed into a gecko and grabbed you, dropping his tail."
     "The magpie grabbed the tail and flew off, before turning into a wallaby and falling back in the river."
     f "Hold on! I know where to go!"
     "You felt yourself transform into a squirming tadpole. The toad changed into a sea bass and held you in his mouth, swimming for a point on the shore."
     "Just as his fins began to give out, you turned into a cat, and grabbed him and pulled you both up out of the water."
     "He directed you to a small, muddy hole on the river bank. As soon as you entered, the mud fell down behind you and blocked your exit."
     "The hole was wet, and cramped, and crawling with small worms and roaches, but it was safe."
-    "You shivered in the cold. The Toad flopped down beside you, becoming a witchetty grub."
+    "You shivered in the cold. The toad flopped down beside you, becoming a witchetty grub."
     #You explore the toad's home and get to know him better
     label toadExplore1:
         show hand onlayer transient:
@@ -3666,7 +3699,7 @@ label toadFinale:
                 "But the costumes seemed well cared for."
                 jump toadExplore1
             #TK: Toad admits that there was no curse.
-            "If you asked the Toad about this place, turn to page 216." if not toadWhere:
+            "If you asked the toad about this place, turn to page 216." if not toadWhere:
                 $toadWhere = True
                 pov "Where are we?"
                 f "This is my home. My real home."
@@ -3771,7 +3804,7 @@ label toadFinale:
         show hand onlayer transient:
             yalign 0.79#0.743
             xalign 0.5
-        "You slipped in the blood and felt it on your hair and tasted it in your mouth. The Toad quickly slammed the door, but the key popped out and into the blood.{vspace=170}{i}In your notes, write down that you {b}have blood on your hands.{/b}{/i}"
+        "You slipped in the blood and felt it on your hair and tasted it in your mouth. The toad quickly slammed the door, but the key popped out and into the blood.{vspace=170}{i}In your notes, write down that you {b}have blood on your hands.{/b}{/i}"
         f "No no no no no. Oh god."
         "The clock chimed a quarter to twelve."
         "You tried to wipe the blood off the key, but it wouldn't come off."
@@ -3930,7 +3963,7 @@ label toadFinale:
             f "Hold on just a second. How do we know you're really the Lord?"
             miw "Do not doubt my power. I am the wind in the sky and the old stones in the earth."
             f "Show us. Seeing is believing."
-            "The Lord performed His feat and turned into a mighty wind. But just as He did so, the Toad opened the window, and the Lord blew right out of the tower and across the sea. With this, the toad slammed the window shut."
+            "The Lord performed His feat and turned into a mighty wind. But just as He did so, the toad opened the window, and the Lord blew right out of the tower and across the sea. With this, the toad slammed the window shut."
             f "Well. That takes care of that."
 
         if godfather == "Red":
@@ -3947,7 +3980,7 @@ label toadFinale:
             f "Hold on just a second. How do we know you're really the Devil?"
             mir "Ha! You dare doubt my power? I can grow tall as a fir tree and small as a mouse."
             f "Prove it."
-            "The Devil performed His feat. But just as He turned into a mouse, the Toad grabbed Him and stuffed Him in a sack and threw Him out the window, whereupon He fell screaming down the tower and into His grave and straight to Hell."
+            "The Devil performed His feat. But just as He turned into a mouse, the toad grabbed Him and stuffed Him in a sack and threw Him out the window, whereupon He fell screaming down the tower and into His grave and straight to Hell."
             f "Well. That takes care of that."
         if godfather == "Black":
             #Death comes for brildebrogue after all these years
@@ -3959,33 +3992,35 @@ label toadFinale:
             f "Well. That takes care of that."
 
         "You and the toad left the ruins of Chippingham manor behind to rot."
-        "You took the gems from the wreckage and renovated the Toad's old mud-hole, turning it into a warm, comfy little cottage with a great fire and enough food for a lifetime, along with a large closet of fine clothes."
+        "You took the gems from the wreckage and renovated the toad's old mud-hole, turning it into a warm, comfy little cottage with a great fire and enough food for a lifetime, along with a large closet of fine clothes."
         show hand onlayer transient:
             yalign 0.66#0.743
             xalign 0.5
         menu:
             "After a while, you both had rested and mended from your terrible ordeals."
-            "If you married the Toad, turn to page 298.":
-                "But you found you didn't want to leave. You stayed together in your cosy home in the swamp. The Toad worked long hours sewing many fine costumes, and the two of you put on plays together which delighted the people of the village."
+            "If you married the toad, turn to page 298.":
+                "But you found you didn't want to leave. You stayed together in your cosy home in the swamp. The toad worked long hours sewing many fine costumes, and the two of you put on plays together which delighted the people of the village."
                 "After many years of companionship, you finally got married and lived happily together."
                 "I should know - I was at your wedding! I gorged myself on the fresh meat and raised my glass for the toast, and the beer ran down my chin but did not go into my mouth."
                 if godfather == "Black":
                     jump toadDeath
-                "You were very happy, had many children, and still would live if you had not died."
-                "And what happened to the Witch, you ask?"
-                "I ate her up whole."
-                "Every piece."
+                call endStamp
+                "You were very happy, had many children, and you still would live if you had not died."
+                #"And what happened to the witch, you ask?"
+                #"I ate her up whole."
+                #"Every piece."
                 jump end
             "If you stayed good friends with the toad, turn to page 299.":
                 "But you found you didn't want to leave. You stayed together in your cosy home in the swamp."
-                "The two of you had many happy years together. The Toad worked long hours sewing many fine costumes, and the two of you put on plays together which delighted the people of the village."
+                "The two of you had many happy years together. The toad worked long hours sewing many fine costumes, and the two of you put on plays together which delighted the people of the village."
                 if godfather == "Black":
                     jump toadDeath
                 else:
-                    "You were very happy there for the rest of your days, and still would live if you had not died."
-                "And what happened to the Witch, you ask?"
-                "I ate her up whole."
-                "Every piece."
+                    call endStamp
+                    "You were very happy there for the rest of your days, and you still would live if you had not died."
+                #"And what happened to the witch, you ask?"
+                #"I ate her up whole."
+                #"Every piece."
                 jump end
             "If you left the toad to return to your family, turn to page 300.":
                 "When it was time to leave, you wished the toad a tearful farewell, and returned to your cottage with your family."
@@ -3993,10 +4028,11 @@ label toadFinale:
                 if godfather == "Black":
                     jump toadDeath
                 else:
-                    "You were very happy there for the rest of your days, and still would live if you had not died."
-                "And what happened to the Witch, you ask?"
-                "I ate her up whole."
-                "Every piece."
+                    call endStamp
+                    "You were very happy there for the rest of your days, and you still would live if you had not died."
+                #"And what happened to the witch, you ask?"
+                #"I ate her up whole."
+                #"Every piece."
                 jump end
     label toadDeath:
         "But youth does not last forever."
@@ -4052,10 +4088,11 @@ label toadFinale:
                     pov "Alright. I'm ready"
                     m "No-one's ever ready. But there's no time left."
                     "She gently took you down to the kingdom of Death."
+                    call endStamp
                     "And you lie there still."
-                    "And what happened to the Witch, you ask?"
-                    "I ate her up whole."
-                    "Every piece."
+                    #"And what happened to the Witch, you ask?"
+                    #"I ate her up whole."
+                    #"Every piece."
                     jump end
 
     # f "Well, you have the real thing now. You won't need me anymore."
@@ -4070,26 +4107,28 @@ label toadFinale:
 
     #Stuff for the devil, god, death
 
+label endStamp:
+    show text "{b}THE END.{/b}":
+        xalign 0.5
+        ypos 650
+    show stamp:
+        xalign 0.5
+        ypos 680
+    return
+
 label end:
-    "THE END."
+    #hide treesbg
+    play sound pageFlip
+    scene bg page
+    ""
+    play sound pageFlip
+    scene bg credits
+    #define gui.dialogue_ypos = 100#480
+    #define gui.textbox_height = 100#410
+    #"The images in this volume were collated from various illustrations in the public domain."# Wherever possible, I have tried to provide the place and date of publication of each literary source. The complete list of contributers follows.{vspace=30}{space=20}1. {b}The Mushroom:{/b} 'Fantaisie d'Automne: Les Champignons for La Vie Parisienne' (1916), George Barbier.{vspace=0}2. Test{vspace=0}3. Test{vspace=0}4. Test{vspace=0}5. Test{vspace=0}"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    define gui.dialogue_ypos = 480
+    return
 
 
 
@@ -4160,4 +4199,3 @@ label end:
     # This ends the game.
     #$ renpy.full_restart()
     #jump splashscreen
-    return

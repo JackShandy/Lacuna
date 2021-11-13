@@ -1,70 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 234, in script call
-    call _splashscreen from _call_splashscreen_1
-  File "game/script.rpy", line 460, in script
-    "This maybe happened, or maybe did not."
-  File "renpy/common/00action_menu.rpy", line 148, in __call__
-    renpy.jump_out_of_context(self.label)
-JumpOutException: start
+  File "game/script.rpy", line 4117, in script
+    return
+Exception: Could not find return label (u'game/script.rpy', 1636768274, 259).
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 326, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 617, in main
-    run(restart)
-  File "renpy/main.py", line 148, in run
-    renpy.execution.run_context(True)
-  File "renpy/execution.py", line 922, in run_context
-    context.run()
-  File "renpy/common/00start.rpy", line 234, in script call
-    call _splashscreen from _call_splashscreen_1
-  File "game/script.rpy", line 460, in script
-    "This maybe happened, or maybe did not."
-  File "renpy/ast.py", line 715, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "renpy/exports.py", line 1393, in say
-    who(what, *args, **kwargs)
-  File "renpy/character.py", line 1205, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "renpy/character.py", line 871, in do_display
-    **display_args)
-  File "renpy/character.py", line 621, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "renpy/ui.py", line 298, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 3101, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3910, in interact_core
-    rv = root_widget.event(ev, x, y, 0)
-  File "renpy/display/layout.py", line 1053, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "renpy/display/layout.py", line 1053, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "renpy/display/layout.py", line 1053, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "renpy/display/screen.py", line 720, in event
-    rv = self.child.event(ev, x, y, st)
-  File "renpy/display/layout.py", line 1053, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "renpy/display/behavior.py", line 975, in event
-    return handle_click(self.clicked)
-  File "renpy/display/behavior.py", line 910, in handle_click
-    rv = run(action)
-  File "renpy/display/behavior.py", line 322, in run
-    new_rv = run(i, *args, **kwargs)
-  File "renpy/display/behavior.py", line 329, in run
-    return action(*args, **kwargs)
-  File "renpy/common/00action_menu.rpy", line 148, in __call__
-    renpy.jump_out_of_context(self.label)
-  File "renpy/exports.py", line 1874, in jump_out_of_context
-    raise renpy.game.JumpOutException(label)
-JumpOutException: start
+  File "game/script.rpy", line 4117, in script
+    return
+  File "renpy/ast.py", line 1521, in execute
+    next_node(renpy.game.context().lookup_return(pop=True))
+  File "renpy/execution.py", line 710, in lookup_return
+    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
+Exception: Could not find return label (u'game/script.rpy', 1636768274, 259).
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 1.0
-Fri Nov 12 15:42:58 2021
+Sat Nov 13 12:51:57 2021

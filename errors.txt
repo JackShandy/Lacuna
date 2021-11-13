@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 416: expected end of line
-    play music rain loop volume fadein 1.0
-                                       ^
+File "game/script.rpy", line 4132: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a " at the end of the first line.)
+        "The images in this volume were collated from various illustrations and images in the public domain. Wherever possible, I have tried to provide the place and date of publication of each literary source. The complete list of contributers follows.{vspace=30}{space=20}1. {b}The Mushroom:{/b} 'Fantaisie d'Automne: Les Champignons for La Vie Parisienne' (1916), George Barbier.{vspace=0}2. Test{vspace=0}3. Test{vspace=0}4. Test{vspace=0}5. Test{vspace=0}""
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Fri Nov 12 17:00:08 2021
+Sat Nov 13 12:49:04 2021
