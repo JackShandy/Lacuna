@@ -315,6 +315,7 @@ image goblin2Name="Names/goblin2.png"
 image goblin3Name="Names/goblin3.png"
 image goblin4Name="Names/goblin4.png"
 image goblinqueenName="Names/goblinqueen.png"
+image skinmaskName="Names/sm.png"
 
 ##====Frippery
 image sword="sword.png"
@@ -374,6 +375,7 @@ define goblin2 = Character ("{image=goblin2Name}{alt}Goblin:{/alt}")
 define goblin3 = Character ("{image=goblin3Name}{alt}Goblin:{/alt}")
 define goblin4 = Character ("{image=goblin4Name}{alt}Goblin:{/alt}")
 define goblinQueen = Character ("{image=goblinqueenName}{alt}The Goblin Queen:{/alt}")
+define sm = Character ("{image=skinmaskName}{alt}The Skin Mask:{/alt}")
 
 #Note: deleted these, hopefully I got them all
 #define d = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
@@ -415,6 +417,7 @@ label splashscreen:
     show firelight animated onlayer over_screens zorder 99
     show cover with dissolve
     $ renpy.music.play("audio/rain.wav", fadein=0.5, channel="music", loop=True)
+    #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
     with Pause(5)
     play sound pageFlip
@@ -455,6 +458,8 @@ label splashscreen:
 label before_main_menu:
     show firelight animated onlayer over_screens zorder 99
     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
+
     return
 
 #Main Menu - This is the label that transitions from the "This book belongs to" page to the main menu
@@ -478,6 +483,7 @@ label after_load:
     play sound pageFlip
     #$ renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
     #$ renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
     return
 
@@ -485,6 +491,7 @@ label start:
     show firelight animated onlayer over_screens zorder 99
     #$ renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
     $ renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
         scene bg page
@@ -520,7 +527,7 @@ label start:
                     show hand onlayer transient:
                         yalign 0.71#0.743
                         xalign 0.5
-                    "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the grandchild of the King of Kings.{/b}{/i}"
+                    "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
                     $godfather = "White"
                     jump chapter2
                 "If she said no, turn to page 14." if firstManWho:#"No."
@@ -529,7 +536,7 @@ label start:
                     "Then she turned away from Him and ran into the forest."
                     jump secondMan1
                 "If she asked the mysterious figure who He was, turn to page 11." if not firstManWho:#"Who are you?"
-                    miw "I am your dear Lord." #TX more info
+                    miw "I am your dear Lord."
                     $firstManWho = True
                     jump firstMan
 
@@ -555,7 +562,7 @@ label start:
                     show hand onlayer transient:
                         yalign 0.71#0.743
                         xalign 0.5
-                    "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Grandchild.{/b}{/i}"
+                    "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
                     $godfather = "Red"
                     jump chapter2
                 "If she said no, turn to page 16." if secondManWho:
@@ -567,8 +574,9 @@ label start:
                     $secondManWho = True
                     jump secondMan2
     label thirdMan1:
-        "In the deepest darkness of the forst, there was or was not a handsome woman, broken-limbed and clad all in black."
-        #"(What can any of us be certain of, except that the mercies of the Almighty are vaster than the deepest ocean and more numerous than all the pebbles on the land?)"
+        "In the deepest darkness of the forst, there she may or may not have met a handsome woman"
+        "(What can any of us be certain of, except that the mercies of the Almighty are vaster than the deepest ocean and more numerous than all the pebbles on the land?)"
+        "The woman was or was not broken-limbed and clad all in black."
         "She had no hands."
         wib "Poor woman. Let me be the Godmother."
         wib "The child will have nothing. [He] will need nothing."
@@ -590,7 +598,7 @@ label start:
                     show hand onlayer transient:
                         yalign 0.77#0.743
                         xalign 0.5
-                    "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Grandchild.{/b}{/i}"
+                    "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
                     $godfather = "Black"
                     jump chapter2
                 "If she said no, turn to page 25." if thirdManWho:
@@ -626,18 +634,23 @@ label chapter2:
     elif godfather == "Red":
         "And so you grew up as a wild and willful child, and your drove your mother to distraction with your wicked ways."
         "You obeyed no laws and no masters, and you roamed heedlessly across the hills and dales, cackling wildly and throwing mud in your wake, and all the neighbours said \"That one has the Devil's mark on [him],\" and shut their doors."
-        "Your Godfather was as good as His word, although He could only watch the christening from outside the church window."
-        #TK: Consider having your mother die from grief at your idleness
-        "You soon found that you could scarcely trip over a stone without unearthing precious diamonds and gems, and your family became rich beyond the dreams of avarice."
+        "This so grieved your mother that she fell down dead."
+        #"Your Godfather was as good as His word, although He could only watch the christening from outside the church window."
+        "In spite of this, you still did not mend your wicked ways. You soon found that you could scarcely trip over a stone without unearthing precious diamonds and gems, and you became rich beyond the dreams of avarice."
     elif godfather == "Black":
         "And so you grew up as a solemn and quiet child, and you made your mother sick with worry with your gloomy ways."
         "You ate very little, and said even less, and every night you would stalk quietly through the forest shadows or sit for long hours watching insects crawl in stagnant ponds, and all the neighbours said \"That one has the mark of Death on [him],\" and shut their doors."
+        if godfather == "Red":
+            "You lived with your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+        else:
+            "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+
     label introMenu:
         show hand onlayer transient:
             yalign 0.7#0.743
             xalign 0.5
         menu:
-            "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+            "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets."
             "If you want know about your neighbours, turn to page 26." if not introNeighbours:
                 $introNeighbours = True
                 "Ah! In fact, this river and all the woods around it were owned by a wise mushroom ambassador, who had owned these lands since before anyone could remember."
@@ -663,11 +676,16 @@ label chapter2:
                     "You had no doubt that She would soon send Her three messengers for you, and then take you down to the kingdom of ruin forever."
                 else:
                     "Alas, all too soon, the day of your 18th birthday arrived. You set about in wild terror, for you knew that your Godfather would come to take you away as soon as the clock struck midnight, and you had no wish to leave just yet."
-    mum "You must go to the festival, my child. There will be travellers there from all over this wild earth. Surely one of them will know how to save you from this terrible fate."
-    "She gave you a thick coinpurse, and some bread and meat for the journey."
-    #TK: add the CYOA "you have items - bread" thing
-    mum "Go! But be careful of strangers, and do not leave the path."
-    mum "A terrible {color=#f00}wolf{/color} lurks out there, in the space between the trees."
+    if godfather == "Red":
+        "The closer the hour grew, the more frantic you became. You knew you would soon pay dearly for all your years of wicked indolence."
+        pov "I know. I'll go to the village festival this eve. There will be travellers there from all over this wild earth. Surely one of them will know how to save me from this terrible fate."
+        "You gathered up your coinpurse, along with some bread and meat for the journey, and resolved to travel until you found a way to escape the Devil."
+    else:
+        mum "You must go to the festival, my child. There will be travellers there from all over this wild earth. Surely one of them will know how to save you from this terrible fate."
+        "She gave you a thick coinpurse, and some bread and meat for the journey."
+        #TK: add the CYOA "you have items - bread" thing
+        mum "Go! But be careful of strangers, and do not leave the path."
+        mum "A terrible {color=#f00}wolf{/color} lurks out there, in the space between the trees."
     "And so you took up your belongings and strode on down the road to the festival."
     "The twilight set in, and the crickets and cicadas all around you set about with their chattering and squabbling, and the evening birds began to laugh and trill, and you could feel the wet cool mist of the rainforest settle around you."
     "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
@@ -943,10 +961,12 @@ label chapter2:
                             OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!"
                             $pitiful +=1
                             jump thiefChase
-
                         "If you let them go, turn to page 27.":
                             "You walked sorrowfully back to the road, cursing the devil for your misfortune."
-                "As you trudged back to the road you discovered that all of your coins had been replaced with I.O.U.'s, the bread was now nothing but crumbs, and the meat was now a live possum with a label on it saying \"Ham\". It bit you and fled into the trees."
+                show hand onlayer transient:
+                    yalign 0.71#0.743
+                    xalign 0.5
+                "As you trudged back to the road you discovered that all of your coins had been replaced with I.O.U.'s, the bread was now nothing but crumbs, and the meat was now a live possum with a label on it saying \"Ham\". It bit you and fled into the trees.{vspace=200}{i}In your notes, write down that {b}Your things have been stolen.{/b}{/i}"
                 if godfather == "White":
                     "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Oh Lord, how could you treat your servant thus?\""
                     "After a long time you drew yourself up from the ground and spoke to the trees."
@@ -1030,7 +1050,7 @@ label chapter2:
                 xalign 0.5
             menu:
                 f "Well, are you impressed?"
-                "If you asked the Gentleman his name, turn to page 58.":
+                "If you asked the gentleman his name, turn to page 58.":
                     f "Brildebrogue Chippingham's the name. Of the Burpengary Chippinghams."
                 "If you flattered the toad, turn to page 63.":
                     pov "Absolutely, sir. I'm stunned."
@@ -1039,14 +1059,14 @@ label chapter2:
                     f "Were they to see the incandescent beauty of my true visage at first sight, I dare say they would fall to their knees and wail in shock, so transfixed would they be."
                     f "I would never be able to get anywhere without them pawing at me and offering me their baked goods and falling about in ecstasy, you know how these people are."
                     f "But you, I believe, have sufficient grace to withstand my true beauty."
-                "If you lept from the moving carriage like a holy terror, turn to page 65." if godfather=="Red":
+                "If your notes say that {b}You are the Devil's Godchild{/b}, turn to page 65." if godfather=="Red":
                     $toadStole = True
-                    pov "Sir, you will regret the day you ever tangled with the Devil's Godchild."
-                    "With a single motion you stole all the valuables you could grab and lept from the carriage, tumbling onto the road below."
+                    pov "Sir, you've made one mistake. Never tangle with the spawn of the Devil."
+                    "With a single motion you stole all the valuables you could grab and lept from the lept from the moving carriage like a holy terror, tumbling onto the road below."
                     f "What the - stop! Thief!"
                     "But it was too late. You were already away and running into the woods, laughing with impish glee."
-                    "You looked down at your haul and found that you'd managed to swipe a lovely emerald broach in the shape of a dragonfly."
-                    "You hid it in your pocket and headed on your way."
+                    "You looked down at your haul and found that you'd managed to swipe a lovely emerald broach in the shape of a dragonfly.{vspace=200}{i}In your notes, write down that {b}You have an Emerald Brooch.{/b}{/i}"
+                    "You hid it in your pocket and went on your way."
                     jump chapter6
             show hand onlayer transient:
                 yalign 0.67#0.743
@@ -1078,7 +1098,7 @@ label chapter2:
                         f "Perhaps I could put in a good word for you with Him later. Pond scum?"
                     if godfather == "Black":
                         "I'm searching for a way to escape my Godmother, the Reaper."
-                        pov "She told my mother she will soon send 3 messengers, and then take me away. But I have no wish to leave just yet."
+                        pov "She said she will soon send 3 messengers, and then take me away. But I have no wish to leave just yet."
                         f "A sticky situation indeed!"
                         f "Why, that reminds me of the situation when my own dear old mother was about to die."
                         show tornPage1 onlayer screens zorder 101
@@ -1118,12 +1138,18 @@ label chapter2:
             jump chapter6
         "If you refused the lift, turn to page 55.":
             #TK: Different responses here based on your godparent
-            pov "No thank you, Sir. My mother warned me not to talk to strangers."
+            if godfather == "Red":
+                pov "Begone, worm. Pester me again and I'll drive you into the grave, just as I did my own mother."
+            else:
+                pov "No thank you, Sir. My mother warned me not to talk to strangers."
             eg "You would spurn me? ME? {b}Bridlebrogue Chippingham!?{/b}"
             "The curtains parted and inside you saw a great ugly cane toad squatting in muck. The graceful arm that beckoned you from behind the curtain was nothing but a wooden prop in his swollen hand. He tossed it to the ground with disgust."
             show tornPage3 onlayer screens zorder 101
             show tornPage3bg onlayer screens zorder 99
-            f "Why, I have half a mind to give your mother a good piece of my mind. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
+            if godfather == "Red":
+                f "Why, if your mother was alive I would give her a good piece of my mind about the way she raised you. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
+            else:
+                f "Why, I have half a mind to give your mother a good piece of my mind. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
             hide tornPage3 onlayer screens
             hide tornPage3bg onlayer screens
             "With a furious clap of his hand, he ordered the horses to ride on. The horses shrugged off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo. You realised that the brilliant carriage they pulled was nothing more than an old rotten squash."
@@ -1135,7 +1161,10 @@ label chapter2:
     #---- Act 1, Chapter 6: The Village.
     label chapter6:
         if mushroomArc == 0 and thiefArc == 0 and toadArc == 0:
-            "And so it was that you stayed on the path the whole way, following your mother's advice and never once being tempted by the offers of strangers."
+            if godfather == "Red":
+                "And so it was that you stayed on the path the whole way, ignoring your wanton nature and never once being tempted by the offers of strangers."
+            else:
+                "And so it was that you stayed on the path the whole way, following your mother's advice and never once being tempted by the offers of strangers."
             "(Some protagonist you turned out to be.)"
             "Finally, you arrived at the village."
         else:
@@ -1472,7 +1501,7 @@ label town:
                     gm "In their left hand is a terrible light."
                 $gloommongerChat += 1
                 jump townExplore
-            "If you looked in the well, turn to page 346." if wellChat <=1:
+            "If you looked in the well, turn to page 346." if wellChat <=2:
                 if wellChat == 0:
                     well "Evening."
                 elif wellChat == 1:
@@ -1487,6 +1516,101 @@ label town:
                             well "No worries."
                         #"If your notes say that {b}You know the secret name of Belphagor, lord of hogs{/b}, turn to page 210."
                         #TK: Write secret Thing in the Well Path
+                if wellChat == 2:
+                    show hand onlayer transient:
+                        yalign 0.7#0.743
+                        xalign 0.5
+                    menu:
+                        "You peered into the well's depths."
+                        "If your notes say {b}you have an Emerald Brooch{/b}, turn to page 630.":
+                            "You tossed the Emerald Brooch down in the well, and wished for a way out of your terrible predicament."
+                        "Otherwise, if {b}your things have been stolen{/b}, turn to page 365.":
+                            "You would have liked to be able to make a wish. But you had no coins on you."
+                        "Otherwise, if {b}you have ventured into the Smoke World and rescued the stolen Skin-Mask from King Famine{b}, turn to page 742.":
+                            well "Thank G-d you have it. Quickly! Come in!"
+                            "You scrambled down into the well towards the secret passage. The breath of King Famine was hot on your neck. Behind you, you could see His soldiers tearing apart the village, just as He swore He would."
+                            sc "Go. I'll hold them off."
+                            "You turned to your faithful companion, tears in your eyes."
+                            well "Scraggs, are you sure?"
+                            pov "After all we've been through together... we can't just abandon you!"
+                            "He just gave you his crooked grin."
+                            sc "Such is life."
+                            sc "Don't worry about me. Just make sure you collect that reward money."
+                            "You embraced in a passionate kiss. Then Scraggs pushed you away. His Colt Navy revolvers roared out into the night as you fled deeper into the well."
+                            sc "Come, you bastards! Come!"
+                            "The secret entrance slammed shut behind you, cutting off the sounds of battle."
+                            "The Skin-Mask was burning hot in your hands, slowly twisting as it tried to squirm out of your grip. Whispers seeped into your mind."
+                            well "Don't listen to it. You're almost there now. I'll open the way."
+                            pov "Alouicious... your brother told us about what happened. I just wanted to say-"
+                            well "Save your breath. There's nothing to be done about it now."
+                            well "In the years since I died in that freak chainsaw juggling accident... there's one thing I've learned."
+                            well "You can't change the past."
+                            well "All you can do is try to change the future. Once step at a time."
+                            "A rumble shook the cave. In horror, you saw the fingers of King Famine slowly breaking in through the earth around you. In the cracks you could see his gaping maw. A terrible screaming broke out all around you."
+                            "With a powerful crack, Alouicious stretched his ghostly form across the cave, holding it together through sheer force of will. Thick smoke billowed all around you."
+                            well "Go to her."
+                            you "No. I can't lose you too."
+                            well "Have you forgotten?"
+                            well "I'm already dead."
+                            "The smoke howled through the cave and pushed you deeper into the depths. You stumbled onwards, tears pouring down your face."
+                            "The wind fell silent. The cave was quiet."
+                            sm "You are alone now."
+                            "You struggled through the cave, feeling the thing twisting in your hands."
+                            sm "Your limbs are slowing."
+                            sm "There is no need to worry."
+                            sm "Soon, this part of the cycle will be over, and you can lay down your burden."
+                            "Your shoulders ached. Your hands were raw and burnt."
+                            sm "Listen."
+                            sm "Do you hear that?"
+                            sm "The footsteps of the Ash Giants."
+                            sm "They will be here soon."
+                            sm "This world will be wiped clean."
+                            sm "None of this matters any more."
+                            "You stumbled out into the great cavern. Below you, you could see the vortex of souls. In the middle of the vortex, Princess Sun lay peacefully at rest in her tomb."
+                            "You fell to your knees. Your legs were lead."
+                            sm "Come."
+                            sm "It is time to end this."
+                            sm "Put me on."
+                            menu:
+                                "If you accepted your fate, turn to page 722.":
+                                    "You put on the mask."
+                                    "The warm heat of it slowly closed around your face."
+                                    "The skin pressed into your mouth and eyes. It folded over and enveloped you."
+                                    sm "Good."
+                                    "The {color=#f00}howling{/color} finally stopped."
+                                    "All was silent and still."
+                                    call endStamp
+                                    "And then there was rest in the land."
+                                    jump end
+                                "If you defied your fate, turn to page 723.":
+                                    "You crawled forward, step by step."
+                                    sm "Rest, child."
+                                    "Your hand started to shake. To your horror, the mask slowly crawled towards your face as you lay on the ground."
+                                    sm "Good. Rest."
+                                    "The skin crept over your throat, towards your mouth."
+                                    "You tried to scream. Nothing came out."
+                                    "Suddenly, you felt someone grab you and pull you up."
+                                    "A burly figure lifted you up and carried you towards the cliff edge."
+                                    "In your blurred vision, you caught sight of a banksia seed."
+                                    pov "S...scraggs?"
+                                    sc "Heh. Don't think this means I like you or anything."
+                                    sc "I just need my cut of the reward money."
+                                    "You reached the edge of the cliff. The vortex of souls screamed out in terror."
+                                    "With the last of your strength, you hurled the mask over the edge."
+                                    "There was a moment of silence."
+                                    "Then a gigantic explosion hurled you and Scraggs off your feet."
+                                    "Princess Sun rose before you, the Skin-Mask writhing in her hands."
+                                    "There was a blinding light, and they both disappeared."
+                                    "Silence fell on the cavern. You heard birdsong outside."
+                                    "Scraggs clapped a hand on your shoulder."
+                                    sc "Alright. Time to head home."
+                                    "You tilted your head back and laughed with relief."
+                                    "Years passed, and the story of the Skin-Mask was forgotten. You and Scraggs lived happily ever after for the rest of your days."
+                                    call endStamp
+                                    "And if you are not dead, you are still alive."
+                                    jump end
+                        "Otherwise, you may make a wish. Turn to page 367.":
+                            "You toss a coin in the well, and wish for a way out of your terrible predicament."
                 $wellChat += 1
                 jump townExplore
             "If you returned to the village, go back to page 50.":
@@ -1928,7 +2052,10 @@ label mushroomFinale:
                     #"You get married and have a gorgeous ceremony together."
                 "If you asked to return home, turn to page 148.":
                     #TK: Persistance: Make the mention of siblings change as you play through routes
-                    "Such were the wonders of that kingdom that you almost forgot everything, even the home you left behind and your mother and siblings and your own country."
+                    if godfather == "Red":
+                        "Such were the wonders of that kingdom that you almost forgot everything, even the riches you left behind and your siblings and your own country."
+                    else:
+                        "Such were the wonders of that kingdom that you almost forgot everything, even the home you left behind and your mother and siblings and your own country."
                     "But soon, your mind came back to you, and you realised that you did not belong to this wonderful land. And so you said to the mushroom:"
                     pov "I've been very happy with you, and you've been kinder to me than words can tell. But I must go back."
                     show hand onlayer transient:
@@ -1944,7 +2071,13 @@ label mushroomFinale:
                             menu:
                                 "You and the mushroom stayed together for many long and happy years, roaming the ancient underground gardens of that fungal kingdom."
                                 "If you remained good friends with the mushroom, turn to page 155.":
-                                    "You and the mushroom stayed the greatest of friends, talking all through the small hours together. After a long time, your mother and siblings came down to join you there, one by one."
+                                    if godfather == "Red":
+                                        "You and the mushroom stayed the greatest of friends, talking all through the small hours together."
+                                        "You set up a quaint home in that strange country, and soon you were even able to find your poor mother and make amends for your wicked behaviour."
+                                        "After a long time, your siblings came down to join you there, one by one."
+                                    else:
+                                        "You and the mushroom stayed the greatest of friends, talking all through the small hours together."
+                                        "You set up a quaint home in that strange country. After a long time, your mother and siblings came down to join you there, one by one."
                                 "If you married the mushroom, turn to page 156.":
                                     "After many years, you and the mushroom became married in a beautiful ceremony. Your mother came down to the kingdom of death for the occasion, and all the plants and lichens and moss and toadstools of the forest were in attendance."
                             if godfather == "White":
@@ -2752,7 +2885,7 @@ label thiefStory:
                     xalign 0.5
                 menu:
                     "In the morning, you were faced with a choice. Because you had not yet tasted the goblin fruits, you could still return to your family and the world of humans."
-                    "If you bade the thief farewell and returned to your mother and siblings, turn to page 243.":
+                    "If you bade the thief farewell and returned to your family, turn to page 243.":
                         "You bade a tearful farewell to the thief, and returned back to your world amoung the humans, where you lived for many years in joyous happiness."
                         if godfather == "Black":
                             jump thiefDeath
@@ -3584,7 +3717,7 @@ label witchFinale:
             "If you stayed with the Witch, turn to page 291.":
                 "But you found you didn\'t want to leave after all."
                 "You stayed there in the cottage, and tended to the herbs and wildflowers, and helped her gather ingredients for her potions."
-                "And she created salves and poultices for you and your mother, keeping her in good health into her old age."
+                "And she created salves and poultices for you and your family, keeping her in good health into her old age."
                 if godfather == "Black":
                     "You lived there in quiet happiness for many years."
                     "But youth does not last forever."
@@ -4130,7 +4263,7 @@ label end:
     $ti=20
     $ ui.text("The images in this volume were collated from various illustrations in the public domain. Wherever possible, I have tried to provide the place and date of publication of each literary source. The complete list of contributers follows.{vspace=30}{space=[ti]}1. {b}The Thief:{/b} 'In Powder and Crinoline' (1912), Kay Nielsen.{vspace=[tx]}{space=[ti]}2. {b}The Witch:{/b} 'Portrait of Lady Elizabeth Keppel' (1761), Joshua Reynolds.{vspace=[tx]}{space=[ti]}3. {b}The Toad:{/b} 'Little Miss Muffet, and other stories' (1902), Published by Mcloughlin Bros. Artist unknown.{vspace=[tx]}{space=[ti]}4. {b}The Mushroom:{/b} 'Fantaisie d'Automne: Les Champignons for La Vie Parisienne' (1916), George Barbier.{vspace=[tx]}{space=[ti]}5. {b}G-d:{/b} 'Der Weeg zu Christo' (1682), Jakob Böhme.{vspace=[tx]}{space=[ti]}6. {b}The Devil:{/b} 'The Papal Pyramid' (1600), private collection. Artist unknown.{vspace=[tx]}{space=[ti]}7. {b}Death, The Thief's Mother:{/b} 'De gli habiti antichi et moderni di diversi parti del mondo, libri due ...' (1590). Woodcutting by Christoph Krieger, published by Cesare Vecellio.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
-    $ ui.text("{space=[ti]}8. {b}Mum, You:{/b} 'Regula Emblematica Sancti Benedicti' (1780), Saint Benedict et. al.{vspace=[tx]}{space=[ti]}9. {b}Mysterious Old Woman:{/b} 'The Clothing of the Renaissance World: Europe - Asia - Africa - The Americas' (1590), Cesare Vecellio.{vspace=[tx]}{space=[ti]}10. {b}Enigmatic Gentleman:{/b} 'Silhouette Portrait of a Gentleman Standing in an Army Encampment' (1844), Auguste Edouart.{vspace=[tx]}{space=[ti]}11. {b}The Hunter:{/b} 'Lady Hunter with Rifle' (1912). Artist unknown.{vspace=[tx]}{space=[ti]}12. {b}The Sparrow-Herder:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham. Sparrow from 'Birds of Asia' (1871), John Gould.{vspace=[tx]}{space=[ti]}13. {b}The Mayor:{/b} 'The pipe of freedom' (1869), Thomas Smith.{vspace=[tx]}{space=[ti]}14. {b}The Goose Girl, The Gloom-Monger:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham.{vspace=[tx]}{space=[ti]}15. {b}The Thing in the Well, Passing Echidna, and Goblin No. 2:{/b} 'Devises heroïques' (1551), Claude Paradin. 'A Year Book of Folklore' (1959), Christine Chaundler.{vspace=[tx]}{space=[ti]}16. {b}The Entire Town:{/b} 'Liber Floridus' (between 1090 and 1120), Lambert, Canon of Saint-Omer.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}8. {b}Mum, You:{/b} 'Regula Emblematica Sancti Benedicti' (1780), Saint Benedict et. al.{vspace=[tx]}{space=[ti]}9. {b}Mysterious Old Woman:{/b} 'The Clothing of the Renaissance World: Europe - Asia - Africa - The Americas' (1590), Cesare Vecellio.{vspace=[tx]}{space=[ti]}10. {b}Enigmatic Gentleman:{/b} 'Silhouette Portrait of a Gentleman Standing in an Army Encampment' (1844), Auguste Edouart.{vspace=[tx]}{space=[ti]}11. {b}The Hunter:{/b} 'Lady Hunter with Rifle' (1912). Artist unknown.{vspace=[tx]}{space=[ti]}12. {b}The Sparrow-Herder:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham. Sparrow from 'Birds of Asia' (1871), John Gould.{vspace=[tx]}{space=[ti]}13. {b}The Mayor:{/b} 'The pipe of freedom' (1869), Thomas Smith.{vspace=[tx]}{space=[ti]}14. {b}The Goose Girl, The Gloom-Monger:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham.{vspace=[tx]}{space=[ti]}15. {b}The Thing in the Well, Passing Echidna, the Skin-Mask, and Goblin No. 2:{/b} 'Devises heroïques' (1551), Claude Paradin. 'A Year Book of Folklore' (1959), Christine Chaundler.{vspace=[tx]}{space=[ti]}16. {b}The Entire Town:{/b} 'Liber Floridus' (between 1090 and 1120), Lambert, Canon of Saint-Omer.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     $ ui.text("{space=[ti]}17. {b}Scraggs McKenzie, Banksia Bounty-Hunter:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}18. {b}The Devil's Sooty Grandmother:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}19. {b}Brildebrogue Chippingham:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}20. {b}The Bat:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}21. {b}The Rat:{/b} 'The Wiviparous Quadrupeds of North America' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}22. {b}The Black Cockatoo and The Crow-Shrike:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}23. {b}The Strange Old Man:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}24. {b}Goblin No. 1, No. 3, and No. 4:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
@@ -4147,15 +4280,18 @@ label end:
         ypos 160
     $ ui.text("{space=[ti]}1. {b}Oz's Wizard.{/b} Mario Arturo, 2012.{vspace=[tx]}{space=[ti]}2. {b}Journal.{/b} Fontourist, 2008.{vspace=[tx]}{space=[ti]}3. {b}Mom's Typewriter.{/b} Christoph Mueller, 1997.{vspace=[tx]}{space=[ti]}4. {b}Book Antiqua.{/b} Monotype Type Drawing Office, 1995.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
+    show text "{b}SOUND:{/b}":
+        xalign 0.5
+        #xpos 50
+        ypos 160
+    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ renpy.pause ()
+
+
     # $ ui.text("1. Test", xpos=50, ypos=150, xmaximum=520)
     # $ renpy.pause ()    $ ui.text("1. Test", xpos=50, ypos=150, xmaximum=520)
     #     $ renpy.pause ()
-    #
-
-
-
-
-    # {space=[ti]}5. {b}The Mushroom:{/b} .{vspace=[tx]}
+    #    #$ renpy.pause ()    $ ui.text("1. Test", xpos=50, ypos=150, xmaximum=520)
 
 
     play sound pageFlip

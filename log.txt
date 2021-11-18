@@ -1,40 +1,41 @@
-Sat Nov 13 20:06:38 2021
+Thu Nov 18 19:11:24 2021
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
  
 
 Bootstrap to the start of init.init took 0.17s
-Early init took 0.00s
+Early init took 0.01s
 Loader init took 0.02s
-Loading error handling took 0.05s
-Loading script took 0.58s
-Loading save slot metadata. took 0.14s
+Loading error handling took 0.06s
+Loading script took 1.89s
+Loading save slot metadata. took 0.15s
 Loading persistent took 0.01s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.12s
-Loading analysis data took 0.46s
+Running init code took 0.11s
+Loading analysis data took 0.55s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
 Dump and make backups. took 0.14s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.15s
+Initial gc. took 0.16s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.54s
+Creating interface object took 0.56s
 Cleaning stores took 0.00s
-Init translation took 0.18s
+Init translation took 0.20s
 Build styles took 0.01s
-Load screen analysis took 2.03s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.11s
 Prepare screens took 0.13s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.19s
-Running _start took 0.00s
+Save pyanalysis. took 1.63s
+Save bytecode. took 0.06s
+Running _start took 0.01s
 Performance test:
-Interface start took 0.27s
+Interface start took 0.24s
 
 Initializing gl renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -61,4 +62,4 @@ Texture testing:
 Screen sizes: virtual=(600, 850) physical=(541, 766) drawable=(541, 766)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 5.56699204445s
+Total time until interface ready: 6.61099982262s
