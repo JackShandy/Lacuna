@@ -2,21 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 427: reached end of line when expecting ':'.
-    elif randomCover ==23 or randomCover == 24
-                                              ^
-
-File "game/script.rpy", line 429: expected statement.
-    elif randomCover ==25 or randomCover == 26:
-                     ^
-
-File "game/script.rpy", line 431: expected statement.
-    elif randomCover ==27 or randomCover == 28:
-                     ^
-
-File "game/script.rpy", line 433: expected statement.
-    elif randomCover ==29 or randomCover == 30:
-                     ^
+File "game/script.rpy", line 1440: expected ':' not found.
+    else
+        ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Nov 20 18:17:27 2021
+Sat Nov 20 19:58:45 2021

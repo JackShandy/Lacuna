@@ -1183,11 +1183,50 @@ label chapter2:
             else:
                 "And so it was that you stayed on the path the whole way, following your mother's advice and never once being tempted by the offers of strangers."
             "(Some protagonist you turned out to be.)"
-            "Finally, you arrived at the village."
+            jump witch1
         else:
             "And so you finally arrived at the village."
-        "The rich dark blanket of night was slowly and softly rolling over the town, and cooking fires lit up all across the hills, one by one."
-        #TK: look into doing this in an alternate way (with clickable backgrounds?)
+        "The rich dark blanket of night was softly rolling over the town, and cooking fires lit up all across the hills, one by one."
+        jump villageExplore1
+
+    label witch1:
+        #TK: add choices here
+        "As you walked up to the village, you spied a hunter standing guard."
+        h "Good evening."
+        h "Be careful tonight. They say there's witches abroad."
+        pov "Witches? Nonsense! There's no such thing!"
+        "No sooner had those foolish words escaped your mouth than a witch lept out of the bushes and onto your back. Before you could say or do anything, she dug her heels into your sides and rode you up into the sky and over the mountains."
+        $witchArc +=1
+        "In a wink you found yourself at the blue mountains, exhausted from a night of hard riding."
+        "A witches sabbath was afoot. A great fire raged at the top of the mountain."
+        "The witches cackled and jibbered and danced around it with glee, poking you cruelly in your sides and making cutting remarks like, \"Now who's not real, eh?\" and \"We don't believe in YOU! How do you like that?\" which wounded your feelings grievously."
+        w "Oh gosh, oh no, are you all right?"
+        "A figure pulled you away from the jeering crowd and tended to your wounds."
+        w "I'm so sorry about that. The old girls tend to get a bit carried away. They don't get out much, you know, it's a bit of a treat for them."
+        w "Are you feeling ok? Let me get you up. I'm so sorry about this again, I know this is probably the last thing you want to be doing on a friday night, really can't apologise enough, it's just the full moon, you know? Always gets them a bit riled up, and it does them good to get some fresh air and dance around once in a while, you know, fulfill their oath to the devil, but, yeah, no excuses for kidnapping you obviously, that kind of behaviour is really not on."
+        w "Here, let me give you a lift home."
+        "She helped you get up on her broom and spirited you away into the sky."
+        "Below you, you heard the witches you chanting praise to Belphegor, lord of Hogs."
+        w "So."
+        w "You come through here often?"
+        #TK: Choice
+        pov "Not often, no."
+        w "Oh, it's lovely out here, you should definitely try coming back when you have a chance. Beautiful views."
+        "A great rumbling broke out all around you. You twisted around to look back. Behind you, you saw the mountain split open and ten thousand hogs burst up from beneath the earth. The witches screeched in demonic glee."
+        w "Oh dear. I'm going to miss everything."
+        w "Alright, here you are. I'd better be getting back."
+        w "Have a good night!"
+        "She set you down at the edge of town and flew off into the sky."
+        "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
+        jump villageExplore1
+        # show hand onlayer transient:
+        #     yalign 0.72#0.743
+        #     xalign 0.5
+        # menu:
+        #     "If you replied \"Witches? Nonsense! There's no such thing!\" turn to page 32.":
+        #
+        #     "If you replied \"I'll be cautious.\" turn to page 40.":
+
     label villageExplore1:
         show hand onlayer transient:
             yalign 0.72#0.743
@@ -1212,7 +1251,12 @@ label chapter2:
     "As the festival began a terrible concern and commotion went up amongst the guests, for we all know what terrible luck it is to spurn a witch."
     may "Did her invitation go missing?"
     h "Impossible. I delivered it myself."
-    "But still, the witch did not arrive, and soon everyone was a frenzy of worry."
+    if witchArc >=1:
+        pov "Um, excuse me."
+        pov "I saw the witch just tonight, actually. She was at a ritual in the Blue Mountains."
+        may "What!? Why would she spurn our invitation?"
+    else:
+        "But still, the witch did not arrive, and soon everyone was a frenzy of worry."
     gm "We've given offence to her somehow. She'll turn all our hair to straw and infest all our picnics with ants. None shall escape."
     go "All our spoons will rust, and our forks will get stuck in the drawers! I already have enough on my hands dealing with the geese!"
     "The panic increased when the Sparrow-Herder rushed in and waved for attention."
@@ -1389,8 +1433,13 @@ label banquet:
                             "He slurped noisily from his wineglass until it was empty. Then he slurped from the glass in his other hand and drained it, too."
                             f "I plan to track this witch character down tonight, before she causes any more chaos."
                             f "We must help the poor, accursed people of this village! Already they panic, terrified that she will descend upon them and turn them all into beasts!"
-                            "A tray of drinks came by and he swapped his old wineglasses out for new ones."
-                            f "And between you and me, I have a curse of my own I need her to lift."
+                            if $witchArc >= 1:
+                                pov "I think that may just be a misunderstanding."
+                                "A tray of drinks came by and the Toad swapped his old wineglasses out for new ones."
+                                f "Maybe so, maybe so. But between you and me, I have a curse of my own I need her to lift."
+                            else:
+                                "A tray of drinks came by and he swapped his old wineglasses out for new ones."
+                                f "And between you and me, I have a curse of my own I need her to lift."
                             f "{i}Transformed{/i}, you know. Keep that under your hat, very hush hush, you understand."
                             $toadLong = True
                             jump toadConvo2
@@ -3217,9 +3266,10 @@ label toad1:
         f "But be wary, my friend. Few have ever left that cottage alive"
         f "Witches have red eyes. They see very far, but they have a keen sense of smell, like animals, and can sense when humans are near them."
         f "If you aren't out in 10 minutes, I'll come in there to rescue you."
+        jump witch2
 
 # Act 2, Chapter 3: The Witch's Cottage
-label witch1:
+label witch2:
     "You walked up the front steps, and put your hand on the doorknob."
     "The door opened up with a shuddering creak."
     "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
@@ -3246,8 +3296,11 @@ label witch1:
     w "I-It's just been so long since I had company for tea, so I haven't had a chance to get it out."
     w "Not that I like company at all, obviously."
     w "I spurn it!"
-    w "I need no-one, and I want no-one!"
-    w "We haven't met before, have we?"
+    w "I need no-one, and I want no-one."
+    if witchArc == 0:
+        w "We haven't met before, have we?"
+    else:
+        w "Hold on... we've met before, haven't we?"
     "She took out her binder of notes and began to leaf through it."
     label witchConvo1:
         show hand onlayer transient:
@@ -3264,7 +3317,7 @@ label witch1:
                 w "What was I..."
                 pov "The tea?"
                 w "Oh! Of course!"
-                w "Ok, so I have some fancy sour cherry tea, English breakfast, Australian breakfast if you're feeling patriotic, dandy chai, green tea, lemon and ginger, and a pack of this stuff which, I don't know what it is to be honest, it's all in Japanese and I haven't tried it yet."
+                w "Ok, so I have some fancy sour cherry tea, English breakfast, Australian breakfast if you're feeling patriotic, green tea, lemon and ginger, and a pack of this stuff which, I don't know what it is to be honest, it's all in Japanese and I haven't tried it yet."
                 #TK: More unique responses.
                 show hand onlayer transient:
                     yalign 0.615#0.743
@@ -3281,8 +3334,8 @@ label witch1:
                         w "Nice! Coming right up."
                     #"If you asked for Earl Grey, turn to page page 235.":
                     #    w "Nice! Coming right up."
-                    "If you asked for Dandy chai, turn to page 235.":
-                        w "Nice! Coming right up."
+                    #"If you asked for Dandy chai, turn to page 235.":
+                        #w "Nice! Coming right up."
                     #"If you asked for Coconut chai, turn to page page 235.":
                     #    w "Nice! Coming right up."
                     "If you asked for Green tea, turn to page 235.":
@@ -3299,11 +3352,19 @@ label witch1:
                 "You nestled down into one of the comfy old chairs by the stove, and she took the other."
                 $witchTea = True
                 jump witchConvo1
-            "If you told her you'd never met, turn to page 271." if not witchMeeting:
+            "If you told her you'd never met, turn to page 271." if witchArc == 0 and not witchMeeting:
                 w "Oh, good."
                 w "It gets so awkward when someone just comes up and starts talking to me out of the blue, and I'm just like \"Mmhmm, yep,\" just nodding and trying to read through my notes when they aren't looking to see who they are, and they always think it's so rude but I'm like, hey, who just walked up and started talking to me without giving me time to read my notes first? THAT's what's really rude here."
                 $witchMeeting = True
                 jump witchConvo1
+            "If you told her you met earlier tonight, turn to page 271." if witchArc >= 1 and not witchMeeting:
+                w "Oh... tonight?"
+                "An expression of panic came over her face. She leafed back and forth through her notes."
+                w "I'm so sorry, this is so embarrasing, I'm... I'm afraid I don't quite remember."
+                w "I mustn't have written it down. It's nothing to do with you, I'm just... if I don't write it down it goes straight out of my head. I'm sorry."
+                $witchMeeting = True
+                jump witchConvo1
+
             "If you asked about your Godparent, turn to page 262." if not witchGodfather:
                 if godfather == "White":
                     pov "I'm hoping you can help me with a problem. My Godfather is the Lord, and He has sworn to take me away at midnight tonight."
