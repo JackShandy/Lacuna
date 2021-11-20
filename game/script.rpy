@@ -242,6 +242,11 @@ init:
 
 ##====Full Screen Images
 image cover = "cover.png"
+image cover5 = "cover-5.png"
+image cover6 = "cover-6.png"
+image cover9= "cover-9.png"
+image cover11= "cover-11.png"
+image cover14= "cover-14.png"
 image title = "title.png"
 #image credits = "acknowledgements.png"
 
@@ -412,16 +417,28 @@ define audio.fire = "audio/fire.mp3"
 
 #Splashscreen - The front cover of the book that appears before the main menu.
 
-label splashscreen:
+label before_main_menu: #splashscreen - changed to before_main_menu so it always displays
     scene black
     show firelight animated onlayer over_screens zorder 99
-    show cover with dissolve
-    $ renpy.music.play("audio/rain.wav", fadein=0.5, channel="music", loop=True)
+    #Shows a random cover each time. 13.32% chance of a variant cover.
+    $randomCover = renpy.random.randint(1, 30)
+    if randomCover <=22:
+        show cover with dissolve
+    elif randomCover ==23 or randomCover == 24:
+        show cover14 with dissolve
+    elif randomCover ==25 or randomCover == 26:
+        show cover5 with dissolve
+    elif randomCover ==27 or randomCover == 28:
+        show cover6 with dissolve
+    elif randomCover ==29 or randomCover == 30:
+        show cover9 with dissolve
+    #$ renpy.music.play("audio/rain.wav", fadein=0.5, channel="music", loop=True)
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
     with Pause(5)
     play sound pageFlip
     show title
+
     with Pause(5)
     #show screen music_screen
     #Ambient rain loop
@@ -455,12 +472,12 @@ label splashscreen:
         #$renpy.full_restart()
 
 #Before main menu: Making sure the animated firelight always displays
-label before_main_menu:
-    show firelight animated onlayer over_screens zorder 99
-    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
-    #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
-
-    return
+# label before_main_menu:
+#     show firelight animated onlayer over_screens zorder 99
+#     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+#     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
+#
+#     return
 
 #Main Menu - This is the label that transitions from the "This book belongs to" page to the main menu
 # label splashscreen2:

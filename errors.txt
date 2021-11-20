@@ -2,64 +2,21 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1548: end of line expected.
-(Perhaps you left out a " at the end of the first line.)
-    well "In the years since I died in that chainsaw juggling acccident... there's one thing I've learned.
-                                well "You can't change the past."
-                                       ^
-                                well "All you can do is try to change the future. Once step at a time."
-                                "A rumble shook the cave. In horror, you saw the fingers of King Famine slowly breaking in through the earth around you. In the cracks you could see his gaping maw. A terrible screaming broke out all around you."
-                                "With a powerful crack, Alouicious stretched his ghostly form across the cave, holding it together through sheer force of will. Thick smoke billowed all around you."
-                                well "Go to her."
-                                you "No. I can't lose you too."
-                                well "Have you forgotten?"
-                                well "I'm already dead."
-                                "The smoke howled through the cave and pushed you deeper into the depths. You stumbled onwards, tears pouring down your face."
-                                "The wind fell silent. The cave was quiet."
-                                sm "You are alone now."
-                                "You struggled through the cave, feeling the thing twisting in your hands."
-                                sm "Your limbs are slowing."
-                                sm "There is no need to worry."
-                                sm "Soon, this part of the cycle will be over, and you can lay down your burden."
-                                "Your shoulders ached. Your hands were raw and burnt."
-                                sm "Listen."
-                                sm "Do you hear that?"
-                                sm "The footsteps of the Ash Giants."
-                                sm "They will be here soon."
-                                sm "This world will be wiped clean."
-                                sm "None of this matters any more."
-                                "You stumbled out into the great cavern. Below you, you could see the vortex of souls. In the middle of the vortex, Princess Sun lay peacefully at rest in her tomb."
-                                "You fall to your knees. You can't walk another step."
-                                sm "Come."
-                                sm "It is time to end this."
-                                sm "Put me on."
-                                menu:
-                                    "If you accept your fate, turn to page 722.":
-                                        ""
-                                    "If you defied your fate, turn to page 723.":
-                                        ""
-                                jump end
-    
-                            "Otherwise, you may make a wish. Turn to page 367.":
-                                "You toss a coin in the well, and wish for a way out of your terrible predicament."
-                    $wellChat += 1
-                    jump townExplore
-                "If you returned to the village, go back to page 50.":
-                    "You turned and walked back to the village."
-                    jump village
-        label villagersConvo:
-            show hand onlayer transient:
-                yalign 0.63#0.743
-                xalign 0.5
-            menu:
-                #TK: look at the wording of this and "hot sweaty anarchy"
-                go "Care to join us?"
-                "If you asked how they planned to catch the thief, turn to page 66." if not villagersPlan:
-                    h "With this!"
-                    "The Hunter flexed their muscles and pulled back the tarp to reveal an ornate chest full of lustrous pebbles and stones."
-                    go "We'll take this out to my house, and nail it to the veranda. Everyone knows that the Master Thief can't resist anything that's nailed down."
-                    h "Exactly. And their love for shiny rocks is well-known."
-                    echidna "A fine plan indeed, friends! There's no way this \"Master Thief\" I've heard so much about could ever detect this scheme, no matter how cunning and gorgeous they may be."
+File "game/script.rpy", line 427: reached end of line when expecting ':'.
+    elif randomCover ==23 or randomCover == 24
+                                              ^
+
+File "game/script.rpy", line 429: expected statement.
+    elif randomCover ==25 or randomCover == 26:
+                     ^
+
+File "game/script.rpy", line 431: expected statement.
+    elif randomCover ==27 or randomCover == 28:
+                     ^
+
+File "game/script.rpy", line 433: expected statement.
+    elif randomCover ==29 or randomCover == 30:
+                     ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu Nov 18 18:36:29 2021
+Sat Nov 20 18:17:27 2021
