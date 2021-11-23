@@ -107,7 +107,6 @@ define banquetChat = False
 define toadThief = False
 define toadFind = False
 define toadStole = False
-#TK: Test
 define toadStole2 = False
 
 #Conversation topics with the villagers
@@ -446,7 +445,6 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
     #Ambient fireplace sounds loop
     #play audio fire loop volume 0.5 fadein 1.0
 
-    #TK: Include a page-flipping animation here.
     play sound pageFlip
     if persistent.nameSet == False:
         call screen contents
@@ -463,7 +461,6 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         define Hes = persistent.Hes
         define hes = persistent.hes
         define povname = persistent.povname
-        #TK: show screen contents with easeinright
         #show screen main_menu
         #$renpy.set_return_stack([])
         #$renpy.set_return_stack([])
@@ -479,22 +476,6 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
 #
 #     return
 
-#Main Menu - This is the label that transitions from the "This book belongs to" page to the main menu
-# label splashscreen2:
-#     #TK: Include a page-flipping animation here.
-#     #Note: TK = To Do
-#     #A persistent name has been set
-#     $persistent.nameSet = True
-#     $persistent.he = he
-#     $persistent.He = He
-#     $persistent.his = his
-#     $persistent.His = His
-#     $persistent.him = him
-#     $persistent.Him = Him
-#     $persistent.Hes = Hes
-#     $persistent.hes = hes
-#     $povname = persistent.povname
-#     return
 
 label after_load:
     play sound pageFlip
@@ -515,8 +496,6 @@ label start:
         show treesbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
-        jump end
-        #TK: Have a picture of the 12 kids. Kids disappear as you replay the game.
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
         "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
         "In the darkness of the forest, she may or may not have met a man in white."
@@ -700,7 +679,6 @@ label chapter2:
     else:
         mum "You must go to the festival, my child. There will be travellers there from all over this wild earth. Surely one of them will know how to save you from this terrible fate."
         "She gave you a thick coinpurse, and some bread and meat for the journey."
-        #TK: add the CYOA "you have items - bread" thing
         mum "Go! But be careful of strangers, and do not leave the path."
         mum "A terrible {color=#f00}wolf{/color} lurks out there, in the space between the trees."
     "And so you took up your belongings and strode on down the road to the festival."
@@ -740,27 +718,30 @@ label chapter2:
                     "The floor of the cavern was piled with rubies and sapphires and glinting emeralds and solid gold pieces, larger than your fist."
                     "All across the room you saw lush silks and pillars of precious metals of every type, and riches that would turn the king of kings green with envy."
                     "The room was rich with the dark scent of incense, and saw the glimmering magenta smoke roll across the room and coat it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
-                    #m "Oh! Hello!"
-                    m "What are you doing back again?"
+                    m "Oh darling, what are you doing back again?"
                     "The Mushroom popped up, startling you."
-                    m "I told you never to darken my door again."
-                    #Picture of her eyes unfocusing.
+                    m "I'm sure I remember telling you quite clearly never to darken my door again."
                     "She looked off to the side."
-                    m "Yes, I'm just telling them now. One second."
-                    #m "You're that child from the marsh house, aren't you? It's wonderful to see you, I so rarely get visitors out here. Please have a seat. How is your mother? She looked run off her feet the last time I saw her. Must be a tough job looking after all of you (no offense intended, of course)."
-                    #m "But where are my manners? Let me get you some tea. I only have chamomile at the moment, is that all right?"
-                    m "Have some decency, traveller. I don't barge into your house and try to steal the untold riches of your domain."
+                    m "Yes, I'm just telling them now. One moment."
+                    m "Have some common courtesy, darling, please. I don't barge into your house looking wild and dishevelled and try to steal the untold riches of your domain, do I?"
                     label mushroomWater:
                         show hand onlayer transient:
                             yalign 0.63#0.743
                             xalign 0.5
                         menu:
-                            m "What do you want now?"
-                            "If you accepted the water, turn to page 33." if mushroomTea:
-                                #TK fix this dialogue, sounds too modern.
-                                m "That sounds like a good idea."
-                                m "I'm sorry to be rude, I just get stressed out when people are randomly all up in my space. You know how it is."
-                                m "I'll get the water. Don't stress yourself. Have a seat wherever you want."
+                            m "Not without an invitation, at least."
+                            "If you asked for some water, turn to page 33." if mushroomTea:
+                                pov "Just some water would be nice, please."
+                                m "{i}Water?{/i} Really? How... conventional."
+                                m "I have to confess, I thought better of you, darling."
+                                pov "What's wrong with water?"
+                                m "Oh, nothing, nothing. It's fine. If you're into that sort of thing."
+                                m "It's just a bit... derivative, isn't it? A bit played out."
+                                m "You know, \"I'm a big dumb humanoid, I love digesting liquids in order to sustain my bodily functions, dah de dah de dah\", etc, etc. Is that really the type of harmful stereotype we want to play into?"
+                                m "What are we really trying to {i}say{/i} here?"
+                                pov "Uh... I can drink something else-"
+                                m "No no, don't push yourself, it's fine. We can't all be innovators."
+                                m "I'll go get the water. Please, have a seat and relax."
                                 #A dark look across her face
                                 m "But do not, under any circumstances, go into the basement."
                                 "She waved to a small, black door set into the bark of the tree."
@@ -769,15 +750,15 @@ label chapter2:
                                 m "Be right back."
                                 jump basement
                             "If you asked about \"The you with the mask\", turn to page 31." if mushroomTea and not mushroomBody:
-                                m "Look... it's been a long day. I don't have time to explain your body to you."
+                                m "I'm sorry darling, it's been a long day already. I don't have time to explain your body to you."
                                 m "Again."
                                 $mushroomBody = True
                                 jump mushroomWater
                             "If you told the mushroom you've never been here before, turn to page 29." if not mushroomConfuse:
-                                m "What? You were here just a minute ago. The you with the mask and the long legs."
-                                #"She looked at you with concern."
-                                m "Are you feeling well? Perhaps you should sit down. Have some water."
-                                #m "Yeah, good idea. Why don't I get you a glass of water?"
+                                m "Darling, you're confused, you're babbling, you're all over the place, please, you're a mess. More so than usual, even."
+                                m "You were here just a minute ago. The you with the mask and the long legs."
+                                m "Perhaps you should sit down and take a moment."
+                                m "Can I get you anything? Decaying plant matter? It's all the rage back home."
                                 $mushroomConfuse = True
                                 $mushroomTea = True
                                 jump mushroomWater
@@ -789,8 +770,8 @@ label chapter2:
                                 $mushroomAllThis = True
                                 jump mushroomWater
                             "If you apologised for intruding and swore to make amends, turn to page 35." if not mushroomIntruding:
-                                m "An apology is as good to me as a beard to a turtle-dove."
-                                m "If you're so sorry, why don't you stop doing it?"
+                                m "Darling, an apology is as good to me as a beard to a turtle-dove."
+                                m "But no, don't worry about it, it's fine, really, completely fine."
                                 $mushroomIntruding = True
                                 jump mushroomWater
                     label basement:
@@ -809,12 +790,12 @@ label chapter2:
                                 "The mushroom appeared from the earth before you with a terrible crash."
                                 m "You have asked about what concerns you not, and so you will hear what pleases you not!"
                                 $mushroomCurse = True
-                                m "I gave you fair warning. Now all your milk will spoil, all your bread will burn, your socks will always be wet, and you will live in torment for the rest of your days."
+                                m "I gave you fair warning, darling. Now all your milk will spoil, all your bread will burn, your socks will always be wet, and you will live in torment for the rest of your days."
                                 pov "Noooooooo!"
                                 m "Don't say I didn't tell you so."
                                 "You cried out and set about wailing and tearing your clothes and beating yourself upon the ground in pitiful anguish."
                                 pov "Please, Lady Mushroom, spare me your curse. If you do, I will tell you a story, the likes of which would cause you to go white with astonishment if you were to hear it."
-                                m "Ha!"
+                                m "Ha! Please."
                                 m "I've talked with the ferns, who saw the dinosaurs rise and fall."
                                 m "I am one with the mosses and lichens of the land who are even older still. I have talked to ancient trees who saw the great fires and the great floods and still stand."
                                 show hand onlayer transient:
@@ -832,10 +813,10 @@ label chapter2:
                                         elif godfather == "Black":
                                             pov "I'm seeking a way to escape my Godmother, Annihilation. Surely the story of my adventure will be unique enough for you."
                                 "The Mushroom grew quiet as she thought over your proposal, and you prayed to the Most High (May He watch over us always) to deliver you from this terrible situation."
-                                m "Alright. I'll let you go."
+                                m "Very well, dear. I'll let you go."
                                 m "But be warned: If you fail to return to me this very night with the story you have promised me, then your punishment will be as tenfold."
-                                #m "When you die, your ghost will come back as a wild dog, and harry your mother and father all day and all night, nipping at their heels until they both fall into deep wells and turn into terrible black fish that will lie forever there at the bottom of those wells, moaning weakly and cursing their ungrateful child who has brought them such woe and devastation."
-                                m "All your spoons will stick in your drawers, and your eggs will hatch into foul geese, and your bowls and furniture will roll away down the hills, so that you will have nothing to do but sit on the floor and eat cold porridge with your hands and curse the day you ever decided to cross a mushroom!"
+                                m "Your bland conventionality will rise up and smother you in your sleep, and when you die, your ghost will come back as a wild dog, and harry your mother and father all day and all night, nipping at their heels until they both fall into deep wells and turn into terrible black fish that will lie forever there at the bottom of those wells, moaning weakly and cursing their ungrateful child who has brought them such woe and devastation."
+                                #m "All your spoons will stick in your drawers, and your eggs will hatch into foul geese, and your bowls and furniture will roll away down the hills, so that you will have nothing to do but sit on the floor and eat cold porridge with your hands and curse the day you ever decided to cross a mushroom!"
                                 pov "Noooooooo!"
                                 "She struck the ground with her feet. It opened before her and she disappeared into it instantly."
                                 "You set about beating yourself and rolling around the floor in even more pitiful devastation and horror than before, tears streaming from your eyes at this terrible curse."
@@ -849,33 +830,36 @@ label chapter2:
                             "If you sat patiently and waited for your tea, turn to page 86.":
                                 "In an unlikely turn of events, you sat there and waited patiently, paying no mind to the mysterious door."
                                 "(Some protagonist you turned out to be.)"
-                                "Soon, the mushroom returned with steaming cups of chamomile tea. You sipped gratefully, and felt the soothing warmth flow through to your bones."
-                                m "So, what are you doing here?"
+                                "Soon, the mushroom returned with a cup of water. You took a sip and then coughed violently."
+                                pov "Um, excuse me... this is full of compost."
+                                m "Yes of course, darling. It's the latest thing."
+                                m "It's rich. It's bold. It's avant-guarde. It may not be what you {i}want{/i} right now, but it is what you {i}need{/i}."
+                                m "So, what brings you back here?"
                                 if godfather == "White":
                                     "You told her of the terrible dilemma with your Godfather, our Dear Lord."
                                 elif godfather == "Red":
                                     "You told her of the terrible dilemma with your Godfather, Old Nick."
                                 elif godfather == "Black":
                                     "You told her of the terrible dilemma with your Godmother, who rides a pale horse."
-                                m "Wow."
-                                m "That's pretty bad."
+                                m "Hmm. Quite the story, darling."
+                                m "I must say, you could certainly work on the pacing. And I think the obvious analogy you've drawn for 13th century France and the fragmentation of the Carolingian Empire was a tad heavy-handed. But it's a good start."
                                 if godfather == "Black":
-                                    m "I know a bit about pale-faced Death. Her house is not far from here. Maybe -"
+                                    m "I know a bit about pale-faced Death. Her house is not far from here. Perhaps -"
                                     "A large grandfather clock in the corner suddenly chimed, and she looked up with a start."
-                                    m "Ah, f--k."
-                                    m "Look, I'd better go. Come back after the festival, and I might be able to help."
-                                    m "Take care of yourself, alright? All of yourself."
-                                    "And before you could reply to this strange remark, she took your teacup and ushered you out of the door in an instant."
+                                    m "Oh dear. Time marches on, even for me."
+                                    m "I'm sorry to be so rude but I'd better be off. Come back after the festival, and I may be able to help."
+                                    m "Please take care of yourself, dear. All of yourself."
+                                    "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
                                     "You took up your bag and set off down the road once more."
                                     jump thief1
                                 else:
-                                    m "I don't think I can help, sorry. I know a little about pale-faced Death, but I've never met your godfather."
+                                    m "I'm afraid I don't know if I can help. I know a little about pale-faced Death, but I've never met your godfather."
                                     "A large grandfather clock in the corner suddenly chimed, and she looked up with a start."
-                                    m "D--n it."
-                                    m "Look, I'd better go. Sorry I couldn't help more."
-                                    m "Take care of yourself, alright? All of yourself."
-                                    "And before you could reply to this strange remark, she took your teacup and ushered you out of the door in an instant."
-                                    "You took up your bag and set off down the road once more, pondering the mysterious ways of the mushroom."
+                                    m "Oh dear. Time marches on, even for me."
+                                    m "I'm sorry to be so rude but I'd better be off. Come back after the festival, and I may be able to help."
+                                    m "Please take care of yourself, dear. All of yourself."
+                                    "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
+                                    "You took up your bag and set off down the road once more."
                                     jump thief1
                     #"But in the center of the room you saw the most astonishing thing of all."
                     #"Looming over the whole cavern were 3 great pillars of twisted wood and oozing sap."
@@ -1082,7 +1066,10 @@ label chapter2:
                     "With a single motion you stole all the valuables you could grab and lept from the lept from the moving carriage like a holy terror, tumbling onto the road below."
                     f "What the - stop! Thief!"
                     "But it was too late. You were already away and running into the woods, laughing with impish glee."
-                    "You looked down at your haul and found that you'd managed to swipe a lovely emerald broach in the shape of a dragonfly.{vspace=200}{i}In your notes, write down that {b}You have an Emerald Brooch.{/b}{/i}"
+                    show hand onlayer transient:
+                        yalign 0.743#0.743
+                        xalign 0.5
+                    "You looked down at your haul and found that you'd managed to swipe a lovely emerald broach in the shape of a dragonfly.{vspace=170}{i}In your notes, write down that {b}You have an Emerald Brooch.{/b}{/i}"
                     "You hid it in your pocket and went on your way."
                     jump chapter6
             show hand onlayer transient:
@@ -1154,7 +1141,6 @@ label chapter2:
             f "Thank you gracefully for the wonderful company, and I wish you the best of luck with the festival!"
             jump chapter6
         "If you refused the lift, turn to page 55.":
-            #TK: Different responses here based on your godparent
             if godfather == "Red":
                 pov "Begone, worm. Pester me again and I'll drive you into the grave, just as I did my own mother."
             else:
@@ -1910,45 +1896,32 @@ label mushroom1:
         #"Tell the tale you heard from the Mayor.":
         #"Tell the tale you heard from the Sparrow-Herder.":
         "If you told the tale of how you attempted to catch the Master Thief, turn to page page 134.":
-            "The mushroom ushered you inside, and you both took a seat in the plush red armchairs and sipped cups of tea as you told your tale."
+            "The mushroom ushered you inside, and you both took a seat in the plush red armchairs. You pretended to sip a cup of decaying leaf matter as you told your tale."
             m "Well! Never in all the years I have known you have you ever told me a tale such as this!"
             pov "Um... we only just met tonight."
+            m "You know what I mean. The other you's."
             label mushroomTales:
                 show hand onlayer transient:
                     yalign 0.68#0.743
                     xalign 0.5
                 menu:
-                    m "You know what I mean. The other you's."
                     #TK: more dialogue options here
+                    m "I have to say, darling, you're improving. Still a bit flabby in the second act, but I was most intrigued by your subtle commentary on the innate oneness of being."
                     "If you ask the mushroom to lift the curse, turn to page 140." if not mushroomCurseChat:
                         m "Well, your story could have done with some improvement."
-                        m "The plot was all over the place, and the characterisation was flimsy at best."
+                        m "The plot was quite rambling, and the characterisation was flimsy at best."
                         m "But I suppose a deal's a deal. I swear I will not curse you with a mushroom's curse."
                         m "This time."
                         $mushroomCurseChat = True
                         jump mushroomTales
                     "If you ask the Mushroom about \"the other you's\", turn to page 138.":
-                        m "Look, don't worry about it. I'm glad you decided to come clean about your plan to steal our treasure."
+                        m "No need to worry about it, darling. I'm just glad you decided to come clean about your plan to steal our treasure."
                         pov "No no... it's the Master Thief who's planning to steal the treasure."
-                        m "Right, the \"Master Thief\" you. But you can just stop yourself from doing it, right?"
+                        m "Right, the \"Master Thief\" you. But of course you can just stop yourself from doing it, right?"
                         pov "Uh - I - That's not..."
                         jump mushroomThiefBattle
-
-
-
-
-
-            #m "Right... but you don't want the Master Thief to do this, right?"
-            #pov "No. Not at all. I want to stop them."
-            #m "Right. So why not just... do that?"
-            #pov "What... stop them? Well, I want to. But I might need your help."
-            #m "I see. I'm sorry to hear that. I always knew you had some troubles with this kind of thing."
-            #"She leant over and placed her hand on your shoulder."
-            #m "I'm here for you. I'll do anything I can to help."
-            #pov "Um... right. Thank you."
-    #The thief bursts in and you end up in a swordfight with them, the hunter, and the goose-boy.
     label mushroomThiefBattle:
-        "At just that moment, you noticed your cup of tea had dissappeared from your hand and been replaced with an old gumboot full of pond scum."
+        "At just that moment, you noticed your cup had dissappeared from your hand and been replaced with an old gumboot full of pond scum."
         "You looked around and saw a shadow flit across the wall."
         "Grabbing a nearby jeweled scimitar, you leapt up from your seat and swung around to clash swords with the Master Thief!"
         t "Haha! You're learning."
@@ -1974,10 +1947,13 @@ label mushroomFinale:
     m "Oh dear."
     "Another mushroom, identical to the lady, emerged from a side door."
     #TK: Extra portrait for multiple mushrooms
-    m2 "I know. It's awful to see [him] like this."
+    m2 "I know, I know. It's awful to see [him] like this."
     "Another identical mushroom popped up."
-    m3 "You have to stop fighting yourself, dear. You're not well."
-    "Mushrooms swarmed up and surrounded you. Before you could blink, they'd surrounded you and took hold of your ankles and began to drag you down into the earth."
+    m3 "What is it trying to say, here? I think we can find a vague stab towards meaning in this sad tableau, but who's the audience?"
+    m2 "Perhaps it's meant to be ironic."
+    "As you fought the thief back and forth across the floor, mushrooms swarmed up and surrounded you."
+    m3 "I think we've seen enough."
+    "Before you could blink, they took hold of your ankles and dragged you down into the earth."
     m4 "Shh. Shhh."
     "The Master Thief managed to wriggle out of their grasp and leap up out a nearby window."
     t "Au revoir, my friend!"
@@ -1989,8 +1965,9 @@ label mushroomFinale:
     "All around you pressed a throng of webcaps, milkcaps, scarlet elf caps, poisonpies, decievers, pinkgills, brittlegills, veiled ladies, lawyer's wigs, stinkhorns, earthstars, beefsteaks, chicken of the woods, earthballs, sculpted puffballs, yellowfoots, lungworts, brown-eyed wolves, golden-eyed umbrellas, Satan's bolete, false chanterelle's, death caps and destroying angels, and all members of the mysterious Dark Taxa, the dark matter fungi that lie unknown to mankind."
     "They all swept to and fro through a twisted city of endless tunnels. The shape of a giant, pale and broken mountain was barely visible looming over the city in the mist of spores."
     pov "I was helping you! Why have you kidnapped me?"
-    m "You were hurting yourself."
+    m "Darling, you were hurting yourself with that sad performance."
     m2 "Hurting yourself."
+    m "Please don't take the criticism too personally, dear. It was an intriguing bit of invisible theatre. But you really must consider the problematic aspects of the work."
     "Dozens of identical mushrooms pressed around you, speaking in soft, overlapping voices."
     m3 "I think it might be best if you stay here until I know that you're safe.{vspace=30}                                             {w=0.4}Until I know you're safe.{vspace=30}                         {w=0.8}It's for the best, if you stay here."
     m4 "I'll watch over you.{vspace=30}                                             {w=0.4}Over you.{vspace=30}                         {w=0.8}Watch over."
@@ -2003,7 +1980,7 @@ label mushroomFinale:
             m "You will be safe here."
             "If you asked where you were, turn to page 145." if not mushroomPlace:
                 "The mushroom looked at you sadly."
-                m2 "We've talked about this many times. Don't you remember?"
+                m2 "We've talked about this many times, darling. Don't you remember?"
                 m3 "This is the kingdom of Lady Death. Mother of Mushrooms. I am her fingers, and we take all things on earth to her."
                 m "Would you like me to tell you the story again?"
                 $mushroomPlace = True
@@ -2034,18 +2011,19 @@ label mushroomFinale:
                 $mushroomImprisoned = True
                 jump mushroomPrison
             "If you enquired as to what the mushroom meant by \"All of yourself\", turn to page 162." if mushroomImprisoned and not mushroomMyself:
-                m "We've talked so often. And you have forgotten so much."
+                m "We've talked so often, darling. And you have forgotten so much."
                 m2 "You're not well."
-                m3 "You argue with yourself. Fight yourself. Kill yourself. All the time."
+                m3 "You argue with yourself. Even kill yourself. All the time."
                 #m "You make things and then you charge yourself money to use them."
                 m4 "You make food and then give it to us to rot, while you lie starving."
                 m2 "You build houses and then leave them empty, while you die of cold on the streets."
-                m3 "We've had this conversation many times. I know you don't remember."
+                m "We respect your dedication to the performance. It is a beautiful piece."
+                m2 "But is it worth the cost?"
                 $mushroomMyself = True
                 jump mushroomPrison
             "If you tried to explain that each human being has their own separate sentience and experience of the world, turn to page 154." if mushroomMyself and not mushroomPerson:
                 pov "I think you're confused. Me and the thief and all those other people... they're separate. We aren't the same person."
-                m "I don't see it that way."
+                m "Darling, I think you're the one who's confused. You've been taken in by the surface elements of the piece without considering the greater picture."
                 m2 "When you look at mushrooms on the surface, it may look like each one is a separate being."
                 m3 "But when you look underneath, you can see it. It's all one beast. Impossibly large. Under the earth."
                 m "You're the same. You've just forgotten."
@@ -2062,8 +2040,8 @@ label mushroomFinale:
             "If you politely requested to be allowed out of the room, turn to page 147.":
                 m3 "Do you promise not to hurt any of your selves?"
                 pov "Um... yes, I do."
-                m2 "Alright, then. I will come with you."
-                m "You can go anywhere in the kingdom. But if I ever feel that you're a danger to yourself, I'll have to take you back here."
+                m2 "Very well. I will come with you."
+                m "You can go anywhere in the kingdom. But if I ever feel that you're a danger to yourself, we'll have to take you back here."
                 jump mushroomKingdom
 
     label mushroomKingdom:
@@ -2082,12 +2060,12 @@ label mushroomFinale:
                     "The mushroom showed you all the wonders of that undiscovered land, where life and death go hand in hand."
                     "You saw the four seasons all flowering at once. To the north, the cicadas and crickets chirped loudly in a summer haze. To the south, the ground was silver white with snow. To the west, the autumn maples were ablaze like a sunset, and to the east was the full glory of spring."
                     "The wonder of those gardens were so great that the tongue fails to describe them, and you walked and watched for days, until your eyes were so full that they couldn't stand to see another scrap of beauty."
-                    m "Yeah, it's ok."
+                    m "A bit kitsch, isn't it?"
                     $mushroomMoss = True
                     jump mushroomExplore
                 "If you feasted in the great palace, turn to page 138." if not mushroomFeast:
                     "As soon as you entered the palace a train of toadstools appeared, all in ceremonial garb. With silent steps, they surrounded you, bearing delicacies of mushroom risotto and crisp goose roasted in truffle butter and dark red wine and platters of mushroom bourguignon with roast potatoes, and set this wondrous feast before you. "
-                    m "You HAVE to try the truffle aioli, that's my absolute favourite."
+                    m "You HAVE to try the truffle aioli, darling, that's my absolute favourite."
                     pov "You... eat mushrooms?"
                     m2 "Of course. And one day they will eat me."
                     "Never in your whole life had you sat down to such a marvelous feast, and you gorged yourself for days on end until they had to roll you out of the palace."
@@ -2105,11 +2083,13 @@ label mushroomFinale:
                     m2 "This is the Lady. She waits here, while we do The Work."
                     pov "The Work?"
                     #m "Uh-huh." #We are the fingers of Lady Death. Our job is to push up through the surface and drag everything up there down to Her kingdom."
-                    m4 "We take all things down here, one by one. It's slow work. But already, those down here outnumber the ones above. We are more than halfway done."
+                    m4 "We take all things down here, one by one. It's slow work. But already, those down here outnumber the ones above. I am more than halfway done."
                     m3 "Someday, everyone and everything will be down here."
                     m "On that day, the Lady will draw her fingers down through the soil and back to her."
-                    m3 "The Work will finally be done."
-                    #m "So much to do before then. But then again, there's no need to rush. We have all the time in the world."
+                    m3 "We will finally have completed the piece. Our Magnum Opus. It will be spectacular, I assure you, darling."
+                    m "Don't look yet, it's not finished, I'd be so embarrassed if you saw it in it's current state."
+                    m2 "So much left to do."
+                    m3 "No need to worry. We have all the time in the world."
                     "You felt a strange peace in the shadow of the pale lady, and you stayed there with the mushroom for many days, looking out at the splendour of the world."
                     $mushroomPale = True
                     jump mushroomExplore
@@ -2222,10 +2202,10 @@ label mushroomFinale:
                         "And so you stayed there, forever searching for an entrance back to that kingdom you missed so much."
                         "For years you searched, with no success. Soon, the Ash Giants came upon the world, and you felt their searing light upon your skin."
                         "As the light burnt you away, you felt something take ahold of you and draw you into the earth."
-                        m "It's ok. It's just me."
+                        m "It's ok. It's just me. Just us."
                         m "You've returned."
                         call endStamp
-                        "The mushrooms took you down into the earth. There you stayed at the side of Lady Death, forever and ever, until the final horn and the coming of the end of days."
+                        "The mushrooms took you down into the earth. There you stayed at the side of Lady Death, forever and ever, until the work was complete, and the glory of it shone out forevermore."
                         jump end
             #You can stay with the mushroom and explore the mushroom world, different areas
             #NOTE: Use the story of Urashima Tarō, the Fisher Lad
@@ -4343,7 +4323,9 @@ label end:
     $ renpy.pause ()
     $ ui.text("{space=[ti]}8. {b}Mum, You:{/b} 'Regula Emblematica Sancti Benedicti' (1780), Saint Benedict et. al.{vspace=[tx]}{space=[ti]}9. {b}Mysterious Old Woman:{/b} 'The Clothing of the Renaissance World: Europe - Asia - Africa - The Americas' (1590), Cesare Vecellio.{vspace=[tx]}{space=[ti]}10. {b}Enigmatic Gentleman:{/b} 'Silhouette Portrait of a Gentleman Standing in an Army Encampment' (1844), Auguste Edouart.{vspace=[tx]}{space=[ti]}11. {b}The Hunter:{/b} 'Lady Hunter with Rifle' (1912). Artist unknown.{vspace=[tx]}{space=[ti]}12. {b}The Sparrow-Herder:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham. Sparrow from 'Birds of Asia' (1871), John Gould.{vspace=[tx]}{space=[ti]}13. {b}The Mayor:{/b} 'The pipe of freedom' (1869), Thomas Smith.{vspace=[tx]}{space=[ti]}14. {b}The Goose Girl, The Gloom-Monger:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham.{vspace=[tx]}{space=[ti]}15. {b}The Thing in the Well, Passing Echidna, the Skin-Mask, and Goblin No. 2:{/b} 'Devises heroïques' (1551), Claude Paradin. 'A Year Book of Folklore' (1959), Christine Chaundler.{vspace=[tx]}{space=[ti]}16. {b}The Entire Town:{/b} 'Liber Floridus' (between 1090 and 1120), Lambert, Canon of Saint-Omer.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
-    $ ui.text("{space=[ti]}17. {b}Scraggs McKenzie, Banksia Bounty-Hunter:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}18. {b}The Devil's Sooty Grandmother:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}19. {b}Brildebrogue Chippingham:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}20. {b}The Bat:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}21. {b}The Rat:{/b} 'The Wiviparous Quadrupeds of North America' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}22. {b}The Black Cockatoo and The Crow-Shrike:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}23. {b}The Strange Old Man:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}24. {b}Goblin No. 1, No. 3, and No. 4:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
+    show tornPage3 onlayer screens zorder 101
+    show tornPage3bg onlayer screens zorder 99
+    $ ui.text("{space=[ti]}17. {b}Scraggs McKenzie, Banksia Bounty-Hunter:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}18. {b}The Devil's Sooty Grandmother:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}19. {b}Brildebrogue Chippingham:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}20. {b}The Bat:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}21. {b}The Rat:{/b} 'The Wiviparous Quadrupeds of North America' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}22. {b}The Black Cockatoo and The Crow-Shrike:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}23. {b}The Strange Old Man:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}24. {b}Goblin No. 1, No. 3, and No. 4:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}{space=[ti]}25. {b}The {color=#f00}Wolf:{/color}{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     show text "{b}FRIPPERIES:{/b}":
         xalign 0.5
