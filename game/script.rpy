@@ -123,6 +123,7 @@ define sparrowherderChat = 0
 define hunterChat = 0
 define mayorChat = 0
 define wellChat = 0
+define pigChat =0
 
 #=====Act 2, chapter 2: The Thief
 #What you trapped the chest with
@@ -320,6 +321,9 @@ image goblin3Name="Names/goblin3.png"
 image goblin4Name="Names/goblin4.png"
 image goblinqueenName="Names/goblinqueen.png"
 image skinmaskName="Names/sm.png"
+image p1Name="Names/p1.png"
+image p2Name="Names/p2.png"
+image p3Name="Names/p3.png"
 
 ##====Frippery
 image sword="sword.png"
@@ -380,6 +384,9 @@ define goblin3 = Character ("{image=goblin3Name}{alt}Goblin:{/alt}")
 define goblin4 = Character ("{image=goblin4Name}{alt}Goblin:{/alt}")
 define goblinQueen = Character ("{image=goblinqueenName}{alt}The Goblin Queen:{/alt}")
 define sm = Character ("{image=skinmaskName}{alt}The Skin Mask:{/alt}")
+define p1 = Character ("{image=p1Name}{alt}The First Pig:{/alt}")
+define p2 = Character ("{image=p2Name}{alt}The Second Pig:{/alt}")
+define p3 = Character ("{image=p3Name}{alt}The Third Pig:{/alt}")
 
 #Note: deleted these, hopefully I got them all
 #define d = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
@@ -496,6 +503,7 @@ label start:
         show treesbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
+        jump thief1
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
         "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
         "In the darkness of the forest, she may or may not have met a man in white."
@@ -965,9 +973,9 @@ label chapter2:
                         "If you let them go, turn to page 27.":
                             "You walked sorrowfully back to the road, cursing the devil for your misfortune."
                 show hand onlayer transient:
-                    yalign 0.71#0.743
+                    yalign 0.76#0.743
                     xalign 0.5
-                "As you trudged back to the road you discovered that all of your coins had been replaced with I.O.U.'s, the bread was now nothing but crumbs, and the meat was now a live possum with a label on it saying \"Ham\". It bit you and fled into the trees.{vspace=200}{i}In your notes, write down that {b}Your things have been stolen.{/b}{/i}"
+                "As you trudged back to the road you discovered that all of your coins had been replaced with I.O.U.'s, the bread was now nothing but crumbs, and the meat was now a live possum with a label on it saying \"Ham\". It bit you and fled into the trees.{vspace=120}{i}In your notes, write down that {b}Your things have been stolen.{/b}{/i}"
                 if godfather == "White":
                     "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Oh Lord, how could you treat your servant thus?\""
                     "After a long time you drew yourself up from the ground and spoke to the trees."
@@ -1278,7 +1286,7 @@ label banquet:
     "The cane toad from the road was gulping down every morsel of food he could find, slurping from a full wineglass in each hand and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
     label banquetMenu:
         show hand onlayer transient:
-            yalign 0.64#0.743
+            yalign 0.625#0.743
             xalign 0.5
         menu:
             "You looked over the tables."
@@ -1345,20 +1353,61 @@ label banquet:
                 elif mayorChat >= 6:
                     may "Sometimes I still hear her laughter on moonless nights."
                 $mayorChat += 1
-                #If you're going out to hunt the witch, be wary. There's a wolf out there.
-                #My sister heard it howling, once. The wolf appeared in her head, and spoke to her.
-                #You will have three days, it said.
-                #Three days passed, and I never saw her again.
-                #Do you hear that?
-                #TK: Put the third little piggy in a route once someone has been eaten.
-                #p3 "Oh. Hello."
-                #p3 "I'm sorry, but you'd better not stay here. It's not safe around me."
-                #p3 "You see, I'm expecting someone."
-                #p3 "I can hear them coming now. In the pipes."
-                #p3 "Do you hear that? The howling?"
-                #p3 "You'd better get moving."
+            #If you're going out to hunt the witch, be wary. There's a wolf out there.
+            #My sister heard it howling, once. The wolf appeared in her head, and spoke to her.
+            #You will have three days, it said.
+            #Three days passed, and I never saw her again.
+            #Do you hear that?
+            "If you talked to the Second Pig, turn to page 266." if renpy.random.randint(1, 5) == 1 and pigChat <= 7:
+                if pig:
+                    if pigChat == 0:
+                        p2 "Oh. Hello, brother."
+                        "Your pig turned rose up on its hind legs."
+                        p1 "Montgomery."
+                    if pigChat == 1:
+                        p2 "I'm sorry, but you'd better not stay here. I don't think it's safe for us to be so close."
+                        p1 "Hm. I see you are still gripped by this insane delusion."
+                        p2 "It's no delusion, brother. I know you've heard {color=#f00}it{/color} too. No matter how you hard you try to hide it."
+                    if pigChat == 2:
+                        p1 "Cast off this madness, Montgomery. Come back to us. We all miss you."
+                        p2 "Look me in the eyes and tell me you haven't heard the scrabbling in the walls."
+                        p1 "Nothing but rats."
+                        p2 "Tell me you haven't heard the howling in the pipes."
+                        p1 "The wind. Just the wind."
+                        p2 "You cannot tell me you don't see the house twist with it. Swollen. You can barely breathe in there for the stink of it."
+                        p1 "Only a dream."
+                    if pigChat == 3:
+                        p2 "Perhaps it is a dream."
+                        p2 "But I hear that dream coming for me. It will not be long now."
+                    if pigChat == 4:
+                        p1 "I will pray for you, Montgomery. But I will not follow you down the path of madness."
+                        p2 "Very well, brother. Let us each have our delusions."
+                    if pigChat == 5:
+                        p2 "I will always love you."
+                        p1 "And I you, brother. And I you."
+                    if pigChat == 6:
+                        p1 "Let us keep moving. He is lost."
+                    if pigChat == 7:
+                        p1 "There is nothing for us here."
+                else:
+                    if pigChat == 0:
+                        p2 "Oh. Hello."
+                    if pigChat == 1:
+                        p2 "I'm sorry, but you'd better not stay here. It's not safe around me."
+                    if pigChat == 2:
+                        p2 "You see, I'm expecting {color=#f00}someone{/color}."
+                    if pigChat == 3:
+                        p2 "I can hear {color=#f00}them{/color} coming now. In the pipes."
+                    if pigChat == 4:
+                        p2 "The others say it's all in my head. But I know better."
+                    if pigChat == 5:
+                        p2 "You'd better get moving. You don't want to be here when {color=#f00}they{/color} come."
+                    if pigChat == 6:
+                        p2 "Or perhaps I'm wrong."
+                    if pigChat == 7:
+                        p2 "Perhaps you've already met {color=#f00}them{/color}. You just haven't realised yet."
                 jump banquetMenu
-            "If you talked to the toad, turn to page 87." if not toadStole2:
+            "If you talked to the Toad, turn to page 87." if not toadStole2:
                 if toadStole:
                     f "You!"
                     f "Hellion! Knave! You'll see justice for your crimes, or my name isn't Brildebrogue Chippingham!"
@@ -2017,7 +2066,7 @@ label mushroomFinale:
                 #m "You make things and then you charge yourself money to use them."
                 m4 "You make food and then give it to us to rot, while you lie starving."
                 m2 "You build houses and then leave them empty, while you die of cold on the streets."
-                m "We respect your dedication to the performance. It is a beautiful piece."
+                m "We respect your dedication to your art. It is a beautiful piece."
                 m2 "But is it worth the cost?"
                 $mushroomMyself = True
                 jump mushroomPrison
@@ -4323,10 +4372,12 @@ label end:
     $ renpy.pause ()
     $ ui.text("{space=[ti]}8. {b}Mum, You:{/b} 'Regula Emblematica Sancti Benedicti' (1780), Saint Benedict et. al.{vspace=[tx]}{space=[ti]}9. {b}Mysterious Old Woman:{/b} 'The Clothing of the Renaissance World: Europe - Asia - Africa - The Americas' (1590), Cesare Vecellio.{vspace=[tx]}{space=[ti]}10. {b}Enigmatic Gentleman:{/b} 'Silhouette Portrait of a Gentleman Standing in an Army Encampment' (1844), Auguste Edouart.{vspace=[tx]}{space=[ti]}11. {b}The Hunter:{/b} 'Lady Hunter with Rifle' (1912). Artist unknown.{vspace=[tx]}{space=[ti]}12. {b}The Sparrow-Herder:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham. Sparrow from 'Birds of Asia' (1871), John Gould.{vspace=[tx]}{space=[ti]}13. {b}The Mayor:{/b} 'The pipe of freedom' (1869), Thomas Smith.{vspace=[tx]}{space=[ti]}14. {b}The Goose Girl, The Gloom-Monger:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham.{vspace=[tx]}{space=[ti]}15. {b}The Thing in the Well, Passing Echidna, the Skin-Mask, and Goblin No. 2:{/b} 'Devises heroïques' (1551), Claude Paradin. 'A Year Book of Folklore' (1959), Christine Chaundler.{vspace=[tx]}{space=[ti]}16. {b}The Entire Town:{/b} 'Liber Floridus' (between 1090 and 1120), Lambert, Canon of Saint-Omer.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
-    show tornPage3 onlayer screens zorder 101
-    show tornPage3bg onlayer screens zorder 99
-    $ ui.text("{space=[ti]}17. {b}Scraggs McKenzie, Banksia Bounty-Hunter:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}18. {b}The Devil's Sooty Grandmother:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}19. {b}Brildebrogue Chippingham:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}20. {b}The Bat:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}21. {b}The Rat:{/b} 'The Wiviparous Quadrupeds of North America' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}22. {b}The Black Cockatoo and The Crow-Shrike:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}23. {b}The Strange Old Man:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}24. {b}Goblin No. 1, No. 3, and No. 4:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}{space=[ti]}25. {b}The {color=#f00}Wolf:{/color}{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
+    show tornPage2 onlayer screens zorder 101
+    show tornPage2bg onlayer screens zorder 99
+    $ ui.text("{space=[ti]}17. {b}Scraggs McKenzie, Banksia Bounty-Hunter:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}18. {b}The Devil's Sooty Grandmother:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}19. {b}Brildebrogue Chippingham:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}20. {b}The Bat:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}21. {b}The Rat:{/b} 'The Wiviparous Quadrupeds of North America' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}22. {b}The Black Cockatoo and The Crow-Shrike:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}23. {b}The Strange Old Man:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}24. {b}Goblin No. 1, No. 3, and No. 4:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}{space=[ti]}25. {b}The First and Second Pigs:{/b} 'Dictionnaire Universel D'Histoire Naturelle' (1845), Charles Dessalines D'orbigny.{vspace=[tx]}{space=[ti]}26. {b}The Third Pig:{/b} 'Dead Pig' (1796), Jean Bernard.{vspace=[tx]}{space=[ti]}27. {b}The {color=#f00}Wolf:{/color}{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
+    hide tornPage2 onlayer screens zorder 101
+    hide tornPage2bg onlayer screens zorder 99
     show text "{b}FRIPPERIES:{/b}":
         xalign 0.5
         #xpos 50
@@ -4346,13 +4397,9 @@ label end:
         ypos 160
     $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
-
-
-    # $ ui.text("1. Test", xpos=50, ypos=150, xmaximum=520)
-    # $ renpy.pause ()    $ ui.text("1. Test", xpos=50, ypos=150, xmaximum=520)
-    #     $ renpy.pause ()
-    #    #$ renpy.pause ()    $ ui.text("1. Test", xpos=50, ypos=150, xmaximum=520)
-
+    hide text
+    $ ui.text("Written on the lands of the Turrbal and Jagera peoples. I pay my respects to their Elders, past and present. Sovereignty was never ceded.", xpos=50, ypos=190, xmaximum=520)
+    $ renpy.pause ()
 
     play sound pageFlip
     return

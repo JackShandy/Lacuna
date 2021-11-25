@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1440: expected ':' not found.
-    else
-        ^
+File "game/script.rpy", line 1377: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a " at the end of the first line.)
+                            p2 "Tell me you don't see the house twist with it, swollen,
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Nov 20 19:58:45 2021
+Thu Nov 25 18:29:22 2021
