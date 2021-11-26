@@ -125,6 +125,11 @@ define mayorChat = 0
 define wellChat = 0
 define pigChat =0
 
+#Random chances
+define sparrowherderRand = renpy.random.randint(1,2)
+define pig2Rand = renpy.random.randint(1,6)
+define wellRand = renpy.random.randint(1,3)
+
 #=====Act 2, chapter 2: The Thief
 #What you trapped the chest with
 define chest = ""
@@ -265,6 +270,7 @@ image firelight animated:
 ##====Backgrounds
 image treesbg= "Backgrounds/trees.png"
 image nightbg= "Backgrounds/night.png"
+image nightgodbg= "Backgrounds/nightgod.png"
 image cottagebg= "Backgrounds/cottage.png"
 image forestbg= "Backgrounds/forest.png"
 image darkforestbg= "Backgrounds/darkForest.png"
@@ -388,22 +394,6 @@ define p1 = Character ("{image=p1Name}{alt}The First Pig:{/alt}")
 define p2 = Character ("{image=p2Name}{alt}The Second Pig:{/alt}")
 define p3 = Character ("{image=p3Name}{alt}The Third Pig:{/alt}")
 
-#Note: deleted these, hopefully I got them all
-#define d = Character("{image=mirName}{alt}The Man Clad in Red:{/alt}")
-#define g = Character("{image=miwName}{alt}The Man Clad in White:{/alt}")
-
-
-
-
-
-
-
-#pretty sure I've removed these characters
-#define p3 = Character("{size=+100}T{/size}he Third Little Piggy:")
-#define r = Character("{size=+100}M{/size}ighty River:")
-
-
-
 ###==== Defining all Audio
 
 ## Sound effects
@@ -503,12 +493,10 @@ label start:
         show treesbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
-        jump thief1
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
         "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
         "In the darkness of the forest, she may or may not have met a man in white."
         "(Is anything certain these days?)"
-
         "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
         "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
         miw "Poor woman. Let me be the Godfather."
@@ -526,8 +514,8 @@ label start:
                     miw "As I have foreseen."
                     "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
                     miw "You will name [him] [povname]."
-                    miw "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
-                    mum "Alright. Make sure you're there for the christening on sunday."
+                    miw "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
+                    mum "Alright. Make sure you're there for the christening."
                     show hand onlayer transient:
                         yalign 0.71#0.743
                         xalign 0.5
@@ -536,7 +524,7 @@ label start:
                     jump chapter2
                 "If she said no, turn to page 14." if firstManWho:#"No."
                     mum "Then I don't want you as the Godfather. You give to the rich, and take from the poor. You are no Lord of mine."
-                    "(She said this because she didn't understand how wisely the Lord distributes wealth and poverty, using the invisible hand of the free market.)"
+                    "(She said this foolish thing, with no understanding of how wisely the Lord distributes wealth and poverty.)"
                     "Then she turned away from Him and ran into the forest."
                     jump secondMan1
                 "If she asked the mysterious figure who He was, turn to page 11." if not firstManWho:#"Who are you?"
@@ -561,7 +549,7 @@ label start:
                     mir "Excellent!"
                     "He let out a great shrieking cackle and placed His mark upon you."
                     mir "You will name [him] [povname]."
-                    mir "I will come for the child at midnight on [his] eighteenth birthday. Keep [him] safe for me until then."
+                    mir "I will come for the child the moment [he] turns eighteen.. Keep [him] safe for me until then."
                     mum "Alright. Just make sure you're there for the christening on sunday."
                     show hand onlayer transient:
                         yalign 0.71#0.743
@@ -596,7 +584,7 @@ label start:
                     wib "You did not have a choice."
                     "In one swoop She bowed down and placed Her mark upon you."
                     wib "You will name [him] [povname]."
-                    wib "At midnight on [his] eighteenth birthday, [he] will be mine."
+                    wib "The moment [he] turns eighteen, [he] will be mine."
                     wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
                     mum "Alright. Make sure you're there for the christening on sunday."
                     show hand onlayer transient:
@@ -611,7 +599,7 @@ label start:
                     wib"There is no-one else left to take [him]."
                     "In one swoop She bowed down and placed Her mark upon you."
                     wib "You will name [him] [povname]."
-                    wib "At midnight on [his] eighteenth birthday, [he] will be mine."
+                    wib "The moment [he] turns eighteen, [he] will be mine."
                     wib "Keep [him] safe for me until I come for him. I will send three messengers before me, to announce my arrival. "
                     mum "Alright then. Beggars can't be choosers. Make sure you're there for the christening on sunday."
                     show hand onlayer transient:
@@ -632,7 +620,7 @@ label start:
 label chapter2:
     if godfather == "White":
         "And so you grew up as a kind and well-mannered child, and you made your mother proud."
-        "You went to church every Sunday, and helped out around town every Saturday, and all the neighbours smiled and said \"That one has the mark of G-d on [him].\""
+        "You went to church every Sunday, and worked hard every day of your life, and every day you gave thanks to the invisible hand of the free market. All the neighbours smiled and said \"That one has the mark of G-d on [him].\""
         "Your Godfather was as good as His word. He appeared at church for the christening, and blessed you."
         "You soon found luck was always in your favour, and everyone took to calling you \"Fortune's Favourite\"."
     elif godfather == "Red":
@@ -644,14 +632,14 @@ label chapter2:
     elif godfather == "Black":
         "And so you grew up as a solemn and quiet child, and you made your mother sick with worry with your gloomy ways."
         "You ate very little, and said even less, and every night you would stalk quietly through the forest shadows or sit for long hours watching insects crawl in stagnant ponds, and all the neighbours said \"That one has the mark of Death on [him],\" and shut their doors."
-        if godfather == "Red":
-            "You lived with your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
-        else:
-            "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+    if godfather == "Red":
+        "You lived with your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+    else:
+        "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
 
     label introMenu:
         show hand onlayer transient:
-            yalign 0.7#0.743
+            yalign 0.68#0.743
             xalign 0.5
         menu:
             "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets."
@@ -671,15 +659,15 @@ label chapter2:
                 else:
                     "Well, it was a happy house. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
                 "No matter how many people were around you, you felt like something was missing."
-                "Every year, the village would throw a great festival, for no reason anyone could name. On these nights you always felt sad and strange."
+                "Every year, on the day before your birthday, the village would throw a great festival for no reason anyone could name. On these nights you always felt sad and strange."
                 "You would avoid the festival and stare deep into the woods all through the night."
                 jump introMenu
             "To continue the story, turn to page 34.":
                 if godfather == "Black":
-                    "Alas, all too soon, the day of your 18th birthday arrived. You set about in wild terror, for you knew that your Godmother would own your immortal soul as as soon as the clock struck midnight."
+                    "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godmother would own your immortal soul as as soon as the clock struck midnight."
                     "You had no doubt that She would soon send Her three messengers for you, and then take you down to the kingdom of ruin forever."
                 else:
-                    "Alas, all too soon, the day of your 18th birthday arrived. You set about in wild terror, for you knew that your Godfather would come to take you away as soon as the clock struck midnight, and you had no wish to leave just yet."
+                    "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godfather would come to take you away as soon as the clock struck midnight, and you had no wish to leave just yet."
     if godfather == "Red":
         "The closer the hour grew, the more frantic you became. You knew you would soon pay dearly for all your years of wicked indolence."
         pov "I know. I'll go to the village festival this eve. There will be travellers there from all over this wild earth. Surely one of them will know how to save me from this terrible fate."
@@ -725,19 +713,20 @@ label chapter2:
                     "Inside you were shocked to find the tree completely hollow. A great cavern was formed inside it, cold as ice despite the heat outside."
                     "The floor of the cavern was piled with rubies and sapphires and glinting emeralds and solid gold pieces, larger than your fist."
                     "All across the room you saw lush silks and pillars of precious metals of every type, and riches that would turn the king of kings green with envy."
-                    "The room was rich with the dark scent of incense, and saw the glimmering magenta smoke roll across the room and coat it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
+                    "The glimmering magenta smoke of incense rolled across the room and coated it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
                     m "Oh darling, what are you doing back again?"
                     "The Mushroom popped up, startling you."
                     m "I'm sure I remember telling you quite clearly never to darken my door again."
                     "She looked off to the side."
                     m "Yes, I'm just telling them now. One moment."
                     m "Have some common courtesy, darling, please. I don't barge into your house looking wild and dishevelled and try to steal the untold riches of your domain, do I?"
+                    m "Not without an invitation, at least."
                     label mushroomWater:
                         show hand onlayer transient:
                             yalign 0.63#0.743
                             xalign 0.5
                         menu:
-                            m "Not without an invitation, at least."
+                            m "Out with it, then. What do you want?"
                             "If you asked for some water, turn to page 33." if mushroomTea:
                                 pov "Just some water would be nice, please."
                                 m "{i}Water?{/i} Really? How... conventional."
@@ -791,14 +780,14 @@ label chapter2:
                             "If you immediately disobeyed the mushroom and opened the basement door (in accordance with your wicked nature) turn to page 52.":
                                 "Of course you opened the basement door."
                                 "Within, you saw a most terrible sight."
-                                "Seven mushroom corpses hung in the room, each being feasted upon by a fat blue-tongued lizard."
+                                "Seven mushroom corpses hung in the room, dripping black ichor, each being feasted upon by a fat blue-tongued lizard."
                                 "Every one of them was identical to the lady Mushroom herself."
                                 pov "W-what is this?"
                                 m "Fool!"
                                 "The mushroom appeared from the earth before you with a terrible crash."
                                 m "You have asked about what concerns you not, and so you will hear what pleases you not!"
                                 $mushroomCurse = True
-                                m "I gave you fair warning, darling. Now all your milk will spoil, all your bread will burn, your socks will always be wet, and you will live in torment for the rest of your days."
+                                m "I gave you fair warning, darling. Now all your milk will spoil, all your bread will burn, your socks will always be wet, and you will live in torment for the rest of your days!"
                                 pov "Noooooooo!"
                                 m "Don't say I didn't tell you so."
                                 "You cried out and set about wailing and tearing your clothes and beating yourself upon the ground in pitiful anguish."
@@ -823,10 +812,10 @@ label chapter2:
                                 "The Mushroom grew quiet as she thought over your proposal, and you prayed to the Most High (May He watch over us always) to deliver you from this terrible situation."
                                 m "Very well, dear. I'll let you go."
                                 m "But be warned: If you fail to return to me this very night with the story you have promised me, then your punishment will be as tenfold."
-                                m "Your bland conventionality will rise up and smother you in your sleep, and when you die, your ghost will come back as a wild dog, and harry your mother and father all day and all night, nipping at their heels until they both fall into deep wells and turn into terrible black fish that will lie forever there at the bottom of those wells, moaning weakly and cursing their ungrateful child who has brought them such woe and devastation."
+                                m "You will be fated to trip over a stone and into the ocean and drown, and when you die, your ghost will come back as a wild dog, and harry your mother and father all day and all night, nipping at their heels until they both fall into deep wells and turn into terrible black fish that will lie forever there at the bottom of those wells, moaning weakly and cursing their ungrateful child who has brought them such woe and devastation."
                                 #m "All your spoons will stick in your drawers, and your eggs will hatch into foul geese, and your bowls and furniture will roll away down the hills, so that you will have nothing to do but sit on the floor and eat cold porridge with your hands and curse the day you ever decided to cross a mushroom!"
                                 pov "Noooooooo!"
-                                "She struck the ground with her feet. It opened before her and she disappeared into it instantly."
+                                "She struck the ground. It opened before her and she disappeared into it instantly."
                                 "You set about beating yourself and rolling around the floor in even more pitiful devastation and horror than before, tears streaming from your eyes at this terrible curse."
                                 "Thus you went on your way to the festival, fretting and worrying all the while."
                                 if godfather == "Black":
@@ -994,8 +983,8 @@ label chapter2:
                 "\"Bah!\" cried the older woman, and stomped her foot on the ground."
                 "In a flash her clothes tore asunder, and her grey hair fell to the ground, and you saw it was all nothing but a disguise."
                 "In front of you stood the cunning and terrible form of the Master Thief!"
-                "They were neither tall nor short, neither fat nor thin, neither pale nor tan."
-                "They wore a tricorn hat on their head, a midnight black cloak across their back, a pale silver mask across their eyes, and a cunning look across their sly face."
+                "They had long, long legs and thin dextrous fingers that twisted in arcane motions around them."
+                "They wore a flowing midnight cloak across their back and a cunning look across their sly face."
                 t "You may have outwitted me this time, but I'll get you yet!"
                 t "No law shall stand, no magistrate shall know peace and no cop shall sleep easy in their bed at night, for as long as my legs can run!"
                 "And with a click of their heels they rushed away into the shadows of the woods."
@@ -1126,7 +1115,7 @@ label chapter2:
                     f "But I'm sure your little festival will be quite quaint, too. Pond scum?"
                 "If you said nothing, turn to page 74.":
                     f "No bother, then, keep your secrets to yourself."
-                    f "I myself am excellent at keeping secrets. Why, just the other day the Brass Magician of the City of Pale Stones said to me, he said Brildebrogue! Can I trust you with a most powerful and deadly secret, such that it would destroy the heavens if it were to be released? Of course I gave him my assurances immediately, and thus he told me that the devil's seven daughters were locked below the city in chains, and could only be released with the most secret and magical word, \"Grolabicon\"! Of course if this were ever to be discovered and the daughters released, they would wreak such terrible havoc on the world as to bring the sun and stars falling from their place in the firmament, and it would be the eigth and final apocalypse come at last, which is why I gave him my word that I would keep the secret safe as houses, and I have never told anyone of the matter to this day."
+                    f "I myself am excellent at keeping secrets. Why, just the other day the Brass Magician of the City of Pale Stones said to me, he said Brildebrogue! Can I trust you with a most powerful and deadly secret, such that it would destroy the heavens if it were to be released? Of course I gave him my assurances immediately, and thus he told me that the devil's seven daughters were locked below the city in chains, and could only be released with the most secret and magical word, \"Grolabicon\"! Of course if this were ever to be discovered and the daughters released, they would wreak such terrible havoc on the world as to bring the Firmament crashing down from Her place up above, and it would be the eigth and final apocalypse come at last, which is why I gave him my word that I would keep the secret safe as houses, and I have never told anyone of the matter to this day."
                     f "Pond scum?"
             show hand onlayer transient:
                 yalign 0.67#0.743
@@ -1223,7 +1212,7 @@ label chapter2:
 
     label villageExplore1:
         show hand onlayer transient:
-            yalign 0.72#0.743
+            yalign 0.728#0.743
             xalign 0.5
         menu:
             "The town was overflowing with people bustling about and preparing for the festival, pulling up chairs and laying great tables around the enormous bonfire in the centre of town."
@@ -1240,7 +1229,7 @@ label chapter2:
             "If you sat down with the rest of the guests without delay, turn to page 37.":
                 "You took your place at the table."
     "The Hunter was there, and the old Gloom-monger, and the young Goose-girl."
-    "The stars and the moon slowly arrived to take their places. The birds, and moths, and the soft mist of night all came and were seated."
+    "The stars and the moon slowly arrived to take their places. The birds, and moths, and the Firmament and the soft mist of night all came and were seated."
     "But one guest was missing: No one had seen the Wild Witch of the Woods all night."
     "As the festival began a terrible concern and commotion went up amongst the guests, for we all know what terrible luck it is to spurn a witch."
     may "Did her invitation go missing?"
@@ -1295,47 +1284,39 @@ label banquet:
                 $banquetChat = True
                 jump banquetMenu
             "If you talked to the Sparrow-Herder, turn to page 85."  if sparrowherderChat <= 4:
-                if sparrowherderChat == 0:
-                    sh "G'day."
-                    sh "The ruin to the south has many poisonous beasts. Be sure to carry Antidotes if you head that way."
-                elif sparrowherderChat == 1:
-                    sh "They say these beasts were once envious hogs that spoke ill of our dear Lord."
-                    sh "Thus He cursed them, and now they can speak nothing but poisonous words. As soon as you hear their evil gossip, you'll fall down dead as a doornail."
-                    sh "That's what I heard, anyway."
-                elif sparrowherderChat == 2:
-                    sh "The ruin? They say it's left over from the fifth age."
-                    sh "It was an age of wise beetles that loved to make puzzles and games."
-                    sh "The greatest puzzle-makers would go on to become consorts for their Queen."
-                elif sparrowherderChat == 3:
-                    sh "Their labyrinthine stone puzzle-boxes lie across the land even now, untouched. None who live can solve them."
-                    sh "The Hogmasters laugh at all who try, and their poison words cut them asunder."
-                elif sparrowherderChat >= 4:
-                    sh "How do I know all this? The sparrows told me."
+                if sparrowherderRand ==1:
+                    if sparrowherderChat == 0:
+                        sh "G'day."
+                        sh "The ruin to the south has many poisonous beasts. Be sure to carry Antidotes if you head that way."
+                    elif sparrowherderChat == 1:
+                        sh "They say these beasts were once envious hogs that spoke ill of our dear Lord."
+                        sh "Thus He cursed them, and now they can speak nothing but poisonous words. As soon as you hear their evil gossip, you'll fall down dead as a doornail."
+                        sh "That's what I heard, anyway."
+                    elif sparrowherderChat == 2:
+                        sh "The ruin? They say it's left over from the fifth age."
+                        sh "It was an age of wise beetles that loved to make puzzles and games."
+                        sh "The greatest puzzle-makers would go on to become consorts for their Queen."
+                    elif sparrowherderChat == 3:
+                        sh "Their labyrinthine stone puzzle-boxes lie across the land even now, untouched. None who live can solve them."
+                        sh "The Hogmasters laugh at all who try, and their poison words cut them asunder."
+                    elif sparrowherderChat >= 4:
+                        sh "How do I know all this? The sparrows told me."
+                elif sparrowherderRand == 2:
+                    if sparrowherderChat == 0:
+                        sh "G'day."
+                    elif sparrowherderChat == 1:
+                        sh "You seen those rings of mushrooms in the woods?"
+                        sh "Be wary, friend. Those are the Hag Tracks. They show where the witches danced last night."
+                    elif sparrowherderChat == 2:
+                        sh "As they dance, the Lady Death pushes her fingers slowly through the grass to grab at their ankles. If they tarry too long, they'll be grabbed by their feet and whisked away straight down to the last kingdom."
+                        sh "Long have they danced away from death, and eagerly does she clutch for them. If she doesn't catch them, they fly away with the dawn, and the fingers are left behind."
+                    elif sparrowherderChat == 3:
+                        sh "The lady can be nice enough, sometimes. When we had the famine years ago, she pushed her fingers through the grass so we could eat."
+                        sh "But never go into the circle. She might hear your footsteps, and mistake you for a witch. In a flash, you'll feel her fingers wrap around your ankles and drag you down into the earth. Once she has you, she'll never let you go."
+                    elif sparrowherderChat >= 4:
+                        sh "How do I know all this? The sparrows told me."
                 $sparrowherderChat +=1
                 jump banquetMenu
-                #
-                # if sparrowherderChat == 0:
-                #     sh "G'day."
-                #
-                # elif sparrowherderChat == 1:
-                #     sh "You seen those rings of mushrooms in the woods?"
-
-                # elif sparrowherderChat == 2:
-                #     sh "Be wary, friend. Those are the Hag Tracks. They show where the witches danced last night."
-                # elif sparrowherderChat == 3:
-                #     sh "As they dance, the Lady Death pushes her fingers slowly through the grass to grab at their ankles.
-                # elif sparrowherderChat >= 4:
-                #     sh "If they tarry too long, they'll be grabbed by their feet and whisked away straight down to the last kingdom."
-                #  elif sparrowherderChat >= 5:
-                #     sh "Long have they danced away from death, and eagerly does she clutch for them. If she doesn't catch them, they fly away with the dawn, and the fingers are left behind."
-                #  elif sparrowherderChat >= 6:
-                #sh "The lady can be nice enough, sometimes. When we had the famine years ago, she pushed her fingers through the grass so we could eat."
-                #  elif sparrowherderChat >= 7:
-                #       sh "But never go into the circle. She might hear your footsteps, and mistake you for a witch. In a flash, you'll feel her fingers wrap around your ankles and drag you down into the earth. Once she has you, she'll never let you go."
-                #  elif sparrowherderChat >= 7:
-                #       sh "How do I know all this? The sparrows told me."
-                # $sparrowherderChat +=1
-                # jump banquetMenu
             "If you talked to the Mayor, turn to page 82." if mayorChat <= 6:
                 if mayorChat == 0:
                     may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
@@ -1353,12 +1334,13 @@ label banquet:
                 elif mayorChat >= 6:
                     may "Sometimes I still hear her laughter on moonless nights."
                 $mayorChat += 1
+                jump banquetMenu
             #If you're going out to hunt the witch, be wary. There's a wolf out there.
             #My sister heard it howling, once. The wolf appeared in her head, and spoke to her.
             #You will have three days, it said.
             #Three days passed, and I never saw her again.
             #Do you hear that?
-            "If you talked to the Second Pig, turn to page 266." if renpy.random.randint(1, 5) == 1 and pigChat <= 7:
+            "If you talked to the Second Pig, turn to page 266." if pig2Rand == 1 and pigChat <= 7:
                 if pig:
                     if pigChat == 0:
                         p2 "Oh. Hello, brother."
@@ -1406,6 +1388,7 @@ label banquet:
                         p2 "Or perhaps I'm wrong."
                     if pigChat == 7:
                         p2 "Perhaps you've already met {color=#f00}them{/color}. You just haven't realised yet."
+                $pigChat +=1
                 jump banquetMenu
             "If you talked to the Toad, turn to page 87." if not toadStole2:
                 if toadStole:
@@ -1468,7 +1451,7 @@ label banquet:
                             "He slurped noisily from his wineglass until it was empty. Then he slurped from the glass in his other hand and drained it, too."
                             f "I plan to track this witch character down tonight, before she causes any more chaos."
                             f "We must help the poor, accursed people of this village! Already they panic, terrified that she will descend upon them and turn them all into beasts!"
-                            if $witchArc >= 1:
+                            if witchArc >= 1:
                                 pov "I think that may just be a misunderstanding."
                                 "A tray of drinks came by and the Toad swapped his old wineglasses out for new ones."
                                 f "Maybe so, maybe so. But between you and me, I have a curse of my own I need her to lift."
@@ -1509,8 +1492,8 @@ label banquet:
                         "If you asked him about the thief, turn to page 78." if toadLong and not toadThief:
                             $toadThief = True
                             pov "Aren't you going to do anything about all the stolen goods?"
-                            f "And risk the wrath of the Master Thief? Not on your life!"
-                            may "I heard they stole a horse right out from under it's rider."
+                            f "And risk the wrath of the Master Thief? Not on your life! I heard they eat danger, and breathe death!"
+                            may "I heard they stole a horse right out from under its rider."
                             sh "I heard they stole the King of Spain right out from under his wife."
                             f "Well, I heard that every winter they shrink down to the size of a pin, and hide away in your house to steal all your odd socks and hairpins and loose change."
                             f "Why do they do it? Why, to make a nest, of course. All the better to lure their suitor, THE DEVIL!"
@@ -1538,9 +1521,9 @@ label banquet:
             #Then somehow that turns to stealing from the mushroom / helping the mushroom against the theif
 
 label town:
-    #TK: Add stuff to interact with relevant to the investigation into the False Hydra
     "You walked out to the edge of town, where villagers ran to and fro, searching for the Master Thief."
     "Fruit bats chirped and swirled overhead, fat with fresh mangos."
+    #TK: Add another character who randomly appears and disappears - moon-head?
     label townExplore:
         show hand onlayer transient:
             yalign 0.63#0.743
@@ -1564,7 +1547,7 @@ label town:
                     go "Home of the Goose-folk! I can scarcely imagine it."
                 elif goosemongerChat == 4:
                     go "What would it be like to throw off my human skin and join them?"
-                    go "To honk in ecstasy with my sisters?"
+                    go "To honk in ecstasy with my brothers?"
                     go "To live every day with the fierce, honest joy of a goose?"
                 elif goosemongerChat == 5:
                     go "But they are just dreams. I would never have the courage."
@@ -1582,8 +1565,6 @@ label town:
                     h "Howling? No. You must be imagining it."
                 $hunterChat += 1
                 jump townExplore
-                #A wolf?
-                # I th
             "If you talked to the Gloom-monger, turn to page 99." if gloommongerChat <=6:
                 #TK: Longer gloom-monger chat.
                 if gloommongerChat == 0:
@@ -1602,7 +1583,7 @@ label town:
                     gm "In their left hand is a terrible light."
                 $gloommongerChat += 1
                 jump townExplore
-            "If you looked in the well, turn to page 346." if wellChat <=2:
+            "If you looked in the well, turn to page 346." if wellRand == 1 and wellChat <=2:
                 if wellChat == 0:
                     well "Evening."
                 elif wellChat == 1:
@@ -1780,7 +1761,7 @@ label town:
 
 # Act 2, Chapter 2A: The Master Thief
 label thief2:
-    "Soon, you arrived at the young goose-girls house, which was overrun by honking geese who tore at the furniture and ransacked the pantry until he was at his wit's end."
+    "Soon, you arrived at the young goose-girls house, which was overrun by honking geese who tore at the furniture and ransacked the pantry until she was at her wit's end."
     if pig:
         "The pig quailed from the goose's wrath behind you."
     show hand onlayer transient:
@@ -1838,8 +1819,8 @@ label thief2:
                 "The pig lept from your hands and began snuffling around in the grass. It soon began sniffing at the Echidna, grunting with suspicion."
                 echnida2 "Looks like the jig is up!"
                 "You lept for the Echidna, but it backflipped away just in time."
-                "Laughing maniacally, it ripped off it's mask to reveal none other than the Master Thief."
-                t "That's right, it was I all along! I have stolen the eyes of heaven and the hands of G-d, and now I use those hands to wreak mischief and misery upon this cursed earth!"
+                "Laughing maniacally, it ripped off its mask to reveal none other than the Master Thief."
+                t "That's right, it was I all along! I have stolen the eyes of heaven and the hands of G-d, and now I use those eyes and hands to wreak mischief and misery upon this cursed earth!"
                 h "Stop them!"
                 "The thief fled into the forest, with you and the loyal pig sprinting after."
                 jump thiefChase2
@@ -1853,8 +1834,8 @@ label thief2:
                 echidna2 "What a shame. Oh well! I'd best be off."
                 pov "Wait just a second!"
                 "You lept for the Echidna, but it backflipped away just in time."
-                "Laughing maniacally, it ripped off it's mask to reveal none other than the Master Thief."
-                t "That's right, it was I all along! I have stolen the eyes of heaven and the hands of god, and now I use those hands to wreak mischief and misery upon this cursed earth!"
+                "Laughing maniacally, it ripped off its mask to reveal none other than the Master Thief."
+                t "That's right, it was I all along! I have stolen the eyes of heaven and the hands of god, and now I use those eyes and hands to wreak mischief and misery upon this cursed earth!"
                 h "Stop them!"
                 jump thiefChase2
     label thiefChase2:
@@ -1863,7 +1844,7 @@ label thief2:
             xalign 0.5
         menu:
             #TK: test this menu with the pig
-            "The thief fled into the forest, with you sprinting after."
+            "The thief fled into the forest."
             "If you tried to chase after them, turn to page 135.":
                 "The thief led you on a merry chase, until you were deep into the forest with all the others behind you."
                 "You slowly closed the distance, until you finally lept forward and grabbed their cloak."
@@ -1946,19 +1927,19 @@ label mushroom1:
         #"Tell the tale you heard from the Sparrow-Herder.":
         "If you told the tale of how you attempted to catch the Master Thief, turn to page page 134.":
             "The mushroom ushered you inside, and you both took a seat in the plush red armchairs. You pretended to sip a cup of decaying leaf matter as you told your tale."
-            m "Well! Never in all the years I have known you have you ever told me a tale such as this!"
+            m "Well! Never in all the years I've known you have you ever told me a tale such as this!"
             pov "Um... we only just met tonight."
             m "You know what I mean. The other you's."
             label mushroomTales:
                 show hand onlayer transient:
-                    yalign 0.68#0.743
+                    yalign 0.723#0.743
                     xalign 0.5
                 menu:
                     #TK: more dialogue options here
-                    m "I have to say, darling, you're improving. Still a bit flabby in the second act, but I was most intrigued by your subtle commentary on the innate oneness of being."
+                    m "I have to say, darling, your stories are improving. Still a bit flabby in the second act, but I was most intrigued by your subtle commentary on the innate oneness of being."
                     "If you ask the mushroom to lift the curse, turn to page 140." if not mushroomCurseChat:
-                        m "Well, your story could have done with some improvement."
-                        m "The plot was quite rambling, and the characterisation was flimsy at best."
+                        m "Well, your tale still could have done with some improvement."
+                        m "The plot was rambling, and the characterisation was flimsy at best."
                         m "But I suppose a deal's a deal. I swear I will not curse you with a mushroom's curse."
                         m "This time."
                         $mushroomCurseChat = True
@@ -1995,15 +1976,19 @@ label mushroom1:
 label mushroomFinale:
     m "Oh dear."
     "Another mushroom, identical to the lady, emerged from a side door."
-    #TK: Extra portrait for multiple mushrooms
-    m2 "I know, I know. It's awful to see [him] like this."
-    "Another identical mushroom popped up."
-    m3 "What is it trying to say, here? I think we can find a vague stab towards meaning in this sad tableau, but who's the audience?"
-    m2 "Perhaps it's meant to be ironic."
-    "As you fought the thief back and forth across the floor, mushrooms swarmed up and surrounded you."
-    m3 "I think we've seen enough."
+    m2 "I know, it's awful."
+    if he == "they":
+        m2 "I mean, what are [he] trying to say, here? I think we can find a vague stab towards meaning in this performance, but who's the audience?"
+    else:
+        m2 "I mean, what is [he] trying to say, here? I think we can find a vague stab towards meaning in this performance, but who's the audience?"
+    "You stumbled and teetered at the edge of a cliff as the thief's stabs pushed you backwards. Another identical mushroom popped up."
+    m4 "Perhaps it's meant to be ironic."
+    m2 "Perhaps it's satirical."
+    m3 "Yes, but what is it satirising?"
+    "You regained your footing and slashed the thief's sword out of their hands. Just as you were on the brink of victory, mushrooms swarmed up and surrounded you."
+    m "I think we've seen enough. It's time to get off the stage."
     "Before you could blink, they took hold of your ankles and dragged you down into the earth."
-    m4 "Shh. Shhh."
+    m3 "Shh. Shhh."
     "The Master Thief managed to wriggle out of their grasp and leap up out a nearby window."
     t "Au revoir, my friend!"
     "That was the last thing you saw before you were dragged underneath the earth."
@@ -2011,12 +1996,12 @@ label mushroomFinale:
     #TK: Have a house of leaves text effect for the many mushrooms
     m3 "Everything's going to be ok.{vspace=30}                                             {w=0.4}You're safe here.{vspace=30}                                             {w=0.8}Shhhh."
     "Soon, you emerged into a colossal underground kingdom lit with flickering silver light."
-    "All around you pressed a throng of webcaps, milkcaps, scarlet elf caps, poisonpies, decievers, pinkgills, brittlegills, veiled ladies, lawyer's wigs, stinkhorns, earthstars, beefsteaks, chicken of the woods, earthballs, sculpted puffballs, yellowfoots, lungworts, brown-eyed wolves, golden-eyed umbrellas, Satan's bolete, false chanterelle's, death caps and destroying angels, and all members of the mysterious Dark Taxa, the dark matter fungi that lie unknown to mankind."
-    "They all swept to and fro through a twisted city of endless tunnels. The shape of a giant, pale and broken mountain was barely visible looming over the city in the mist of spores."
-    pov "I was helping you! Why have you kidnapped me?"
-    m "Darling, you were hurting yourself with that sad performance."
+    "All around you pressed a blooming mass of webcaps, milkcaps, scarlet elf caps, poisonpies, decievers, pinkgills, brittlegills, veiled ladies, lawyer's wigs, stinkhorns, earthstars, beefsteaks, chicken of the woods, earthballs, sculpted puffballs, yellowfoots, lungworts, brown-eyed wolves, golden-eyed umbrellas, Satan's boletes, false chanterelles, death caps and destroying angels, and all members of the mysterious Dark Taxa, the dark matter fungi that lie unknown to mankind."
+    "They all swept to and fro through a twisted city of endless tunnels. The shape of a giant, pale and broken mountain loomed over the city, barely visible through the thick fog of spores."
+    pov "I was about to win! Why have you kidnapped me?"
+    m "Darling, trust us, that sad production wasn't going to win anything. You were hurting yourself."
     m2 "Hurting yourself."
-    m "Please don't take the criticism too personally, dear. It was an intriguing bit of invisible theatre. But you really must consider the problematic aspects of the work."
+    m "Please don't take the criticism too personally. It was an intriguing bit of invisible theatre. We do respect the way you put everything into the role. But you really must consider the problematic aspects of the piece."
     "Dozens of identical mushrooms pressed around you, speaking in soft, overlapping voices."
     m3 "I think it might be best if you stay here until I know that you're safe.{vspace=30}                                             {w=0.4}Until I know you're safe.{vspace=30}                         {w=0.8}It's for the best, if you stay here."
     m4 "I'll watch over you.{vspace=30}                                             {w=0.4}Over you.{vspace=30}                         {w=0.8}Watch over."
@@ -2046,7 +2031,7 @@ label mushroomFinale:
                 m2 "These fingers are the Mushrooms."
                 m "We provide food for the poor and the animals of the forest, and I support the plants and connect them together."
                 m4 "But most importantly, we do The Work."
-                m2 "I take hold of the dead and the dying, and the old wood and the old bones, and carry it all down to my kingdom, far underground."
+                m2 "We take hold of the dead and the dying, and the old wood and the old bones, and carry it all down to my kingdom, far underground."
                 m3 "I work slowly. We are patient. Soon, the work will be complete, and everything will rest here inside Her kingdom, as was intended when the world began."
                 "The mushroom gestured to the pale mountain, looming over the city through the fog of spores."
                 m4 "My body still lies there, broken. It is what the hills and forests and continents are built on. She lies in great pain, and it is but rarely that I can walk among men as we once did."
@@ -2060,13 +2045,12 @@ label mushroomFinale:
                 $mushroomImprisoned = True
                 jump mushroomPrison
             "If you enquired as to what the mushroom meant by \"All of yourself\", turn to page 162." if mushroomImprisoned and not mushroomMyself:
-                m "We've talked so often, darling. And you have forgotten so much."
+                m "We've talked about this so many times, darling. And you have forgotten so much."
                 m2 "You're not well."
                 m3 "You argue with yourself. Even kill yourself. All the time."
-                #m "You make things and then you charge yourself money to use them."
                 m4 "You make food and then give it to us to rot, while you lie starving."
                 m2 "You build houses and then leave them empty, while you die of cold on the streets."
-                m "We respect your dedication to your art. It is a beautiful piece."
+                m "We respect your dedication to your art. It is a beautiful performance."
                 m2 "But is it worth the cost?"
                 $mushroomMyself = True
                 jump mushroomPrison
@@ -2107,7 +2091,7 @@ label mushroomFinale:
                 "If you explored the moss garden, turn to page 135." if not mushroomMoss:
                     #TK mushrooms
                     "The mushroom showed you all the wonders of that undiscovered land, where life and death go hand in hand."
-                    "You saw the four seasons all flowering at once. To the north, the cicadas and crickets chirped loudly in a summer haze. To the south, the ground was silver white with snow. To the west, the autumn maples were ablaze like a sunset, and to the east was the full glory of spring."
+                    "You saw the four seasons all flowering at once. To the north, the cicadas and crickets chirped loudly in a summer haze. To the south, the ground was silver white with snow. To the west, the autumn rains fell, and to the east was the full glory of spring."
                     "The wonder of those gardens were so great that the tongue fails to describe them, and you walked and watched for days, until your eyes were so full that they couldn't stand to see another scrap of beauty."
                     m "A bit kitsch, isn't it?"
                     $mushroomMoss = True
@@ -2136,7 +2120,7 @@ label mushroomFinale:
                     m3 "Someday, everyone and everything will be down here."
                     m "On that day, the Lady will draw her fingers down through the soil and back to her."
                     m3 "We will finally have completed the piece. Our Magnum Opus. It will be spectacular, I assure you, darling."
-                    m "Don't look yet, it's not finished, I'd be so embarrassed if you saw it in it's current state."
+                    m "Don't look yet, it's not finished. Barely a first draft, really, I'd be so embarrassed if you saw it in it's current state."
                     m2 "So much left to do."
                     m3 "No need to worry. We have all the time in the world."
                     "You felt a strange peace in the shadow of the pale lady, and you stayed there with the mushroom for many days, looking out at the splendour of the world."
@@ -2165,16 +2149,16 @@ label mushroomFinale:
                                 xalign 0.5
                             menu:
                                 "You and the mushroom stayed together for many long and happy years, roaming the ancient underground gardens of that fungal kingdom."
-                                "If you remained good friends with the mushroom, turn to page 155.":
+                                "If you remained good friends with the mushrooms, turn to page 155.":
                                     if godfather == "Red":
-                                        "You and the mushroom stayed the greatest of friends, talking all through the small hours together."
+                                        "You and the mushrooms stayed the greatest of friends, talking all through the small hours together."
                                         "You set up a quaint home in that strange country, and soon you were even able to find your poor mother and make amends for your wicked behaviour."
                                         "After a long time, your siblings came down to join you there, one by one."
                                     else:
-                                        "You and the mushroom stayed the greatest of friends, talking all through the small hours together."
-                                        "You set up a quaint home in that strange country. After a long time, your mother and siblings came down to join you there, one by one."
-                                "If you married the mushroom, turn to page 156.":
-                                    "After many years, you and the mushroom became married in a beautiful ceremony. Your mother came down to the kingdom of death for the occasion, and all the plants and lichens and moss and toadstools of the forest were in attendance."
+                                        "You and the mushrooms stayed the greatest of friends, talking all through the small hours together."
+                                        "You set up a quaint home in that dark kingdom. After a long time, your mother and siblings came down to join you there, one by one."
+                                "If you married the mushrooms, turn to page 156.":
+                                    "After slowly growing close over many years, you and the mushrooms all became married together in a beautiful ceremony. Your mother came down to the kingdom of death for the occasion, and all the plants and lichens and moss and toadstools of the forest were in attendance."
                             if godfather == "White":
                                 "Long did your Godfather the Almighty search for you, but never could he find you, hidden as you were in that undiscovered country."
                             elif godfather == "Red":
@@ -2185,7 +2169,10 @@ label mushroomFinale:
                             "You stayed there at the side of the Pale Lady, forever and ever, until the final horn and the coming of the end of days."
                             jump end
                         "If you held fast to your desire to return to the world above, turn to page 164.":
-                            pov "Don't think that I want to leave you. It's just that I must see my old parents and my old country."
+                            if godfather == "Red":
+                                pov "Don't think that I want to leave you. It's just that I must see my siblings and my old country."
+                            else:
+                                pov "Don't think that I want to leave you. It's just that I must see my old mother and my old country."
                             m3 "I see. Then we won't stand in your way. Take this to remember us by."
                             "She handed you a black box tied with a tassel of red silk."
                             m4 "This is the box of the jeweled hand, and it holds something very precious. Do not open it, no matter what happens."
@@ -2198,17 +2185,18 @@ label mushroomFinale:
     "But just as you were about to enter, a strange man came out."
     som "Who are you?"
     pov "What? Who are you? And why do you twist in that crooked way?"
-    som "We're all crooked now, son. It's the law. But answer my question!"
+    som "We're all crooked now, child. It's the law. But answer my question!"
     #You raced through crowds of bent and crooked people.
     pov "My name is [povname]."
-    som "Don't joke around like that. It's true that someone by the name of [povname] once lived here, but that is a tale three hundred years old! [He] couldn't possibly be alive now."
+    som "Don't joke around like that."
+    som "It's true that someone by the name of [povname] once lived here, but that is a tale three hundred years old! [He] couldn't possibly be alive now."
     "When you heard those odd words, a terrible fear gripped you, and you ran out onto the street and across the land. The forest you knew was gone. A grey rain of ash fell ceaselessly across the land from the grey clouds above. The bent and crooked people of the land huddled in grim shelters underneath places that hideously resembled the hills and lakes and villages you once knew."
-    "Over and over, you heard them mutter of the Ash Giants, and you heard terrible footfalls shake the earth from some distant place."
+    "Over and over, you heard them mutter of the Ash Giants, and you heard terrible footfalls shake the earth from some distant place, closer all the time."
     "The awful feeling came over you that what the old man said was true. Each day you spent in the underground kingdom was as a hundred years on earth."
-    "You ran through the grey streets and parking lots and abandoned shopping centers and twisting underground toll roads and long slow landfill rivers that twisted with the serpentine motion of the trash queens as you stumbled onto the cracked bitumen roads and empty apartment complexes packed with flickering TV screens of static under the grim endless maze of freeways stacked above you that blotted out the grey sky above, but try as you might you couldn't find the way back to the kingdom you left."
+    "You ran through the grey streets and parking lots and abandoned shopping centers and vast, decayed, echoing airports and twisting underground toll roads and long slow landfill rivers that seethed with the serpentine motion of the trash queens as you stumbled onto the cracked bitumen roads and empty apartment complexes packed with flickering TV screens of static under the grim endless maze of freeways stacked above you that blotted out the grey sky above, but try as you might you couldn't find the way back to the kingdom you left."
     if godfather == "White":
         miw "Finally."
-        "You felt a heavy hand fall on your shoulder. A great light shone behind you, to bright for you to turn and face it."
+        "You felt a heavy hand fall on your shoulder. A great light shone behind you, too bright for you to turn and face it."
         miw "Long have I waited. Now, you will come with me."
         jump mushroomBox
     elif godfather == "Red":
@@ -2227,7 +2215,7 @@ label mushroomFinale:
                     "Having lost everything dear to you, you realised that there was no reason not to open it."
                     pov "At such a time, surely I will find something inside this box to save me and lead me back to the Mushroom."
                     if godfather == "White":
-                        miw "What are you doing? No!"
+                        miw "No."
                     elif godfather == "Red":
                         mir "What are you doing? No!"
                     "You untied the red silk and lifted the lid of the precious box."
@@ -3147,7 +3135,8 @@ label toad1:
     #         "He unsteadily got up, uncrumpling his once-fine hat. You heard him whisper to himself."
     #         f "I... am Brildebrogue Chippingham. And I have never failed at anything in my life."
     #         "With this, he put on the broken hat, and the two of you continued down the road."
-
+    hide treesbg
+    show nightbg at artPos
     "As you went down the road, the forest began to get darker and darker."
     "The trees closed in like a wall around you, and the moon and stars fled in fear."
     f "Nothing to fear, my friend! My boys will get us through this dark road, quick smart!"
@@ -3181,11 +3170,17 @@ label toad1:
     "Then he stood up and said to himself sternly:"
     f "I am Bridlebrogue Chippingham, and I've never failed at anything in my life."
     "With this, he regained his former swagger and strode forward."
+    "You walked through the trees together."
+    hide nightbg
+    show nightgodbg at artPos
+    "The Firmament looked down at you from Her place up above."
+    hide nightgodbg
+    show nightbg at artPos
     show hand onlayer transient:
         yalign 0.7#0.743
         xalign 0.5
     menu:
-        "You followed after him, through a dense swamp of crooked mangroves."
+        "You followed the toad through a dense swamp of crooked mangroves."
         "If you asked him about the witch's cottage, turn to page 233.":
             pov "How do you know where the witch's cottage is?"
             f "Oh... just my natural good sense of direction, I suppose! Ha ha!"
@@ -4382,7 +4377,9 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Front Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}This Book Belongs Too:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Hans Christian Andersen.{vspace=[tx]}{space=[ti]}6. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}7. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}8. {b}Inspirational Reading:{/b} 'The Wonderful Wizard of Oz' (1900), L. Frank Baum.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Front Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}This Book Belongs Too:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Hans Christian Andersen.{vspace=[tx]}{space=[ti]}6. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}7. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}8. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    #TK: Appendix N
+    #{b}Inspirational Reading:{/b} 'The Wonderful Wizard of Oz' (1900), L. Frank Baum.{vspace=[tx]}
     $ renpy.pause ()
 
     show text "{b}FONTS:{/b}":

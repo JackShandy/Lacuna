@@ -1,32 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1292, in script
-    menu:
-KeyError: u'pigappears'
+  File "game/script.rpy", line 1989, in script
+    m1 "I think we've seen enough. It's time to get off the stage."
+Exception: Sayer 'm1' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1292, in script
-    menu:
-  File "renpy/ast.py", line 1638, in execute
-    renpy.exports.say(None, "\n".join(narration), interact=False)
-  File "renpy/exports.py", line 1393, in say
-    who(what, *args, **kwargs)
-  File "renpy/character.py", line 1190, in __call__
-    what = what_pattern.replace("[what]", sub(what, translate=True))
-  File "renpy/character.py", line 1179, in sub
-    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
-  File "renpy/substitutions.py", line 270, in substitute
-    s = formatter.vformat(s, (), kwargs)
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 563, in vformat
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 585, in _vformat
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 646, in get_field
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 605, in get_value
-KeyError: u'pigappears'
+  File "game/script.rpy", line 1989, in script
+    m1 "I think we've seen enough. It's time to get off the stage."
+  File "renpy/ast.py", line 680, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "renpy/ast.py", line 574, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'm1' is not defined.
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 1.0
-Thu Nov 25 18:44:46 2021
+Fri Nov 26 15:01:32 2021
