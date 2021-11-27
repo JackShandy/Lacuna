@@ -573,10 +573,9 @@ label start:
                     $secondManWho = True
                     jump secondMan2
     label thirdMan1:
-        "In the deepest darkness of the forst, there she may or may not have met a handsome woman"
+        "In the deepest darkness of the forst, she may or may not have met a handsome woman."
         "(What can any of us be certain of, except that the mercies of the Almighty are vaster than the deepest ocean and more numerous than all the pebbles on the land?)"
-        "The woman was or was not broken-limbed and clad all in black."
-        "She had no hands."
+        "She was broken-limbed and clad all in black. She had no hands."
         wib "Poor woman. Let me be the Godmother."
         wib "The child will have nothing. [He] will need nothing."
 
@@ -609,13 +608,16 @@ label start:
                     wib"There is no-one else left to take [him]."
                     "In one swoop She bowed down and placed Her mark upon you."
                     wib "You will name [him] [povname]."
-                    wib "The moment [he] turns eighteen, [he] will be mine."
-                    wib "Keep [him] safe for me until I come for him. I will send three messengers before me, to announce my arrival. "
+                    if he == "they":
+                        wib "The moment [he] turn eighteen, [he] will be mine."
+                    else:
+                        wib "The moment [he] turns eighteen, [he] will be mine."
+                    wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
                     mum "Alright then. Beggars can't be choosers. Make sure you're there for the christening on sunday."
                     show hand onlayer transient:
                         yalign 0.77#0.743
                         xalign 0.5
-                    "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=190}{i}In your notes, write down that {b}You are Death's Grandchild.{/b}{/i}"
+                    "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Grandchild.{/b}{/i}"
                     $godfather = "Black"
                     jump chapter2
                 "If she asked the mysterious figure who She was, turn to page 18." if not thirdManWho:
@@ -1059,7 +1061,8 @@ label chapter2:
             menu:
                 f "Well, are you impressed?"
                 "If you asked the gentleman his name, turn to page 58.":
-                    f "Brildebrogue Chippingham's the name. Of the Burpengary Chippinghams."
+                    f "I am Brildebrogue Chippingham, and I have never failed at anything in my life."
+                    f "No doubt you've heard of me."
                 "If you flattered the toad, turn to page 63.":
                     pov "Absolutely, sir. I'm stunned."
                     f "As is natural."
@@ -1152,7 +1155,8 @@ label chapter2:
                 pov "Begone, worm. Pester me again and I'll drive you into the grave, just as I did my own mother."
             else:
                 pov "No thank you, Sir. My mother warned me not to talk to strangers."
-            eg "You would spurn me? ME? {b}Bridlebrogue Chippingham!?{/b}"
+            eg "You would spurn me? ME?"
+            eg "I'll have you know that I am {b}Bridlebrogue Chippingham{/b}, and I've never failed at anything in my life!"
             "The curtains parted and inside you saw a small, ugly cane toad, squatting in muck. The graceful arm that beckoned you from behind the curtain was nothing but a wooden prop in his webbed hand. He tossed it to the ground with disgust."
             show tornPage3 onlayer screens zorder 101
             show tornPage3bg onlayer screens zorder 99
@@ -1186,39 +1190,43 @@ label chapter2:
         #TK: add choices here
         "As you walked up to the village, you spied a hunter standing guard."
         h "Good evening."
-        h "Be careful tonight. They say there's witches abroad."
-        pov "Witches? Nonsense! There's no such thing!"
-        "No sooner had those foolish words escaped your mouth than a witch lept out of the bushes and onto your back. Before you could say or do anything, she dug her heels into your sides and rode you up into the sky and over the mountains."
-        $witchArc +=1
-        "In a wink you found yourself at the blue mountains, exhausted from a night of hard riding."
-        "A witches sabbath was afoot. A great fire raged at the top of the mountain."
-        "The witches cackled and jibbered and danced around it with glee, poking you cruelly in your sides and making cutting remarks like, \"Now who's not real, eh?\" and \"We don't believe in YOU! How do you like that?\" which wounded your feelings grievously."
-        w "Oh gosh, oh no, are you all right?"
-        "A figure pulled you away from the jeering crowd and tended to your wounds."
-        w "I'm so sorry about that. The old girls tend to get a bit carried away. They don't get out much, you know, it's a bit of a treat for them."
-        w "Are you feeling ok? Let me get you up. I'm so sorry about this again, I know this is probably the last thing you want to be doing on a friday night, really can't apologise enough, it's just the full moon, you know? Always gets them a bit riled up, and it does them good to get some fresh air and dance around once in a while, you know, fulfill their oath to the devil, but, yeah, no excuses for kidnapping you obviously, that kind of behaviour is really not on."
-        w "Here, let me give you a lift home."
-        "She helped you get up on her broom and spirited you away into the sky."
-        "Below you, you heard the witches you chanting praise to Belphegor, lord of Hogs."
-        w "So."
-        w "You come through here often?"
-        #TK: Choice
-        pov "Not often, no."
-        w "Oh, it's lovely out here, you should definitely try coming back when you have a chance. Beautiful views."
-        "A great rumbling broke out all around you. You twisted around to look back. Behind you, you saw the mountain split open and ten thousand hogs burst up from beneath the earth. The witches screeched in demonic glee."
-        w "Oh dear. I'm going to miss everything."
-        w "Alright, here you are. I'd better be getting back."
-        w "Have a good night!"
-        "She set you down at the edge of town and flew off into the sky."
-        "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
-        jump villageExplore1
-        # show hand onlayer transient:
-        #     yalign 0.72#0.743
-        #     xalign 0.5
-        # menu:
-        #     "If you replied \"Witches? Nonsense! There's no such thing!\" turn to page 32.":
-        #
-        #     "If you replied \"I'll be cautious.\" turn to page 40.":
+        show hand onlayer transient:
+             yalign 0.68#0.743
+             xalign 0.5
+        menu:
+            h "Be careful tonight. They say there's witches abroad."
+            "If you said there's no such thing as witches, turn to page 38.":
+                        pov "Witches? Nonsense! There's no such thing!"
+                        "No sooner had those foolish words escaped your mouth than a witch lept out of the bushes and onto your back. Before you could say or do anything, she dug her heels into your sides and rode you up into the sky and over the mountains."
+                        $witchArc +=1
+                        "In a wink you found yourself at the blue mountains, exhausted from hard riding."
+                        "A witches sabbath was afoot. A great fire raged on the peak before you."
+                        "The witches cackled and jibbered and danced around you with glee, poking you cruelly in your sides and making cutting remarks like, \"Now who's not real, eh?\" and \"We don't believe in YOU! How do you like that?\" which wounded your feelings grievously."
+                        w "Oh gosh, oh no, are you all right?"
+                        "A figure pulled you away from the jeering crowd and tended to your wounds."
+                        w "I'm so sorry about that. The old girls tend to get a bit carried away. They don't get out much, you know, it's a bit of a treat for them."
+                        w "Are you feeling ok? Let me get you up. I'm so sorry about this, I know this is probably the last thing you want to be doing on a friday night, really can't apologise enough, it's just the full moon, you know? Always gets them a bit riled up, and it does them good to get some fresh air and dance around once in a while, you know, fulfill their oath to the devil, but, yeah, no excuses for kidnapping you obviously, that kind of behaviour is really not on."
+                        w "Here, let me give you a lift home."
+                        "She helped you get up on her broom and spirited you away into the sky."
+                        "Below you, you heard the witches you chanting praise to Belphegor, lord of Hogs."
+                        w "So."
+                        w "You come through here often?"
+                        #TK: Choice
+                        pov "Not often, no."
+                        w "Oh, it's lovely out here, you should definitely try coming back when you have a chance. Beautiful views."
+                        "A great rumbling broke out all around you. You twisted around to look back. Behind you, you saw the mountain split open and ten thousand hogs burst up from beneath the earth. The witches screeched in demonic glee."
+                        w "Oh dear. I'm going to miss everything."
+                        w "Alright, here you are. I'd better be getting back."
+                        w "Have a good night!"
+                        "She set you down at the edge of town and flew off into the sky."
+                        "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
+                        jump villageExplore1
+            "If you trembled in terrible fear, turn to page 39.":
+                "You looked around in fright. The bushes rustled. But you saw no witches."
+                pov "Thank you for the warning, kind hunter. I'll be careful."
+                "You walked into town."
+                "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
+                jump villageExplore1
 
     label villageExplore1:
         show hand onlayer transient:
@@ -1282,7 +1290,7 @@ label village:
 
 label banquet:
     "You walked down the tables of the village banquet. Some folks were gripping each other tight and crying out at the misfortune that had befallen their town. Others simply sat in glum silence."
-    "The cane toad from the road was gulping down every morsel of food he could find, slurping from a full wineglass in each hand and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
+    "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
     label banquetMenu:
         show hand onlayer transient:
             yalign 0.625#0.743
@@ -1413,30 +1421,15 @@ label banquet:
                 else:
                     if toadConvo2Spoke == False and toadArc == 0:
                         f "Hello again, fellow traveler!"
-                        "He sprayed food over the table as he spoke."
+                        "He sprayed food as he spoke. He was sitting on a tower of pillows on his chair, so he could reach the table."
                         f "Do not be alarmed! I have already forgiven your poor manners in refusing my generous offer on the road."
                     elif toadConvo2Spoke == False and toadArc > 0:
                         f "Good evening, my dear friend!"
-                        "He sprayed food over the table as he spoke."
+                        "He sprayed food as he spoke. He was sitting on a tower of pillows on his chair, so he could reach the table."
                         f "It warms my heart to see you again! Although we have known each other but a little time now, I already feel the bonds of our friendship have grown strong as the thickest iron, so warmed have I been by your gregarious companionship!"
                         f "Please, take a seat beside me! I would count myself proud to sit amoung such distinguished company as yours."
                     elif toadConvo2Spoke:
                         f "Ah, the traveller returns!"
-                        # if toadDecline:
-                        #     f "What say you, have you reconsidered my offer?"
-                        #     menu:
-                        #         "Accept, and head to the Witch\'s Cottage with the Toad.":
-                        #             f "Sensational! Stay close to me, and you won\'t have a thing to fear."
-                        #             f "It would be a brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
-                        #             "He flexed his arms for you. A tiny bump of muscle rose up."
-                        #             jump toad1
-                        #
-                        #         "Politely decline - for now, at least.":
-                        #             f "I understand. The Witch's fear quails even the most courageous heart."
-                        #             f "Not mine, of course! If you change your mind, I'll be here."
-                        #             $toadDecline = True
-                        #             jump banquetMenu
-                        #else:
                         f "You {i}must{/i} try some of these prawns, they're simply to die for. A credit to your humble village!"
                 label toadConvo2:
                     show hand onlayer transient:
@@ -1447,9 +1440,9 @@ label banquet:
                         f "Try the crackling, it's marvelous."
                         "If you asked about the feast, turn to page 89." if not toadFeast:
                             f "Yes, it's adequate, perfectly adequate."
-                            "He opened his mouth wide and devoured a flank of roast pork whole."
+                            "He opened his mouth wide and took a bite out of a flank of roast pork."
                             f "Nothing like the feasts back at Chippingham Manor, of course, you understand, nothing like them at all, but certainly adequate nonetheless, I have to say, if I do say so myself, needless to say, as the saying goes, to say nothing of this fine vintage!"
-                            "He drained his wineglass in one gulp, then waved for more."
+                            "He awkwardly tilted the wineglass towards him and drank deeply, almost falling in."
                             show tornPage1 onlayer screens zorder 101
                             show tornPage1bg onlayer screens zorder 99
                             f "Why, it quite reminds me of when I was staying with the Sultana of Yolkorich, a land far to the south across the seas, completely made out of delectable food, you understand! The trees were made of licorice sticks, all the pillars were fine musk candy, the streams ran fresh with sparkling champagne, and the citizens would drive over the rocky roads on peppermint carriages drawn by mouth-watering omlette stallions. Well, one day I woke up and tucked into a hearty breakfast of raisin toast, smoked salmon and fried eggs, only to discover I had devoured the Sultana herself, along with her entire retinue! I had to make a hasty retreat from that situation post-haste."
@@ -1460,15 +1453,15 @@ label banquet:
                             jump toadConvo2
                         "If you asked about his plans, turn to page 90." if not toadLong:
                             f "Aha! Allow me to elucidate."
-                            "He slurped noisily from his wineglass until it was empty. Then he slurped from the glass in his other hand and drained it, too."
+                            "He slurped noisily from his wineglass until it was empty."
                             f "I plan to track this witch character down tonight, before she causes any more chaos."
                             f "We must help the poor, accursed people of this village! Already they panic, terrified that she will descend upon them and turn them all into beasts!"
                             if witchArc >= 1:
                                 pov "I think that may just be a misunderstanding."
-                                "A tray of drinks came by and the Toad swapped his old wineglasses out for new ones."
+                                "A tray of drinks came by and the toad dragged a new full-sized wineglass into his arms, struggling with the weight."
                                 f "Maybe so, maybe so. But between you and me, I have a curse of my own I need her to lift."
                             else:
-                                "A tray of drinks came by and he swapped his old wineglasses out for new ones."
+                                "A tray of drinks came by and the toad dragged a new full-sized wineglass into his arms, struggling with the weight."
                                 f "And between you and me, I have a curse of my own I need her to lift."
                             f "{i}Transformed{/i}, you know. Keep that under your hat, very hush hush, you understand."
                             $toadLong = True
@@ -1610,23 +1603,24 @@ label town:
                             well "No worries."
                         #"If your notes say that {b}You know the secret name of Belphagor, lord of hogs{/b}, turn to page 210."
                         #TK: Write secret Thing in the Well Path
-                if wellChat == 2:
+                elif wellChat == 2:
                     show hand onlayer transient:
-                        yalign 0.7#0.743
+                        yalign 0.624#0.743
                         xalign 0.5
                     menu:
                         "You peered into the well's depths."
                         "If your notes say {b}you have an Emerald Brooch{/b}, turn to page 630.":
                             "You tossed the Emerald Brooch down in the well, and wished for a way out of your terrible predicament."
+                            well "Thanks for the Brooch. I can't help you, though."
                         "Otherwise, if {b}your things have been stolen{/b}, turn to page 365.":
                             "You would have liked to be able to make a wish. But you had no coins on you."
                         "Otherwise, if {b}you have ventured into the Smoke World and rescued the stolen Skin-Mask from King Famine{b}, turn to page 742.":
                             well "Thank G-d you have it. Quickly! Come in!"
-                            "You scrambled down into the well towards the secret passage. The breath of King Famine was hot on your neck. Behind you, you could see His soldiers tearing apart the village, just as He swore He would."
+                            "You scrambled down into the well towards the secret passage. The breath of King Famine was hot on your neck. Behind you, you could see His soldiers tearing apart the village, just as He swore He would when you stole the mask from Him."
                             sc "Go. I'll hold them off."
                             "You turned to your faithful companion, tears in your eyes."
-                            well "Scraggs, are you sure?"
-                            pov "After all we've been through together... we can't just abandon you!"
+                            pov "Scraggs, are you sure?"
+                            well "After all we've been through together... we can't just abandon you!"
                             "He just gave you his crooked grin."
                             sc "Such is life."
                             sc "Don't worry about me. Just make sure you collect that reward money."
@@ -1643,7 +1637,7 @@ label town:
                             "A rumble shook the cave. In horror, you saw the fingers of King Famine slowly breaking in through the earth around you. In the cracks you could see his gaping maw. A terrible screaming broke out all around you."
                             "With a powerful crack, Alouicious stretched his ghostly form across the cave, holding it together through sheer force of will. Thick smoke billowed all around you."
                             well "Go to her."
-                            you "No. I can't lose you too."
+                            pov "No. I can't lose you too."
                             well "Have you forgotten?"
                             well "I'm already dead."
                             "The smoke howled through the cave and pushed you deeper into the depths. You stumbled onwards, tears pouring down your face."
@@ -1658,14 +1652,16 @@ label town:
                             sm "Do you hear that?"
                             sm "The footsteps of the Ash Giants."
                             sm "They will be here soon."
-                            sm "This world will be wiped clean."
                             sm "None of this matters any more."
                             "You stumbled out into the great cavern. Below you, you could see the vortex of souls. In the middle of the vortex, Princess Sun lay peacefully at rest in her tomb."
                             "You fell to your knees. Your legs were lead."
                             sm "Come."
                             sm "It is time to end this."
-                            sm "Put me on."
+                            show hand onlayer transient:
+                                yalign 0.69
+                                xalign 0.5
                             menu:
+                                sm "Put me on."
                                 "If you accepted your fate, turn to page 722.":
                                     "You put on the mask."
                                     "The warm heat of it slowly closed around your face."
@@ -1681,14 +1677,14 @@ label town:
                                     sm "Rest, child."
                                     "Your hand started to shake. To your horror, the mask slowly crawled towards your face as you lay on the ground."
                                     sm "Good. Rest."
-                                    "The skin crept over your throat, towards your mouth."
+                                    "The skin crept over your mouth, towards your throat."
                                     "You tried to scream. Nothing came out."
                                     "Suddenly, you felt someone grab you and pull you up."
                                     "A burly figure lifted you up and carried you towards the cliff edge."
                                     "In your blurred vision, you caught sight of a banksia seed."
                                     pov "S...scraggs?"
                                     sc "Heh. Don't think this means I like you or anything."
-                                    sc "I just need my cut of the reward money."
+                                    sc "I just need my cut of the reward."
                                     "You reached the edge of the cliff. The vortex of souls screamed out in terror."
                                     "With the last of your strength, you hurled the mask over the edge."
                                     "There was a moment of silence."
@@ -2299,8 +2295,10 @@ label thief3:
     # if you accept, you sneak into the mushroom's house through fantasy traps and tricks (Swinging sawblades, magical traps, Ali Baba and the 40 thieves stuff.
     "The thief strode ahead on their long, long legs, and you had to run to keep up. Their nimble fingers were constantly moving, grabbing leaves off the trees or small rocks from the ground to fiddle with, and they couldn't seem to keep a single part of their body still for even a second."
     #TK: Backgrounds
-    "The night grew dark. You walked past a river."
+    "The night grew dark."
+    "You walked past a river."
     "You walked past an open field."
+    #TK: background for the ruins
     "You walked past the ruins of the 6th age, a grim reminder of the inevitable destruction fast approaching your world."
     "You walked past a tree."
     t "So, tell me about yourself. Got a family? A pet? Likes, dislikes, hobbies, dreams, nightmares? If you were stranded on a desert island, which limb would you gnaw off first?"
@@ -3243,23 +3241,23 @@ label toad1:
     f "I just... need a moment. M-might have... sprained my ankle there, I think. And maybe my arm."
     "He wheezed and lay there in the mud for a long time, breathing heavily and trying not to cry."
     "You heard him whisper to himself weakly."
-    f "I am B-brildebrogue Chippingham. And I... have never failed... at anything... in my life."
+    f "I am B-brildebrogue Chippingham. And I..."
     show hand onlayer transient:
         yalign 0.7#0.743
         xalign 0.5
     menu:
         #TK: Have more options here for the diffent godfathers
-        "But he didn't get up."
+        "He trailed off."
         "If you helped the toad up, turn to page 235.":
-            "You reached to find the toad, then grabbed his hand."
+            "You reached down and found the toad's hand."
             "Even in the darkness, you saw him blush bright red."
             f "Well I - t-this is all most..."
             f "Hand-holding, before marriage? What will people say?"
-            "You pulled him up out of the muck, and helped him take off his shirt and wrap it around his bad arm as a sling."
-            f "Good, good. I'll lead you onward -"
-            "He tried to walk forward, but his ankle buckled in and he nearly fell. You grabbed him and helped him onto your shoulder."
-            "Then the two of you walked onward, with the toad leaning on you for support."
-    "Soon, you began to see a glimmer of silver light in the darkness."
+            "You picked him up out of the muck and held him in your hand."
+            f "Good, good. I-I'll lead you onward."
+    "You walked on. Soon, you began to see a glimmer of silver light in the darkness."
+    hide nightbg
+    show treesbg at artPos
     "The forest was covered in great puddles of water from the rains. The puddles shone with light."
     "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage."
     jump puddle
@@ -3285,7 +3283,7 @@ label toad1:
                 $puddleStick = True
                 jump puddle
             "If you jumped into the puddle, turn to page 207.":
-                "You grabbed the toad's hand and and held it tight, then leaped into the puddle."
+                "You held the toad tight, then leaped into the puddle."
                 "The world flipped over."
                 "You felt the water pass over you, and a cool chill tingled all through your body."
                 "When you opened your eyes, you were standing right way up again."
@@ -3293,7 +3291,7 @@ label toad1:
                 "All around the puddle was a dense and terrible darkness. You didn't want to think about what might happen if you fell off into it."
                 "Past that, you could see a network of puddles, streams, lakes and estuaries. All shining silver like the puddle you were now standing on. A network of silver paths and blotches."
                 "At the center of the winding paths was the cottage, shining with light."
-    "The toad was very quiet now. His fine suit was ruined with mud. He limped slowly forward and sat down."
+    "The toad was very quiet now. His fine suit was ruined with mud. He jumped out of your hand and sat down."
     f "You'd... better go on. I'd just slow you down."
     show hand onlayer transient:
         yalign 0.7#0.743
@@ -3312,7 +3310,7 @@ label toad1:
             "You saw him start to smile shakily."
             f "I did do an ok job getting us here, didn't I?"
             pov "Of course!"
-            "You slapped him across the back."
+            "You gently slapped him across the back."
             pov "You're Brildebrogue Chippingham, and you've never failed at anything in your life."
             "With this, the toad wiped the tears from his eyes, and beamed."
         "If you crushed the toad's feelings, turn to page 220.":
@@ -3335,7 +3333,7 @@ label toad1:
         f "G-good idea."
         f "But be wary, my friend. Few have ever left that cottage alive"
         f "Witches have red eyes. They see very far, but they have a keen sense of smell, like animals, and can sense when humans are near them."
-        f "If you aren't out in 10 minutes, I'll come in there to rescue you."
+        f "If you aren't out in ten minutes, I'll come in there to rescue you."
         jump witch2
 
 # Act 2, Chapter 3: The Witch's Cottage
@@ -3345,7 +3343,7 @@ label witch2:
     "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
     "The cottage was tiny, but the walls were covered with bookshelves stuffed with old manuscripts and notebooks and thick textbooks on all kinds of plants and animals."
     #TK: Herbs and plants
-    "The wooden bookshelves themselves were sprouting with herbs and plants of every type."
+    "The wooden bookshelves were sprouting with herbs and plants of every type."
     "In the corner was a small kitchen with a cauldron, and up above was a small attic crawl-space."
     "Out of the attic poked a small head with a giant black hat. It looked at you with shock."
     w "Oh!"
@@ -3443,12 +3441,14 @@ label witch2:
                     w "But yeah nah, maybe I could help you out. Let me take a look through my books, I'll see what I can come up with."
                     "And she began rifling through the stack of books lying randomly around the floor."
                 if godfather == "Red":
+                    pov "I'm hoping you can help me with a problem. My Godfather is the Devil, and He has sworn to take me away at midnight tonight."
                     w "Oh no!"
                     w "Well, I..."
                     w "To be honest I do know a bit about your red friend, I have had some uh, {i}dealings{/i} with Him, I guess you could say. It wasn't my choice though, I don't want you to think I'm one of those wild women of the woods who dance around naked and worship the devil and all that kind of thing, know what I mean? I admire them but I tried it once or twice and it gets really chilly, not recommended."
                     w "But yeah, nah, maybe I could help you out. Let me take a look through my books, I'll see what I can come up with."
                     "And she began rifling through the stack of books lying randomly around the floor."
                 if godfather == "Black":
+                    pov "I'm hoping you can help me with a problem. My Godfather is Death, and She has sworn to take me away."
                     w "That's wild."
                     w "I mean, I'm a witch, yeah, but I'm not exactly all powerful over here, I'm not sure what you want me to do about that?"
                     w "But yeah nah, maybe I could help you out with that problem. Let me take a look through my books, I'll see what I can come up with."
@@ -3521,7 +3521,7 @@ label witchFinale:
     #Some kind of transition here with SFX
     "Hell was dark and sooty, and the Devil was not home."
     w "Not again!"
-    pov "Not again?"
+    pov "...What do you mean, not again?"
     "The witch sighed as you both picked yourself up from the floor, battered and bruised."
     show hand onlayer transient:
         yalign 0.72#0.743
@@ -3620,7 +3620,7 @@ label witchFinale:
         menu:
             w "We'd better get moving. I want to get back and see if my cottage is still standing."
             "If you investigated the cavern wall, turn to page 205.":
-                "Hell was a small cave, drafty and full of coal dust. In the center was a homely cottage."
+                "Hell was a small cave, drafty and full of coal dust."
                 "You looked through a hole in the cave wall and marvelled to see the imps cavorting in drunken song and dance beyond, each of them plotting to destroy the works of man and G-d."
                 "You quickly retreated for fear of being seen."
                 jump hell
@@ -3632,7 +3632,9 @@ label witchFinale:
     dg "Then you have a hard road ahead. My grandson will be home soon, and he will eat you up whole if he sees you."
     dg "But since I feel sorry for you, I'll see if I can help."
     "With a flick of her wrist she transformed you both into fat yellow and black carpenter bees."
-    w "Oh, wow! This might seem weird but, I've always kind of wanted to be a bee."
+    w "Oh, wow!"
+    "The witch buzzed around joyously."
+    w "This might seem strange but, I've always kind of wanted to be a bee."
     pov "We still have some questions."
     dg "Here. Hide in my skirts, and I will see what answers I can coax from the Devil."
     "She quickly tucked you both into her skirts."
@@ -3643,7 +3645,7 @@ label witchFinale:
         "You shook to see your Godfather in the flesh at last."
     dg "Hush, you young fool. You're always smelling human beings."
     dg "You're making a mess of the nice clean floors I just swept. Now come have some of the soup I made you."
-    "Grumbling, he sat down to eat and drink, and soon he was curled up fast asleep and snoring on his grandmother\'s lap."
+    "Grumbling, he put the house back down on its foundations and sat down to eat and drink. Soon he was curled up fast asleep and snoring on his grandmother\'s lap."
 
     label devilGrandmaquestions:
         #TK: Add questions about how to defeat the false hydra
@@ -3658,7 +3660,7 @@ label witchFinale:
                 call devilAnswers from _call_devilAnswers
                 dg "I dreamed that there was a young princess who knew everything. But she was tricked, and forced to pledge her soul to you. Do you think she can ever escape?"
                 mir "Ha! If only she knew!"
-                mir "Underneath this house is a fat old frog that holds her promise to me. If she kills it, she will be free. But that will never happen!"
+                mir "Underneath this house is a fat old worm that holds her promise to me. If she kills it, she will be free. But that will never happen!"
                 jump devilSleeps
             "If you asked how to free yourself, turn to page 247." if not escapeGodfather and godfather == "Red":
                 $dgAsked += 1
@@ -3717,7 +3719,7 @@ label witchFinale:
                 jump devilSleeps
             #"How can I gain eternal life?":
                 #dg "I will ask the Devil. What else?"
-            "If you asked how to become rich, turn to page 279.":
+            "If you asked how to become rich, turn to page 279." if not villageRich:
                 $dgAsked += 1
                 $villageRich = True
                 call devilAnswers from _call_devilAnswers_5
@@ -3725,7 +3727,7 @@ label witchFinale:
                 mir "Never, the pack of wretches! The gutter has a long and hungry groove, and it will not be satiated until they are pulled down into the mud like their forefathers before them!"
                 "He cackled in triumph."
                 mir "Of course, there is one thing. Beneath the village well is an old mouse. If they bring it grapes, the well will flow with the most delicious wine forever after, and they will all live in luxury for the rest of their days."
-                mir "But they'll all die never knowing a thing about that."
+                mir "But they'll all go to their graves never knowing a thing about that."
                 jump devilSleeps
 
             #"How can I see that the Master Thief is brought to justice?":
@@ -3788,7 +3790,7 @@ label witchFinale:
         #Answers to all your questions.
         #"NOTE: You get answers to all your questions and then see scenes where you use all the answers."
         if witchFree == True:
-            "You left the cottage and crawled down into the foundations beneath it. When you found the old frog squatting beneath it, the witch speared it with her crooked finger, killing it instantly."
+            "You left the cottage and crawled down into the foundations beneath it. When you found the old worm squatting beneath it, the witch speared it with her crooked finger, killing it instantly."
             "With that, she felt a great weight fall from her shoulders. You turned and saw that the Devil's mark was no longer on her."
             "Then you went to the cottage fireplace, threw in the three golden hairs from the Devil, and lept inside."
             "In an instant, you flew right up the chimney and out into the witch's cottage."
@@ -3829,7 +3831,7 @@ label witchFinale:
             "You slowly picked yourselves up and looked over the cottage."
             "It was a mess of flowers and plants and flopping animals, sprouting wildly every witch-way across the room."
             "Just then, the clock struck midnight. You looked around in terror, waiting for Lady Death or Her messengers. But none came."
-            w "Very well. Looks like you still have some time left!"
+            w "Looks like you still have some time left!"
             "You rolled up your sleeves and slowly put the room to rights, until it was even more clean, warm and homely than it had been before."
         if villageRich == True:
             "Once the cottage was put to rights, you went to the village and fed some grapes to the mouse at the bottom of the village well."
@@ -3849,7 +3851,6 @@ label witchFinale:
                 "Still, you spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
             else:
                 "You spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
-            "Finally, her garden was ready, and her cottage was just as it should be. She had recovered enough to take care of herself again."
         else:
             "You stayed with the witch for a while after that, trying to help her with her forgetfulness."
             "Sadly, you knew not how. She would never be the Girl Who Knew Everything again. You tried everything you could, but for the rest of her days, her thoughts were cursed to leak from her head in heavy smoke."
@@ -3861,7 +3862,7 @@ label witchFinale:
             yalign 0.72#0.743
             xalign 0.5
         menu:
-            "Finally, her cottage was put to rights, and you'd done as much as you could to help. She had recovered enough to take care of herself again."
+            "Finally, you'd done as much as you could to help. She had recovered enough to take care of herself again."
             "If you stayed with the Witch, turn to page 291.":
                 "But you found you didn\'t want to leave after all."
                 "You stayed there in the cottage, and tended to the herbs and wildflowers, and helped her gather ingredients for her potions."
@@ -3878,24 +3879,25 @@ label witchFinale:
                     if mushroomCurse:
                         m "I suppose my curse won't be needed after all."
                     m "It is time. Come with me."
-                    m "The Pale Lady is waiting for you."
+                    jump deathQuestions
                     label deathQuestions:
                         show hand onlayer transient:
-                            yalign 0.621#0.743
+                            yalign 0.67
                             xalign 0.5
                         menu:
+                            m "The Pale Lady is waiting for you."
                             "If you tried to object, turn to page 245." if not deathMessengers:
-                                pov "But - is She going to break her promise? She said She'd send three messengers."
-                                m "Didn't the fever rage at you? Didn't the Gout take hold of you and shake you to pieces?"
-                                m "She even sent her sister, Sleep, to remind you of Her."
-                                m "She has sent all her messengers. Now you must come down to Her kingdom."
+                                pov "But - is She going to break Her promise? She said She'd send three messengers."
+                                m "Didn't the fever rage at you? Didn't the gout take hold of you and shake you to pieces?"
+                                m "She even sent Her sister, Sleep, to remind you of Her."
+                                m "She has sent all Her messengers. Now you must come down to Her kingdom."
                                 $deathMessengers = True
                                 jump deathQuestions
-                            "If you turned to say goodbye, turn to page 255." if not deathGoodbye:
+                            "If you turned to say goodbye to the witch, turn to page 255." if not deathGoodbye:
                                 $deathGoodbye = True
                                 m "Of course."
                                 show hand onlayer transient:
-                                    yalign 0.65#0.743
+                                    yalign 0.72
                                     xalign 0.5
                                 menu:
                                     "You turned to the Witch. She was crying, and where her tears fell they blossomed into twisting purple plants with long thorns."
@@ -3914,10 +3916,11 @@ label witchFinale:
                                         pov "You did everything you could. You have nothing to be sorry about."
                                         "And you gripped her tight."
                                         jump deathQuestions
-                            "If you told them goodbye, turn to page 278.":
+                            "If you accepted your fate, turn to page 278.":
+                                pov "I'm ready."
                                 m "No-one's ever ready. But there's no time left."
-                                call endStamp
                                 "She gently took you down to the kingdom of Death."
+                                call endStamp
                                 "And what happened after that, none who live can say."
                                 #"And what happened to the toad, you ask?"
                                 #"He was never heard from again."
@@ -3930,6 +3933,18 @@ label witchFinale:
                     jump end
             "If you returned home, turn to page 261.":
                 "When it was time to leave, you wished the Witch a tearful farewell, and returned to your cottage with your family."
+                "You lived there in quiet happiness for many years."
+                "But youth does not last forever."
+                "One day, you felt yourself wracked with a terrible fever."
+                "Then, you felt gout take hold of you and make all your limbs twitch, and you were wracked with one illness after another, and you fell into deep sleep for long days."
+                "Not even the witch could help you, though she toiled at your bedside for many long hours."
+                w "I'm sorry. I-I wish I could do more... I should be able to heal this."
+                pov "Don't worry. I won't die until Death sends Her messengers."
+                "But as you spoke, there was a knock on the door, and the Witch hesistantly opened it to reveal the wise mushroom from the forest."
+                if mushroomCurse:
+                    m "I suppose my curse won't be needed after all."
+                m "It is time. Come with me."
+
                 if godfather == "Black":
                     jump deathQuestions
                 else:

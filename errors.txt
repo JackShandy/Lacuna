@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3043: expected ':' not found.
-    else
-        ^
+File "game/script.rpy", line 3885: expecting name after dot.
+    yalign 0.0.743
+               ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Nov 27 13:31:13 2021
+Sat Nov 27 16:05:13 2021
