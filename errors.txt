@@ -2,9 +2,133 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3885: expecting name after dot.
-    yalign 0.0.743
-               ^
+File "game/script.rpy", line 3218: expected statement.
+(Perhaps you left out a " at the end of the first line.)
+    "The night grew dark,:
+        "You walked through the trees together."
+                                               ^
+        hide nightbg
+        show nightgodbg at artPos
+        "The Firmament looked down at you from Her place up above."
+        hide nightgodbg
+        show nightbg at artPos
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
+        menu:
+            "You followed the toad through a dense swamp of crooked mangroves."
+            "If you asked him about the witch's cottage, turn to page 233.":
+                pov "How do you know where the witch's cottage is?"
+                f "Oh... just my natural good sense of direction, I suppose! Ha ha!"
+                f "When you become an adventurer like me, you just know these things."
+            "If you asked him about the forest, turn to page 234.":
+                pov "Have you been through this part of the forest before?"
+                f "Oh... no, of course not. No, I'm far too busy being off at more important places, with more important people. All across the world. Barely have a moment to myself, you know."
+                f "I wouldn't have the slightest idea what it's like to live in a swamp like this. Ha. Ha."
+        f "Come on, we can't let ourselves be cowed by a little darkness! Why, I remember when I was journeying through the pits of Arborkios, where darkness is forged on a black anvil of star-stuff, and the blackest night shelters for rest each night after being torn apart by the light of day each morning! Well, I marched right on through that black pit, and I said -"
+        f "Ack!"
+        "You heard him trip over in front of you and go tumbling down and down through the muck of the rainforest until he fell into a deep pit and landed at the bottom with a crash."
+        "You picked your way carefully down to him."
+        f "Never fear! I have found... a shortcut!"
+        f "I just... need a moment. M-might have... sprained my ankle there, I think. And maybe my arm."
+        "He wheezed and lay there in the mud for a long time, breathing heavily and trying not to cry."
+        "You heard him whisper to himself weakly."
+        f "I am B-brildebrogue Chippingham. And I..."
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
+        menu:
+            #TK: Have more options here for the diffent godfathers
+            "He trailed off."
+            "If you helped the toad up, turn to page 235.":
+                "You reached down and found the toad's hand."
+                "Even in the darkness, you saw him blush bright red."
+                f "Well I - t-this is all most..."
+                f "Hand-holding, before marriage? What will people say?"
+                "You picked him up out of the muck and held him in your hand."
+                f "Good, good. I-I'll lead you onward."
+        "You walked on. Soon, you began to see a glimmer of silver light in the darkness."
+        hide nightbg
+        show treesbg at artPos
+        "The forest was covered in great puddles of water from the rains. The puddles shone with light."
+        "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage."
+        jump puddle
+    
+        label puddle:
+            show hand onlayer transient:
+                yalign 0.68#0.743
+                xalign 0.5
+            menu:
+                "The toad gasped in terror at the sight."
+                "If you looked into the puddle carefully, turn to page 236." if not puddleLook:
+                    "You crawled to the edge and looked down into the puddle."
+                    "The surface of the water was flat and still."
+                    "The cottage in the reflection shone with bright light, as if the setting sun was behind it."
+                    "There was no trace of a cottage in the world above the water."
+                    $puddleLook = True
+                    jump puddle
+                "If you dropped a stick in the puddle, turn to page 206." if not puddleStick:
+                    "You picked up a stick from the ground, and tossed it into the puddle."
+                    "It fell in without a single ripple in the water."
+                    "You saw it drop through into the reflection, and land close to the cottage."
+                    "You looked up. There was no trace of it in the world outside the reflection."
+                    $puddleStick = True
+                    jump puddle
+                "If you jumped into the puddle, turn to page 207.":
+                    "You held the toad tight, then leaped into the puddle."
+                    "The world flipped over."
+                    "You felt the water pass over you, and a cool chill tingled all through your body."
+                    "When you opened your eyes, you were standing right way up again."
+                    "The puddle you had jumped into was now a floor, like a silver mirror."
+                    "All around the puddle was a dense and terrible darkness. You didn't want to think about what might happen if you fell off into it."
+                    "Past that, you could see a network of puddles, streams, lakes and estuaries. All shining silver like the puddle you were now standing on. A network of silver paths and blotches."
+                    "At the center of the winding paths was the cottage, shining with light."
+        "The toad was very quiet now. His fine suit was ruined with mud. He jumped out of your hand and sat down."
+        f "You'd... better go on. I'd just slow you down."
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
+        menu:
+            "He twisted his once-beautiful hat in shaking hands and looked down at the ground."
+            "If you encouraged the toad, turn to page 214.":
+                pov "Thanks for pretending to fall down back there."
+                f "What?"
+                pov "Well, I know you must have done it deliberately. Just so I would have something to do."
+                pov "After all, you were leading us here so easily!"
+                pov "Thanks for making me feel included."
+                f "Oh... yeah."
+                "He brightened up."
+                f "Yes, I had to make sure you were included! We're both on this adventure together, after all. We're a team."
+                "You saw him start to smile shakily."
+                f "I did do an ok job getting us here, didn't I?"
+                pov "Of course!"
+                "You gently slapped him across the back."
+                pov "You're Brildebrogue Chippingham, and you've never failed at anything in your life."
+                "With this, the toad wiped the tears from his eyes, and beamed."
+            "If you crushed the toad's feelings, turn to page 220.":
+                pov "You have. It would be better if you'd never come."
+                "The toad winced and looked away, trying not to cry."
+                f "You're right. I'm sorry."
+                f "I just..."
+                f "I wanted to go on an adventure."
+                f "I'll stay here, then. Don't want to get in your way."
+                f "But if you aren't out in ten minutes, I... I'll come in to rescue you. Alright?"
+                "You agreed."
+                $toadSad = True
+        "Soon, you had crossed the river paths to the cottage in the center."
+        "The cottage was in the center of two great fig trees which sent their buttress roots all around and through the walls and roof."
+        "Up over the walls grew a riot of herbs and flowers of every type, rambling over everything and growing in a lush green-grass garden on the roof. "
+        "You saw the glimmer of two red eyes watching you from a small crook in the roof. Then there was a gasp from inside, and they disappeared."
+        if not toadSad:
+            "The closer you got to the cottage, the more the toad shook with terror."
+            pov "You'd better stay behind. Guard the rear."
+            f "G-good idea."
+            f "But be wary, my friend. Few have ever left that cottage alive"
+            f "Witches have red eyes. They see very far, but they have a keen sense of smell, like animals, and can sense when humans are near them."
+            f "If you aren't out in ten minutes, I'll come in there to rescue you."
+            jump witch2
+    
+    # Act 2, Chapter 3: The Witch's Cottage
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Nov 27 16:05:13 2021
+Sat Nov 27 16:25:47 2021

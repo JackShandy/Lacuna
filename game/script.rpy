@@ -290,6 +290,10 @@ image treecanopybg= "Backgrounds/tree-canopy.png"
 image witchName= "Names/witch.png"
 image thiefName= "Names/thief.png"
 image toadName= "Names/toad.png"
+image toadQuollName= "Names/toad-quoll.png"
+image toadGeckoName= "Names/toad-gecko.png"
+image toadRatName= "Names/toad-rat.png"
+
 image mushroomName= "Names/mushroom.png"
 image mushroom2Name= "Names/mushroom2.png"
 image mushroom3Name= "Names/mushroom3.png"
@@ -351,6 +355,10 @@ image stamp="stamp.png"
 define w = Character("{image=witchName}{alt}The Witch:{/alt}")
 define t = Character("{image=thiefName}{alt}The Thief:{/alt}")
 define f = Character("{image=toadName}{alt}The Toad:{/alt}")
+define fq = Character("{image=toadQuollName}{alt}The Toad:{/alt}")
+define fr = Character("{image=toadRatName}{alt}The Toad:{/alt}")
+define fg = Character("{image=toadGeckoName}{alt}The Toad:{/alt}")
+
 define m = Character("{image=mushroomName}{alt}The Mushroom:{/alt}")
 define m2 = Character("{image=mushroom2Name}{alt}The Mushroom:{/alt}")
 define m3 = Character("{image=mushroom3Name}{alt}The Mushroom:{/alt}")
@@ -378,7 +386,7 @@ define echidna2 = Character ("{image=echidna2Name}{alt}Echidna (now holding a la
 define som = Character ("{image=somName}{alt}The Strange (and crooked) Old Man:{/alt}")
 #Note: blank character for particular scenes where I need it (eg to preserve the hand on brildebrogue chippingham's manor
 define blank = Character ("")
-define mysFrog = Character ("{image=mysfrogName}{alt}Mysterious (yet inexplicably handsome) Frog:{/alt}")
+define mysFrog = Character ("{image=mysFrogName}{alt}Mysterious (yet inexplicably handsome) Frog:{/alt}")
 define bat = Character ("{image=batName}{alt}The Bat:{/alt}")
 define rat = Character ("{image=ratName}{alt}The Rat:{/alt}")
 define cockatoo = Character ("{image=cockatooName}{alt}The Black Cockatoo:{/alt}")
@@ -1049,7 +1057,7 @@ label chapter2:
             "You reached up to take the gentleman's hand, and he whisked you into the carriage."
             "The moment you were through the curtain you realised something was wrong."
             "Instead of the graceful and elegant nobleman you expected, you discovered a small, ugly cane toad."
-            "The incense you smelled was nothing but the reek of dirt and mud, the brandy was nothing but pondscum, the gleaming carriage was just a rotten old squash, and the graceful arm that beckoned you from behind the curtain was nothing but a wooden prop the toad held in his swollen hand."
+            "The incense you smelled was nothing but the reek of dirt and mud, the brandy was pondscum, the gleaming carriage was just a rotten old squash, and the graceful arm that beckoned you from behind the curtain was nothing but a wooden prop the toad held in his webbed hand."
             "You turned to run, but it was too late. With a clap, the toad commanded his steeds."
             f "Prickle! Crawl! Shudder and Wink! Be off at once. We have a festival to get to!"
             "The brilliant white horses tore off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo."
@@ -1088,7 +1096,7 @@ label chapter2:
             menu:
                 f "So, what brings you travelling this way?"
                 "If you told the toad about your Godparent, turn to page 67.":
-                    if godfather == "Red":
+                    if godfather == "White":
                         pov "I'm searching for a way to escape my Godfather, the King of Kings."
                         pov "He will be here to take me away at midnight, and I have no wish to leave."
                         f "A sticky situation indeed!"
@@ -1099,7 +1107,7 @@ label chapter2:
                         hide tornPage1 onlayer screens
                         hide tornPage1bg onlayer screens
                         f "Perhaps I could put in a good word for you with Him later. Pond scum?"
-                    if godfather == "White":
+                    if godfather == "Red":
                         pov "I'm searching for a way to escape my Godfather, Old Scratch."
                         pov "He will be here to take me away at midnight, and I have no wish to leave."
                         f "A sticky situation indeed!"
@@ -1142,7 +1150,8 @@ label chapter2:
                     "As you sipped it you felt a cool emerald chill pass through your whole body."
 
                 "If you refused (the action of a witless and ungrateful churl), turn to page 76.":
-                    "\"No thank you,\" you said, like a fool. (Don't you know that it's bad luck to refuse a gift from a toad?)"
+                    "\"No thank you,\" you said, like a fool."
+                    "(Don't you know that it's bad luck to refuse a gift from a toad?)"
                     f "More for me, then!"
                     "And the toad greedily gulped down the pondwater, without comment on your obvious poor manners and lack of breeding."
             "The old squash rattled about hither and thither through the forest, giving you bruises all over, but before you knew it you had arrived at the village square."
@@ -3214,6 +3223,7 @@ label toad1:
     "Then he stood up and said to himself sternly:"
     f "I am Bridlebrogue Chippingham, and I've never failed at anything in my life."
     "With this, he regained his former swagger and strode forward."
+    "The night grew dark."
     "You walked through the trees together."
     hide nightbg
     show nightgodbg at artPos
@@ -3253,13 +3263,13 @@ label toad1:
             "Even in the darkness, you saw him blush bright red."
             f "Well I - t-this is all most..."
             f "Hand-holding, before marriage? What will people say?"
-            "You picked him up out of the muck and held him in your hand."
+            "You picked him up out of the muck and put him on your shoulder."
             f "Good, good. I-I'll lead you onward."
     "You walked on. Soon, you began to see a glimmer of silver light in the darkness."
     hide nightbg
     show treesbg at artPos
     "The forest was covered in great puddles of water from the rains. The puddles shone with light."
-    "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage."
+    "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
     jump puddle
 
     label puddle:
@@ -3957,54 +3967,54 @@ label witchFinale:
 
 label toadFinale:
     "You lept to defend the toad, diving and pushing him away from the slashes of the crooked dagger."
-    "As you pulled him away, a black vial of liquid smashed over the two of you and you were both instantly turned into worms."
+    "As you pulled him away, a black vial of liquid smashed over the two of you and you were both instantly turned into witchetty grubs."
     "The cottage wall gave way and you were both washed out of the house in a multicoloured wave of potions."
-    "The world flipped upside down as you fell through the silver puddle outside, and you found yourself caught up in a a torrent of writhing fish and magpies and bats and crocodiles being washed down the rainforest river, all transforming into new animals every second."
-    "You popped into a cat, then a fish, then back into a worm again."
-    f "Watch out!"
+    "The world flipped upside down as you fell through the silver puddle outside, and you found yourself caught up in a torrent of writhing fish and magpies and bats and crocodiles being washed down the rainforest river, all transforming into new animals every second."
+    "You popped into a cat, then a fish, then back into a witchetty grub again. The toad turned into a water-rat and whirled around."
+    fr "Watch out!"
     "A greedy magpie dove for you as you squirmed helplessly."
     "The toad transformed into a gecko and grabbed you, dropping his tail."
     "The magpie grabbed the tail and flew off, before turning into a wallaby and falling back in the river."
-    f "Hold on! I know where to go!"
+    fg "Hold on! I know where to go!"
     "You felt yourself transform into a squirming tadpole. The toad changed into a sea bass and held you in his mouth, swimming for a point on the shore."
     "Just as his fins began to give out, you turned into a cat, and grabbed him and pulled you both up out of the water."
     "He directed you to a small, muddy hole on the river bank. As soon as you entered, the mud fell down behind you and blocked your exit."
     "The hole was wet, and cramped, and crawling with small worms and roaches, but it was safe."
-    "You shivered in the cold. The toad flopped down beside you, becoming a witchetty grub."
+    "You shivered in the cold. The toad flopped down beside you, becoming a wet quoll."
     #You explore the toad's home and get to know him better
     label toadExplore1:
         show hand onlayer transient:
             yalign 0.65#0.743
             xalign 0.5
         menu:
-            f "Well. This is another fine mess I've made."
+            fq "Well. This is another fine mess I've made."
             "If you explored the nearby area, turn to page 208." if not toadCave:
                 $toadCave = True
                 "You uncovered a rug and a fireplace in the muck, and lit the fire."
                 "The toad uncovered a pantry with a single, mouldy piece of bread and toasted it over the fire for the both of you."
-                f "This all the food I have, sorry."
+                fq "This all the food I have, sorry."
                 jump toadExplore1
             "If you explored deeper in, turn to page 209." if not toadBasement:
                 $toadBasement = True
                 "You travelled down a hole in the back of the cave which lead down into the mud."
                 "Down the hole was a small room with a bed and a cupboard."
                 "The toad opened the cupboard and took out two threadbare costumes: a witch and a unicorn. You pulled them around you for warmth."
-                f "I... used to like to dress up in this stuff. I'd put on little plays and things for myself."
-                f "Pretty dumb, I know. Kid's stuff. Haven't done it in years."
+                fq "I... used to like to dress up in this stuff. I'd put on little plays and things for myself."
+                fq "Pretty dumb, I know. Kid's stuff. Haven't done it in years."
                 "But the costumes seemed well cared for."
                 jump toadExplore1
             #TK: Toad admits that there was no curse.
             "If you asked the toad about this place, turn to page 216." if not toadWhere:
                 $toadWhere = True
                 pov "Where are we?"
-                f "This is my home. My real home."
-                f "That's right. The grand fortune? The prestigious inheritance? The manor on the hill? All lies."
-                f "I've lived in this hole near the witch's cottage since I was a tadpole."
-                f "Yes, I know it might be hard to believe with my noble bearing. But it's all true."
+                fq "This is my home. My real home."
+                fq "That's right. The grand fortune? The prestigious inheritance? The manor on the hill? All lies."
+                fq "I've lived in this hole near the witch's cottage since I was a tadpole."
+                fq "Yes, I know it might be hard to believe with my noble bearing. But it's all true."
                 jump toadExplore1
             "If you looked for a way out, turn to page 218.":
                 pov "How are we going to get out of here?"
-                f "Don\'t worry. I'm sure {b}{i}he{/i}{/b} will rescue us soon."
+                fq "Don\'t worry. I'm sure {b}{i}he{/i}{/b} will rescue us soon."
                 pov "{i}He?{/i}"
                 "Suddenly the ceiling burst open and a shining light came upon you, blinding in its glory."
                 "Out from the light strode the most beautiful frog you'd ever seen."
@@ -4013,19 +4023,19 @@ label toadFinale:
                 mysFrog "Are you quite alright?"
                 pov "Who are you?"
                 "The toad sighed."
-                f "This..."
+                fq "This..."
                 #TK: Change to ???
-                f "...is Brildebrogue Chippingham."
+                fq "...is Brildebrogue Chippingham."
                 bc "The very same!"
                 "The frog beamed and helped you to your feet as you transformed into a garden rake."
                 bc "Say, that voice is awfully familiar..."
                 bc "Is that you, Blort?"
                 #TK: Change to blort Bronkum
-                f "Yeah. Yeah, that's my real name."
-                f "I am Blort Bronkum, and I have never succeeded at anything in my life."
+                fq "Yeah. Yeah, that's my real name."
+                fq "I am Blort Bronkum, and I have never succeeded at anything in my life."
     "The real Brildebrogue Chippingham pulled you out of the hole and into a golden carriage waiting nearby, which whisked you away to a stately riverside manor."
     "With a click of his fingers, Brildebrogue summoned a cavalcade of richly dressed frog manservants, who offered you all the finest delicacies from across the world, such that the king of kings would cry to taste them."
-    "With another click, a dozen beautiful frog maids escorted you to golden baths where all the muck and grime was washed away as you were serenaded by the finest frog soprano choir in all the land."
+    "With another click, a dozen beautiful frog maids escorted you to golden baths where all the muck and grime was washed away, and you were restored to your true forms as the finest frog soprano choir in all the land serenaded you."
     "Brildebrogue himself regaled you with witty anecdotes of his thrilling adventures, which had everyone rolling around on the floor laughing, except for the toad, who sat in the corner and scowled."
     bc "Please make yourselves at home, my friends!"
     bc "I'm afraid I must leave immediately. Business with the jeweled serpent-kings of the City of Brass, you understand."
@@ -4034,20 +4044,20 @@ label toadFinale:
     bc "Help yourselves to all the delights of Chippingham Manor! Here are the keys to the whole place. You may go wherever you wish, and open every door!"
     bc "...except one."
     bc "This little golden key will unlock the smallest closet in the tallest tower. Do not open that closet."
-    bc "But I'm sure that won't be a problem! I know I can trust you, my dear friends."
+    bc "But I'm sure that won't be a problem! I know I can trust you, my dear friends. I'll see you on my return!"
     "And with a wave of his hand, he lept into a gleaming gold carriage and sped away across the horizon in an instant."
     #You explore Chippingham Manor
     #TK: Add changes based on whether you entered these rooms.
     f "Hpmh. Show-off."
     label chippinghamManor:
         show hand onlayer transient:
-            yalign 0.55#0.743
+            yalign 0.58#0.743
             xalign 0.5
         #TK: look at setting this particular choice box to 680
         menu:
             blank ""
             "If you explored the first tower, turn to page 256." if not firstTower:
-                "Inside the first tower, the two of you discovered a trio of stately frog wizards, who flushed the remaining potions from your systems and restored you to your original forms in a wink."
+                "Inside the first tower, the two of you discovered a trio of stately frog wizards, who flushed the last remains of the potions from your systems and restored you to good health."
                 $firstTower = True
                 jump chippinghamManor
             "If you explored the second tower, turn to page 257." if not secondTower:
@@ -4055,13 +4065,12 @@ label toadFinale:
                 $secondTower = True
                 jump chippinghamManor
             "If you explored the third tower, turn to page 258." if not thirdTower:
-                "Inside the third tower, you discovered a great harem of finely-dressed courtesans of all genders, who poured rich wines and made witty conversation with you until you were both completely sloshed and dizzy from the refined repartee."
+                "Inside the third tower, you discovered a great harem of finely-dressed frog courtesans, who poured rich wines and made witty conversation with you until you were both completely sloshed and dizzy from the refined repartee."
                 $thirdTower = True
                 jump chippinghamManor
             "If you explored the fourth tower, turn to page 259." if not fourthTower:
                 $fourthTower = True
                 "Inside the fourth tower was a great fountain of emeralds and sapphires and precious gems, which splashed out over a scale model replica of the forest. You could see immediately that a single gemstone from this fountain was so valuable that it would bankrupt the richest sultan."
-                "The toad gazed up in wonder."
                 f "I spent my whole life looking up at this place. Hard to believe we're actually here."
                 jump chippinghamManor
             "If you explored the fifth tower, turn to page 260." if not fifthTower:
@@ -4070,7 +4079,7 @@ label toadFinale:
                 jump chippinghamManor
             "If you explored the sixth tower, turn to page 262." if not sixthTower:
                 $sixthTower = True
-                "Inside the sixth tower you found the Library of Alexandria. A small plaque explained that Brildebrogue had miraculously saved the books from the fires and stored them safely here for all this time."
+                "Inside the sixth tower you found the Library of Alexandria. A small plaque explained that Brildebrogue had miraculously saved the books from the fires, and they'd been stored here safely for all this time."
                 jump chippinghamManor
             "If you explored the seventh and tallest tower, turn to page page 264." if firstTower:
                 #TK: Ominious music.
@@ -4087,7 +4096,7 @@ label toadFinale:
                     "If you went back, turn to page 190.":
                         jump chippinghamManor
             #TK: Add route if you want to be good and follow the rules.
-            "If you patiently awaited the return of Brildebrogue Chippingham, turn to page 161.":
+            "If you patiently waited for Brildebrogue, turn to page 161.":
                 f "Well, if you're not going to open this damn closet, I am."
                 "He rushed to the seventh and tallest tower, and unlocked the closet with the golden key."
                 "He slowly turned the key, and opened the closet door with a long creak."
@@ -4097,14 +4106,14 @@ label toadFinale:
     label brildebrogueCloset:
         f "Oh my G-"
         show hand onlayer transient:
-            yalign 0.79#0.743
+            yalign 0.83#0.743
             xalign 0.5
-        "You slipped in the blood and felt it on your hair and tasted it in your mouth. The toad quickly slammed the door, but the key popped out and into the blood.{vspace=170}{i}In your notes, write down that you {b}have blood on your hands.{/b}{/i}"
+        "You slipped in the blood and felt it on your hair and tasted it in your mouth. The blood washed over your face and you felt the blood on your hands and the blood underneath your feet and the blood on the walls and the blood in your fingernails. The toad quickly slammed the door, but the key popped out and into the blood.{vspace=80}{i}In your notes, write down that you {b}have blood on your hands.{/b}{/i}"
         f "No no no no no. Oh god."
         "The clock chimed a quarter to twelve."
         "You tried to wipe the blood off the key, but it wouldn't come off."
         f "Quickly! We have to wash this off."
-        "You both rushed downstairs and tore off your clothes and burned them and put on new, spotless clothes without a hint of blood. But no matter how long you scrubbed at the key, you couldn't get the blood off. When you rubbed it off one side, it appeard on the other."
+        "You both rushed downstairs and tore off your clothes and burned them and put on new, spotless clothes without a hint of blood. But no matter how long you scrubbed at the key, you couldn't get it off. When you rubbed the blood off one side, it appeared on the other."
         bc "Good evening!"
         f "Ack!"
         f "I-I mean hello! Brildebrogue! Back so soon?"
@@ -4218,9 +4227,9 @@ label toadFinale:
                 #if sixthTower == True:
                 "You and the toad scrabbled through the aisles of books in the sixth tower - but as you turned a corner, Brildebrogue was in front of you, carelessly thumbing through a thick volume."
                 bc "\"On Rays of Light.\" Democritus. One of my favourites."
-                bc "But then, you never learned to read, did you?"
-                f "I... I mean, of course I can..."
-                "But his face fell."
+                bc "But then, you never learned to read or write, did you? All those sad little stories you tell, and you never learned."
+                f "I..."
+                f "I mean, of course I can..."
                 bc "Give [him] over, and I'll teach you."
                 bc "Don't worry, it's easy. Even a child could do it."
                 "The toad said nothing."
@@ -4232,9 +4241,11 @@ label toadFinale:
                 bc "You've heard all my offers, Blort. You know I could give you the life you always wanted."
                 "The toad stood between you and Brildebrogue with sword cane drawn, hands shaking."
                 bc "You've seen what I've built. I built it with these two hands."
-                bc "You have a choice. You can hand [him] over, and become a great man. Or you can stay a wretch, and die, and leave nothing but a stain in the gutter. No-one will remember your sad little stories."
+                bc "You have a choice. You can hand [him] over, and become a great man."
+                bc "Or you can stay a wretch and die, and leave nothing but a stain in the gutter that will be washed away with the morning rain."
                 f "..."
-                f "Then I will die as a wretch. But I will die with my friend beside me."
+                f "Then I will die a wretch."
+                f "But I will die with my friend beside me."
                 "The toad brought up his sword cane to clash with the scimitar. And at just that moment, you heard the clock strike twelve."
                 if godfather == "Red" or godfather == "White":
                     pov "Godfather! Help me!"
@@ -4266,7 +4277,7 @@ label toadFinale:
             mir "Your time is up!"
             "The Devil Himself exploded out of the floor in a flash of brimstone and soot."
             "As soon as he saw your Godfather, Brildebrogue went white as ash."
-            bc "Wait- my contract isn't up yet. You told me I still had six years left."
+            bc "Lucifer. My contract isn't up yet. You told me I still had six years!"
             mir "That may be so."
             mir "But I never keep a bargain, and no-one messes with my grandchild and lives!"
             bc "N-now see here. I am Brildebrogue Chippingham, and I have never failed at anything in my-"
@@ -4275,7 +4286,7 @@ label toadFinale:
             f "Hold on just a second. How do we know you're really the Devil?"
             mir "Ha! You dare doubt my power? I can grow tall as a fir tree and small as a mouse."
             f "Prove it."
-            "The Devil performed His feat. But just as He turned into a mouse, the toad grabbed Him and stuffed Him in a sack and threw Him out the window, whereupon He fell screaming down the tower and into His grave and straight to Hell."
+            "The Devil performed His feat, but just as He turned into a mouse, the toad grabbed Him and stuffed Him in a sack and threw Him out the window, whereupon He fell screaming down the tower and into His grave and straight to Hell."
             f "Well. That takes care of that."
         if godfather == "Black":
             #Death comes for brildebrogue after all these years

@@ -1,22 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1652, in script
-    you "No. I can't lose you too."
-Exception: Sayer 'you' is not defined.
+  File "game/script.rpy", line 3985, in script
+    menu:
+Exception: Sayer 'fq' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1652, in script
-    you "No. I can't lose you too."
+  File "game/script.rpy", line 3985, in script
+    menu:
   File "renpy/ast.py", line 680, in execute
     who = eval_who(self.who, self.who_fast)
   File "renpy/ast.py", line 574, in eval_who
     raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'you' is not defined.
+Exception: Sayer 'fq' is not defined.
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 1.0
-Sat Nov 27 14:53:20 2021
+Sat Nov 27 16:55:54 2021
