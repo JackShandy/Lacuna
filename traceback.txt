@@ -1,22 +1,20 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 3985, in script
-    menu:
-Exception: Sayer 'fq' is not defined.
+After initialization, but before game start.
+WindowsError: [Error 32] The process cannot access the file because it is being used by another process
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 3985, in script
-    menu:
-  File "renpy/ast.py", line 680, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "renpy/ast.py", line 574, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'fq' is not defined.
+  File "renpy/bootstrap.py", line 326, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 567, in main
+    renpy.dump.dump(False)
+  File "renpy/dump.py", line 260, in dump
+    os.rename(new, filename)
+WindowsError: [Error 32] The process cannot access the file because it is being used by another process
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 1.0
-Sat Nov 27 16:55:54 2021
+Sat Dec  4 14:03:49 2021

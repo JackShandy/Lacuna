@@ -268,23 +268,40 @@ image firelight animated:
     repeat
 
 ##====Backgrounds
-image treesbg= "Backgrounds/trees.png"
+#Confirmed - these are in the game
 image nightbg= "Backgrounds/night.png"
 image nightgodbg= "Backgrounds/nightgod.png"
-image cottagebg= "Backgrounds/cottage.png"
-image forestbg= "Backgrounds/forest.png"
-image darkforestbg= "Backgrounds/darkForest.png"
 image sunbg= "Backgrounds/sun.png"
 image winterbg= "Backgrounds/winter.png"
-image darkForestbg= "Backgrounds/darkForest.png"
-image darkForest2bg= "Backgrounds/darkForest2.png"
-
-image manorintbg= "Backgrounds/manor-int.png"
 image hellbg= "Backgrounds/hell.png"
+image forestbg= "Backgrounds/forest.png"
+image darkforestbg= "Backgrounds/darkForest.png"
+image silverbg = "Backgrounds/silver.png"
+image cottagebg= "Backgrounds/cottage.png"
+image cottageintbg= "Backgrounds/cottageInt.png"
+image silvertreesbg = "Backgrounds/silverTrees.png"
 
-image townfeastbg= "Backgrounds/town-feast.png"
-image townoutbg= "Backgrounds/town-out.png"
-image treecanopybg= "Backgrounds/tree-canopy.png"
+
+#Maybe - not sure about theseR
+
+image townextbg = "Backgrounds/townExt.png"
+image manorextbg = "Backgrounds/manorExt.png"
+image mushroomcavebg = "Backgrounds/mushroomCave.png"
+
+#Test Bed - these are for testing, not yet confirmed as backgrounds
+#TK: Delete tests
+
+
+
+## Backgrounds to be deleted
+# image manorintbg= "Backgrounds/manor-int.png"
+# image townfeastbg= "Backgrounds/town-feast.png"
+# image townoutbg= "Backgrounds/town-out.png"
+#
+# image treesbg= "Backgrounds/trees.png"
+# image darkForest2bg= "Backgrounds/darkForest2.png"
+# image treecanopybg= "Backgrounds/tree-canopy.png"
+
 
 ##====Names
 image witchName= "Names/witch.png"
@@ -474,6 +491,9 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         return
         #$renpy.full_restart()
 
+#TK: Fix this hack
+label splashscreen2:
+    return
 #Before main menu: Making sure the animated firelight always displays
 # label before_main_menu:
 #     show firelight animated onlayer over_screens zorder 99
@@ -498,17 +518,36 @@ label start:
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
+        $he = persistent.he
+        $He = persistent.He
+        $his = persistent.his
+        $His = persistent.His
+        $him = persistent.him
+        $Him = persistent.Him
+        $Hes = persistent.Hes
+        $hes = persistent.hes
+        $povname = persistent.povname
         scene bg page
-        show treesbg at artPos
+        show mushroomcavebg at artPos
+        miw "test"
+        mir "test"
+        wib "test"
+        t "test"
+        f "test"
+        w "test"
+        m "test"
+        mum "test"
+        mys "test"
+        cockatoo "test"
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
-        "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
+        "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         "In the darkness of the forest, she may or may not have met a man in white."
         "(Is anything certain these days?)"
         "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
         "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
-        miw "Poor woman. Let me be the Godfather."
+        miw "Poor woman. Let me be the godfather."
         miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
 
     label firstMan:
@@ -557,7 +596,7 @@ label start:
             menu:
                 mir "I only have one condition: [He] must promise to obey no master, and scorn the rule of law, and do as [he] wilt every day of [his] life."
                 "If she said yes, turn to page 21.":#"Yes.":
-                    mum "Beggars can't be choosers, I suppose."
+                    mum "Very well. Beggars can't be choosers, I suppose."
                     mir "Excellent!"
                     "He let out a great shrieking cackle and placed His mark upon you."
                     mir "You will name [him] [povname]."
@@ -565,7 +604,7 @@ label start:
                         mir "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
                     else:
                         mir "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
-                    mum "Alright. Just make sure you're there for the christening on sunday."
+                    mum "Alright. Just make sure you're there for the christening on Sunday."
                     show hand onlayer transient:
                         yalign 0.71#0.743
                         xalign 0.5
@@ -603,7 +642,7 @@ label start:
                     else:
                         wib "The moment [he] turns eighteen, [he] will be mine."
                     wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
-                    mum "Alright. Make sure you're there for the christening on sunday."
+                    mum "Alright. Make sure you're there for the christening on Sunday."
                     show hand onlayer transient:
                         yalign 0.77#0.743
                         xalign 0.5
@@ -621,7 +660,7 @@ label start:
                     else:
                         wib "The moment [he] turns eighteen, [he] will be mine."
                     wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
-                    mum "Alright then. Beggars can't be choosers. Make sure you're there for the christening on sunday."
+                    mum "Very well. Beggars can't be choosers, I suppose. Make sure you're there for the christening on Sunday."
                     show hand onlayer transient:
                         yalign 0.77#0.743
                         xalign 0.5
@@ -1097,7 +1136,7 @@ label chapter2:
                 f "So, what brings you travelling this way?"
                 "If you told the toad about your Godparent, turn to page 67.":
                     if godfather == "White":
-                        pov "I'm searching for a way to escape my Godfather, the King of Kings."
+                        pov "I'm searching for a way to escape my godfather, the King of Kings."
                         pov "He will be here to take me away at midnight, and I have no wish to leave."
                         f "A sticky situation indeed!"
                         f "I have talked with the Lord many times, of course."
@@ -1108,7 +1147,7 @@ label chapter2:
                         hide tornPage1bg onlayer screens
                         f "Perhaps I could put in a good word for you with Him later. Pond scum?"
                     if godfather == "Red":
-                        pov "I'm searching for a way to escape my Godfather, Old Scratch."
+                        pov "I'm searching for a way to escape my godfather, Old Scratch."
                         pov "He will be here to take me away at midnight, and I have no wish to leave."
                         f "A sticky situation indeed!"
                         f "I know the Black One well myself, in fact."
@@ -1119,7 +1158,7 @@ label chapter2:
                         hide tornPage2bg onlayer screens
                         f "Perhaps I could put in a good word for you with Him later. Pond scum?"
                     if godfather == "Black":
-                        "I'm searching for a way to escape my Godmother, the Reaper."
+                        "I'm searching for a way to escape my godmother, the Reaper."
                         pov "She said she will soon send 3 messengers, and then take me away. But I have no wish to leave just yet."
                         f "A sticky situation indeed!"
                         f "Why, that reminds me of the situation when my own dear old mother was about to die."
@@ -1214,7 +1253,7 @@ label chapter2:
                         w "Oh gosh, oh no, are you all right?"
                         "A figure pulled you away from the jeering crowd and tended to your wounds."
                         w "I'm so sorry about that. The old girls tend to get a bit carried away. They don't get out much, you know, it's a bit of a treat for them."
-                        w "Are you feeling ok? Let me get you up. I'm so sorry about this, I know this is probably the last thing you want to be doing on a friday night, really can't apologise enough, it's just the full moon, you know? Always gets them a bit riled up, and it does them good to get some fresh air and dance around once in a while, you know, fulfill their oath to the devil, but, yeah, no excuses for kidnapping you obviously, that kind of behaviour is really not on."
+                        w "Are you feeling ok? Let me get you up. I'm so sorry about this, I know this is probably the last thing you want to be doing on a Friday night, really can't apologise enough, it's just the full moon, you know? Always gets them a bit riled up, and it does them good to get some fresh air and dance around once in a while, you know, fulfill their oath to the devil, but, yeah, no excuses for kidnapping you obviously, that kind of behaviour is really not on."
                         w "Here, let me give you a lift home."
                         "She helped you get up on her broom and spirited you away into the sky."
                         "Below you, you heard the witches you chanting praise to Belphegor, lord of Hogs."
@@ -1514,15 +1553,15 @@ label banquet:
                             jump toadConvo2
                         "If you asked about your Godparent, turn to page 85." if not toadHelp:
                             if godfather== "Black":
-                                pov "I need a way to escape my Godmother, Lady Death. Can you help me?"
+                                pov "I need a way to escape my godmother, Lady Death. Can you help me?"
                                 f "Possibly, possibly."
                                 f "Perhaps the witch will know something about it. You should join me in hunting her down!"
                             elif godfather == "White":
-                                pov "I need a way to escape my Godfather, the Lord. Can you help me?"
+                                pov "I need a way to escape my godfather, the Lord. Can you help me?"
                                 f "Possibly, possibly."
                                 f "Perhaps the witch will know something about it. You should join me in hunting her down!"
                             elif godfather == "Red":
-                                pov "I need a way to escape my Godfather, the Devil. Can you help me?"
+                                pov "I need a way to escape my godfather, the Devil. Can you help me?"
                                 f "I'm sure the witch would know something about that. Rumour is that she dances with the Devil on cold, moonless nights! You should join me in hunting her down."
                             $toadHelp = True
                             jump toadConvo2
@@ -1678,7 +1717,7 @@ label town:
                                     sm "Good."
                                     "The {color=#f00}howling{/color} finally stopped."
                                     "All was silent and still."
-                                    call endStamp
+                                    call endStamp from _call_endStamp
                                     "And then there was rest in the land."
                                     jump end
                                 "If you defied your fate, turn to page 723.":
@@ -1705,7 +1744,7 @@ label town:
                                     sc "Alright. Time to head home."
                                     "You tilted your head back and laughed with relief."
                                     "Years passed, and the story of the Skin-Mask was forgotten. You and Scraggs lived happily ever after for the rest of your days."
-                                    call endStamp
+                                    call endStamp from _call_endStamp_1
                                     "And if you are not dead, you are still alive."
                                     jump end
                         "Otherwise, you may make a wish. Turn to page 367.":
@@ -1741,17 +1780,17 @@ label town:
                 jump villagersConvo
             "If you asked them about your Godparent, turn to page 77." if not villagersEscape:
                 if godfather== "White":
-                    pov "I need a way to escape my Godfather, the Lord. Do any of you know how I can do that?"
+                    pov "I need a way to escape my godfather, the Lord. Do any of you know how I can do that?"
                     gm "Hpmh. I advise you to give up immediately."
                     go "Well, it is said that the Master Thief has hidden from the Lord all their life. If anyone would know, they would."
                     h "Once we track the thief down, you could question them!"
                 elif godfather == "Red":
-                    pov "I need a way to escape my Godfather, the Devil. Do any of you know how I can do that?"
+                    pov "I need a way to escape my godfather, the Devil. Do any of you know how I can do that?"
                     gm "Hpmh. I advise you to give up immediately."
                     go "Well, I have heard that the witch has sworn her soul to the devil. She would know how to help you, if anyone would."
                     sh "If only she was here tonight! Oh, I can already feel her curse upon me."
                 elif godfather == "Black":
-                    pov "I need a way to escape my Godmother, Lady Death. Do any of you know how I can do that?"
+                    pov "I need a way to escape my godmother, Lady Death. Do any of you know how I can do that?"
                     gm "Hpmh. I advise you to give up immediately."
                     go "Well, as we all know, mushrooms are the fingers of death. That wise mushroom in the deep forest would know how to help you, if anyone would."
                     sh "I heard that dastardly Master Thief was planning to steal from her this very night! We'd better get the trap laid before they have a chance."
@@ -2199,12 +2238,12 @@ label mushroomFinale:
                                 "If you married the mushrooms, turn to page 156.":
                                     "After slowly growing close over many years, you and the mushrooms all became married together in a beautiful ceremony. Your mother came down to the kingdom of death for the occasion, and all the plants and lichens and moss and toadstools of the forest were in attendance."
                             if godfather == "White":
-                                "Long did your Godfather the Almighty search for you, but never could he find you, hidden as you were in that undiscovered country."
+                                "Long did your godfather the Almighty search for you, but never could he find you, hidden as you were in that undiscovered country."
                             elif godfather == "Red":
-                                "Long did your Godfather the Devil search for you, but never could he find you, hidden as you were in that undiscovered country."
+                                "Long did your godfather the Devil search for you, but never could he find you, hidden as you were in that undiscovered country."
                             elif godfather == "Black":
                                 "And so the promise came to pass, and you took your place with the woman clad all in black, just as she promised your mother all those years ago."
-                            call endStamp
+                            call endStamp from _call_endStamp_2
                             "You stayed there at the side of the Pale Lady, forever and ever, until the final horn and the coming of the end of days."
                             jump end
                         "If you held fast to your desire to return to the world above, turn to page 164.":
@@ -2260,18 +2299,18 @@ label mushroomFinale:
                     "You untied the red silk and lifted the lid of the precious box."
                     "As soon as you did, all of your years rushed out of the box, and they came upon you at once. Your hair grew and turned white, your back twisted into a knot with age, your face wrinkled up and you fell down dead in an instant."
                     "Poor thing! Because of your disobediance, never would you live to see your mushroom again."
-                    call endStamp
+                    call endStamp from _call_endStamp_3
                     "Little children, never be disobediant to those who are wiser than you, for disobediance is the mother of all misery and father of all woe."
                     jump end
                 "If you refused to open the box, even when all hope was lost, turn to page 179.":
                     if godfather == "White":
                         "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
-                        call endStamp
+                        call endStamp from _call_endStamp_4
                         "And so the Lord took you, and you rested in the basement of His White House forever and ever, until the final horn and the coming of the end of days."
                         jump end
                     elif godfather == "Red":
                         "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
-                        call endStamp
+                        call endStamp from _call_endStamp_5
                         "And so the Devil took you, and you were trapped as his servant in Hell forever and ever, until the final horn and the coming of the end of days."
                         jump end
                     else:
@@ -2280,7 +2319,7 @@ label mushroomFinale:
                         "As the light burnt you away, you felt something take ahold of you and draw you into the earth."
                         m "It's ok. It's just me. Just us."
                         m "You've returned."
-                        call endStamp
+                        call endStamp from _call_endStamp_6
                         "The mushrooms took you down into the earth. There you stayed at the side of Lady Death, forever and ever, until the work was complete, and the glory of it shone out forevermore."
                         jump end
             #You can stay with the mushroom and explore the mushroom world, different areas
@@ -2932,7 +2971,7 @@ label thiefStory:
             t "I felt the eyes of God upon me. How could He not see the rot inside me?"
             pov "There's none there. There never was."
             if godfather == "Red":
-                "Just then in a puff of smoke, the Devil appeared! Your Godfather had come for you at last."
+                "Just then in a puff of smoke, the Devil appeared! Your godfather had come for you at last."
                 mir "Well done, my crooked little friends! Always good to see The Man Upstairs outsmarted yet again."
                 label devilNever:
                     show hand onlayer transient:
@@ -2997,7 +3036,7 @@ label thiefStory:
                         if godfather == "Black":
                             jump thiefDeath
                         else:
-                            call endStamp
+                            call endStamp from _call_endStamp_7
                             "You live there still, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
                             jump end
                     "If you remained good friends with the thief, turn to page 246.":
@@ -3009,7 +3048,7 @@ label thiefStory:
                         if godfather == "Black":
                             jump thiefDeath
                         else:
-                            call endStamp
+                            call endStamp from _call_endStamp_8
                             "You live there still, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
                             jump end
             else:
@@ -3024,7 +3063,7 @@ label thiefStory:
                             jump thiefDeath
                         else:
                             "There you stayed for the rest of your days, growing slowly older. On cold nights, you swear you could still hear the whistle of the Goblin Train, and the laughter of the thief in the wind."
-                            call endStamp
+                            call endStamp from _call_endStamp_9
                             "And then came an elephant with a very long snout, and it blew the story out."
                             jump end
                     "If you stayed on the goblin train and remained good friends with the thief forever after, turn to page 244.":
@@ -3036,7 +3075,7 @@ label thiefStory:
                         if godfather == "Black":
                             jump thiefDeath
                         else:
-                            call endStamp
+                            call endStamp from _call_endStamp_10
                             "You live there still, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
                             jump end
                     "If you stayed on the goblin train and married the thief, turn to page 248.":
@@ -3050,7 +3089,7 @@ label thiefStory:
                         if godfather == "Black":
                             jump thiefDeath
                         else:
-                            call endStamp
+                            call endStamp from _call_endStamp_11
                             "And if you have not died, you live there still. On windless nights, your siblings whisper that they can hear your laughter, and the rattling wheels of the goblin train."
                             jump end
     label thiefDeath:
@@ -3121,7 +3160,7 @@ label thiefStory:
                         pov "Alright. I'm ready"
                         m "No-one's ever ready. But there's no time left."
                         "She gently took you down to the kingdom of Death."
-                        call endStamp
+                        call endStamp from _call_endStamp_12
                         "And what happened after that, none who live can say."
                         #"And what happened to the Toad, you ask?"
                         #"He was never heard from again."
@@ -3445,20 +3484,20 @@ label witch2:
 
             "If you asked about your Godparent, turn to page 262." if not witchGodfather:
                 if godfather == "White":
-                    pov "I'm hoping you can help me with a problem. My Godfather is the Lord, and He has sworn to take me away at midnight tonight."
+                    pov "I'm hoping you can help me with a problem. My godfather is the Lord, and He has sworn to take me away at midnight tonight."
                     w "That's wild."
                     w "I mean, I'm a witch, yeah, but I'm not exactly all powerful over here, I'm not sure what you want me to do about that?"
                     w "But yeah nah, maybe I could help you out. Let me take a look through my books, I'll see what I can come up with."
                     "And she began rifling through the stack of books lying randomly around the floor."
                 if godfather == "Red":
-                    pov "I'm hoping you can help me with a problem. My Godfather is the Devil, and He has sworn to take me away at midnight tonight."
+                    pov "I'm hoping you can help me with a problem. My godfather is the Devil, and He has sworn to take me away at midnight tonight."
                     w "Oh no!"
                     w "Well, I..."
                     w "To be honest I do know a bit about your red friend, I have had some uh, {i}dealings{/i} with Him, I guess you could say. It wasn't my choice though, I don't want you to think I'm one of those wild women of the woods who dance around naked and worship the devil and all that kind of thing, know what I mean? I admire them but I tried it once or twice and it gets really chilly, not recommended."
                     w "But yeah, nah, maybe I could help you out. Let me take a look through my books, I'll see what I can come up with."
                     "And she began rifling through the stack of books lying randomly around the floor."
                 if godfather == "Black":
-                    pov "I'm hoping you can help me with a problem. My Godfather is Death, and She has sworn to take me away."
+                    pov "I'm hoping you can help me with a problem. My godmother is Death, and She has sworn to take me away."
                     w "That's wild."
                     w "I mean, I'm a witch, yeah, but I'm not exactly all powerful over here, I'm not sure what you want me to do about that?"
                     w "But yeah nah, maybe I could help you out with that problem. Let me take a look through my books, I'll see what I can come up with."
@@ -3652,7 +3691,7 @@ label witchFinale:
     mir "Crinkle, crush, wailing and fleeing. I smell the flesh of a human being."
     "And he picked up the whole house and began to turn it over looking for the flesh he smelled."
     if godfather == "Red":
-        "You shook to see your Godfather in the flesh at last."
+        "You shook to see your godfather in the flesh at last."
     dg "Hush, you young fool. You're always smelling human beings."
     dg "You're making a mess of the nice clean floors I just swept. Now come have some of the soup I made you."
     "Grumbling, he put the house back down on its foundations and sat down to eat and drink. Soon he was curled up fast asleep and snoring on his grandmother\'s lap."
@@ -3676,22 +3715,22 @@ label witchFinale:
                 $dgAsked += 1
                 $escapeGodfather = True
                 call devilAnswers from _call_devilAnswers_1
-                dg "I dreamed that a desperate mother once pledged her child to you, as the Godfather - and that you are bound to grab [him] up at midnight tonight. Can [he] evade you, do you think?"
+                dg "I dreamed that a desperate mother once pledged her child to you, as the godfather - and that you are bound to grab [him] up at midnight tonight. Can [he] evade you, do you think?"
                 mir "Not on your life! None can escape the Devil!"
                 "He chuckled to himself gleefully."
                 show hand onlayer transient:
                     yalign 0.76#0.743
                     xalign 0.5
                 if he == "they":
-                    mir "Unless of course, [he] look me in the face and recite my second secret name, Belthuselah. But that will never happen!.{vspace=190}{i}In your notes, write down that you {b}know the Devil's second and most secret name.{/b}{/i}"
+                    mir "Unless of course, [he] look me in the face and recite my second and most secret name, Belthuselah. But that will never happen!.{vspace=190}{i}In your notes, write down that you {b}know the Devil's second and most secret name.{/b}{/i}"
                 else:
-                    mir "Unless of course, [he] looks me in the face and recites my second secret name, Belthuselah. But that will never happen!{vspace=190}{i}In your notes, write down that you {b}know the Devil's second and most secret name.{/b}{/i}"
+                    mir "Unless of course, [he] looks me in the face and recites my second and most secret name, Belthuselah. But that will never happen!{vspace=190}{i}In your notes, write down that you {b}know the Devil's second and most secret name.{/b}{/i}"
                 jump devilSleeps
             "If you asked how to free yourself, turn to page 247." if not escapeGodfather and godfather == "White":
                 $dgAsked += 1
                 call devilAnswers from _call_devilAnswers_2
                 $escapeGodfather = True
-                dg "I dreamed that a desperate young mother once pledged her child to God, as the Godfather - and that their child was bound to be taken by Him on [his] 18th birthday. Can [he] ever escape, do you think?"
+                dg "I dreamed that a desperate young mother once pledged her child to God, as the godfather - and that their child was bound to be taken by Him on [his] 18th birthday. Can [he] ever escape, do you think?"
                 mir "Ha! That's easy."
                 if he == "they":
                     mir "The Lord is blind to the desperate. All [he] have to do is take on the disguise of an old leper, and God will walk right by."
@@ -3703,7 +3742,7 @@ label witchFinale:
                 $dgAsked += 1
                 $escapeGodfather = True
                 call devilAnswers from _call_devilAnswers_3
-                dg "I dreamed that a desperate young mother once pledged her child to Death, as the Godmother - and that the child was bound to be taken by Her. Can [he] ever escape, do you think?"
+                dg "I dreamed that a desperate young mother once pledged her child to Death, as the godmother - and that the child was bound to be taken by Her. Can [he] ever escape, do you think?"
                 mir "Never."
                 "The Devil grew somber."
                 mir "There is no trick or cheat. When the child recieves Death's three messengers, [he] will have to go. And that will be that."
@@ -3824,11 +3863,11 @@ label witchFinale:
                     "With a whoop, the Devil seized you and dragged you into the fireplace and straight to hell."
                     "Sadly, you were trapped there forever after. The witch mourns you still."
                     #"What of the toad, you ask? I ate him up whole."
-                    call endStamp
+                    call endStamp from _call_endStamp_13
                     "When misfortune is after someone, they may try to hide in all sorts of places or flee across the whole wide world, but it will still know where to find them."
                     jump end
         elif godfather == "White":
-            w "Quick! Your Godfather will be here any minute."
+            w "Quick! Your godfather will be here any minute."
             "You both lept into action. You disguised yourselves as beggars and lepers, and through great lumps of mud all over the half-ruined cottage so that it looked like an abandoned hovel."
             "Soon, the clock struck midnight, and you felt the light of God upon you."
             "It seared into your flesh as you huddled together on the floor, feeling His gaze searching for you as His heavy footfalls shook the house."
@@ -3930,13 +3969,13 @@ label witchFinale:
                                 pov "I'm ready."
                                 m "No-one's ever ready. But there's no time left."
                                 "She gently took you down to the kingdom of Death."
-                                call endStamp
+                                call endStamp from _call_endStamp_14
                                 "And what happened after that, none who live can say."
                                 #"And what happened to the toad, you ask?"
                                 #"He was never heard from again."
                                 jump end
                 else:
-                    call endStamp
+                    call endStamp from _call_endStamp_15
                     "And so you lived there together in quiet happiness. If you have not died, you live there still."
                     #"And what happened to the toad, you ask?"
                     #"He was never heard from again."
@@ -3958,7 +3997,7 @@ label witchFinale:
                 if godfather == "Black":
                     jump deathQuestions
                 else:
-                    call endStamp
+                    call endStamp from _call_endStamp_16
                     "And so you lived there for many long, happy years, visiting the Witch each summer. If you have not died, you live there still."
                     #"And what happened to the toad, you ask?"
                     #"He was never heard from again."
@@ -4133,7 +4172,7 @@ label toadFinale:
                 bc "You do not know?"
                 bc "But I know well enough."
                 bc "If you have such an interest in my closet, you can take your place amoung the ladies there."
-                "He took out his simitar and locked the door to his manor behind him."
+                "He took out his scimitar and locked the door to his manor behind him."
                 f "RUN!"
                 jump brildebrogueFinale
             "If you pretended you lost the bloody golden key, turn to page 125.":
@@ -4146,7 +4185,7 @@ label toadFinale:
                 bc "But I know well enough."
                 "In one motion he twisted the toad's arm behind his back. The toad gasped and dropped the bloody key on the floor."
                 bc "If you have such an interest in my closet, you can take your place amoung the ladies there."
-                "He took out his simitar and locked the door to his manor behind him."
+                "He took out his scimitar and locked the door to his manor behind him."
                 f "RUN!"
                 jump brildebrogueFinale
     label brildebrogueFinale:
@@ -4276,7 +4315,7 @@ label toadFinale:
             #The devil drags brildebrogue down to hell
             mir "Your time is up!"
             "The Devil Himself exploded out of the floor in a flash of brimstone and soot."
-            "As soon as he saw your Godfather, Brildebrogue went white as ash."
+            "As soon as he saw your godfather, Brildebrogue went white as ash."
             bc "Lucifer. My contract isn't up yet. You told me I still had six years!"
             mir "That may be so."
             mir "But I never keep a bargain, and no-one messes with my grandchild and lives!"
@@ -4310,7 +4349,7 @@ label toadFinale:
                 "I should know - I was at your wedding! I gorged myself on the fresh meat and raised my glass for the toast, and the beer ran down my chin but did not go into my mouth."
                 if godfather == "Black":
                     jump toadDeath
-                call endStamp
+                call endStamp from _call_endStamp_17
                 "You were very happy, had many children, and you still would live if you had not died."
                 #"And what happened to the witch, you ask?"
                 #"I ate her up whole."
@@ -4322,7 +4361,7 @@ label toadFinale:
                 if godfather == "Black":
                     jump toadDeath
                 else:
-                    call endStamp
+                    call endStamp from _call_endStamp_18
                     "You were very happy there for the rest of your days, and you still would live if you had not died."
                 #"And what happened to the witch, you ask?"
                 #"I ate her up whole."
@@ -4334,7 +4373,7 @@ label toadFinale:
                 if godfather == "Black":
                     jump toadDeath
                 else:
-                    call endStamp
+                    call endStamp from _call_endStamp_19
                     "You were very happy there for the rest of your days, and you still would live if you had not died."
                 #"And what happened to the witch, you ask?"
                 #"I ate her up whole."
@@ -4394,7 +4433,7 @@ label toadFinale:
                     pov "Alright. I'm ready"
                     m "No-one's ever ready. But there's no time left."
                     "She gently took you down to the kingdom of Death."
-                    call endStamp
+                    call endStamp from _call_endStamp_20
                     "And you lie there still."
                     #"And what happened to the Witch, you ask?"
                     #"I ate her up whole."

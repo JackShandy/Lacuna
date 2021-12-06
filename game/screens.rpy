@@ -641,7 +641,7 @@ screen about():
 
         style_prefix "about"
 
-        vbox ypos 373:
+        vbox ypos 373 xpos 20:
             #label "[config.name!t]"
             #text _("Version [config.version!t]\n")
             #yalign 0.5
@@ -683,18 +683,19 @@ screen contents():
         #define gui.text_font = "fonts/ShoppingScript.ttf"
             #imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
 
+        input default persistent.povname pos(215,410) length(19) color((25, 16, 0, 100)) font("fonts/journal.ttf") size(35) changed name_func
+
         #She / Her pronoun button
-        hotspot (200,452,55,28) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"), SetVariable("he", "she"), SetVariable("He", "She"), SetVariable("his", "her"), SetVariable("His", "Her"), SetVariable("him", "her"), SetVariable("Him", "Her"), SetVariable("Hes", "She's"), SetVariable("hes", "she's"), Jump("splashscreen2")]
+        hotspot (200,452,55,28) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"), SetVariable("persistent.nameSet", "True"),SetVariable("persistent.he", "she"), SetVariable("persistent.He", "She"), SetVariable("persistent.his", "her"), SetVariable("persistent.His", "Her"), SetVariable("persistent.him", "her"), SetVariable("persistent.Him", "Her"), SetVariable("persistent.Hes", "She's"), SetVariable("persistent.hes", "she's"), Jump("splashscreen2")]
 
         #He / Him pronoun button
-        hotspot (272,454,53,36) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"),SetVariable("he", "he"),SetVariable("He", "He"),SetVariable("his", "his"),SetVariable("His", "His"),SetVariable("him", "him"),SetVariable("Him", "Him"),SetVariable("Hes", "He's"),SetVariable("hes", "he's"),Jump("splashscreen2")]
+        hotspot (272,454,53,36) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"),SetVariable("persistent.nameSet", "True"),SetVariable("persistent.he", "he"),SetVariable("persistent.He", "He"),SetVariable("persistent.his", "his"),SetVariable("persistent.His", "His"),SetVariable("persistent.him", "him"),SetVariable("persistent.Him", "Him"),SetVariable("persistent.Hes", "He's"),SetVariable("persistent.hes", "he's"),Jump("splashscreen2")]
 
         #They / Them pronoun button
-        hotspot (338,453,64,38) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"),SetVariable("he", "they"),SetVariable("He", "They"),SetVariable("his", "their"),SetVariable("His", "Their"),SetVariable("him", "them"),SetVariable("Him", "Them"),SetVariable("Hes", "They are"),SetVariable("hes", "they are"),Jump("splashscreen2")]
+        hotspot (338,453,64,38) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"),SetVariable("persistent.nameSet", "True"),SetVariable("persistent.he", "they"),SetVariable("persistent.He", "They"),SetVariable("persistent.his", "their"),SetVariable("persistent.His", "Their"),SetVariable("persistent.him", "them"),SetVariable("persistent.Him", "Them"),SetVariable("persistent.Hes", "They are"),SetVariable("persistent.hes", "they are"),Jump("splashscreen2")]
 
         #if screenvar == True:
-        #if persistent.nameSet == False:
-        input default persistent.povname pos(215,410) length(19) color((25, 16, 0, 100)) font("fonts/journal.ttf") size(35) changed name_func
+        #persistent.nameSet = True:
         #else:
             #text "{color=(25, 16, 0, 100)}{size=30}{font=journal.ttf}[persistent.povname]{/font}{/size}{/color}" #at #(195,416) #length(20) color((25, 16, 0, 100)) font("fonts/journal.ttf") size(30)
             #povname = renpy.input("", length=32)
@@ -932,6 +933,12 @@ screen preferences():
 
                             if config.sample_sound:
                                 textbutton _("Test") action Play("sound", config.sample_sound)
+
+                        label _("Self-Voicing Volume")
+
+                        hbox:
+                            bar value Preference("self voicing volume drop")
+
 
 
                     if config.has_voice:
