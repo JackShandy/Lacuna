@@ -282,8 +282,6 @@ image manorextbg = "Backgrounds/manorExt.png"
 image riverbg = "Backgrounds/river.png"
 image mountainsbg = "Backgrounds/mountains.png"
 image deathbg =  "Backgrounds/death.png"
-image mushroomcavebg = "Backgrounds/mushroomCave.png"
-image mushroomcaveunderbg = "Backgrounds/mushroomCaveUnder.png"
 image canopybg = "Backgrounds/canopy.png"
 image ruinsbg = "Backgrounds/ruins.png"
 image treenightbg = "Backgrounds/treeNight.png"
@@ -292,11 +290,17 @@ image stranglerfigbg= "Backgrounds/stranglerFig.png"
 image forestbg= "Backgrounds/forest.png"
 image forest2bg = "Backgrounds/forest2.png"
 image darkforestbg= "Backgrounds/darkForest.png"
+#TK: Unsure about this one
+image forest3bg= "Backgrounds/forest3.png"
 
 image townfeastbg = "Backgrounds/town-feast.png"
 image towncrossroadsbg = "Backgrounds/town-cross.png"
 image townextbg = "Backgrounds/town-ext.png"
 image town3bg = "Backgrounds/town3.png"
+
+image mushroomcavebg = "Backgrounds/mushroomCave.png"
+image mushroomcaveunderbg = "Backgrounds/mushroomCaveUnder.png"
+image mushroombasementbg = "Backgrounds/mushroombasement.png"
 
 
 #Maybe - not sure about these
@@ -304,12 +308,10 @@ image goblinintbg = "Backgrounds/goblin-int.png"
 
 #Test Bed - these are for testing, not yet confirmed as backgrounds
 #TK: Delete tests
-image testbg = "Backgrounds/test.png"
 
 
 
 ## Backgrounds I don't think I'll use
-image treesbg= "Backgrounds/trees.png"
 
 
 
@@ -538,21 +540,13 @@ label start:
         $hes = persistent.hes
         $povname = persistent.povname
         scene bg page
-        show town3bg at artPos
-        miw "test"
-        mir "test"
-        wib "test"
-        t "test"
-        f "test"
-        w "test"
-        m "test"
-        mum "test"
-        mys "test"
-        cockatoo "test"
+        show nightbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
         "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+        hide nightbg
+        show forest2bg at artPos
         "In the darkness of the forest, she may or may not have met a man in white."
         "(Is anything certain these days?)"
         "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
@@ -594,6 +588,8 @@ label start:
                     jump firstMan
 
     label secondMan1:
+        hide forest2bg
+        show forestbg at artPos
         "In the deeper darkness of the forest, she may or may not have met a man all in red."
         "(Can we be sure of anything but the greatness of G-d?)"
         "All the jewels of the earth fell from His right hand, and all the pleasures of the world fell from His left, and His other hand held all the wonders of the universe, and His other hand held a fat cigar, and His other hand held a long knife black as coal dust, and His other hand held the most intoxicating spices, such that the King of Kings would cry to taste them, and His other hand held a single dead rose, and His other hand was in his pocket and out of view."
@@ -630,6 +626,8 @@ label start:
                     $secondManWho = True
                     jump secondMan2
     label thirdMan1:
+        hide forestbg
+        show darkforestbg at artPos
         "In the deepest darkness of the forst, she may or may not have met a handsome woman."
         "(What can any of us be certain of, except that the mercies of the Almighty are vaster than the deepest ocean and more numerous than all the pebbles on the land?)"
         "She was broken-limbed and clad all in black. She had no hands."
@@ -687,6 +685,11 @@ label start:
 
 # Act 1, Chapter 2: The Path
 label chapter2:
+    hide darkforestbg
+    hide forest2bg
+    hide forestbg
+    show sunbg at artPos
+
     if godfather == "White":
         "And so you grew up as a kind and well-mannered child, and you made your mother proud."
         "You went to church every Sunday, and worked hard every day of your life, and every day you gave thanks to the invisible hand of the free market. All the neighbours smiled and said \"That one has the mark of G-d on [him].\""
@@ -732,6 +735,10 @@ label chapter2:
                 "You would avoid the festival and stare deep into the woods all through the night."
                 jump introMenu
             "To continue the story, turn to page 34.":
+                hide sunbg
+                #TK: Unsure about this one
+                show forest3bg at artPos
+
                 if godfather == "Black":
                     "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godmother would own your immortal soul as as soon as the clock struck midnight."
                     "You had no doubt that She would soon send Her three messengers for you, and then take you down to the kingdom of ruin forever."
@@ -746,6 +753,8 @@ label chapter2:
         "She gave you a thick coinpurse, and some bread and meat for the journey."
         mum "Go! But be careful of strangers, and do not leave the path."
         mum "A terrible {color=#f00}wolf{/color} lurks out there, in the space between the trees."
+    hide forest3bg
+    show treenightbg at artPos
     "And so you took up your belongings and strode on down the road to the festival."
     "The twilight set in, and the crickets and cicadas all around you set about with their chattering and squabbling, and the evening birds began to laugh and trill, and you could feel the wet cool mist of the rainforest settle around you."
     "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
@@ -762,6 +771,8 @@ label chapter2:
         #TK: Include extra options if you have different grandparents (eg a wicked option if your godfather is the devil
         "If you followed her, turn to page 25.":
             "You left the path and followed her from a distance."
+            hide treenightbg
+            show stranglerfigbg at artPos
             "She walked into the towering buttress roots of an ancient strangler fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious sapphires and intricate engravings."
             show hand onlayer transient:
                 yalign 0.73#0.743
@@ -779,6 +790,8 @@ label chapter2:
                     $mushroomCavernSeen = True
                     "You quickly snuck inside before the door closed behind you."
                     #TK: Double check my descriptions on the heat - is it consistently hot rainforest sweaty weather
+                    hide stranglerfigbg
+                    show mushroomcavebg at artPos
                     "Inside you were shocked to find the tree completely hollow. A great cavern was formed inside it, cold as ice despite the heat outside."
                     "The floor of the cavern was piled with rubies and sapphires and glinting emeralds and solid gold pieces, larger than your fist."
                     "All across the room you saw lush silks and pillars of precious metals of every type, and riches that would turn the king of kings green with envy."
@@ -848,6 +861,8 @@ label chapter2:
                             "She left the room, trusting your kindness and good nature."
                             "If you immediately disobeyed the mushroom and opened the basement door (in accordance with your wicked nature) turn to page 52.":
                                 "Of course you opened the basement door."
+                                hide mushroomcavebg
+                                show mushroombasementbg at artPos
                                 "Within, you saw a most terrible sight."
                                 "Seven mushroom corpses hung in the room, dripping black ichor, each being feasted upon by a fat blue-tongued lizard."
                                 "Every one of them was identical to the lady Mushroom herself."
@@ -886,6 +901,9 @@ label chapter2:
                                 pov "Noooooooo!"
                                 "She struck the ground. It opened before her and she disappeared into it instantly."
                                 "You set about beating yourself and rolling around the floor in even more pitiful devastation and horror than before, tears streaming from your eyes at this terrible curse."
+                                hide mushroomcavebg
+                                hide mushroombasementbg
+                                show forest2 at artPos
                                 "Thus you went on your way to the festival, fretting and worrying all the while."
                                 if godfather == "Black":
                                     "Now you had two burdens: To escape the grip of your Godmother, and to find a story that could satisfy the disdainful Mushroom."
@@ -944,6 +962,11 @@ label chapter2:
 
     # Act 1, Chapter 4: The Thief.
     label thief1:
+        hide stranglerfigbg
+        hide mushroomcavebg
+        hide mushroombasementbg
+        show forest2 at artPos
+
         "As you were walking down the road thusly, you came upon an old beggar-woman."
         "Her eyes were blind, and her back was crooked in 5 directions at once, and her hair floated all around her head like twisting grey fog, and she hobbled about with only the aid of an old cane to help her along."
         mys "Ho, young traveller."
