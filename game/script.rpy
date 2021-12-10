@@ -274,33 +274,43 @@ image nightgodbg= "Backgrounds/nightgod.png"
 image sunbg= "Backgrounds/sun.png"
 image winterbg= "Backgrounds/winter.png"
 image hellbg= "Backgrounds/hell.png"
-image forestbg= "Backgrounds/forest.png"
-image darkforestbg= "Backgrounds/darkForest.png"
 image silverbg = "Backgrounds/silver.png"
 image cottagebg= "Backgrounds/cottage.png"
 image cottageintbg= "Backgrounds/cottageInt.png"
 image silvertreesbg = "Backgrounds/silverTrees.png"
-
-
-#Maybe - not sure about theseR
-
-image townextbg = "Backgrounds/townExt.png"
 image manorextbg = "Backgrounds/manorExt.png"
+image riverbg = "Backgrounds/river.png"
+image mountainsbg = "Backgrounds/mountains.png"
+image deathbg =  "Backgrounds/death.png"
 image mushroomcavebg = "Backgrounds/mushroomCave.png"
+image mushroomcaveunderbg = "Backgrounds/mushroomCaveUnder.png"
+image canopybg = "Backgrounds/canopy.png"
+image ruinsbg = "Backgrounds/ruins.png"
+image treenightbg = "Backgrounds/treeNight.png"
+image stranglerfigbg= "Backgrounds/stranglerFig.png"
+
+image forestbg= "Backgrounds/forest.png"
+image forest2bg = "Backgrounds/forest2.png"
+image darkforestbg= "Backgrounds/darkForest.png"
+
+image townfeastbg = "Backgrounds/town-feast.png"
+image towncrossroadsbg = "Backgrounds/town-cross.png"
+image townextbg = "Backgrounds/town-ext.png"
+image town3bg = "Backgrounds/town3.png"
+
+
+#Maybe - not sure about these
+image goblinintbg = "Backgrounds/goblin-int.png"
 
 #Test Bed - these are for testing, not yet confirmed as backgrounds
 #TK: Delete tests
+image testbg = "Backgrounds/test.png"
 
 
 
-## Backgrounds to be deleted
-# image manorintbg= "Backgrounds/manor-int.png"
-# image townfeastbg= "Backgrounds/town-feast.png"
-# image townoutbg= "Backgrounds/town-out.png"
-#
-# image treesbg= "Backgrounds/trees.png"
-# image darkForest2bg= "Backgrounds/darkForest2.png"
-# image treecanopybg= "Backgrounds/tree-canopy.png"
+## Backgrounds I don't think I'll use
+image treesbg= "Backgrounds/trees.png"
+
 
 
 ##====Names
@@ -528,7 +538,7 @@ label start:
         $hes = persistent.hes
         $povname = persistent.povname
         scene bg page
-        show mushroomcavebg at artPos
+        show town3bg at artPos
         miw "test"
         mir "test"
         wib "test"
@@ -752,7 +762,7 @@ label chapter2:
         #TK: Include extra options if you have different grandparents (eg a wicked option if your godfather is the devil
         "If you followed her, turn to page 25.":
             "You left the path and followed her from a distance."
-            "She walked into the towering buttress roots of an ancient fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious sapphires and intricate engravings."
+            "She walked into the towering buttress roots of an ancient strangler fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious sapphires and intricate engravings."
             show hand onlayer transient:
                 yalign 0.73#0.743
                 xalign 0.5

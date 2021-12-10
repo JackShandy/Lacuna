@@ -1,20 +1,70 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-After initialization, but before game start.
-WindowsError: [Error 32] The process cannot access the file because it is being used by another process
+While loading <'Image' u'Backgrounds/townExt.png'>:
+  File "game/script.rpy", line 536, in script
+    miw "test"
+IOError: Couldn't find file 'Backgrounds/townExt.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 326, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 567, in main
-    renpy.dump.dump(False)
-  File "renpy/dump.py", line 260, in dump
-    os.rename(new, filename)
-WindowsError: [Error 32] The process cannot access the file because it is being used by another process
+  File "game/script.rpy", line 536, in script
+    miw "test"
+  File "renpy/ast.py", line 715, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "renpy/exports.py", line 1393, in say
+    who(what, *args, **kwargs)
+  File "renpy/character.py", line 1205, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "renpy/character.py", line 871, in do_display
+    **display_args)
+  File "renpy/character.py", line 621, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "renpy/display/core.py", line 3101, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3611, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "renpy/display/core.py", line 2441, in draw_screen
+    renpy.config.screen_height,
+  File "render.pyx", line 492, in renpy.display.render.render_screen
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 777, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 777, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 777, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/transform.py", line 933, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 116, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 339, in render
+    surf = render(self.child, width, height, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/image.py", line 501, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "renpy/display/image.py", line 307, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/im.py", line 607, in render
+    return cache.get(self, render=True)
+  File "renpy/display/im.py", line 271, in get
+    surf = image.load()
+  File "renpy/display/im.py", line 688, in load
+    raise e
+IOError: Couldn't find file 'Backgrounds/townExt.png'.
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 1.0
-Sat Dec  4 14:03:49 2021
+Fri Dec 10 12:03:04 2021
