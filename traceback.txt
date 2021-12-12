@@ -1,22 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 600, in script
+  File "game/script.rpy", line 606, in script
     return
-Exception: Could not find return label (u'game/script.rpy', 1639205056, 311).
+Exception: Could not find return label (u'game/script.rpy', 1639184229, 297).
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 600, in script
+  File "game/script.rpy", line 606, in script
     return
   File "renpy/ast.py", line 1521, in execute
     next_node(renpy.game.context().lookup_return(pop=True))
   File "renpy/execution.py", line 710, in lookup_return
     raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
-Exception: Could not find return label (u'game/script.rpy', 1639205056, 311).
+Exception: Could not find return label (u'game/script.rpy', 1639184229, 297).
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 1.0
-Sat Dec 11 16:45:11 2021
+Sun Dec 12 14:16:32 2021
