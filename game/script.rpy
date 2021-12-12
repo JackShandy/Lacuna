@@ -626,7 +626,7 @@ label start:
         show nightbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
-        call hideAll
+        call hideAll from _call_hideAll
         show forest4bg at artPos
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
         "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
@@ -764,7 +764,7 @@ label start:
 
 # Act 1, Chapter 2: The Path
 label chapter2:
-    call hideAll
+    call hideAll from _call_hideAll_1
     show sunbg at artPos
 
     if godfather == "White":
@@ -826,7 +826,7 @@ label chapter2:
         "She gave you a thick coinpurse, and some bread and meat for the journey."
         mum "Go! But be careful of strangers, and do not leave the path."
         mum "A terrible {color=#f00}wolf{/color} lurks out there, in the space between the trees."
-    call hideAll
+    call hideAll from _call_hideAll_2
     show forestbg at artPos
     "And so you took up your belongings and strode on down the road to the festival."
     "The twilight set in, and the crickets and cicadas all around you set about with their chattering and squabbling, and the evening birds began to laugh and trill, and you could feel the wet cool mist of the rainforest settle around you."
@@ -844,7 +844,7 @@ label chapter2:
         #TK: Include extra options if you have different grandparents (eg a wicked option if your godfather is the devil
         "If you followed her, turn to page 25.":
             "You left the path and followed her from a distance."
-            call hideAll
+            call hideAll from _call_hideAll_3
             show stranglerfigbg at artPos
             "She walked into the towering buttress roots of an ancient strangler fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious sapphires and intricate engravings."
             show hand onlayer transient:
@@ -863,7 +863,7 @@ label chapter2:
                     $mushroomCavernSeen = True
                     "You quickly snuck inside before the door closed behind you."
                     #TK: Double check my descriptions on the heat - is it consistently hot rainforest sweaty weather
-                    call hideAll
+                    call hideAll from _call_hideAll_4
                     show mushroomcavebg at artPos
                     "Inside you were shocked to find the tree completely hollow. A great cavern was formed inside it, cold as ice despite the heat outside."
                     "The floor of the cavern was piled with rubies and sapphires and glinting emeralds and solid gold pieces, larger than your fist."
@@ -934,12 +934,12 @@ label chapter2:
                             "She left the room, trusting your kindness and good nature."
                             "If you immediately disobeyed the mushroom and opened the basement door (in accordance with your wicked nature) turn to page 52.":
                                 "Of course you opened the basement door."
-                                call hideAll
+                                call hideAll from _call_hideAll_5
                                 play sound pageFlip
                                 show basementfullbg
                                 ""
                                 play sound pageFlip
-                                call hideAll
+                                call hideAll from _call_hideAll_6
                                 show mushroombasementbg at artPos
                                 "Within, you saw a most terrible sight."
                                 "Seven mushroom corpses hung in the room, dripping black ichor, each being feasted upon by a fat blue-tongued lizard."
@@ -979,7 +979,7 @@ label chapter2:
                                 pov "Noooooooo!"
                                 "She struck the ground. It opened before her and she disappeared into it instantly."
                                 "You set about beating yourself and rolling around the floor in even more pitiful devastation and horror than before, tears streaming from your eyes at this terrible curse."
-                                call hideAll
+                                call hideAll from _call_hideAll_7
                                 show forest2bg at artPos
                                 "Thus you went on your way to the festival, fretting and worrying all the while."
                                 if godfather == "Black":
@@ -1039,7 +1039,7 @@ label chapter2:
 
     # Act 1, Chapter 4: The Thief.
     label thief1:
-        call hideAll
+        call hideAll from _call_hideAll_8
         show forest4bg at artPos
 
         "As you were walking down the road thusly, you came upon an old beggar-woman."
@@ -1160,7 +1160,7 @@ label chapter2:
                 "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
 
     # Chapter 1, Part 5: The Toad.
-    call hideAll
+    call hideAll from _call_hideAll_9
     show forest5bg at artPos
 
     "As you walked down the road, sweating in the warmth of the summer night, you heard a great clattering of hooves behind you, and turned to see four horses pulling a magnificent golden carriage."
@@ -1338,11 +1338,11 @@ label chapter2:
             else:
                 "And so it was that you stayed on the path the whole way, following your mother's advice and never once being tempted by the offers of strangers."
             "(Some protagonist you turned out to be.)"
-            call hideAll
+            call hideAll from _call_hideAll_10
             show townextbg at artPos
             jump witch1
         else:
-            call hideAll
+            call hideAll from _call_hideAll_11
             show townextbg at artPos
             "And so you finally arrived at the village."
         "The rich dark blanket of night was softly rolling over the town, and cooking fires lit up all across the hills, one by one."
@@ -1361,14 +1361,14 @@ label chapter2:
                         pov "Witches? Nonsense! There's no such thing!"
                         "No sooner had those foolish words escaped your mouth than a witch lept out of the bushes and onto your back. Before you could say or do anything, she dug her heels into your sides and rode you up into the sky and over the mountains."
                         $witchArc +=1
-                        call hideAll
+                        call hideAll from _call_hideAll_12
                         show mountainsbg at artPos
                         "In a wink you found yourself at the blue mountains, exhausted from hard riding."
                         play sound pageFlip
                         show sabbathfullbg
                         ""
                         play sound pageFlip
-                        call hideAll
+                        call hideAll from _call_hideAll_13
                         show mountainsbg at artPos
                         "A witches sabbath was afoot. A great fire raged on the peak before you, and the witches danced before it."
                         #TK: Note the plural - baba yagas - maybe have a footnote
@@ -1390,7 +1390,7 @@ label chapter2:
                         w "Alright, here you are. I'd better be getting back."
                         w "Have a good night!"
                         "She set you down at the edge of town and flew off into the sky."
-                        call hideAll
+                        call hideAll from _call_hideAll_14
                         show townextbg at artPos
 
                         "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
@@ -1409,7 +1409,7 @@ label chapter2:
         menu:
             "The town was overflowing with people bustling about and preparing for the festival, pulling up chairs and laying great tables around the enormous bonfire in the centre of town."
             "If you looked at the food, turn to page 36." if not foodLook:
-                call hideAll
+                call hideAll from _call_hideAll_15
                 show towncrossroadsbg at artPos
                 $foodLook = True
                 "Over the bonfire was a great suckling pig being prepared on a spit, slathered in rosemary and garlic butter and herbs of all types, and stuffed with breadcrumbs and fresh figs and crisp walnuts and apples and all the fruits of the earth."
@@ -1421,7 +1421,7 @@ label chapter2:
                 "For desert there were giant lemon meringue pies made from lemons as big as your fist, covered in fresh-whipped meringue from the Baker's parlour."
                 jump villageExplore1
             "If you sat down with the rest of the guests without delay, turn to page 37.":
-                call hideAll
+                call hideAll from _call_hideAll_16
                 show towncrossroadsbg at artPos
                 "You took your place at the table."
     "The Hunter was there, and the old Gloom-monger, and the young Goose-girl."
@@ -1459,7 +1459,7 @@ label village:
     show hand onlayer transient:
         yalign 0.7#0.743
         xalign 0.5
-    call hideAll
+    call hideAll from _call_hideAll_17
     show towncrossroadsbg at artPos
 
     menu:
@@ -1470,7 +1470,7 @@ label village:
             jump town
 
 label banquet:
-    call hideAll
+    call hideAll from _call_hideAll_18
     show townfeastbg at artPos
     "You walked down to the river, where the banquet was laid out. Some folks were gripping each other tight and crying out at the misfortune that had befallen their town. Others simply sat in glum silence."
     "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
@@ -1709,7 +1709,7 @@ label banquet:
             #Then somehow that turns to stealing from the mushroom / helping the mushroom against the theif
 
 label town:
-    call hideAll
+    call hideAll from _call_hideAll_19
     show townextbg at artPos
     "You walked out to the edge of town, where villagers ran to and fro, searching for the Master Thief."
     "Fruit bats chirped and swirled overhead, fat with fresh mangos."
@@ -1801,7 +1801,7 @@ label town:
                             "You would have liked to be able to make a wish. But you had no coins on you."
                         "Otherwise, if {b}you have ventured into the Smoke World and rescued the stolen Skin-Mask from King Famine{b}, turn to page 742.":
                             well "Thank G-d you have it. Quickly! Come in!"
-                            call hideAll
+                            call hideAll from _call_hideAll_20
                             show wellbg at artPos
                             "You scrambled down into the well towards the secret passage. The breath of King Famine was hot on your neck. Behind you, you could see His soldiers tearing apart the village, just as He swore He would when you stole the mask from Him."
                             sc "Go. I'll hold them off."
@@ -1956,7 +1956,7 @@ label town:
 
 # Act 2, Chapter 2A: The Master Thief
 label thief2:
-    call hideAll
+    call hideAll from _call_hideAll_21
     show town3bg at artPos
     "Soon, you arrived at the young goose-girls house, which was overrun by honking geese who tore at the furniture and ransacked the pantry until she was at her wit's end."
     if pig:
@@ -2066,18 +2066,18 @@ label thief2:
             #TK: test this menu with the pig
             "The others chased after them."
             "If you tried to chase after the thief, turn to page 135.":
-                call hideAll
+                call hideAll from _call_hideAll_22
                 show forest4bg at artPos
                 "The thief led you on a merry chase, until you were deep into the forest with all the others behind you."
                 "You slowly closed the distance, until you finally lept forward and grabbed their cloak."
             "If you tried to go around and cut them off, turn to page 136.":
-                call hideAll
+                call hideAll from _call_hideAll_23
                 show forest4bg at artPos
                 "You ran deep into the forest, planning to lay an ambush for the thief. Soon, you left the others far behind."
                 "You lay in wait behind a bush until you heard their running footsteps. Then you lept out and grabbed them."
             "If you sent your pig after them while you set an ambush, turn to page 137." if pig:
                 "The pig chased after them furiously, grunting pig curses at the fleeing figure."
-                call hideAll
+                call hideAll from _call_hideAll_24
                 show forest4bg at artPos
                 "You hid behind the bushes and lay in wait until you heard the thief's footsteps. Then you lept out and grabbed them as your pig squealed in triumph."
     "As you pulled at their cloak, it came away with a tearing sound, and the figure before you fell apart into dust."
@@ -2133,10 +2133,10 @@ label thief2:
                 jump thief3
             "If you refused, and rushed to warn the Mushroom of this impending theft, turn to page 144.":
                 t "Aha, I knew you'd see things my - wait, what did you say?"
-                call hideAll
+                call hideAll from _call_hideAll_25
                 show forest2bg at artPos
                 "Before they could react, you slipped away from them and ran away into the woods, heading for the Mushroom's house."
-                call hideAll
+                call hideAll from _call_hideAll_26
                 show stranglerfigbg at artPos
                 "Soon you stood knocking at the Mushroom's door, panting for breath and covered in scrapes from the journey."
                 jump mushroom1
@@ -2156,7 +2156,7 @@ label mushroom1:
         #"Tell the tale you heard from the Mayor.":
         #"Tell the tale you heard from the Sparrow-Herder.":
         "If you told the tale of how you attempted to catch the Master Thief, turn to page page 134.":
-            call hideAll
+            call hideAll from _call_hideAll_27
             show mushroomcavebg at artPos
             "The mushroom ushered you inside, and you both took a seat in the plush red armchairs. You pretended to sip a cup of decaying leaf matter as you told your tale."
             m "Well! Never in all the years I've known you have you ever told me a tale such as this!"
@@ -2223,13 +2223,13 @@ label mushroomFinale:
     m3 "Shh. Shhh."
     "The Master Thief managed to wriggle out of their grasp and leap up out a nearby window."
     t "Au revoir, my friend!"
-    call hideAll
+    call hideAll from _call_hideAll_28
     show mushroombasementbg at artPos
     "That was the last thing you saw before you were dragged underneath the earth."
     "You were pulled down through untold layers of dirt by your ankles. You heard the mushrooms whisper around you."
     #TK: Have a house of leaves text effect for the many mushrooms
     m3 "Everything's going to be ok.{vspace=30}                                             {w=0.4}You're safe here.{vspace=30}                                             {w=0.8}Shhhh."
-    call hideAll
+    call hideAll from _call_hideAll_29
     show deathbg at artPos
     "Soon, you emerged into a colossal underground kingdom lit with flickering silver light."
     "All around you pressed a blooming mass of webcaps, milkcaps, scarlet elf caps, poisonpies, decievers, pinkgills, brittlegills, veiled ladies, lawyer's wigs, stinkhorns, earthstars, beefsteaks, chicken of the woods, earthballs, sculpted puffballs, yellowfoots, lungworts, brown-eyed wolves, golden-eyed umbrellas, Satan's boletes, false chanterelles, death caps and destroying angels, and all members of the mysterious Dark Taxa, the dark matter fungi that lie unknown to mankind."
@@ -2241,7 +2241,7 @@ label mushroomFinale:
     "Dozens of identical mushrooms pressed around you, speaking in soft, overlapping voices."
     m3 "I think it might be best if you stay here until I know that you're safe.{vspace=30}                                             {w=0.4}Until I know you're safe.{vspace=30}                         {w=0.8}It's for the best, if you stay here."
     m4 "I'll watch over you.{vspace=30}                                             {w=0.4}Over you.{vspace=30}                         {w=0.8}Watch over."
-    call hideAll
+    call hideAll from _call_hideAll_30
     show mushroompalacebg at artPos
     "You were taken through a great palace of yellow chanterelles and dressed in robes of fine moss. Your room was lushly furnished with soft covers woven from black mushroom silk, and all the gems and gold and treasures of the earth were available to you."
     label mushroomPrison:
@@ -2316,14 +2316,14 @@ label mushroomFinale:
                 jump mushroomKingdom
 
     label mushroomKingdom:
-        call hideAll
+        call hideAll from _call_hideAll_31
         show mushroomgardensbg at artPos
         "You walked out into the lush expanse of the underground kingdom. Rich moss and lichens flowered from every surface. "
         if godfather != "Black":
             m "Don't worry. I know about your godfather. He cannot reach us here."
 
         label mushroomExplore:
-            call hideAll
+            call hideAll from _call_hideAll_32
             show mushroomgardensbg at artPos
             show hand onlayer transient:
                 yalign 0.63#0.743
@@ -2339,7 +2339,7 @@ label mushroomFinale:
                     $mushroomMoss = True
                     jump mushroomExplore
                 "If you feasted in the great palace, turn to page 138." if not mushroomFeast:
-                    call hideAll
+                    call hideAll from _call_hideAll_33
                     show mushroompalacebg at artPos
                     "As soon as you entered the palace a train of toadstools appeared, all in ceremonial garb. With silent steps, they surrounded you, bearing delicacies of mushroom risotto and crisp goose roasted in truffle butter and dark red wine and platters of mushroom bourguignon with roast potatoes, and set this wondrous feast before you. "
                     m "You HAVE to try the truffle aioli, darling, that's my absolute favourite."
@@ -2356,7 +2356,7 @@ label mushroomFinale:
                     $mushroomEmbassy = True
                     jump mushroomExplore
                 "If you explored the lands in the shadow of the vast, pale mountain, turn to page 146." if not mushroomPale:
-                    call hideAll
+                    call hideAll from _call_hideAll_34
                     show deathbg at artPos
                     "The mushroom took you closer to the shape you saw from the palace. It loomed over you, larger than life. With a start, you saw that it was breathing."
                     m2 "This is the Lady. She waits here, while we do The Work."
@@ -2423,11 +2423,11 @@ label mushroomFinale:
                             "She handed you a black box tied with a tassel of red silk."
                             m4 "This is the box of the jeweled hand, and it holds something very precious. Do not open it, no matter what happens."
                             "And so you promised that you would never open the box, and the mushrooms took hold of you and bore you back up to the surface."
-    call hideAll
+    call hideAll from _call_hideAll_35
     show darknessbg at artPos
     "You blinked in the harsh light of the sun above, and found that your eyes had become almost blind in the darkness below. Your skin was pale and shrunken."
     "As you looked around, a strange anxiety gripped you. The ancient old strangler fig was gone. You couldn't see the blue door to the mushroom's domain."
-    call hideAll
+    call hideAll from _call_hideAll_36
     show futurebg at artPos
     "As you walked down the road to your house, something seemed wrong. The prople you saw walking past had different faces to the people you knew so well before. Even your old house was a different shape."
     "You walked up to your old home and called out:"
@@ -2470,7 +2470,7 @@ label mushroomFinale:
                         mir "What are you doing? No!"
                     "You untied the red silk and lifted the lid of the precious box."
                     "As soon as you did, all of your years rushed out of the box, and they came upon you at once. Your hair grew and turned white, your back twisted into a knot with age, your face wrinkled up and you fell down dead in an instant."
-                    call hideAll
+                    call hideAll from _call_hideAll_37
                     show mementobg at artPos
                     "Poor thing! Because of your disobediance, never would you live to see your loved ones again."
                     call endStamp from _call_endStamp_3
@@ -2493,7 +2493,7 @@ label mushroomFinale:
                         "As the light burnt you away, you felt something take ahold of you and draw you into the earth."
                         m "It's ok. It's just me. Just us."
                         m "You've returned."
-                        call hideAll
+                        call hideAll from _call_hideAll_38
                         show mementobg at artPos
                         call endStamp from _call_endStamp_6
                         "The mushrooms took you down into the earth. There you stayed at the side of Lady Death, forever and ever, until the work was complete, and the glory of it shone out forevermore."
@@ -2519,20 +2519,20 @@ label thief3:
     # if you accept, you sneak into the mushroom's house through fantasy traps and tricks (Swinging sawblades, magical traps, Ali Baba and the 40 thieves stuff.
     "The thief strode ahead on their long, long legs, and you had to run to keep up. Their nimble fingers were constantly moving, grabbing leaves off the trees or small rocks from the ground to fiddle with, and they couldn't seem to keep a single part of their body still for even a second."
     #TK: Backgrounds
-    call hideAll
+    call hideAll from _call_hideAll_39
     show nightbg at artPos
     "The night grew dark."
-    call hideAll
+    call hideAll from _call_hideAll_40
     show riverbg at artPos
     "You walked past a river."
-    call hideAll
+    call hideAll from _call_hideAll_41
     show darkforestbg at artPos
     "You walked past a rocky coast."
     #TK: background for the ruins
-    call hideAll
+    call hideAll from _call_hideAll_42
     show ruinsbg at artPos
     "You walked past the ruins of the 6th age, a grim reminder of the inevitable destruction fast approaching your world."
-    call hideAll
+    call hideAll from _call_hideAll_43
     show treenightbg at artPos
     "You walked past a tree."
     t "So, tell me about yourself. Got a family? A pet? Likes, dislikes, hobbies, dreams, nightmares? If you were stranded on a desert island, which limb would you gnaw off first?"
@@ -2661,7 +2661,7 @@ label thief3:
                         t "Now this is the praise I deserve."
                         "They twisted over onto their feet."
                         t "Anyway, enough of my talents for now. We're here!"
-        call hideAll
+        call hideAll from _call_hideAll_44
         show stranglerfigbg at artPos
         "The colossal roots of the Mushroom's strangler fig rose above you."
         t "Alright. Here's the job."
@@ -2682,7 +2682,7 @@ label thief3:
                 jump thiefMushroomCavern
             "If you climb up and go in from above, turn to page 142.":
                 t "Great idea. We'll draw you into a life of crime yet."
-                call hideAll
+                call hideAll from _call_hideAll_45
                 show canopybg at artPos
                 "You climbed up through the canopy. Before you knew it, a gaggle of Banksia seeds dropped down all around you. Their many mouths gabbled at you with wild abandon."
                 sc "That's right, it's me!"
@@ -2780,7 +2780,7 @@ label thief3:
                         #"If you have {b}the singing bone of Grundlesnitch{/b} in your items, turn to page 137."
             "If you entered through the underground river below, turn to page 173.":
                 t "Great idea. We'll draw you into a life of crime yet."
-                call hideAll
+                call hideAll from _call_hideAll_46
                 show mushroomcaveunderbg at artPos
                 "You lept down a well and crept up the underground river until you came across an ancient, leviathan saltwater crocodile."
                 t "Watch this."
@@ -2831,7 +2831,7 @@ label thief3:
                                     "They struggled to their feet, and you both ventured further into the tunnel. Eventually you found a little silver door in the rock."
                                     jump thiefMushroomCavern
     label thiefMushroomCavern:
-                call hideAll
+                call hideAll from _call_hideAll_47
                 show mushroomcavebg at artPos
                 if mushroomCavernSeen:
                     "The door opened to reveal the vast cavern of glittering treasure far below. You saw the gold and gems and red mist of incense, just as it was earlier in the night."
@@ -2875,7 +2875,7 @@ label thiefFinale:
         m "I knew should never have given you a second chance. Curse first, ask questions later, darling, that's what I've always said."
     else:
         m "How trite. I hoped you had the originality to avoid rehashing such dull tropes, darling."
-    call hideAll
+    call hideAll from _call_hideAll_48
     show mushroomgardensbg at artPos
     "The floor began to fall away before you, and all the golden treasure sprouted and turned into jellyspots and rust fungus and dog lichen and yellow staghorn and blue mould which bloomed in all directions."
     if pig:
@@ -2919,12 +2919,12 @@ label thiefFinale:
                 "At first there was silence. The mushrooms paused."
                 "Then, you heard an answering whistle, deep and loud enough to deafen you."
                 "A brilliant light shine through the windows of the cavern. There was the sound of thundering wheels."
-                call hideAll
+                call hideAll from _call_hideAll_49
                 play sound pageFlip
                 show trainfullbg
                 ""
                 play sound pageFlip
-                call hideAll
+                call hideAll from _call_hideAll_50
                 show trainbg at artPos
 
                 "A train crashed through the walls of the cavern."
@@ -2935,7 +2935,7 @@ label thiefFinale:
                 "The thief pushed you up to grab onto the side of the carriage, then you reached down and pulled them up beside you."
                 "The train whistled with full force, gathering speed until it smashed through the other wall of the cavern and shot through the trees of the forest, leaving the mushrooms behind."
                 t "Well! Did you ever doubt me?"
-                call hideAll
+                call hideAll from _call_hideAll_51
                 show goblinint2bg at artPos
                 "From all across the train came a great cheer, and you looked around to see goblins of a thousand shapes emerge to hold up the thief in celebration."
                 "Some had the heads of bats, some had the paws of cats, six heads, three heads, five arms, ten tails, and they bristled with tails and wings and fur and scales."
@@ -2951,7 +2951,7 @@ label thiefFinale:
                         "The train was bustling with a chaos of forms."
                         "If you sat down, turn to page 194." if not goblinSit:
                             "You fell into a chair and looked around."
-                            call hideAll
+                            call hideAll from _call_hideAll_52
                             show goblinint2bg at artPos
                             "This part of the train was some kind of bar or gambling hall. Looking up through a maze of trapdoors in the roof, you could see there were many floors stacked above this one. Bathhouses, gardens, workshops and observatories."
                             if pig:
@@ -2959,13 +2959,13 @@ label thiefFinale:
                             $goblinSit = True
                             jump goblinTrain
                         "If you looked outside, turn to page 195." if not goblinLook:
-                            call hideAll
+                            call hideAll from _call_hideAll_53
                             show trainbg at artPos
                             "A team of goblins hung off the back of the train and picked up the tracks behind it, then climbed around to hand the tracks to the goblins at the front, who laid them in front of the train as it squeezed through the trees of the forest."
                             $goblinLook = True
                             jump goblinTrain
                         "If you accepted a goblin beverage, turn to page 196." if not goblinDrink:
-                            call hideAll
+                            call hideAll from _call_hideAll_54
                             show goblinint2bg at artPos
                             "The goblins poured you dozens of goblin brews, bubbling ales and steaming warm ciders, goblin wines that oozed with red fog and goblin brandies that froze and melted and froze again as you drank them."
                             "Foolishly, you drank deeply of the brews. You guzzled them down until you could drink no more, until your vision was a haze and the brew ran down your mouth and drenched your clothes, and still you thirsted for them."
@@ -2974,7 +2974,7 @@ label thiefFinale:
                             $goblinDrink = True
                             jump goblinTrain
                         "If you went to find the Master Thief, turn to page 197.":
-                            call hideAll
+                            call hideAll from _call_hideAll_55
                             show goblinintbg at artPos
                             "You walked through the cramped corridors of the train and found yourself in a giant feast hall where they were celebrating the Master Thief at the head of the table."
                             goblin3 "Show us the loot!"
@@ -3016,7 +3016,7 @@ label thiefFinale:
                                         "From that day forward all other foods would be ash in your mouth, and you would wither and go grey with the need of them."
                                         jump goblinTrain2
                                     "If you went to find the thief, turn to page 167.":
-                                        call hideAll
+                                        call hideAll from _call_hideAll_56
                                         show trainbg at artPos
                                         "You found them sitting on the rear balcony with their legs over the edge, watching the trees and hills roll by in the smokey night."
                                         t "Hi."
@@ -3078,7 +3078,7 @@ label thiefFinale:
                                                             t "Alright, my parents are bad and they gave me to the goblins to train as a thief. The goblins made a deal that if they couldn't recognise me when my apprenticeship ended in a year, I would go free."
                                                             jump thiefStoryEnd
 label thiefStory:
-    call hideAll
+    call hideAll from _call_hideAll_57
     show nightbg at artPos
     if thiefShort:
         t "Long ago, the Lord came to visit my parents. I heard my mother gesture to me, and talk to The Lord of me thus:"
@@ -3122,7 +3122,7 @@ label thiefStory:
         goblinQueen "But if you cannot recognise them, you must give me three hundred talers, and they must be allowed to go free and do as they will."
         jump thiefStoryEnd
     label thiefStoryEnd:
-        call hideAll
+        call hideAll from _call_hideAll_58
         show trainbg at artPos
         t "My parents agreed, and went home. And now, that year has passed."
         t "Tonight, my parents will be here soon to take me away, and they always carry the Lord in their hearts."
@@ -3145,7 +3145,7 @@ label thiefStory:
                 pov "If your parents want to take you, they'll have to take both of us."
                 "The thief held your hand tight."
                 t "Thank you."
-        call hideAll
+        call hideAll from _call_hideAll_59
         show darkforestbg at artPos
         "In a few short hours, the train stopped on a rocky stretch of coast, and the thief's mother and father came to meet it."
         if godfather == "White" or godfather == "Red":
@@ -3153,7 +3153,7 @@ label thiefStory:
         "The goblins lined up you and the thief with 12 goblins on a tree branch, all of you transformed to become king parrots and sparrows and magpies and birds of every type."
         if godfather == "White":
             "Just at that moment, the clock struck midnight."
-            call hideAll
+            call hideAll from _call_hideAll_60
             show godbg at artPos
             "The clouds parted and an unnatural sun shone through them,  bright as a searchlight in the dark of night."
             "You felt the hot rays of the Lord's gaze upon you, sweeping the line of birds. Your skin blistered with sunburn as it struck you."
@@ -3170,7 +3170,7 @@ label thiefStory:
             "Rays of light beamed down on two cinnamon cockatiels at the very end of the line."
             "With a great shout, they burst into smoke, and revealed themselves to be goblins."
             "The whole line erupted into goblin smoke, and the two of you were revealed. In a flash, the goblins turned both the parents into hideous grubs which squirmed away and were buried in the dirt. The Lord cursed in disgust and vanished back behind the clouds, and the whole train leapt up in great celebration."
-            call hideAll
+            call hideAll from _call_hideAll_61
             show darkforestbg at artPos
             "The thief stared about in amazement."
             t "But... "
@@ -3179,14 +3179,14 @@ label thiefStory:
         else:
             goblinQueen "Choose your child out of the line, and their life will be yours once more."
             "The thief's mother stood and stared for a long time, moving down the line slowly."
-            call hideAll
+            call hideAll from _call_hideAll_62
             show godbg at artPos
             "As she looked over you, the clouds parted and you felt the hot, bright rays of the Lord's gaze pierce through you, lighting up every scrap of darkness and guilt in your soul. The thief shook beside you."
             "Their breath grew short, and they looked straight ahead, trying not to seem as though anything was wrong."
             if pig:
                 "The pig looked up from the ground with anticipation and fear."
             "After a long time, she moved on down the line. She stepped away and conferred with her husband. Finally, she spoke."
-            call hideAll
+            call hideAll from _call_hideAll_63
             show darkforestbg at artPos
             thiefmum "This one is our child."
             "She pointed to a cinnamon cockatiel on the very left of the line."
@@ -3245,7 +3245,7 @@ label thiefStory:
             "You were both free at last."
         if pig:
             "The pig lept up joyfully into your arms, and you passed it up to the thief to lift aloft in triumph."
-        call hideAll
+        call hideAll from _call_hideAll_64
         show trainbg at artPos
         "You lept on the goblin train, and the thief and the goblins danced and celebrated all through the night."
         jump thiefEnd
@@ -3398,7 +3398,7 @@ label thiefStory:
 label toad1:
     "He gulped down the rest of his plate and stumbled unsteadily away from the table."
     "You both stepped into the toad's squash carriage, and it went rattling away down the path into the great, dark rainforest."
-    call hideAll
+    call hideAll from _call_hideAll_65
     show nightbg at artPos
     "As you went down the road, the forest began to get darker and darker."
     "The trees closed in like a wall around you, and the moon and stars fled in fear."
@@ -3435,10 +3435,10 @@ label toad1:
     "With this, he regained his former swagger and strode forward."
     "The night grew dark."
     "You walked through the trees together."
-    call hideAll
+    call hideAll from _call_hideAll_66
     show nightgodbg at artPos
     "The Firmament looked down at you from Her place up above."
-    call hideAll
+    call hideAll from _call_hideAll_67
     show nightbg at artPos
     show hand onlayer transient:
         yalign 0.7#0.743
@@ -3476,7 +3476,7 @@ label toad1:
             "You picked him up out of the muck and put him on your shoulder."
             f "Good, good. I-I'll lead you onward."
     "You walked on. Soon, you began to see a glimmer of silver light in the darkness."
-    call hideAll
+    call hideAll from _call_hideAll_68
     show darkforestbg at artPos
     "The forest was covered in great puddles of water from the rains. The puddles shone with light."
     "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
@@ -3491,10 +3491,10 @@ label toad1:
             "If you looked into the puddle carefully, turn to page 236." if not puddleLook:
                 "You crawled to the edge and looked down into the puddle."
                 "The surface of the water was flat and still."
-                call hideAll
+                call hideAll from _call_hideAll_69
                 show cottagebg at artPos
                 "The cottage in the reflection shone with bright light, as if the setting sun was behind it."
-                call hideAll
+                call hideAll from _call_hideAll_70
                 show darkforestbg at artPos
                 "There was no trace of a cottage in the world above the water."
                 $puddleLook = True
@@ -3508,11 +3508,11 @@ label toad1:
                 jump puddle
             "If you jumped into the puddle, turn to page 207.":
                 "You held the toad tight, then leaped into the puddle."
-                call hideAll
+                call hideAll from _call_hideAll_71
                 show mushroombasementbg at artPos
                 "The world flipped over."
                 "You felt the water pass over you, and a cool chill tingled all through your body."
-                call hideAll
+                call hideAll from _call_hideAll_72
                 show silverbg at artPos
                 "When you opened your eyes, you were standing right way up again."
                 "The puddle you had jumped into was now a floor, like a silver mirror."
@@ -3550,7 +3550,7 @@ label toad1:
             f "But if you aren't out in ten minutes, I... I'll come in to rescue you. Alright?"
             "You agreed."
             $toadSad = True
-    call hideAll
+    call hideAll from _call_hideAll_73
     show cottagebg at artPos
     "Soon, you had crossed the river paths to the cottage in the center."
     "Up over the walls grew a riot of herbs and flowers of every type, rambling over everything and growing in a lush green-grass garden on the roof. "
@@ -3568,7 +3568,7 @@ label toad1:
 label witch2:
     "You walked up the front steps, and put your hand on the doorknob."
     "The door opened up with a shuddering creak."
-    call hideAll
+    call hideAll from _call_hideAll_74
     show cottageintbg at artPos
     "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
     "The cottage was tiny, but the walls were covered with bookshelves stuffed with old manuscripts and notebooks and thick textbooks on all kinds of plants and animals."
@@ -3748,7 +3748,7 @@ label witch2:
 label witchFinale:
     "You dived at the witch and pushed her out of the way of the stabbing sword cane."
     "You both went tumbling across the floor and into the fire. When you fell into the fireplace, you fell straight through the flames and down to Hell."
-    call hideAll
+    call hideAll from _call_hideAll_75
     show hellbg at artPos
     "Hell was dark and sooty, and the Devil was not home."
     w "Not again!"
@@ -3857,7 +3857,7 @@ label witchFinale:
                 jump hell
             "If you investigated the center of the cavern, turn to page 206.":
                 "In the center of the cavern was a small, homely cottage. You peered in the window."
-                call hideAll
+                call hideAll from _call_hideAll_76
                 show hellcottagebg at artPos
                 "The Devil was not home. But in a rocking chair in the corner you saw His old grandmother. She spotted you both at once."
     dg "Oh, my dears! You must be terribly lost. You'd better get out of here."
@@ -4026,13 +4026,13 @@ label witchFinale:
             "You left the cottage and crawled down into the foundations beneath it. When you found the old worm squatting beneath it, the witch speared it with her crooked finger, killing it instantly."
             "With that, she felt a great weight fall from her shoulders. You turned and saw that the Devil's mark was no longer on her."
             "Then you went to the cottage fireplace, threw in the three golden hairs from the Devil, and lept inside."
-            call hideAll
+            call hideAll from _call_hideAll_77
             show cottageintbg at artPos
             "In an instant, you flew right up the chimney and out into the witch's cottage."
 
         else:
             "And so you went to the cottage fireplace, threw in the three golden hairs from the Devil, and lept inside."
-            call hideAll
+            call hideAll from _call_hideAll_78
             show cottageintbg at artPos
             "In an instant, you flew right up the chimney and out into the witch's cottage."
         if godfather == "Red":
@@ -4052,7 +4052,7 @@ label witchFinale:
                     "It was a mess of flowers and plants and flopping animals, sprouting wildly every witch-way across the room."
                     "You rolled up your sleeves and slowly put the room to rights, until it was even more clean, warm and homely than it had been before."
                 "Otherwise, turn to page 297.":
-                    call hideAll
+                    call hideAll from _call_hideAll_79
                     show hellbg at artPos
                     "With a whoop, the Devil seized you and dragged you into the fireplace and straight to hell."
                     "Sadly, you were trapped there forever after. The witch mourns you still."
@@ -4077,13 +4077,13 @@ label witchFinale:
             w "Looks like you still have some time left!"
             "You rolled up your sleeves and slowly put the room to rights, until it was even more clean, warm and homely than it had been before."
         if villageRich == True:
-            call hideAll
+            call hideAll from _call_hideAll_80
             show townextbg at artPos
             "Once the cottage was put to rights, you went to the village and fed some grapes to the mouse at the bottom of the village well."
             "In an instant, the well began to flow with the richest and most satisfying red wine, and all throughout the village rejoiced."
             "The village soon prospered by selling the wine, and you and your family became rich beyond your wildest dreams."
         if cureWitch == True:
-            call hideAll
+            call hideAll from _call_hideAll_81
             show cottageintbg at artPos
             "You stayed with the witch for a while after that, helping her with her forgetfulness."
             "Over time you cultivated a garden in her hat, using the knowledge you tricked out of the Devil."
@@ -4099,7 +4099,7 @@ label witchFinale:
             else:
                 "You spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
         else:
-            call hideAll
+            call hideAll from _call_hideAll_82
             show cottageintbg at artPos
             "You stayed with the witch for a while after that, trying to help her with her forgetfulness."
             "Sadly, you knew not how. She would never be the Girl Who Knew Everything again. You tried everything you could, but for the rest of her days, her thoughts were cursed to leak from her head in heavy smoke."
@@ -4168,7 +4168,7 @@ label witchFinale:
                             "If you accepted your fate, turn to page 278.":
                                 pov "I'm ready."
                                 m "No-one's ever ready. But there's no time left."
-                                call hideAll
+                                call hideAll from _call_hideAll_83
                                 show mementobg at artPos
                                 "She gently took you down to the kingdom of Death."
                                 call endStamp from _call_endStamp_14
@@ -4183,7 +4183,7 @@ label witchFinale:
                     #"He was never heard from again."
                     jump end
             "If you returned home, turn to page 261.":
-                call hideAll
+                call hideAll from _call_hideAll_84
                 show sunbg at artPos
                 "When it was time to leave, you wished the Witch a tearful farewell, and returned to your cottage with your family."
                 if godfather == "Black":
@@ -4211,7 +4211,7 @@ label toadFinale:
     "You lept to defend the toad, diving and pushing him away from the slashes of the crooked dagger."
     "As you pulled him away, a black vial of liquid smashed over the two of you and you were both instantly turned into witchetty grubs."
     "The cottage wall gave way and you were both washed out of the house in a multicoloured wave of potions."
-    call hideAll
+    call hideAll from _call_hideAll_85
     show riverbg at artPos
     "The world flipped upside down as you fell through the silver puddle outside, and you found yourself caught up in a torrent of writhing fish and magpies and bats and crocodiles being washed down the rainforest river, all transforming into new animals every second."
     "You popped into a cat, then a fish, then back into a witchetty grub again. The toad turned into a water-rat and whirled around."
@@ -4222,7 +4222,7 @@ label toadFinale:
     fg "Hold on! I know where to go!"
     "You felt yourself transform into a squirming tadpole. The toad changed into a sea bass and held you in his mouth, swimming for a point on the shore."
     "Just as his fins began to give out, you turned into a cat, and grabbed him and pulled you both up out of the water."
-    call hideAll
+    call hideAll from _call_hideAll_86
     show mushroomcaveunderbg at artPos
     "He directed you to a small, muddy hole on the river bank. As soon as you entered, the mud fell down behind you and blocked your exit."
     "The hole was wet, and cramped, and crawling with small worms and roaches, but it was safe."
@@ -4286,7 +4286,7 @@ label toadFinale:
                 #TK: Change to blort Bronkum
                 fq "Yes. Yes, that's my real name."
                 fq "I am Blort Bronkum, and I have never succeeded at anything in my life."
-    call hideAll
+    call hideAll from _call_hideAll_87
     show manorextbg at artPos
     "The real Brildebrogue Chippingham pulled you out of the hole and into a golden carriage waiting nearby, which whisked you away to a stately riverside manor."
     "With a click of his fingers, Brildebrogue summoned a cavalcade of richly dressed frog manservants, who offered you all the finest delicacies from across the world, such that the king of kings would cry to taste them."
@@ -4346,7 +4346,7 @@ label toadFinale:
                     "A golden keyhole shone out from the closet door."
                     "If you opened the closet, turn to page 275.":
                         "You inserted the key, and slowly opened the door with a long creak."
-                        call hideAll
+                        call hideAll from _call_hideAll_88
                         show mushroombasementbg at artPos
                         "As soon as the door opened, a stream of blood flowed over you, and you saw seven dead frog brides hanging all along the walls, some only skeletons."
                         jump brildebrogueCloset
@@ -4357,7 +4357,7 @@ label toadFinale:
                 f "Well, if you're not going to open this damn closet, I am."
                 "He rushed to the seventh and tallest tower, and unlocked the closet with the golden key."
                 "He slowly turned the key, and opened the closet door with a long creak."
-                call hideAll
+                call hideAll from _call_hideAll_89
                 show mushroombasementbg at artPos
                 "As soon as the door opened, a stream of blood flowed over the two of you, and you saw seven dead frog brides hanging all along the closet walls, some only skeletons."
                 jump brildebrogueCloset
@@ -4372,7 +4372,7 @@ label toadFinale:
         "The clock chimed a quarter to twelve."
         "You tried to wipe the blood off the key, but it wouldn't come off."
         f "Quickly! We have to wash this off."
-        call hideAll
+        call hideAll from _call_hideAll_90
         show manorextbg at artPos
         "You both rushed downstairs and tore off your clothes and burned them and put on new, spotless clothes without a hint of blood. But no matter how long you scrubbed at the key, you couldn't get it off. When you rubbed the blood off one side, it appeared on the other."
         bc "Good evening!"
@@ -4557,7 +4557,7 @@ label toadFinale:
             "But in an instant the mushrooms grew all around and through him, and he fell to the floor."
             "And so he died, and he has remained dead up to this very day."
             f "Well. That takes care of that."
-        call hideAll
+        call hideAll from _call_hideAll_91
         show mushroomcaveunderbg at artPos
         "You and the toad left the ruins of Chippingham manor behind to rot."
         "You took the gems from the wreckage and renovated the toad's old mud-hole, turning it into a warm, comfy little cottage with a great fire and enough food for a lifetime, along with a large closet of fine clothes."
@@ -4591,7 +4591,7 @@ label toadFinale:
                 #"Every piece."
                 jump end
             "If you left the toad to return to your family, turn to page 300.":
-                call hideAll
+                call hideAll from _call_hideAll_92
                 show sunbg at artPos
                 "When it was time to leave, you wished the toad a tearful farewell, and returned to your cottage with your family."
                 "You lived there for many long, happy years, visiting the toad now and again as a good friend."
@@ -4657,7 +4657,7 @@ label toadFinale:
                 "If you accepted your fate, turn to page 265.":
                     pov "Alright. I'm ready"
                     m "No-one's ever ready. But there's no time left."
-                    call hideAll
+                    call hideAll from _call_hideAll_93
                     show mementobg at artPos
                     "She gently took you down to the kingdom of Death."
                     call endStamp from _call_endStamp_20
@@ -4679,7 +4679,7 @@ label endStamp:
 
 label end:
     play sound pageFlip
-    call hideAll
+    call hideAll from _call_hideAll_94
     hide text
     ""
     play sound pageFlip
