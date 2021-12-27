@@ -628,6 +628,8 @@ label start:
         show nightbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
+        jump end
+
         call hideAll from _call_hideAll
         show forest4bg at artPos
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
@@ -4454,7 +4456,7 @@ label toadFinale:
         #TK: look at setting this particular choice box to 680
         menu:
             blank ""
-            "If you explored the first tower, turn to page 256." if not firstTower
+            "If you explored the first tower, turn to page 256." if not firstTower:
                 if pig:
                     "Inside the first tower, the three of you discovered a trio of stately frog wizards, who flushed the last remains of the potions from your systems and restored you to good health."
                 else:
@@ -4883,6 +4885,27 @@ label end:
     $ renpy.pause ()
     hide tornPage2 onlayer screens zorder 101
     hide tornPage2bg onlayer screens zorder 99
+    show text "{b}BACKGROUNDS:{/b}":
+        xalign 0.5
+        #xpos 50
+        ypos 160
+    $ ui.text("{space=[ti]}1. {b}Mushroom Basement:{/b} 'I Saw a Flash of Light. Large and Pale' (1896), Odilon Redon.{vspace=[tx]}{space=[ti]}2. {b}Canopy:{/b} ‘Drawing, Rain Forest, Jamaica, West Indies’ (1865), Frederic Edwin Church.{vspace=[tx]}{space=[ti]}3. {b}Image Frames:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Thomas, Charles and William Robinson.{vspace=[tx]}{space=[ti]}4. {b}Silver, Witch's Cottage, Silver Trees:{/b} 'Morning Haze' (1888), ‘A Morning on the Seine at Giverny’ (1897), 'The Customs House at Varengeville' (1897), Claude Monet.{vspace=[tx]}{space=[ti]}5. {b}Witch's Cottage Interior:{/b} 'Interieur einer Villa mit Blick auf den Garten' (Date Unkown), Marie Dücker.{vspace=[tx]}{space=[ti]}6. {b}Dark Forest:{/b} 'Australian Landscape' (1918), Stanislaw Witkiewicz.{vspace=[tx]}{space=[ti]}7. {b}Darkness:{/b} 'Dante Meeting the Lion in the Dark Forest' (1892), Gustave Doré.{vspace=[tx]}{space=[ti]}8. {b}Death:{/b} 'Starry Night' (1926–1927), Hiroaki Takahashi. 'Reclining Nude' (18th Century) Original from The MET Museum. Digitally enhanced by rawpixel.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=190, xmaximum=520)
+    $ renpy.pause ()
+    hide text
+    $ ui.text("{space=[ti]}9. {b}Forest:{/b} 'Interior of a forest' (1880 - 1890), Paul Cézanne.{vspace=[tx]}{space=[ti]}10. {b}Forest 2:{/b} 'Palms and Ferns, a Scene in the Botanic Garden, Queensland' (early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}11. {b}Forest 4 and Forest 5:{/b} 'Papier Peint Panoramique' (1861), Joseph Fuchs.{vspace=[tx]}{space=[ti]}12. {b}Future:{/b} 'Over London by Rail' (1872), Gustave Doré.{vspace=[tx]}{space=[ti]}13. {b}Goblin Interior:{/b} Fruit and Vegetable Market with a Young Fruit Seller' (1650–1660), Jan van Kessel.{vspace=[tx]}{space=[ti]}14. {b}Goblin Interior 2:{/b} 'The Goblin Market' (1914), Hilda Hechle.{vspace=[tx]}{space=[ti]}15. {b}God:{/b} 'Vision of the Empyrean' (1867), Gustave Dore.{vspace=[tx]}{space=[ti]}16. {b}Hell:{/b} 'The Destruction of Pompeii and Herculaneum' (1822), John Martin.{vspace=[tx]}{space=[ti]}17. {b}Hell Cottage:{/b} 'Interior of a Highland Cottage' (1840), John Glass.{vspace=[tx]}{space=[ti]}18. {b}Manor Exterior:{/b} 'Puss-in-Boots' (1913), Maxfield Parrish.{vspace=[tx]}{space=[ti]}19. {b}Memento:{/b} 'Memento Mori' (1916), Julie de Graag.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+    $ renpy.pause ()
+    hide text
+    $ ui.text("{space=[ti]}20. {b}Blue Mountains:{/b} 'Winter Landscape in Moonlight' (1919), Ernst Ludwig Kirchner.{vspace=[tx]}{space=[ti]}21. {b}Mushroom Basement 2:{/b} 'It Is a Skull, Crowned with Roses. It Dominates a Woman’s Pearly–White Torso' (1888), Jean Bernard.{vspace=[tx]}{space=[ti]}22. {b}Mushroom Cave:{/b} 'Expulsion. Moon and Firelight' (1828), Thomas Cole.{vspace=[tx]}{space=[ti]}23. {b}Mushroom Cave - Under:{/b} 'A Cavern, Evening' (1774), Joseph Wright.{vspace=[tx]}{space=[ti]}24. {b}Mushroom Gardens:{/b} 'Emperor Humayun with his brothers' (1540), Dust Muhammad.{vspace=[tx]}{space=[ti]}25. {b}Mushroom Palace:{/b} 'Old French Fairytales' (1920), Virginia Frances Sterrett.{vspace=[tx]}{space=[ti]}26. {b}Night:{/b} 'So the man gave him a pair of snow shoes', East of the Sun and West of the Moon (1914), Kay Neilsen.{vspace=[tx]}{space=[ti]}27. {b}Night God:{/b} 'Eye Vintage Art Drawing' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}28. {b}River:{/b} 'Rushing Water' (1901), John Singer Sargent.{vspace=[tx]}{space=[ti]}29. {b}Ruins:{/b} 'Vintage Art Scenic View Card' (Early 20th Century), RT&S publishers, UK.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+    $ renpy.pause ()
+    hide text
+    ####
+    $ ui.text("{space=[ti]}30. {b}Sabbath:{/b} 'Witches' Sabbath' (1510), Hans Baldung (called Hans Baldung Grien).{vspace=[tx]}{space=[ti]}31. {b}Strangler Fig:{/b} 'Poison Tree Strangled by a Fig, Queensland' (Early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}32. {b}Sun:{/b} 'A Wheatfield, with Cypresses' (1889), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}33. {b}Town 3:{/b} 'Our Camp on the Bunya Mountains, Queensland' (Early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}34. {b}Town - Crossroads:{/b} 'St. Hansbål ved Jølstervatnet (St. John's Eve bonfire at Jølstravatn)' (1909), Nikolai Astrup.{vspace=[tx]}{space=[ti]}35. {b}Town Exterior:{/b} 'Small Grain Poles' (1904), Nikolai Astrup.{vspace=[tx]}{space=[ti]}36. {b}Town - Feast:{/b} 'St. John’s Fire' (1912), Nikolai Astrup.{vspace=[tx]}{space=[ti]}37. {b}Train:{/b} 'The Train' (1910), Louise Thuiller.{vspace=[tx]}{space=[ti]}38. {b}Train - Full:{/b} 'Take Me by The Flying Scotsman' (1932), Thomson, A R.{vspace=[tx]}{space=[ti]}39. {b}Tree - Night:{/b} 'Night in the Forest' (1859), William Louis Sonntag.{vspace=[tx]}{space=[ti]}40. {b}Well:{/b} Image taken from page 192 of 'Celebrated American Caverns, especially Mammoth, Wyandot, and at Luray, etc' (1882), Hovey, Horace Carter.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+    $ renpy.pause ()
+    hide text
+    $ ui.text("{space=[ti]}41. {b}Winter:{/b} 'Snow-covered field with a harrow (after Millet)' (1890), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}42. {b}Devil - Full:{/b} 'Triptych of Earthly Vanity and Divine Salvation' (1485), Hans Memling.{vspace=[tx]}{space=[ti]}43. {b}Dark Forest:{/b} 'Twilight in the Tropics' (1874), Frederic Edwin Church.", xpos=50, ypos=150, xmaximum=520)
+    $ renpy.pause ()
+    hide text
+
     show text "{b}FRIPPERIES:{/b}":
         xalign 0.5
         #xpos 50
@@ -4896,7 +4919,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Oz's Wizard.{/b} Mario Arturo, 2012.{vspace=[tx]}{space=[ti]}2. {b}Journal.{/b} Fontourist, 2008.{vspace=[tx]}{space=[ti]}3. {b}Mom's Typewriter.{/b} Christoph Mueller, 1997.{vspace=[tx]}{space=[ti]}4. {b}Book Antiqua.{/b} Monotype Type Drawing Office, 1995.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Oz's Wizard:{/b} Mario Arturo, 2012.{vspace=[tx]}{space=[ti]}2. {b}Journal:{/b} Fontourist, 2008.{vspace=[tx]}{space=[ti]}3. {b}Mom's Typewriter:{/b} Christoph Mueller, 1997.{vspace=[tx]}{space=[ti]}4. {b}Book Antiqua:{/b} Monotype Type Drawing Office, 1995.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     show text "{b}SOUND:{/b}":
         xalign 0.5
