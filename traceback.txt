@@ -1,22 +1,20 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 606, in script
-    return
-Exception: Could not find return label (u'game/script.rpy', 1639184229, 297).
+After initialization, but before game start.
+WindowsError: [Error 32] The process cannot access the file because it is being used by another process
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 606, in script
-    return
-  File "renpy/ast.py", line 1521, in execute
-    next_node(renpy.game.context().lookup_return(pop=True))
-  File "renpy/execution.py", line 710, in lookup_return
-    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
-Exception: Could not find return label (u'game/script.rpy', 1639184229, 297).
+  File "renpy/bootstrap.py", line 326, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 567, in main
+    renpy.dump.dump(False)
+  File "renpy/dump.py", line 260, in dump
+    os.rename(new, filename)
+WindowsError: [Error 32] The process cannot access the file because it is being used by another process
 
 Windows-10-10.0.17763
 Ren'Py 7.4.4.1439
-The Thief, the Toad, the Witch & the Mushroom 1.0
-Sun Dec 12 14:16:32 2021
+The Thief, the Toad, the Witch & the Mushroom 0.8
+Tue Dec 28 17:02:13 2021

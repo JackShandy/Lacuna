@@ -74,6 +74,8 @@ define pitiful = 1
 define pig = False
 #The Pig's story in the witch chapter
 define pig1Story = False
+#The witch's story
+define witchStory = False
 #Have you seen the mushroom utter the password for her house?
 define mushroomPassword = False
 #Have you seen the mushroom's cavern?
@@ -624,11 +626,19 @@ label start:
         $Hes = persistent.Hes
         $hes = persistent.hes
         $povname = persistent.povname
+        #scene bg page
+        #show hand onlayer transient:
+            #yalign 0.6#0.743
+            #xalign 0.5
+        #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
+        #$ renpy.pause ()
+        #hide text
+        #$ ui.text("{space=[ti]}1. {b}Oz's Wizard:{/b} Mario Arturo, 2012.{vspace=[tx]}{space=[ti]}2. {b}Journal:{/b} Fontourist, 2008.{vspace=[tx]}{space=[ti]}3. {b}Mom's Typewriter:{/b} Christoph Mueller, 1997.{vspace=[tx]}{space=[ti]}4. {b}Book Antiqua:{/b} Monotype Type Drawing Office, 1995.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
         scene bg page
         show nightbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
-        jump end
+
 
         call hideAll from _call_hideAll
         show forest4bg at artPos
@@ -742,21 +752,78 @@ label start:
                     jump chapter2
                 "If she said no, turn to page 25." if thirdManWho:
                     mum "I don't want you as the Godmother. You take men before it is their time."
-                    wib "You should have thought of that sooner."
                     wib "There is no-one else left to take [him]."
-                    "In one swoop She bowed down and placed Her mark upon you."
-                    wib "You will name [him] [povname]."
-                    if he == "they":
-                        wib "The moment [he] turn eighteen, [he] will be mine."
-                    else:
-                        wib "The moment [he] turns eighteen, [he] will be mine."
-                    wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
-                    mum "Very well. Beggars can't be choosers, I suppose. Make sure you're there for the christening on Sunday."
+                    wib "You must make your choice."
                     show hand onlayer transient:
-                        yalign 0.77#0.743
+                        yalign 0.66#0.743
                         xalign 0.5
-                    "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Grandchild.{/b}{/i}"
-                    $godfather = "Black"
+                    menu:
+                        "Your mother looked around the dark forest in panic."
+                        "If she chose The Lord, turn to page 5.":
+                            "In desperation, she renounced her foolish pride and sought the protection of the Most High Himself."
+                            miw "As I have foreseen."
+                            "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
+                            miw "You will name [him] [povname]."
+                            if he == "they":
+                                miw "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
+                            else:
+                                miw "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
+                            mum "Alright. Make sure you're there for the christening."
+                            show hand onlayer transient:
+                                yalign 0.71#0.743
+                                xalign 0.5
+                            "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
+                            $godfather = "White"
+                            jump chapter2
+                        "If she chose The Devil, turn to page 6.":
+                            "In desperation, she turned back and sought the protection of the deceiver Himself."
+                            mum "Beggars can't be choosers, I suppose. Please, protect my child."
+                            mir "Excellent!"
+                            "He let out a great shrieking cackle and placed His mark upon you."
+                            mir "You will name [him] [povname]."
+                            if he == "they":
+                                mir "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
+                            else:
+                                mir "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
+                            mum "Alright. Just make sure you're there for the christening on Sunday."
+                            show hand onlayer transient:
+                                yalign 0.71#0.743
+                                xalign 0.5
+                            "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
+                            $godfather = "Red"
+                            jump chapter2
+                        "If she chose Death, turn to page 7.":
+                            mum "I'm sorry for my foolish words. Please, protect my child."
+                            "In one swoop Death bowed down and placed Her mark upon you."
+                            wib "You will name [him] [povname]."
+                            if he == "they":
+                                wib "The moment [he] turn eighteen, [he] will be mine."
+                            else:
+                                wib "The moment [he] turns eighteen, [he] will be mine."
+                            wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
+                            mum "Alright. Make sure you're there for the christening on Sunday."
+                            show hand onlayer transient:
+                                yalign 0.77#0.743
+                                xalign 0.5
+                            "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
+                            $godfather = "Black"
+                            jump chapter2
+                        #"If she chose no godparent at all (A reckless choice indeed), turn to page 7.":
+                        #    ""
+                    # wib "You should have thought of that sooner."
+                    # "In one swoop She bowed down and placed Her mark upon you."
+                    # wib "You will name [him] [povname]."
+                    # if he == "they":
+                    #     wib "The moment [he] turn eighteen, [he] will be mine."
+                    # else:
+                    #     wib "The moment [he] turns eighteen, [he] will be mine."
+                    # wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
+                    # mum "Very well. Beggars can't be choosers, I suppose. Make sure you're there for the christening on Sunday."
+                    # show hand onlayer transient:
+                    #     yalign 0.77#0.743
+                    #     xalign 0.5
+                    # "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Grandchild.{/b}{/i}"
+                    # $godfather = "Black"
                     jump chapter2
                 "If she asked the mysterious figure who She was, turn to page 18." if not thirdManWho:
                     mum "I don't know you."
@@ -764,7 +831,8 @@ label start:
                     "She tilted her head so that the moonlight fell on it, and your mother saw that it was true. It was Lady Death herself."
                     $thirdManWho = True
                     jump thirdMan2
-    scene bg rainforest
+    label godparentChoose:
+
 
 # Act 1, Chapter 2: The Path
 label chapter2:
@@ -1095,9 +1163,9 @@ label chapter2:
                                     "If you kept the pig, turn to page 53.":
                                         "You picked up the pig and held it under the crook of your arm."
                                         show hand onlayer transient:
-                                            yalign 0.69#0.743
+                                            yalign 0.743#0.743
                                             xalign 0.5
-                                        "From that day on he would always be your loyal friend and ally, and the two of you would get through more scrapes and misadventures than I have time to relate tonight.{vspace=100}{i}In your notes, write down that {b}You have a pig.{/b}{/i}"
+                                        "From that day on he would always be your loyal friend and ally, and the two of you would get through more scrapes and misadventures than I have time to relate tonight.{vspace=100}{i}In your notes, write down that you {b}have a pig.{/b}{/i}"
                                         $pig = True
                                     "If you let the pig run free and wild, as nature intended, turn to page 8.":
                                         "With sorrow, you removed the cloak and wig, and gave the pig his freedom."
@@ -1204,7 +1272,7 @@ label chapter2:
             eg "I am heading to the village festival. You should join me."
     eg "Come, ride along in my carriage, and we shall get there twice as fast."
     if pig:
-        "Your pig oinked at the carriage suspiciously."
+        "Your pig sniffed at the carriage suspiciously."
     show hand onlayer transient:
         yalign 0.7#0.743
         xalign 0.5
@@ -1739,7 +1807,7 @@ label town:
     #TK: Add another character who randomly appears and disappears - moon-head?
     label townExplore:
         show hand onlayer transient:
-            yalign 0.63#0.743
+            yalign 0.62#0.743
             xalign 0.5
         menu:
             "Some of the villagers were strapping down a tarp."
@@ -2098,7 +2166,7 @@ label thief2:
                 show forest4bg at artPos
                 "You ran deep into the forest, planning to lay an ambush for the thief. Soon, you left the others far behind."
                 "You lay in wait behind a bush until you heard their running footsteps. Then you leapt out and grabbed them."
-            "If you sent your pig after them while you set an ambush, turn to page 137." if pig:
+            "If you {b}have a pig{/b}, turn to page 137." if pig:
                 "The pig chased after them furiously, grunting pig curses at the fleeing figure."
                 call hideAll from _call_hideAll_24
                 show forest4bg at artPos
@@ -2435,10 +2503,14 @@ label mushroomFinale:
                                 "If you remained good friends with the mushrooms, turn to page 155.":
                                     if godfather == "Red":
                                         "You and the mushrooms stayed the greatest of friends, talking all through the small hours together."
+                                        if pig:
+                                            "Your pig settled down to a contented life among the truffles."
                                         "You set up a quaint home in that strange country, and soon you were even able to find your poor mother and make amends for your wicked behaviour."
                                         "After a long time, your siblings came down to join you there, one by one."
                                     else:
                                         "You and the mushrooms stayed the greatest of friends, talking all through the small hours together."
+                                        if pig:
+                                            "Your pig settled down to a contented life among the truffles."
                                         "You set up a quaint home in that dark kingdom. After a long time, your mother and siblings came down to join you there, one by one."
                                 "If you married the mushrooms, turn to page 156.":
                                     "After slowly growing close over many years, you and the mushrooms all became married together in a beautiful ceremony. Your mother came down to the kingdom of death for the occasion, and all the plants and lichens and moss and toadstools of the forest were in attendance."
@@ -3822,115 +3894,119 @@ label witchFinale:
     "Hell was dark and sooty, and the Devil was not home."
     if pig:
         "The pig was looked around in stark terror."
-        p1 "Listen, [povname]. I can't be here. I can't go back to Hell again."
+        p1 "Listen to me, comrade. I can't be here. I can't go back to Hell again."
         p1 "I have... enemies."
         w "The pig is right. We have to get out. I've spent too many years here already."
         pov "Years? What do you mean?"
         "The witch sighed as you all picked yourself up from the floor, battered and bruised."
+        jump hellStory
     else:
         w "Not again!"
         pov "...What do you mean, not again?"
         "The witch sighed as you both picked yourself up from the floor, battered and bruised."
-    label witchStory:
-        show hand onlayer transient:
-            yalign 0.72#0.743
-            xalign 0.5
-        menu:
-            w "The truth is, I have worked for the Devil all this time, and wrought his wicked works upon the world - though it pleased me none to do so."
-            "If you asked the witch to tell her tale, turn to page 215." if not witchStory:
-                $witchStory = True
-                if pig:
-                    "You all sat down on a lump of brimstone together, and she began to tell you her tale."
-                else:
-                    "You all sat down on a lump of brimstone together, and she began to tell you her tale."
-                w "Once, I was the princess of a vast kingdom very far from here, where we ruled over sapphire seas and emerald skies."
-                w "From a young age I had a terrible hunger for knowledge, and soon I had devoured every book in the kingdom."
-                w "Librarians everywhere grew to fear me, and they called me The Girl Who Knew Everything."
-                w "Soon the Devil Himself learned of my wisdom and pride, and grew jealous."
-                w "\"I'll teach her a thing or two,\" he said, and whipped himself to my kingdom on the spot."
-                mir "Oh Princess! I have need of your wisdom!"
-                mir "If you are able to answer 3 riddles of mine, I will grant you a boon. But if you cannot answer, you must come serve me in hell."
-                w "\"I accept!\" I said, because there wasn't a single riddle in the world I had not eaten whole."
-                mir "Poke your fingers in my eyes and I will open wide my jaws. Linen cloth, quills, or paper, my greedy lust devours them all. What am I?"
-                #TK: Look at a way to have the input screen appear when the answer is above it.
-                python:
-                    answer1 = renpy.input("{i}Answer thee my riddles three:{/i}", length=8)
+        jump hellStory
+label hellStory:
+    show hand onlayer transient:
+        yalign 0.71#0.743
+        xalign 0.5
+    menu:
+        w "The truth is, I have worked for the Devil all this time, and wrought his wicked works upon the world - though it pleased me none to do so."
+        "If you asked the witch to tell her tale, turn to page 215." if not witchStory:
+            w "test"
+            $witchStory = True
+            if pig:
+                "You all sat down on a lump of brimstone together, and she began to tell you her tale."
+            else:
+                "You all sat down on a lump of brimstone together, and she began to tell you her tale."
+            w "Once, I was the princess of a vast kingdom very far from here, where we ruled over sapphire seas and emerald skies."
+            w "From a young age I had a terrible hunger for knowledge, and soon I had devoured every book in the kingdom."
+            w "Librarians everywhere grew to fear me, and they called me The Girl Who Knew Everything."
+            w "Soon the Devil Himself learned of my wisdom and pride, and grew jealous."
+            w "\"I'll teach her a thing or two,\" he said, and whipped himself to my kingdom on the spot."
+            mir "Oh Princess! I have need of your wisdom!"
+            mir "If you are able to answer 3 riddles of mine, I will grant you a boon. But if you cannot answer, you must come serve me in hell."
+            w "\"I accept!\" I said, because there wasn't a single riddle in the world I had not eaten whole."
+            mir "Poke your fingers in my eyes and I will open wide my jaws. Linen cloth, quills, or paper, my greedy lust devours them all. What am I?"
+            #TK: Look at a way to have the input screen appear when the answer is above it.
+            python:
+                answer1 = renpy.input("{i}Answer thee my riddles three:{/i}", length=8)
 
-                if answer1 == "Scissors" or answer1 == "scissors" or answer1 == "Scissor" or answer1 == "scissor" or answer1 == "Shears" or answer1 == "shears" or answer1 == "Shear" or answer1 == "shear" or answer1 == "Clippers" or answer1 == "clippers" or answer1 == "Clipper" or answer1 == "clipper" or answer1 == "Cutters" or answer1 == "cutters" or answer1 == "Cutter" or answer1 == "cutter":
-                    mir "Confound it, that's right."
-                    w "The Devil ground his teeth and stomped his feet and fled from the tower."
-                    w "He spent all night and all day thinking of a riddle to vex me, and on the 2nd night he came to my tower again, rubbing his long fingers together."
-                    jump riddle2
+            if answer1 == "Scissors" or answer1 == "scissors" or answer1 == "Scissor" or answer1 == "scissor" or answer1 == "Shears" or answer1 == "shears" or answer1 == "Shear" or answer1 == "shear" or answer1 == "Clippers" or answer1 == "clippers" or answer1 == "Clipper" or answer1 == "clipper" or answer1 == "Cutters" or answer1 == "cutters" or answer1 == "Cutter" or answer1 == "cutter":
+                mir "Confound it, that's right."
+                w "The Devil ground his teeth and stomped his feet and fled from the tower."
+                w "He spent all night and all day thinking of a riddle to vex me, and on the 2nd night he came to my tower again, rubbing his long fingers together."
+                jump riddle2
+            else:
+                jump devilWins
+
+            label riddle2:
+                mir "I have need of your wisdom again, O Princess."
+                mir "You make me, but I hold you in my grasp. I terrify without limit, but disappear before dawn. What am I?"
+                python:
+                    answer2 = renpy.input("{i}Answer thee my riddles three:{/i}", length=9)
+
+                if answer2 == "Nightmare" or answer2 == "nightmare" or answer2 == "Nightmares" or answer2 == "nightmares" or answer2 == "Bad Dream" or answer2 == "Bad dream" or answer2 == "bad dream" or answer2 == "bad Dream" or answer2 == "Dream" or answer2 == "dream" or answer2 == "night terror" or answer2 == "Night Terror" or answer2 == "Night terror" or "night Terror":
+                    mir "Correct again!"
+                    w "The Devil tore off his hat and threw it upon the ground and stomped on it, and tore at his clothes with anger, and fled from the tower again."
+                    mir "This girl is too clever by half. But I have just the thing that'll show her."
+                    w "That night as I slept he crawled into my bedroom through the chimney, and dropped the seed of a rose bush in my ear."
+                    w "The seed quickly grew and grew inside my skull, until it cracked my head clean open."
+                    w "As I awoke I saw there were roses in my ears and cracks in my crown. But worse still, my thoughts began to leak out of my head in dark heavy smoke."
+                    w "My servants came to me and I could not say their names."
+                    w "I looked at the clothes in the dresser, and I could not say which ones were mine."
+                    w "I walked down through the tower, and where before I could have named each leaf and bush and plant, I could not for the life of me remember them now."
+                    w "And all the while the dark smoke slowly leaked out of my head, no matter how I tried to stop it."
+                    w "And so on the third night the Devil came again with a triumphant smile, and asked his third and final riddle."
+                    jump riddle3
                 else:
                     jump devilWins
 
-                label riddle2:
-                    mir "I have need of your wisdom again, O Princess."
-                    mir "You make me, but I hold you in my grasp. I terrify without limit, but disappear before dawn. What am I?"
-                    python:
-                        answer2 = renpy.input("{i}Answer thee my riddles three:{/i}", length=9)
-
-                    if answer2 == "Nightmare" or answer2 == "nightmare" or answer2 == "Nightmares" or answer2 == "nightmares" or answer2 == "Bad Dream" or answer2 == "Bad dream" or answer2 == "bad dream" or answer2 == "bad Dream" or answer2 == "Dream" or answer2 == "dream" or answer2 == "night terror" or answer2 == "Night Terror" or answer2 == "Night terror" or "night Terror":
-                        mir "Correct again!"
-                        w "The Devil tore off his hat and threw it upon the ground and stomped on it, and tore at his clothes with anger, and fled from the tower again."
-                        mir "This girl is too clever by half. But I have just the thing that'll show her."
-                        w "That night as I slept he crawled into my bedroom through the chimney, and dropped the seed of a rose bush in my ear."
-                        w "The seed quickly grew and grew inside my skull, until it cracked my head clean open."
-                        w "As I awoke I saw there were roses in my ears and cracks in my crown. But worse still, my thoughts began to leak out of my head in dark heavy smoke."
-                        w "My servants came to me and I could not say their names."
-                        w "I looked at the clothes in the dresser, and I could not say which ones were mine."
-                        w "I walked down through the tower, and where before I could have named each leaf and bush and plant, I could not for the life of me remember them now."
-                        w "And all the while the dark smoke slowly leaked out of my head, no matter how I tried to stop it."
-                        w "And so on the third night the Devil came again with a triumphant smile, and asked his third and final riddle."
-                        jump riddle3
-                    else:
-                        jump devilWins
-
-                label riddle3:
-                    mir "What gets broken when it's not kept?"
-                    #TK: Have a weird text effect when you type in here
-                    python:
-                        answer3 =  renpy.input("{i}Answer thee my riddles three:{/i}", length=10)
-                    w "I felt the answer, right there. I sweated and strained to remember it."
-                    w "But no matter how I tried to hold it, the truth slipped from my hands."
-                    w "\"I... do not know,\" I said."
-                    mir "A promise!"
-                    w "And the Devil cried out with glee, and he seized me at once and leapt into the fireplace and dragged me straight to hell."
-                    w "And so it was that I came to serve the Devil for the rest of my days."
-                    if pig:
-                        "You and the pig shook your heads and wept to hear such a sorry tale, and all around you the tears hit the floor and turned into terrible shrieking imps that swarmed around you, poking your soft legs and cackling cruelly at your misfortune."
-                    else:
-                        "You shook your head and wept to hear such a sorry tale, and all around you the tears hit the floor and turned into terrible shrieking imps that swarmed around the both of you, poking your soft legs and cackling cruelly at your misfortune."
-                    "Such is life in Hell."
-                    jump witchStory
-            "If you asked the pig for his tale, turn to page 219." if pig and if not pig1Story:
-                $pig1Story = True
-                p1 "Very well, [povname]. I suppose you have earned the right to know my true nature."
-                p1 "You see, once long ago, I loved to do nothing but gamble. I gambled away all my money and earthly possessions, until I was forced to live in a house of straw."
-                p1 "Now, on the day before my creditors were due to take away my straw house, the Lord arrived at my door."
-                miw "Please, my child. Provide me lodging for the night."
-                p1 "\"You may stay under my straw,\" I told them, \"but I warn you - I haven't a cent to my name.\""
-                miw "That is of no concern. Take these three coins, and buy us some bread for the night."
-                p1 "Of course I immediately gambled all the money away."
-                miw "Do not test my forgiveness, pig. Here are another three coins. If you do not buy the bread this time, your immortal soul will be forfeit."
-                p1 "This cowed me enough that I followed His wishes and bought the bread. He stayed in my house all through the night."
-                p1 "In the morning the Lord granted me a wish, thinking I would want to go to heaven. But instead I asked for a deck of cards that would allow me to win any game."
-                p1 "The Lord granted my wish, and then I really got to work. Soon I had won half the world, and the Lord was forced to ask Death to stop my rampage."
-                p1 "Death took me at the poker table, and so I went up to Heaven and knocked on the gates."
-                miw "...No. We don't need you here. Be on your way, pig."
-                p1 "So I went and knocked on the gates of Purgatory."
-                wib "I don't think so. We have enough misery and trouble here. Be on your way, pig."
-                p1 "And so finally I went and knocked on the gates of Hell, where they let me in at once. There was no-one there except for Lucifer and the hunchback devils."
-                p1 "You see, the straight-backed devils were all away on business."
-                p1 "Of course I immediately challenged the old goat to a game, and soon I had won all the hunch-backed devils off Him. We all gambled into the night and made such a noise and racket that the Devil couldn't hear Himself speak."
-                p1 "Finally He was forced to run to the Almighty, crying out:"
-                mir "Please, O Lord, won't you rid me of this troublesome pig?"
-                p1 "And so they took away my cards, and I was kicked out of Hell and forced to wander the land forever and never know true peace."
-                "You all shook your heads to hear such a tale of woe."
-                jump witchStory
-            "If you continued forth into Hell, turn to page 216.":
-                w "You're right. Sitting around here telling stories won't help us."
-                jump hell
+            label riddle3:
+                mir "What gets broken when it's not kept?"
+                #TK: Have a weird text effect when you type in here
+                python:
+                    answer3 =  renpy.input("{i}Answer thee my riddles three:{/i}", length=10)
+                w "I felt the answer, right there. I sweated and strained to remember it."
+                w "But no matter how I tried to hold it, the truth slipped from my hands."
+                w "\"I... do not know,\" I said."
+                mir "A promise!"
+                w "And the Devil cried out with glee, and he seized me at once and leapt into the fireplace and dragged me straight to hell."
+                w "And so it was that I came to serve the Devil for the rest of my days."
+                if pig:
+                    "You and the pig shook your heads and wept to hear such a sorry tale, and all around you the tears hit the floor and turned into terrible shrieking imps that swarmed around you, poking your soft legs and cackling cruelly at your misfortune."
+                else:
+                    "You shook your head and wept to hear such a sorry tale, and all around you the tears hit the floor and turned into terrible shrieking imps that swarmed around the both of you, poking your soft legs and cackling cruelly at your misfortune."
+                "Such is life in Hell."
+                jump hellStory
+        "If you asked the pig for his tale, turn to page 219." if pig and not pig1Story:
+            $pig1Story = True
+            p1 "Very well, [povname]. I suppose you have earned the right to know my true nature. I must warn you, however, that this is a tale of such base depravity that it will turn your hair white to hear it."
+            p1 "You see, long ago, I loved to do nothing but gamble. I gambled away all my money and earthly possessions, until I was cast out of every human city on earth and forced to live in a house of straw."
+            p1 "Naturally, I soon gambled my straw house away. On the day before my creditors were due to take it from me, the Lord arrived at my door."
+            miw "Please, my child. I have travelled far, and I have far to go yet. Provide me lodging for the night."
+            p1 "\"You may stay under my straw,\" I told Him, \"but I warn you - I haven't a cent to my name.\""
+            miw "That is of no concern. Take these three coins, and buy us some bread for the night."
+            p1 "As you can imagine, I immediately gambled all the money away."
+            p1 "I pretended to have dropped the coins in a puddle, but the Lord immediately saw through my clever ruse."
+            miw "Do not test my forgiveness, pig. Here are another three coins. If you do not buy the bread this time, your immortal soul will be forfeit."
+            p1 "This cowed me enough that I followed His wishes and bought the bread. He stayed in my house all through the night."
+            p1 "In the morning the Lord granted me a wish, thinking I would want to go to heaven. But instead I asked for a deck of cards that would allow me to win any game."
+            p1 "The Lord granted my wish, and then I really got to work. Soon I had won half the world, and the Lord was forced to ask Death to stop my rampage."
+            p1 "Death took me at the poker table, and so I went up to Heaven and knocked on the gates."
+            miw "...No. We don't need you here. Be on your way, pig."
+            p1 "So I went and knocked on the gates of Purgatory."
+            wib "I don't think so. We have enough misery and trouble here. Be on your way, pig."
+            p1 "And so finally I went and knocked on the gates of Hell, where they let me in at once. There was no-one there except for Lucifer and the hunchback devils."
+            p1 "The straight-backed devils were all away on business, you see."
+            p1 "I challenged the old goat to a game at once, and soon I had won all the hunch-backed devils off Him. We all gambled into the night and made such a noise and racket that the Devil couldn't hear Himself speak."
+            p1 "Finally He was forced to run to the Almighty, crying out:"
+            mir "Please, O Lord, won't you rid me of this troublesome pig?"
+            p1 "And so they took away my cards, and I was kicked out of Hell and forced to wander the land forever and never know true peace."
+            "Just as the pig predicted, you saw your hair had turned white with shock to hear such a tale. You all shook your heads with sorrow."
+            jump hellStory
+        "If you continued forth into Hell, turn to page 216.":
+            w "You're right. Sitting around here telling stories won't help us."
+            jump hell
 
     label devilWins:
         mir "Wrong!"
@@ -3947,8 +4023,7 @@ label witchFinale:
         else:
             "You shook your head and wept to hear such a sorry tale, and all around you the tears hit the floor and turned into terrible shrieking imps that swarmed around the both of you, poking your soft legs and cackling cruelly at your misfortune."
         "Such is life in Hell."
-        w "Well. Sitting here crying won't help us. No offence."
-        jump hell
+        jump hellStory
 
     #TK: Exploration scene where you can click around, adventure style
     label hell:
@@ -3975,7 +4050,7 @@ label witchFinale:
         "With a flick of her wrist she transformed you all into fat yellow and black carpenter bees."
     else:
         "With a flick of her wrist she transformed you both into fat yellow and black carpenter bees."
-    w "Oh, wow!"
+    w "Oh!"
     "The witch buzzed around joyously."
     w "This might seem strange but, I've always kind of wanted to be a bee."
     pov "We still have some questions."
@@ -3990,7 +4065,7 @@ label witchFinale:
     if godfather == "Red":
         "You shook to see your godfather in the flesh at last."
     if pig:
-        "The pig shook beside you at the sight of his old rival."
+        "The pig shivered beside you at the sight of his old rival."
     dg "Hush, you young fool. You're always smelling human beings."
     dg "You're making a mess of the nice clean floors I just swept. Now come have some of the soup I made you."
     "Grumbling, He put the house back down on its foundations and sat down to eat and drink. Soon He was curled up fast asleep and snoring on His grandmother\'s lap."
@@ -4021,9 +4096,9 @@ label witchFinale:
                     yalign 0.76#0.743
                     xalign 0.5
                 if he == "they":
-                    mir "Unless of course, [he] look me in the face and recite my second and most secret name, Belthuselah. But that will never happen!.{vspace=190}{i}In your notes, write down that you {b}know the Devil's second and most secret name.{/b}{/i}"
+                    mir "Unless of course, [he] look me in the face and recite my second and most secret name, Belthuselah. But that will never happen!{vspace=160}{i}In your notes, write down that you {b}know the Devil's second and most secret name.{/b}{/i}"
                 else:
-                    mir "Unless of course, [he] looks me in the face and recites my second and most secret name, Belthuselah. But that will never happen!{vspace=190}{i}In your notes, write down that you {b}know the Devil's second and most secret name.{/b}{/i}"
+                    mir "Unless of course, [he] looks me in the face and recites my second and most secret name, Belthuselah. But that will never happen!{vspace=160}{i}In your notes, write down that you {b}know the Devil's second and most secret name.{/b}{/i}"
                 jump devilSleeps
             "If you asked how to free yourself, turn to page 247." if not escapeGodfather and godfather == "White":
                 $dgAsked += 1
@@ -4148,7 +4223,7 @@ label witchFinale:
             mir "Time's up, child!"
             mir "Now you are mine, just as your mother promised all those years ago."
             show hand onlayer transient:
-                yalign 0.721#0.743
+                yalign 0.711#0.743
                 xalign 0.5
             menu:
                 mir "I'll keep you in a cave to darn my socks, and brew my grandmother's tea, and bake bread for all the hungry souls of Hell - and there's nothing you can do about it!"
@@ -4402,6 +4477,7 @@ label toadFinale:
                 fq "Yes, I know it might be hard to believe with my noble bearing. But it's all true."
                 jump toadExplore1
             "If you asked about the toad's curse, turn to page 217." if not toadCurse:
+                $toadCurse = True
                 pov "I'm sorry. Now we'll never be able to cure your curse."
                 fq "Oh... don't worry about that."
                 fq "There was never a curse."
@@ -4744,7 +4820,7 @@ label toadFinale:
             "You and the toad left the ruins of Chippingham manor behind to rot."
         "You took the gems from the wreckage and renovated the toad's old mud-hole, turning it into a warm, comfy little cottage with a great fire and enough food for a lifetime, along with a large closet of fine clothes."
         if pig:
-            "Eventually the pig recovered from his injuries and bid you a tearful farewell. With his share of the treasure, bought an iron hoof and started a gambling-house in the village, and you all visited from time to time to enjoy a game of chance with him."
+            "Eventually the pig recovered from his injuries and bid you a tearful farewell. With his share of the treasure, he bought a prosthetic hoof made of iron and started a gambling-house in the village. You all visited from time to time to enjoy a game of chance with him."
             "Thus, the legend of Iron Hoof was born."
         show hand onlayer transient:
             yalign 0.66#0.743

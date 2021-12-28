@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 4909: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
-    show text "{b}FRIPPERIES:{/b}":
+File "game/script.rpy", line 776: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
+    "If she chose The Devil, turn to page 6.":
     ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Mon Dec 27 21:10:39 2021
+Tue Dec 28 15:57:10 2021
