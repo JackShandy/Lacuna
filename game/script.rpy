@@ -130,7 +130,8 @@ define wellChat = 0
 define pigChat =0
 
 #Random chances
-define sparrowherderRand = renpy.random.randint(1,2)
+define sparrowherderRand = renpy.random.randint(1,3)
+define mayorRand = renpy.random.randint(1,3)
 define pig2Rand = renpy.random.randint(1,6)
 define wellRand = renpy.random.randint(1,2)
 
@@ -331,15 +332,6 @@ image basementfullbg = "Backgrounds/basement-full.png"
 image sabbathfullbg= "Backgrounds/sabbath-full.png"
 image trainfullbg = "Backgrounds/train-full.png"
 
-#Test Bed - these are for testing, not yet confirmed as backgrounds
-#TK: Delete tests
-
-
-
-## Backgrounds I don't think I'll use
-
-
-
 ##====Names
 image witchName= "Names/witch.png"
 image thiefName= "Names/thief.png"
@@ -528,7 +520,7 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         return
         #$renpy.full_restart()
 
-#TK: Fix this hack
+#TK: Fix this hack - instead of the pronoun screen saying "Return" it goes to this label which says return
 label splashscreen2:
     return
 #Before main menu: Making sure the animated firelight always displays
@@ -638,7 +630,7 @@ label start:
         show nightbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
-
+        jump toadExplore1
 
         call hideAll from _call_hideAll
         show forest4bg at artPos
@@ -913,7 +905,6 @@ label chapter2:
         xalign 0.5
     menu:
         "In her left hand she held a small lantern, and in her right hand she held a crooked knife stained green."
-        #TK: Include extra options if you have different grandparents (eg a wicked option if your godfather is the devil
         "If you followed her, turn to page 25.":
             "You left the path and followed her from a distance."
             call hideAll from _call_hideAll_3
@@ -934,7 +925,6 @@ label chapter2:
                     $mushroomArc +=1
                     $mushroomCavernSeen = True
                     "You quickly snuck inside before the door closed behind you."
-                    #TK: Double check my descriptions on the heat - is it consistently hot rainforest sweaty weather
                     call hideAll from _call_hideAll_4
                     show mushroomcavebg at artPos
                     "Inside you were shocked to find the tree completely hollow. A great cavern was formed inside it, cold as ice despite the heat outside."
@@ -1607,24 +1597,62 @@ label banquet:
                         sh "But never go into the circle. She might hear your footsteps, and mistake you for a witch. In a flash, you'll feel her fingers wrap around your ankles and drag you down into the earth. Once she has you, she'll never let you go."
                     elif sparrowherderChat >= 4:
                         sh "How do I know all this? The sparrows told me."
+                elif sparrowherderRand == 3:
+                    if sparrowherderChat == 0:
+                        sh "G'day."
+                        sh "Be careful as you walk around town, friend. Stick to the center of the street, and never cross the gutters without crossing your path with salt."
+                        sh "The Gutterlings hide there."
+                    elif sparrowherderChat == 1:
+                        sh "They are thin, pale and wretched creatures."
+                        sh "They rise out of the earth when the gutters overflow with the summer rains."
+                    elif sparrowherderChat == 2:
+                        sh "They will follow you slowly, concealing themselves with leaves and pieces of trash."
+                        sh "When you are alone, they reach out their long, long arms, wrap around you, and drag you into the storm drain."
+                    elif sparrowherderChat == 3:
+                        sh "What happens then? Well..."
+                        sh "Some say they keep you there for years, feeding you trash and sewer water to keep you alive."
+                        sh "From your body they will harvest small pieces of flesh. A thumb, a toe, an ear."
+                        sh "From these pieces, they will grow more Gutterlings."
+                    elif sparrowherderChat >= 4:
+                        sh "How do I know all this? The sparrows told me."
                 $sparrowherderChat +=1
                 jump banquetMenu
             "If you talked to the Mayor, turn to page 82." if mayorChat <= 6:
-                if mayorChat == 0:
-                    may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
-                elif mayorChat == 1:
-                    may "They say his front face is a full moon, and his back face is a new moon."
-                elif mayorChat == 2:
-                    may "If he looks at you with his bright face, you can tell nothing but the truth. If he looks at you with his dark face, you can tell nothing but lies."
-                elif mayorChat == 3:
-                    may "His robes are rich blue silk with clouds and fog rippling across them, and they flow around him in hypnotising waves as he dances."
-                elif mayorChat == 4:
-                    may "He leaps through the trees calling for his disciples, the lost and insane, and they all spring together through the woods with glee, singing moon-mad songs."
-                    may "It's quite the sight to see."
-                elif mayorChat == 5:
-                    may "He winked at my mother once, and I never saw her again."
-                elif mayorChat >= 6:
-                    may "Sometimes I still hear her laughter on moonless nights."
+                if mayorRand ==1:
+                    if mayorChat == 0:
+                        may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
+                    elif mayorChat == 1:
+                        may "They say his front face is a full moon, and his back face is a new moon."
+                    elif mayorChat == 2:
+                        may "If he looks at you with his bright face, you can tell nothing but the truth. If he looks at you with his dark face, you can tell nothing but lies."
+                    elif mayorChat == 3:
+                        may "His robes are rich blue silk with clouds and fog rippling across them, and they flow around him in hypnotising waves as he dances."
+                    elif mayorChat == 4:
+                        may "He leaps through the trees calling for his disciples, the lost and insane, and they all spring together through the woods with glee, singing moon-mad songs."
+                        may "It's quite the sight to see."
+                    elif mayorChat == 5:
+                        may "He winked at my mother once, and I never saw her again."
+                    elif mayorChat >= 6:
+                        may "Sometimes I still hear her laughter on moonless nights."
+                elif mayorRand ==2:
+                    if mayorChat == 0:
+                        may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
+                    elif mayorChat == 1:
+                        may "They say his front face is a full moon, and his back face is a new moon."
+                    elif mayorChat == 2:
+                        may "If he looks at you with his bright face, you can tell nothing but the truth. If he looks at you with his dark face, you can tell nothing but lies."
+                    elif mayorChat == 3:
+                        may "His robes are rich blue silk with clouds and fog rippling across them, and they flow around him in hypnotising waves as he dances."
+                    elif mayorChat == 4:
+                        may "He leaps through the trees calling for his disciples, the lost and insane, and they all spring together through the woods with glee, singing moon-mad songs."
+                        may "It's quite the sight to see."
+                    elif mayorChat == 5:
+                        may "He winked at my mother once, and I never saw her again."
+                    elif mayorChat >= 6:
+                        may "Sometimes I still hear her laughter on moonless nights."
+                #TK: Add the other 2 options
+                elif mayorRand ==3:
+                    ""
                 $mayorChat += 1
                 jump banquetMenu
             #If you're going out to hunt the witch, be wary. There's a wolf out there.
@@ -1987,7 +2015,6 @@ label town:
             yalign 0.63#0.743
             xalign 0.5
         menu:
-            #TK: look at the wording of this and "hot sweaty anarchy"
             go "Care to join us?"
             "If you asked how they planned to catch the thief, turn to page 66." if not villagersPlan:
                 h "With this!"
@@ -2154,7 +2181,6 @@ label thief2:
             yalign 0.65#0.743
             xalign 0.5
         menu:
-            #TK: test this menu with the pig
             "The others chased after them."
             "If you tried to chase after the thief, turn to page 135.":
                 call hideAll from _call_hideAll_22
@@ -2435,7 +2461,6 @@ label mushroomFinale:
             menu:
                 "Every type of fungi bustled around you."
                 "If you explored the moss garden, turn to page 135." if not mushroomMoss:
-                    #TK mushrooms
                     "The mushroom showed you all the wonders of that undiscovered land, where life and death go hand in hand."
                     if pig:
                         "Your pig frolicked through the gardens beside you."
@@ -2630,7 +2655,6 @@ label thief3:
     call hideAll from _call_hideAll_41
     show darkforestbg at artPos
     "You walked past a rocky coast."
-    #TK: background for the ruins
     call hideAll from _call_hideAll_42
     show ruinsbg at artPos
     "You walked past the ruins of the 6th age, a grim reminder of the inevitable destruction fast approaching your world."
@@ -2804,7 +2828,6 @@ label thief3:
                             jump scraggsConvo
                         "If you asked who they are, turn to page 173" if not scraggsMusical:
                             $scraggsMusical = True
-                            #TK: "Musical number starting" piano sting
                             sc "Why, they call us..."
                             "Scraggs and company launched into a long, flashy musical number explaining their backstory, the details of which I won't bore you with here."
                             boys "...we're just tryna survive, in a world of baa-aad seeeeeeeds!"
@@ -2950,7 +2973,6 @@ label thief3:
                     "The door opened to reveal the vast cavern of glittering treasure far below. You saw the gold and gems and red mist of incense, just as it was earlier in the night."
                 else:
                     "The door opened to reveal a vast cavern of glittering treasure far below."
-                    #TK: Double check my descriptions on the heat - is it consistently hot rainforest sweaty weather
                     "It was the hollow interior of an enormous strangler fig. A great cavern was formed inside it, cold as ice despite the heat outside."
                     "The floor of the cavern was piled with rubies and pearls and glinting onyx and solid gold pieces, larger than your fist."
                     "All across the room were lush silks and pillars of precious metals of every type, and riches that would turn the King of Kings green with envy."
@@ -3869,7 +3891,6 @@ label witch2:
     "The fire in the kitchen flared up wildly and began to spew flowers in all directions."
     if pig:
         "The pig tried to stop the melee but was tossed aside by a rogue bromeliad."
-    #TK: Flowers
     show hand onlayer transient:
         yalign 0.72#0.743
         xalign 0.5
@@ -4467,7 +4488,6 @@ label toadFinale:
                 fq "Pretty dumb, I know. Kid's stuff. Haven't done it in years."
                 "But the costumes seemed well cared for."
                 jump toadExplore1
-            #TK: Toad admits that there was no curse.
             "If you asked the toad about this place, turn to page 216." if not toadWhere:
                 $toadWhere = True
                 pov "Where are we?"
@@ -4498,13 +4518,11 @@ label toadFinale:
                 pov "Who are you?"
                 "The toad sighed."
                 fq "This..."
-                #TK: Change to ???
                 fq "...is Brildebrogue Chippingham."
                 bc "The very same!"
                 "The frog beamed and helped you to your feet as you transformed into a garden rake."
                 bc "Say, that voice is awfully familiar..."
                 bc "Is that you, Blort?"
-                #TK: Change to blort Bronkum
                 fq "Yes. Yes, that's my real name."
                 fq "I am Blort Bronkum, and I have never succeeded at anything in my life."
     call hideAll from _call_hideAll_87
@@ -4515,8 +4533,7 @@ label toadFinale:
     "Brildebrogue himself regaled you with witty anecdotes of his thrilling adventures, which had everyone rolling around on the floor laughing, except for the toad, who sat in the corner and scowled."
     bc "Please make yourselves at home, my friends!"
     bc "I'm afraid I must leave immediately. Business with the jewelled serpent-kings of the City of Brass, you understand."
-    f "Of course. Actually, I recall I was chatting with the jewelled serpent-kings myself just the other day, and -"
-    #TK: Interruption effect, like the words jump or shake or something!
+    f "Of course. Actually, I recall I was chatting with the jewelled serpent-kings myself just the other day, and -{w=1.0}{nw}"
     bc "Help yourselves to all the delights of Chippingham Manor! Here are the keys to the whole place. You may go wherever you wish, and open every door!"
     bc "...except one."
     bc "This little golden key will unlock the smallest closet in the tallest tower. Do not open that closet."
@@ -4527,9 +4544,8 @@ label toadFinale:
         "The pig relaxed into his bath and grunted with contentment."
     label chippinghamManor:
         show hand onlayer transient:
-            yalign 0.58#0.743
+            yalign 0.57#0.743
             xalign 0.5
-        #TK: look at setting this particular choice box to 680
         menu:
             blank ""
             "If you explored the first tower, turn to page 256." if not firstTower:
@@ -4566,7 +4582,7 @@ label toadFinale:
                 $sixthTower = True
                 "Inside the sixth tower you found the Library of Alexandria. A small plaque explained that Brildebrogue had miraculously saved the books from the fires, and they'd been stored here safely for all this time."
                 jump chippinghamManor
-            "If you explored the seventh and tallest tower, turn to page page 264." if firstTower:
+            "If you explored the seventh tower, turn to page page 264." if firstTower:
                 "Inside the seventh and tallest tower you found only a tiny wooden closet."
                 show hand onlayer transient:
                     yalign 0.68#0.743

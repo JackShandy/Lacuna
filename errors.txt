@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 776: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
-    "If she chose The Devil, turn to page 6.":
-    ^
+File "game/script.rpy", line 1653: elif clause expects a non-empty block.
+    elif mayorRand ==3:
+                       ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Tue Dec 28 15:57:10 2021
+Thu Dec 30 14:20:43 2021
