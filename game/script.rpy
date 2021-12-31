@@ -482,9 +482,9 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         show cover6 with dissolve
     elif randomCover ==29 or randomCover == 30:
         show cover9 with dissolve
-    #$ renpy.music.play("audio/rain.wav", fadein=0.5, channel="music", loop=True)
+    $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
-    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     #with Pause(5)
     ""
     play sound pageFlip
@@ -534,10 +534,10 @@ label splashscreen2:
 
 label after_load:
     play sound pageFlip
-    #$ renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+    $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
     #$ renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
-    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     return
 
 #This label is used to hide all backgrounds
@@ -604,8 +604,8 @@ label hideAll:
 
 label start:
     show firelight animated onlayer over_screens zorder 99
-    #$ renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
-    $ renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
+    $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
@@ -630,8 +630,6 @@ label start:
         show nightbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
-        jump toadExplore1
-
         call hideAll from _call_hideAll
         show forest4bg at artPos
         "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
@@ -1618,41 +1616,41 @@ label banquet:
                 $sparrowherderChat +=1
                 jump banquetMenu
             "If you talked to the Mayor, turn to page 82." if mayorChat <= 6:
-                if mayorRand ==1:
-                    if mayorChat == 0:
-                        may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
-                    elif mayorChat == 1:
-                        may "They say his front face is a full moon, and his back face is a new moon."
-                    elif mayorChat == 2:
-                        may "If he looks at you with his bright face, you can tell nothing but the truth. If he looks at you with his dark face, you can tell nothing but lies."
-                    elif mayorChat == 3:
-                        may "His robes are rich blue silk with clouds and fog rippling across them, and they flow around him in hypnotising waves as he dances."
-                    elif mayorChat == 4:
-                        may "He leaps through the trees calling for his disciples, the lost and insane, and they all spring together through the woods with glee, singing moon-mad songs."
-                        may "It's quite the sight to see."
-                    elif mayorChat == 5:
-                        may "He winked at my mother once, and I never saw her again."
-                    elif mayorChat >= 6:
-                        may "Sometimes I still hear her laughter on moonless nights."
-                elif mayorRand ==2:
-                    if mayorChat == 0:
-                        may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
-                    elif mayorChat == 1:
-                        may "They say his front face is a full moon, and his back face is a new moon."
-                    elif mayorChat == 2:
-                        may "If he looks at you with his bright face, you can tell nothing but the truth. If he looks at you with his dark face, you can tell nothing but lies."
-                    elif mayorChat == 3:
-                        may "His robes are rich blue silk with clouds and fog rippling across them, and they flow around him in hypnotising waves as he dances."
-                    elif mayorChat == 4:
-                        may "He leaps through the trees calling for his disciples, the lost and insane, and they all spring together through the woods with glee, singing moon-mad songs."
-                        may "It's quite the sight to see."
-                    elif mayorChat == 5:
-                        may "He winked at my mother once, and I never saw her again."
-                    elif mayorChat >= 6:
-                        may "Sometimes I still hear her laughter on moonless nights."
-                #TK: Add the other 2 options
-                elif mayorRand ==3:
-                    ""
+                #if mayorRand ==1:
+                if mayorChat == 0:
+                    may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
+                elif mayorChat == 1:
+                    may "They say his front face is a full moon, and his back face is a new moon."
+                elif mayorChat == 2:
+                    may "If he looks at you with his bright face, you can tell nothing but the truth. If he looks at you with his dark face, you can tell nothing but lies."
+                elif mayorChat == 3:
+                    may "His robes are rich blue silk with clouds and fog rippling across them, and they flow around him in hypnotising waves as he dances."
+                elif mayorChat == 4:
+                    may "He leaps through the trees calling for his disciples, the lost and insane, and they all spring together through the woods with glee, singing moon-mad songs."
+                    may "It's quite the sight to see."
+                elif mayorChat == 5:
+                    may "He winked at my mother once, and I never saw her again."
+                elif mayorChat >= 6:
+                    may "Sometimes I still hear her laughter on moonless nights."
+                # elif mayorRand ==2:
+                #     if mayorChat == 0:
+                #         may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
+                #     elif mayorChat == 1:
+                #         may "They say his front face is a full moon, and his back face is a new moon."
+                #     elif mayorChat == 2:
+                #         may "If he looks at you with his bright face, you can tell nothing but the truth. If he looks at you with his dark face, you can tell nothing but lies."
+                #     elif mayorChat == 3:
+                #         may "His robes are rich blue silk with clouds and fog rippling across them, and they flow around him in hypnotising waves as he dances."
+                #     elif mayorChat == 4:
+                #         may "He leaps through the trees calling for his disciples, the lost and insane, and they all spring together through the woods with glee, singing moon-mad songs."
+                #         may "It's quite the sight to see."
+                #     elif mayorChat == 5:
+                #         may "He winked at my mother once, and I never saw her again."
+                #     elif mayorChat >= 6:
+                #         may "Sometimes I still hear her laughter on moonless nights."
+                # #TK: Add the other 2 options
+                # elif mayorRand ==3:
+                #     ""
                 $mayorChat += 1
                 jump banquetMenu
             #If you're going out to hunt the witch, be wary. There's a wolf out there.

@@ -919,14 +919,14 @@ screen preferences():
                 vbox:
 
                     if config.has_music:
-                        label _("Rain Volume")
+                        label _("Wildlife Volume")
 
                         hbox:
                             bar value Preference("music volume")
 
                     if config.has_sound:
 
-                        label _("Ambience Volume")
+                        label _("Sound and Ambience Volume")
 
                         hbox:
                             bar value Preference("sound volume")
@@ -934,10 +934,10 @@ screen preferences():
                             if config.sample_sound:
                                 textbutton _("Test") action Play("sound", config.sample_sound)
 
-                        label _("Self-Voicing Volume")
+                        #label _("Self-Voicing Volume")
 
-                        hbox:
-                            bar value Preference("self voicing volume drop")
+                        #hbox:
+                            #bar value Preference("self voicing volume drop")
 
 
 
