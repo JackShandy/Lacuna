@@ -47,6 +47,7 @@ define Him = "Him"
 define Hes = "He's"
 define hes = "he's"
 
+#PERSISTENT DATA
 #persistent pronouns
 default persistent.he = "he"
 default persistent.He = "He"
@@ -2170,7 +2171,7 @@ label thief2:
                 pov "Wait just a second!"
                 "You leapt for the Echidna, but it backflipped away just in time."
                 "Laughing maniacally, it ripped off its mask to reveal none other than the Master Thief."
-                t "That's right, it was I all along! I have stolen the eyes of Heaven and the hands of god, and now I use those eyes and hands to wreak mischief and misery upon this cursed earth!"
+                t "That's right, it was I all along! I have stolen the eyes of Heaven and the hands of G-d, and now I use those eyes and hands to wreak mischief and misery upon this cursed earth!"
                 h "Stop them!"
                 "The thief fled into the forest."
                 jump thiefChase2
@@ -2981,7 +2982,6 @@ label thief3:
                 show hand onlayer transient:
                     yalign 0.68#0.743
                     xalign 0.5
-                #TK: Gems
                 menu:
                     "You saw a jeweled scimitar stuck into the wood nearby."
                     "If you helped the thief with their plunder, turn to page 185.":
@@ -3312,7 +3312,7 @@ label thiefStory:
             show darkforestbg at artPos
             "The thief stared about in amazement."
             t "But... "
-            t "I felt the eyes of God upon me. How could He not see all the rot inside me?"
+            t "I felt the eyes of G-d upon me. How could He not see all the rot inside me?"
             pov "There is none. There never was."
         else:
             goblinQueen "Choose your child out of the line, and their life will be yours once more."
@@ -3332,7 +3332,7 @@ label thiefStory:
             "The whole line erupted into goblin smoke, and the two of you were revealed. In a flash, the goblins turned both the parents into hideous grubs which squirmed away and were buried in the dirt. The blazing light vanished back behind the clouds, and the whole train leapt up in great celebration."
             "The thief stared about in amazement."
             t "But... "
-            t "I felt the eyes of God upon me. How could He not see the rot inside me?"
+            t "I felt the eyes of G-d upon me. How could He not see the rot inside me?"
             pov "There's none there. There never was."
             if godfather == "Red":
                 "Just then in a puff of smoke, the Devil appeared! Your godfather had come for you at last."
@@ -4043,8 +4043,6 @@ label hellStory:
             "You shook your head and wept to hear such a sorry tale, and all around you the tears hit the floor and turned into terrible shrieking imps that swarmed around the both of you, poking your soft legs and cackling cruelly at your misfortune."
         "Such is life in Hell."
         jump hellStory
-
-    #TK: Exploration scene where you can click around, adventure style
     label hell:
         show hand onlayer transient:
             yalign 0.69#0.743
@@ -4126,9 +4124,9 @@ label hellStory:
                 dg "I dreamed that a desperate young mother once pledged her child to God, as the godfather - and that their child was bound to be taken by Him on [his] 18th birthday. Can [he] ever escape, do you think?"
                 mir "Ha! That's easy."
                 if he == "they":
-                    mir "The Lord is blind to the desperate. All [he] have to do is take on the disguise of an old leper, and God will walk right by."
+                    mir "The Lord is blind to the desperate. All [he] have to do is take on the disguise of an old leper, and G-d will walk right by."
                 else:
-                    mir "The Lord is blind to the desperate. All [he] has to do is take on the disguise of an old leper, and God will walk right by."
+                    mir "The Lord is blind to the desperate. All [he] has to do is take on the disguise of an old leper, and G-d will walk right by."
                 mir "But [he]'ll never do that!"
                 jump devilSleeps
             "If you asked how to free yourself, turn to page 247." if not escapeGodfather and godfather == "Black":
@@ -4276,11 +4274,11 @@ label hellStory:
         elif godfather == "White":
             w "Quick! Your godfather will be here any minute."
             "You both leapt into action. You disguised yourselves as beggars and lepers, and through great lumps of mud all over the half-ruined cottage so that it looked like an abandoned hovel."
-            "Soon, the clock struck midnight, and you felt the light of God upon you."
+            "Soon, the clock struck midnight, and you felt the light of G-d upon you."
             "It seared into your flesh as you huddled together on the floor, feeling His gaze searching for you as His heavy footfalls shook the house."
             "But He did not see you. And soon, you felt His light fade, and His gaze turned away, and His heavy footsteps fell away into the distance."
             "You and the witch clutched each other and laughed with terror and relief."
-            "With God taken care of, you and the witch looked over the cottage."
+            "With G-d taken care of, you and the witch looked over the cottage."
             "It was a mess of flowers and plants and flopping animals, sprouting wildly every witch-way across the room."
             "You rolled up your sleeves and slowly put the room to rights, until it was even more clean, warm and homely than it had been before."
         elif godfather == "Black":
@@ -4784,7 +4782,7 @@ label toadFinale:
 
     label frogEnding:
         if godfather == "White":
-            #God rescues you, brildebrogue is smote
+            #G-d rescues you, brildebrogue is smote
             miw "Be not afraid."
             "A harsh light fell upon the room, and you looked up to see a whirl of wings and feathers and eyes and fire standing before you."
             "Brildebrogue dropped to his knees."
