@@ -47,7 +47,9 @@ define Him = "Him"
 define Hes = "He's"
 define hes = "he's"
 
-#PERSISTENT DATA
+#=====================PERSISTENT DATA
+#This data carries over between save files and games, permanently.
+
 #persistent pronouns
 default persistent.he = "he"
 default persistent.He = "He"
@@ -57,6 +59,17 @@ default persistent.him = "him"
 default persistent.Him = "Him"
 default persistent.Hes = "Hes"
 default persistent.hes = "hes"
+
+#persistent Disappearances
+
+#number of people who have disappeared
+default persistent.vanished = 0
+
+#Who has disappeared specifically
+default persistent.toadVanished = False
+default persistent.witchVanished = False
+default persistent.thiefVanished = False
+default persistent.mushroomVanished = False
 
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
