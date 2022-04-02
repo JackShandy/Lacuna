@@ -2,9 +2,21 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1653: elif clause expects a non-empty block.
-    elif mayorRand ==3:
-                       ^
+File "game/script.rpy", line 1325: expected statement.
+    renpy.music.set_volume(0, delay=2.0, channel=u'ambient1')
+                                                             ^
+
+File "game/script.rpy", line 1326: expected statement.
+    renpy.music.set_volume(0, delay=2.0, channel=u'ambient2')
+                                                             ^
+
+File "game/script.rpy", line 1337: expected statement.
+    renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
+                                                               ^
+
+File "game/script.rpy", line 1338: expected statement.
+    renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
+                                                               ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu Dec 30 14:20:43 2021
+Sat Apr  2 16:59:55 2022
