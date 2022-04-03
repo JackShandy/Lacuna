@@ -1,36 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00keymap.rpy", line 463, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 463, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 482, in _execute_python_hide
-    renpy.save("_reload-1", "reload save game")
-AttributeError: 'NoneType' object has no attribute 'stores'
+  File "game/script.rpy", line 971, in script
+    jump solar_system
+ScriptError: could not find label 'solar_system'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00keymap.rpy", line 463, in script
-    python hide:
-  File "renpy/ast.py", line 922, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2218, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00keymap.rpy", line 463, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 482, in _execute_python_hide
-    renpy.save("_reload-1", "reload save game")
-  File "renpy/loadsave.py", line 392, in save
-    roots = renpy.game.log.freeze(None)
-  File "renpy/python.py", line 2115, in freeze
-    self.complete(False)
-  File "renpy/python.py", line 1721, in complete
-    self.current.stores[name], self.current.delta_ebc[name] = sd.get_changes(begin)
-AttributeError: 'NoneType' object has no attribute 'stores'
+  File "game/script.rpy", line 971, in script
+    jump solar_system
+  File "renpy/ast.py", line 1711, in execute
+    rv = renpy.game.script.lookup(target)
+  File "renpy/script.py", line 910, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'solar_system'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 0.81
-Sat Apr  2 17:00:37 2022
+Sun Apr  3 14:13:30 2022

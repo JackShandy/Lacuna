@@ -2,21 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1325: expected statement.
-    renpy.music.set_volume(0, delay=2.0, channel=u'ambient1')
-                                                             ^
-
-File "game/script.rpy", line 1326: expected statement.
-    renpy.music.set_volume(0, delay=2.0, channel=u'ambient2')
-                                                             ^
-
-File "game/script.rpy", line 1337: expected statement.
-    renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
-                                                               ^
-
-File "game/script.rpy", line 1338: expected statement.
-    renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
-                                                               ^
+File "game/script.rpy", line 1221: indentation mismatch.
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Apr  2 16:59:55 2022
+Sun Apr  3 17:02:56 2022

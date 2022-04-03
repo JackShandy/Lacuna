@@ -76,7 +76,6 @@ style frame:
     background Frame("gui/frame.png", gui.frame_borders, tile=gui.frame_tile)
 
 
-
 ################################################################################
 ## In-game screens
 ################################################################################
@@ -663,6 +662,16 @@ style about_label_text:
 ## My screens #######################################################
 ##
 ##
+## Map ####
+
+screen map: #Preparing the imagemap
+    imagemap:
+        idle "mapClosed.png"
+        hover "mapClosedHover.png"
+
+        hotspot (0, 0, 600, 496) clicked Jump("mapOpens")
+
+
 ## Contents page ####
 
 screen contents():

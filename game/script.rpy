@@ -80,6 +80,10 @@ define godfather = "none"
 #The intro menu with questions
 define introHappy = False
 define introNeighbours = False
+define introNeighboursN = False
+define introNeighboursE = False
+define introNeighboursS = False
+define introNeighboursW = False
 
 #Act 1, Chapter 2: The road to the village
 #How many pitiful Noooo's have you shouted
@@ -302,6 +306,20 @@ image cover14d= "cover-14d.png"
 image title = "title.png"
 #image credits = "acknowledgements.png"
 
+#Map
+image mapClosed = "mapClosed.png"
+image map1 = "map1.png"
+image mapBlankAll = "mapBlank.png"
+image mapBlankHouse = "mapBlank-house.png"
+image mapBlankVillage = "mapBlank-village.png"
+
+image mapBlankMisc = "mapBlank-misc.png"
+image mapBlankThief = "mapBlank-thief.png"
+image mapBlankToad = "mapBlank-toad.png"
+image mapBlankWitch = "mapBlank-witch.png"
+image mapBlankMushroom = "mapBlank-mushroom.png"
+
+
 ##====GUI Elements
 image shadow = "shadow.png"
 image firelight animated:
@@ -492,6 +510,9 @@ define p3 = Character ("{image=p3Name}{alt}The Third Pig:{/alt}")
 
 ## Sound effects
 define audio.pageFlip = "audio/page-flip.mp3"
+define audio.pageFlip2 = "audio/page-flip2.wav"
+define audio.pageFlip3 = "audio/page-flip3.wav"
+
 define audio.rain = "audio/rain.wav"
 define audio.fire = "audio/fire.mp3"
 define audio.footsteps = "audio/footsteps.wav"
@@ -940,40 +961,181 @@ label chapter2:
         "You ate very little, and said even less, and every night you would stalk quietly through the forest shadows or sit for long hours watching insects crawl in stagnant ponds, and all the neighbours said \"That one has the mark of Death on [him],\" and shut their doors."
     if godfather == "Red":
         "You lived with your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+        jump introMenu
     else:
         "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+        jump introMenu
 
-    label introMenu:
-        show hand onlayer transient:
-            yalign 0.68#0.743
-            xalign 0.5
-        menu:
-            "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets."
-            "If you want know about your neighbours, turn to page 26." if not introNeighbours:
-                $introNeighbours = True
-                "Ah! In fact, this river and all the woods around it were owned by a wise mushroom ambassador, who had owned these lands since before anyone could remember."
+label mapOpens:
+    #==This map slowly gets erased as characters vanish
+    #tests for the persistent map
+    # $persistent.vanished = 1
+    # $persistent.toadVanished = True
+    # $persistent.witchVanished = False
+    # $persistent.mushroomVanished = False
+    # $persistent.thiefVanished = False
+
+    play sound pageFlip2
+    hide map1 onlayer screens
+    $renpy.hide_screen(tag="map")
+    if persistent.vanished <=2:
+        show map1 onlayer screens zorder 100 at truecenter
+        if persistent.toadVanished:
+            show mapBlankToad onlayer screens zorder 101 at truecenter
+        if persistent.witchVanished:
+            show mapBlankWitch onlayer screens zorder 101 at truecenter
+        if persistent.thiefVanished:
+            show mapBlankThief onlayer screens zorder 101 at truecenter
+        if persistent.mushroomVanished:
+            show mapBlankMushroom onlayer screens zorder 101 at truecenter
+        if persistent.vanished >= 2:
+            show mapBlankMisc onlayer screens zorder 101 at truecenter
+    elif persistent.vanished == 3:
+        show mapBlankVillage onlayer screens zorder 100 at truecenter
+    elif persistent.vanished == 4:
+        show mapBlankHouse onlayer screens zorder 100 at truecenter
+    elif persistent.vanished >= 5:
+        show mapBlankAll onlayer screens zorder 100 at truecenter
+    show hand onlayer transient:
+        yalign 0.655#0.743
+        xalign 0.5
+    "Many strange figures lived in the forest around your house."
+    play sound pageFlip2
+    #Hide everything
+    hide map1 onlayer screens
+    hide mapClosed onlayer screens
+    hide mapBlankToad onlayer screens
+    hide mapBlankWitch onlayer screens
+    hide mapBlankThief onlayer screens
+    hide mapBlankMushroom onlayer screens
+    hide mapBlankAll onlayer screens
+    hide mapBlankHouse onlayer screens
+    hide mapBlankVillage onlayer screens
+    hide mapBlankMisc  onlayer screens
+
+
+    jump neighbours
+
+label neighbours:
+    $renpy.show_screen("map", _layer="screens", tag="map", _zorder=101)
+    show hand onlayer transient:
+        yalign 0.655#0.743
+        xalign 0.5
+    menu:
+        "Many strange figures lived in the forest around your house."
+        "To learn about the lands to the north, turn to page 10." if not introNeighboursN:
+            $introNeighboursN = True
+            hide map1 onlayer screens
+            $renpy.hide_screen(tag="map")
+            #Haunted land to the North, further in land, the darkest depths of the rainforest where no living human has trod - The Thief
+            if persistent.thiefVanished == True:
+                $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0, delay=3.0, channel=u'music')
+                "To the north, there was nothing and no-one."
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+                jump neighbours
+            else:
+                "Do not ask lightly of the northern forest, my child."
+                "That was a cursed place where wicked sprites and gleeful ghosts held sway. All who lived there slept uneasily in their beds as they heard the Goblin Train rattle past their windows each night."
+                "The worst of them all was the Master Thief, a dextrous and sinister figure who flitted through the shadows, stealing everything that wasn't nailed down."
+                "People said they could steal the dreams out from under your pillow, and the thoughts right out from your head. No jail could hold them and no lock could bar them entry."
+                jump neighbours
+        "To learn about the lands to the east, turn to page 15." if not introNeighboursE:
+            $introNeighboursE = True
+            hide map1 onlayer screens
+            $renpy.hide_screen(tag="map")
+            if persistent.toadVanished == True:
+                $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0, delay=3.0, channel=u'music')
+                "To the east, there was nothing and no-one."
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+                jump neighbours
+            else:
+                #Coastal swamps and mangroves to the east, leading to the beach and the ocean - The Toad
+                "To the east, the river flowed down to the coast. The mangrove trees swayed in the summer heat, and the swamp folk worshipped the insect god, Karnopticon."
+                "On the edge of the swamp was a grand manor, owned by a noble frog lord."
+                "He was rarely seen, but people whispered that he was wiser than Solomon and rich beyond the dreams of Avarice."
+                jump neighbours
+        "To learn about the lands to the south, turn to page 20." if not introNeighboursS:
+            $introNeighboursS = True
+            hide map1 onlayer screens
+            $renpy.hide_screen(tag="map")
+            #Flowing river to the south, Amazonian, fungi and silver-white - The Mushroom
+            if persistent.mushroomVanished == True:
+                $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0, delay=3.0, channel=u'music')
+                "To the south, there was nothing and no-one."
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+                jump neighbours
+            else:
+                "Ah! In fact, the south river and the forest around it was watched over by a wise mushroom ambassador, who had owned these lands since before anyone could remember."
                 "She was often away brokering trade agreements and peace treaties and delicate alliances between the many trees and plants and old warring ferns of the forest, who were always butting heads over one thing or another."
                 "But every now and then, on cold clear nights, you could see her walking through the depths of the forest with her white veil and delicate waves of silver spores drifting behind her."
                 "She allowed your family to live on the river and use her lands, under one condition."
                 m "Ask not of what concerns you not, lest you hear what pleases you not."
                 "Your family accepted her wishes, and so you let each other be."
-                jump introMenu
-            "If you wonder whether you were happy there, turn to page 19." if not introHappy:
-                $introHappy = True
-                if godfather == "Red":
-                    "Well, it was a rich house, and you had everything you could ever want and more. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
-                else:
-                    "Well, it was a happy house. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
-                "No matter how many people were around you, you felt like something was missing."
-                "Every year, on the day before your birthday, the village would throw a great festival for no reason anyone could name. On these nights you always felt sad and strange."
-                "You would avoid the festival and stare deep into the woods all through the night."
-                jump introMenu
-            "To continue the story, turn to page 34.":
-                if godfather == "Black":
-                    "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godmother would own your immortal soul as as soon as the clock struck midnight."
-                    "You had no doubt that She would soon send Her three messengers for you, and then take you down to the kingdom of ruin forever."
-                else:
-                    "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godfather would come to take you away as soon as the clock struck midnight, and you had no wish to leave just yet."
+                jump neighbours
+        "To learn about the lands to the west, turn to page 26." if not introNeighboursW:
+            $introNeighboursW = True
+            hide map1 onlayer screens
+            $renpy.hide_screen(tag="map")
+            #Mountains to the West, home to devils and witch's sabbaths - Thornton Peak- The Witch
+            if persistent.witchVanished == True:
+                $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0, delay=3.0, channel=u'music')
+                "To the west, there was nothing and no-one."
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+                jump neighbours
+            else:
+                "None dared venture to the western mountains, for all the lands around it were said to be home to a terrible witch."
+                "People said her hut lay deep under a secret lake, and she would emerge on moonless nights when the waters of that lake turned strange and silver-green."
+                "They said the witches held their sabbath on the mountain to the east, and when the sky was clear you could see the peak blaze with fire, and the Devil himself would emerge to dance in the firelight."
+                jump neighbours
+        "To continue, return to page 9.":
+            hide map1 onlayer screens
+            $renpy.hide_screen(tag="map")
+            jump introMenu
+
+
+label introMenu:
+    show hand onlayer transient:
+        yalign 0.68#0.743
+        xalign 0.5
+    menu:
+        "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets."
+        "If you want know about your neighbours and the lands around your house, turn to page 10." if not introNeighbours:
+            "Yours was a many-haunted land, my child."
+            "Back in those days you could barely take a step without stumbling over a fiend, ghost, bloody bones, flay-boggart, bugaboo or sprite. Every house was haunted and the Devil lurked at every crossroad."
+            "In fact the whole earth was overrun with trolls, hob-and-lanthorns, gringes, cutties and nisses, boguests, bonelesses, clabbernappers, Gabriel-hounds, mawkins, doubles, corpse lights or candles, scar-bugs, shag-foals, hodge-pochers, korreds, lubberkins, cluricauns, hob-thrushes, tod-lowries, Jack-in-the-Wads, men-in-the-oak, mormos, changelings, redcaps, yeth-hounds, colt-pixies, Tom-thumbs, black-bugs, madcaps, night-bats, scrags, specters, Jinny-burnt-tails, dudmen, dopple-gangers, boggleboes, and apparitions of every shape, make, form, and fashion."
+            jump neighbours
+        "If you wonder whether you were happy there, turn to page 19." if not introHappy:
+            $introHappy = True
+            if godfather == "Red":
+                "Well, it was a rich house, and you had everything you could ever want and more. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
+            else:
+                "Well, it was a happy house. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
+            "No matter how many people were around you, you felt like something was missing."
+            "Every year, on the day before your birthday, the village would throw a great festival for no reason anyone could name. On these nights you always felt sad and strange."
+            "You would avoid the festival and stare deep into the woods all through the night."
+            jump introMenu
+        "To continue the story, turn to page 34.":
+            if godfather == "Black":
+                "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godmother would own your immortal soul as as soon as the clock struck midnight."
+                "You had no doubt that She would soon send Her three messengers for you, and then take you down to the kingdom of ruin forever."
+            else:
+                "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godfather would come to take you away as soon as the clock struck midnight, and you had no wish to leave just yet."
     if godfather == "Red":
         "The closer the hour grew, the more frantic you became. You knew you would soon pay dearly for all your years of wicked indolence."
         pov "I know. I'll go to the village festival this eve. There will be travellers there from all over this haunted land. Surely one of them will know how to save me from my terrible fate."
@@ -1565,7 +1727,7 @@ label chapter2:
                         $witchArc +=1
                         call hideAll from _call_hideAll_12
                         show mountainsbg at artPos
-                        "In a wink you found yourself at the blue mountains, exhausted from hard riding."
+                        "In a wink you found yourself at Thornton Peak, exhausted from hard riding."
                         play sound pageFlip
                         show sabbathfullbg
                         ""
@@ -1636,7 +1798,7 @@ label chapter2:
     h "Impossible. I delivered it myself."
     if witchArc >=1:
         pov "Um, excuse me."
-        pov "I saw the witch just tonight, actually. She was at a ritual in the Blue Mountains."
+        pov "I saw the witch just tonight, actually. She was at a ritual in the mountains."
         may "What!? Why would she spurn our invitation?"
     else:
         "But still, the witch did not arrive, and soon everyone was a frenzy of worry."
@@ -3266,7 +3428,7 @@ label thiefFinale:
                                         $goblinCelebrate = True
                                         "The goblins laughed and cheered and served goblin fruits and carved goblin hams made of rich mould and mud and played goblin games all across the table."
                                         if pig:
-                                            "Your pig was quickly drawn into a wager, with it's greatest hopes and dreams as the stakes. Fortunately it won, and was granted a a small kingdom in the blue mountains as it's prize. It would go on to raise a mighty pig empire there, and rule over it for the rest of it's days."
+                                            "Your pig was quickly drawn into a wager, with it's greatest hopes and dreams as the stakes. Fortunately it won, and was granted a a small kingdom in the mountains as it's prize. It would go on to raise a mighty pig empire there, and rule over it for the rest of it's days."
                                         else:
                                             "You could see goblins betting on the games with their hopes, dreams and fears as the stakes."
                                         jump goblinTrain2
@@ -3532,7 +3694,7 @@ label thiefStory:
                     "If you remained good friends with the thief, turn to page 246.":
                         "You lived on the train in happiness with your friend the thief for all of your days, venturing from place to place with wild abandon."
                         if goblinCelebrate and pig:
-                            "Your pig wished you a fond farewell, and went to live in his kingdom in the blue mountains."
+                            "Your pig wished you a fond farewell, and went to live in his kingdom in the mountains."
                         elif pig:
                             "Your pig stayed with you as your constant companion and friend."
                         if godfather == "Black":
@@ -3559,7 +3721,7 @@ label thiefStory:
                     "If you stayed on the goblin train and remained good friends with the thief forever after, turn to page 244.":
                         "You lived on the train in happiness with your friend the thief for all of your days, venturing from place to place with wild abandon."
                         if goblinCelebrate and pig:
-                            "Your pig wished you a fond farewell, and went to live in his kingdom in the blue mountains."
+                            "Your pig wished you a fond farewell, and went to live in his kingdom in the mountains."
                         elif pig:
                             "Your pig stayed there as your constant companion and friend."
                         if godfather == "Black":
@@ -3573,7 +3735,7 @@ label thiefStory:
                         if pig:
                             "Your pig watched over the wedding ceremony with tears in his eyes."
                             if goblinCelebrate:
-                                "After the wedding he wished you a fond farewell, and went to live in his kingdom in the blue mountains."
+                                "After the wedding he wished you a fond farewell, and went to live in his kingdom in the mountains."
                             else:
                                 "After the wedding, he stayed with you there as your constant companion and friend."
                         if godfather == "Black":
@@ -4443,7 +4605,7 @@ label hellStory:
             "Although she would never be the Girl Who Knew Everything again, she knew enough."
             if witchFree == False:
                 "Alas, despite everything you'd done, she still remained sworn to the Devil. Her promise to him was kept in a secret place that he guarded jealously, and you were never able to find it."
-                "Every witch's sabbath, she was forced to ride away to dance on the peak of Bald Mountain, and commit all kinds of wicked and terrible acts in his name."
+                "Every witch's sabbath, she was forced to ride away to dance on the Thornton Peak, and commit all kinds of wicked and terrible acts in his name."
                 "Still, you spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
             else:
                 "You spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
@@ -4454,7 +4616,7 @@ label hellStory:
             "Sadly, you knew not how. She would never be the Girl Who Knew Everything again. You tried everything you could, but for the rest of her days, her thoughts were cursed to leak from her head in heavy smoke."
             if witchFree == False:
                 "Alas, despite everything you'd done, she still remained sworn to the Devil. Her promise to him was kept in a secret place that he guarded jealously, and you were never able to find it."
-                "Every witch's sabbath, she was forced to ride away to dance on the peak of Bald Mountain, and commit all kinds of wicked and terrible acts in his name."
+                "Every witch's sabbath, she was forced to ride away to dance on the peak of Thornton Peak, and commit all kinds of wicked and terrible acts in his name."
             "Still, you spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
         show hand onlayer transient:
             yalign 0.72#0.743
@@ -5168,7 +5330,7 @@ label end:
     $ ui.text("{space=[ti]}9. {b}Forest:{/b} 'Interior of a forest' (1880 - 1890), Paul Cézanne.{vspace=[tx]}{space=[ti]}10. {b}Forest 2:{/b} 'Palms and Ferns, a Scene in the Botanic Garden, Queensland' (early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}11. {b}Forest 4 and Forest 5:{/b} 'Papier Peint Panoramique' (1861), Joseph Fuchs.{vspace=[tx]}{space=[ti]}12. {b}Future:{/b} 'Over London by Rail' (1872), Gustave Doré.{vspace=[tx]}{space=[ti]}13. {b}Goblin Interior:{/b} Fruit and Vegetable Market with a Young Fruit Seller' (1650–1660), Jan van Kessel.{vspace=[tx]}{space=[ti]}14. {b}Goblin Interior 2:{/b} 'The Goblin Market' (1914), Hilda Hechle.{vspace=[tx]}{space=[ti]}15. {b}God:{/b} 'Vision of the Empyrean' (1867), Gustave Dore.{vspace=[tx]}{space=[ti]}16. {b}Hell:{/b} 'The Destruction of Pompeii and Herculaneum' (1822), John Martin.{vspace=[tx]}{space=[ti]}17. {b}Hell Cottage:{/b} 'Interior of a Highland Cottage' (1840), John Glass.{vspace=[tx]}{space=[ti]}18. {b}Manor Exterior:{/b} 'Puss-in-Boots' (1913), Maxfield Parrish.{vspace=[tx]}{space=[ti]}19. {b}Memento:{/b} 'Memento Mori' (1916), Julie de Graag.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     hide text
-    $ ui.text("{space=[ti]}20. {b}Blue Mountains:{/b} 'Winter Landscape in Moonlight' (1919), Ernst Ludwig Kirchner.{vspace=[tx]}{space=[ti]}21. {b}Mushroom Basement 2:{/b} 'It Is a Skull, Crowned with Roses. It Dominates a Woman’s Pearly–White Torso' (1888), Jean Bernard.{vspace=[tx]}{space=[ti]}22. {b}Mushroom Cave:{/b} 'Expulsion. Moon and Firelight' (1828), Thomas Cole.{vspace=[tx]}{space=[ti]}23. {b}Mushroom Cave - Under:{/b} 'A Cavern, Evening' (1774), Joseph Wright.{vspace=[tx]}{space=[ti]}24. {b}Mushroom Gardens:{/b} 'Emperor Humayun with his brothers' (1540), Dust Muhammad.{vspace=[tx]}{space=[ti]}25. {b}Mushroom Palace:{/b} 'Old French Fairytales' (1920), Virginia Frances Sterrett.{vspace=[tx]}{space=[ti]}26. {b}Night:{/b} 'So the man gave him a pair of snow shoes', East of the Sun and West of the Moon (1914), Kay Neilsen.{vspace=[tx]}{space=[ti]}27. {b}Night God:{/b} 'Eye Vintage Art Drawing' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}28. {b}River:{/b} 'Rushing Water' (1901), John Singer Sargent.{vspace=[tx]}{space=[ti]}29. {b}Ruins:{/b} 'Vintage Art Scenic View Card' (Early 20th Century), RT&S publishers, UK.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}20. {b}Mountains:{/b} 'Winter Landscape in Moonlight' (1919), Ernst Ludwig Kirchner.{vspace=[tx]}{space=[ti]}21. {b}Mushroom Basement 2:{/b} 'It Is a Skull, Crowned with Roses. It Dominates a Woman’s Pearly–White Torso' (1888), Jean Bernard.{vspace=[tx]}{space=[ti]}22. {b}Mushroom Cave:{/b} 'Expulsion. Moon and Firelight' (1828), Thomas Cole.{vspace=[tx]}{space=[ti]}23. {b}Mushroom Cave - Under:{/b} 'A Cavern, Evening' (1774), Joseph Wright.{vspace=[tx]}{space=[ti]}24. {b}Mushroom Gardens:{/b} 'Emperor Humayun with his brothers' (1540), Dust Muhammad.{vspace=[tx]}{space=[ti]}25. {b}Mushroom Palace:{/b} 'Old French Fairytales' (1920), Virginia Frances Sterrett.{vspace=[tx]}{space=[ti]}26. {b}Night:{/b} 'So the man gave him a pair of snow shoes', East of the Sun and West of the Moon (1914), Kay Neilsen.{vspace=[tx]}{space=[ti]}27. {b}Night God:{/b} 'Eye Vintage Art Drawing' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}28. {b}River:{/b} 'Rushing Water' (1901), John Singer Sargent.{vspace=[tx]}{space=[ti]}29. {b}Ruins:{/b} 'Vintage Art Scenic View Card' (Early 20th Century), RT&S publishers, UK.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     hide text
     ####
