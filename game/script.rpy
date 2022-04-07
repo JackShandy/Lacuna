@@ -725,6 +725,7 @@ label start:
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
+        #TK: can this bit be deleted?
         $he = persistent.he
         $He = persistent.He
         $his = persistent.his
@@ -739,9 +740,6 @@ label start:
             #yalign 0.6#0.743
             #xalign 0.5
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
-        #$ renpy.pause ()
-        #hide text
-        #$ ui.text("{space=[ti]}1. {b}Oz's Wizard:{/b} Mario Arturo, 2012.{vspace=[tx]}{space=[ti]}2. {b}Journal:{/b} Fontourist, 2008.{vspace=[tx]}{space=[ti]}3. {b}Mom's Typewriter:{/b} Christoph Mueller, 1997.{vspace=[tx]}{space=[ti]}4. {b}Book Antiqua:{/b} Monotype Type Drawing Office, 1995.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
         scene bg page
         show nightbg at artPos
         "This maybe happened, or maybe did not."
@@ -1154,543 +1152,574 @@ label introMenu:
 
     # Act 1, Chapter 3: The Mushroom.
     #You follow the mushroom and find a bunch of mushroom clones
-    "As you walked down the road, you saw the wise mushroom moving through the deep darkness of the trees, her pale spores flowing in a train behind her."
-    show hand onlayer transient:
-        yalign 0.7#0.743
-        xalign 0.5
-    menu:
-        "In her left hand she held a small lantern, and in her right hand she held a crooked knife stained green."
-        "If you followed her, turn to page 25.":
-            "You left the path and followed her from a distance."
-            call hideAll from _call_hideAll_3
-            show stranglerfigbg at artPos
-            "She walked into the towering buttress roots of an ancient strangler fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
-            show hand onlayer transient:
-                yalign 0.73#0.743
-                xalign 0.5
+    if persistent.mushroomVanished == True:
+        #play audio wind fadeout 25.0
+        $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
+        $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
+        $renpy.music.set_volume(0, delay=3.0, channel=u'music')
+        "As you walked down the road thusly, sweating in the warmth of the summer night, you heard nothing."
+        "You saw no-one."
+        "You were alone."
+        "You continued on down the empty road."
+        $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+        $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+        $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+        jump toadIntro
+    else:
 
-            m "Gorge, guzzle, gulp and grab; never shall this wound scab.{vspace=160}{i}In your notes, write down that you {b}know the password.{/b}{/i}"
-            $mushroomPassword = True
-            show hand onlayer transient:
-                yalign 0.72#0.743
-                xalign 0.5
-            menu:
-                "With this, the door opened before her, and she vanished inside immediately."
-                "If you entered the door, turn to page 26.":
-                    $mushroomArc +=1
-                    $mushroomCavernSeen = True
-                    "You quickly snuck inside before the door closed behind you."
-                    call hideAll from _call_hideAll_4
-                    show mushroomcavebg at artPos
-                    "Inside you were shocked to find the tree completely hollow. A great cavern was formed inside it, cold as ice despite the heat outside."
-                    "The floor of the cavern was piled with rubies and pearls and glinting onyx and solid gold pieces, larger than your fist."
-                    "All across the room you saw lush silks and pillars of precious metals of every type, and riches that would turn the king of kings green with envy."
-                    "The glimmering magenta smoke of incense rolled across the room and coated it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
-                    m "Oh darling, what are you doing back again?"
-                    "The Mushroom popped up, startling you."
-                    m "I'm sure I remember telling you quite clearly never to darken my door again."
-                    "She looked off to the side."
-                    m "Yes, I'm just telling them now. One moment."
-                    m "Have some common courtesy, darling, please. I don't barge into your house looking wild and dishevelled and try to steal the untold riches of your domain, do I?"
-                    m "Not without an invitation, at least."
-                    label mushroomWater:
-                        show hand onlayer transient:
-                            yalign 0.63#0.743
-                            xalign 0.5
-                        menu:
-                            m "Out with it, then. What do you want?"
-                            "If you asked for some water, turn to page 33." if mushroomTea:
-                                pov "Just some water would be nice, please."
-                                m "{i}Water?{/i} Really? How... conventional."
-                                m "I have to confess, I thought better of you, darling."
-                                pov "What's wrong with water?"
-                                m "Oh, nothing, nothing. It's fine. If you're into that sort of thing."
-                                m "It's just a bit... derivative, isn't it? A bit played out."
-                                m "You know, \"I'm a big dumb humanoid, I love digesting liquids in order to sustain my bodily functions, dah de dah de dah\", etc, etc. Is that really the type of harmful stereotype we want to play into?"
-                                m "What are we really trying to {i}say{/i} here?"
-                                pov "Uh... I can drink something else-"
-                                m "No no, don't push yourself, it's fine. We can't all be innovators."
-                                m "I'll go get the water. Please, have a seat and relax."
-                                #A dark look across her face
-                                m "But do not, under any circumstances, go into the basement."
-                                "She waved to a small, black door set into the bark of the tree."
-                                "An ominous glow shone through the crack beneath it. The wood was marked with strange and terrible sigils. You heard a low whispering beyond."
-                                #She immediately brightens up with a smile and a jingle.
-                                m "Be right back."
-                                jump basement
-                            "If you asked about \"The you with the mask\", turn to page 31." if mushroomTea and not mushroomBody:
-                                m "I'm sorry darling, it's been a long day already. I don't have time to explain your body to you."
-                                m "Again."
-                                $mushroomBody = True
-                                jump mushroomWater
-                            "If you told the mushroom you've never been here before, turn to page 29." if not mushroomConfuse:
-                                m "Darling, you're confused, you're babbling, you're all over the place, please, you're a mess. More so than usual, even."
-                                m "You were here just a minute ago. The you with the mask and the long legs."
-                                m "Perhaps you should sit down and take a moment."
-                                m "Can I get you anything? Decaying plant matter? It's all the rage back home."
-                                $mushroomConfuse = True
-                                $mushroomTea = True
-                                jump mushroomWater
-                            "If you enquired about the untold riches of her domain (with the gleam of avarice in your heart) turn to page 30." if not mushroomAllThis:
-                                "She looked vaguely around the glittering splendour before you."
-                                m "Oh, this?"
-                                "She dismissed the mountains of jewels with a wave of her hand."
-                                m "I told you. All the wealth of the world falls to us in the end."
-                                $mushroomAllThis = True
-                                jump mushroomWater
-                            "If you apologised for intruding and swore to make amends, turn to page 35." if not mushroomIntruding:
-                                m "Darling, an apology is as good to me as a beard to a turtle-dove."
-                                m "But no, don't worry about it, it's fine, really, completely fine."
-                                $mushroomIntruding = True
-                                jump mushroomWater
-                    label basement:
-                        show hand onlayer transient:
-                            yalign 0.67#0.743
-                            xalign 0.5
-                        menu:
-                            "She left the room, trusting your kindness and good nature."
-                            "If you immediately disobeyed the mushroom and opened the basement door (in accordance with your wicked nature) turn to page 52.":
-                                "Of course you opened the basement door."
-                                call hideAll from _call_hideAll_5
-                                play sound pageFlip
-                                show basementfullbg
-                                ""
-                                play sound pageFlip
-                                call hideAll from _call_hideAll_6
-                                show mushroombasementbg at artPos
-                                "Within, you saw a most terrible sight."
-                                "Seven mushroom corpses hung in the room, dripping black ichor, each being feasted upon by a fat blue-tongued lizard."
-                                "Every one of them was identical to the lady Mushroom herself."
-                                pov "W-what is this?"
-                                m "Fool!"
-                                "The mushroom appeared from the earth before you with a terrible crash."
-                                m "You have asked about what concerns you not, and so you will hear what pleases you not!"
-                                $mushroomCurse = True
-                                m "I gave you fair warning, darling. Now all your milk will spoil, all your bread will burn, your socks will always be wet, and you will live in torment for the rest of your days!"
-                                pov "Noooooooo!"
-                                m "Don't say I didn't tell you so."
-                                "You cried out and set about wailing and tearing your clothes and beating yourself upon the ground in pitiful anguish."
-                                pov "Please, Lady Mushroom, spare me your curse. If you do, I will tell you a story, the likes of which would cause you to go white with astonishment if you were to hear it."
-                                m "Ha! Please."
-                                m "I've talked with the ferns, who saw the dinosaurs rise and fall."
-                                m "I am one with the mosses and lichens of the land who are even older still. I have talked to ancient trees who saw the great fires and the great floods and still stand."
-                                show hand onlayer transient:
-                                    yalign 0.7#0.743
-                                    xalign 0.5
-                                menu:
-                                    m "What could you possibly tell me that I don't already know?"
-                                    "If you told her about the festival, turn to page 4.":
-                                        pov "I'm on my way to the festival, and there will be people there from all over this great earth. Surely one of them will have a story you haven't heard before."
-                                    "If you told her about your Godparent, turn to page 62.":
-                                        if godfather == "White":
-                                            pov "I'm seeking a way to escape being taken by my Godfather, the old man in heaven. Surely the story of my adventure will be unique enough for you."
-                                        elif godfather == "Red":
-                                            pov "I'm seeking a way to escape my Godfather, Lucifer. Surely the story of my adventure will be unique enough for you."
-                                        elif godfather == "Black":
-                                            pov "I'm seeking a way to escape my Godmother, Annihilation. Surely the story of my adventure will be unique enough for you."
-                                "The Mushroom grew quiet as she thought over your proposal, and you prayed to the Most High (May He watch over us always) to deliver you from this terrible situation."
-                                m "Very well, dear. I'll let you go."
-                                m "But be warned: If you fail to return to me this very night with the story you have promised me, then your punishment will be as tenfold."
-                                m "You will be fated to trip over a stone and into the ocean and drown, and when you die, your ghost will come back as a wild dog, and harry your mother and father all day and all night, nipping at their heels until they both fall into deep wells and turn into terrible black fish that will lie forever there at the bottom of those wells, moaning weakly and cursing their ungrateful child who has brought them such woe and devastation."
-                                #m "All your spoons will stick in your drawers, and your eggs will hatch into foul geese, and your bowls and furniture will roll away down the hills, so that you will have nothing to do but sit on the floor and eat cold porridge with your hands and curse the day you ever decided to cross a mushroom!"
-                                pov "Noooooooo!"
-                                "She struck the ground. It opened before her and she disappeared into it instantly."
-                                "You set about beating yourself and rolling around the floor in even more pitiful devastation and horror than before, tears streaming from your eyes at this terrible curse."
-                                call hideAll from _call_hideAll_7
-                                show forest2bg at artPos
-                                "Thus you went on your way to the festival, fretting and worrying all the while."
-                                if godfather == "Black":
-                                    "Now you had two burdens: To escape the grip of your Godmother, and to find a story that could satisfy the disdainful Mushroom."
-                                else:
-                                    "Now you had two burdens: To escape the grip of your Godfather, and to find a story that could satisfy the disdainful Mushroom."
-                                "\"Never again,\" you cried to yourself, \"Will I ask of what concerns me not!\""
-                                jump thief1
-                            "If you sat patiently and waited for your tea, turn to page 86.":
-                                "In an unlikely turn of events, you sat there and waited patiently, paying no mind to the mysterious door."
-                                "(Some protagonist you turned out to be.)"
-                                "Soon, the mushroom returned with a cup of water. You took a sip and then coughed violently."
-                                pov "Um, excuse me... this is full of compost."
-                                m "Yes of course, darling. It's the latest thing."
-                                m "It's rich. It's bold. It's avant-garde. It may not be what you {i}want{/i} right now, but it is what you {i}need{/i}."
-                                m "So, what brings you back here?"
-                                if godfather == "White":
-                                    "You told her of the terrible dilemma with your Godfather, our Dear Lord."
-                                elif godfather == "Red":
-                                    "You told her of the terrible dilemma with your Godfather, Old Nick."
-                                elif godfather == "Black":
-                                    "You told her of the terrible dilemma with your Godmother, who rides a pale horse."
-                                m "Hmm. Quite the story, darling."
-                                m "I must say, you could certainly work on the pacing. And I think the obvious analogy you've drawn for 13th century France and the fragmentation of the Carolingian Empire was a tad heavy-handed. But it's a good start."
-                                if godfather == "Black":
-                                    m "I know a bit about pale-faced Death. Her house is not far from here. Perhaps -"
-                                    "A large grandfather clock in the corner suddenly chimed, and she looked up with a start."
-                                    m "Oh dear. Time marches on, even for me."
-                                    m "I'm sorry to be so rude but I'd better be off. Come back after the festival, and I may be able to help."
-                                    m "Please take care of yourself, dear. All of yourself."
-                                    "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
-                                    "You took up your bag and set off down the road once more."
+        "As you walked down the road, you saw the wise mushroom moving through the deep darkness of the trees, her pale spores flowing in a train behind her."
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
+        menu:
+            "In her left hand she held a small lantern, and in her right hand she held a crooked knife stained green."
+            "If you followed her, turn to page 25.":
+                "You left the path and followed her from a distance."
+                call hideAll from _call_hideAll_3
+                show stranglerfigbg at artPos
+                "She walked into the towering buttress roots of an ancient strangler fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
+                show hand onlayer transient:
+                    yalign 0.73#0.743
+                    xalign 0.5
+
+                m "Gorge, guzzle, gulp and grab; never shall this wound scab.{vspace=160}{i}In your notes, write down that you {b}know the password.{/b}{/i}"
+                $mushroomPassword = True
+                show hand onlayer transient:
+                    yalign 0.72#0.743
+                    xalign 0.5
+                menu:
+                    "With this, the door opened before her, and she vanished inside immediately."
+                    "If you entered the door, turn to page 26.":
+                        $mushroomArc +=1
+                        $mushroomCavernSeen = True
+                        "You quickly snuck inside before the door closed behind you."
+                        call hideAll from _call_hideAll_4
+                        show mushroomcavebg at artPos
+                        "Inside you were shocked to find the tree completely hollow. A great cavern was formed inside it, cold as ice despite the heat outside."
+                        "The floor of the cavern was piled with rubies and pearls and glinting onyx and solid gold pieces, larger than your fist."
+                        "All across the room you saw lush silks and pillars of precious metals of every type, and riches that would turn the king of kings green with envy."
+                        "The glimmering magenta smoke of incense rolled across the room and coated it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
+                        m "Oh darling, what are you doing back again?"
+                        "The Mushroom popped up, startling you."
+                        m "I'm sure I remember telling you quite clearly never to darken my door again."
+                        "She looked off to the side."
+                        m "Yes, I'm just telling them now. One moment."
+                        m "Have some common courtesy, darling, please. I don't barge into your house looking wild and dishevelled and try to steal the untold riches of your domain, do I?"
+                        m "Not without an invitation, at least."
+                        label mushroomWater:
+                            show hand onlayer transient:
+                                yalign 0.63#0.743
+                                xalign 0.5
+                            menu:
+                                m "Out with it, then. What do you want?"
+                                "If you asked for some water, turn to page 33." if mushroomTea:
+                                    pov "Just some water would be nice, please."
+                                    m "{i}Water?{/i} Really? How... conventional."
+                                    m "I have to confess, I thought better of you, darling."
+                                    pov "What's wrong with water?"
+                                    m "Oh, nothing, nothing. It's fine. If you're into that sort of thing."
+                                    m "It's just a bit... derivative, isn't it? A bit played out."
+                                    m "You know, \"I'm a big dumb humanoid, I love digesting liquids in order to sustain my bodily functions, dah de dah de dah\", etc, etc. Is that really the type of harmful stereotype we want to play into?"
+                                    m "What are we really trying to {i}say{/i} here?"
+                                    pov "Uh... I can drink something else-"
+                                    m "No no, don't push yourself, it's fine. We can't all be innovators."
+                                    m "I'll go get the water. Please, have a seat and relax."
+                                    #A dark look across her face
+                                    m "But do not, under any circumstances, go into the basement."
+                                    "She waved to a small, black door set into the bark of the tree."
+                                    "An ominous glow shone through the crack beneath it. The wood was marked with strange and terrible sigils. You heard a low whispering beyond."
+                                    #She immediately brightens up with a smile and a jingle.
+                                    m "Be right back."
+                                    jump basement
+                                "If you asked about \"The you with the mask\", turn to page 31." if mushroomTea and not mushroomBody:
+                                    m "I'm sorry darling, it's been a long day already. I don't have time to explain your body to you."
+                                    m "Again."
+                                    $mushroomBody = True
+                                    jump mushroomWater
+                                "If you told the mushroom you've never been here before, turn to page 29." if not mushroomConfuse:
+                                    m "Darling, you're confused, you're babbling, you're all over the place, please, you're a mess. More so than usual, even."
+                                    m "You were here just a minute ago. The you with the mask and the long legs."
+                                    m "Perhaps you should sit down and take a moment."
+                                    m "Can I get you anything? Decaying plant matter? It's all the rage back home."
+                                    $mushroomConfuse = True
+                                    $mushroomTea = True
+                                    jump mushroomWater
+                                "If you enquired about the untold riches of her domain (with the gleam of avarice in your heart) turn to page 30." if not mushroomAllThis:
+                                    "She looked vaguely around the glittering splendour before you."
+                                    m "Oh, this?"
+                                    "She dismissed the mountains of jewels with a wave of her hand."
+                                    m "I told you. All the wealth of the world falls to us in the end."
+                                    $mushroomAllThis = True
+                                    jump mushroomWater
+                                "If you apologised for intruding and swore to make amends, turn to page 35." if not mushroomIntruding:
+                                    m "Darling, an apology is as good to me as a beard to a turtle-dove."
+                                    m "But no, don't worry about it, it's fine, really, completely fine."
+                                    $mushroomIntruding = True
+                                    jump mushroomWater
+                        label basement:
+                            show hand onlayer transient:
+                                yalign 0.67#0.743
+                                xalign 0.5
+                            menu:
+                                "She left the room, trusting your kindness and good nature."
+                                "If you immediately disobeyed the mushroom and opened the basement door (in accordance with your wicked nature) turn to page 52.":
+                                    "Of course you opened the basement door."
+                                    call hideAll from _call_hideAll_5
+                                    play sound pageFlip
+                                    show basementfullbg
+                                    ""
+                                    play sound pageFlip
+                                    call hideAll from _call_hideAll_6
+                                    show mushroombasementbg at artPos
+                                    "Within, you saw a most terrible sight."
+                                    "Seven mushroom corpses hung in the room, dripping black ichor, each being feasted upon by a fat blue-tongued lizard."
+                                    "Every one of them was identical to the lady Mushroom herself."
+                                    pov "W-what is this?"
+                                    m "Fool!"
+                                    "The mushroom appeared from the earth before you with a terrible crash."
+                                    m "You have asked about what concerns you not, and so you will hear what pleases you not!"
+                                    $mushroomCurse = True
+                                    m "I gave you fair warning, darling. Now all your milk will spoil, all your bread will burn, your socks will always be wet, and you will live in torment for the rest of your days!"
+                                    pov "Noooooooo!"
+                                    m "Don't say I didn't tell you so."
+                                    "You cried out and set about wailing and tearing your clothes and beating yourself upon the ground in pitiful anguish."
+                                    pov "Please, Lady Mushroom, spare me your curse. If you do, I will tell you a story, the likes of which would cause you to go white with astonishment if you were to hear it."
+                                    m "Ha! Please."
+                                    m "I've talked with the ferns, who saw the dinosaurs rise and fall."
+                                    m "I am one with the mosses and lichens of the land who are even older still. I have talked to ancient trees who saw the great fires and the great floods and still stand."
+                                    show hand onlayer transient:
+                                        yalign 0.7#0.743
+                                        xalign 0.5
+                                    menu:
+                                        m "What could you possibly tell me that I don't already know?"
+                                        "If you told her about the festival, turn to page 4.":
+                                            pov "I'm on my way to the festival, and there will be people there from all over this great earth. Surely one of them will have a story you haven't heard before."
+                                        "If you told her about your Godparent, turn to page 62.":
+                                            if godfather == "White":
+                                                pov "I'm seeking a way to escape being taken by my Godfather, the old man in heaven. Surely the story of my adventure will be unique enough for you."
+                                            elif godfather == "Red":
+                                                pov "I'm seeking a way to escape my Godfather, Lucifer. Surely the story of my adventure will be unique enough for you."
+                                            elif godfather == "Black":
+                                                pov "I'm seeking a way to escape my Godmother, Annihilation. Surely the story of my adventure will be unique enough for you."
+                                    "The Mushroom grew quiet as she thought over your proposal, and you prayed to the Most High (May He watch over us always) to deliver you from this terrible situation."
+                                    m "Very well, dear. I'll let you go."
+                                    m "But be warned: If you fail to return to me this very night with the story you have promised me, then your punishment will be as tenfold."
+                                    m "You will be fated to trip over a stone and into the ocean and drown, and when you die, your ghost will come back as a wild dog, and harry your mother and father all day and all night, nipping at their heels until they both fall into deep wells and turn into terrible black fish that will lie forever there at the bottom of those wells, moaning weakly and cursing their ungrateful child who has brought them such woe and devastation."
+                                    #m "All your spoons will stick in your drawers, and your eggs will hatch into foul geese, and your bowls and furniture will roll away down the hills, so that you will have nothing to do but sit on the floor and eat cold porridge with your hands and curse the day you ever decided to cross a mushroom!"
+                                    pov "Noooooooo!"
+                                    "She struck the ground. It opened before her and she disappeared into it instantly."
+                                    "You set about beating yourself and rolling around the floor in even more pitiful devastation and horror than before, tears streaming from your eyes at this terrible curse."
+                                    call hideAll from _call_hideAll_7
+                                    show forest2bg at artPos
+                                    "Thus you went on your way to the festival, fretting and worrying all the while."
+                                    if godfather == "Black":
+                                        "Now you had two burdens: To escape the grip of your Godmother, and to find a story that could satisfy the disdainful Mushroom."
+                                    else:
+                                        "Now you had two burdens: To escape the grip of your Godfather, and to find a story that could satisfy the disdainful Mushroom."
+                                    "\"Never again,\" you cried to yourself, \"Will I ask of what concerns me not!\""
                                     jump thief1
-                                else:
-                                    m "I'm afraid I don't know if I can help. I know a little about pale-faced Death, but I've never met your godfather."
-                                    "A large grandfather clock in the corner suddenly chimed, and she looked up with a start."
-                                    m "Oh dear. Time marches on, even for me."
-                                    m "I'm sorry to be so rude but I'd better be off. Come back after the festival, and I may be able to help."
-                                    m "Please take care of yourself, dear. All of yourself."
-                                    "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
-                                    "You took up your bag and set off down the road once more."
-                                    jump thief1
-                    #"But in the centre of the room you saw the most astonishing thing of all."
-                    #"Looming over the whole cavern were 3 great pillars of twisted wood and oozing sap."
-                    #"In the middle of the pillars writhed 3 figures, gaunt and frail: A pale and shivering Golden Wattle, a crooked Banksia seed, and a fiery Kangaroo Paw."
-                    #"The Mushroom took her knife and cut small pieces from her red cap, feeding it to the figures."
-                    #"As she did so you saw her weep and wail bitterly, crying out aloud at her misfortune."
-                    #INSERT: CHOICE
-                "If you went back to the path, turn to page 28.":
-                    "You rushed back to the path, worried at any moment that you might be seen."
-                    "\"Thank goodness,\" you thought to yourself, \"that I know not to ask of what concerns me not! That could led me to some kind of dangerous and magical adventure.\""
-                    "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
-                    jump thief1
-        "If you ignored her and followed the path like an honest Christian, turn to page 42.":
-            "You ignored her and kept on walking down the path, just as your mother taught you."
-            jump thief1
+                                "If you sat patiently and waited for your tea, turn to page 86.":
+                                    "In an unlikely turn of events, you sat there and waited patiently, paying no mind to the mysterious door."
+                                    "(Some protagonist you turned out to be.)"
+                                    "Soon, the mushroom returned with a cup of water. You took a sip and then coughed violently."
+                                    pov "Um, excuse me... this is full of compost."
+                                    m "Yes of course, darling. It's the latest thing."
+                                    m "It's rich. It's bold. It's avant-garde. It may not be what you {i}want{/i} right now, but it is what you {i}need{/i}."
+                                    m "So, what brings you back here?"
+                                    if godfather == "White":
+                                        "You told her of the terrible dilemma with your Godfather, our Dear Lord."
+                                    elif godfather == "Red":
+                                        "You told her of the terrible dilemma with your Godfather, Old Nick."
+                                    elif godfather == "Black":
+                                        "You told her of the terrible dilemma with your Godmother, who rides a pale horse."
+                                    m "Hmm. Quite the story, darling."
+                                    m "I must say, you could certainly work on the pacing. And I think the obvious analogy you've drawn for 13th century France and the fragmentation of the Carolingian Empire was a tad heavy-handed. But it's a good start."
+                                    if godfather == "Black":
+                                        m "I know a bit about pale-faced Death. Her house is not far from here. Perhaps -"
+                                        "A large grandfather clock in the corner suddenly chimed, and she looked up with a start."
+                                        m "Oh dear. Time marches on, even for me."
+                                        m "I'm sorry to be so rude but I'd better be off. Come back after the festival, and I may be able to help."
+                                        m "Please take care of yourself, dear. All of yourself."
+                                        "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
+                                        "You took up your bag and set off down the road once more."
+                                        jump thief1
+                                    else:
+                                        m "I'm afraid I don't know if I can help. I know a little about pale-faced Death, but I've never met your godfather."
+                                        "A large grandfather clock in the corner suddenly chimed, and she looked up with a start."
+                                        m "Oh dear. Time marches on, even for me."
+                                        m "I'm sorry to be so rude but I'd better be off. Come back after the festival, and I may be able to help."
+                                        m "Please take care of yourself, dear. All of yourself."
+                                        "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
+                                        "You took up your bag and set off down the road once more."
+                                        jump thief1
+                        #"But in the centre of the room you saw the most astonishing thing of all."
+                        #"Looming over the whole cavern were 3 great pillars of twisted wood and oozing sap."
+                        #"In the middle of the pillars writhed 3 figures, gaunt and frail: A pale and shivering Golden Wattle, a crooked Banksia seed, and a fiery Kangaroo Paw."
+                        #"The Mushroom took her knife and cut small pieces from her red cap, feeding it to the figures."
+                        #"As she did so you saw her weep and wail bitterly, crying out aloud at her misfortune."
+                        #INSERT: CHOICE
+                    "If you went back to the path, turn to page 28.":
+                        "You rushed back to the path, worried at any moment that you might be seen."
+                        "\"Thank goodness,\" you thought to yourself, \"that I know not to ask of what concerns me not! That could led me to some kind of dangerous and magical adventure.\""
+                        "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
+                        jump thief1
+            "If you ignored her and followed the path like an honest Christian, turn to page 42.":
+                "You ignored her and kept on walking down the path, just as your mother taught you."
+                jump thief1
 
     # Act 1, Chapter 4: The Thief.
     label thief1:
         call hideAll from _call_hideAll_8
         show forest4bg at artPos
-
-        "As you were walking down the road thusly, you came upon an old beggar-woman."
-        "Her eyes were blind, and her back was crooked in 5 directions at once, and her hair floated all around her head like twisting grey fog, and she hobbled about with only the aid of an old cane to help her along."
-        mys "Ho, young traveller."
-        show hand onlayer transient:
-            yalign 0.72#0.743
-            xalign 0.5
-        menu:
-            mys "Might you lend a hand for a frail old woman? The woods are dark tonight, and I thought I heard howling from the space between the trees."
-            #TK: Include option to kick over the old woman if you're the devil child
-            "If you help the old woman, turn to page 73.":
-                $thiefArc +=1
-                $stuffStolen = True
-                "You took the old woman's arm to support her weight."
-                mys "FOOOOOL!"
-                "In a flash her clothes tore asunder, and her mask fell to the ground, and you saw it was all nothing but a disguise."
-                "In her stead stood the cunning and terrible form of the Master Thief!"
-                #"They were neither tall nor short, neither fat nor thin, neither pale nor tan."
-                "They wore a midnight cloak across their back and a cunning look on their sly face."
-                t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
-                t "No law shall stand, no judge shall know peace and no cop shall sleep easy in their bed at night, for as long as my legs can run!"
-                "And with a shout of laughter they demonstrated this, running their long legs into the forest and out of sight."
-                "As soon as you tried to chase them you discovered that your clothes had been stolen off your back and replaced with origami paper replicas. Your belt was now a strip of seaweed, your socks were old moss, and you were wearing someone else's shoes."
-                label thiefChase:
+        if persistent.thiefVanished == True:
+            #play audio wind fadeout 25.0
+            $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
+            $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
+            $renpy.music.set_volume(0, delay=3.0, channel=u'music')
+            "As you walked down the road thusly, sweating in the warmth of the summer night, you heard nothing."
+            "You saw no-one."
+            "You were alone."
+            "You continued on down the empty road."
+            $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+            $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+            $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+            jump toadIntro
+        else:
+            "As you were walking down the road thusly, you came upon an old beggar-woman."
+            "Her eyes were blind, and her back was crooked in 5 directions at once, and her hair floated all around her head like twisting grey fog, and she hobbled about with only the aid of an old cane to help her along."
+            mys "Ho, young traveller."
+            show hand onlayer transient:
+                yalign 0.72#0.743
+                xalign 0.5
+            menu:
+                mys "Might you lend a hand for a frail old woman? The woods are dark tonight, and I thought I heard howling from the space between the trees."
+                #TK: Include option to kick over the old woman if you're the devil child
+                "If you help the old woman, turn to page 73.":
+                    $thiefArc +=1
+                    $stuffStolen = True
+                    "You took the old woman's arm to support her weight."
+                    mys "FOOOOOL!"
+                    "In a flash her clothes tore asunder, and her mask fell to the ground, and you saw it was all nothing but a disguise."
+                    "In her stead stood the cunning and terrible form of the Master Thief!"
+                    #"They were neither tall nor short, neither fat nor thin, neither pale nor tan."
+                    "They wore a midnight cloak across their back and a cunning look on their sly face."
+                    t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
+                    t "No law shall stand, no judge shall know peace and no cop shall sleep easy in their bed at night, for as long as my legs can run!"
+                    "And with a shout of laughter they demonstrated this, running their long legs into the forest and out of sight."
+                    "As soon as you tried to chase them you discovered that your clothes had been stolen off your back and replaced with origami paper replicas. Your belt was now a strip of seaweed, your socks were old moss, and you were wearing someone else's shoes."
+                    label thiefChase:
+                        show hand onlayer transient:
+                            yalign 0.68#0.743
+                            xalign 0.5
+                        menu:
+                            "Despair gripped you as you tripped over your mismatched shoes."
+                            "If you chased after them anyway, turn to page 37.":
+                                "You chased after the mocking laughter of the Master Thief, following the shadowy figure as they shed disguises, wigs, belts, and the old cane."
+                                "Finally, you caught up to the figure in a forest clearing, and grabbed it tight."
+                                if godfather == "White":
+                                    pov "Now you will face your just punishment, sure as the heavens declare the glory of G-d."
+                                elif godfather == "Red":
+                                    pov "You wretched fool. You should never have tried to out-do me in wickedness."
+                                else:
+                                    pov "I have my grip on you now, sure as Death has Her hand on us all."
+                                "You threw the figure to the ground, laughing in triumph."
+                                "But as soon as you did so, you realised it was nothing but a pig, wearing a wig and the raggedy cloak of the old woman."
+                                "The Master Thief was gone."
+                                label thiefchase2:
+                                    show hand onlayer transient:
+                                        yalign 0.69#0.743
+                                        xalign 0.5
+                                    menu:
+                                        "Seeing your misfortune, the pig oinked at you sorrowfully and nuzzled you for comfort."
+                                        "If you kept the pig, turn to page 53.":
+                                            "You picked up the pig and held it under the crook of your arm."
+                                            show hand onlayer transient:
+                                                yalign 0.743#0.743
+                                                xalign 0.5
+                                            "From that day on he would always be your loyal friend and ally, and the two of you would get through more scrapes and misadventures than I have time to relate tonight.{vspace=100}{i}In your notes, write down that you {b}have a pig.{/b}{/i}"
+                                            $pig = True
+                                        "If you let the pig run free and wild, as nature intended, turn to page 8.":
+                                            "With sorrow, you removed the cloak and wig, and gave the pig his freedom."
+                                            "He oinked joyfully and fled off into the night. From there, he joined with the wild bush pigs, and founded a great kingdom that was as a scourge upon the earth."
+                                            "Cruel indeed was the pig king, and countless innocents fell before his terrible iron hooves."
+                                            "In the years to come, you would curse your impetuous decision to let that devil-pig free many times."
+                                            "But that is a story for another day."
+                                        "If you shouted \"Noooooooooooo!\" more pitifully than ever before, turn to page 48."  if pitiful == 4:
+                                            pov "{b}{i}NOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO!{/b}{/i}"
+                                            $pitiful +=1
+                                            jump thiefchase2
+                            "If you shouted \"Noooooooooooo!\" pitifully, turn to page 45." if pitiful == 1:
+                                pov "Noooooooooooo!"
+                                $pitiful +=1
+                                jump thiefChase
+                            "If you shouted \"Noooooooooooo!\" again, even more pitifully, turn to page 46." if pitiful == 2:
+                                pov "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO!"
+                                $pitiful +=1
+                                jump thiefChase
+                            "If you shouted \"Noooooooooooo!\" again, as pitifully as one can shout, turn to page 47."  if pitiful == 3:
+                                pov "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                                OOOOOOOOOOOOOOOOOOOOOOOOOOOOO!"
+                                $pitiful +=1
+                                jump thiefChase
+                            "If you let them go, turn to page 27.":
+                                "You walked sorrowfully back to the road, cursing Old Gooseberry for your misfortune."
                     show hand onlayer transient:
-                        yalign 0.68#0.743
+                        yalign 0.8#0.743
                         xalign 0.5
-                    menu:
-                        "Despair gripped you as you tripped over your mismatched shoes."
-                        "If you chased after them anyway, turn to page 37.":
-                            "You chased after the mocking laughter of the Master Thief, following the shadowy figure as they shed disguises, wigs, belts, and the old cane."
-                            "Finally, you caught up to the figure in a forest clearing, and grabbed it tight."
-                            if godfather == "White":
-                                pov "Now you will face your just punishment, sure as the heavens declare the glory of G-d."
-                            elif godfather == "Red":
-                                pov "You wretched fool. You should never have tried to out-do me in wickedness."
-                            else:
-                                pov "I have my grip on you now, sure as Death has Her hand on us all."
-                            "You threw the figure to the ground, laughing in triumph."
-                            "But as soon as you did so, you realised it was nothing but a pig, wearing a wig and the raggedy cloak of the old woman."
-                            "The Master Thief was gone."
-                            label thiefchase2:
-                                show hand onlayer transient:
-                                    yalign 0.69#0.743
-                                    xalign 0.5
-                                menu:
-                                    "Seeing your misfortune, the pig oinked at you sorrowfully and nuzzled you for comfort."
-                                    "If you kept the pig, turn to page 53.":
-                                        "You picked up the pig and held it under the crook of your arm."
-                                        show hand onlayer transient:
-                                            yalign 0.743#0.743
-                                            xalign 0.5
-                                        "From that day on he would always be your loyal friend and ally, and the two of you would get through more scrapes and misadventures than I have time to relate tonight.{vspace=100}{i}In your notes, write down that you {b}have a pig.{/b}{/i}"
-                                        $pig = True
-                                    "If you let the pig run free and wild, as nature intended, turn to page 8.":
-                                        "With sorrow, you removed the cloak and wig, and gave the pig his freedom."
-                                        "He oinked joyfully and fled off into the night. From there, he joined with the wild bush pigs, and founded a great kingdom that was as a scourge upon the earth."
-                                        "Cruel indeed was the pig king, and countless innocents fell before his terrible iron hooves."
-                                        "In the years to come, you would curse your impetuous decision to let that devil-pig free many times."
-                                        "But that is a story for another day."
-                                    "If you shouted \"Noooooooooooo!\" more pitifully than ever before, turn to page 48."  if pitiful == 4:
-                                        pov "{b}{i}NOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                                        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                                        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                                        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                                        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                                        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                                        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO!{/b}{/i}"
-                                        $pitiful +=1
-                                        jump thiefchase2
-                        "If you shouted \"Noooooooooooo!\" pitifully, turn to page 45." if pitiful == 1:
-                            pov "Noooooooooooo!"
-                            $pitiful +=1
-                            jump thiefChase
-                        "If you shouted \"Noooooooooooo!\" again, even more pitifully, turn to page 46." if pitiful == 2:
-                            pov "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO!"
-                            $pitiful +=1
-                            jump thiefChase
-                        "If you shouted \"Noooooooooooo!\" again, as pitifully as one can shout, turn to page 47."  if pitiful == 3:
-                            pov "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO!"
-                            $pitiful +=1
-                            jump thiefChase
-                        "If you let them go, turn to page 27.":
-                            "You walked sorrowfully back to the road, cursing Old Gooseberry for your misfortune."
-                show hand onlayer transient:
-                    yalign 0.8#0.743
-                    xalign 0.5
-                "As you trudged back to the road you discovered that all of your coins had been stolen and replaced with I.O.U.'s, the bread was now nothing but crumbs, and the meat had been replaced with a live possum with a label on it saying \"Ham\". It bit you and fled into the trees.{vspace=100}{i}In your notes, write down that {b}Your things have been stolen.{/b}{/i}"
-                if godfather == "White":
-                    "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Oh Lord, how could you treat your servant thus?\""
-                    "After a long time you drew yourself up from the ground and spoke to the trees."
-                    pov "Hear me now, Thief. With the Lord as my witness, I will not rest until you see justice."
-                if godfather == "Red":
-                    "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Oh my Lord and Master, the Father of Lies, how could you forsake me? I, who have outdone all others in wickedness, and served you faithfully in evil for all these long years?\""
-                    "After a long time you drew yourself up from the ground and spoke to the trees."
-                    pov "Hear me now, Thief. My godfather is the Devil, and my blood runs with nothing but spite, and I will not rest until the Prince of Darkness fastens His hands around your ankles and drags you straight down to Hell where you belong."
-                if godfather == "Black":
-                    "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Lady Death, take me now!\""
-                    "After a long time you drew yourself up from the ground and spoke to the trees."
-                    pov "Hear me now, Thief. My godmother is the end of all things, and I will not rest until you have been dragged down into Her icy waters where you belong."
-                "But there was nothing to be done for now, and so you tightened your seaweed around your waist and set off once more for the festival, vowing vengeance upon the Master Thief."
-            "If you refuse to aid her, turn to page 44.":
-                pov "I'm sorry ma'am, but I cannot help you. I've been told not to talk to strangers."
-                "\"Bah!\" cried the older woman, and stomped her foot on the ground."
-                "In a flash her clothes tore asunder, and her grey hair fell to the ground, and you saw it was all nothing but a disguise."
-                "In front of you stood the cunning and terrible form of the Master Thief!"
-                "They had long, long legs and thin dextrous fingers that twisted in arcane motions around them."
-                "They wore a flowing midnight cloak across their back and a cunning look across their sly face."
-                t "You may have outwitted me this time, but I'll get you yet!"
-                t "No law shall stand, no magistrate shall know peace and no cop shall sleep easy in their bed at night, for as long as my legs can run!"
-                "And with a click of their heels they rushed away into the shadows of the woods."
-                "\"Praise the Lord,\" you said to yourself, \"that I know not to help mysterious old women!\""
-                "(A wise habit. Once you've given someone a hand, they'll take your arm.)"
-                "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
+                    "As you trudged back to the road you discovered that all of your coins had been stolen and replaced with I.O.U.'s, the bread was now nothing but crumbs, and the meat had been replaced with a live possum with a label on it saying \"Ham\". It bit you and fled into the trees.{vspace=100}{i}In your notes, write down that {b}Your things have been stolen.{/b}{/i}"
+                    if godfather == "White":
+                        "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Oh Lord, how could you treat your servant thus?\""
+                        "After a long time you drew yourself up from the ground and spoke to the trees."
+                        pov "Hear me now, Thief. With the Lord as my witness, I will not rest until you see justice."
+                    if godfather == "Red":
+                        "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Oh my Lord and Master, the Father of Lies, how could you forsake me? I, who have outdone all others in wickedness, and served you faithfully in evil for all these long years?\""
+                        "After a long time you drew yourself up from the ground and spoke to the trees."
+                        pov "Hear me now, Thief. My godfather is the Devil, and my blood runs with nothing but spite, and I will not rest until the Prince of Darkness fastens His hands around your ankles and drags you straight down to Hell where you belong."
+                    if godfather == "Black":
+                        "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Lady Death, take me now!\""
+                        "After a long time you drew yourself up from the ground and spoke to the trees."
+                        pov "Hear me now, Thief. My godmother is the end of all things, and I will not rest until you have been dragged down into Her icy waters where you belong."
+                    "But there was nothing to be done for now, and so you tightened your seaweed around your waist and set off once more for the festival, vowing vengeance upon the Master Thief."
+                    jump toadIntro
+                "If you refuse to aid her, turn to page 44.":
+                    pov "I'm sorry ma'am, but I cannot help you. I've been told not to talk to strangers."
+                    "\"Bah!\" cried the older woman, and stomped her foot on the ground."
+                    "In a flash her clothes tore asunder, and her grey hair fell to the ground, and you saw it was all nothing but a disguise."
+                    "In front of you stood the cunning and terrible form of the Master Thief!"
+                    "They had long, long legs and thin dextrous fingers that twisted in arcane motions around them."
+                    "They wore a flowing midnight cloak across their back and a cunning look across their sly face."
+                    t "You may have outwitted me this time, but I'll get you yet!"
+                    t "No law shall stand, no magistrate shall know peace and no cop shall sleep easy in their bed at night, for as long as my legs can run!"
+                    "And with a click of their heels they rushed away into the shadows of the woods."
+                    "\"Praise the Lord,\" you said to yourself, \"that I know not to help mysterious old women!\""
+                    "(A wise habit. Once you've given someone a hand, they'll take your arm.)"
+                    "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
+                    jump toadIntro
 
     # Chapter 1, Part 5: The Toad.
-    call hideAll from _call_hideAll_9
-    show forest5bg at artPos
-    if persistent.toadVanished == True:
-        #play audio wind fadeout 25.0
-        $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
-        $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
-        $renpy.music.set_volume(0, delay=3.0, channel=u'music')
+    label toadIntro:
+        call hideAll from _call_hideAll_9
+        show forest5bg at artPos
+        if persistent.toadVanished == True:
+            #play audio wind fadeout 25.0
+            $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
+            $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
+            $renpy.music.set_volume(0, delay=3.0, channel=u'music')
 
-        if pig:
-            "As you walked down the road with the pig trotting beside you, you heard nothing."
-            "You saw no-one."
-            "You were alone."
-            "You continued on down the empty road."
+            if pig:
+                "As you walked down the road with the pig trotting beside you, you heard nothing."
+                "You saw no-one."
+                "You were alone."
+                "You continued on down the empty road."
+            else:
+                "As you walked down the road, sweating in the warmth of the summer night, you heard nothing."
+                "You saw no-one."
+                "You were alone."
+                "You continued on down the empty road."
+            $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+            $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+            $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+
+            jump chapter6
         else:
-            "As you walked down the road, sweating in the warmth of the summer night, you heard nothing."
-            "You saw no-one."
-            "You were alone."
-            "You continued on down the empty road."
-        $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
-        $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
-        $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+            if pig:
+                "As you walked down the road with the pig trotting beside you, you heard a great clattering of hooves, and turned to see four horses pulling a magnificent golden carriage."
+            else:
+                "As you walked down the road, sweating in the warmth of the summer night, you heard a great clattering of hooves behind you, and turned to see four horses pulling a magnificent golden carriage."
+            "The horses were pure white, with intricate porcelain and shining bridles made of fine-spun ropes laced with gold."
+            "The carriage door was open to show a curtain of lush red silk, and behind the curtain you could see the shadow of a lean and graceful figure of noble bearing."
 
-        jump chapter6
-    else:
-        if pig:
-            "As you walked down the road with the pig trotting beside you, you heard a great clattering of hooves, and turned to see four horses pulling a magnificent golden carriage."
-        else:
-            "As you walked down the road, sweating in the warmth of the summer night, you heard a great clattering of hooves behind you, and turned to see four horses pulling a magnificent golden carriage."
-        "The horses were pure white, with intricate porcelain and shining bridles made of fine-spun ropes laced with gold."
-        "The carriage door was open to show a curtain of lush red silk, and behind the curtain you could see the shadow of a lean and graceful figure of noble bearing."
+            eg "Hold!"
 
-        eg "Hold!"
+            "A rich, low voice like dark mahogany came from behind the curtains, showing the distinctive tones of one of good breeding and character. The horses slowed to walk beside you."
+            "A slender hand holding a long cigarette holder emerged from the curtains and beckoned to you."
+            "From inside the curtain you could smell rich spices, incense and thyme."
+            "You felt a cool breeze across your face from inside the carriage, and saw the shadow of the man inside swilling a glass of brandy in his other hand."
+            show hand onlayer transient:
+                yalign 0.63#0.743
+                xalign 0.5
+            #Change: More impact from this choice. More mysterious and interesting sounding locations.
+            menu:
+                eg "Where are you headed, fellow traveller?"
+                "If you told him about the festival, turn to page 12.":
+                    eg "Why, that's exactly where I'm going!"
+                "If you said \"The Glass Mountains\", turn to page 61.":
+                    eg  "Nonsense! There's no reason to be travelling that way."
+                    eg "I am heading to the village festival. You should join me."
+                "If you said \"The road of Pins and the road of Needles\", turn to page 61.":
+                    eg  "Nonsense! There's no reason to be travelling that way."
+                    eg "I am heading to the village festival. You should join me."
+                "If you said \"The space between the trees\", turn to page 61.":
+                    eg "Nonsense! There's no reason to be travelling that way."
+                    eg "I am heading to the village festival. You should join me."
+                "If you said nothing, turn to page 57.":
+                    eg "Now now, no need to be shy."
+                    eg "I am heading to the village festival. You should join me."
+            eg "Come, ride along in my carriage, and we shall get there twice as fast."
+            if pig:
+                "Your pig sniffed at the carriage suspiciously."
+            show hand onlayer transient:
+                yalign 0.7#0.743
+                xalign 0.5
+            menu:
+                eg "This is no night to be walking out alone. Haven't you heard there's {color=#f00}something{/color} in these woods?"
+                "If you accepted the lift, turn to page 54.":
+                    $toadArc +=1
+                    if pig:
+                        "You reached up to take the gentleman's hand, and he whisked you and the pig into the carriage."
+                    else:
+                        "You reached up to take the gentleman's hand, and he whisked you into the carriage."
+                    "The moment you were through the curtain you realised something was wrong."
+                    "Instead of the graceful and elegant nobleman you expected, you discovered a small, ugly cane toad."
+                    "The incense you smelled was nothing but the reek of dirt and mud, the brandy was pond scum, the gleaming carriage was just a rotten old squash, and the graceful arm that beckoned you from behind the curtain was nothing but a wooden prop the toad held in his webbed hand."
+                    "You turned to run, but it was too late. With a clap, the toad commanded his steeds."
+                    f "Prickle! Crawl! Shudder and Wink! Be off at once. We have a festival to get to!"
+                    "The brilliant white horses tore off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo."
+                    "They cackled and gibbered to each other as they raced off down the road with you, bumping and rolling and pulling apart pinecones and causing terrible devastation as they went."
+                    if pig:
+                        "You clutched your pig close, and you both shivered in terror at the unforeseen calamity that had befallen you."
+                    #Change: ADD CHOICE
+                    show hand onlayer transient:
+                        yalign 0.66#0.743
+                        xalign 0.5
+                    menu:
+                        f "Well, are you impressed?"
+                        "If you asked the gentleman his name, turn to page 58.":
+                            f "I am Brildebrogue Chippingham, and I have never failed at anything in my life."
+                            f "No doubt you've heard of me."
+                        "If you flattered the toad, turn to page 63.":
+                            pov "Absolutely, sir. I'm stunned."
+                            f "As is natural."
+                            f "I find it's better to conceal my true beauty from the common-folk."
+                            f "Were they to see the incandescent beauty of my true visage at first sight, I dare say they would fall to their knees and wail in shock, so transfixed would they be."
+                            f "I would never be able to get anywhere without them pawing at me and offering me their baked goods and falling about in ecstasy, you know how these people are."
+                            f "But you, I believe, have sufficient grace to withstand my true beauty."
+                        "If your notes say that {b}You are the Devil's Godchild{/b}, turn to page 65." if godfather=="Red":
+                            $toadStole = True
+                            pov "Sir, you've made one mistake. Never tangle with the spawn of the Devil."
+                            if pig:
+                                "With a single motion you stole all the valuables you could grab and leapt from the moving carriage with the pig like a holy terror, tumbling onto the road below."
+                            else:
+                                "With a single motion you stole all the valuables you could grab and leapt from the moving carriage like a holy terror, tumbling onto the road below."
+                            f "What the - stop! Thief!"
+                            "But it was too late. You were already away and running into the woods, laughing with impish glee."
+                            show hand onlayer transient:
+                                yalign 0.743#0.743
+                                xalign 0.5
+                            "You looked down at your haul and found that you'd managed to swipe a lovely emerald broach in the shape of a dragonfly.{vspace=170}{i}In your notes, write down that {b}You have an Emerald Brooch.{/b}{/i}"
+                            "You hid it in your pocket and went on your way."
+                            jump chapter6
+                    show hand onlayer transient:
+                        yalign 0.67#0.743
+                        xalign 0.5
+                    menu:
+                        f "So, what brings you travelling this way?"
+                        "If you told the toad about your Godparent, turn to page 67.":
+                            if godfather == "White":
+                                pov "I'm searching for a way to escape my godfather, the King of Kings."
+                                pov "He will be here to take me away at midnight, and I have no wish to leave."
+                                f "A sticky situation indeed!"
+                                f "I have talked with the Lord many times, of course."
+                                show tornPage1 onlayer screens zorder 101
+                                show tornPage1bg onlayer screens zorder 99
+                                f "Why, just the other day He said to me, He said Brildebrogue! How did I ever manage to make one as handsome and charming as you? Why, even one with my own talents (which are quite decent of course, though nothing in comparison to your own gifts) can scarcely imagine bringing such a golden figure out of the fires of creation! At this I swung back my head in a great laugh, like so: HA! And my golden mane whipped around me in the wind, and all were charmed and chortled alongside me to see my wit and good humour, and we all joined together in an uproarious shout of laughter, such that the whole world could hear it - in fact I have no doubts that you must have heard it yourself, even out here in this backwater location, so loud was the sound, although perhaps you took it for a minor earthquake."
+                                hide tornPage1 onlayer screens
+                                hide tornPage1bg onlayer screens
+                                f "Perhaps I could put in a good word for you with Him later. Pond scum?"
+                            if godfather == "Red":
+                                pov "I'm searching for a way to escape my godfather, Old Scratch."
+                                pov "He will be here to take me away at midnight, and I have no wish to leave."
+                                f "A sticky situation indeed!"
+                                f "I know the Black One well myself, in fact."
+                                show tornPage2 onlayer screens zorder 101
+                                show tornPage2bg onlayer screens zorder 99
+                                f "Why just the other day I said to Him, I said Devil! How dare you twist the lives of these innocent souls here, tricking them into a terrible life of debauchery and ill-humour, just to suit your own devious and ill-conceived personal goals, when you could instead behave yourself and simply put things to rights like a well-mannered member of society such as myself? At my words, He shrank back with a most timiditous cowardice, and I saw Him gulp in nervous anxiety most profound, such was His fear of my great anger (which can be quite considerable when my dander is up, although of course I take care to remain in good humour for the purpose of conversing with polite gentlefolk such as yourself). In an instant, He swore never to do evil again, and scurried away over hill and dale without a backwards glance."
+                                hide tornPage2 onlayer screens
+                                hide tornPage2bg onlayer screens
+                                f "Perhaps I could put in a good word for you with Him later. Pond scum?"
+                            if godfather == "Black":
+                                "I'm searching for a way to escape my godmother, the Reaper."
+                                pov "She said she will soon send 3 messengers, and then take me away. But I have no wish to leave just yet."
+                                f "A sticky situation indeed!"
+                                f "Why, that reminds me of the situation when my own dear old mother was about to die."
+                                show tornPage1 onlayer screens zorder 101
+                                show tornPage1bg onlayer screens zorder 99
+                                f "I've chatted with Death many times, of course, and so on this occasion I marched right on up to Her and said \"Unhand my mother, you ruffian! I cannot allow you to continue this wave of terror you have inflicted across the forest left and right, taking away women and old maids and children at will, rich and poor alike, before their time has come to pass! Release her at once, or I'll have to get extremely unpleasant with you (And you do NOT wish to see me when I'm being unpleasant, I assure you, such a thing has driven many hard men to tears!) At this stern talking-to from me, She released my mother at once with a sincere apology, and I need hardly say that She has not darkened our door again."
+                                hide tornPage1 onlayer screens
+                                hide tornPage1bg onlayer screens
+                                f "Perhaps I could put in a good word for you with Her later. Pond scum?"
+                        "If you remained vague about your true plans, turn to page 71.":
+                            pov "Just... travelling, I suppose."
+                            f "Fantastic! Nothing better than a spot of travelling. I've done quite a bit in my day, let me tell you."
+                            show tornPage3 onlayer screens zorder 101
+                            show tornPage3bg onlayer screens zorder 99
+                            f "Why just the other day I travelled to the living city of Brilochiorp, built on a turtle's back, where your dreams cast shadows and your thoughts chase after you in the mid-afternoon sun. I was there to discuss matters with the queen of the dream thieves, you see, a rascally beggar who had been running about the city filching this dream and that right out of the heads of the poor citizens, so that they dreamed nothing and had no ideas and the city's art and culture stagnated to nothing! Well, we can't have this sort of thing going on, Brilebrogue, I said to myself, and so I paid the blighter a visit and gave her a stern talking-to, and no mistake. She renounced his ways in an instant and placed all the dreams back exactly where he found them, promising to reform her ways and be a better woman. Another successful adventure, all told."
+                            hide tornPage3 onlayer screens
+                            hide tornPage3bg onlayer screens
+                            f "But I'm sure your little festival will be quite quaint, too. Pond scum?"
+                        "If you said nothing, turn to page 74.":
+                            f "No bother, then, keep your secrets to yourself."
+                            show tornPage3 onlayer screens zorder 101
+                            show tornPage3bg onlayer screens zorder 99
+                            f "I myself am excellent at keeping secrets. Why, just the other day the Brass Magician of the City of Pale Stones said to me, he said Brildebrogue! Can I trust you with a most powerful and deadly secret, such that it would destroy the heavens if it were to be released? Of course I gave him my assurances immediately, and thus he told me that the devil's seven daughters were locked below the city in chains, and could only be released with the most secret and magical word, \"Grolabicon\"! Of course if this were ever to be discovered and the daughters released, they would wreak such terrible havoc on the world as to bring the Firmament crashing down from Her place up above, and it would be the seventh and final apocalypse come at last, which is why I gave him my word that I would keep the secret safe as houses, and I have never told anyone of the matter to this day."
+                            hide tornPage3 onlayer screens
+                            hide tornPage3bg onlayer screens
+                            f "Pond scum?"
+                    show hand onlayer transient:
+                        yalign 0.67#0.743
+                        xalign 0.5
+                    menu:
+                        "He offered a decanter of pondwater to you."
+                        "If you accepted (as any kind and generous guest would), turn to page 75.": # (The choice of a kind and generous guest)
+                            #Change: Bad luck
+                            "You knew better than to say no. After all, it\'s bad luck to refuse a gift from a toad."
+                            "The pondwater was surprisingly delicious. It tasted of lavender honey, cold coffee, and long evenings by a shaded pool in the heat of summer."
+                            "As you sipped it you felt a cool emerald chill pass through your whole body."
 
-        "A rich, low voice like dark mahogany came from behind the curtains, showing the distinctive tones of one of good breeding and character. The horses slowed to walk beside you."
-        "A slender hand holding a long cigarette holder emerged from the curtains and beckoned to you."
-        "From inside the curtain you could smell rich spices, incense and thyme."
-        "You felt a cool breeze across your face from inside the carriage, and saw the shadow of the man inside swilling a glass of brandy in his other hand."
-        show hand onlayer transient:
-            yalign 0.63#0.743
-            xalign 0.5
-        #Change: More impact from this choice. More mysterious and interesting sounding locations.
-        menu:
-            eg "Where are you headed, fellow traveller?"
-            "If you told him about the festival, turn to page 12.":
-                eg "Why, that's exactly where I'm going!"
-            "If you said \"The Glass Mountains\", turn to page 61.":
-                eg  "Nonsense! There's no reason to be travelling that way."
-                eg "I am heading to the village festival. You should join me."
-            "If you said \"The road of Pins and the road of Needles\", turn to page 61.":
-                eg  "Nonsense! There's no reason to be travelling that way."
-                eg "I am heading to the village festival. You should join me."
-            "If you said \"The space between the trees\", turn to page 61.":
-                eg "Nonsense! There's no reason to be travelling that way."
-                eg "I am heading to the village festival. You should join me."
-            "If you said nothing, turn to page 57.":
-                eg "Now now, no need to be shy."
-                eg "I am heading to the village festival. You should join me."
-        eg "Come, ride along in my carriage, and we shall get there twice as fast."
-        if pig:
-            "Your pig sniffed at the carriage suspiciously."
-        show hand onlayer transient:
-            yalign 0.7#0.743
-            xalign 0.5
-        menu:
-            eg "This is no night to be walking out alone. Haven't you heard there's {color=#f00}something{/color} in these woods?"
-            "If you accepted the lift, turn to page 54.":
-                $toadArc +=1
-                if pig:
-                    "You reached up to take the gentleman's hand, and he whisked you and the pig into the carriage."
-                else:
-                    "You reached up to take the gentleman's hand, and he whisked you into the carriage."
-                "The moment you were through the curtain you realised something was wrong."
-                "Instead of the graceful and elegant nobleman you expected, you discovered a small, ugly cane toad."
-                "The incense you smelled was nothing but the reek of dirt and mud, the brandy was pond scum, the gleaming carriage was just a rotten old squash, and the graceful arm that beckoned you from behind the curtain was nothing but a wooden prop the toad held in his webbed hand."
-                "You turned to run, but it was too late. With a clap, the toad commanded his steeds."
-                f "Prickle! Crawl! Shudder and Wink! Be off at once. We have a festival to get to!"
-                "The brilliant white horses tore off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo."
-                "They cackled and gibbered to each other as they raced off down the road with you, bumping and rolling and pulling apart pinecones and causing terrible devastation as they went."
-                if pig:
-                    "You clutched your pig close, and you both shivered in terror at the unforeseen calamity that had befallen you."
-                #Change: ADD CHOICE
-                show hand onlayer transient:
-                    yalign 0.66#0.743
-                    xalign 0.5
-                menu:
-                    f "Well, are you impressed?"
-                    "If you asked the gentleman his name, turn to page 58.":
-                        f "I am Brildebrogue Chippingham, and I have never failed at anything in my life."
-                        f "No doubt you've heard of me."
-                    "If you flattered the toad, turn to page 63.":
-                        pov "Absolutely, sir. I'm stunned."
-                        f "As is natural."
-                        f "I find it's better to conceal my true beauty from the common-folk."
-                        f "Were they to see the incandescent beauty of my true visage at first sight, I dare say they would fall to their knees and wail in shock, so transfixed would they be."
-                        f "I would never be able to get anywhere without them pawing at me and offering me their baked goods and falling about in ecstasy, you know how these people are."
-                        f "But you, I believe, have sufficient grace to withstand my true beauty."
-                    "If your notes say that {b}You are the Devil's Godchild{/b}, turn to page 65." if godfather=="Red":
-                        $toadStole = True
-                        pov "Sir, you've made one mistake. Never tangle with the spawn of the Devil."
-                        if pig:
-                            "With a single motion you stole all the valuables you could grab and leapt from the moving carriage with the pig like a holy terror, tumbling onto the road below."
-                        else:
-                            "With a single motion you stole all the valuables you could grab and leapt from the moving carriage like a holy terror, tumbling onto the road below."
-                        f "What the - stop! Thief!"
-                        "But it was too late. You were already away and running into the woods, laughing with impish glee."
-                        show hand onlayer transient:
-                            yalign 0.743#0.743
-                            xalign 0.5
-                        "You looked down at your haul and found that you'd managed to swipe a lovely emerald broach in the shape of a dragonfly.{vspace=170}{i}In your notes, write down that {b}You have an Emerald Brooch.{/b}{/i}"
-                        "You hid it in your pocket and went on your way."
-                        jump chapter6
-                show hand onlayer transient:
-                    yalign 0.67#0.743
-                    xalign 0.5
-                menu:
-                    f "So, what brings you travelling this way?"
-                    "If you told the toad about your Godparent, turn to page 67.":
-                        if godfather == "White":
-                            pov "I'm searching for a way to escape my godfather, the King of Kings."
-                            pov "He will be here to take me away at midnight, and I have no wish to leave."
-                            f "A sticky situation indeed!"
-                            f "I have talked with the Lord many times, of course."
-                            show tornPage1 onlayer screens zorder 101
-                            show tornPage1bg onlayer screens zorder 99
-                            f "Why, just the other day He said to me, He said Brildebrogue! How did I ever manage to make one as handsome and charming as you? Why, even one with my own talents (which are quite decent of course, though nothing in comparison to your own gifts) can scarcely imagine bringing such a golden figure out of the fires of creation! At this I swung back my head in a great laugh, like so: HA! And my golden mane whipped around me in the wind, and all were charmed and chortled alongside me to see my wit and good humour, and we all joined together in an uproarious shout of laughter, such that the whole world could hear it - in fact I have no doubts that you must have heard it yourself, even out here in this backwater location, so loud was the sound, although perhaps you took it for a minor earthquake."
-                            hide tornPage1 onlayer screens
-                            hide tornPage1bg onlayer screens
-                            f "Perhaps I could put in a good word for you with Him later. Pond scum?"
-                        if godfather == "Red":
-                            pov "I'm searching for a way to escape my godfather, Old Scratch."
-                            pov "He will be here to take me away at midnight, and I have no wish to leave."
-                            f "A sticky situation indeed!"
-                            f "I know the Black One well myself, in fact."
-                            show tornPage2 onlayer screens zorder 101
-                            show tornPage2bg onlayer screens zorder 99
-                            f "Why just the other day I said to Him, I said Devil! How dare you twist the lives of these innocent souls here, tricking them into a terrible life of debauchery and ill-humour, just to suit your own devious and ill-conceived personal goals, when you could instead behave yourself and simply put things to rights like a well-mannered member of society such as myself? At my words, He shrank back with a most timiditous cowardice, and I saw Him gulp in nervous anxiety most profound, such was His fear of my great anger (which can be quite considerable when my dander is up, although of course I take care to remain in good humour for the purpose of conversing with polite gentlefolk such as yourself). In an instant, He swore never to do evil again, and scurried away over hill and dale without a backwards glance."
-                            hide tornPage2 onlayer screens
-                            hide tornPage2bg onlayer screens
-                            f "Perhaps I could put in a good word for you with Him later. Pond scum?"
-                        if godfather == "Black":
-                            "I'm searching for a way to escape my godmother, the Reaper."
-                            pov "She said she will soon send 3 messengers, and then take me away. But I have no wish to leave just yet."
-                            f "A sticky situation indeed!"
-                            f "Why, that reminds me of the situation when my own dear old mother was about to die."
-                            show tornPage1 onlayer screens zorder 101
-                            show tornPage1bg onlayer screens zorder 99
-                            f "I've chatted with Death many times, of course, and so on this occasion I marched right on up to Her and said \"Unhand my mother, you ruffian! I cannot allow you to continue this wave of terror you have inflicted across the forest left and right, taking away women and old maids and children at will, rich and poor alike, before their time has come to pass! Release her at once, or I'll have to get extremely unpleasant with you (And you do NOT wish to see me when I'm being unpleasant, I assure you, such a thing has driven many hard men to tears!) At this stern talking-to from me, She released my mother at once with a sincere apology, and I need hardly say that She has not darkened our door again."
-                            hide tornPage1 onlayer screens
-                            hide tornPage1bg onlayer screens
-                            f "Perhaps I could put in a good word for you with Her later. Pond scum?"
-                    "If you remained vague about your true plans, turn to page 71.":
-                        pov "Just... travelling, I suppose."
-                        f "Fantastic! Nothing better than a spot of travelling. I've done quite a bit in my day, let me tell you."
-                        show tornPage3 onlayer screens zorder 101
-                        show tornPage3bg onlayer screens zorder 99
-                        f "Why just the other day I travelled to the living city of Brilochiorp, built on a turtle's back, where your dreams cast shadows and your thoughts chase after you in the mid-afternoon sun. I was there to discuss matters with the queen of the dream thieves, you see, a rascally beggar who had been running about the city filching this dream and that right out of the heads of the poor citizens, so that they dreamed nothing and had no ideas and the city's art and culture stagnated to nothing! Well, we can't have this sort of thing going on, Brilebrogue, I said to myself, and so I paid the blighter a visit and gave her a stern talking-to, and no mistake. She renounced his ways in an instant and placed all the dreams back exactly where he found them, promising to reform her ways and be a better woman. Another successful adventure, all told."
-                        hide tornPage3 onlayer screens
-                        hide tornPage3bg onlayer screens
-                        f "But I'm sure your little festival will be quite quaint, too. Pond scum?"
-                    "If you said nothing, turn to page 74.":
-                        f "No bother, then, keep your secrets to yourself."
-                        show tornPage3 onlayer screens zorder 101
-                        show tornPage3bg onlayer screens zorder 99
-                        f "I myself am excellent at keeping secrets. Why, just the other day the Brass Magician of the City of Pale Stones said to me, he said Brildebrogue! Can I trust you with a most powerful and deadly secret, such that it would destroy the heavens if it were to be released? Of course I gave him my assurances immediately, and thus he told me that the devil's seven daughters were locked below the city in chains, and could only be released with the most secret and magical word, \"Grolabicon\"! Of course if this were ever to be discovered and the daughters released, they would wreak such terrible havoc on the world as to bring the Firmament crashing down from Her place up above, and it would be the seventh and final apocalypse come at last, which is why I gave him my word that I would keep the secret safe as houses, and I have never told anyone of the matter to this day."
-                        hide tornPage3 onlayer screens
-                        hide tornPage3bg onlayer screens
-                        f "Pond scum?"
-                show hand onlayer transient:
-                    yalign 0.67#0.743
-                    xalign 0.5
-                menu:
-                    "He offered a decanter of pondwater to you."
-                    "If you accepted (as any kind and generous guest would), turn to page 75.": # (The choice of a kind and generous guest)
-                        #Change: Bad luck
-                        "You knew better than to say no. After all, it\'s bad luck to refuse a gift from a toad."
-                        "The pondwater was surprisingly delicious. It tasted of lavender honey, cold coffee, and long evenings by a shaded pool in the heat of summer."
-                        "As you sipped it you felt a cool emerald chill pass through your whole body."
-
-                    "If you refused (the action of a witless and ungrateful churl), turn to page 76.":
-                        "\"No thank you,\" you said, like a fool."
-                        "(Don't you know that it's bad luck to refuse a gift from a toad?)"
-                        f "More for me, then!"
-                        "And the toad greedily gulped down the pondwater, without comment on your obvious poor manners and lack of breeding."
-                "The old squash rattled about hither and thither through the forest, giving you bruises all over, but before you knew it you had arrived at the village square."
-                "The toad rose out of his seat, leapt out through the curtains, and with a flourish offered his hand to help you down the carriage steps (which were made of old shoe-leather)."
-                if pig:
-                    "The pig trotted down after you, looking disgruntled."
-                f "There you are!"
-                f "Thank you gracefully for the wonderful company, and I wish you the best of luck with the festival!"
-                jump chapter6
-            "If you refused the lift, turn to page 55.":
-                if godfather == "Red":
-                    pov "Begone, worm. Pester me again and I'll drive you into the grave, just as I did my own mother."
-                else:
-                    pov "No thank you, Sir. My mother warned me not to talk to strangers."
-                eg "You would spurn me? ME?"
-                eg "I'll have you know that I am {b}Bridlebrogue Chippingham{/b}, and I've never failed at anything in my life!"
-                "The curtains parted and inside you saw a small, ugly cane toad, squatting in muck. The graceful arm that beckoned you from behind the curtain was nothing but a wooden prop in his webbed hand. He tossed it to the ground with disgust."
-                show tornPage3 onlayer screens zorder 101
-                show tornPage3bg onlayer screens zorder 99
-                if godfather == "Red":
-                    f "Why, if your mother was alive I would give her a good piece of my mind about the way she raised you. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
-                else:
-                    f "Why, I have half a mind to give your mother a good piece of my mind. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
-                hide tornPage3 onlayer screens
-                hide tornPage3bg onlayer screens
-                "With a furious clap of his hand, he ordered the horses to ride on. The horses shrugged off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo. You realised that the brilliant carriage they pulled was nothing more than an old rotten squash."
-                "They pulled it bouncing down the road, crashing and rolling and pulling apart pinecones and causing terrible devastation as they went, until they were down the road and out of sight."
-                pov "Well! It's a good thing I know not to talk to strangers."
-                "(A wise habit. The Lord knows this world is full of cheats and liars.)"
-                jump chapter6
+                        "If you refused (the action of a witless and ungrateful churl), turn to page 76.":
+                            "\"No thank you,\" you said, like a fool."
+                            "(Don't you know that it's bad luck to refuse a gift from a toad?)"
+                            f "More for me, then!"
+                            "And the toad greedily gulped down the pondwater, without comment on your obvious poor manners and lack of breeding."
+                    "The old squash rattled about hither and thither through the forest, giving you bruises all over, but before you knew it you had arrived at the village square."
+                    "The toad rose out of his seat, leapt out through the curtains, and with a flourish offered his hand to help you down the carriage steps (which were made of old shoe-leather)."
+                    if pig:
+                        "The pig trotted down after you, looking disgruntled."
+                    f "There you are!"
+                    f "Thank you gracefully for the wonderful company, and I wish you the best of luck with the festival!"
+                    jump chapter6
+                "If you refused the lift, turn to page 55.":
+                    if godfather == "Red":
+                        pov "Begone, worm. Pester me again and I'll drive you into the grave, just as I did my own mother."
+                    else:
+                        pov "No thank you, Sir. My mother warned me not to talk to strangers."
+                    eg "You would spurn me? ME?"
+                    eg "I'll have you know that I am {b}Bridlebrogue Chippingham{/b}, and I've never failed at anything in my life!"
+                    "The curtains parted and inside you saw a small, ugly cane toad, squatting in muck. The graceful arm that beckoned you from behind the curtain was nothing but a wooden prop in his webbed hand. He tossed it to the ground with disgust."
+                    show tornPage3 onlayer screens zorder 101
+                    show tornPage3bg onlayer screens zorder 99
+                    if godfather == "Red":
+                        f "Why, if your mother was alive I would give her a good piece of my mind about the way she raised you. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
+                    else:
+                        f "Why, I have half a mind to give your mother a good piece of my mind. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
+                    hide tornPage3 onlayer screens
+                    hide tornPage3bg onlayer screens
+                    "With a furious clap of his hand, he ordered the horses to ride on. The horses shrugged off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo. You realised that the brilliant carriage they pulled was nothing more than an old rotten squash."
+                    "They pulled it bouncing down the road, crashing and rolling and pulling apart pinecones and causing terrible devastation as they went, until they were down the road and out of sight."
+                    pov "Well! It's a good thing I know not to talk to strangers."
+                    "(A wise habit. The Lord knows this world is full of cheats and liars.)"
+                    jump chapter6
 
     #---- Act 1, Chapter 6: The Village.
     label chapter6:
@@ -1712,61 +1741,76 @@ label introMenu:
 
     label witch1:
         #TK: add choices here
-        "As you walked up to the village, you spied a hunter standing guard."
-        h "Good evening."
-        show hand onlayer transient:
-             yalign 0.68#0.743
-             xalign 0.5
-        menu:
-            h "Be careful tonight. They say there's witches abroad."
-            "If you said there's no such thing as witches, turn to page 38.":
-                        pov "Witches? Nonsense! There's no such thing!"
-                        "No sooner had those foolish words escaped your mouth than a witch leapt out of the bushes and onto your back. Before you could say or do anything, she dug her heels into your sides and rode you up into the sky and over the mountains."
-                        if pig:
-                            "The pig squealed in shock down below, and quickly vanished from view."
-                        $witchArc +=1
-                        call hideAll from _call_hideAll_12
-                        show mountainsbg at artPos
-                        "In a wink you found yourself at Thornton Peak, exhausted from hard riding."
-                        play sound pageFlip
-                        show sabbathfullbg
-                        ""
-                        play sound pageFlip
-                        call hideAll from _call_hideAll_13
-                        show mountainsbg at artPos
-                        "A witches sabbath was afoot. A great fire raged on the peak before you, and the witches danced before it."
-                        #TK: Note the plural - baba yagas - maybe have a footnote
-                        "The old baba yagas cackled and jibbered and danced around you with glee, poking you cruelly in your sides and making cutting remarks like, \"Now who's not real, eh?\" and \"We don't believe in YOU! How do you like that?\" which wounded your feelings most grievously."
-                        w "Oh gosh, oh no, are you all right?"
-                        "A figure pulled you away from the jeering crowd and tended to your wounds."
-                        w "I'm so sorry about that. The old girls tend to get a bit carried away. They don't get out much, you know, it's a bit of a treat for them."
-                        w "Are you feeling ok? Let me get you up. I'm so sorry about this, I know this is probably the last thing you want to be doing on a Friday night, really can't apologise enough, it's just the full moon, you know? Always gets them a bit riled up, and it does them good to get some fresh air and dance around once in a while, you know, fulfil their oath to the devil, but, no excuses for kidnapping you obviously, that kind of behaviour is really not on."
-                        w "Here, let me give you a lift home."
-                        "She helped you get up on her broom and spirited you away into the sky."
-                        "Below you, you heard the witches you chanting praise to Belphegor, lord of Hogs."
-                        w "So."
-                        w "You come through here often?"
-                        #TK: Choice
-                        pov "Not often, no."
-                        w "Oh, it's lovely out here, you should definitely try coming back when you have a chance. Beautiful views."
-                        "A great rumbling broke out all around you. You twisted around to look back. Behind you, you saw the mountain split open and ten thousand hogs burst up from beneath the earth. The witches screeched in demonic glee."
-                        w "Oh dear. I'm going to miss everything."
-                        w "Alright, here you are. I'd better be getting back."
-                        w "Have a good night!"
-                        "She set you down at the edge of town and flew off into the sky."
-                        if pig:
-                            "The pig jumped up at you, and the two of you had a tearful reunion."
-                        call hideAll from _call_hideAll_14
-                        show townextbg at artPos
+        if persistent.witchVanished == True:
+            $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
+            $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
+            $renpy.music.set_volume(0, delay=3.0, channel=u'music')
+            "As you walked up to the village, you saw nothing."
+            "There was no-one standing guard on the village outskirts."
+            "The woods were silent."
+            "No-one greeted you."
+            "You slowly walked out of the woods and into the village streets."
+            $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+            $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+            $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+            jump villageExplore1
+        else:
 
-                        "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
-                        jump villageExplore1
-            "If you trembled in terrible fear, turn to page 39.":
-                "You looked around in fright. The bushes rustled. But you saw no witches."
-                pov "Thank you for the warning, kind hunter. I'll be careful."
-                "You walked into town."
-                "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
-                jump villageExplore1
+            "As you walked up to the village, you spied a hunter standing guard."
+            h "Good evening."
+            show hand onlayer transient:
+                 yalign 0.68#0.743
+                 xalign 0.5
+            menu:
+                h "Be careful tonight. They say there's witches abroad."
+                "If you said there's no such thing as witches, turn to page 38.":
+                            pov "Witches? Nonsense! There's no such thing!"
+                            "No sooner had those foolish words escaped your mouth than a witch leapt out of the bushes and onto your back. Before you could say or do anything, she dug her heels into your sides and rode you up into the sky and over the mountains."
+                            if pig:
+                                "The pig squealed in shock down below, and quickly vanished from view."
+                            $witchArc +=1
+                            call hideAll from _call_hideAll_12
+                            show mountainsbg at artPos
+                            "In a wink you found yourself at Thornton Peak, exhausted from hard riding."
+                            play sound pageFlip
+                            show sabbathfullbg
+                            ""
+                            play sound pageFlip
+                            call hideAll from _call_hideAll_13
+                            show mountainsbg at artPos
+                            "A witches sabbath was afoot. A great fire raged on the peak before you, and the witches danced before it."
+                            #TK: Note the plural - baba yagas - maybe have a footnote
+                            "The old baba yagas cackled and jibbered and danced around you with glee, poking you cruelly in your sides and making cutting remarks like, \"Now who's not real, eh?\" and \"We don't believe in YOU! How do you like that?\" which wounded your feelings most grievously."
+                            w "Oh gosh, oh no, are you all right?"
+                            "A figure pulled you away from the jeering crowd and tended to your wounds."
+                            w "I'm so sorry about that. The old girls tend to get a bit carried away. They don't get out much, you know, it's a bit of a treat for them."
+                            w "Are you feeling ok? Let me get you up. I'm so sorry about this, I know this is probably the last thing you want to be doing on a Friday night, really can't apologise enough, it's just the full moon, you know? Always gets them a bit riled up, and it does them good to get some fresh air and dance around once in a while, you know, fulfil their oath to the devil, but, no excuses for kidnapping you obviously, that kind of behaviour is really not on."
+                            w "Here, let me give you a lift home."
+                            "She helped you get up on her broom and spirited you away into the sky."
+                            "Below you, you heard the witches you chanting praise to Belphegor, lord of Hogs."
+                            w "So."
+                            w "You come through here often?"
+                            #TK: Choice
+                            pov "Not often, no."
+                            w "Oh, it's lovely out here, you should definitely try coming back when you have a chance. Beautiful views."
+                            "A great rumbling broke out all around you. You twisted around to look back. Behind you, you saw the mountain split open and ten thousand hogs burst up from beneath the earth. The witches screeched in demonic glee."
+                            w "Oh dear. I'm going to miss everything."
+                            w "Alright, here you are. I'd better be getting back."
+                            w "Have a good night!"
+                            "She set you down at the edge of town and flew off into the sky."
+                            if pig:
+                                "The pig jumped up at you, and the two of you had a tearful reunion."
+                            call hideAll from _call_hideAll_14
+                            show townextbg at artPos
+
+                            "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
+                            jump villageExplore1
+                "If you trembled in terrible fear, turn to page 39.":
+                    "You looked around in fright. The bushes rustled. But you saw no witches."
+                    pov "Thank you for the warning, kind hunter. I'll be careful."
+                    "You walked into town."
+                    "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
+                    jump villageExplore1
 
     label villageExplore1:
         show hand onlayer transient:
