@@ -2861,13 +2861,18 @@ label mushroomFinale:
                                             "Your pig settled down to a contented life among the truffles."
                                         "You set up a quaint home in that strange country, and soon you were even able to find your poor mother and make amends for your wicked behaviour."
                                         "After a long time, your siblings came down to join you there, one by one."
+                                        "Even I was there, though you did not see me."
                                     else:
                                         "You and the mushrooms stayed the greatest of friends, talking all through the small hours together."
                                         if pig:
                                             "Your pig settled down to a contented life among the truffles."
-                                        "You set up a quaint home in that dark kingdom. After a long time, your mother and siblings came down to join you there, one by one."
+                                        "You set up a quaint home in that dark kingdom."
+                                        "After a long time, your mother and siblings came down to join you there, one by one."
+                                        "Even I was there, though you did not see me."
                                 "If you married the mushrooms, turn to page 156.":
-                                    "After slowly growing close over many years, you and the mushrooms all became married together in a beautiful ceremony. Your mother came down to the kingdom of death for the occasion, and all the plants and lichens and moss and toadstools of the forest were in attendance."
+                                    "After slowly growing close over many years, you and the mushrooms all became married together in a beautiful ceremony."
+                                    "Your mother came down to the kingdom of death for the occasion, and all the plants and lichens and moss and toadstools of the forest were in attendance."
+                                    "The occaision was full of joy. I laughed as I raised a toast, and the beer ran down my chin but did not go into my mouth."
                             if godfather == "White":
                                 "Long did your godfather the Almighty search for you, but never could he find you, hidden as you were in that undiscovered country."
                             elif godfather == "Red":
@@ -2876,6 +2881,27 @@ label mushroomFinale:
                                 "And so the promise came to pass, and you took your place with the woman clad all in black, just as she promised your mother all those years ago."
                             call endStamp from _call_endStamp_2
                             "You stayed there at the side of the Pale Lady, forever and ever, until the final horn and the coming of the end of days."
+                            #Wolf: Kills Thief
+                            stop music fadeout 1.0
+                            play audio wolfApproaches
+                            stop ambient2 fadeout 2.0
+                            stop ambient1 fadeout 20.0
+                            "..."
+                            "Oh?"
+                            "And what happened to the thief, you ask?"
+                            $persistent.vanished +=1
+                            $persistent.witchVanished = True
+                            "Long did they run from the law."
+                            "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
+                            "Finally one night, they ran deep into the desert."
+                            "They caught their breath and looked around. The sky was vast and empty above them."
+                            "No-one was there."
+                            "Nothing was left."
+                            "Nothing but the {color=#f00}lacuna{/color}."
+                            "It was already too late."
+                            "They were already gone."
+                            call endStamp
+                            "They were never seen or heard from again."
                             jump end
                         "If you held fast to your desire to return to the world above, turn to page 164.":
                             if godfather == "Red":
@@ -2921,7 +2947,7 @@ label mushroomFinale:
     elif godfather == "Red":
         mir "Finally."
         "A crooked red hand fell on your shoulder, and you turned to see the cackling face of the old serpent himself."
-        mir "Now you see that no matter how long you hide, none can escape the devil's clutches! Come with me, and we will dance together in Hellforever."
+        mir "Now you see that no matter how long you hide, none can escape the devil's clutches! Come with me, and we will dance together in Hell forever."
         jump mushroomBox
     else:
         label mushroomBox:
@@ -2941,20 +2967,83 @@ label mushroomFinale:
                     "As soon as you did, all of your years rushed out of the box, and they came upon you at once. Your hair grew and turned white, your back twisted into a knot with age, your face wrinkled up and you fell down dead in an instant."
                     call hideAll from _call_hideAll_37
                     show mementobg at artPos
-                    "Poor thing! Because of your disobedience, never would you live to see your loved ones again."
+                    "Poor thing! I wept to see your woeful fate. Because of your disobedience, never would you live to see your loved ones again."
                     call endStamp from _call_endStamp_3
                     "Little children, never be disobedient to those who are wiser than you, for disobedience is the mother of all misery and father of all woe."
+                    #Wolf: Kills Thief
+                    stop music fadeout 1.0
+                    play audio wolfApproaches
+                    stop ambient2 fadeout 2.0
+                    stop ambient1 fadeout 20.0
+                    "..."
+                    "Oh?"
+                    "And what happened to the thief, you ask?"
+                    $persistent.vanished +=1
+                    $persistent.witchVanished = True
+                    "Long did they run from the law."
+                    "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
+                    "Finally one night, they ran deep into the desert."
+                    "They caught their breath and looked around. The sky was vast and empty above them."
+                    "No-one was there."
+                    "Nothing was left."
+                    "Nothing but the {color=#f00}lacuna{/color}."
+                    "It was already too late."
+                    "They were already gone."
+                    call endStamp
+                    "They were never seen or heard from again."
                     jump end
                 "If you refused to open the box, even when all hope was lost, turn to page 179.":
                     if godfather == "White":
                         "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
                         call endStamp from _call_endStamp_4
                         "And so the Lord took you, and you rested in the basement of His White House forever and ever, until the final horn and the coming of the end of days."
+                        #Wolf: Kills Thief
+                        stop music fadeout 1.0
+                        play audio wolfApproaches
+                        stop ambient2 fadeout 2.0
+                        stop ambient1 fadeout 20.0
+                        "..."
+                        "Oh?"
+                        "And what happened to the thief, you ask?"
+                        $persistent.vanished +=1
+                        $persistent.witchVanished = True
+                        "Long did they run from the law."
+                        "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
+                        "Finally one night, they ran deep into the desert."
+                        "They caught their breath and looked around. The sky was vast and empty above them."
+                        "No-one was there."
+                        "Nothing was left."
+                        "Nothing but the {color=#f00}lacuna{/color}."
+                        "It was already too late."
+                        "They were already gone."
+                        call endStamp
+                        "They were never seen or heard from again."
                         jump end
                     elif godfather == "Red":
                         "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
                         call endStamp from _call_endStamp_5
                         "And so the Devil took you, and you were trapped as his servant in Hell forever and ever, until the final horn and the coming of the end of days."
+                        #Wolf: Kills Thief
+                        stop music fadeout 1.0
+                        play audio wolfApproaches
+                        stop ambient2 fadeout 2.0
+                        stop ambient1 fadeout 20.0
+                        "..."
+                        "Oh?"
+                        "And what happened to the thief, you ask?"
+                        $persistent.vanished +=1
+                        $persistent.witchVanished = True
+                        "Long did they run from the law."
+                        "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
+                        "Finally one night, they ran deep into the desert."
+                        "They caught their breath and looked around. The sky was vast and empty above them."
+                        "No-one was there."
+                        "Nothing was left."
+                        "Nothing but the {color=#f00}lacuna{/color}."
+                        "It was already too late."
+                        "They were already gone."
+                        call endStamp
+                        "They were never seen or heard from again."
                         jump end
                     else:
                         "And so you stayed there, forever searching for an entrance back to that kingdom you missed so much."
@@ -2968,6 +3057,27 @@ label mushroomFinale:
                         show mementobg at artPos
                         call endStamp from _call_endStamp_6
                         "The mushrooms took you down into the earth. There you stayed at the side of Lady Death, forever and ever, until the work was complete, and the glory of it shone out forevermore."
+                        #Wolf: Kills Thief
+                        stop music fadeout 1.0
+                        play audio wolfApproaches
+                        stop ambient2 fadeout 2.0
+                        stop ambient1 fadeout 20.0
+                        "..."
+                        "Oh?"
+                        "And what happened to the thief, you ask?"
+                        $persistent.vanished +=1
+                        $persistent.witchVanished = True
+                        "Long did they run from the law."
+                        "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
+                        "Finally one night, they ran deep into the desert."
+                        "They caught their breath and looked around. The sky was vast and empty above them."
+                        "No-one was there."
+                        "Nothing was left."
+                        "Nothing but the {color=#f00}lacuna{/color}."
+                        "It was already too late."
+                        "They were already gone."
+                        call endStamp
+                        "They were never seen or heard from again."
                         jump end
 
 # Act 2, Chapter 3B: Journey with the Thief
@@ -3732,8 +3842,23 @@ label thiefStory:
                         if godfather == "Black":
                             jump thiefDeath
                         else:
-                            call endStamp from _call_endStamp_7
                             "You live there still, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
+                            play audio wolfApproaches
+                            stop ambient2 fadeout 2.0
+                            stop ambient1 fadeout 20.0
+                            "And what happened to the mushroom, you ask?"
+                            $persistent.vanished +=1
+                            $persistent.mushroomVanished = True
+                            "Long did she germinate in the dark hollows of the world."
+                            "But she could not hide there forever."
+                            "After many days, she finally emerged from the dirt, into the cold air."
+                            "No-one was there."
+                            "Nothing was left."
+                            "Nothing but the {color=#f00}lacuna{/color}."
+                            "It was already too late."
+                            "She was already gone."
+                            call endStamp
+                            "She was never seen or heard from again."
                             jump end
                     "If you remained good friends with the thief, turn to page 246.":
                         "You lived on the train in happiness with your friend the thief for all of your days, venturing from place to place with wild abandon."
@@ -3746,7 +3871,25 @@ label thiefStory:
                         else:
                             call endStamp from _call_endStamp_8
                             "You live there still, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
+                            stop music fadeout 1.0
+                            play audio wolfApproaches
+                            stop ambient2 fadeout 2.0
+                            stop ambient1 fadeout 20.0
+                            "And what happened to the mushroom, you ask?"
+                            $persistent.vanished +=1
+                            $persistent.mushroomVanished = True
+                            "Long did she germinate in the dark hollows of the world."
+                            "But she could not hide there forever."
+                            "After many days, she finally emerged from the dirt, into the cold air."
+                            "No-one was there."
+                            "Nothing was left."
+                            "Nothing but the {color=#f00}lacuna{/color}."
+                            "It was already too late."
+                            "She was already gone."
+                            call endStamp
+                            "She was never seen or heard from again."
                             jump end
+
             else:
                 show hand onlayer transient:
                     yalign 0.715#0.743
@@ -3761,6 +3904,26 @@ label thiefStory:
                             "There you stayed for the rest of your days, growing slowly older. On cold nights, you swear you could still hear the whistle of the Goblin Train, and the laughter of the thief in the wind."
                             call endStamp from _call_endStamp_9
                             "And then came an elephant with a very long snout, and it blew the story out."
+                            #Wolf: Kills mushroom
+                            stop music fadeout 1.0
+                            play audio wolfApproaches
+                            stop ambient2 fadeout 2.0
+                            stop ambient1 fadeout 20.0
+                            "..."
+                            "Oh?"
+                            "What happened to the mushroom, you ask?"
+                            $persistent.vanished +=1
+                            $persistent.mushroomVanished = True
+                            "Long did she germinate in the dark hollows of the world."
+                            "But she could not hide there forever."
+                            "After many days, she finally emerged from the dirt, into the cold air."
+                            "No-one was there."
+                            "Nothing was left."
+                            "Nothing but the {color=#f00}lacuna{/color}."
+                            "It was already too late."
+                            "She was already gone."
+                            call endStamp
+                            "She was never seen or heard from again."
                             jump end
                     "If you stayed on the goblin train and remained good friends with the thief forever after, turn to page 244.":
                         "You lived on the train in happiness with your friend the thief for all of your days, venturing from place to place with wild abandon."
@@ -3773,6 +3936,24 @@ label thiefStory:
                         else:
                             call endStamp from _call_endStamp_10
                             "You live there still, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
+                            #Wolf: Kills mushroom
+                            stop music fadeout 1.0
+                            play audio wolfApproaches
+                            stop ambient2 fadeout 2.0
+                            stop ambient1 fadeout 20.0
+                            "And what happened to the mushroom, you ask?"
+                            $persistent.vanished +=1
+                            $persistent.mushroomVanished = True
+                            "Long did she germinate in the dark hollows of the world."
+                            "But she could not hide there forever."
+                            "After many days, she finally emerged from the dirt, into the cold air."
+                            "No-one was there."
+                            "Nothing was left."
+                            "Nothing but the {color=#f00}lacuna{/color}."
+                            "It was already too late."
+                            "She was already gone."
+                            call endStamp
+                            "She was never seen or heard from again."
                             jump end
                     "If you stayed on the goblin train and married the thief, turn to page 248.":
                         "After many adventures, the Goblin Queen married you on the train. There was a great goblin celebration for 40 days and 40 nights."
@@ -3787,6 +3968,26 @@ label thiefStory:
                         else:
                             call endStamp from _call_endStamp_11
                             "And if you have not died, you live there still. On windless nights, your siblings whisper that they can hear your laughter, and the rattling wheels of the goblin train."
+                            #Wolf: Kills mushroom
+                            stop music fadeout 1.0
+                            play audio wolfApproaches
+                            stop ambient2 fadeout 2.0
+                            stop ambient1 fadeout 20.0
+                            "..."
+                            "Oh?"
+                            "What happened to the mushroom, you ask?"
+                            $persistent.vanished +=1
+                            $persistent.mushroomVanished = True
+                            "Long did she germinate in the dark hollows of the world."
+                            "But she could not hide there forever."
+                            "After many days, she finally emerged from the dirt, into the cold air."
+                            "No-one was there."
+                            "Nothing was left."
+                            "Nothing but the {color=#f00}lacuna{/color}."
+                            "It was already too late."
+                            "She was already gone."
+                            call endStamp
+                            "She was never seen or heard from again."
                             jump end
     label thiefDeath:
         if godfather == "Black":
@@ -3859,21 +4060,25 @@ label thiefStory:
                         call endStamp from _call_endStamp_12
                         "And what you did after that, none who live can say."
                         #Wolf: Kills toad
-                        "Oh?"
                         stop music fadeout 1.0
                         play audio wolfApproaches
                         stop ambient2 fadeout 2.0
                         stop ambient1 fadeout 20.0
-                        "What happened to the toad, you ask?"
+                        "..."
+                        "Oh?"
+                        "What happened to the mushroom, you ask?"
                         $persistent.vanished +=1
-                        $persistent.toadVanished = True
-                        "He stumbled into the woods."
-                        "For hours, he wandered through the trees."
-                        "There is no light in that part of the forest."
-                        "Finally, he saw me standing in a dark clearing."
-                        "A {color=#f00}lacuna{/color}."
+                        $persistent.mushroomVanished = True
+                        "Long did she germinate in the dark hollows of the world."
+                        "But she could not hide there forever."
+                        "After many days, she finally emerged from the dirt, into the cold air."
+                        "No-one was there."
+                        "Nothing was left."
+                        "Nothing but the {color=#f00}lacuna{/color}."
+                        "It was already too late."
+                        "She was already gone."
                         call endStamp
-                        "He was never heard from again."
+                        "She was never seen or heard from again."
                         jump end
 
 # Act 2, Chapter 2B: Journey with the Toad
@@ -4610,10 +4815,30 @@ label hellStory:
                     call hideAll from _call_hideAll_79
                     show hellbg at artPos
                     "With a whoop, the Devil seized you and dragged you into the fireplace and straight to hell."
-                    "Sadly, you were trapped there forever after. The witch mourns you still."
-                    #"What of the toad, you ask? I ate him up whole."
+                    "Sadly, you were trapped there forever after. I saw the flames take you. The witch mourns you still."
                     call endStamp from _call_endStamp_13
                     "When misfortune is after someone, they may try to hide in all sorts of places or flee across the whole wide world, but it will still know where to find them."
+                    #Wolf: Kills Toad
+                    stop music fadeout 1.0
+                    play audio wolfApproaches
+                    stop ambient2 fadeout 2.0
+                    stop ambient1 fadeout 20.0
+                    "..."
+                    "Oh?"
+                    "What happened to the toad, you ask?"
+                    $persistent.vanished +=1
+                    $persistent.toadVanished = True
+                    "He stumbled into the woods."
+                    "For hours, he wandered through the trees. His feet blistered. His breath grew short."
+                    "There is no light in that part of the forest."
+                    "Finally, he emerged into a shadowed clearing."
+                    "No-one was there."
+                    "Nothing was left."
+                    "Nothing but the {color=#f00}lacuna{/color}."
+                    "It was already too late."
+                    "He was already gone."
+                    call endStamp
+                    "He was never seen or heard from again."
                     jump end
         elif godfather == "White":
             w "Quick! Your godfather will be here any minute."
@@ -4710,6 +4935,7 @@ label hellStory:
                                     "If you told her you loved her, turn to page 276.":
                                         w "I love you too."
                                         "You embraced, and her tears fell upon you and twisted your cheeks into sprouting flowers."
+                                        "I wept in the shadows."
                                         w "I-I'm sorry. I should have done more. Maybe if I'd checked in one of those older journals again, the one by fieldstien, I know I had a read of it before but I could have given it another try and looked for -"
                                         pov "You did everything you could. You have nothing to be sorry about."
                                         "And you gripped her tight."
@@ -4731,46 +4957,51 @@ label hellStory:
                                 call endStamp from _call_endStamp_14
                                 "And what happened to you after that, none who live can say."
                                 #Wolf: Kills toad
-                                "Oh?"
                                 stop music fadeout 1.0
                                 play audio wolfApproaches
                                 stop ambient2 fadeout 2.0
                                 stop ambient1 fadeout 20.0
+                                "..."
+                                "Oh?"
                                 "What happened to the toad, you ask?"
                                 $persistent.vanished +=1
                                 $persistent.toadVanished = True
                                 "He stumbled into the woods."
-                                "For hours, he wandered through the trees."
+                                "For hours, he wandered through the trees. His feet blistered. His breath grew short."
                                 "There is no light in that part of the forest."
-                                "Finally, he saw me standing in a dark clearing."
-                                "A {color=#f00}lacuna{/color}."
+                                "Finally, he emerged into a shadowed clearing."
+                                "No-one was there."
+                                "Nothing was left."
+                                "Nothing but the {color=#f00}lacuna{/color}."
+                                "It was already too late."
+                                "He was already gone."
                                 call endStamp
-                                "He was never heard from again."
+                                "He was never seen or heard from again."
                                 jump end
                 else:
+                    call endStamp
                     "You lived there together in quiet happiness. If you have not died, you live there still."
                     stop music fadeout 1.0
                     play audio wolfApproaches
                     stop ambient2 fadeout 2.0
                     stop ambient1 fadeout 20.0
-                    "And what happened to the toad, you ask?"
                     #Wolf: Kills toad
-                    #Wolf Test 1
-                    #show shadow with easeinbottom
+                    "..."
+                    "Oh?"
+                    "What happened to the toad, you ask?"
                     $persistent.vanished +=1
                     $persistent.toadVanished = True
-                    #TK: Test shadow move in timing.
-                    #transform mymovein(timing):
-                    #    xanchor 1.0 yanchor 0.5
-                    #    linear timing xpos 0.2
-                    #show shadow at mymovein(3.0)
                     "He stumbled into the woods."
-                    "For hours, he wandered through the trees."
+                    "For hours, he wandered through the trees. His feet blistered. His breath grew short."
                     "There is no light in that part of the forest."
-                    "Finally, he saw me standing in a dark clearing."
-                    "A {color=#f00}lacuna{/color}."
+                    "Finally, he emerged into a shadowed clearing."
+                    "No-one was there."
+                    "Nothing was left."
+                    "Nothing but the {color=#f00}lacuna{/color}."
+                    "It was already too late."
+                    "He was already gone."
                     call endStamp
-                    "He was never heard from again."
+                    "He was never seen or heard from again."
                     jump end
             "If you returned home, turn to page 261.":
                 call hideAll from _call_hideAll_84
@@ -4795,21 +5026,26 @@ label hellStory:
                     call endStamp from _call_endStamp_16
                     "You lived there for many long, happy years, visiting the Witch each summer. If you have not died, you live there still."
                     #Wolf: Kills toad
-                    "Oh?"
                     stop music fadeout 1.0
                     play audio wolfApproaches
                     stop ambient2 fadeout 2.0
                     stop ambient1 fadeout 20.0
+                    "..."
+                    "Oh?"
                     "What happened to the toad, you ask?"
                     $persistent.vanished +=1
                     $persistent.toadVanished = True
                     "He stumbled into the woods."
-                    "For hours, he wandered through the trees."
+                    "For hours, he wandered through the trees. His feet blistered. His breath grew short."
                     "There is no light in that part of the forest."
-                    "Finally, he saw me standing in a dark clearing."
-                    "A {color=#f00}lacuna{/color}."
-                    call endStamp from _call_endStamp_15
-                    "He was never heard from again."
+                    "Finally, he emerged into a shadowed clearing."
+                    "No-one was there."
+                    "Nothing was left."
+                    "Nothing but the {color=#f00}lacuna{/color}."
+                    "It was already too late."
+                    "He was already gone."
+                    call endStamp
+                    "He was never seen or heard from again."
                     jump end
 # Act 3 Finale: The Toad.
 
@@ -5231,44 +5467,107 @@ label toadFinale:
         menu:
             "After a while, you had rested and mended from your terrible ordeals."
             "If you married the toad, turn to page 298.":
+                #ToadEnd
                 "But you found you didn't want to leave. You stayed together in your cosy home in the swamp. The toad worked long hours sewing many fine costumes, and the two of you put on plays together which delighted the people of the village."
                 "After many years of companionship, you finally got married and lived happily together."
-                "I should know - I was at your wedding! I gorged myself on the fresh meat and raised my glass for the toast, and the beer ran down my chin but did not go into my mouth."
+                "I should know - I was at your wedding!"
+                call endStamp
+                "I gorged myself on the fresh meat and raised my glass for the toast, and the beer ran down my chin but did not go into my mouth."
                 if godfather == "Black":
                     jump toadDeath
-                call endStamp from _call_endStamp_17
-                "You were very happy, had many children, and you still would live if you had not died."
-                #"And what happened to the witch, you ask?"
-                #"I ate her up whole."
-                #"Every piece."
-                jump end
+                else:
+                    #"You were very happy, had many children, and you still would live if you had not died."
+                    #Wolf: Kills Witch
+                    stop music fadeout 1.0
+                    play audio wolfApproaches
+                    stop ambient2 fadeout 2.0
+                    stop ambient1 fadeout 20.0
+                    "..."
+                    "Oh?"
+                    "And what happened to the witch, you ask?"
+                    $persistent.vanished +=1
+                    $persistent.witchVanished = True
+                    "She was carried away by swift water."
+                    "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
+                    "Finally, she washed onto a broken shore."
+                    "No-one was there."
+                    "Nothing was left."
+                    "Nothing but the {color=#f00}lacuna{/color}."
+                    "It was already too late."
+                    "She was already gone."
+                    call endStamp
+                    "She was never seen or heard from again."
+                    jump end
             "If you stayed good friends with the toad, turn to page 299.":
+                #ToadEnd
+                #Wolf: Kills Witch
                 "But you found you didn't want to leave. You stayed together in your cosy home in the swamp."
-                "The two of you had many happy years together. The toad worked long hours sewing many fine costumes, and the two of you put on plays together which delighted the people of the village."
+                "The two of you settled down to a happy life together. The toad found work sewing fine costumes for the people of the village, and soon enough you founded a theatre with the savings."
+                "I saw the two of you put on many fine plays through the years! Together you had the whole village in stitches. I laughed and laughed and laughed, though none could hear me."
                 if godfather == "Black":
                     jump toadDeath
                 else:
                     call endStamp from _call_endStamp_18
-                    "You were very happy there for the rest of your days, and you still would live if you had not died."
-                #"And what happened to the witch, you ask?"
-                #"I ate her up whole."
-                #"Every piece."
-                jump end
+                    "You were happy there for the rest of your days, and you still would live if you had not died."
+                    #Wolf: Kills Witch
+                    stop music fadeout 1.0
+                    play audio wolfApproaches
+                    stop ambient2 fadeout 2.0
+                    stop ambient1 fadeout 20.0
+                    "..."
+                    "Oh?"
+                    "And what happened to the witch, you ask?"
+                    $persistent.vanished +=1
+                    $persistent.witchVanished = True
+                    "She was carried away by swift water."
+                    "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
+                    "Finally, she washed onto a broken shore."
+                    "No-one was there."
+                    "Nothing was left."
+                    "Nothing but the {color=#f00}lacuna{/color}."
+                    "It was already too late."
+                    "She was already gone."
+                    call endStamp
+                    "She was never seen or heard from again."
+                    jump end
+
             "If you left the toad to return to your family, turn to page 300.":
+                #ToadEnd
+                #Wolf: Kills Witch
                 call hideAll from _call_hideAll_92
                 show sunbg at artPos
                 "When it was time to leave, you wished the toad a tearful farewell, and returned to your cottage with your family."
-                "You lived there for many long, happy years, visiting the toad now and again as a good friend."
+                "You lived there for many long, happy years, visiting the toad often as a good friend."
+                "The toad found work sewing fine costumes for the people of the village, and soon enough you founded a theatre with the savings."
+                "I saw the two of you put on many fine plays through the years! Together you had the whole village in stitches. I laughed and laughed and laughed, though none could hear me."
                 if godfather == "Black":
                     jump toadDeath
                 else:
                     call endStamp from _call_endStamp_19
                     "You were very happy there for the rest of your days, and you still would live if you had not died."
-                #"And what happened to the witch, you ask?"
-                #"I ate her up whole."
-                #"Every piece."
+                #Wolf: Kills Witch
+                stop music fadeout 1.0
+                play audio wolfApproaches
+                stop ambient2 fadeout 2.0
+                stop ambient1 fadeout 20.0
+                "..."
+                "Oh?"
+                "And what happened to the witch, you ask?"
+                $persistent.vanished +=1
+                $persistent.witchVanished = True
+                "She was carried away by swift water."
+                "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
+                "Finally, she washed up on a broken shore."
+                "No-one was there."
+                "Nothing was left."
+                "Nothing but the {color=#f00}lacuna{/color}."
+                "It was already too late."
+                "She was already gone."
+                call endStamp
+                "She was never seen or heard from again."
                 jump end
     label toadDeath:
+        #ToadEnd
         "But youth does not last forever."
         "One day, you felt yourself wracked with a terrible fever."
         "Then, you felt gout take hold of you and make all your limbs twitch, and you were wracked with one illness after another, and you fell into deep sleep for long days."
@@ -5306,6 +5605,7 @@ label toadFinale:
                             pov "Goodbye, my dear. I love you, so much."
                             f "I love you too."
                             "You embraced, and his tears fell upon you, and you felt the cool gecko's feet across your cheeks."
+                            "I wept in the shadows."
                             f "I'm sorry I couldn't be more. You should have chosen someone else. Maybe if you'd-"
                             pov "Shh. I chose you. You have nothing to be sorry about."
                             "And you gripped him tight."
@@ -5314,6 +5614,7 @@ label toadFinale:
                             pov "Goodbye, my dear friend. I love you, so much."
                             f "Goodbye."
                             "You embraced, and his tears fell upon you, and you felt the cool gecko's feet across your cheeks."
+                            "I wept to see such a tragic moment."
                             f "I'm sorry I couldn't be more for you. You should have chosen someone else. Maybe if you'd-"
                             pov "Shh. I chose you. You have nothing to be sorry about."
                             "And you gripped him tight."
@@ -5326,12 +5627,27 @@ label toadFinale:
                     "She gently took you down to the kingdom of Death."
                     call endStamp from _call_endStamp_20
                     "And you lie there still."
-                    #"And what happened to the Witch, you ask?"
-                    #"I ate her up whole."
-                    #"Every piece."
+                    #Wolf: Kills Witch
+                    stop music fadeout 1.0
+                    play audio wolfApproaches
+                    stop ambient2 fadeout 2.0
+                    stop ambient1 fadeout 20.0
+                    "..."
+                    "Oh?"
+                    "And what happened to the witch, you ask?"
+                    $persistent.vanished +=1
+                    $persistent.witchVanished = True
+                    "She was carried away by swift water."
+                    "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
+                    "Finally, she washed up on a broken shore."
+                    "No-one was there."
+                    "Nothing was left."
+                    "Nothing but the {color=#f00}lacuna{/color}."
+                    "It was already too late."
+                    "She was already gone."
+                    call endStamp
+                    "She was never seen or heard from again."
                     jump end
-
-
 label endStamp:
     show text "{b}THE END.{/b}":
         xalign 0.5
