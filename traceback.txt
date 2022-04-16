@@ -1,22 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 971, in script
-    jump solar_system
-ScriptError: could not find label 'solar_system'.
+  File "game/script.rpy", line 1881, in script
+    if toadVanished == True:
+  File "game/script.rpy", line 1881, in <module>
+    if toadVanished == True:
+NameError: name 'toadVanished' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 971, in script
-    jump solar_system
-  File "renpy/ast.py", line 1711, in execute
-    rv = renpy.game.script.lookup(target)
-  File "renpy/script.py", line 910, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'solar_system'.
+  File "game/script.rpy", line 1881, in script
+    if toadVanished == True:
+  File "renpy/ast.py", line 1852, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2249, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2242, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 1881, in <module>
+    if toadVanished == True:
+NameError: name 'toadVanished' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 0.81
-Sun Apr  3 14:13:30 2022
+Sat Apr 16 17:26:13 2022

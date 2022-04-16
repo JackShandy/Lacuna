@@ -1352,12 +1352,6 @@ label introMenu:
                                         "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
                                         "You took up your bag and set off down the road once more."
                                         jump thief1
-                        #"But in the centre of the room you saw the most astonishing thing of all."
-                        #"Looming over the whole cavern were 3 great pillars of twisted wood and oozing sap."
-                        #"In the middle of the pillars writhed 3 figures, gaunt and frail: A pale and shivering Golden Wattle, a crooked Banksia seed, and a fiery Kangaroo Paw."
-                        #"The Mushroom took her knife and cut small pieces from her red cap, feeding it to the figures."
-                        #"As she did so you saw her weep and wail bitterly, crying out aloud at her misfortune."
-                        #INSERT: CHOICE
                     "If you went back to the path, turn to page 28.":
                         "You rushed back to the path, worried at any moment that you might be seen."
                         "\"Thank goodness,\" you thought to yourself, \"that I know not to ask of what concerns me not! That could led me to some kind of dangerous and magical adventure.\""
@@ -1883,7 +1877,11 @@ label banquet:
     call hideAll from _call_hideAll_18
     show townfeastbg at artPos
     "You walked down to the river, where the banquet was laid out. Some folks were gripping each other tight and crying out at the misfortune that had befallen their town. Others simply sat in glum silence."
-    "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
+    #Wolf: Toad disappeared
+    if persistent.toadVanished == True:
+        "No-one sat at the banquet. The food lay uneaten."
+    else:
+        "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
     label banquetMenu:
         show hand onlayer transient:
             yalign 0.625#0.743
@@ -2041,7 +2039,7 @@ label banquet:
                         p2 "Perhaps you've already met {color=#f00}them{/color}. You just haven't realised yet."
                 $pigChat +=1
                 jump banquetMenu
-            "If you talked to the Toad, turn to page 87." if not toadStole2:
+            "If you talked to the Toad, turn to page 87." if not toadStole2 and not persistent.toadVanished:
                 if toadStole:
                     f "You!"
                     f "Hellion! Knave! You'll see justice for your crimes, or my name isn't Brildebrogue Chippingham!"
@@ -2890,7 +2888,7 @@ label mushroomFinale:
                             "Oh?"
                             "And what happened to the thief, you ask?"
                             $persistent.vanished +=1
-                            $persistent.witchVanished = True
+                            $persistent.thiefVanished = True
                             "Long did they run from the law."
                             "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
                             "Finally one night, they ran deep into the desert."
@@ -2979,7 +2977,7 @@ label mushroomFinale:
                     "Oh?"
                     "And what happened to the thief, you ask?"
                     $persistent.vanished +=1
-                    $persistent.witchVanished = True
+                    $persistent.thiefVanished = True
                     "Long did they run from the law."
                     "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
                     "Finally one night, they ran deep into the desert."
@@ -3006,7 +3004,7 @@ label mushroomFinale:
                         "Oh?"
                         "And what happened to the thief, you ask?"
                         $persistent.vanished +=1
-                        $persistent.witchVanished = True
+                        $persistent.thiefVanished = True
                         "Long did they run from the law."
                         "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
                         "Finally one night, they ran deep into the desert."
@@ -3032,7 +3030,7 @@ label mushroomFinale:
                         "Oh?"
                         "And what happened to the thief, you ask?"
                         $persistent.vanished +=1
-                        $persistent.witchVanished = True
+                        $persistent.thiefVanished = True
                         "Long did they run from the law."
                         "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
                         "Finally one night, they ran deep into the desert."
@@ -3066,7 +3064,7 @@ label mushroomFinale:
                         "Oh?"
                         "And what happened to the thief, you ask?"
                         $persistent.vanished +=1
-                        $persistent.witchVanished = True
+                        $persistent.thiefVanished = True
                         "Long did they run from the law."
                         "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
                         "Finally one night, they ran deep into the desert."

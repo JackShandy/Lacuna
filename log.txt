@@ -1,37 +1,37 @@
-Thu Apr  7 18:24:15 2022
+Sat Apr 16 17:25:41 2022
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
 
-Bootstrap to the start of init.init took 0.17s
+Bootstrap to the start of init.init took 0.14s
 Early init took 0.00s
-Loader init took 0.13s
-Loading error handling took 0.05s
-Loading script took 2.81s
-Loading save slot metadata. took 0.20s
+Loader init took 0.02s
+Loading error handling took 0.04s
+Loading script took 2.26s
+Loading save slot metadata. took 0.05s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.15s
+Running init code took 0.10s
 Loading analysis data took 0.18s
 Analyze and compile ATL took 0.02s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
-Dump and make backups. took 0.16s
+Dump and make backups. took 0.14s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.06s
+Initial gc. took 0.11s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.55s
+Creating interface object took 0.56s
 Cleaning stores took 0.00s
-Init translation took 0.15s
+Init translation took 0.10s
 Build styles took 0.01s
-Load screen analysis took 0.02s
+Load screen analysis took 0.00s
 Analyze screens took 0.02s
-Save screen analysis took 0.08s
+Save screen analysis took 0.10s
 Prepare screens took 0.12s
-Save pyanalysis. took 0.62s
+Save pyanalysis. took 0.68s
 Save bytecode. took 0.06s
 Running _start took 0.01s
 Performance test:
@@ -62,106 +62,55 @@ Texture testing:
 Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 6.14657211304s
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.01s
-Load screen analysis took 0.65s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
+Total time until interface ready: 5.38559317589s
+
+Full traceback:
+  File "game/script.rpy", line 1881, in script
+    if $toadVanished == True:
+  File "renpy/ast.py", line 1852, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1881)
+
+While running game code:
+  File "game/script.rpy", line 1881, in script
+    if $toadVanished == True:
+SyntaxError: invalid syntax (script.rpy, line 1881)
 Resetting cache.
-Bootstrap to the start of init.init took 244.02s
+Bootstrap to the start of init.init took 28.74s
 Early init took 0.00s
 Loader init took 0.02s
 Loading error handling took 0.04s
-Loading script took 2.48s
+Loading script took 1.86s
 Loading save slot metadata. took 0.05s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
 Running init code took 0.08s
-Loading analysis data took 0.17s
-Analyze and compile ATL took 0.02s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
-Dump and make backups. took 0.14s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.15s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.58s
-Cleaning stores took 0.00s
-Init translation took 0.13s
-Build styles took 0.01s
-Load screen analysis took 0.00s
-Analyze screens took 0.03s
-Save screen analysis took 0.11s
-Prepare screens took 0.13s
-Save pyanalysis. took 0.66s
-Save bytecode. took 0.03s
-Running _start took 0.01s
-Performance test:
-Interface start took 0.10s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'NVIDIA Corporation'
-Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
-Version: '4.6.0 NVIDIA 497.29'
-Display Info: None
-Number of texture units: 32
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 32768
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 249.107424021s
-Resetting cache.
-Bootstrap to the start of init.init took 389.42s
-Early init took 0.00s
-Loader init took 0.02s
-Loading error handling took 0.03s
-Loading script took 0.37s
-Loading save slot metadata. took 0.05s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.08s
-Loading analysis data took 0.17s
+Loading analysis data took 0.18s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
-Dump and make backups. took 0.14s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.11s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.14s
+Initial gc. took 0.16s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.47s
+Creating interface object took 0.46s
 Cleaning stores took 0.00s
-Init translation took 0.14s
+Init translation took 0.11s
 Build styles took 0.01s
-Load screen analysis took 0.67s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.12s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.09s
+Prepare screens took 0.11s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.07s
-Running _start took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.01s
 Performance test:
 Interface start took 0.13s
 
@@ -190,41 +139,61 @@ Texture testing:
 Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 392.219584942s
+Total time until interface ready: 32.3932111263s
+
+Full traceback:
+  File "game/script.rpy", line 1881, in script
+    if toadVanished == True:
+  File "renpy/ast.py", line 1852, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2249, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2242, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 1881, in <module>
+    if toadVanished == True:
+NameError: name 'toadVanished' is not defined
+
+While running game code:
+  File "game/script.rpy", line 1881, in script
+    if toadVanished == True:
+  File "game/script.rpy", line 1881, in <module>
+    if toadVanished == True:
+NameError: name 'toadVanished' is not defined
 Resetting cache.
-Bootstrap to the start of init.init took 401.95s
+Bootstrap to the start of init.init took 78.62s
 Early init took 0.00s
 Loader init took 0.02s
-Loading error handling took 0.06s
-Loading script took 2.49s
-Loading save slot metadata. took 0.05s
+Loading error handling took 0.03s
+Loading script took 1.99s
+Loading save slot metadata. took 0.06s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
 Running init code took 0.08s
-Loading analysis data took 0.17s
-Analyze and compile ATL took 0.02s
+Loading analysis data took 0.18s
+Analyze and compile ATL took 0.01s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
-Dump and make backups. took 0.15s
+Dump and make backups. took 0.12s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.15s
+Initial gc. took 0.16s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.61s
+Creating interface object took 0.46s
 Cleaning stores took 0.00s
-Init translation took 0.15s
+Init translation took 0.12s
 Build styles took 0.01s
 Load screen analysis took 0.00s
-Analyze screens took 0.03s
-Save screen analysis took 0.10s
-Prepare screens took 0.13s
-Save pyanalysis. took 0.68s
-Save bytecode. took 0.03s
+Analyze screens took 0.02s
+Save screen analysis took 0.08s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
 Running _start took 0.01s
 Performance test:
-Interface start took 0.10s
+Interface start took 0.14s
 
 Initializing gl renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -251,4 +220,4 @@ Texture testing:
 Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 407.129578114s
+Total time until interface ready: 82.4136021137s
