@@ -898,7 +898,7 @@ label start:
                             jump chapter2
                         "If she chose Death, turn to page 7.":
                             mum "I'm sorry for my foolish words. Please, protect my child."
-                            "In one swoop Death bowed down and placed Her mark upon you."
+                            "Death bowed down and placed Her mark upon you."
                             wib "You will name [him] [povname]."
                             if he == "they":
                                 wib "The moment [he] turn eighteen, [he] will be mine."
@@ -1828,34 +1828,52 @@ label introMenu:
                 call hideAll from _call_hideAll_16
                 show towncrossroadsbg at artPos
                 "You took your place at the table."
-    "The Hunter was there, and the old Gloom-monger, and the young Goose-girl."
-    "The stars and the moon slowly arrived to take their places. The birds and moths and the Firmament and the soft mist of night all came and were seated."
-    "But one guest was missing: No one had seen the Wild Witch of the Woods all night."
-    "As the festival began a terrible concern and commotion went up amongst the guests, for we all know what terrible luck it is to spurn a witch."
-    may "Did her invitation go missing?"
-    h "Impossible. I delivered it myself."
-    if witchArc >=1:
-        pov "Um, excuse me."
-        pov "I saw the witch just tonight, actually. She was at a ritual in the mountains."
-        may "What!? Why would she spurn our invitation?"
+    if persistent.toadVanished == False:
+        "The hunter was there, and the young goose-girl, the old gloom-monger, the mayor and the toad."
     else:
-        "But still, the witch did not arrive, and soon everyone was a frenzy of worry."
-    gm "We've given offence to her somehow. She'll turn all our hair to straw and infest all our picnics with ants. None shall escape."
-    go "All our spoons will rust, and our forks will get stuck in the drawers! I already have enough on my hands dealing with the geese!"
-    "The panic increased when the Sparrow-Herder rushed in and waved for attention."
-    sh "The Master Thief has struck again!"
-    sh "The entire suckling pig is missing. Quick - check your valuables!"
-    "The whole town turned out their pockets and discovered that all their spare change had been taken and replaced with live rats, which shrieked and leapt away and ran into the forest."
-    town "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-    OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-    OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-    OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-    OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-    OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-    OOOOOOOOOOOOOOOOOOOOOOOOOOOOO!"
-    gm "Told you so."
-    #More investigating around the village, adventure game style.
-    jump village
+        "The hunter was there, and the young goose-girl, the old gloom-monger, and the mayor."
+    "The stars and the moon slowly arrived to take their places. The birds and moths and the Firmament and the soft mist of night all came and were seated."
+    if persistent.witchVanished == False:
+        "But one guest was missing: No one had seen the Wild Witch of the Woods all night."
+        "As the festival began a terrible concern and commotion went up amongst the guests, for we all know what terrible luck it is to spurn a witch."
+        may "Did her invitation go missing?"
+        h "Impossible. I delivered it myself."
+        if witchArc >=1:
+            pov "Um, excuse me."
+            pov "I saw the witch just tonight, actually. She was at a ritual in the mountains."
+            may "What!? Why would she spurn our invitation?"
+        else:
+            "But still, the witch did not arrive, and soon everyone was a frenzy of worry."
+        gm "We've given offence to her somehow. She'll turn all our hair to straw and infest all our picnics with ants. None shall escape."
+        go "All our spoons will rust, and our forks will get stuck in the drawers! I already have enough on my hands dealing with the geese!"
+        if persistent.thiefVanished == False:
+            "The panic increased when the Sparrow-Herder rushed in and waved for attention."
+        else:
+            "There was a great hubbub and outcry amount the populace, and the villagers trembled and wept in fear of the terrible curse."
+            jump village
+    else:
+        "Everyone was in their place."
+        "No-one was missing."
+        if persistent.thiefVanished == False:
+            "But soon, panic broke out when the Sparrow-Herder rushed in and waved for attention."
+
+    if persistent.thiefVanished:
+        "Soon, the feast began as planned."
+        jump village
+
+    else:
+        sh "The Master Thief has struck again!"
+        sh "The entire suckling pig is missing. Quick - check your valuables!"
+        "The whole town turned out their pockets and discovered that all their spare change had been taken and replaced with live rats, which shrieked and leapt away and ran into the forest."
+        town "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        OOOOOOOOOOOOOOOOOOOOOOOOOOOOO!"
+        gm "Told you so."
+        jump village
 
 # Act 2: Chapter I - Chat and investigation
 #You can investigate the village and choose between 2 main pathways
@@ -1867,7 +1885,7 @@ label village:
     show towncrossroadsbg at artPos
 
     menu:
-        "You stood in the middle of the village as chaos and woe erupted around you."
+        "You stood in the middle of the village."
         "If you investigated the banquet, turn to page 64.":
             jump banquet
         "If you investigated the edge of town, turn to page 70.":
