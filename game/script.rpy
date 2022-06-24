@@ -753,7 +753,7 @@ label start:
         "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
         "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
         miw "Poor woman. Let me be the godfather."
-        miw "I shall hold this child, and make sure that [hes] happy on this Earth for the rest of [his] days."
+        miw "I shall hold this child, and make sure [hes] happy on this Earth for the rest of [his] days."
 
     label firstMan:
             show hand onlayer transient:
@@ -945,7 +945,7 @@ label chapter2:
 
     if godfather == "White":
         "And so you grew up as a kind and well-mannered child, and you made your mother proud."
-        "You went to church every Sunday, and worked hard every day of your life, and every day you gave thanks to the invisible hand of the free market. All the neighbours smiled and said \"That one has the mark of G-d on [him].\""
+        "You went to church every Sunday, and worked hard every day of your life, and never did you succumb to the beast within you. All the neighbours smiled and said \"That one has the mark of G-d upon [him].\""
         "Your Godfather was as good as His word. He appeared at church for the christening, and blessed you."
         "You soon found luck was always in your favour, and everyone took to calling you \"Fortune's Favourite\"."
     elif godfather == "Red":
@@ -1038,8 +1038,9 @@ label neighbours:
             else:
                 "Do not ask lightly of the northern forest, my child."
                 "That was a cursed place where wicked sprites and gleeful ghosts held sway. All who lived there slept uneasily in their beds as they heard the Goblin Train rattle past their windows each night."
-                "The worst of them all was the Master Thief, a dextrous and sinister figure who flitted through the shadows, stealing everything that wasn't nailed down."
-                "People said they could steal the dreams out from under your pillow, and the thoughts right out from your head. No jail could hold them and no lock could bar them entry."
+                "The worst of them all was the Master Thief, a dextrous and sinister figure who was said to have all manner of powers."
+                "Their long, long, long arms would stretch through your window and up your stairs and into your bedroom and steal your dreams right out from under your pillow. In a single motion their long, long, long legs would carry them away to a secret hideout where they would place your forgotten thoughts in a sack of mysterious things, never to be seen again."
+                "No jail could hold them and no lock could bar them entry. Or so it was said."
                 jump neighbours
         "To learn about the lands to the east, turn to page 15." if not introNeighboursE:
             $introNeighboursE = True
@@ -1056,7 +1057,7 @@ label neighbours:
                 jump neighbours
             else:
                 #Coastal swamps and mangroves to the east, leading to the beach and the ocean - The Toad
-                "To the east, the river flowed down to the coast. The mangrove trees swayed in the summer heat, and the swamp folk worshipped the insect god, Karnopticon."
+                "To the east, the river flowed down to the coast. The mangrove trees swayed in the summer heat, and the air thrummed with chanting in honour of the insect god, Karnopticon."
                 "On the edge of the swamp was a grand manor, owned by a noble frog lord."
                 "He was rarely seen, but people whispered that he was wiser than Solomon and rich beyond the dreams of Avarice."
                 jump neighbours
@@ -1076,7 +1077,7 @@ label neighbours:
                 jump neighbours
             else:
                 "Ah! In fact, the south river and the forest around it was watched over by a wise mushroom ambassador, who had owned these lands since before anyone could remember."
-                "She was often away brokering trade agreements and peace treaties and delicate alliances between the many trees and plants and old warring ferns of the forest, who were always butting heads over one thing or another."
+                "She was often away brokering trade agreements and peace treaties and delicate alliances between the many trees and plants and old warring ferns of the forest."
                 "But every now and then, on cold clear nights, you could see her walking through the depths of the forest with her white veil and delicate waves of silver spores drifting behind her."
                 "She allowed your family to live on the river and use her lands, under one condition."
                 m "Ask not of what concerns you not, lest you hear what pleases you not."
@@ -1116,9 +1117,9 @@ label introMenu:
         "If you want know about your neighbours and the lands around your house, turn to page 10." if not introNeighbours:
             "Yours was a many-haunted land, my child."
             "Back in those days you could barely take a step without stumbling over a fiend, ghost, bloody bones, flay-boggart, bugaboo or sprite. Every house was haunted and the Devil lurked at every crossroad."
-            "In fact the whole earth was overrun with trolls, hob-and-lanthorns, gringes, cutties and nisses, boguests, bonelesses, clabbernappers, Gabriel-hounds, mawkins, doubles, corpse lights or candles, scar-bugs, shag-foals, hodge-pochers, korreds, lubberkins, cluricauns, hob-thrushes, tod-lowries, Jack-in-the-Wads, men-in-the-oak, mormos, changelings, redcaps, yeth-hounds, colt-pixies, Tom-thumbs, black-bugs, madcaps, night-bats, scrags, specters, Jinny-burnt-tails, dudmen, dopple-gangers, boggleboes, and apparitions of every shape, make, form, and fashion."
+            "In fact the whole earth was overrun with trolls, hob-and-lanthorns, gringes, cutties and nisses, boguests, bonelesses, boggleboes, black-bugs and night-bats, clabbernappers, corpse lights, candles and Gabriel-hounds, mawkins, hodge-pochers, korreds, lubberkins, cluricauns, hob-thrushes, tod-lowries, Jack-in-the-Wads, men-in-the-oak, dudmen, yeth-hounds, mormos, changelings, redcaps, colt-pixies, Tom-thumbs, madcaps, scrags, specters, scar-bugs, shag-foals, Jinny-burnt-tails, dopple-gangers, and apparitions of every shape, make, form, and fashion."
             jump neighbours
-        "If you wonder whether you were happy there, turn to page 19." if not introHappy:
+        "If you wonder whether you were happy there, turn to page 19." if persistent.vanished >= 1 and not introHappy: #not introHappy and
             $introHappy = True
             if godfather == "Red":
                 "Well, it was a rich house, and you had everything you could ever want and more. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
@@ -1139,14 +1140,14 @@ label introMenu:
         pov "I know. I'll go to the village festival this eve. There will be travellers there from all over this haunted land. Surely one of them will know how to save me from my terrible fate."
         "You gathered up your coinpurse, along with some bread and meat for the journey, and resolved to travel until you found a way to escape the Devil."
     else:
-        mum "You must go to the festival, my child. There will be travellers there from all over this wild earth. Surely one of them will know how to save you from this terrible fate."
+        mum "You must go to the festival tonight, my child. There will be travellers there from all over this wild earth. Surely one of them will know how to save you from this terrible fate."
         "She gave you a thick coinpurse, and some bread and meat for the journey."
         mum "Go! But be careful of strangers, and do not leave the path."
         mum "A terrible {color=#f00}wolf{/color} lurks out there, in the space between the trees."
     call hideAll from _call_hideAll_2
     show forestbg at artPos
     "And so you took up your belongings and strode on down the road to the festival."
-    "The twilight set in, and the crickets and cicadas all around you set about with their chattering and squabbling, and the evening birds began to laugh and trill, and you could feel the wet cool mist of the rainforest settle around you."
+    "The twilight set in, and the crickets and cicadas all around began their chattering and squabbling, and the evening birds began to laugh and trill, and the wet cool mist of the rainforest settled around you."
     "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
     "A small turtle saw you coming and fled into the water with a plop."
 
@@ -1395,7 +1396,6 @@ label introMenu:
                     mys "FOOOOOL!"
                     "In a flash her clothes tore asunder, and her mask fell to the ground, and you saw it was all nothing but a disguise."
                     "In her stead stood the cunning and terrible form of the Master Thief!"
-                    #"They were neither tall nor short, neither fat nor thin, neither pale nor tan."
                     "They wore a midnight cloak across their back and a cunning look on their sly face."
                     t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
                     t "No law shall stand, no judge shall know peace and no cop shall sleep easy in their bed at night, for as long as my legs can run!"
@@ -1406,9 +1406,9 @@ label introMenu:
                             yalign 0.68#0.743
                             xalign 0.5
                         menu:
-                            "Despair gripped you as you tripped over your mismatched shoes."
+                            "Despair gripped you."
                             "If you chased after them anyway, turn to page 37.":
-                                "You chased after the mocking laughter of the Master Thief, following the shadowy figure as they shed disguises, wigs, belts, and the old cane."
+                                "You chased after the mocking laughter of the Master Thief, tripping over your mismatched shoes. The shadowy figure darted through the trees as they shed disguises, wigs, belts, and the old cane."
                                 "Finally, you caught up to the figure in a forest clearing, and grabbed it tight."
                                 if godfather == "White":
                                     pov "Now you will face your just punishment, sure as the heavens declare the glory of G-d."
@@ -1537,9 +1537,8 @@ label introMenu:
             eg "Hold!"
 
             "A rich, low voice like dark mahogany came from behind the curtains, showing the distinctive tones of one of good breeding and character. The horses slowed to walk beside you."
-            "A slender hand holding a long cigarette holder emerged from the curtains and beckoned to you."
+            "A slender hand holding a long cigarette holder emerged from the curtains and beckoned to you. The shadow of the man inside swirled a glass of brandy in his other hand."
             "From inside the curtain you could smell rich spices, incense and thyme."
-            "You felt a cool breeze across your face from inside the carriage, and saw the shadow of the man inside swilling a glass of brandy in his other hand."
             show hand onlayer transient:
                 yalign 0.63#0.743
                 xalign 0.5
@@ -1627,7 +1626,7 @@ label introMenu:
                                 f "I have talked with the Lord many times, of course."
                                 show tornPage1 onlayer screens zorder 101
                                 show tornPage1bg onlayer screens zorder 99
-                                f "Why, just the other day He said to me, He said Brildebrogue! How did I ever manage to make one as handsome and charming as you? Why, even one with my own talents (which are quite decent of course, though nothing in comparison to your own gifts) can scarcely imagine bringing such a golden figure out of the fires of creation! At this I swung back my head in a great laugh, like so: HA! And my golden mane whipped around me in the wind, and all were charmed and chortled alongside me to see my wit and good humour, and we all joined together in an uproarious shout of laughter, such that the whole world could hear it - in fact I have no doubts that you must have heard it yourself, even out here in this backwater location, so loud was the sound, although perhaps you took it for a minor earthquake."
+                                f "Why, just the other day He said to me, He said Brildebrogue! How did I ever manage to make one as handsome and charming as you? Why, even a deity with my own talents (which are quite decent of course, though nothing in comparison to your own gifts) can scarcely imagine bringing such a golden figure out of the fires of creation! At this I swung back my head in a great laugh, like so: HA! And my golden mane whipped about me in the wind, and all were charmed by my wit and good humour, so much so that they joined me in an uproarious shout of laughter, such that the whole world could hear it - in fact I have no doubts that you must have heard it yourself, even out here in this backwater location, so loud was the sound, although perhaps you took it for a minor earthquake."
                                 hide tornPage1 onlayer screens
                                 hide tornPage1bg onlayer screens
                                 f "Perhaps I could put in a good word for you with Him later. Pond scum?"
@@ -1682,8 +1681,7 @@ label introMenu:
                             "As you sipped it you felt a cool emerald chill pass through your whole body."
 
                         "If you refused (the action of a witless and ungrateful churl), turn to page 76.":
-                            "\"No thank you,\" you said, like a fool."
-                            "(Don't you know that it's bad luck to refuse a gift from a toad?)"
+                            pov "No thank you."
                             f "More for me, then!"
                             "And the toad greedily gulped down the pondwater, without comment on your obvious poor manners and lack of breeding."
                     "The old squash rattled about hither and thither through the forest, giving you bruises all over, but before you knew it you had arrived at the village square."
@@ -1816,12 +1814,12 @@ label introMenu:
                 call hideAll from _call_hideAll_15
                 show towncrossroadsbg at artPos
                 $foodLook = True
-                "Over the bonfire was a great suckling pig being prepared on a spit, slathered in rosemary and garlic butter and herbs of all types, and stuffed with breadcrumbs and fresh figs and crisp walnuts and apples and all the fruits of the earth."
+                "Over the bonfire was a great suckling pig on a spit, slathered in rosemary and garlic butter and herbs of all types, and stuffed with breadcrumbs and fresh figs and crisp walnuts and apples and all the fruits of the earth."
                 if pig:
                     "Your pig looked upon it sadly, and shook its head at the foolish greed of the human race."
                 "The mangos were in season, and the trees were so weighed down with them that they would fall off and roll down the town gutters, so that the whole town was rich with the sweet scent of fruit mixed with the smell of wood smoke and spices and crackling fat from the cooking fires."
                 "Those mangos that didn't roll away fast enough were plucked up immediately and eaten by gleeful clouds of fruit bats that chittered and cackled in a great whirling chaos overhead."
-                "Great glass bowls of red sangria were placed at each table, filled with fresh oranges and giant yellow lemon slices, ground cinnamon and brandy and crisp sweet apples and ginger ale."
+                "Colossal glass bowls of red sangria were placed at each table, filled with fresh oranges and giant yellow lemon slices, ground cinnamon and brandy and crisp sweet apples and ginger ale."
                 "For desert there were giant lemon meringue pies made from lemons as big as your fist, covered in fresh-whipped meringue from the Baker's parlour."
                 jump villageExplore1
             "If you sat down with the rest of the guests without delay, turn to page 37.":
@@ -2211,6 +2209,14 @@ label town:
                 $goosemongerChat += 1
                 jump townExplore
             "If you talked to the Hunter, turn to page 98." if hunterChat <=2:
+                #The Hunter Side-quest
+                #Even you had no understanding of the true depths of the hunters skill. Each day they would kill a different beast. You see, once, a young boy stumbled into their house. The hunters house secretly had a vast underground cavern full of all types of creatures. The first level held the birds. The second level held the beasts of the earth. The third level held great underground seas where the beasts of the ocean lurked. Each day they would release one to hunt. Their pact with the well-spirit of your village fed them fresh prey always. One day a young girl stumbled into the hunters domain. She was hunted through the tunnels. In the seventh and lowest depth of the house the hunter combined the beasts into new shapes unseen by man. The girl entreated the help of the beasts and fled into the forest. Alas, she was never seen again. The hunters skill was not to be denied. Until myself, of course.
+                #Then have a sub-story where she speaks to one of the beasts.
+                #Story level 1 mystery: Where did the old hunter derive his power?
+                #The beast has a story about how it was once a prince. His king was mysteriously murdered one night and he was forced to flee. In his travels, he was transformed by a wicked witch.
+                #Story level 2 mystery: who murdered the old king?
+                #Story level 3, the witch
+                #Then go into a further sub-story about the witch. Finally the witch story connects back to you in the village. You never find the resolution to those other two stories.
                 if hunterChat == 0:
                     h "A {color=#f00}wolf{/color}? Don't be silly."
                 if hunterChat == 1:
@@ -4700,7 +4706,7 @@ label hellStory:
                 call devilAnswers from _call_devilAnswers_3
                 dg "I dreamed that a desperate young mother once pledged her child to Death, as the godmother - and that the child was bound to be taken by Her. Can [he] ever escape, do you think?"
                 mir "Never."
-                "The Devil grew sombre ."
+                "The Devil grew sombre."
                 mir "There is no trick or cheat. When the child receives Death's three messengers, [he] will have to go. And that will be that."
                 jump devilSleeps
             "If you asked how to cure the witch's forgetfulness, turn to page 267." if not cureWitch:

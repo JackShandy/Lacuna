@@ -1,28 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1881, in script
-    if toadVanished == True:
-  File "game/script.rpy", line 1881, in <module>
-    if toadVanished == True:
-NameError: name 'toadVanished' is not defined
+  File "game/script.rpy", line 1115, in script
+    menu:
+SyntaxError: invalid syntax (script.rpy, line 1122)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1881, in script
-    if toadVanished == True:
-  File "renpy/ast.py", line 1852, in execute
-    if renpy.python.py_eval(condition):
-  File "renpy/python.py", line 2249, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "renpy/python.py", line 2242, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 1881, in <module>
-    if toadVanished == True:
-NameError: name 'toadVanished' is not defined
+  File "game/script.rpy", line 1115, in script
+    menu:
+  File "renpy/ast.py", line 1642, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "renpy/exports.py", line 1004, in menu
+    condition = renpy.python.py_eval(condition)
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1122)
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 0.81
-Sat Apr 16 17:26:13 2022
+Fri Jun 24 18:19:54 2022
