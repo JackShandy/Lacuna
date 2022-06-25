@@ -63,10 +63,10 @@ default persistent.hes = "hes"
 #persistent Disappearances
 
 #number of people who have disappeared
-default persistent.vanished = 0
+default persistent.vanished = 1
 
 #Who has disappeared specifically
-default persistent.toadVanished = False
+default persistent.toadVanished = True
 default persistent.witchVanished = False
 default persistent.thiefVanished = False
 default persistent.mushroomVanished = False
@@ -303,8 +303,22 @@ image cover6d = "cover-6d.png"
 image cover9d= "cover-9d.png"
 image cover14d= "cover-14d.png"
 
-image title = "title.png"
+
 #image credits = "acknowledgements.png"
+#Set up the cover - it changes based on how many people have disappeared
+image title = "title.png"
+image title-toadGone = "title-toadGone.png"
+image title-witchGone = "title-witchGone.png"
+image title-thiefGone = "title-thiefGone.png"
+image title-mushroomGone = "title-mushroomGone.png"
+image title-toadwitchGone = "title-toad+witchGone.png"
+image title-toadthiefGone = "title-toad+thiefGone.png"
+image title-toadmushGone = "title-toad+mushGone.png"
+image title-witchthiefGone = "title-witch+thiefGone.png"
+image title-witchmushGone = "title-witch+mushGone.png"
+image title-thiefmushGone = "title-thief+mushGone.png"
+image title-wolf = "title-wolf.png"
+
 
 #Map
 image mapClosed = "mapClosed.png"
@@ -604,7 +618,34 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
     #with Pause(5)
     ""
     play sound pageFlip
-    show title
+    #show title
+    #show different title based on how many characters have disappeared
+    if persistent.vanished == 0:
+        show title
+    elif persistent.vanished == 1:
+        if persistent.toadVanished:
+            show title-toadGone
+        if persistent.witchVanished:
+            show title-witchGone
+        if persistent.thiefVanished:
+            show title-thiefGone
+        if persistent.mushroomVanished:
+            show title-mushroomGone
+    elif persistent.vanished == 2:
+        if persistent.toadVanished and persistent.witchVanished:
+            show title-toadwitchGone
+        elif persistent.toadVanished and persistent.thiefVanished:
+            show title-toadthiefGone
+        elif persistent.toadVanished and persistent.mushroomVanished:
+            show title-toadmushGone
+        elif persistent.witchVanished and persistent.thiefVanished:
+            show title-witchthiefGone
+        elif persistent.witchVanished and persistent.mushroomVanished:
+            show title-witchmushGone
+        elif persistent.thiefVanished and persistent.mushroomVanished:
+            show title-thiefmushGone
+    elif persistent.vanished == 3:
+        show title-wolf
     ""
     #with Pause(5)
     #show screen music_screen

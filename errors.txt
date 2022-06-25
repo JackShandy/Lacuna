@@ -2,9 +2,29 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1888: expected menuitem
-    if persistent.witchVanished && persistent.thiefVanished:
-    ^
+File "game/script.rpy", line 314: expected '=' not found.
+    image title-toad+witchGone = "title-toad+witchGone.png"
+                    ^
+
+File "game/script.rpy", line 315: expected '=' not found.
+    image title-toad+thiefGone = "title-toad+thiefGone.png"
+                    ^
+
+File "game/script.rpy", line 316: expected '=' not found.
+    image title-toad+mushGone = "title-toad+mushGone.png"
+                    ^
+
+File "game/script.rpy", line 317: expected '=' not found.
+    image title-witch+thiefGone = "title-witch+thiefGone.png"
+                     ^
+
+File "game/script.rpy", line 318: expected '=' not found.
+    image title-witch+mushGone = "title-witch+mushGone.png"
+                     ^
+
+File "game/script.rpy", line 319: expected '=' not found.
+    image title-thief+mushGone = "title-thief+mushGone.png"
+                     ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Apr 17 16:45:44 2022
+Sat Jun 25 11:21:12 2022
