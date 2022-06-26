@@ -2963,7 +2963,7 @@ label mushroomFinale:
                             "Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
                             "They were already gone."
-                            call endStamp
+                            call endStamp from _call_endStamp_7
                             "They were never seen or heard from again."
                             jump end
                         "If you held fast to your desire to return to the world above, turn to page 164.":
@@ -3052,7 +3052,7 @@ label mushroomFinale:
                     "Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
                     "They were already gone."
-                    call endStamp
+                    call endStamp from _call_endStamp_15
                     "They were never seen or heard from again."
                     jump end
                 "If you refused to open the box, even when all hope was lost, turn to page 179.":
@@ -3079,7 +3079,7 @@ label mushroomFinale:
                         "Nothing but the {color=#f00}lacuna{/color}."
                         "It was already too late."
                         "They were already gone."
-                        call endStamp
+                        call endStamp from _call_endStamp_17
                         "They were never seen or heard from again."
                         jump end
                     elif godfather == "Red":
@@ -3105,7 +3105,7 @@ label mushroomFinale:
                         "Nothing but the {color=#f00}lacuna{/color}."
                         "It was already too late."
                         "They were already gone."
-                        call endStamp
+                        call endStamp from _call_endStamp_21
                         "They were never seen or heard from again."
                         jump end
                     else:
@@ -3139,7 +3139,7 @@ label mushroomFinale:
                         "Nothing but the {color=#f00}lacuna{/color}."
                         "It was already too late."
                         "They were already gone."
-                        call endStamp
+                        call endStamp from _call_endStamp_22
                         "They were never seen or heard from again."
                         jump end
 
@@ -3920,7 +3920,7 @@ label thiefStory:
                             "Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
                             "She was already gone."
-                            call endStamp
+                            call endStamp from _call_endStamp_23
                             "She was never seen or heard from again."
                             jump end
                     "If you remained good friends with the thief, turn to page 246.":
@@ -3949,7 +3949,7 @@ label thiefStory:
                             "Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
                             "She was already gone."
-                            call endStamp
+                            call endStamp from _call_endStamp_24
                             "She was never seen or heard from again."
                             jump end
 
@@ -3985,7 +3985,7 @@ label thiefStory:
                             "Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
                             "She was already gone."
-                            call endStamp
+                            call endStamp from _call_endStamp_25
                             "She was never seen or heard from again."
                             jump end
                     "If you stayed on the goblin train and remained good friends with the thief forever after, turn to page 244.":
@@ -4015,7 +4015,7 @@ label thiefStory:
                             "Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
                             "She was already gone."
-                            call endStamp
+                            call endStamp from _call_endStamp_26
                             "She was never seen or heard from again."
                             jump end
                     "If you stayed on the goblin train and married the thief, turn to page 248.":
@@ -4049,7 +4049,7 @@ label thiefStory:
                             "Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
                             "She was already gone."
-                            call endStamp
+                            call endStamp from _call_endStamp_27
                             "She was never seen or heard from again."
                             jump end
     label thiefDeath:
@@ -4140,7 +4140,7 @@ label thiefStory:
                         "Nothing but the {color=#f00}lacuna{/color}."
                         "It was already too late."
                         "She was already gone."
-                        call endStamp
+                        call endStamp from _call_endStamp_28
                         "She was never seen or heard from again."
                         jump end
 
@@ -4900,7 +4900,7 @@ label hellStory:
                     "Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
                     "He was already gone."
-                    call endStamp
+                    call endStamp from _call_endStamp_29
                     "He was never seen or heard from again."
                     jump end
         elif godfather == "White":
@@ -5038,11 +5038,11 @@ label hellStory:
                                 "Nothing but the {color=#f00}lacuna{/color}."
                                 "It was already too late."
                                 "He was already gone."
-                                call endStamp
+                                call endStamp from _call_endStamp_30
                                 "He was never seen or heard from again."
                                 jump end
                 else:
-                    call endStamp
+                    call endStamp from _call_endStamp_31
                     "You lived there together in quiet happiness. If you have not died, you live there still."
                     stop music fadeout 1.0
                     play audio wolfApproaches
@@ -5063,7 +5063,7 @@ label hellStory:
                     "Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
                     "He was already gone."
-                    call endStamp
+                    call endStamp from _call_endStamp_32
                     "He was never seen or heard from again."
                     jump end
             "If you returned home, turn to page 261.":
@@ -5107,7 +5107,7 @@ label hellStory:
                     "Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
                     "He was already gone."
-                    call endStamp
+                    call endStamp from _call_endStamp_33
                     "He was never seen or heard from again."
                     jump end
 # Act 3 Finale: The Toad.
@@ -5534,7 +5534,7 @@ label toadFinale:
                 "But you found you didn't want to leave. You stayed together in your cosy home in the swamp. The toad worked long hours sewing many fine costumes, and the two of you put on plays together which delighted the people of the village."
                 "After many years of companionship, you finally got married and lived happily together."
                 "I should know - I was at your wedding!"
-                call endStamp
+                call endStamp from _call_endStamp_34
                 "I gorged myself on the fresh meat and raised my glass for the toast, and the beer ran down my chin but did not go into my mouth."
                 if godfather == "Black":
                     jump toadDeath
@@ -5558,7 +5558,7 @@ label toadFinale:
                     "Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
                     "She was already gone."
-                    call endStamp
+                    call endStamp from _call_endStamp_35
                     "She was never seen or heard from again."
                     jump end
             "If you stayed good friends with the toad, turn to page 299.":
@@ -5590,7 +5590,7 @@ label toadFinale:
                     "Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
                     "She was already gone."
-                    call endStamp
+                    call endStamp from _call_endStamp_36
                     "She was never seen or heard from again."
                     jump end
 
@@ -5626,7 +5626,7 @@ label toadFinale:
                 "Nothing but the {color=#f00}lacuna{/color}."
                 "It was already too late."
                 "She was already gone."
-                call endStamp
+                call endStamp from _call_endStamp_37
                 "She was never seen or heard from again."
                 jump end
     label toadDeath:
@@ -5708,7 +5708,7 @@ label toadFinale:
                     "Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
                     "She was already gone."
-                    call endStamp
+                    call endStamp from _call_endStamp_38
                     "She was never seen or heard from again."
                     jump end
 label endStamp:
