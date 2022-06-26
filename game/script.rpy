@@ -66,10 +66,10 @@ default persistent.hes = "hes"
 default persistent.vanished = 1
 
 #Who has disappeared specifically
-default persistent.toadVanished = True
+default persistent.toadVanished = False
 default persistent.witchVanished = False
 default persistent.thiefVanished = False
-default persistent.mushroomVanished = False
+default persistent.mushroomVanished = True
 
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
@@ -118,6 +118,8 @@ define stuffStolen = False
 
 #=====Act 2, Chapter 1: The Village Feast
 define foodLook = False
+#How many times you've attempted to turn and go back home
+define turnedHome = 0
 
 #Conversation topics with the toad
 define toadFeast = False
@@ -136,6 +138,7 @@ define villagersPlan = False
 define villagersCatch = False
 define villagersEscape = False
 define villagersWitch = False
+define tarpDone = False
 
 #Each villager's conversation tree
 #TK: Add multiple of these for each run
@@ -991,7 +994,8 @@ label chapter2:
         "You soon found luck was always in your favour, and everyone took to calling you \"Fortune's Favourite\"."
     elif godfather == "Red":
         "And so you grew up as a wild and wilful child, and your drove your mother to distraction with your wickedness."
-        "You obeyed no laws and no masters, and you roamed heedlessly across the hills and dales, cackling wildly and throwing mud in your wake, and all the neighbours said \"That one has the Devil's mark on [him],\" and shut their doors."
+        "You obeyed no laws and no masters, and you roamed heedlessly across the hills and dales, cackling wildly and throwing mud in your wake, and all the neighbours said \"That one has the Devil's mark upon [him],\" and shut their doors."
+        #TK: Beast reference from wolf about taboo
         "This so grieved your mother that she fell down dead."
         #"Your Godfather was as good as His word, although He could only watch the christening from outside the church window."
         "In spite of this, you still did not mend your wicked ways. Your ill deeds were rewarded, for you soon found that you could scarcely trip over a stone without unearthing precious diamonds and gems, and you became rich beyond the dreams of avarice."
@@ -1007,12 +1011,6 @@ label chapter2:
 
 label mapOpens:
     #==This map slowly gets erased as characters vanish
-    #tests for the persistent map
-    # $persistent.vanished = 1
-    # $persistent.toadVanished = True
-    # $persistent.witchVanished = False
-    # $persistent.mushroomVanished = False
-    # $persistent.thiefVanished = False
 
     play sound pageFlip2
     hide map1 onlayer screens
@@ -1163,7 +1161,7 @@ label introMenu:
         "If you wonder whether you were happy there, turn to page 19." if persistent.vanished >= 1 and not introHappy: #not introHappy and
             $introHappy = True
             if godfather == "Red":
-                "Well, it was a rich house, and you had everything you could ever want and more. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
+                "Well, it was a rich house, and you had everything you could ever want. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
             else:
                 "Well, it was a happy house. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
             "No matter how many people were around you, you felt like something was missing."
@@ -1206,7 +1204,7 @@ label introMenu:
         $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
         $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
         $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
-        jump toadIntro
+        jump thief1
     else:
 
         "As you walked down the road, you saw the wise mushroom moving through the deep darkness of the trees, her pale spores flowing in a train behind her."
@@ -1888,7 +1886,7 @@ label introMenu:
         if persistent.thiefVanished == False:
             "The panic increased when the Sparrow-Herder rushed in and waved for attention."
         else:
-            "There was a great hubbub and outcry amount the populace, and the villagers trembled and wept in fear of the terrible curse."
+            "There was a great hubbub and outcry, and the villagers trembled and wept in fear of the terrible curse."
             jump village
     else:
         "Everyone was in their place."
@@ -1902,6 +1900,7 @@ label introMenu:
 
     else:
         sh "The Master Thief has struck again!"
+        gm "Oh lord, I knew it. I swear I can hear the rattling of the Goblin Train already."
         sh "The entire suckling pig is missing. Quick - check your valuables!"
         "The whole town turned out their pockets and discovered that all their spare change had been taken and replaced with live rats, which shrieked and leapt away and ran into the forest."
         town "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -1926,9 +1925,85 @@ label village:
     menu:
         "You stood in the middle of the village."
         "If you investigated the banquet, turn to page 64.":
+            $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
+            $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
+            $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
             jump banquet
         "If you investigated the edge of town, turn to page 70.":
+            $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
+            $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
+            $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
             jump town
+        "If you turned around and went home, turn to page 1.":
+            if turnedHome == 0:
+                $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0.9, delay=3.0, channel=u'music')
+                "There's no reason for you to go back that way. All your favourite people are here."
+            if turnedHome == 1:
+                $renpy.music.set_volume(0.8, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0.8, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0.8, delay=3.0, channel=u'music')
+                "I'm telling you, you don't want to go back there."
+            if turnedHome == 2:
+                $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
+                $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
+                $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
+                h "There you are! We've been looking all over for you!"
+                h "Come on, let's get back to the feast."
+                if not persistent.thiefVanished and not persistent.mushroomVanished:
+                    h "We need your help to help track down that dastardly Master Thief!"
+                    h "Here, I'll help you find your way back."
+                    "They took hold of your arm with a surprisingly strong grip and escorted you back into the village."
+                    $turnedHome +=1
+                    jump town
+                elif not persistent.witchVanished and not persistent.ToadVanished:
+                    h "We need your help to help with this terrible curse problem we're having!"
+                    h "Here, I'll help you find your way back."
+                    "They took hold of your arm with a surprisingly strong grip and escorted you back into the village."
+                    $turnedHome +=1
+                    jump banquet
+                else:
+                    $renpy.music.set_volume(0.7, delay=3.0, channel=u'ambient1')
+                    $renpy.music.set_volume(0.7, delay=3.0, channel=u'ambient2')
+                    $renpy.music.set_volume(0.7, delay=3.0, channel=u'music')
+                    h "We... we need you to, uh..."
+                    "They looked around. Their eyes were bleary."
+                    h "I'm sorry, I - I don't remember why I came here."
+                    h "I don't think you should go down that road. There's something..."
+                    "They looked down."
+                    h "My hands... they haven't been working properly. They don't do what I tell them to do anymore."
+                    h "I'm sorry. I think I need to rest."
+                    "Without a word, they turned and walked back to the village."
+            if turnedHome == 3:
+                $renpy.music.set_volume(0.6, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0.6, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0.6, delay=3.0, channel=u'music')
+                "You began to walk home, but your wiser nature prevailed."
+                "You turned back and strode back towards the village with your head held high."
+                "The villagers surrounded you and congratulated you on your good sense. A small party was held in your honour."
+                "Everyone you love was there. \"Well done,\" they said. \"You did it.\""
+            if turnedHome == 4:
+                $renpy.music.set_volume(0.4, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0.4, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0.4, delay=3.0, channel=u'music')
+                "Whatever you think you're going to find down that road, you're wrong."
+                "There's nothing for you at home anymore."
+            if turnedHome == 5:
+                $renpy.music.set_volume(0.2, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0.2, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0.2, delay=3.0, channel=u'music')
+                "This is the last time I'll tell you."
+                "You don't want to do that."
+            elif turnedHome >= 6:
+                $renpy.music.set_volume(0, delay=6.0, channel=u'ambient1')
+                $renpy.music.set_volume(0, delay=6.0, channel=u'ambient2')
+                $renpy.music.set_volume(0, delay=6.0, channel=u'music')
+                "Fine."
+                #TK: Wolf scene
+                "NOTE: You go back to your cottage, the wolf scene starts here."
+            $turnedHome +=1
+            jump village
 
 label banquet:
     call hideAll from _call_hideAll_18
@@ -1950,6 +2025,8 @@ label banquet:
                 $banquetChat = True
                 jump banquetMenu
             "If you talked to the Sparrow-Herder, turn to page 85."  if sparrowherderChat <= 4:
+                if persistent.witchVanished and sparrowherderRand == 2:
+                    $sparrowherderRand =3
                 if sparrowherderRand ==1:
                     if sparrowherderChat == 0:
                         sh "G'day."
@@ -2004,7 +2081,10 @@ label banquet:
             "If you talked to the Mayor, turn to page 82." if mayorChat <= 6:
                 #if mayorRand ==1:
                 if mayorChat == 0:
-                    may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
+                    if persistent.witchVanished:
+                        may "If you're going out, be wary! They say Moon-Head walks these roads tonight."
+                    else:
+                        may "If you're going out to hunt the witch, be wary! They say Moon-Head walks these roads tonight."
                 elif mayorChat == 1:
                     may "They say his front face is a full moon, and his back face is a new moon."
                 elif mayorChat == 2:
@@ -2138,21 +2218,40 @@ label banquet:
                             $toadFeast = True
                             jump toadConvo2
                         "If you asked about his plans, turn to page 90." if not toadLong:
-                            f "Aha! Allow me to elucidate."
-                            "He slurped noisily from his wineglass until it was empty."
-                            f "I plan to track this witch character down tonight, before she causes any more chaos."
-                            f "We must help the poor, accursed people of this village! Already they panic, terrified that she will descend upon them and turn them all into beasts!"
-                            if witchArc >= 1:
-                                pov "I think that may just be a misunderstanding."
-                                "A tray of drinks came by and the toad dragged a new full-sized wineglass into his arms, struggling with the weight."
-                                f "Maybe so, maybe so. But between you and me, I have a curse of my own I need her to lift."
+                            if persistent.witchVanished:
+                                f "Aha! Allow me to elucidate."
+                                "He slurped noisily from his wineglass until it was empty."
+                                $renpy.music.set_volume(0.5, delay=3.0, channel=u'ambient1')
+                                $renpy.music.set_volume(0.5, delay=3.0, channel=u'ambient2')
+                                $renpy.music.set_volume(0.5, delay=3.0, channel=u'music')
+                                f "I came to this village to..."
+                                f "To, ah..."
+                                "He looked down at his wineglass."
+                                "His brow wrinkled."
+                                $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+                                $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+                                $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+                                f "...to enjoy this magnificent feast, of course!"
+                                "He brightened up and began filling his wineglass with renewed vigour."
+                                f "Yes, that must have been it. Please, join me!"
+                                $toadLong = True
+                                jump toadConvo2
                             else:
-                                "A tray of drinks came by and the toad dragged a new full-sized wineglass into his arms, struggling with the weight."
-                                f "And between you and me, I have a curse of my own I need her to lift."
-                            f "{i}Transformed{/i}, you know. Keep that under your hat, very hush hush, you understand."
-                            $toadLong = True
-                            jump toadConvo2
-                        "If you asked for more information about the witch, turn to page 93." if toadLong and not toadFind:
+                                f "Aha! Allow me to elucidate."
+                                "He slurped noisily from his wineglass until it was empty."
+                                f "I plan to track this witch character down tonight, before she causes any more chaos."
+                                f "We must help the poor, accursed people of this village! Already they panic, terrified that she will descend upon them and turn them all into beasts!"
+                                if witchArc >= 1:
+                                    pov "I think that may just be a misunderstanding."
+                                    "A tray of drinks came by and the toad dragged a new full-sized wineglass into his arms, struggling with the weight."
+                                    f "Maybe so, maybe so. But between you and me, I have a curse of my own I need her to lift."
+                                else:
+                                    "A tray of drinks came by and the toad dragged a new full-sized wineglass into his arms, struggling with the weight."
+                                    f "And between you and me, I have a curse of my own I need her to lift."
+                                f "{i}Transformed{/i}, you know. Keep that under your hat, very hush hush, you understand."
+                                $toadLong = True
+                                jump toadConvo2
+                        "If you asked for more information about the witch, turn to page 93." if toadLong and not toadFind and not persistent.witchVanished:
                             $toadFind = True
                             f "I understand she lurks in a cottage in the darkest depths of the rainforest, where all fear to tread."
                             f "All except for Brildebrogue Chippingham, of course!"
@@ -2177,10 +2276,10 @@ label banquet:
                                         f "Not mine, of course! If you change your mind, I'll be here."
                                         #$toadDecline = True
                                         jump toadConvo2
-                        "If you asked about the witch again, turn to page 93." if toadFind:
+                        "If you asked about the witch again, turn to page 93." if toadFind and not persistent.witchVanished:
                             f "Ah, have you changed your mind?"
                             jump toadWitchJoin
-                        "If you asked him about the thief, turn to page 78." if toadLong and not toadThief:
+                        "If you asked him about the thief, turn to page 78." if toadLong and not toadThief and not persistent.thiefVanished:
                             $toadThief = True
                             pov "Aren't you going to do anything about all the stolen goods?"
                             f "And risk the wrath of the Master Thief? Not on your life! I heard they eat danger, and breathe death!"
@@ -2193,14 +2292,51 @@ label banquet:
                             if godfather== "Black":
                                 pov "I need a way to escape my godmother, Lady Death. Can you help me?"
                                 f "Possibly, possibly."
-                                f "Perhaps the witch will know something about it. You should join me in hunting her down!"
+                                if persistent.witchVanished:
+                                    #show firelight animated with dissolve
+                                    $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient1')
+                                    $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient2')
+                                    $renpy.music.set_volume(0.3, delay=3.0, channel=u'music')
+                                    f "I may know someone who can assist with that. Her name is..."
+                                    f "Her name..."
+                                    f "..."
+                                    $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+                                    $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+                                    $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+                                    f "Never mind, I must have been mistaken. More ham?"
+                                else:
+                                    f "Perhaps the witch will know something about it. You should join me in hunting her down!"
                             elif godfather == "White":
                                 pov "I need a way to escape my godfather, the Lord. Can you help me?"
                                 f "Possibly, possibly."
-                                f "Perhaps the witch will know something about it. You should join me in hunting her down!"
+                                if persistent.witchVanished:
+                                    $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient1')
+                                    $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient2')
+                                    $renpy.music.set_volume(0.3, delay=3.0, channel=u'music')
+                                    f "I may know someone who can assist with that. Her name is..."
+                                    f "Her name..."
+                                    f "..."
+                                    $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+                                    $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+                                    $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+                                    f "Never mind, I must have been mistaken. More ham?"
+                                else:
+                                    f "Perhaps the witch will know something about it. You should join me in hunting her down!"
                             elif godfather == "Red":
                                 pov "I need a way to escape my godfather, the Devil. Can you help me?"
-                                f "I'm sure the witch would know something about that. Rumour is that she dances with the Devil on cold, moonless nights! You should join me in hunting her down."
+                                if persistent.witchVanished:
+                                    $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient1')
+                                    $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient2')
+                                    $renpy.music.set_volume(0.3, delay=3.0, channel=u'music')
+                                    f "I may know someone who can assist with that. Her name is..."
+                                    f "Her name..."
+                                    f "..."
+                                    $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+                                    $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+                                    $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+                                    f "Never mind, I must have been mistaken. More ham?"
+                                else:
+                                    f "I'm sure the witch would know something about that. Rumour is that she dances with the Devil on cold, moonless nights! You should join me in hunting her down."
                             $toadHelp = True
                             jump toadConvo2
                         "If you made your excuses and left, turn to page 83.":
@@ -2214,16 +2350,20 @@ label banquet:
 label town:
     call hideAll from _call_hideAll_19
     show townextbg at artPos
-    "You walked out to the edge of town, where villagers ran to and fro, searching for the Master Thief."
-    "Fruit bats chirped and swirled overhead, fat with fresh mangos."
+    if persistent.thiefVanished:
+        "You walked out to the edge of town."
+    else:
+        "You walked out to the edge of town, where villagers ran to and fro, searching for the Master Thief."
+        if not tarpDone:
+            "Some of them were strapping down a tarp."
     #TK: Add another character who randomly appears and disappears - moon-head?
     label townExplore:
         show hand onlayer transient:
             yalign 0.62#0.743
             xalign 0.5
         menu:
-            "Some of the villagers were strapping down a tarp."
-            "If you investigated the tarp, turn to page 79.":
+            "Fruit bats chirped and swirled overhead."
+            "If you investigated the tarp, turn to page 79." if not persistent.thiefVanished and not tarpDone:
                 pov "What is this?"
                 h "Shhh! Keep your voice down. This is all part of our plan to catch that dastardly Master Thief."
                 gm "We're sure to fail. This whole plan is doomed."
@@ -2431,21 +2571,36 @@ label town:
                 if godfather== "White":
                     pov "I need a way to escape my godfather, the Lord. Do any of you know how I can do that?"
                     gm "Hmph. I advise you to give up immediately."
-                    go "Well, it is said that the Master Thief has hidden from the Lord all their life. If anyone would know, they would."
-                    h "Once we track the thief down, you could question them!"
+                    if persistent.thiefVanished:
+                        go "I'm sorry. I know of no-one who can help you with that plight."
+                        sh "Wasn't there..."
+                        sh "No, never mind. You're right. There is no-one."
+                    else:
+                        go "Well, it is said that the Master Thief has hidden from the Lord all their life. If anyone would know, they would."
+                        h "Once we track the thief down, you could question them!"
                 elif godfather == "Red":
                     pov "I need a way to escape my godfather, the Devil. Do any of you know how I can do that?"
                     gm "Hmph. I advise you to give up immediately."
-                    go "Well, I have heard that the witch has sworn her soul to the devil. She would know how to help you, if anyone would."
-                    sh "If only she was here tonight! Oh, I can already feel her curse upon me."
+                    if persistent.witchVanished:
+                        go "I'm sorry. I know of no-one who can help you with that plight."
+                        sh "Wasn't there..."
+                        sh "No, never mind. You're right. There is no-one."
+                    else:
+                        go "Well, I have heard that the witch has sworn her soul to the devil. She would know how to help you, if anyone would."
+                        sh "If only she was here tonight! Oh, I can already feel her curse upon me."
                 elif godfather == "Black":
                     pov "I need a way to escape my godmother, Lady Death. Do any of you know how I can do that?"
                     gm "Hmph. I advise you to give up immediately."
-                    go "Well, as we all know, mushrooms are the fingers of death. That wise mushroom in the deep forest would know how to help you, if anyone would."
-                    sh "I heard that dastardly Master Thief was planning to steal from her this very night! We'd better get the trap laid before they have a chance."
+                    if persistent.mushroomVanished:
+                        go "I'm sorry. I know of no-one who can help you with that plight."
+                        sh "Wasn't there..."
+                        sh "No, never mind. You're right. There is no-one."
+                    else:
+                        go "Well, as we all know, mushrooms are the fingers of death. That wise mushroom in the deep forest would know how to help you, if anyone would."
+                        sh "I heard that dastardly Master Thief was planning to steal from her this very night! We'd better get the trap laid before they have a chance."
                 $villagersEscape = True
                 jump villagersConvo
-            "If you asked them about the witch, turn to page 79." if villagersCatch and not villagersWitch:
+            "If you asked them about the witch, turn to page 79." if villagersCatch and not villagersWitch and not persistent.witchVanished:
                 pov "Are you going to do anything about the witch's curse?"
                 go "And risk the wrath of the witch? Not on your life."
                 gm "I heard that she has fingers as long and fat as carpet snakes, and once you fall into her clutches, you'll never see daylight again."
@@ -2455,6 +2610,7 @@ label town:
                 $villagersWitch = True
                 jump villagersConvo
             "If you accepted their offer, and head off to catch the Master Thief, turn to page 124." if villagersPlan or villagersCatch:
+                $tarpDone = True
                 h "Excellent! Let's be off at once."
                 "You all leapt on the cart and rattled away down the road, leaving the old Gloom-monger behind."
                 gm "You're all doomed! Doooooooomed!"
@@ -2540,7 +2696,7 @@ label thief2:
                 OOOOOOOOOOooOOOOOOOOOOOOOOOOO
                 OOOOOOOOOoOOOOOOoOOOOOOOooOOO
                 OOOOOOOoOOOOOOOoOOOOOOOOOOOOO!{/i}"
-                echidna2 "What a shame. Oh well! I'd best be off."
+                #echidna2 "What a shame. Oh well! I'd best be off."
                 $pitifulGoose = True
                 $pitiful +=1
                 jump thiefCake
@@ -2615,8 +2771,30 @@ label thief2:
         t "Why not change that?"
     elif godfather == "Black":
         t "You see, I've heard of you. They say you're a strange one. You lurk out late at night and scare people."
-    t "I know you live near the Mushroom, who is rich beyond the dreams of avarice."
-    t "I plan to go there tonight and take her for all she's worth. Want to join?"
+    if persistent.mushroomVanished == True:
+        t "I plan to..."
+        $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient1')
+        $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient2')
+        $renpy.music.set_volume(0.3, delay=3.0, channel=u'music')
+        "They paused."
+        t "I was... going to steal from someone."
+        t "To steal from..."
+        t "Did we talk about this before?"
+        "A vague and desperate confusion settled on their face."
+        t "I'm sorry, I don't remember. I haven't been myself lately."
+        $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
+        $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
+        $renpy.music.set_volume(0, delay=3.0, channel=u'music')
+        t "I don't know who I've been lately."
+        t "You must have chosen the wrong path. There's nothing down this route."
+        t "I'll take you back to the village. Then you can choose again."
+        $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+        $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+        $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+        jump village
+    else:
+        t "I know you live near the Mushroom, who is rich beyond the dreams of avarice."
+        t "I plan to go there tonight and take her for all she's worth. Want to join?"
     if stuffStolen:
         t "I'll give you all your things back. Promise."
     label thiefConvo:

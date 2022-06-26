@@ -1,26 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1115, in script
+  File "game/script.rpy", line 2291, in script
     menu:
-SyntaxError: invalid syntax (script.rpy, line 1122)
+  File "game/script.rpy", line 2293, in <module>
+    "If you investigated the tarp, turn to page 79." if not persistent.thiefVanished and not tarpDone:
+NameError: name 'tarpDone' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1115, in script
+  File "game/script.rpy", line 2291, in script
     menu:
   File "renpy/ast.py", line 1642, in execute
     choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
   File "renpy/exports.py", line 1004, in menu
     condition = renpy.python.py_eval(condition)
-  File "renpy/python.py", line 2247, in py_eval
-    code = py_compile(code, 'eval')
-  File "renpy/python.py", line 835, in py_compile
-    raise e
-SyntaxError: invalid syntax (script.rpy, line 1122)
+  File "renpy/python.py", line 2249, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2242, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 2293, in <module>
+    "If you investigated the tarp, turn to page 79." if not persistent.thiefVanished and not tarpDone:
+NameError: name 'tarpDone' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 0.81
-Fri Jun 24 18:19:54 2022
+Sun Jun 26 14:18:37 2022
