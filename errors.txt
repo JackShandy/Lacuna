@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2292: expected menuitem
-    if persistent.thiefvanished:
-    ^
+File "game/script.rpy", line 1006: expected statement.
+    elif godfather == "Red":
+                   ^
+
+File "game/script.rpy", line 1013: expected statement.
+    elif godfather == "Black":
+                   ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Jun 26 13:42:38 2022
+Mon Jun 27 19:06:15 2022

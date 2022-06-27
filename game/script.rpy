@@ -17,6 +17,14 @@ init python:
 #
 #     config.custom_text_tags["xpos"] = xpos_tag
 
+#Note: This function deletes all of the player's save files. This is necessary to work with the meta-narrative stuff I'm trying to do.
+init python:
+    def purge_saves():
+        saves = renpy.list_slots()
+        for save in saves:
+            renpy.unlink_save(save)
+        return
+
 # ===== List of all persistent variables
 
 #Number of times the game has been played
@@ -63,13 +71,13 @@ default persistent.hes = "hes"
 #persistent Disappearances
 
 #number of people who have disappeared
-default persistent.vanished = 1
+default persistent.vanished = 0
 
 #Who has disappeared specifically
 default persistent.toadVanished = False
 default persistent.witchVanished = False
 default persistent.thiefVanished = False
-default persistent.mushroomVanished = True
+default persistent.mushroomVanished = False
 
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
@@ -149,6 +157,7 @@ define hunterChat = 0
 define mayorChat = 0
 define wellChat = 0
 define pigChat =0
+define gutterlingChat =0
 
 #Random chances
 define sparrowherderRand = renpy.random.randint(1,3)
@@ -2001,9 +2010,19 @@ label village:
                 $renpy.music.set_volume(0, delay=6.0, channel=u'music')
                 "Fine."
                 #TK: Wolf scene
-                "NOTE: You go back to your cottage, the wolf scene starts here."
+                jump wolf
             $turnedHome +=1
             jump village
+        # "If you talked to the Gutterling, turn to page 56." if persistent.vanished>=1 and gutterlingChat <=2:
+        #     if persistent.vanished == 1:
+        #         if gutterlingChat == 0:
+        #             g "'Allo."
+        #             g "Here's a tip. If you talk to people multiple times, they might have more to say."
+        #             g "It's true! Try it on me."
+        #         if gutterlingChat == 1:
+        #             g "There's the spirit mate!"
+        #         if gutterlingChat == 2:
+        #             g "It works on more than just people too, y'know. "
 
 label banquet:
     call hideAll from _call_hideAll_18
@@ -3138,9 +3157,9 @@ label mushroomFinale:
                             "They caught their breath and looked around. The sky was vast and empty above them."
                             "No-one was there."
                             "Nothing was left."
-                            "Nothing but the {color=#f00}lacuna{/color}."
+                            #"Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
-                            "They were already gone."
+                            #"They were already gone."
                             call endStamp from _call_endStamp_7
                             "They were never seen or heard from again."
                             jump end
@@ -3227,9 +3246,9 @@ label mushroomFinale:
                     "They caught their breath and looked around. The sky was vast and empty above them."
                     "No-one was there."
                     "Nothing was left."
-                    "Nothing but the {color=#f00}lacuna{/color}."
+                    #"Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
-                    "They were already gone."
+                    #"They were already gone."
                     call endStamp from _call_endStamp_15
                     "They were never seen or heard from again."
                     jump end
@@ -3254,9 +3273,9 @@ label mushroomFinale:
                         "They caught their breath and looked around. The sky was vast and empty above them."
                         "No-one was there."
                         "Nothing was left."
-                        "Nothing but the {color=#f00}lacuna{/color}."
+                        #"Nothing but the {color=#f00}lacuna{/color}."
                         "It was already too late."
-                        "They were already gone."
+                        #"They were already gone."
                         call endStamp from _call_endStamp_17
                         "They were never seen or heard from again."
                         jump end
@@ -3280,9 +3299,9 @@ label mushroomFinale:
                         "They caught their breath and looked around. The sky was vast and empty above them."
                         "No-one was there."
                         "Nothing was left."
-                        "Nothing but the {color=#f00}lacuna{/color}."
+                        #"Nothing but the {color=#f00}lacuna{/color}."
                         "It was already too late."
-                        "They were already gone."
+                        #"They were already gone."
                         call endStamp from _call_endStamp_21
                         "They were never seen or heard from again."
                         jump end
@@ -3314,9 +3333,9 @@ label mushroomFinale:
                         "They caught their breath and looked around. The sky was vast and empty above them."
                         "No-one was there."
                         "Nothing was left."
-                        "Nothing but the {color=#f00}lacuna{/color}."
+                        #"Nothing but the {color=#f00}lacuna{/color}."
                         "It was already too late."
-                        "They were already gone."
+                        #"They were already gone."
                         call endStamp from _call_endStamp_22
                         "They were never seen or heard from again."
                         jump end
@@ -4095,9 +4114,9 @@ label thiefStory:
                             "After many days, she finally emerged from the dirt, into the cold air."
                             "No-one was there."
                             "Nothing was left."
-                            "Nothing but the {color=#f00}lacuna{/color}."
+                            #"Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
-                            "She was already gone."
+                            #"She was already gone."
                             call endStamp from _call_endStamp_23
                             "She was never seen or heard from again."
                             jump end
@@ -4124,9 +4143,9 @@ label thiefStory:
                             "After many days, she finally emerged from the dirt, into the cold air."
                             "No-one was there."
                             "Nothing was left."
-                            "Nothing but the {color=#f00}lacuna{/color}."
+                            #"Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
-                            "She was already gone."
+                            #"She was already gone."
                             call endStamp from _call_endStamp_24
                             "She was never seen or heard from again."
                             jump end
@@ -4160,9 +4179,9 @@ label thiefStory:
                             "After many days, she finally emerged from the dirt, into the cold air."
                             "No-one was there."
                             "Nothing was left."
-                            "Nothing but the {color=#f00}lacuna{/color}."
+                            #"Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
-                            "She was already gone."
+                            #"She was already gone."
                             call endStamp from _call_endStamp_25
                             "She was never seen or heard from again."
                             jump end
@@ -4190,9 +4209,9 @@ label thiefStory:
                             "After many days, she finally emerged from the dirt, into the cold air."
                             "No-one was there."
                             "Nothing was left."
-                            "Nothing but the {color=#f00}lacuna{/color}."
+                            #"Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
-                            "She was already gone."
+                            #"She was already gone."
                             call endStamp from _call_endStamp_26
                             "She was never seen or heard from again."
                             jump end
@@ -4224,9 +4243,9 @@ label thiefStory:
                             "After many days, she finally emerged from the dirt, into the cold air."
                             "No-one was there."
                             "Nothing was left."
-                            "Nothing but the {color=#f00}lacuna{/color}."
+                            #"Nothing but the {color=#f00}lacuna{/color}."
                             "It was already too late."
-                            "She was already gone."
+                            #"She was already gone."
                             call endStamp from _call_endStamp_27
                             "She was never seen or heard from again."
                             jump end
@@ -4315,9 +4334,9 @@ label thiefStory:
                         "After many days, she finally emerged from the dirt, into the cold air."
                         "No-one was there."
                         "Nothing was left."
-                        "Nothing but the {color=#f00}lacuna{/color}."
+                        #"Nothing but the {color=#f00}lacuna{/color}."
                         "It was already too late."
-                        "She was already gone."
+                        #"She was already gone."
                         call endStamp from _call_endStamp_28
                         "She was never seen or heard from again."
                         jump end
@@ -5075,9 +5094,9 @@ label hellStory:
                     "Finally, he emerged into a shadowed clearing."
                     "No-one was there."
                     "Nothing was left."
-                    "Nothing but the {color=#f00}lacuna{/color}."
+                    #"Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
-                    "He was already gone."
+                    #"He was already gone."
                     call endStamp from _call_endStamp_29
                     "He was never seen or heard from again."
                     jump end
@@ -5213,9 +5232,9 @@ label hellStory:
                                 "Finally, he emerged into a shadowed clearing."
                                 "No-one was there."
                                 "Nothing was left."
-                                "Nothing but the {color=#f00}lacuna{/color}."
+                                #"Nothing but the {color=#f00}lacuna{/color}."
                                 "It was already too late."
-                                "He was already gone."
+                                #"He was already gone."
                                 call endStamp from _call_endStamp_30
                                 "He was never seen or heard from again."
                                 jump end
@@ -5238,9 +5257,9 @@ label hellStory:
                     "Finally, he emerged into a shadowed clearing."
                     "No-one was there."
                     "Nothing was left."
-                    "Nothing but the {color=#f00}lacuna{/color}."
+                    #"Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
-                    "He was already gone."
+                    #"He was already gone."
                     call endStamp from _call_endStamp_32
                     "He was never seen or heard from again."
                     jump end
@@ -5282,9 +5301,9 @@ label hellStory:
                     "Finally, he emerged into a shadowed clearing."
                     "No-one was there."
                     "Nothing was left."
-                    "Nothing but the {color=#f00}lacuna{/color}."
+                    #"Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
-                    "He was already gone."
+                    #"He was already gone."
                     call endStamp from _call_endStamp_33
                     "He was never seen or heard from again."
                     jump end
@@ -5726,17 +5745,17 @@ label toadFinale:
                     "..."
                     "Oh?"
                     "And what happened to the witch, you ask?"
-                    $persistent.vanished +=1
-                    $persistent.witchVanished = True
                     "She was carried away by swift water."
                     "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
                     "Finally, she washed onto a broken shore."
                     "No-one was there."
                     "Nothing was left."
-                    "Nothing but the {color=#f00}lacuna{/color}."
+                    #"Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
-                    "She was already gone."
+                    #"She was already gone."
                     call endStamp from _call_endStamp_35
+                    $persistent.vanished +=1
+                    $persistent.witchVanished = True
                     "She was never seen or heard from again."
                     jump end
             "If you stayed good friends with the toad, turn to page 299.":
@@ -5758,17 +5777,17 @@ label toadFinale:
                     "..."
                     "Oh?"
                     "And what happened to the witch, you ask?"
-                    $persistent.vanished +=1
-                    $persistent.witchVanished = True
                     "She was carried away by swift water."
                     "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
                     "Finally, she washed onto a broken shore."
                     "No-one was there."
                     "Nothing was left."
-                    "Nothing but the {color=#f00}lacuna{/color}."
+                    #"Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
-                    "She was already gone."
+                    #"She was already gone."
                     call endStamp from _call_endStamp_36
+                    $persistent.vanished +=1
+                    $persistent.witchVanished = True
                     "She was never seen or heard from again."
                     jump end
 
@@ -5794,17 +5813,17 @@ label toadFinale:
                 "..."
                 "Oh?"
                 "And what happened to the witch, you ask?"
-                $persistent.vanished +=1
-                $persistent.witchVanished = True
                 "She was carried away by swift water."
                 "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
                 "Finally, she washed up on a broken shore."
                 "No-one was there."
                 "Nothing was left."
-                "Nothing but the {color=#f00}lacuna{/color}."
+                #"Nothing but the {color=#f00}lacuna{/color}."
                 "It was already too late."
-                "She was already gone."
+                #"She was already gone."
                 call endStamp from _call_endStamp_37
+                $persistent.vanished +=1
+                $persistent.witchVanished = True
                 "She was never seen or heard from again."
                 jump end
     label toadDeath:
@@ -5876,8 +5895,6 @@ label toadFinale:
                     "..."
                     "Oh?"
                     "And what happened to the witch, you ask?"
-                    $persistent.vanished +=1
-                    $persistent.witchVanished = True
                     "She was carried away by swift water."
                     "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
                     "Finally, she washed up on a broken shore."
@@ -5887,8 +5904,22 @@ label toadFinale:
                     "It was already too late."
                     "She was already gone."
                     call endStamp from _call_endStamp_38
+                    $persistent.vanished +=1
+                    $persistent.witchVanished = True
                     "She was never seen or heard from again."
                     jump end
+
+label wolf:
+    #NOTE: Finale scene!
+    python:
+        answer1 = renpy.input("{i}What is my name?:{/i}", length=7)
+
+    if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" :
+        "Correct."
+    else:
+        "Incorrect."
+
+
 label endStamp:
     show text "{b}THE END.{/b}":
         xalign 0.5
@@ -5900,6 +5931,8 @@ label endStamp:
 
 label end:
     #play sound pageFlip
+    #Note: I delete all the player's save files at this point to allow persistence to work.
+    $purge_saves()
     call hideAll from _call_hideAll_94
     hide text
     ""
