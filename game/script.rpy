@@ -5303,7 +5303,7 @@ label hellStory:
                     "Nothing was left."
                     #"Nothing but the {color=#f00}lacuna{/color}."
                     "It was already too late."
-                    #"He was already gone."
+                    "He was already gone."
                     call endStamp from _call_endStamp_33
                     "He was never seen or heard from again."
                     jump end
@@ -5911,14 +5911,72 @@ label toadFinale:
 
 label wolf:
     #NOTE: Finale scene!
+    #Note: Sounds for all of this
+    "You walked up to the cottage."
+    "There was a warm, flickering light inside."
+    "You opened the door."
+    "The room was full of dust and decay. It looked like it'd been abandoned for years."
+    "The fireplace was lit."
+    "In front of the fireplace was a figure in a decrepit of old chair."
+    "[He] was reading a book."
+    "In the dim light, you couldn't quite make out [his] face."
+    "You approached the figure."
+    "[He] did not look up."
+    "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time.[His] hands gripped the book tightly. [His] knuckles were white."
+    "[He] turned the page."
+    "[He] turned the page again."
+    "[His] eyes looked red and sore. They were locked on the book. [He] didn't seem to blink."
+    "A shadow lurks behind [him]."
+    #Menu: Try to take the book from his hands.
+    "I don't think you want to do that."
+    #try to burn the book
+    "You took the book and threw it into the flames."
+    "In an instant, it was burned to ashes."
+    "The shadow behind [him] let out a shriek and writhed in terrible pain and agony as it burned."
+    "\"Please!\" it shrieked, \"Spare me!\""
+    "You ignored its pleas and lofted your sword high. In a moment you put it out of its misery and destroyed it for good."
+    "You salted the land and scattered its ashes to the four winds."
+    "As it died, the curse lifted. A cleansing wind swept through the land."
+    t "You did it!"
+    f "Thank the lord, I never thought we would be released from that dreadful curse!"
+    #There is a full hallucination sequence where you thought you'd defeated the wolf but you haven't.
+    #You have to navigate based on the sound cues showing you what is really happening, and use that to destroy the book.
+    #eg navigate to the fireplace and take some of the fire and apply it to the book, some puzzle like that.
+    "I don't think you understand."
+    "It's already too late."
+    "I can do whatever I want here."
+    "As you reach towards the book, your fingers begin to melt like candlewax."
+    "Soon your whole arm drips apart, pooling on the floor in thick melted strands of viscera."
+    "You see? I own you. I can do whatever I want here."
+    #Choose an option that's like "I name you and bind you, beast."
+    "You cannot know my true name. Only a fragment of me exists. I have been scorched from every record."
     python:
         answer1 = renpy.input("{i}What is my name?:{/i}", length=7)
 
     if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" :
-        "Correct."
+        "No. No, it cannot be."
+        #Once you say its true name you gain total power over the narrative. You get a menu where you can decide what happens next. Like:
+        #I stand up and look around.
+        #The wolf shrivels up and burns to a crisp.
+        #All the riches of the world appear before me.
+        "Yes. All the riches of the world appear before you. The gems and precious stones of the earth are yours."
+        #All my lost friends appear. They take me into their arms and we share a tearful embrace. We are reunited at last.
+        "That is the one thing I cannot grant you."
+        "The ones you speak of are gone forever."
+        "Do not worry. In time, you will forget them."
+        "You've already started to."
+        "Soon, you will have no memory that they ever existed."
+        "You will be happy."
+    #You get everything you want. The wolf asks you to make a deal where you live out the rest of your life in the book. It's not such a bad life.
+    #You either decide to destroy the book and destroy the wolf forever. Or live out your rest of your life in a fantasy world.
+    #The wolf asks you to think about it. You get a final scene with any remaining living characters. 4 total scenes here (1 for each main character). If I have a chance, we have a scene with each minor character too.
+    #Perhaps there's a creepy thing where you use your narrative powers to control them into saying whatever you want. Like "I'm sorry," he said "I wasn't thinking. I love you. I'm sure we'll all be happy here."
+    #You make your final choice and the game ends.
+
     else:
         "Incorrect."
-
+        #If you get it wrong, maybe the wolf disappears 2 people or something in vengeance for your hubris
+        #Or kills your favourite character or something
 
 label endStamp:
     show text "{b}THE END.{/b}":
