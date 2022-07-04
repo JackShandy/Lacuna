@@ -5912,71 +5912,132 @@ label toadFinale:
 label wolf:
     #NOTE: Finale scene!
     #Note: Sounds for all of this
-    "You walked up to the cottage."
-    "There was a warm, flickering light inside."
-    "You opened the door."
-    "The room was full of dust and decay. It looked like it'd been abandoned for years."
-    "The fireplace was lit."
-    "In front of the fireplace was a figure in a decrepit of old chair."
-    "[He] was reading a book."
-    "In the dim light, you couldn't quite make out [his] face."
-    "You approached the figure."
-    "[He] did not look up."
-    "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time.[His] hands gripped the book tightly. [His] knuckles were white."
-    "[He] turned the page."
-    "[He] turned the page again."
-    "[His] eyes looked red and sore. They were locked on the book. [He] didn't seem to blink."
-    "A shadow lurks behind [him]."
-    #Menu: Try to take the book from his hands.
-    "I don't think you want to do that."
-    #try to burn the book
-    "You took the book and threw it into the flames."
-    "In an instant, it was burned to ashes."
-    "The shadow behind [him] let out a shriek and writhed in terrible pain and agony as it burned."
-    "\"Please!\" it shrieked, \"Spare me!\""
-    "You ignored its pleas and lofted your sword high. In a moment you put it out of its misery and destroyed it for good."
-    "You salted the land and scattered its ashes to the four winds."
-    "As it died, the curse lifted. A cleansing wind swept through the land."
-    t "You did it!"
-    f "Thank the lord, I never thought we would be released from that dreadful curse!"
-    #There is a full hallucination sequence where you thought you'd defeated the wolf but you haven't.
-    #You have to navigate based on the sound cues showing you what is really happening, and use that to destroy the book.
-    #eg navigate to the fireplace and take some of the fire and apply it to the book, some puzzle like that.
-    "I don't think you understand."
-    "It's already too late."
-    "I can do whatever I want here."
-    "As you reach towards the book, your fingers begin to melt like candlewax."
-    "Soon your whole arm drips apart, pooling on the floor in thick melted strands of viscera."
-    "You see? I own you. I can do whatever I want here."
-    #Choose an option that's like "I name you and bind you, beast."
-    "You cannot know my true name. Only a fragment of me exists. I have been scorched from every record."
-    python:
-        answer1 = renpy.input("{i}What is my name?:{/i}", length=7)
+    call hideAll
+    show forest5bg at artPos
+    "You walked through the village gates and into the forest."
+    call hideAll
+    show forest4bg at artPos
+    "The woods grew dark."
+    call hideAll
+    show forestbg at artPos
+    "You passed the crooked old water-dragons. The old turtle eyed you from the water."
+    #I think as you walk, maybe you end up in the modern world. Your house is a modern house.
+    "You heard sirens in the distance."
+    "The trees slowly thinned. You walked out of the woods and down a bitumen path."
+    "You wandered down an empty street."
+    "The only light was from an empty Hungy Jack's on the side of the road. The sign shone into the night."
+    "An apartment block was nearby."
+    "You walked up to the unit."
+    "Someone was inside. A warm light flickered in the window."
+    label doorLock:
+        python:
+            answer1 = renpy.input("{i}What is my name?:{/i}", length=7)
 
-    if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" :
-        "No. No, it cannot be."
-        #Once you say its true name you gain total power over the narrative. You get a menu where you can decide what happens next. Like:
-        #I stand up and look around.
-        #The wolf shrivels up and burns to a crisp.
-        #All the riches of the world appear before me.
-        "Yes. All the riches of the world appear before you. The gems and precious stones of the earth are yours."
-        #All my lost friends appear. They take me into their arms and we share a tearful embrace. We are reunited at last.
-        "That is the one thing I cannot grant you."
-        "The ones you speak of are gone forever."
-        "Do not worry. In time, you will forget them."
-        "You've already started to."
-        "Soon, you will have no memory that they ever existed."
-        "You will be happy."
-    #You get everything you want. The wolf asks you to make a deal where you live out the rest of your life in the book. It's not such a bad life.
-    #You either decide to destroy the book and destroy the wolf forever. Or live out your rest of your life in a fantasy world.
-    #The wolf asks you to think about it. You get a final scene with any remaining living characters. 4 total scenes here (1 for each main character). If I have a chance, we have a scene with each minor character too.
-    #Perhaps there's a creepy thing where you use your narrative powers to control them into saying whatever you want. Like "I'm sorry," he said "I wasn't thinking. I love you. I'm sure we'll all be happy here."
-    #You make your final choice and the game ends.
+        if answer1 == "0000":
+            "You unlock the door and walked in."
+        else:
+            "The lock clicked in your hands, but did not open."
+            "Something stirred inside the house."
+            show hand onlayer transient:
+                yalign 0.7#0.743
+                xalign 0.5
+            menu:
+                "If you tried again, turn to page 2.":
+                    jump doorLock
+                "If you retreated back to the village, return to page 39."
+                    "You walked away down the road and through the woods."
+                    "After a long journey, you arrived back at the village."
+                    jump village
+    label wolfHouse:
+        #Add in a combination lock on the door. You have to find the combination.
+        #Combination is... your birthday, a disappeared person's birthday, the current date (have to look on save files to find it), the date the book was published,
+        #The date the wolf was created, the date X person disappeared, a name? Like your name, someone else's name, someone's true name, the wolf's true name.
+        #Your address, a placeholder like 1234, maybe the default for the lock?
+        "The room was full of dust and decay. It looked like it'd been abandoned for years."
+        "The fireplace was lit."
+        "In front of the fireplace was a figure in a decrepit of old chair."
+        "A phone was open on the desk. The soft sounds of rain and nature came from it."
+        label wolfHouseExplore:
+            #Menu of things you can examine.
+            show hand onlayer transient:
+                yalign 0.7#0.743
+                xalign 0.5
+            menu:
+                "Explore X":
+                    ""
+                "If you looked at the phone, turn to page 398."
+                    "Nature sounds were coming from the phone."
+                    "The screen said \"Wildlife ambience with soft rain - 10 hours\"."
+            show hand onlayer transient:
+                yalign 0.7#0.743
+                xalign 0.5
+            menu:
+                "If you turned it off, turn to page 347.":
+                    stop music
+                    stop ambient2
+                    stop ambient1
+                    jump wolfHouseExplore
+                "If you left it alone, turn to page 345."
+                    jump wolfHouseExplore
+            "[He] was reading a book."
+            "In the dim light, you couldn't quite make out [his] face."
+            "You approached the figure."
+            "[He] did not look up."
+            "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time.[His] hands gripped the book tightly. [His] knuckles were white."
+            "[He] turned the page."
+            "[He] turned the page again."
+            "[His] eyes looked red and sore. They were locked on the book. [He] didn't seem to blink."
+            "A shadow lurks behind [him]."
+        #Menu: Try to take the book from his hands.
+        "I don't think you want to do that."
+        #try to burn the book
+        "You took the book and threw it into the flames."
+        "In an instant, it was burned to ashes."
+        "The shadow behind [him] let out a shriek and writhed in terrible pain and agony as it burned."
+        "\"Please!\" it shrieked, \"Spare me!\""
+        "You ignored its pleas and lofted your sword high. In a moment you put it out of its misery and destroyed it for good."
+        "You salted the land and scattered its ashes to the four winds."
+        "As it died, the curse lifted. A cleansing wind swept through the land."
+        t "You did it!"
+        f "Thank the lord, I never thought we would be released from that dreadful curse!"
+        #There is a full hallucination sequence where you thought you'd defeated the wolf but you haven't.
+        #You have to navigate based on the sound cues showing you what is really happening, and use that to destroy the book.
+        #eg navigate to the fireplace and take some of the fire and apply it to the book, some puzzle like that.
+        "I don't think you understand."
+        "It's already too late."
+        "I can do whatever I want here."
+        "As you reach towards the book, your fingers begin to melt like candlewax."
+        "Soon your whole arm drips apart, pooling on the floor in thick melted strands of viscera."
+        "You see? I own you. I can do whatever I want here."
+        #Choose an option that's like "I name you and bind you, beast."
+        "You cannot know my true name. Only a fragment of me exists. I have been scorched from every record."
+        python:
+            answer1 = renpy.input("{i}What is my name?:{/i}", length=7)
 
-    else:
-        "Incorrect."
-        #If you get it wrong, maybe the wolf disappears 2 people or something in vengeance for your hubris
-        #Or kills your favourite character or something
+        if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" :
+            "No. No, it cannot be."
+            #Once you say its true name you gain total power over the narrative. You get a menu where you can decide what happens next. Like:
+            #I stand up and look around.
+            #The wolf shrivels up and burns to a crisp.
+            #All the riches of the world appear before me.
+            "Yes. All the riches of the world appear before you. The gems and precious stones of the earth are yours."
+            #All my lost friends appear. They take me into their arms and we share a tearful embrace. We are reunited at last.
+            "That is the one thing I cannot grant you."
+            "The ones you speak of are gone forever."
+            "Do not worry. In time, you will forget them."
+            "You've already started to."
+            "Soon, you will have no memory that they ever existed."
+            "You will be happy."
+        #You get everything you want. The wolf asks you to make a deal where you live out the rest of your life in the book. It's not such a bad life.
+        #You either decide to destroy the book and destroy the wolf forever. Or live out your rest of your life in a fantasy world.
+        #The wolf asks you to think about it. You get a final scene with any remaining living characters. 4 total scenes here (1 for each main character). If I have a chance, we have a scene with each minor character too.
+        #Perhaps there's a creepy thing where you use your narrative powers to control them into saying whatever you want. Like "I'm sorry," he said "I wasn't thinking. I love you. I'm sure we'll all be happy here."
+        #You make your final choice and the game ends.
+
+        else:
+            "Incorrect."
+            #If you get it wrong, maybe the wolf disappears 2 people or something in vengeance for your hubris
+            #Or kills your favourite character or something
 
 label endStamp:
     show text "{b}THE END.{/b}":
