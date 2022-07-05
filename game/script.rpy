@@ -817,20 +817,21 @@ label start:
                 #"{image=sword}{space=15}If she said yes, turn to page 13.": #"Yes.":
                 #"{image=dot}{space=10}If she said yes, turn to page 13.": #"Yes.":
                 "If she said yes, turn to page 13.": #"Yes.":
-                    miw "As I have foreseen."
-                    "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
-                    miw "You will name [him] [povname]."
-                    if he == "they":
-                        miw "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
-                    else:
-                        miw "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
-                    mum "Alright. Make sure you're there for the christening."
-                    show hand onlayer transient:
-                        yalign 0.71#0.743
-                        xalign 0.5
-                    "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
-                    $godfather = "White"
-                    jump chapter2
+                    label godYes:
+                        miw "As I have foreseen."
+                        "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
+                        miw "You will name [him] [povname]."
+                        if he == "they":
+                            miw "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
+                        else:
+                            miw "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
+                        mum "Just make sure you're there for the christening."
+                        show hand onlayer transient:
+                            yalign 0.71#0.743
+                            xalign 0.5
+                        "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
+                        $godfather = "White"
+                        jump chapter2
                 "If she said no, turn to page 14." if firstManWho:
                     mum "Then I don't want you as the Godfather. You give to the rich, and take from the poor. You are no Lord of mine."
                     "(She said this foolish thing, with no understanding of how wisely the Lord distributes wealth and poverty.)"
@@ -856,19 +857,20 @@ label start:
                 "If she said yes, turn to page 21.":#"Yes.":
                     mum "Very well. Beggars can't be choosers, I suppose."
                     mir "Excellent!"
-                    "He let out a great shrieking cackle and placed His mark upon you."
-                    mir "You will name [him] [povname]."
-                    if he == "they":
-                        mir "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
-                    else:
-                        mir "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
-                    mum "Alright. Just make sure you're there for the christening on Sunday."
-                    show hand onlayer transient:
-                        yalign 0.71#0.743
-                        xalign 0.5
-                    "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
-                    $godfather = "Red"
-                    jump chapter2
+                    label devilYes:
+                        "He let out a great shrieking cackle and placed His mark upon you."
+                        mir "You will name [him] [povname]."
+                        if he == "they":
+                            mir "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
+                        else:
+                            mir "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
+                        mum "Just make sure you're there for the christening on Sunday."
+                        show hand onlayer transient:
+                            yalign 0.71#0.743
+                            xalign 0.5
+                        "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
+                        $godfather = "Red"
+                        jump chapter2
                 "If she said no, turn to page 16." if secondManWho:
                     mum "Then I don't want you as the Godfather. You lie, and cheat, and lead good people astray."
                     "She turned away from him, and raced deeper into the forest."
@@ -878,9 +880,9 @@ label start:
                     $secondManWho = True
                     jump secondMan2
     label thirdMan1:
-        "In the deepest darkness of the forst, she may or may not have met a handsome woman."
+        "In the deepest darkness of the forst, she may or may not have met a handsome woman all in black."
         "(What can any of us be certain of, except that the mercies of the Almighty are vaster than the deepest ocean and more numerous than all the pebbles on the land?)"
-        "She was broken-limbed and clad all in black. She had no hands."
+        "Her limbs were broken. She had no hands."
         wib "Poor woman. Let me be the Godmother."
         wib "The child will have nothing. [He] will need nothing."
 
@@ -893,20 +895,21 @@ label start:
                 "If she said yes, turn to page 17.":
                     mum "You're just the right one. You take rich and poor without distinction."
                     wib "You did not have a choice."
-                    "In one swoop She bowed down and placed Her mark upon you."
-                    wib "You will name [him] [povname]."
-                    if he == "they":
-                        wib "The moment [he] turn eighteen, [he] will be mine."
-                    else:
-                        wib "The moment [he] turns eighteen, [he] will be mine."
-                    wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
-                    mum "Alright. Make sure you're there for the christening on Sunday."
-                    show hand onlayer transient:
-                        yalign 0.77#0.743
-                        xalign 0.5
-                    "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
-                    $godfather = "Black"
-                    jump chapter2
+                    label deathYes:
+                        "In one swoop She bowed down and placed Her mark upon you."
+                        wib "You will name [him] [povname]."
+                        if he == "they":
+                            wib "The moment [he] turn eighteen, [he] will be mine."
+                        else:
+                            wib "The moment [he] turns eighteen, [he] will be mine."
+                        wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
+                        mum "Just make sure you're there for the christening on Sunday."
+                        show hand onlayer transient:
+                            yalign 0.77#0.743
+                            xalign 0.5
+                        "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
+                        $godfather = "Black"
+                        jump chapter2
                 "If she said no, turn to page 25." if thirdManWho:
                     mum "I don't want you as the Godmother. You take men before it is their time."
                     wib "There is no-one else left to take [him]."
@@ -918,53 +921,13 @@ label start:
                         "Your mother looked around the dark forest in panic."
                         "If she chose The Lord, turn to page 5.":
                             "In desperation, she renounced her foolish pride and sought the protection of the Most High Himself."
-                            miw "As I have foreseen."
-                            "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
-                            miw "You will name [him] [povname]."
-                            if he == "they":
-                                miw "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
-                            else:
-                                miw "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
-                            mum "Alright. Make sure you're there for the christening."
-                            show hand onlayer transient:
-                                yalign 0.71#0.743
-                                xalign 0.5
-                            "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
-                            $godfather = "White"
-                            jump chapter2
+                            jump godYes
                         "If she chose The Devil, turn to page 6.":
                             "In desperation, she turned back and sought the protection of the deceiver Himself."
-                            mum "Beggars can't be choosers, I suppose. Please, protect my child."
-                            mir "Excellent!"
-                            "He let out a great shrieking cackle and placed His mark upon you."
-                            mir "You will name [him] [povname]."
-                            if he == "they":
-                                mir "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
-                            else:
-                                mir "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
-                            mum "Alright. Just make sure you're there for the christening on Sunday."
-                            show hand onlayer transient:
-                                yalign 0.71#0.743
-                                xalign 0.5
-                            "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
-                            $godfather = "Red"
-                            jump chapter2
+                            jump devilYes
                         "If she chose Death, turn to page 7.":
                             mum "I'm sorry for my foolish words. Please, protect my child."
-                            "Death bowed down and placed Her mark upon you."
-                            wib "You will name [him] [povname]."
-                            if he == "they":
-                                wib "The moment [he] turn eighteen, [he] will be mine."
-                            else:
-                                wib "The moment [he] turns eighteen, [he] will be mine."
-                            wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
-                            mum "Alright. Make sure you're there for the christening on Sunday."
-                            show hand onlayer transient:
-                                yalign 0.77#0.743
-                                xalign 0.5
-                            "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
-                            $godfather = "Black"
-                            jump chapter2
+                            jump deathYes
                         #"If she chose no godparent at all (A reckless choice indeed), turn to page 7.":
                         #    ""
                     # wib "You should have thought of that sooner."
@@ -5925,9 +5888,11 @@ label wolf:
     "You heard sirens in the distance."
     "The trees slowly thinned. You walked out of the woods and down a bitumen path."
     "You wandered down an empty street."
+    "A cold wind was blowing. The cold started to sink into your bones."
     "The only light was from an empty Hungy Jack's on the side of the road. The sign shone into the night."
     "An apartment block was nearby."
-    "You walked up to the unit."
+    "You walked up to the unit. You knew which one it was."
+    "You walked up the rusted metal staircase to the unit."
     "Someone was inside. A warm light flickered in the window."
     label doorLock:
         python:
@@ -5944,7 +5909,7 @@ label wolf:
             menu:
                 "If you tried again, turn to page 2.":
                     jump doorLock
-                "If you retreated back to the village, return to page 39."
+                "If you retreated back to the village, return to page 39.":
                     "You walked away down the road and through the woods."
                     "After a long journey, you arrived back at the village."
                     jump village
@@ -5965,7 +5930,7 @@ label wolf:
             menu:
                 "Explore X":
                     ""
-                "If you looked at the phone, turn to page 398."
+                "If you looked at the phone, turn to page 398.":
                     "Nature sounds were coming from the phone."
                     "The screen said \"Wildlife ambience with soft rain - 10 hours\"."
             show hand onlayer transient:
@@ -5977,7 +5942,7 @@ label wolf:
                     stop ambient2
                     stop ambient1
                     jump wolfHouseExplore
-                "If you left it alone, turn to page 345."
+                "If you left it alone, turn to page 345.":
                     jump wolfHouseExplore
             "[He] was reading a book."
             "In the dim light, you couldn't quite make out [his] face."

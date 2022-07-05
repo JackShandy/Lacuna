@@ -2,13 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1006: expected statement.
-    elif godfather == "Red":
-                   ^
+File "game/script.rpy", line 5970: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "If you looked at the phone, turn to page 398."
+                                                   ^
 
-File "game/script.rpy", line 1013: expected statement.
-    elif godfather == "Black":
-                   ^
+File "game/script.rpy", line 5982: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "If you left it alone, turn to page 345."
+                                             ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Mon Jun 27 19:06:15 2022
+Tue Jul  5 19:35:58 2022
