@@ -1600,8 +1600,8 @@ label introMenu:
                     menu:
                         f "Well, are you impressed?"
                         "If you asked the gentleman his name, turn to page 58.":
-                            f "I am Brildebrogue Chippingham, and I have never failed at anything in my life."
                             f "No doubt you've heard of me."
+                            f "I am Brildebrogue Chippingham, and I have never failed at anything in my life."
                         "If you flattered the toad, turn to page 63.":
                             pov "Absolutely, sir. I'm stunned."
                             f "As is natural."
@@ -1911,12 +1911,13 @@ label village:
                 $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient1')
                 $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient2')
                 $renpy.music.set_volume(0.9, delay=3.0, channel=u'music')
-                "There's no reason for you to go back that way. All your favourite people are here."
+                "You don't want to go that way"
             if turnedHome == 1:
-                $renpy.music.set_volume(0.8, delay=3.0, channel=u'ambient1')
-                $renpy.music.set_volume(0.8, delay=3.0, channel=u'ambient2')
-                $renpy.music.set_volume(0.8, delay=3.0, channel=u'music')
+                $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0.9, delay=3.0, channel=u'music')
                 "I'm telling you, you don't want to go back there."
+                "All your favourite people are here. There's no reason to go home."
             if turnedHome == 2:
                 $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
                 $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
@@ -1926,7 +1927,7 @@ label village:
                 if not persistent.thiefVanished and not persistent.mushroomVanished:
                     h "We need your help to help track down that dastardly Master Thief!"
                     h "Here, I'll help you find your way back."
-                    "They took hold of your arm with a surprisingly strong grip and escorted you back into the village."
+                    "The hunter took hold of your arm with a surprisingly strong grip and escorted you back into the village."
                     $turnedHome +=1
                     jump town
                 elif not persistent.witchVanished and not persistent.ToadVanished:
@@ -1954,7 +1955,7 @@ label village:
                 "You began to walk home, but your wiser nature prevailed."
                 "You turned back and strode back towards the village with your head held high."
                 "The villagers surrounded you and congratulated you on your good sense. A small party was held in your honour."
-                "Everyone you love was there. \"Well done,\" they said. \"You did it.\""
+                "\"Well done,\" they all said. \"You did it.\""
             if turnedHome == 4:
                 $renpy.music.set_volume(0.4, delay=3.0, channel=u'ambient1')
                 $renpy.music.set_volume(0.4, delay=3.0, channel=u'ambient2')
@@ -1962,11 +1963,13 @@ label village:
                 "Whatever you think you're going to find down that road, you're wrong."
                 "There's nothing for you at home anymore."
             if turnedHome == 5:
-                $renpy.music.set_volume(0.2, delay=3.0, channel=u'ambient1')
-                $renpy.music.set_volume(0.2, delay=3.0, channel=u'ambient2')
-                $renpy.music.set_volume(0.2, delay=3.0, channel=u'music')
+                $renpy.music.set_volume(0.1, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0.1, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0.1, delay=3.0, channel=u'music')
                 "This is the last time I'll tell you."
                 "You don't want to do that."
+                "Go back to the fire. All your friends are waiting for you there."
+                "Where it's safe."
             elif turnedHome >= 6:
                 $renpy.music.set_volume(0, delay=6.0, channel=u'ambient1')
                 $renpy.music.set_volume(0, delay=6.0, channel=u'ambient2')
@@ -5878,6 +5881,9 @@ label wolf:
     call hideAll
     show forest5bg at artPos
     "You walked through the village gates and into the forest."
+    $renpy.music.set_volume(1.0, delay=7.0, channel=u'ambient1')
+    $renpy.music.set_volume(1.0, delay=7.0, channel=u'ambient2')
+    $renpy.music.set_volume(1.0, delay=7.0, channel=u'music')
     call hideAll
     show forest4bg at artPos
     "The woods grew dark."
@@ -5889,16 +5895,18 @@ label wolf:
     "The trees slowly thinned. You walked out of the woods and down a bitumen path."
     "You wandered down an empty street."
     "A cold wind was blowing. The cold started to sink into your bones."
-    "The only light was from an empty Hungy Jack's on the side of the road. The sign shone into the night."
+    "The only light was from an empty Hungry Jack's on the side of the road. The sign shone into the night."
     "An apartment block was nearby."
     "You walked up to the unit. You knew which one it was."
-    "You walked up the rusted metal staircase to the unit."
     "Someone was inside. A warm light flickered in the window."
+    "The door was locked with a combination lock."
     label doorLock:
         python:
-            answer1 = renpy.input("{i}What is my name?:{/i}", length=7)
+            answer1 = renpy.input("{i}What is the combination?:{/i}", length=7)
 
         if answer1 == "0000":
+            #Play door unlocking sound
+            #Play city ambience
             "You unlock the door and walked in."
         else:
             "The lock clicked in your hands, but did not open."
@@ -6078,7 +6086,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}City Ambience:{/b} 'City Streets', VideoPlasty, videoplasty.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     hide text
     $ ui.text("Written on the lands of the Turrbal and Jagera peoples. I pay my respects to their Elders, past and present. Sovereignty was never ceded.", xpos=50, ypos=190, xmaximum=520)
