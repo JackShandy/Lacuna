@@ -1,15 +1,15 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1885, in script
-    "But one guest was missing: No one had seen the Wild Witch of the Woods all night."
-IOError: Couldn't find file 'audio/wildlife2.wav'.
+  File "game/script.rpy", line 5948, in script
+    "You opened the door."
+IOError: Couldn't find file 'audio/cityAmbience.wav'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1885, in script
-    "But one guest was missing: No one had seen the Wild Witch of the Woods all night."
+  File "game/script.rpy", line 5948, in script
+    "You opened the door."
   File "renpy/ast.py", line 715, in execute
     renpy.exports.say(who, what, *args, **kwargs)
   File "renpy/exports.py", line 1393, in say
@@ -38,9 +38,9 @@ Full traceback:
     rv = renpy.loader.load(fn)
   File "renpy/loader.py", line 798, in load
     raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'audio/wildlife2.wav'.
+IOError: Couldn't find file 'audio/cityAmbience.wav'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom 0.81
-Mon Jun 27 19:07:22 2022
+Sun Jul 10 16:50:28 2022

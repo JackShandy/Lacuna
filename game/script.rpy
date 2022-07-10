@@ -5,6 +5,9 @@
 init python:
     renpy.music.register_channel("ambient1","sfx",True,tight=True)
     renpy.music.register_channel("ambient2","sfx",True,tight=True)
+    #This one is used for the city ambience when you open the door to the wolf
+    renpy.music.register_channel("ambient3","sfx",True,tight=True)
+
 #     def xpos_tag(tag, argument, contents):
 #
 #         size = int(argument) * 20
@@ -538,6 +541,20 @@ define p3 = Character ("{image=p3Name}{alt}The Third Pig:{/alt}")
 define audio.pageFlip = "audio/page-flip.mp3"
 define audio.pageFlip2 = "audio/page-flip2.wav"
 define audio.pageFlip3 = "audio/page-flip3.wav"
+
+#Sounds for the wolf scene
+define audio.doorKnock = "audio/doorKnock.mp3"
+define audio.doorOpen = "audio/doorOpen.mp3"
+define audio.lockAttempt = "audio/lockAttempt.mp3"
+define audio.lockSuccess = "audio/lockSuccess.mp3"
+define audio.cityAmbience = "audio/cityAmbience.mp3"
+define audio.footstepsOutsideApproach = "audio/footstepsOutsideApproach.mp3"
+define audio.footstepsOutsideLeave = "audio/footstepsOutsideLeave.mp3"
+define audio.footstepsGrassApproach = "audio/footstepsGrassApproach.mp3"
+define audio.footstepsGrassLeave = "audio/footstepsGrassLeave.mp3"
+define audio.footstepsInsideApproach = "audio/footstepsInsideApproach.mp3"
+define audio.footstepsInsideLeave = "audio/footstepsInsideLeave.mp3"
+define audio.phoneClick = "audio/phoneClick.mp3"
 
 define audio.rain = "audio/rain.wav"
 define audio.fire = "audio/fire.mp3"
@@ -1913,12 +1930,17 @@ label village:
                 $renpy.music.set_volume(0.9, delay=3.0, channel=u'music')
                 "You don't want to go that way"
             if turnedHome == 1:
-                $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient1')
-                $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient2')
-                $renpy.music.set_volume(0.9, delay=3.0, channel=u'music')
+                $renpy.music.set_volume(0.8, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0.8, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0.8, delay=3.0, channel=u'music')
                 "I'm telling you, you don't want to go back there."
-                "All your favourite people are here. There's no reason to go home."
             if turnedHome == 2:
+                $renpy.music.set_volume(0.7, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0.7, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0.7, delay=3.0, channel=u'music')
+                "All your friends are here. Adventure awaits! Why not stay?"
+                "There's nothing back there you want. Trust me."
+            if turnedHome == 3:
                 $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
                 $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
                 $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
@@ -1948,7 +1970,7 @@ label village:
                     h "My hands... they haven't been working properly. They don't do what I tell them to do anymore."
                     h "I'm sorry. I think I need to rest."
                     "Without a word, they turned and walked back to the village."
-            if turnedHome == 3:
+            if turnedHome == 4:
                 $renpy.music.set_volume(0.6, delay=3.0, channel=u'ambient1')
                 $renpy.music.set_volume(0.6, delay=3.0, channel=u'ambient2')
                 $renpy.music.set_volume(0.6, delay=3.0, channel=u'music')
@@ -1956,21 +1978,20 @@ label village:
                 "You turned back and strode back towards the village with your head held high."
                 "The villagers surrounded you and congratulated you on your good sense. A small party was held in your honour."
                 "\"Well done,\" they all said. \"You did it.\""
-            if turnedHome == 4:
+            if turnedHome == 5:
                 $renpy.music.set_volume(0.4, delay=3.0, channel=u'ambient1')
                 $renpy.music.set_volume(0.4, delay=3.0, channel=u'ambient2')
                 $renpy.music.set_volume(0.4, delay=3.0, channel=u'music')
                 "Whatever you think you're going to find down that road, you're wrong."
                 "There's nothing for you at home anymore."
-            if turnedHome == 5:
-                $renpy.music.set_volume(0.1, delay=3.0, channel=u'ambient1')
-                $renpy.music.set_volume(0.1, delay=3.0, channel=u'ambient2')
-                $renpy.music.set_volume(0.1, delay=3.0, channel=u'music')
+            if turnedHome == 6:
+                $renpy.music.set_volume(0.2, delay=3.0, channel=u'ambient1')
+                $renpy.music.set_volume(0.2, delay=3.0, channel=u'ambient2')
+                $renpy.music.set_volume(0.2, delay=3.0, channel=u'music')
                 "This is the last time I'll tell you."
-                "You don't want to do that."
-                "Go back to the fire. All your friends are waiting for you there."
-                "Where it's safe."
-            elif turnedHome >= 6:
+                #"You don't want to do that."
+                "Go back to the fire. Where it's safe."
+            elif turnedHome >= 7:
                 $renpy.music.set_volume(0, delay=6.0, channel=u'ambient1')
                 $renpy.music.set_volume(0, delay=6.0, channel=u'ambient2')
                 $renpy.music.set_volume(0, delay=6.0, channel=u'music')
@@ -5897,24 +5918,45 @@ label wolf:
     "A cold wind was blowing. The cold started to sink into your bones."
     "The only light was from an empty Hungry Jack's on the side of the road. The sign shone into the night."
     "An apartment block was nearby."
+    play sound footstepsOutsideApproach volume 0.5
+
+    # define audio.footstepsInsideApproach = "audio/footstepsInsideApproach.mp3"
+    # define audio.footstepsInsideLeave = "audio/footstepsInsideLeave.mp3"
+    # define audio.doorKnock = "audio/DoorKnock.mp3"
+    # define audio.doorOpen = "audio/doorOpen.mp3"
+    # define audio.lockAttempt = "audio/lockAttempt.mp3"
+    # define audio.lockSuccess = "audio/lockSuccess.mp3"
+    # define audio.cityAmbience = "audio/cityAmbience.mp3"
+    # define audio.footstepsOutsideApproach = "audio/FootstepsOutsideApproach.mp3"
+    # define audio.footstepsOutsideLeave = "audio/FootstepsOutsideLeave.mp3"
+    # define audio.footstepsGrassApproach = "audio/FootstepsGrassApproach.mp3"
+    # define audio.footstepsGrassLeave = "audio/FootstepsGrassLeave.mp3"
+    "You waited for a gap in the traffic, then crossed the road."
     "You walked up to the unit. You knew which one it was."
     "Someone was inside. A warm light flickered in the window."
     "The door was locked with a combination lock."
+    #TK: More exploration stuff outside the apartment
     label doorLock:
         python:
-            answer1 = renpy.input("{i}What is the combination?:{/i}", length=7)
+            answer1 = renpy.input("{i}What is the combination?{/i}", length=7)
 
         if answer1 == "0000":
             #Play door unlocking sound
             #Play city ambience
-            "You unlock the door and walked in."
+            play sound lockSuccess
+            "The lock came undone with a click."
+            play sound doorOpen
+            $renpy.music.play("audio/cityAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
+            "You opened the door."
         else:
+            play sound lockAttempt
             "The lock clicked in your hands, but did not open."
             "Something stirred inside the house."
             show hand onlayer transient:
                 yalign 0.7#0.743
                 xalign 0.5
             menu:
+                "The lock stayed shut."
                 "If you tried again, turn to page 2.":
                     jump doorLock
                 "If you retreated back to the village, return to page 39.":
@@ -5926,45 +5968,57 @@ label wolf:
         #Combination is... your birthday, a disappeared person's birthday, the current date (have to look on save files to find it), the date the book was published,
         #The date the wolf was created, the date X person disappeared, a name? Like your name, someone else's name, someone's true name, the wolf's true name.
         #Your address, a placeholder like 1234, maybe the default for the lock?
+
         "The room was full of dust and decay. It looked like it'd been abandoned for years."
-        "The fireplace was lit."
+        #"The fireplace was lit."
         "In front of the fireplace was a figure in a decrepit of old chair."
-        "A phone was open on the desk. The soft sounds of rain and nature came from it."
+        play sound footstepsInsideApproach
+        "You walked closer."
         label wolfHouseExplore:
-            #Menu of things you can examine.
+            #TK: Menu of things you can examine.
             show hand onlayer transient:
                 yalign 0.7#0.743
                 xalign 0.5
             menu:
-                "Explore X":
-                    ""
+                "A phone was open on the desk. "
+                #More exploration stuff in the room
+                "If you examined the figure, turn to page 399.":
+                    "[He] was reading a book."
+                    "In the dim light, you couldn't quite make out [his] face."
+                    "[He] did not look up."
+                    "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time.[His] hands gripped the book tightly. [His] knuckles were white."
+                    "There was a shadow behind [him], but you could not see it clearly."
+                    "[He] turned the page."
+                    "[He] turned the page again."
+                    show hand onlayer transient:
+                        yalign 0.7#0.743
+                        xalign 0.5
+                    menu:
+                        "[His] eyes looked red and sore. They were locked on the book. [He] didn't seem to blink."
+                        "If you took the book, turn to page 349.":
+                            "You grabbed the book out of the figure's hands and threw into the fire."
+                            jump bookBurned
+                        "If you looked away from the figure, turn to page 356.":
+                            "You turned away."
+                            jump wolfHouseExplore
                 "If you looked at the phone, turn to page 398.":
-                    "Nature sounds were coming from the phone."
-                    "The screen said \"Wildlife ambience with soft rain - 10 hours\"."
+                    "The screen said \"Cosy Cabin Ambience with Soft Rain and Wildlife - 10 hours\"."
+                    "It was playing the sounds of soft rain, a crackling fire, and the Australian bush outside."
             show hand onlayer transient:
                 yalign 0.7#0.743
                 xalign 0.5
             menu:
-                "If you turned it off, turn to page 347.":
+                "The soft sounds of rain and nature echoed around the empty apartment."
+                #TK: Add something where you can turn off the candlelight and change the light on the page
+                "If you turned off the phone, turn to page 347.":
+                    play sound phoneClick
                     stop music
                     stop ambient2
                     stop ambient1
                     jump wolfHouseExplore
                 "If you left it alone, turn to page 345.":
                     jump wolfHouseExplore
-            "[He] was reading a book."
-            "In the dim light, you couldn't quite make out [his] face."
-            "You approached the figure."
-            "[He] did not look up."
-            "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time.[His] hands gripped the book tightly. [His] knuckles were white."
-            "[He] turned the page."
-            "[He] turned the page again."
-            "[His] eyes looked red and sore. They were locked on the book. [He] didn't seem to blink."
-            "A shadow lurks behind [him]."
-        #Menu: Try to take the book from his hands.
-        "I don't think you want to do that."
-        #try to burn the book
-        "You took the book and threw it into the flames."
+    label bookBurned:
         "In an instant, it was burned to ashes."
         "The shadow behind [him] let out a shriek and writhed in terrible pain and agony as it burned."
         "\"Please!\" it shrieked, \"Spare me!\""
@@ -5973,6 +6027,9 @@ label wolf:
         "As it died, the curse lifted. A cleansing wind swept through the land."
         t "You did it!"
         f "Thank the lord, I never thought we would be released from that dreadful curse!"
+        w "Thank you. You've saved all of us."
+        m "You truely deserve a heroes welcome."
+        #TK: Fake ending sequence
         #There is a full hallucination sequence where you thought you'd defeated the wolf but you haven't.
         #You have to navigate based on the sound cues showing you what is really happening, and use that to destroy the book.
         #eg navigate to the fireplace and take some of the fire and apply it to the book, some puzzle like that.
@@ -6086,7 +6143,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}City Ambience:{/b} 'City Streets', VideoPlasty, videoplasty.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}City Ambience:{/b} 'HIGHWAY', Samuel Gremaud, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     hide text
     $ ui.text("Written on the lands of the Turrbal and Jagera peoples. I pay my respects to their Elders, past and present. Sovereignty was never ceded.", xpos=50, ypos=190, xmaximum=520)
