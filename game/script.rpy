@@ -547,7 +547,7 @@ define audio.doorKnock = "audio/doorKnock.mp3"
 define audio.doorOpen = "audio/doorOpen.mp3"
 define audio.lockAttempt = "audio/lockAttempt.mp3"
 define audio.lockSuccess = "audio/lockSuccess.mp3"
-define audio.cityAmbience = "audio/cityAmbience.mp3"
+define audio.windAmbience = "audio/windAmbience.mp3"
 define audio.footstepsOutsideApproach = "audio/footstepsOutsideApproach.mp3"
 define audio.footstepsOutsideLeave = "audio/footstepsOutsideLeave.mp3"
 define audio.footstepsGrassApproach = "audio/footstepsGrassApproach.mp3"
@@ -5933,36 +5933,33 @@ label wolf:
     # define audio.footstepsGrassLeave = "audio/FootstepsGrassLeave.mp3"
     "You waited for a gap in the traffic, then crossed the road."
     "You walked up to the unit. You knew which one it was."
-    "Someone was inside. A warm light flickered in the window."
-    "The door was locked with a combination lock."
     #TK: More exploration stuff outside the apartment
     label doorLock:
-        python:
-            answer1 = renpy.input("{i}What is the combination?{/i}", length=7)
+        menu:
+            "A warm light flickered in the window."
+            "If you looked in the window, turn to page 289.":
+            "If you opened the door, turn to page 301.":
+                play sound lockAttempt
+                "You jiggled the handle, but the door didn't open."
+                "You noticed a combination lock on the handle."
+                python:
+                    answer1 = renpy.input("{i}What is the combination?{/i}", length=4)
 
-        if answer1 == "0000":
-            #Play door unlocking sound
-            #Play city ambience
-            play sound lockSuccess
-            "The lock came undone with a click."
-            play sound doorOpen
-            $renpy.music.play("audio/cityAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
-            "You opened the door."
-        else:
-            play sound lockAttempt
-            "The lock clicked in your hands, but did not open."
-            "Something stirred inside the house."
-            show hand onlayer transient:
-                yalign 0.7#0.743
-                xalign 0.5
-            menu:
-                "The lock stayed shut."
-                "If you tried again, turn to page 2.":
+                if answer1 == "0000":
+                    play sound lockSuccess
+                    "The lock came undone with a click."
+                    play sound doorOpen
+                    $renpy.music.play("audio/windAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
+                    "You opened the door."
+                else:
+                    play sound lockAttempt
+                    "The lock clicked in your hands, but did not open."
                     jump doorLock
-                "If you retreated back to the village, return to page 39.":
-                    "You walked away down the road and through the woods."
-                    "After a long journey, you arrived back at the village."
-                    jump village
+            "If you retreated back to the village, return to page 39.":
+                "You walked away down the road and through the woods."
+                "After a long journey, you arrived back at the village."
+                jump village
+
     label wolfHouse:
         #Add in a combination lock on the door. You have to find the combination.
         #Combination is... your birthday, a disappeared person's birthday, the current date (have to look on save files to find it), the date the book was published,
@@ -6143,7 +6140,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}City Ambience:{/b} 'HIGHWAY', Samuel Gremaud, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     hide text
     $ ui.text("Written on the lands of the Turrbal and Jagera peoples. I pay my respects to their Elders, past and present. Sovereignty was never ceded.", xpos=50, ypos=190, xmaximum=520)
