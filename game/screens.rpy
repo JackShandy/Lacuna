@@ -779,7 +779,7 @@ screen file_slots(title):
 
                     button:
 
-                        action [FileAction(slot), Play("sound", "audio/pencil-2.wav")]
+                        action [FileAction(slot), Play("sound", "audio/pencil-2.mp3")]
 
                         has vbox
 

@@ -63,9 +63,10 @@ define config.has_voice = False
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-define config.main_menu_music = "audio/wildlife2.mp3"
-
-
+if persistent.phoneOn:
+    define config.main_menu_music = "audio/wildlife2.mp3"
+else:
+    define config.main_menu_music = "audio/windAmbience.mp3"
 ## Transitions #################################################################
 ##
 ## These variables set transitions that are used when certain events occur.

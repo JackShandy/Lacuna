@@ -33,6 +33,10 @@ init python:
 #Number of times the game has been played
 define persistent.timesPlayed = 0
 
+#The ambience - is it on or not?
+default persistent.phoneOn = True
+
+
 # Default player name (persistent)
 init:
     default persistent.povname = "Charlie"
@@ -279,7 +283,6 @@ define mushroomFeast = False
 define mushroomEmbassy = False
 define mushroomPale = False
 define mushroomDeathTale = False
-
 
 ###==== Defining all images
 #The position to show the background illustrations
@@ -641,9 +644,18 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
             show cover6d with dissolve
         elif randomCover >=25 and randomCover <= 30:
             show cover9d with dissolve
-    $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
-    #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
-    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+    #TK: If Phone On
+    if persistent.phoneOn:
+        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+    #else:
+        #$renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True, relative_volume=0)
+        #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
+        #$renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0)
+        #$renpy.music.play("audio/windAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
+
+
     #with Pause(5)
     ""
     play sound pageFlip
@@ -719,11 +731,15 @@ label splashscreen2:
 
 
 label after_load:
-    play sound pageFlip
-    $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
-    #$ renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
-    #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
-    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+    if persistent.phoneOn:
+        play sound pageFlip
+        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+    else:
+        play sound pageFlip
+    #     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True, relative_volume=0)
+    #     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0)
+    #     $renpy.music.play("audio/windAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
     return
 
 #This label is used to hide all backgrounds
@@ -790,8 +806,13 @@ label hideAll:
 
 label start:
     show firelight animated onlayer over_screens zorder 99
-    $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
-    $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+    if persistent.phoneOn:
+        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+    # else:
+    #     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True, relative_volume=0)
+    #     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0)
+    #     $renpy.music.play("audio/windAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
@@ -5938,6 +5959,13 @@ label wolf:
         menu:
             "A warm light flickered in the window."
             "If you looked in the window, turn to page 289.":
+                "The room inside was dark except for a small fire in the fireplace."
+                "A chair faced the fire."
+                "You could see nothing else."
+                #TK: Change this to a different SFX that fits the window better
+                play sound lockAttempt
+                "You pulled on the window, but it refused to open."
+                jump doorLock
             "If you opened the door, turn to page 301.":
                 play sound lockAttempt
                 "You jiggled the handle, but the door didn't open."
@@ -5955,6 +5983,11 @@ label wolf:
                     play sound lockAttempt
                     "The lock clicked in your hands, but did not open."
                     jump doorLock
+            "If you searched around the apartment, turn to page 293.":
+                play sound footstepsGrassApproach
+                "You walked around the apartment block."
+                "There was no sign of another way in."
+                jump doorLock
             "If you retreated back to the village, return to page 39.":
                 "You walked away down the road and through the woods."
                 "After a long journey, you arrived back at the village."
@@ -5983,7 +6016,7 @@ label wolf:
                     "[He] was reading a book."
                     "In the dim light, you couldn't quite make out [his] face."
                     "[He] did not look up."
-                    "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time.[His] hands gripped the book tightly. [His] knuckles were white."
+                    "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time. [His] hands gripped the book tightly. [His] knuckles were white."
                     "There was a shadow behind [him], but you could not see it clearly."
                     "[He] turned the page."
                     "[He] turned the page again."
@@ -6000,19 +6033,36 @@ label wolf:
                             jump wolfHouseExplore
                 "If you looked at the phone, turn to page 398.":
                     "The screen said \"Cosy Cabin Ambience with Soft Rain and Wildlife - 10 hours\"."
-                    "It was playing the sounds of soft rain, a crackling fire, and the Australian bush outside."
+                    if persistent.phoneOn:
+                        "It was playing the sounds of soft rain, a crackling fire, and the Australian bush outside."
+                    else:
+                        "It was paused."
             show hand onlayer transient:
                 yalign 0.7#0.743
                 xalign 0.5
             menu:
-                "The soft sounds of rain and nature echoed around the empty apartment."
+                "The shadows flickered around the corners of the apartment."
                 #TK: Add something where you can turn off the candlelight and change the light on the page
-                "If you turned off the phone, turn to page 347.":
+                "If you turned off the phone, turn to page 347." if persistent.phoneOn:
+                    #TK: This is a very janky solution to a problem. If you load an earlier save, the old audio will still play (not the new silence).
+                    #This will "fix" the problem by deleting all your old saves. Ideally I will eventually fix this.
+                    $purge_saves()
                     play sound phoneClick
-                    stop music
-                    stop ambient2
-                    stop ambient1
+                    $renpy.music.set_volume(0, channel=u'ambient1')
+                    $renpy.music.set_volume(0, channel=u'ambient2')
+                    $renpy.music.set_volume(0, channel=u'music')
+                    $persistent.phoneOn = False
+                    "The phone fell silent."
                     jump wolfHouseExplore
+                "If you turned on the phone, turn to page 347." if not persistent.phoneOn:
+                    play sound phoneClick
+                    $renpy.music.set_volume(1.0, channel=u'ambient1')
+                    $renpy.music.set_volume(1.0, channel=u'ambient2')
+                    $renpy.music.set_volume(1.0, channel=u'music')
+                    $persistent.phoneOn = True
+                    "The soft sounds filled the apartment once more."
+                    jump wolfHouseExplore
+
                 "If you left it alone, turn to page 345.":
                     jump wolfHouseExplore
     label bookBurned:
@@ -6030,6 +6080,7 @@ label wolf:
         #There is a full hallucination sequence where you thought you'd defeated the wolf but you haven't.
         #You have to navigate based on the sound cues showing you what is really happening, and use that to destroy the book.
         #eg navigate to the fireplace and take some of the fire and apply it to the book, some puzzle like that.
+
         "I don't think you understand."
         "It's already too late."
         "I can do whatever I want here."
@@ -6055,6 +6106,9 @@ label wolf:
             "You've already started to."
             "Soon, you will have no memory that they ever existed."
             "You will be happy."
+            #The end
+            #TK: You burn the book or decide to stay there forever.
+            jump end
         #You get everything you want. The wolf asks you to make a deal where you live out the rest of your life in the book. It's not such a bad life.
         #You either decide to destroy the book and destroy the wolf forever. Or live out your rest of your life in a fantasy world.
         #The wolf asks you to think about it. You get a final scene with any remaining living characters. 4 total scenes here (1 for each main character). If I have a chance, we have a scene with each minor character too.
@@ -6063,6 +6117,31 @@ label wolf:
 
         else:
             "Incorrect."
+            #The wolf defeats you and eats a person for your hubris. Someone you like the most.
+            #TK: Make the shadows get slowly stronger and stronger.
+            "And then there was rest in the land."
+            play sound pageFlip
+            # show firelight animated onlayer over_screens zorder 98
+            # show firelight animated onlayer over_screens zorder 97
+            # show firelight animated onlayer over_screens zorder 96
+            # show firelight animated onlayer over_screens zorder 95
+            # show firelight animated onlayer over_screens zorder 94
+            # show firelight animated onlayer over_screens zorder 93
+            # show firelight animated onlayer over_screens zorder 92
+            # show firelight animated onlayer over_screens zorder 91
+            # show firelight animated onlayer over_screens zorder 90
+            # show firelight animated onlayer over_screens zorder 89
+
+            "And then there was rest in the land."
+            play sound pageFlip2
+            "And then there was rest in the land."
+            play sound pageFlip3
+            show firelight animated onlayer over_screens zorder 99
+            "And then there was rest in the land."
+            show firelight animated onlayer over_screens zorder 99
+            "And then there was rest in the land."
+            show firelight animated onlayer over_screens zorder 99
+            "And then there was rest in the land."
             #If you get it wrong, maybe the wolf disappears 2 people or something in vengeance for your hubris
             #Or kills your favourite character or something
 
