@@ -6331,6 +6331,7 @@ label allVanishedEnd:
     #Label newStoryFinale:
     #"Years later:"
     #The cover opens (cover finale) with 5 rabbits.
+    #TK: Make sure that it's clear that this is a new reader. Maybe the book looks different, more banged up. Maybe quitting the game so that players have to restart it would help that impression? Not sure
     #The title page has a new name with your distinct name in it (EG the bushranger). Any other characters that survived stay in the title.
     #(So if they all survived, the title will be: The Thief, the Witch, the Toad, the Mushroom, and the [Your title]).
     #Any that died are replaced with randomly-generated characters (like the Cobbler etc)
