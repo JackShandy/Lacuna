@@ -627,7 +627,10 @@ screen about():
 
     tag menu
 
-    add "/gui/about.png"
+    if persistent.vanished >= 4:
+        add "gui/aboutEmpty.png"
+    else:
+        add "/gui/about.png"
 
     #add gui.about_background
     #add "gui/about.png"
@@ -645,9 +648,18 @@ screen about():
             #text _("Version [config.version!t]\n")
             #yalign 0.5
             ## gui.about is usually set in options.rpy.
-            if gui.about:
-                text "{alpha=0.9}{size=-4}[gui.about!t]\n{/size}{/alpha}" #
-
+            #if gui.about:
+            #If 4 people have vanished, the "About the author" text vanishes
+            if persistent.vanished >= 4:
+                text "{alpha=0.9}{size=-4}\n{/size}{/alpha}" #
+            elif persistent.vanished == 3:
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. He hears something in the pipes. It’s here. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
+            elif persistent.vanished == 2:
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. It's coming for him. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
+            elif persistent.vanished == 1:
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
+            elif persistent.vanished == 0:
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a writer and game designer who lives behind a keyboard in Brisbane, Australia. His other works include the megagames God Emperor and We Are Not Alone. For more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
             text _("{alpha=0.9}{size=-4}Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]{/size}{/alpha}")
 
 

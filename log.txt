@@ -1,39 +1,39 @@
-Sat Jul 16 19:07:07 2022
+Sun Jul 17 19:09:08 2022
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
 
 Bootstrap to the start of init.init took 0.18s
-Early init took 0.00s
-Loader init took 0.02s
+Early init took 0.01s
+Loader init took 0.03s
 Loading error handling took 0.04s
-Loading script took 2.57s
-Loading save slot metadata. took 0.03s
+Loading script took 0.56s
+Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
 Running init code took 0.12s
-Loading analysis data took 0.12s
+Loading analysis data took 0.14s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
 Dump and make backups. took 0.15s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.10s
+Initial gc. took 0.07s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.63s
+Creating interface object took 0.57s
 Cleaning stores took 0.00s
-Init translation took 0.12s
+Init translation took 0.10s
 Build styles took 0.01s
 Load screen analysis took 0.00s
 Analyze screens took 0.03s
 Save screen analysis took 0.11s
-Prepare screens took 0.11s
-Save pyanalysis. took 0.40s
-Save bytecode. took 0.06s
-Running _start took 0.01s
+Prepare screens took 0.13s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.05s
+Running _start took 0.00s
 Performance test:
 Interface start took 0.16s
 
@@ -62,18 +62,4 @@ Texture testing:
 Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 5.47321414948s
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.01s
-Load screen analysis took 0.08s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.01s
-Load screen analysis took 0.03s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
+Total time until interface ready: 2.9219918251s

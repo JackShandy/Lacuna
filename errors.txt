@@ -2,17 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 6035: play requires a file
-    play music
-              ^
-
-File "game/script.rpy", line 6036: play requires a file
-    play ambient2
-                 ^
-
-File "game/script.rpy", line 6037: play requires a file
-    play ambient1
-                 ^
+File "game/gui.rpy", line 94: indentation mismatch.
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Wed Jul 13 18:58:25 2022
+Sun Jul 17 19:05:26 2022

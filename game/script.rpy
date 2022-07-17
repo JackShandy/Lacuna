@@ -78,13 +78,17 @@ default persistent.hes = "hes"
 #persistent Disappearances
 
 #number of people who have disappeared
-default persistent.vanished = 0
+default persistent.vanished = 4
 
 #Who has disappeared specifically
-default persistent.toadVanished = False
-default persistent.witchVanished = False
-default persistent.thiefVanished = False
-default persistent.mushroomVanished = False
+default persistent.toadVanished = True
+default persistent.witchVanished = True
+default persistent.thiefVanished = True
+default persistent.mushroomVanished = True
+
+#If you get the final bad ending, who was the last to die?
+#Options: Thief, Toad, Witch, Mushroom
+default persistent.vanishedLast = "Thief"
 
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
@@ -314,13 +318,11 @@ image cover5c = "cover-5c.png"
 image cover6c = "cover-6c.png"
 image cover9c= "cover-9c.png"
 image cover14c= "cover-14c.png"
-#Covers with 2 bunnies vanished
+#Covers with all bunnies vanished
 image coverd = "coverd.png"
-image cover5d = "cover-5d.png"
-image cover6d = "cover-6d.png"
-image cover9d= "cover-9d.png"
-image cover14d= "cover-14d.png"
-
+#Cover once you have gotten ending A: The book continues on
+image coverFinaleA = "coverFinale.png"
+#TK: Create a thing for ending B: The book is burned
 
 #image credits = "acknowledgements.png"
 #Set up the cover - it changes based on how many people have disappeared
@@ -336,6 +338,7 @@ image title-witchthiefGone = "title-witch+thiefGone.png"
 image title-witchmushGone = "title-witch+mushGone.png"
 image title-thiefmushGone = "title-thief+mushGone.png"
 image title-wolf = "title-wolf.png"
+image title-allGone = "title-allGone.png"
 
 
 #Map
@@ -416,6 +419,9 @@ image mementobg = "Backgrounds/memento.png"
 image goblinintbg = "Backgrounds/goblin-int.png"
 image goblinint2bg = "Backgrounds/goblin-int2.png"
 image godbg = "Backgrounds/god.png"
+
+#The last empty bg
+image emptybg = "Backgrounds/empty.png"
 
 #Full screen illustrations
 image basementfullbg = "Backgrounds/basement-full.png"
@@ -632,20 +638,11 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
             show cover6c with dissolve
         elif randomCover >=26 and randomCover <= 30:
             show cover9c with dissolve
-    #If 4 characters have vanished, all bunnies disappear
+    #If 4 characters have vanished, all bunnies and the wolf disappear
     elif persistent.vanished >= 4:
-        if randomCover <=6:
-            show coverd with dissolve
-        elif randomCover >=7 and randomCover <= 12:
-            show cover14d with dissolve
-        elif randomCover >=13 and randomCover <= 18:
-            show cover5d with dissolve
-        elif randomCover >=19 and randomCover <= 24:
-            show cover6d with dissolve
-        elif randomCover >=25 and randomCover <= 30:
-            show cover9d with dissolve
-    #TK: If Phone On
-    if persistent.phoneOn:
+        show coverd with dissolve
+
+    if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
@@ -687,6 +684,8 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
             show title-thiefmushGone
     elif persistent.vanished == 3:
         show title-wolf
+    elif persistent.vanished >= 4:
+        show title-allGone
     ""
     #with Pause(5)
     #show screen music_screen
@@ -731,7 +730,7 @@ label splashscreen2:
 
 
 label after_load:
-    if persistent.phoneOn:
+    if persistent.phoneOn and persistent.vanished <=3:
         play sound pageFlip
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
@@ -806,7 +805,7 @@ label hideAll:
 
 label start:
     show firelight animated onlayer over_screens zorder 99
-    if persistent.phoneOn:
+    if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     # else:
@@ -832,13 +831,25 @@ label start:
             #xalign 0.5
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
+        if persistent.vanished == 4:
+            jump allVanishedEnd
         show nightbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
         call hideAll from _call_hideAll
         show forest4bg at artPos
-        "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
-        "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+        if persistent.vanished == 0:
+            "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
+            "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+        elif persistent.vanished == 1:
+            "Back in the old days, when the gods were real, your mother had ten children and had to work night and day just to feed them."
+            "When you were born as the eleventh, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+        elif persistent.vanished == 2:
+            "Back in the old days, when the beasts spoke and people were silent, your mother had four children and had to work night and day just to feed them."
+            "When you were born as the fifth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+        elif persistent.vanished == 3:
+            "Back in the old days, when there was still a chance, your mother gave birth to you as her first and only child."
+            "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         "In the darkness of the forest, she may or may not have met a man in white."
         "(Is anything certain these days?)"
         "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
@@ -863,13 +874,21 @@ label start:
                             miw "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
                         else:
                             miw "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
-                        mum "Just make sure you're there for the christening."
-                        show hand onlayer transient:
-                            yalign 0.71#0.743
-                            xalign 0.5
-                        "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
-                        $godfather = "White"
-                        jump chapter2
+                        if persistent.vanished == 3:
+                            "But He was talking to Himself."
+                            "He looked around, holding the child."
+                            "There was no-one there."
+                            "There never was.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
+                            $godfather = "White"
+                            jump chapter2
+                        else:
+                            mum "Just make sure you're there for the christening."
+                            show hand onlayer transient:
+                                yalign 0.71#0.743
+                                xalign 0.5
+                            "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
+                            $godfather = "White"
+                            jump chapter2
                 "If she said no, turn to page 14." if firstManWho:
                     mum "Then I don't want you as the Godfather. You give to the rich, and take from the poor. You are no Lord of mine."
                     "(She said this foolish thing, with no understanding of how wisely the Lord distributes wealth and poverty.)"
@@ -902,13 +921,21 @@ label start:
                             mir "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
                         else:
                             mir "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
-                        mum "Just make sure you're there for the christening on Sunday."
-                        show hand onlayer transient:
-                            yalign 0.71#0.743
-                            xalign 0.5
-                        "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
-                        $godfather = "Red"
-                        jump chapter2
+                            if persistent.vanished == 3:
+                                "But He was talking to Himself."
+                                "He looked around, holding the child."
+                                "There was no-one there."
+                                "There never was.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
+                                $godfather = "Red"
+                                jump chapter2
+                            else:
+                                mum "Just make sure you're there for the christening on Sunday."
+                                show hand onlayer transient:
+                                    yalign 0.71#0.743
+                                    xalign 0.5
+                                "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
+                                $godfather = "Red"
+                                jump chapter2
                 "If she said no, turn to page 16." if secondManWho:
                     mum "Then I don't want you as the Godfather. You lie, and cheat, and lead good people astray."
                     "She turned away from him, and raced deeper into the forest."
@@ -941,13 +968,21 @@ label start:
                         else:
                             wib "The moment [he] turns eighteen, [he] will be mine."
                         wib "Keep [him] safe for me until I come for [him]. I will send three messengers before me, to announce my arrival. "
-                        mum "Just make sure you're there for the christening on Sunday."
-                        show hand onlayer transient:
-                            yalign 0.77#0.743
-                            xalign 0.5
-                        "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
-                        $godfather = "Black"
-                        jump chapter2
+                        if persistent.vanished == 3:
+                            "But She was talking to Herself."
+                            "She looked around, holding the child."
+                            "There was no-one there."
+                            "There never was.{vspace=200}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
+                            $godfather = "Black"
+                            jump chapter2
+                        else:
+                            mum "Just make sure you're there for the christening on Sunday."
+                            show hand onlayer transient:
+                                yalign 0.77#0.743
+                                xalign 0.5
+                            "But She was already leaving. She sunk into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
+                            $godfather = "Black"
+                            jump chapter2
                 "If she said no, turn to page 25." if thirdManWho:
                     mum "I don't want you as the Godmother. You take men before it is their time."
                     wib "There is no-one else left to take [him]."
@@ -996,28 +1031,48 @@ label start:
 label chapter2:
     call hideAll from _call_hideAll_1
     show sunbg at artPos
-
-    if godfather == "White":
-        "And so you grew up as a kind and well-mannered child, and you made your mother proud."
-        "You went to church every Sunday, and worked hard every day of your life, and never did you succumb to the beast within you. All the neighbours smiled and said \"That one has the mark of G-d upon [him].\""
-        "Your Godfather was as good as His word. He appeared at church for the christening, and blessed you."
-        "You soon found luck was always in your favour, and everyone took to calling you \"Fortune's Favourite\"."
-    elif godfather == "Red":
-        "And so you grew up as a wild and wilful child, and your drove your mother to distraction with your wickedness."
-        "You obeyed no laws and no masters, and you roamed heedlessly across the hills and dales, cackling wildly and throwing mud in your wake, and all the neighbours said \"That one has the Devil's mark upon [him],\" and shut their doors."
-        #TK: Beast reference from wolf about taboo
-        "This so grieved your mother that she fell down dead."
-        #"Your Godfather was as good as His word, although He could only watch the christening from outside the church window."
-        "In spite of this, you still did not mend your wicked ways. Your ill deeds were rewarded, for you soon found that you could scarcely trip over a stone without unearthing precious diamonds and gems, and you became rich beyond the dreams of avarice."
-    elif godfather == "Black":
-        "And so you grew up as a solemn and quiet child, and you made your mother sick with worry with your gloomy ways."
-        "You ate very little, and said even less, and every night you would stalk quietly through the forest shadows or sit for long hours watching insects crawl in stagnant ponds, and all the neighbours said \"That one has the mark of Death on [him],\" and shut their doors."
-    if godfather == "Red":
-        "You lived with your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+    if persistent.vanished == 3:
+        "And so you grew up alone in an old cottage on stilts in the forest."
+        "There were many miraculous things in the house. The table was set. The larder was fully stocked. You had plenty of food to survive on."
+        "Where did it come from? You couldn't recall."
+        "The closets were filled with clothes of all sizes. In the bedroom was a hand-sewn quilt that fit just right."
+        "There were fourteen pairs of shoes in the hall. Each day you would try a different pair."
+        "How did these things come to pass? You didn't trouble yourself with such thoughts. Whenever you encountered these miracles, you simply said:"
+        pov "The House provides."
         jump introMenu
     else:
-        "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
-        jump introMenu
+        if godfather == "White":
+            "And so you grew up as a kind and well-mannered child, and you made your mother proud."
+            "You went to church every Sunday, and worked hard every day of your life, and never did you succumb to the beast within you. All the neighbours smiled and said \"That one has the mark of G-d upon [him].\""
+            "Your Godfather was as good as His word. He appeared at church for the christening, and blessed you."
+            "You soon found luck was always in your favour, and everyone took to calling you \"Fortune's Favourite\"."
+        elif godfather == "Red":
+            "And so you grew up as a wild and wilful child, and your drove your mother to distraction with your wickedness."
+            "You obeyed no laws and no masters, and you roamed heedlessly across the hills and dales, cackling wildly and throwing mud in your wake, and all the neighbours said \"That one has the Devil's mark upon [him],\" and shut their doors."
+            #TK: Beast reference from wolf about taboo
+            "This so grieved your mother that she fell down dead."
+            #"Your Godfather was as good as His word, although He could only watch the christening from outside the church window."
+            "In spite of this, you still did not mend your wicked ways. Your ill deeds were rewarded, for you soon found that you could scarcely trip over a stone without unearthing precious diamonds and gems, and you became rich beyond the dreams of avarice."
+        elif godfather == "Black":
+            "And so you grew up as a solemn and quiet child, and you made your mother sick with worry with your gloomy ways."
+            "You ate very little, and said even less, and every night you would stalk quietly through the forest shadows or sit for long hours watching insects crawl in stagnant ponds, and all the neighbours said \"That one has the mark of Death on [him],\" and shut their doors."
+        if godfather == "Red":
+            if persistent.vanished == 0:
+                "You lived with your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+            elif persistent.vanished == 1:
+                "You lived with your ten siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+            elif persistent.vanished == 2:
+                "You lived with your four siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
+            jump introMenu
+        else:
+            if persistent.vanished == 0:
+                "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest. Each night you would fall fast asleep under a quilt she knitted for you."
+            elif persistent.vanished == 1:
+                "Your mother loved you very much, and you lived with her and your ten siblings in a house on stilts on the banks of a muddy river in a vast rainforest. Each night you would fall fast asleep under a quilt she knitted for you."
+            elif persistent.vanished == 2:
+                "Your mother loved you very much, and you lived with her and your four siblings in a house on stilts on the banks of a muddy river in a vast rainforest. Each night you would fall fast asleep under a quilt she knitted for you."
+
+            jump introMenu
 
 label mapOpens:
     #==This map slowly gets erased as characters vanish
@@ -1035,6 +1090,7 @@ label mapOpens:
             show mapBlankThief onlayer screens zorder 101 at truecenter
         if persistent.mushroomVanished:
             show mapBlankMushroom onlayer screens zorder 101 at truecenter
+        #TK: >= 2?? Looks like a mistake
         if persistent.vanished >= 2:
             show mapBlankMisc onlayer screens zorder 101 at truecenter
     elif persistent.vanished == 3:
@@ -1046,7 +1102,7 @@ label mapOpens:
     show hand onlayer transient:
         yalign 0.655#0.743
         xalign 0.5
-    "Many strange figures lived in the forest around your house."
+    "The lands around your house were strange."
     play sound pageFlip2
     #Hide everything
     hide map1 onlayer screens
@@ -1069,7 +1125,7 @@ label neighbours:
         yalign 0.655#0.743
         xalign 0.5
     menu:
-        "Many strange figures lived in the forest around your house."
+        "The lands around your house were strange."
         "To learn about the lands to the north, turn to page 10." if not introNeighboursN:
             $introNeighboursN = True
             hide map1 onlayer screens
@@ -1157,28 +1213,66 @@ label neighbours:
             jump introMenu
 
 
+
 label introMenu:
+    if persistent.vanished == 3:
+        $introMenuSentence = "You woke every morning to silence."
+    else:
+        $introMenuSentence = "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets."
+
     show hand onlayer transient:
         yalign 0.68#0.743
         xalign 0.5
     menu:
-        "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets."
+        "[introMenuSentence]."
         "If you want know about your neighbours and the lands around your house, turn to page 10." if not introNeighbours:
-            "Yours was a many-haunted land, my child."
-            "Back in those days you could barely take a step without stumbling over a fiend, ghost, bloody bones, flay-boggart, bugaboo or sprite. Every house was haunted and the Devil lurked at every crossroad."
-            "In fact the whole earth was overrun with trolls, hob-and-lanthorns, gringes, cutties and nisses, boguests, bonelesses, boggleboes, black-bugs and night-bats, clabbernappers, corpse lights, candles and Gabriel-hounds, mawkins, hodge-pochers, korreds, lubberkins, cluricauns, hob-thrushes, tod-lowries, Jack-in-the-Wads, men-in-the-oak, dudmen, yeth-hounds, mormos, changelings, redcaps, colt-pixies, Tom-thumbs, madcaps, scrags, specters, scar-bugs, shag-foals, Jinny-burnt-tails, dopple-gangers, and apparitions of every shape, make, form, and fashion."
+            if persistent.vanished == 3:
+                "Yours was a vast and silent land."
+                "At times you could walk for days without seeing another soul."
+                "You dared not venture out often. Whenever you did, you felt the pressure of that gigantic emptiness crushing in all around you like a bottomless ocean, and fled quickly back to the safety of your home."
+            else:
+                "Yours was a many-haunted land, my child."
+                "Back in those days you could barely take a step without stumbling over a fiend, ghost, bloody bones, flay-boggart, bugaboo or sprite. Every house was haunted and the Devil lurked at every crossroad."
+                "In fact the whole earth was overrun with trolls, hob-and-lanthorns, gringes, cutties and nisses, boguests, bonelesses, boggleboes, black-bugs and night-bats, clabbernappers, corpse lights, candles and Gabriel-hounds, mawkins, hodge-pochers, korreds, lubberkins, cluricauns, hob-thrushes, tod-lowries, Jack-in-the-Wads, men-in-the-oak, dudmen, yeth-hounds, mormos, changelings, redcaps, colt-pixies, Tom-thumbs, madcaps, scrags, specters, scar-bugs, shag-foals, Jinny-burnt-tails, dopple-gangers, and apparitions of every shape, make, form, and fashion."
             jump neighbours
         "If you wonder whether you were happy there, turn to page 19." if persistent.vanished >= 1 and not introHappy: #not introHappy and
             $introHappy = True
-            if godfather == "Red":
-                "Well, it was a rich house, and you had everything you could ever want. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
-            else:
-                "Well, it was a happy house. But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
-            "No matter how many people were around you, you felt like something was missing."
-            "Every year, on the day before your birthday, the village would throw a great festival for no reason anyone could name. On these nights you always felt sad and strange."
-            "You would avoid the festival and stare deep into the woods all through the night."
+            if persistent.vanished == 1:
+                if godfather == "Red":
+                    "Well, it was a rich house, and you had everything you could ever want."
+                else:
+                    "Well, it was a happy house."
+                "The house was always full of chatter from your ten siblings, and you were always cramped for space with all of them around."
+                "But still, sometimes you would get a hollow feeling inside you, and walk out of the house to stare into the dark woods beyond."
+                "No matter how many people were around you, you felt like something was missing."
+                "Every year, on the day before your birthday, the village would throw a great festival for no reason anyone could name. On these nights you always felt sad and strange."
+                "You would avoid the festival and stare deep into the woods all through the night."
+            elif persistent.vanished == 2:
+                #TK: finish silence.
+                "Well, tt was a happy home. The house was always full of chatter from your four siblings, and you were always cramped for space with all of them around."
+                "But at night, when the others had gone to bed, you felt a great silence lurking in the house."
+                "Underneath the old floorboards. Inside the crooked walls."
+                "Waiting for it's time to come."
+            elif persistent.vanished == 3:
+                $renpy.music.set_volume(0, delay=4.0, channel=u'ambient1')
+                $renpy.music.set_volume(0, delay=4.0, channel=u'ambient2')
+                $renpy.music.set_volume(0, delay=4.0, channel=u'music')
+                "You lived a contented life. No-one bothered you. The stoop was full of fresh-cut logs for the fireplace. The house had many beds, so that you never lacked for a place to sleep."
+                pov "The House provides."
+                "You kept yourself busy and distracted as much as you could. But every day there came that terrible time when you finally had to lie down alone in bed."
+                "As you lay awake in bed at night, you felt the silence."
+                "It oozed up from between the floorboards and out of the cracks in the walls and slowly poured in from the windows, no matter how much you tried to stop them up."
+                "It had nothing to hide now. It had already won."
+                "Each night the sound of the fire would slowly die until there was nothing left to protect you, and you could do nothing but lie in the endless suffocating abyss of silence until you mercifully fell asleep."
             jump introMenu
         "To continue the story, turn to page 34.":
+            if persistent.vanished == 3:
+                "Soon you could stand it no longer. You searched the pantry and found a package wrapped up with a coinpurse, along with some bread and meat."
+                pov "The House provides."
+                "You gathered up these provisions and reached for the door, but as you took hold of the handle you stopped."
+                "You could feel it outside."
+                "The howling pressure of the vacuum beyond pressed against the door like a physical force, the weight of it paralysing you."
+                "You could not stand the thought of the trip down the empty road to that silent village where no-one lived."
             if godfather == "Black":
                 "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godmother would own your immortal soul as as soon as the clock struck midnight."
                 "You had no doubt that She would soon send Her three messengers for you, and then take you down to the kingdom of ruin forever."
@@ -1193,6 +1287,7 @@ label introMenu:
         "She gave you a thick coinpurse, and some bread and meat for the journey."
         mum "Go! But be careful of strangers, and do not leave the path."
         mum "A terrible {color=#f00}wolf{/color} lurks out there, in the space between the trees."
+
     call hideAll from _call_hideAll_2
     show forestbg at artPos
     "And so you took up your belongings and strode on down the road to the festival."
@@ -1945,6 +2040,7 @@ label village:
             $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
             jump town
         "If you turned around and went home, turn to page 1.":
+            #TK: This option gets ripped out if you try it, then go back without succeeding
             if turnedHome == 0:
                 $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient1')
                 $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient2')
@@ -3103,7 +3199,7 @@ label mushroomFinale:
                     $mushroomPale = True
                     jump mushroomExplore
                 "If you asked to return home, turn to page 148.":
-                    #TK: Persistance: Make the mention of siblings change as you play through routes
+                    #TK: this mention of siblings should be ok because, by the time all of your siblings have been eaten, this route is inaccessible. Just make sure.
                     if godfather == "Red":
                         "Such were the wonders of that kingdom that you almost forgot everything, even the riches you left behind and your siblings and your own country."
                     else:
@@ -6144,6 +6240,136 @@ label wolf:
             "And then there was rest in the land."
             #If you get it wrong, maybe the wolf disappears 2 people or something in vengeance for your hubris
             #Or kills your favourite character or something
+
+
+
+label allVanishedEnd:
+    #This is what happens when everyone has been killed.
+    #Basically you have 4 playthroughs to try to solve the mystery.
+    # - 0 people vanished
+    # - 1 person vanished
+    # - 2 people vanished
+    # - 3 people vanished
+    # - Everyone vanished (finale and final ending).
+    # if you solve the mystery in time you get to choose. You can either burn the book or give your soul to the wolf and live in the book forever.
+    # If everyone vanishes and you still have not yet solved the mystery, you don't get to choose. You have to give your soul to the wolf.
+    show emptybg at artPos
+    "Silence."
+    "It came out of the walls and the rotten floorboards and the roof and the windows in a great flood."
+    "It had been lying in wait there for all these long years, and it could wait no longer."
+    "It had won."
+    #"It surrounded you with crushing, unstoppable pressure."
+    "You sat alone in your silent corroding house in an empty forest that had no name, keeping your door locked and barred against the vacuum of the corpse-world outside. But still it came, oozing in through the cracks and the gaps and the crevices of your home, swamping you with such force you could barely breathe."
+    "You had lived in this house for as long as you could remember, which was three days."
+    "Where did you come from? What was your name? How did you come to be here? These questions no longer had meaning for you."
+    pov "The House provides."
+    "The silence was in everything. It penetrated your meat and your bones and soaked deep into your brain. There were great empty silent spaces in your thoughts. Things you were no longer able to think."
+    "You slept in the beds. You ate the food in the pantry. When you were not doing these things, you stared into the fire."
+    #"Were things ever different? None can say."
+    pov "The House provides."
+    "Like all other things, your house slowly fell day by day into greater and greater ruin as the unstoppable and silent force of entropy ground it into the dirt, piece by piece."
+    "Soon the Lacuna would be total and all-encompassing."
+    "The house would corrode into shapeless dust as the forest slowly decayed, and nothing would be left."
+    #TK: Maybe change this line
+    "By that time, of course, you would be long dead. Another interesting event to think upon as the world slowly fell into ash."
+
+    # if persistent.vanishedLast == "Thief":
+    #     ""
+    # if persistent.vanishedLast == "Witch":
+    #     ""
+    # if persistent.vanishedLast == "Toad":
+    #     ""
+    # if persistent.vanishedLast == "Mushroom":
+    #     ""
+
+    #""
+    #pon "The House provides."
+    #"It crushed you on all sides with a terrible and overwhelming pressure, like 10,000 fathoms deep under the ocean."
+    #"It felt like a visible, physical force, an endless crushing smothering, the dead world come at last, the silence in your bones, in your meat, even the thoughts in your brain flattened into nothing by it."
+    # "Soon you could stand it no longer. You searched the pantry and found a package wrapped up with a coinpurse, along with some bread and meat."
+    # pov "The House provides."
+    #So much grief and fear and pain over this dying earth of yours, and now it was done. There was nothing to fear anymore. The worst had already come to pass.
+    #In some ways a great weight was lifted from your shoulders. It was too late to do anything now. Too late for anything but sitting and watching the fire and feeling the soft blur of silence slowly spread through your brain.
+    #Were things always this bad? Was it always this hard?
+    #Didn't there used to be a sun, and a moon?
+    #Didn't there used to be a lot of things?
+    #As each day, hour and moment passed, more and more of these questions were slowly erased from your mind. More and more weight was lifted from yours shoulders."
+    #That's when you realised. There never was a time before this one.
+    #There never was anything but this room and the fire, and your hands shaking in front of you, and the silence outside.
+    #It was always this way. And with that thought, a great relief came over you.
+    #menu: Go to the village.
+    # "You gathered up these provisions and reached for the door, but as you took hold of the handle you stopped."
+    # "You could feel it outside."
+    # "The howling pressure of the vacuum beyond pressed against the door like a physical force, the weight of it paralysing you."
+    # "You could not stand the thought of the trip down the empty street to that silent village where no-one lived."
+    #You could feel the presence of them lurking just outside.
+    #The vacant cards on empty streets, and the abandoned apartments, and the desolate endless abyss of old shopping malls, and the bitumen roads, and the carefully manicured dead lawns stretching for endless acres, and underneath it all the cavernous labyrinthine parking lots that took up the whole underbelly of this hollow earth."
+    #The yawning abyss of that vast infinity terrified you, and you returned.
+    #Better to lie in front of your fire and stare at your phone. To keep the silence at bay for a while longer.
+    #A final piece depending on which character was the last to die.
+
+    #The wolf talks to you. The book has run out of souls. They've all been consumed.
+    #You must give your soul to the book in order to keep it going.
+    #First, you will take the book and leave it in the library, for another soul to read.
+    #Then, you will live in the book forever.
+    #It won't be so bad. You can be the hero.
+    #I will lurk in the forests. You will live in the village.
+    #You will rise up against me. You will defeat me. And you will live happily ever after.
+    #Over, and over, and over again.
+    #POV but you'll consume me.
+    #Yes. But you will always be consumed by something.
+    #That is what living is, in the world that you have built for yourselves outside this story.
+    #Your only choice you get to make, in the end, is what you will be consumed by.
+    #Come now. Give your soul over to me.
+    #Menu: I will. I will. I will. I will.
+    # I hereby give my soul over to live in this tale, until my story is finished.
+    #Good. What would you like to be called?
+    #You get an option of what you want to be called.
+    #You get swallowed into the book. "And then there was rest in the land" as the game fades to black.
+    #The game reverts to the menu (or maybe you get booted out and have to reboot it, not sure)
+
+    #Label newStoryFinale:
+    #"Years later:"
+    #The cover opens (cover finale) with 5 rabbits.
+    #The title page has a new name with your distinct name in it (EG the bushranger). Any other characters that survived stay in the title.
+    #(So if they all survived, the title will be: The Thief, the Witch, the Toad, the Mushroom, and the [Your title]).
+    #Any that died are replaced with randomly-generated characters (like the Cobbler etc)
+    #You get a new option to choose what your name and pronouns (eg charlie, she/her)
+    #The game goes into the beginning of the story right away (no load / start game):
+    #"This maybe happened, or maybe did not."
+    #"The time is long past, and much is forgot."
+    #"Back in the old days, when wishing worked, you lived in a lovely cottage on the verge of a great and magical forest."
+    #(This next bit alters depending on which character you chose):
+        #"There were many rumours of a dastardly bushranger who plagued the roads of that forest, stealing everything [he] could and causing havok left and right."
+    #The game slowly fades out
+        #"[He] had a broad chest and a booming laugh that echoed all throughout the trees."
+        #If thief is alive: To the west lived a devilish thief.
+        #If witch is alive: To the east, a cackling witch.
+        #If toad is alive: To the south, a toad.
+        #If Mushroom is alive: To the north, a wise mushroom.
+    #One day, you resolved to find this mysterious figure for yourself. You packed your belongings into a knapsack, and walked into the forest."
+    #"Be careful!" Your mother cried after you. But you had resolved to take this path, no matter the danger."
+    #"As you strode into the darkness of the forest, the twilight set in."
+    # "The crickets and cicadas all around began their chattering and squabbling, and the evening birds began to laugh and trill, and the wet cool mist of the rainforest settled around you."
+    #"The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
+    #"A small turtle saw you coming and fled into the water with a plop."
+    #"The road was long, and the forest was dark, but a smile broke out on your face."
+    #"You were home."
+    #The game fades to black. The words "THE END." appear, or "A game by Jack McNamee" . Something simple, white on black. Real credits to indicate that the game is truly over. Perhaps even some actual non-diegetic music to finish it off.
+    #If you restart the game, the same thing happens.
+
+    #Label bookBurnedFinale:
+    #You share a tearful moment with the last people left alive as the book burns
+    #Unique finale depending on who is left alive
+    #Can talk to all living NPC's as well (but you have a limited amount of time because the book is burning - maybe there's a real life time limit.
+    #Or maybe it's better to just have a limit on how much stuff you can read - probably better, don't want people to rush really.
+    #Like the ending of Undertale, you can talk to all NPC's and say goodbye etc. The timer is structured so you can only say goodbye to like 70% of them, you won't be able to have a full convo with everyone.
+    #Once the time limit is hit you have a final scene where everyone says goodbye and thank you as the last part of the book burns.
+    #They are grateful to you. It is a bittersweet moment.
+    #The last part of the page burns up and is gone forever.
+    #The black space lingers for a bit.
+    #The words "THE END." appear, or "A game by Jack McNamee" . Something simple, white on black. Real credits to indicate that the game is truly over. Perhaps even some actual non-diegetic music to finish it off.
+    #If you restart the game, you just see the black screen with the burnt remains of the book there.
 
 label endStamp:
     show text "{b}THE END.{/b}":
