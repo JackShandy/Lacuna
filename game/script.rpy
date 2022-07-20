@@ -90,6 +90,9 @@ default persistent.mushroomVanished = True
 #Options: Thief, Toad, Witch, Mushroom
 default persistent.vanishedLast = "Thief"
 
+#Have you triggered the final ending where the book is born anew?
+default persistent.bookEnd = True
+
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
 define secondManWho = False
@@ -292,6 +295,12 @@ define mushroomDeathTale = False
 #The position to show the background illustrations
 init:
     $ artPos = Position(xpos=0.5, xanchor=0.5, ypos=35, yanchor=0)
+    $ name1Pos = Position(xpos=0.5, xanchor=0.5, ypos=190, yanchor=0)
+    $ name2Pos = Position(xpos=0.5, xanchor=0.5, ypos=242, yanchor=0)
+    $ name3Pos = Position(xpos=0.5, xanchor=0.5, ypos=291, yanchor=0)
+    $ name4Pos = Position(xpos=0.5, xanchor=0.5, ypos=350, yanchor=0)
+    $ name5Pos = Position(xpos=0.5, xanchor=0.5, ypos=451, yanchor=0)
+    $ andPos =  Position(xpos=0.5, xanchor=0.5, ypos=405, yanchor=0)
 
 ##====Full Screen Images
 #Covers with no bunnies vanished
@@ -354,7 +363,13 @@ image mapBlankToad = "mapBlank-toad.png"
 image mapBlankWitch = "mapBlank-witch.png"
 image mapBlankMushroom = "mapBlank-mushroom.png"
 
-
+#Images for the names for the ending
+image name1-Thief = "titles/name1-Thief.png"
+image name2-Witch = "titles/name2-Witch.png"
+image name3-Toad = "titles/name3-Toad.png"
+image name4-Mushroom = "titles/name4-Mushroom.png"
+image name5-Aristocrat = "titles/name5-Aristocrat.png"
+image nameAnd = "titles/and.png"
 ##====GUI Elements
 image shadow = "shadow.png"
 image firelight animated:
@@ -588,59 +603,63 @@ define audio.wolfApproaches = "audio/wolfApproaches.wav"
 label before_main_menu: #splashscreen - changed to before_main_menu so it always displays
     scene black
     show firelight animated onlayer over_screens zorder 99
-    #Shows a random cover each time. 13.32% chance of a variant cover.
-    $randomCover = renpy.random.randint(1, 30)
-    #If no-one has vanished, all covers have all bunnies visible
-    if persistent.vanished == 0:
-        if randomCover <=22:
-            show cover with dissolve
-        elif randomCover ==23 or randomCover == 24:
-            show cover14 with dissolve
-        elif randomCover ==25 or randomCover == 26:
-            show cover5 with dissolve
-        elif randomCover ==27 or randomCover == 28:
-            show cover6 with dissolve
-        elif randomCover ==29 or randomCover == 30:
-            show cover9 with dissolve
-    #If 1 character has vanished, 1 bunny disappears
-    elif persistent.vanished == 1:
-        if randomCover <=18:
-            show covera with dissolve
-        elif randomCover >=19 and randomCover <= 21:
-            show cover14a with dissolve
-        elif randomCover >=22 and randomCover <= 24:
-            show cover5a with dissolve
-        elif randomCover >=25 and randomCover <= 27:
-            show cover6a with dissolve
-        elif randomCover >=28 and randomCover <= 30:
-            show cover9a with dissolve
-    #If 2 characters have vanished, 2 bunnies disappear
-    elif persistent.vanished == 2:
-        if randomCover <=14:
-            show coverb with dissolve
-        elif randomCover >=15 and randomCover <= 18:
-            show cover14b with dissolve
-        elif randomCover >=19 and randomCover <= 22:
-            show cover5b with dissolve
-        elif randomCover >=23 and randomCover <= 26:
-            show cover6b with dissolve
-        elif randomCover >=27 and randomCover <= 30:
-            show cover9b with dissolve
-    #If 3 characters have vanished, 3 bunnies disappear
-    elif persistent.vanished == 3:
-        if randomCover <=10:
-            show coverc with dissolve
-        elif randomCover >=11 and randomCover <= 15:
-            show cover14c with dissolve
-        elif randomCover >=16 and randomCover <= 20:
-            show cover5c with dissolve
-        elif randomCover >=21 and randomCover <= 25:
-            show cover6c with dissolve
-        elif randomCover >=26 and randomCover <= 30:
-            show cover9c with dissolve
-    #If 4 characters have vanished, all bunnies and the wolf disappear
-    elif persistent.vanished >= 4:
-        show coverd with dissolve
+    #If you're at the Book Ending, show 5 bunnies
+    if persistent.bookEnd:
+        show coverFinaleA with dissolve
+    else:
+        #Shows a random cover each time. 13.32% chance of a variant cover.
+        $randomCover = renpy.random.randint(1, 30)
+        #If no-one has vanished, all covers have all bunnies visible
+        if persistent.vanished == 0:
+            if randomCover <=22:
+                show cover with dissolve
+            elif randomCover ==23 or randomCover == 24:
+                show cover14 with dissolve
+            elif randomCover ==25 or randomCover == 26:
+                show cover5 with dissolve
+            elif randomCover ==27 or randomCover == 28:
+                show cover6 with dissolve
+            elif randomCover ==29 or randomCover == 30:
+                show cover9 with dissolve
+        #If 1 character has vanished, 1 bunny disappears
+        elif persistent.vanished == 1:
+            if randomCover <=18:
+                show covera with dissolve
+            elif randomCover >=19 and randomCover <= 21:
+                show cover14a with dissolve
+            elif randomCover >=22 and randomCover <= 24:
+                show cover5a with dissolve
+            elif randomCover >=25 and randomCover <= 27:
+                show cover6a with dissolve
+            elif randomCover >=28 and randomCover <= 30:
+                show cover9a with dissolve
+        #If 2 characters have vanished, 2 bunnies disappear
+        elif persistent.vanished == 2:
+            if randomCover <=14:
+                show coverb with dissolve
+            elif randomCover >=15 and randomCover <= 18:
+                show cover14b with dissolve
+            elif randomCover >=19 and randomCover <= 22:
+                show cover5b with dissolve
+            elif randomCover >=23 and randomCover <= 26:
+                show cover6b with dissolve
+            elif randomCover >=27 and randomCover <= 30:
+                show cover9b with dissolve
+        #If 3 characters have vanished, 3 bunnies disappear
+        elif persistent.vanished == 3:
+            if randomCover <=10:
+                show coverc with dissolve
+            elif randomCover >=11 and randomCover <= 15:
+                show cover14c with dissolve
+            elif randomCover >=16 and randomCover <= 20:
+                show cover5c with dissolve
+            elif randomCover >=21 and randomCover <= 25:
+                show cover6c with dissolve
+            elif randomCover >=26 and randomCover <= 30:
+                show cover9c with dissolve
+        #If 4 characters have vanished, all bunnies and the wolf disappear
+        elif persistent.vanished >= 4:
+            show coverd with dissolve
 
     if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
@@ -658,34 +677,43 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
     play sound pageFlip
     #show title
     #show different title based on how many characters have disappeared
-    if persistent.vanished == 0:
-        show title
-    elif persistent.vanished == 1:
-        if persistent.toadVanished:
-            show title-toadGone
-        if persistent.witchVanished:
-            show title-witchGone
-        if persistent.thiefVanished:
-            show title-thiefGone
-        if persistent.mushroomVanished:
-            show title-mushroomGone
-    elif persistent.vanished == 2:
-        if persistent.toadVanished and persistent.witchVanished:
-            show title-toadwitchGone
-        elif persistent.toadVanished and persistent.thiefVanished:
-            show title-toadthiefGone
-        elif persistent.toadVanished and persistent.mushroomVanished:
-            show title-toadmushGone
-        elif persistent.witchVanished and persistent.thiefVanished:
-            show title-witchthiefGone
-        elif persistent.witchVanished and persistent.mushroomVanished:
-            show title-witchmushGone
-        elif persistent.thiefVanished and persistent.mushroomVanished:
-            show title-thiefmushGone
-    elif persistent.vanished == 3:
-        show title-wolf
-    elif persistent.vanished >= 4:
+    if persistent.bookEnd:
         show title-allGone
+        show name1-Thief at name1Pos
+        show name2-Witch at name2Pos
+        show name3-Toad at name3Pos
+        show name4-Mushroom at name4Pos
+        show name5-Aristocrat at name5Pos
+        show nameAnd at andPos
+    else:
+        if persistent.vanished == 0:
+            show title
+        elif persistent.vanished == 1:
+            if persistent.toadVanished:
+                show title-toadGone
+            if persistent.witchVanished:
+                show title-witchGone
+            if persistent.thiefVanished:
+                show title-thiefGone
+            if persistent.mushroomVanished:
+                show title-mushroomGone
+        elif persistent.vanished == 2:
+            if persistent.toadVanished and persistent.witchVanished:
+                show title-toadwitchGone
+            elif persistent.toadVanished and persistent.thiefVanished:
+                show title-toadthiefGone
+            elif persistent.toadVanished and persistent.mushroomVanished:
+                show title-toadmushGone
+            elif persistent.witchVanished and persistent.thiefVanished:
+                show title-witchthiefGone
+            elif persistent.witchVanished and persistent.mushroomVanished:
+                show title-witchmushGone
+            elif persistent.thiefVanished and persistent.mushroomVanished:
+                show title-thiefmushGone
+        elif persistent.vanished == 3:
+            show title-wolf
+        elif persistent.vanished >= 4:
+            show title-allGone
     ""
     #with Pause(5)
     #show screen music_screen
@@ -831,8 +859,11 @@ label start:
             #xalign 0.5
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
-        if persistent.vanished == 4:
+        if persistent.bookEnd:
+            jump newStoryFinale
+        elif persistent.vanished == 4:
             jump allVanishedEnd
+
         show nightbg at artPos
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
@@ -6323,54 +6354,57 @@ label allVanishedEnd:
     #Come now. Give your soul over to me.
     #Menu: I will. I will. I will. I will.
     # I hereby give my soul over to live in this tale, until my story is finished.
+    #bookEnd$persistent.bookEnd = True
     #Good. What would you like to be called?
     #You get an option of what you want to be called.
     #You get swallowed into the book. "And then there was rest in the land" as the game fades to black.
     #The game reverts to the menu (or maybe you get booted out and have to reboot it, not sure)
 
-    #Label newStoryFinale:
-    #"Years later:"
-    #The cover opens (cover finale) with 5 rabbits.
-    #TK: Make sure that it's clear that this is a new reader. Maybe the book looks different, more banged up. Maybe quitting the game so that players have to restart it would help that impression? Not sure
-    #The title page has a new name with your distinct name in it (EG the bushranger). Any other characters that survived stay in the title.
-    #(So if they all survived, the title will be: The Thief, the Witch, the Toad, the Mushroom, and the [Your title]).
-    #Any that died are replaced with randomly-generated characters (like the Cobbler etc)
-    #You get a new option to choose what your name and pronouns (eg charlie, she/her)
-    #The game goes into the beginning of the story right away (no load / start game):
-    #"This maybe happened, or maybe did not."
-    #"The time is long past, and much is forgot."
-    #"Back in the old days, when wishing worked, you lived in a lovely cottage on the verge of a great and magical forest."
-    #(This next bit alters depending on which character you chose):
-        #"There were many rumours of a dastardly bushranger who plagued the roads of that forest, stealing everything [he] could and causing havok left and right."
-    #The game slowly fades out
-        #"[He] had a broad chest and a booming laugh that echoed all throughout the trees."
+    label newStoryFinale:
+        #TK: Make this text appear in black and white in the center of the screen
+        #"Years later:"
+        #The cover opens (cover finale) with 5 rabbits.
+        #TK: Make sure that it's clear that this is a new reader. Maybe the book looks different, more banged up. Maybe quitting the game so that players have to restart it would help that impression? Not sure
+        #The title page has a new name with your distinct name in it (EG the bushranger). Any other characters that survived stay in the title.
+        #(So if they all survived, the title will be: The Thief, the Witch, the Toad, the Mushroom, and the [Your title]).
+        #Any that died are replaced with randomly-generated characters (like the Cobbler etc)
+        #You get a new option to choose what your name and pronouns (eg charlie, she/her)
+        #The game goes into the beginning of the story right away (no load / start game):
+        "This maybe happened, or maybe did not."
+        "The time is long past, and much is forgot."
+        "Back in the old days, when wishing worked, you lived in a lovely cottage on the verge of a great and magical forest."
+        #(This next bit alters depending on which character you chose):
+        "There were many rumours of a dastardly bushranger who plagued the roads of that forest, stealing everything [he] could and causing havok left and right."
+        #The game slowly fades out
+        "[He] had a broad chest and a booming laugh that echoed all throughout the trees."
         #If thief is alive: To the west lived a devilish thief.
         #If witch is alive: To the east, a cackling witch.
         #If toad is alive: To the south, a toad.
         #If Mushroom is alive: To the north, a wise mushroom.
-    #One day, you resolved to find this mysterious figure for yourself. You packed your belongings into a knapsack, and walked into the forest."
-    #"Be careful!" Your mother cried after you. But you had resolved to take this path, no matter the danger."
-    #"As you strode into the darkness of the forest, the twilight set in."
-    # "The crickets and cicadas all around began their chattering and squabbling, and the evening birds began to laugh and trill, and the wet cool mist of the rainforest settled around you."
-    #"The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
-    #"A small turtle saw you coming and fled into the water with a plop."
-    #"The road was long, and the forest was dark, but a smile broke out on your face."
-    #"You were home."
-    #The game fades to black. The words "THE END." appear, or "A game by Jack McNamee" . Something simple, white on black. Real credits to indicate that the game is truly over. Perhaps even some actual non-diegetic music to finish it off.
-    #If you restart the game, the same thing happens.
+        "One day, you resolved to find this mysterious figure for yourself. You packed your belongings into a knapsack, and walked into the forest."
+        "\"Be careful!\" Your mother cried after you. But you had resolved to take this path, no matter the danger."
+        "As you strode into the darkness of the forest, the twilight set in."
+        "The crickets and cicadas all around began their chattering and squabbling, and the evening birds began to laugh and trill, and the wet cool mist of the rainforest settled around you."
+        "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
+        "A small turtle saw you coming and fled into the water with a plop."
+        "The road was long, and the forest was dark, but a smile broke out on your face."
+        "You were home."
+        # The game fades to black. The words "THE END." appear, or "A game by Jack McNamee" . Something simple, white on black. Real credits to indicate that the game is truly over. Perhaps even some actual non-diegetic music to finish it off.
+        # If you restart the game, the same thing happens.
 
-    #Label bookBurnedFinale:
-    #You share a tearful moment with the last people left alive as the book burns
-    #Unique finale depending on who is left alive
-    #Can talk to all living NPC's as well (but you have a limited amount of time because the book is burning - maybe there's a real life time limit.
-    #Or maybe it's better to just have a limit on how much stuff you can read - probably better, don't want people to rush really.
-    #Like the ending of Undertale, you can talk to all NPC's and say goodbye etc. The timer is structured so you can only say goodbye to like 70% of them, you won't be able to have a full convo with everyone.
-    #Once the time limit is hit you have a final scene where everyone says goodbye and thank you as the last part of the book burns.
-    #They are grateful to you. It is a bittersweet moment.
-    #The last part of the page burns up and is gone forever.
-    #The black space lingers for a bit.
-    #The words "THE END." appear, or "A game by Jack McNamee" . Something simple, white on black. Real credits to indicate that the game is truly over. Perhaps even some actual non-diegetic music to finish it off.
-    #If you restart the game, you just see the black screen with the burnt remains of the book there.
+    label bookBurnedFinale:
+        ""
+        # You share a tearful moment with the last people left alive as the book burns
+        # Unique finale depending on who is left alive
+        # Can talk to all living NPC's as well (but you have a limited amount of time because the book is burning - maybe there's a real life time limit.
+        # Or maybe it's better to just have a limit on how much stuff you can read - probably better, don't want people to rush really.
+        # Like the ending of Undertale, you can talk to all NPC's and say goodbye etc. The timer is structured so you can only say goodbye to like 70% of them, you won't be able to have a full convo with everyone.
+        # Once the time limit is hit you have a final scene where everyone says goodbye and thank you as the last part of the book burns.
+        # They are grateful to you. It is a bittersweet moment.
+        # The last part of the page burns up and is gone forever.
+        # The black space lingers for a bit.
+        # The words "THE END." appear, or "A game by Jack McNamee" . Something simple, white on black. Real credits to indicate that the game is truly over. Perhaps even some actual non-diegetic music to finish it off.
+        # If you restart the game, you just see the black screen with the burnt remains of the book there.
 
 label endStamp:
     show text "{b}THE END.{/b}":

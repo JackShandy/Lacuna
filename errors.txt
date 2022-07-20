@@ -2,7 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/gui.rpy", line 94: indentation mismatch.
+File "game/script.rpy", line 295: is not terminated with a newline. (Check strings and parenthesis.)
+        $ name1Pos = Position(xpos=0, xanchor=0, ypos=190, yanchor=0
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Jul 17 19:05:26 2022
+Wed Jul 20 17:30:04 2022
