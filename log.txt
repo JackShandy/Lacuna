@@ -1,39 +1,38 @@
-Wed Jul 20 18:05:44 2022
+Thu Jul 21 19:08:04 2022
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
 
 Bootstrap to the start of init.init took 0.17s
 Early init took 0.00s
-Loader init took 0.02s
+Loader init took 0.03s
 Loading error handling took 0.06s
-Loading script took 2.71s
-Loading save slot metadata. took 0.03s
+Loading script took 0.43s
+Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.13s
-Loading analysis data took 0.16s
+Running init code took 0.12s
+Loading analysis data took 0.11s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
-Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
-Dump and make backups. took 0.15s
+Dump and make backups. took 0.10s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.10s
+Initial gc. took 0.09s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.58s
+Creating interface object took 0.45s
 Cleaning stores took 0.00s
-Init translation took 0.14s
+Init translation took 0.07s
 Build styles took 0.01s
-Load screen analysis took 0.00s
-Analyze screens took 0.03s
-Save screen analysis took 0.11s
-Prepare screens took 0.13s
-Save pyanalysis. took 0.62s
-Save bytecode. took 0.07s
-Running _start took 0.01s
+Load screen analysis took 0.12s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
 Performance test:
 Interface start took 0.19s
 
@@ -59,7 +58,7 @@ Texture testing:
 - 512px textures work.
 - 1024px textures work.
 - 2048px textures work.
-Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 5.88825011253s
+Total time until interface ready: 2.57186484337s

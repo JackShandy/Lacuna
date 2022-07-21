@@ -75,7 +75,7 @@ default persistent.Him = "Him"
 default persistent.Hes = "Hes"
 default persistent.hes = "hes"
 
-#persistent Disappearances
+#===========Persistent Disappearances
 
 #number of people who have disappeared
 default persistent.vanished = 4
@@ -91,7 +91,11 @@ default persistent.mushroomVanished = True
 default persistent.vanishedLast = "Thief"
 
 #Have you triggered the final ending where the book is born anew?
+#TK: Turn this back to false after testing is complete
 default persistent.bookEnd = True
+
+#What title did you choose for the book ending?
+default persistent.finaleTitle = "Cobbler"
 
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
@@ -368,7 +372,24 @@ image name1-Thief = "titles/name1-Thief.png"
 image name2-Witch = "titles/name2-Witch.png"
 image name3-Toad = "titles/name3-Toad.png"
 image name4-Mushroom = "titles/name4-Mushroom.png"
+
+#Name 5 (Your chosen title)
 image name5-Aristocrat = "titles/name5-Aristocrat.png"
+image name5-Cobbler = "titles/name5-Cobbler.png"
+image name5-Trickster = "titles/name5-Trickster.png"
+image name5-Crow = "titles/name5-Crow.png"
+image name5-Specter = "titles/name5-Specter.png"
+image name5-WinterRose = "titles/name5-WinterRose.png"
+image name5-Fool = "titles/name5-Fool.png"
+image name5-WaterNixie = "titles/name5-WaterNixie.png"
+image name5-Giant = "titles/name5-Giant.png"
+image name5-Bushranger = "titles/name5-Bushranger.png"
+image name5-Butcher = "titles/name5-Butcher.png"
+image name5-Warrior-Poet = "titles/name5-Warrior-Poet.png"
+image name5-Heirophant = "titles/name5-Heirophant.png"
+
+
+
 image nameAnd = "titles/and.png"
 ##====GUI Elements
 image shadow = "shadow.png"
@@ -683,7 +704,33 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         show name2-Witch at name2Pos
         show name3-Toad at name3Pos
         show name4-Mushroom at name4Pos
-        show name5-Aristocrat at name5Pos
+        #show name5-Cobbler at name5Pos
+        if persistent.finaleTitle == "Cobbler":
+            show name5-Cobbler at name5Pos
+        elif persistent.finaleTitle == "Trickster":
+            show name5-Trickster at name5Pos
+        elif persistent.finaleTitle == "Crow":
+            show name5-Crow at name5Pos
+        elif persistent.finaleTitle == "Specter":
+            show name5-Specter at name5Pos
+        elif persistent.finaleTitle == "Winter Rose":
+            show name5-WinterRose at name5Pos
+        elif persistent.finaleTitle == "Fool":
+            show name5-Fool at name5Pos
+        elif persistent.finaleTitle == "Water Nixie":
+            show name5-WaterNixie at name5Pos
+        elif persistent.finaleTitle == "Giant":
+            show name5-Giant at name5Pos
+        elif persistent.finaleTitle == "Bushranger":
+            show name5-Bushranger at name5Pos
+        elif persistent.finaleTitle == "Butcher":
+            show name5-Butcher at name5Pos
+        elif persistent.finaleTitle == "Aristocrat":
+            show name5-Aristocrat at name5Pos
+        elif persistent.finaleTitle == "Warrior-Poet":
+            show name5-Warrior-Poet at name5Pos
+        elif persistent.finaleTitle == "Heirophant":
+            show name5-Heirophant at name5Pos
         show nameAnd at andPos
     else:
         if persistent.vanished == 0:
@@ -827,6 +874,7 @@ label hideAll:
     hide tornPage1bg
 
     hide stamp
+    hide emptybg
 
     return
 
@@ -859,6 +907,9 @@ label start:
             #xalign 0.5
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
+
+        jump allVanishedEnd
+
         if persistent.bookEnd:
             jump newStoryFinale
         elif persistent.vanished == 4:
@@ -6212,6 +6263,11 @@ label wolf:
         "It's already too late."
         "I can do whatever I want here."
         "As you reach towards the book, your fingers begin to melt like candlewax."
+        #If you resisted, turn to page 326.
+        #If you screamed in pain, turn to page 326.
+        #If you fled, turn to page 326.
+        #IF you rose up and attacked the wolf, turn to page 326.
+        #If you sat there silently and did nothing, turn to page 326.
         "Soon your whole arm drips apart, pooling on the floor in thick melted strands of viscera."
         "You see? I own you. I can do whatever I want here."
         #Choose an option that's like "I name you and bind you, beast."
@@ -6355,7 +6411,65 @@ label allVanishedEnd:
     #Menu: I will. I will. I will. I will.
     # I hereby give my soul over to live in this tale, until my story is finished.
     #bookEnd$persistent.bookEnd = True
-    #Good. What would you like to be called?
+    #Good.
+    #Now we must choose your title.
+
+    call hideAll
+    show text "What should we call you?":
+        xalign 0.5
+        ypos 150
+    show hand:
+        yalign 0.23#0.743
+        xalign 0.5
+
+    define choice_menu_ypos = 580
+    #define gui.dialogue_ypos = 180
+    #define gui.choice_button_borders = Borders(47, 3, 42, 3)
+    #define gui.choice_button_borders = Borders(10, 3, 10, 3)
+
+    menu:
+        "If you chose The Cobbler, turn to page 465.":
+            define persistent.finaleTitle = "Cobbler"
+            "Good."
+        "If you chose The Trickster, turn to page 466.":
+            define persistent.finaleTitle = "Trickster"
+            "Good."
+        "If you chose The Crow, turn to page 467.":
+            define persistent.finaleTitle = "Crow"
+            "Good."
+        "If you chose The Specter, turn to page 468.":
+            define persistent.finaleTitle = "Specter"
+            "Good."
+        "If you chose The Winter Rose, turn to page 469.":
+            define persistent.finaleTitle = "Winter Rose"
+            "Good."
+        "If you chose The Fool, turn to page 470.":
+            define persistent.finaleTitle = "Fool"
+            "Good."
+        "If you chose The Water Nixie, turn to page 471.":
+            define persistent.finaleTitle = "Water Nixie"
+            "Good."
+        "If you chose The Giant, turn to page 472.":
+            define persistent.finaleTitle = "Giant"
+            "Good."
+        "If you chose The Bushranger, turn to page 473.":
+            define persistent.finaleTitle = "Bushranger"
+            "Good."
+        "If you chose The Butcher, turn to page 474.":
+            define persistent.finaleTitle = "Butcher"
+            "Good."
+        "If you chose The Aristocrat, turn to page 475.":
+            define persistent.finaleTitle = "Aristocrat"
+            "Good."
+        "If you chose The Warrior-Poet, turn to page 476.":
+            define persistent.finaleTitle = "Warrior-Poet"
+            "Good."
+        "If you chose The Heirophant, turn to page 477.":
+            define persistent.finaleTitle = "Heirophant"
+            "Good."
+    hide hand
+    define choice_menu_ypos = 700
+
     #You get an option of what you want to be called.
     #You get swallowed into the book. "And then there was rest in the land" as the game fades to black.
     #The game reverts to the menu (or maybe you get booted out and have to reboot it, not sure)

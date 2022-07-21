@@ -212,7 +212,7 @@ define gui.quick_button_text_selected_color = gui.accent_color
 define gui.choice_button_width = None#371
 define gui.choice_button_height = None
 define gui.choice_button_tile = False
-define gui.choice_button_borders = Borders(47, 3, 47, 3)
+define gui.choice_button_borders = Borders(47, 3, 42, 3)
 define gui.choice_button_text_font = "fonts/book-antiqua-italic.ttf"#gui.text_font
 define gui.choice_button_text_size = gui.text_size
 #define gui.choice_button_text_yalign = 0
@@ -238,7 +238,7 @@ define gui.slot_button_text_idle_color = gui.idle_small_color
 define gui.slot_button_text_selected_idle_color = gui.selected_color
 define gui.slot_button_text_selected_hover_color = gui.hover_color
 
-define gui.choice_button_text_font = "fonts/book-antiqua-italic.ttf"
+#define gui.choice_button_text_font = "fonts/book-antiqua-italic.ttf"
 
 ## The width and height of thumbnails used by the save slots.
 define config.thumbnail_width = 0#120
@@ -360,6 +360,9 @@ define gui.history_name_xpos = 73
 define gui.history_name_ypos = 0
 define gui.history_name_width = 73
 define gui.history_name_xalign = 1.0
+
+#The default position of the choice menu
+define choice_menu_ypos = 700
 
 ## The position, width, and alignment of the dialogue text.
 define gui.history_text_xpos = 80
