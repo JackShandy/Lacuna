@@ -97,6 +97,13 @@ default persistent.bookEnd = True
 #What title did you choose for the book ending?
 default persistent.finaleTitle = "Cobbler"
 
+#The other randomly generated titles
+default persistent.name1Rand = renpy.random.randint(1,6)
+default persistent.name2Rand = renpy.random.randint(1,6)
+default persistent.name3Rand = renpy.random.randint(1,6)
+default persistent.name4Rand = renpy.random.randint(1,6)
+
+
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
 define secondManWho = False
@@ -372,6 +379,38 @@ image name1-Thief = "titles/name1-Thief.png"
 image name2-Witch = "titles/name2-Witch.png"
 image name3-Toad = "titles/name3-Toad.png"
 image name4-Mushroom = "titles/name4-Mushroom.png"
+
+#Random Name 1's
+image name1-Imp = "titles/name1-Imp.png"
+image name1-Boots = "titles/name1-Boots.png"
+image name1-Frost = "titles/name1-Frost.png"
+image name1-Goat = "titles/name1-Goat.png"
+image name1-Fiend = "titles/name1-Fiend.png"
+image name1-Rake = "titles/name1-Rake.png"
+
+#Random Name 2's
+image name2-Midwife = "titles/name2-Midwife.png"
+image name2-Moon = "titles/name2-Moon.png"
+image name2-Mountain = "titles/name2-Mountain.png"
+image name2-Pumpkin = "titles/name2-Pumpkin.png"
+image name2-Tyrant = "titles/name2-Tyrant.png"
+image name2-Toymaker = "titles/name2-Toymaker.png"
+
+#Random Name 3's
+image name3-Beggar = "titles/name3-Beggar.png"
+image name3-Crone = "titles/name3-Crone.png"
+image name3-Firebird = "titles/name3-Firebird.png"
+image name3-Sausage = "titles/name3-Sausage.png"
+image name3-Shepherd = "titles/name3-Shepherd.png"
+image name3-Baker = "titles/name3-Baker.png"
+
+#Random Name 4's
+image name4-Swans = "titles/name4-Swans.png"
+image name4-Blindworm = "titles/name4-Blindworm.png"
+image name4-Castle = "titles/name4-Castle.png"
+image name4-GlassCoffin = "titles/name4-GlassCoffin.png"
+image name4-SingingBone = "titles/name4-SingingBone.png"
+image name4-SnakeLeaves = "titles/name4-SnakeLeaves.png"
 
 #Name 5 (Your chosen title)
 image name5-Aristocrat = "titles/name5-Aristocrat.png"
@@ -696,15 +735,75 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
     #with Pause(5)
     ""
     play sound pageFlip
-    #show title
-    #show different title based on how many characters have disappeared
+    #=========================This shows the title of the book
+    ##===This part generates a unique title for the Book ending, based on who is alive, randomly generating.
     if persistent.bookEnd:
         show title-allGone
-        show name1-Thief at name1Pos
-        show name2-Witch at name2Pos
-        show name3-Toad at name3Pos
-        show name4-Mushroom at name4Pos
-        #show name5-Cobbler at name5Pos
+        if persistent.thiefVanished == False:
+            show name1-Thief at name1Pos
+        else:
+            if persistent.name1Rand == 1:
+                show name1-Imp at name1Pos
+            elif persistent.name1Rand == 2:
+                show name1-Boots at name1Pos
+            elif persistent.name1Rand == 3:
+                show name1-Frost at name1Pos
+            elif persistent.name1Rand == 4:
+                show name1-Goat at name1Pos
+            elif persistent.name1Rand == 5:
+                show name1-Fiend at name1Pos
+            elif persistent.name1Rand == 6:
+                show name1-Rake at name1Pos
+
+        if persistent.witchVanished == False:
+            show name2-Witch at name2Pos
+        else:
+            if persistent.name2Rand == 1:
+                show name2-Midwife at name2Pos
+            elif persistent.name2Rand == 2:
+                show name2-Moon at name2Pos
+            elif persistent.name2Rand == 3:
+                show name2-Mountain at name2Pos
+            elif persistent.name2Rand == 4:
+                show name2-Pumpkin at name2Pos
+            elif persistent.name2Rand == 5:
+                show name2-Tyrant at name2Pos
+            elif persistent.name2Rand == 6:
+                show name2-Toymaker at name2Pos
+
+        if persistent.toadVanished == False:
+            show name3-Toad at name3Pos
+        else:
+            if persistent.name3Rand == 1:
+                show name3-Beggar at name3Pos
+            elif persistent.name3Rand == 2:
+                show name3-Crone at name3Pos
+            elif persistent.name3Rand == 3:
+                show name3-Firebird at name3Pos
+            elif persistent.name3Rand == 4:
+                show name3-Sausage at name3Pos
+            elif persistent.name3Rand == 5:
+                show name3-Shepherd at name3Pos
+            elif persistent.name3Rand == 6:
+                show name3-Baker at name3Pos
+
+        if persistent.mushroomVanished == False:
+            show name4-Mushroom at name4Pos
+        else:
+            if persistent.name4Rand == 1:
+                show name4-Swans at name4Pos
+            elif persistent.name4Rand == 2:
+                show name4-Blindworm at name4Pos
+            elif persistent.name4Rand == 3:
+                show name4-Castle at name4Pos
+            elif persistent.name4Rand == 4:
+                show name4-GlassCoffin at name4Pos
+            elif persistent.name4Rand == 5:
+                show name4-SingingBone at name4Pos
+            elif persistent.name4Rand == 6:
+                show name4-SnakeLeaves at name4Pos
+
+        #The title you chose your yourself
         if persistent.finaleTitle == "Cobbler":
             show name5-Cobbler at name5Pos
         elif persistent.finaleTitle == "Trickster":
@@ -6410,9 +6509,10 @@ label allVanishedEnd:
     #Come now. Give your soul over to me.
     #Menu: I will. I will. I will. I will.
     # I hereby give my soul over to live in this tale, until my story is finished.
-    #bookEnd$persistent.bookEnd = True
-    #Good.
-    #Now we must choose your title.
+    $persistent.bookEnd = True
+    $persistent.nameSet = False
+    "Good."
+    "Now we must choose your title."
 
     call hideAll
     show text "What should we call you?":
@@ -6479,18 +6579,40 @@ label allVanishedEnd:
         #"Years later:"
         #The cover opens (cover finale) with 5 rabbits.
         #TK: Make sure that it's clear that this is a new reader. Maybe the book looks different, more banged up. Maybe quitting the game so that players have to restart it would help that impression? Not sure
-        #The title page has a new name with your distinct name in it (EG the bushranger). Any other characters that survived stay in the title.
-        #(So if they all survived, the title will be: The Thief, the Witch, the Toad, the Mushroom, and the [Your title]).
-        #Any that died are replaced with randomly-generated characters (like the Cobbler etc)
-        #You get a new option to choose what your name and pronouns (eg charlie, she/her)
         #The game goes into the beginning of the story right away (no load / start game):
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
         "Back in the old days, when wishing worked, you lived in a lovely cottage on the verge of a great and magical forest."
         #(This next bit alters depending on which character you chose):
-        "There were many rumours of a dastardly bushranger who plagued the roads of that forest, stealing everything [he] could and causing havok left and right."
+        if persistent.finaleTitle == "Cobbler":
+            ""
+        elif persistent.finaleTitle == "Trickster":
+            ""
+        elif persistent.finaleTitle == "Crow":
+            ""
+        elif persistent.finaleTitle == "Specter":
+            ""
+        elif persistent.finaleTitle == "Winter Rose":
+            ""
+        elif persistent.finaleTitle == "Fool":
+            ""
+        elif persistent.finaleTitle == "Water Nixie":
+            ""
+        elif persistent.finaleTitle == "Giant":
+            ""
+        elif persistent.finaleTitle == "Bushranger":
+            "There were many rumours of a dastardly bushranger who plagued the roads of that forest, stealing everything [he] could and causing havock left and right."
+        elif persistent.finaleTitle == "Butcher":
+            ""
+        elif persistent.finaleTitle == "Aristocrat":
+            ""
+        elif persistent.finaleTitle == "Warrior-Poet":
+            ""
+        elif persistent.finaleTitle == "Heirophant":
+            ""
+
         #The game slowly fades out
-        "[He] had a broad chest and a booming laugh that echoed all throughout the trees."
+        #"[He] had a broad chest and a booming laugh that echoed all throughout the trees."
         #If thief is alive: To the west lived a devilish thief.
         #If witch is alive: To the east, a cackling witch.
         #If toad is alive: To the south, a toad.
