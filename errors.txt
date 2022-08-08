@@ -2,57 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 6430: expected statement.
-    persistent.finaleTitle = "Cobbler"
-                           ^
-
-File "game/script.rpy", line 6433: expected statement.
-    persistent.finaleTitle = "Trickster"
-                           ^
-
-File "game/script.rpy", line 6436: expected statement.
-    persistent.finaleTitle = "Crow"
-                           ^
-
-File "game/script.rpy", line 6439: expected statement.
-    persistent.finaleTitle = "Specter"
-                           ^
-
-File "game/script.rpy", line 6443: expected statement.
-    persistent.finaleTitle = "Winter Rose"
-                           ^
-
-File "game/script.rpy", line 6446: expected statement.
-    persistent.finaleTitle = "Fool"
-                           ^
-
-File "game/script.rpy", line 6449: expected statement.
-    persistent.finaleTitle = "Water Nixie"
-                           ^
-
-File "game/script.rpy", line 6452: expected statement.
-    persistent.finaleTitle = "Giant"
-                           ^
-
-File "game/script.rpy", line 6455: expected statement.
-    persistent.finaleTitle = "Bushranger"
-                           ^
-
-File "game/script.rpy", line 6458: expected statement.
-    persistent.finaleTitle = "Butcher"
-                           ^
-
-File "game/script.rpy", line 6461: expected statement.
-    persistent.finaleTitle = "Aristocrat"
-                           ^
-
-File "game/script.rpy", line 6464: expected statement.
-    persistent.finaleTitle = "Warrior-Poet"
-                           ^
-
-File "game/script.rpy", line 6467: expected statement.
-    persistent.finaleTitle = "Heirophant"
-                           ^
+File "game/script.rpy", line 6659: expected statement.
+    renpy.quit();
+                ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu Jul 21 19:01:11 2022
+Mon Aug  8 16:03:11 2022

@@ -1,32 +1,68 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
+While loading <'Image' u'coverBurned.png'>:
   File "renpy/common/00start.rpy", line 310, in script call
     call expression "before_main_menu"
-  File "game/script.rpy", line 793, in script
-    if name4Rand == 1:
-  File "game/script.rpy", line 793, in <module>
-    if name4Rand == 1:
-NameError: name 'name4Rand' is not defined
+  File "game/script.rpy", line 669, in script
+    show coverBurned with dissolve
+IOError: Couldn't find file 'coverBurned.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "renpy/common/00start.rpy", line 310, in script call
     call expression "before_main_menu"
-  File "game/script.rpy", line 793, in script
-    if name4Rand == 1:
-  File "renpy/ast.py", line 1852, in execute
-    if renpy.python.py_eval(condition):
-  File "renpy/python.py", line 2249, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "renpy/python.py", line 2242, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 793, in <module>
-    if name4Rand == 1:
-NameError: name 'name4Rand' is not defined
+  File "game/script.rpy", line 669, in script
+    show coverBurned with dissolve
+  File "renpy/ast.py", line 1397, in execute
+    renpy.exports.with_statement(trans, paired)
+  File "renpy/exports.py", line 1646, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "renpy/display/core.py", line 2610, in do_with
+    clear=clear)
+  File "renpy/display/core.py", line 3101, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3611, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "renpy/display/core.py", line 2441, in draw_screen
+    renpy.config.screen_height,
+  File "render.pyx", line 492, in renpy.display.render.render_screen
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 777, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/transition.py", line 368, in render
+    top = render(self.new_widget, width, height, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 777, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 777, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/transform.py", line 933, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 116, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/image.py", line 501, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "renpy/display/image.py", line 307, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/im.py", line 607, in render
+    return cache.get(self, render=True)
+  File "renpy/display/im.py", line 271, in get
+    surf = image.load()
+  File "renpy/display/im.py", line 688, in load
+    raise e
+IOError: Couldn't find file 'coverBurned.png'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
-The Thief, the Toad, the Witch & the Mushroom 0.81
-Fri Jul 22 16:47:24 2022
+  0.81
+Mon Aug  8 16:55:16 2022

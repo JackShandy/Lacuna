@@ -12,7 +12,9 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("The Thief, the Toad, the Witch & the Mushroom")
+define config.name = _("Lacuna.") #The Thief, the Toad, the Witch & the Mushroom
+
+#TK: Edit the config name so that it changes based on who's been killed (IE The Thief, the Toad, & the witch when the mushroom dies, etc)
 
 define config.layers = ['master', 'transient', 'screens', 'over_screens', 'overlay']
 
