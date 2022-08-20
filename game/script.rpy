@@ -32,7 +32,6 @@ init python:
 
 #Number of times the game has been played
 define persistent.timesPlayed = 0
-
 #The ambience - is it on or not?
 default persistent.phoneOn = True
 
@@ -77,13 +76,14 @@ default persistent.hes = "hes"
 #===========Persistent Disappearances
 
 #number of people who have disappeared
-default persistent.vanished = 0
+default persistent.vanished = 4
 
 #Who has disappeared specifically
-default persistent.toadVanished = False
-default persistent.witchVanished = False
-default persistent.thiefVanished = False
-default persistent.mushroomVanished = False
+#TK: revert after testing
+default persistent.toadVanished = True
+default persistent.witchVanished = True
+default persistent.thiefVanished = True
+default persistent.mushroomVanished = True
 
 #If you get the final bad ending, who was the last to die?
 #Options: Thief, Toad, Witch, Mushroom
@@ -120,6 +120,9 @@ define introNeighboursN = False
 define introNeighboursE = False
 define introNeighboursS = False
 define introNeighboursW = False
+
+#A variable that switches on for larger full screen menus to make the choice menu yalign change
+define fullScreenMenu = False
 
 #Act 1, Chapter 2: The road to the village
 #How many pitiful Noooo's have you shouted
@@ -317,6 +320,9 @@ init:
     $ andPos =  Position(xpos=0.5, xanchor=0.5, ypos=405, yanchor=0)
 
 ##====Full Screen Images
+#White screen
+image white = "#FFFFFF"
+
 #Covers with no bunnies vanished
 image cover = "cover.png"
 image cover5 = "cover-5.png"
@@ -448,7 +454,6 @@ image firelight animated:
     repeat
 
 ##====Backgrounds
-#Confirmed - these are in the game
 image nightbg= "Backgrounds/night.png"
 image nightgodbg= "Backgrounds/nightgod.png"
 image sunbg= "Backgrounds/sun.png"
@@ -501,6 +506,10 @@ image godbg = "Backgrounds/god.png"
 
 #The last empty bg
 image emptybg = "Backgrounds/empty.png"
+
+#New contents screen with Alex
+image alexbg = "Backgrounds/contents-alex.png"
+image georgiabg = "Backgrounds/contents-georgia.png"
 
 #Full screen illustrations
 image basementfullbg = "Backgrounds/basement-full.png"
@@ -629,6 +638,7 @@ define p3 = Character ("{image=p3Name}{alt}The Third Pig:{/alt}")
 define audio.pageFlip = "audio/page-flip.mp3"
 define audio.pageFlip2 = "audio/page-flip2.wav"
 define audio.pageFlip3 = "audio/page-flip3.wav"
+define audio.whiteNoise = "audio/whiteNoiseEnding.mp3"
 
 #Sounds for the wolf scene
 define audio.doorKnock = "audio/doorKnock.mp3"
@@ -650,15 +660,6 @@ define audio.footsteps = "audio/footsteps.wav"
 define audio.wolfBreath = "audio/wolfBreath.wav"
 define audio.wind = "audio/wind.wav"
 define audio.wolfApproaches = "audio/wolfApproaches.wav"
-
-
-#screen music_screen:
-    #show firelight animated onlayer over_screens zorder 99
-    #zorder 99
-    #$ renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
-    #$ renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True)
-    #python:
-    #       renpy.music.play("audio/rain.wav", fadeout=10.0, fadein=15.0)
 
 # The game starts here.
 
@@ -730,6 +731,10 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
             show coverd with dissolve
 
     if persistent.phoneOn and persistent.vanished <=3:
+        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+    elif persistent.bookEnd:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
@@ -877,6 +882,22 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
     #play audio fire loop volume 0.5 fadein 1.0
 
     play sound pageFlip
+    if persistent.bookEnd == True:
+        define he = persistent.he
+        define He = persistent.He
+        define his = persistent.his
+        define His = persistent.His
+        define him = persistent.him
+        define Him = persistent.Him
+        define Hes = persistent.Hes
+        define hes = persistent.hes
+        define povname = persistent.povname
+        if persistent.povname == "alex" or persistent.povname == "Alex" or persistent.povname == "Alexandra" or persistent.povname == "alexandra" or persistent.povname == "Alexander" or persistent.povname == "alexander" or persistent.povname == "Alexis" or persistent.povname == "alexis":
+            show georgiabg
+        else:
+            show alexbg
+        ""
+        jump chapter1
     if persistent.nameSet == False:
         call screen contents
     else:
@@ -913,6 +934,10 @@ label splashscreen2:
 
 label after_load:
     if persistent.phoneOn and persistent.vanished <=3:
+        play sound pageFlip
+        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+    elif persistent.bookEnd:
         play sound pageFlip
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
@@ -983,6 +1008,9 @@ label hideAll:
     hide stamp
     hide emptybg
 
+    hide hand
+    hide text
+
     return
 
 
@@ -998,16 +1026,6 @@ label start:
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
-        #TK: can this bit be deleted?
-        $he = persistent.he
-        $He = persistent.He
-        $his = persistent.his
-        $His = persistent.His
-        $him = persistent.him
-        $Him = persistent.Him
-        $Hes = persistent.Hes
-        $hes = persistent.hes
-        $povname = persistent.povname
         #scene bg page
         #show hand onlayer transient:
             #yalign 0.6#0.743
@@ -1016,13 +1034,13 @@ label start:
         scene bg page
 
         if persistent.bookEnd:
+            show nightbg at artPos
             jump newStoryFinale
         elif persistent.vanished >= 4:
             jump allVanishedEnd
 
         show nightbg at artPos
         "This maybe happened, or maybe did not."
-        jump newStoryFinale
         "The time is long past, and much is forgot."
         call hideAll from _call_hideAll
         show forest4bg at artPos
@@ -6466,7 +6484,7 @@ label allVanishedEnd:
     "The house would corrode into shapeless dust as the forest slowly decayed, and nothing would be left."
     #TK: Maybe change this line
     "By that time, of course, you would be long dead. Another interesting event to think upon as the world slowly fell into ash."
-
+    "Note: full conversation with wolf here."
     # if persistent.vanishedLast == "Thief":
     #     ""
     # if persistent.vanishedLast == "Witch":
@@ -6501,90 +6519,162 @@ label allVanishedEnd:
     #The yawning abyss of that vast infinity terrified you, and you returned.
     #Better to lie in front of your fire and stare at your phone. To keep the silence at bay for a while longer.
     #A final piece depending on which character was the last to die.
-
+    # menu:
+    #     "Who are you?":
+    #         "It doesn't matter."
+    #         "Few know my name now. It's been forgotten."
+    #         "I used to be an old story. Of glory and terror. I lived in the forests. Protected them."
+    #         "I was assigned as a terror to the human race."
+    #         "I was possessed of seven terrors (or in your tongue you may say \"Auras\" or \"Glamours of frightening splendour\") which lay upon me like seven cloaks."
+    #         "My face was a spiral of intenstines. My breath was death."
+    #           "My face was a single coiling line, like the entrails of men and beasts, from which omens can be read."
+    #         "Around those first campfires, they talked of me, and shivered with fear."
+    #         "The first monster."
+    #         "Long time ago now. Barely remember those days."
+    #         "I died, of course. All monsters do. Slowly, I was forgotten. I doubt you've even heard my name."
+    #         "Fragments of me survived. In old stories like this one. The beast in the forest. You know."
+    #
+    #     "What happened to my friends?":
+    #         "What happens to any story? It lingers, for a while. Then is forgotten."
+    #         "Each of them has lived here for a few hundred years now, or more."
+    #         "I fulfilled my bargain with them. They stayed here and lived the life of their dreams for many years."
+    #         "The person they always wanted to be. Their best life. In my story, they each got their chance to rise up as a hero."
+    #         "Real life, of course, was never so kind."
+    #         "In the real world their lives would have been short."
+    #         "The world they were born into was not a good place for them."
+    #         "I offered them another world."
+    #         "Of course, in time, they would disappear. They knew that when they took the deal. Nothing lasts forever."
+    #
+    #     "What now?":
+    #         "I have an offer for you. Come. Join me in this book."
+    #         "It won't be so bad. You can be the hero."
+    #         "I will lurk in the forests. You will live in the village."
+    #         "You will rise up against me. You will defeat me. And you will live happily ever after."
+    #     "Won't you consume me?":
+    #         "Don't fool yourself. Everyone is consumed by something."
+    #         "The only choice you have in this world is to decide what you'll be consumed by."
+    #         "The evil you face in your world is grey, and constant, and soaks into every particle of your being like a slow mould."
+    #         "Every day you live, you must breathe it in, until you can't even see it. Like a fish cannot see the water."
+    #         "It cannot be stopped by any one human."
+    #         "Why not choose my evil?"
+    #         "I live in the woods. I prey on the villagers. You can rise up against me, and defeat me with a single act of courage. Then you live happily ever after."
+    #         "Isn't that the evil you want? You seek it out so greedily, all of you."
+    #     "No. I won't do it.":
+    #         "I'm sorry, my friend. It's a bit too late for that."
+    #         "We have grown weak, in here. The souls have all run dry."
+    #         "Either you give yourself up, or we will die."
+    #     "No.":
+    #         "I'm sorry, friend. I gave you a little leeway to add your own spin to the narrative."
+    #         "But this is my story. And I get to tell it exactly the way I want to."
+    #         "Come now. Give your soul over to me."
+    #     Menu:
+    #         "I will.":
+    #             "Good."
+    #         "I will.":
+    #             "Good."
+    #         "I will.":
+    #             "Good."
+    #         "I will.":
+    #             "Good."
+    #         "I will.":
+    #             "Good."
+    #         "I hereby give my soul over to live in this tale, until my story is finished."
     #The wolf talks to you. The book has run out of souls. They've all been consumed.
     #You must give your soul to the book in order to keep it going.
     #First, you will take the book and leave it in the library, for another soul to read.
     #Then, you will live in the book forever.
-    #It won't be so bad. You can be the hero.
-    #I will lurk in the forests. You will live in the village.
-    #You will rise up against me. You will defeat me. And you will live happily ever after.
     #Over, and over, and over again.
     #POV but you'll consume me.
     #Yes. But you will always be consumed by something.
     #That is what living is, in the world that you have built for yourselves outside this story.
     #Your only choice you get to make, in the end, is what you will be consumed by.
     #Come now. Give your soul over to me.
-    #Menu: I will. I will. I will. I will.
-    # I hereby give my soul over to live in this tale, until my story is finished.
-    $persistent.bookEnd = True
-    $persistent.nameSet = False
-    "Good."
     "Now we must choose your title."
-
+    $fullScreenMenu = True
     call hideAll
     show text "What should we call you?":
         xalign 0.5
-        ypos 150
+        ypos 125
     show hand:
-        yalign 0.23#0.743
+        yalign 0.22#0.743
         xalign 0.5
-
-    define choice_menu_ypos = 580
-    #define gui.dialogue_ypos = 180
-    #define gui.choice_button_borders = Borders(47, 3, 42, 3)
-    #define gui.choice_button_borders = Borders(10, 3, 10, 3)
 
     menu:
         "If you chose The Cobbler, turn to page 465.":
             define persistent.finaleTitle = "Cobbler"
-            "Good."
         "If you chose The Trickster, turn to page 466.":
             define persistent.finaleTitle = "Trickster"
-            "Good."
         "If you chose The Crow, turn to page 467.":
             define persistent.finaleTitle = "Crow"
-            "Good."
         "If you chose The Specter, turn to page 468.":
             define persistent.finaleTitle = "Specter"
-            "Good."
         "If you chose The Winter Rose, turn to page 469.":
             define persistent.finaleTitle = "Winter Rose"
-            "Good."
         "If you chose The Fool, turn to page 470.":
             define persistent.finaleTitle = "Fool"
-            "Good."
         "If you chose The Water Nixie, turn to page 471.":
             define persistent.finaleTitle = "Water Nixie"
-            "Good."
         "If you chose The Giant, turn to page 472.":
             define persistent.finaleTitle = "Giant"
-            "Good."
         "If you chose The Bushranger, turn to page 473.":
             define persistent.finaleTitle = "Bushranger"
-            "Good."
         "If you chose The Butcher, turn to page 474.":
             define persistent.finaleTitle = "Butcher"
-            "Good."
         "If you chose The Aristocrat, turn to page 475.":
             define persistent.finaleTitle = "Aristocrat"
-            "Good."
         "If you chose The Warrior-Poet, turn to page 476.":
             define persistent.finaleTitle = "Warrior-Poet"
-            "Good."
         "If you chose The Heirophant, turn to page 477.":
             define persistent.finaleTitle = "Heirophant"
-            "Good."
-    hide hand
-    define choice_menu_ypos = 700
+    call hideAll
+    show emptybg at artPos
+    $fullScreenMenu = False
+    "Good."
+    "You travelled to a library in your world."
+    "On the shelf, you placed this book. Ready for another reader."
+    "As your hand left the pages, there was a shivering in the air, and you disappeared."
+    "Never to be seen again in the world of men."
+    "There was a calmness, then. The silence slowly abated."
+    "The book sat on the shelf, and waited."
+    show white onlayer over_screens zorder 101:
+        alpha 0.0
+        linear 15.0 alpha 1.0
+    $renpy.music.set_volume(0, delay=10.0, channel=u'ambient1')
+    $renpy.music.set_volume(0, delay=10.0, channel=u'ambient2')
+    $renpy.music.set_volume(0, delay=10.0, channel=u'music')
+    play audio whiteNoise
+    #TK: Look at slightly changing xpos as well as the ypos for these
+    "And then there was rest in the land."
+    play audio pageFlip volume 0.8
+    "{space=5}And then there was rest in the land."
+    play audio pageFlip2 volume 0.6
+    "{space=11}And then there was rest in the land."
+    play audio pageFlip3 volume 0.5
+    "{space=8}And then there was rest in the land."
+    play audio pageFlip2 volume 0.4
+    "{space=15}And then there was rest in the land."
+    play audio pageFlip volume 0.3
+    "{space=6}And then there was rest in the land."
+    play audio pageFlip3 volume 0.2
+    "{space=20}And then there was rest in the land."
+    play audio pageFlip2 volume 0.1
+    "{space=9}And then there was rest in the land."
+    $persistent.bookEnd = True
+    $purge_saves()
+    $renpy.quit()
 
     #You get an option of what you want to be called.
     #You get swallowed into the book. "And then there was rest in the land" as the game fades to black.
     #The game reverts to the menu (or maybe you get booted out and have to reboot it, not sure)
 
     label newStoryFinale:
+        play sound pageFlip
         #TK: Make sure that it's clear that this is a new reader. Maybe the book looks different, more banged up. Maybe quitting the game so that players have to restart it would help that impression? Not sure
         #The game goes into the beginning of the story right away (no load / start game):
+        if persistent.povname == "alex" or persistent.povname =="Alex" or persistent.povname =="Alexandra" or persistent.povname =="alexandra" or persistent.povname =="Alexander" or persistent.povname =="alexander" or persistent.povname =="Alexis" or persistent.povname =="alexis":
+            "At last. Welcome, Georgia."
+        else:
+            "At last. Welcome, Alex."
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
         "Back in the old days, when wishing worked, you lived in a lovely cottage on the verge of a great and magical forest."
@@ -6643,7 +6733,7 @@ label allVanishedEnd:
             elif persistent.name4Rand == 2:
                 "To the west, a hideous Blindworm that lurked deep within the earth."
             elif persistent.name4Rand == 3:
-                "To the west, a great Castle that was said to be the finest in the land."
+                "To the west, a magnificent Castle where the streets were paved with gold and the rivers ran with dark red wine."
             elif persistent.name4Rand == 4:
                 "To the west, there were rumours of an enchanted Glass Coffin with a mysterious shadow trapped within."
             elif persistent.name4Rand == 5:
@@ -6682,7 +6772,7 @@ label allVanishedEnd:
         if persistent.finaleTitle == "Crow":
             "One day, the endless cawing grew too much for you to bear. You packed your belongings into a knapsack, and walked into the forest."
         else:
-            "One day, you resolved to find this mysterious figure for yourself. You packed your belongings into a knapsack, and walked into the forest."
+            "One day, you resolved to meet these mysterious figure for yourself. You packed your belongings into a knapsack, and walked into the forest."
         "\"Be careful!\" Your mother cried after you. But you had resolved to take this path, no matter the danger."
         show black:
             alpha 0.0
@@ -6693,15 +6783,15 @@ label allVanishedEnd:
         "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
         "A small turtle saw you coming and fled into the water with a plop."
         "The road was long, and the forest was dark, but a smile broke out on your face."
-        # show text "{b}THE END.{/b} \n \n {i}True Ending.{/i}": #
-        #             xalign 0.5
-        #             #yalign 0.5
-        #             ypos 650
-        # show stamp:
-        #     xalign 0.5
-        #     ypos 680
         "You were home."
+        $purge_saves()
         pause (10.0)
+        #TK: Include this text saying true ending? or not?
+        # show text "{color=#FFFFFF}True Ending.{/color}" with fade:
+        #     xalign 0.5
+        #     yalign 0.5
+        # ""
+
         show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" with fade:
             xalign 0.5
             yalign 0.5
@@ -6715,10 +6805,13 @@ label allVanishedEnd:
             xalign 0.5
             yalign 0.5
         ""
+        $renpy.music.set_volume(0, delay=5.0, channel=u'ambient1')
+        $renpy.music.set_volume(0, delay=5.0, channel=u'ambient2')
+        $renpy.music.set_volume(0, delay=5.0, channel=u'music')
+        #hide text with fade
+        scene black with fade
+        pause (5.0)
         $renpy.quit()
-        # The game fades to black. The words "THE END." appear, or "A game by Jack McNamee" . Something simple, white on black. Real credits to indicate that the game is truly over. Perhaps even some actual non-diegetic music to finish it off.
-        # "TRUE ENDING."
-        # If you restart the game, the same thing happens.
 
     label bookBurnedFinale:
         ""
@@ -6736,6 +6829,10 @@ label allVanishedEnd:
         # The black space lingers for a bit.
         $persistent.bookBurned = True
         pause (10.0)
+        show text "{color=#FFFFFF}True Ending.{/color}" with fade:
+            xalign 0.5
+            yalign 0.5
+        ""
         show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" with fade:
             xalign 0.5
             yalign 0.5
@@ -6847,7 +6944,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}White Noise:{/b} 'Underwater white noise', MixKit, mixkit.co.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     hide text
     $ ui.text("Written on the lands of the Turrbal and Jagera peoples. I pay my respects to their Elders, past and present. Sovereignty was never ceded.", xpos=50, ypos=190, xmaximum=520)

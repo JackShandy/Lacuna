@@ -206,11 +206,21 @@ style input:
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
 screen choice(items):
-    style_prefix "choice"
 
-    vbox:
-        for i in items:
-            textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
+
+    window:
+        style_prefix "choice"
+
+        #Change for larger menus with lots of options
+        if fullScreenMenu:
+            yalign -0.3
+
+        vbox:
+            for i in items:
+                textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
+
+
+
 
 
 ## When this is true, menu captions will be spoken by the narrator. When false,
@@ -222,11 +232,18 @@ style choice_vbox is vbox
 style choice_button is button
 style choice_button_text is button_text
 
+# if persistent.vanished >= 4:
+#     style choice_vbox:
+#         xalign 0
+#         ypos 580
+#         yanchor 0.6
+#         spacing gui.choice_spacing
+#
+# else:
 style choice_vbox:
-    xalign 0#0.5
-    ypos choice_menu_ypos #700#550#127
-    yanchor 0.6#0.45#0.5 %0.1
-
+    xalign 0
+    ypos choice_menu_ypos
+    yanchor 0.6
     spacing gui.choice_spacing
 
 style choice_button is default:

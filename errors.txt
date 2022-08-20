@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 6659: expected statement.
-    renpy.quit();
-                ^
+File "game/script.rpy", line 125: unexpected EOF while parsing
+    False:
+          ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Mon Aug  8 16:03:11 2022
+Sat Aug 20 16:44:13 2022
