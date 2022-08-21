@@ -1,36 +1,48 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-After initialization, but before game start.
-  File "game/screens.rpy", line 208, in prepare_screen
-    screen choice(items):
-  File "game/screens.rpy", line 208, in prepare
-    screen choice(items):
-  File "game/screens.rpy", line 212, in prepare
-    vbox:
-Exception: Properties are not allowed here.
+While running game code:
+  File "game/script.rpy", line 6474, in script
+    pause
+  File "renpy/common/000statements.rpy", line 455, in execute_pause
+    renpy.pause()
+IOError: Couldn't find file 'test.avi'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 326, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 617, in main
-    run(restart)
-  File "renpy/main.py", line 97, in run
-    renpy.display.screen.prepare_screens()
-  File "renpy/display/screen.py", line 938, in prepare_screens
-    s.ast.prepare_screen()
-  File "game/screens.rpy", line 208, in prepare_screen
-    screen choice(items):
-  File "game/screens.rpy", line 208, in prepare
-    screen choice(items):
-  File "game/screens.rpy", line 212, in prepare
-    vbox:
-  File "renpy/sl2/slast.py", line 409, in prepare
-    raise Exception("Properties are not allowed here.")
-Exception: Properties are not allowed here.
+  File "game/script.rpy", line 6474, in script
+    pause
+  File "renpy/ast.py", line 1969, in execute
+    self.call("execute")
+  File "renpy/ast.py", line 1957, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "renpy/statements.py", line 278, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 455, in execute_pause
+    renpy.pause()
+  File "renpy/exports.py", line 1525, in pause
+    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward, pause=delay)
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "renpy/display/core.py", line 3101, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3794, in interact_core
+    renpy.audio.audio.periodic()
+  File "renpy/audio/audio.py", line 1101, in periodic
+    raise_(exc[0], exc[1], exc[2])
+  File "renpy/audio/audio.py", line 1079, in periodic_thread_main
+    periodic_pass()
+  File "renpy/audio/audio.py", line 1021, in periodic_pass
+    c.periodic()
+  File "renpy/audio/audio.py", line 487, in periodic
+    topf = load(self.file_prefix + filename + self.file_suffix)
+  File "renpy/audio/audio.py", line 69, in load
+    rv = renpy.loader.load(fn)
+  File "renpy/loader.py", line 798, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'test.avi'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Lacuna. 0.81
-Sat Aug 20 16:37:19 2022
+Sun Aug 21 16:26:09 2022

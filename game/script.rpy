@@ -76,14 +76,14 @@ default persistent.hes = "hes"
 #===========Persistent Disappearances
 
 #number of people who have disappeared
-default persistent.vanished = 4
+default persistent.vanished = 0
 
 #Who has disappeared specifically
 #TK: revert after testing
-default persistent.toadVanished = True
-default persistent.witchVanished = True
-default persistent.thiefVanished = True
-default persistent.mushroomVanished = True
+default persistent.toadVanished = False
+default persistent.witchVanished = False
+default persistent.thiefVanished = False
+default persistent.mushroomVanished = False
 
 #If you get the final bad ending, who was the last to die?
 #Options: Thief, Toad, Witch, Mushroom
@@ -308,10 +308,24 @@ define mushroomEmbassy = False
 define mushroomPale = False
 define mushroomDeathTale = False
 
+###==== Countdown
+#This screen counts down automatically and then jumps to a label once the countdown is finished
+#used for the BurnEnd and could also be useful for some random moments throughout the game
+init: ### just setting variables in advance so there are no undefined variable problems
+    $ timer_range = 0
+    $ timer_jump = 0
+    $ time = 0
+
+screen countdown:
+    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
+
+
 ###==== Defining all images
 #The position to show the background illustrations
 init:
     $ artPos = Position(xpos=0.5, xanchor=0.5, ypos=35, yanchor=0)
+    #full screen post (upper left corner)
+    $ fullPos = Position(xpos=0, xanchor=0.0, ypos=0, yanchor=0)
     $ name1Pos = Position(xpos=0.5, xanchor=0.5, ypos=190, yanchor=0)
     $ name2Pos = Position(xpos=0.5, xanchor=0.5, ypos=242, yanchor=0)
     $ name3Pos = Position(xpos=0.5, xanchor=0.5, ypos=291, yanchor=0)
@@ -320,6 +334,9 @@ init:
     $ andPos =  Position(xpos=0.5, xanchor=0.5, ypos=405, yanchor=0)
 
 ##====Full Screen Images
+#Book Burning Movie
+image bookBurnMovie = Movie(play="movies/bookBurn-Split.ogv", side_mask=True, loop=False)
+
 #White screen
 image white = "#FFFFFF"
 
@@ -6415,7 +6432,14 @@ label wolf:
             "You will be happy."
             #The end
             #TK: You burn the book or decide to stay there forever.
-            jump end
+            menu:
+                "If you chose to burn the book, turn to page 500.":
+                    #Tk: Finish this ending.
+                    "noooooo"
+                    "You put the book in the fire."
+                    jump bookBurnedFinale
+                "If you chose to accept the wolf's deal, turn to page 501.":
+                    jump wolfEnd
         #You get everything you want. The wolf asks you to make a deal where you live out the rest of your life in the book. It's not such a bad life.
         #You either decide to destroy the book and destroy the wolf forever. Or live out your rest of your life in a fantasy world.
         #The wolf asks you to think about it. You get a final scene with any remaining living characters. 4 total scenes here (1 for each main character). If I have a chance, we have a scene with each minor character too.
@@ -6478,6 +6502,7 @@ label allVanishedEnd:
     "The silence was in everything. It penetrated your meat and your bones and soaked deep into your brain. There were great empty silent spaces in your thoughts. Things you were no longer able to think."
     "You slept in the beds. You ate the food in the pantry. When you were not doing these things, you stared into the fire."
     #"Were things ever different? None can say."
+    #"Was there ever anything outside this room, and this house? None can say."
     pov "The House provides."
     "Like all other things, your house slowly fell day by day into greater and greater ruin as the unstoppable and silent force of entropy ground it into the dirt, piece by piece."
     "Soon the Lacuna would be total and all-encompassing."
@@ -6589,6 +6614,11 @@ label allVanishedEnd:
     #That is what living is, in the world that you have built for yourselves outside this story.
     #Your only choice you get to make, in the end, is what you will be consumed by.
     #Come now. Give your soul over to me.
+    jump wolfEnd
+
+#The ending when you choose to go with the wolf
+label wolfEnd:
+    "You have made the right choice."
     "Now we must choose your title."
     $fullScreenMenu = True
     call hideAll
@@ -6663,194 +6693,216 @@ label allVanishedEnd:
     $purge_saves()
     $renpy.quit()
 
-    #You get an option of what you want to be called.
-    #You get swallowed into the book. "And then there was rest in the land" as the game fades to black.
-    #The game reverts to the menu (or maybe you get booted out and have to reboot it, not sure)
+label newStoryFinale:
+    play sound pageFlip
+    #TK: Make sure that it's clear that this is a new reader. Maybe the book looks different, more banged up. Maybe quitting the game so that players have to restart it would help that impression? Not sure
+    #The game goes into the beginning of the story right away (no load / start game):
+    if persistent.povname == "alex" or persistent.povname =="Alex" or persistent.povname =="Alexandra" or persistent.povname =="alexandra" or persistent.povname =="Alexander" or persistent.povname =="alexander" or persistent.povname =="Alexis" or persistent.povname =="alexis":
+        "At last. Welcome, Georgia."
+    else:
+        "At last. Welcome, Alex."
+    "This maybe happened, or maybe did not."
+    "The time is long past, and much is forgot."
+    "Back in the old days, when wishing worked, you lived in a lovely cottage on the verge of a great and magical forest."
+    "Many strange figures lived in the woods around your house."
+    if persistent.thiefVanished == False:
+        "To the north lived a cunning thief."
+    else:
+        if persistent.name1Rand == 1:
+            "To the north lived a wicked Imp."
+        elif persistent.name1Rand == 2:
+            "To the north there were rumours of a legendary pair of winged boots, which often spoke to offer advice to lost travellers along those roads."
+        elif persistent.name1Rand == 3:
+            "To the north was a terrible Frost that lay upon the land like a curse."
+        elif persistent.name1Rand == 4:
+            "To the north lived a wild Goat that knew no master, and caused havok and woe to all who crossed its path."
+        elif persistent.name1Rand == 5:
+            "To the north lived a debaucherous Fiend whose laugh was like thunder."
+        elif persistent.name1Rand == 6:
+            "To the north lived a gallant Rake who threw wild parties at all hours of the day and night."
+    if persistent.witchVanished == False:
+        "To the east, a cackling witch."
+    else:
+        if persistent.name2Rand == 1:
+            "To the east, a kindly Midwife."
+        elif persistent.name2Rand == 2:
+            "To the east, the Moon itself had a secret hiding-place, known to no-one."
+        elif persistent.name2Rand == 3:
+            "To the east, a great Mountain towered over the land, and was often heard to rumble in ominous tones."
+        elif persistent.name2Rand == 4:
+            "To the east, a great Pumpkin was said to hold court over the legions of the dead."
+        elif persistent.name2Rand == 5:
+            "To the east, a Tyrant ruled with an iron fist, and all shuddered to hear his name said aloud."
+        elif persistent.name2Rand == 6:
+            "To the east, a kindly Toymaker lived in a curious little shop with no name."
+    if persistent.toadVanished == False:
+        "To the south, a haughty toad."
+    else:
+        if persistent.name3Rand == 1:
+            "To the south was a wandering Beggar with no hands, who was said to know all the languages of the world."
+        elif persistent.name3Rand == 2:
+            "To the south was a crooked Crone who was often heard shrieking at midnight."
+        elif persistent.name3Rand == 3:
+            "To the south was the Firebird itself, which was too bright to look upon."
+        elif persistent.name3Rand == 4:
+            "To the south was a mystical Sausage which (it was said) could grant any wish."
+        elif persistent.name3Rand == 5:
+            "To the south was a humble Shepherd who guarded a flock of grey clouds."
+        elif persistent.name3Rand == 6:
+            "To the south was a gnarled old Baker who (it was said) would bake up a gingerbread child for any couple that asked."
 
-    label newStoryFinale:
-        play sound pageFlip
-        #TK: Make sure that it's clear that this is a new reader. Maybe the book looks different, more banged up. Maybe quitting the game so that players have to restart it would help that impression? Not sure
-        #The game goes into the beginning of the story right away (no load / start game):
-        if persistent.povname == "alex" or persistent.povname =="Alex" or persistent.povname =="Alexandra" or persistent.povname =="alexandra" or persistent.povname =="Alexander" or persistent.povname =="alexander" or persistent.povname =="Alexis" or persistent.povname =="alexis":
-            "At last. Welcome, Georgia."
-        else:
-            "At last. Welcome, Alex."
-        "This maybe happened, or maybe did not."
-        "The time is long past, and much is forgot."
-        "Back in the old days, when wishing worked, you lived in a lovely cottage on the verge of a great and magical forest."
-        "Many strange figures lived in the woods around your house."
-        if persistent.thiefVanished == False:
-            "To the north lived a cunning thief."
-        else:
-            if persistent.name1Rand == 1:
-                "To the north lived a wicked Imp."
-            elif persistent.name1Rand == 2:
-                "To the north there were rumours of a legendary pair of winged boots, which often spoke to offer advice to lost travellers along those roads."
-            elif persistent.name1Rand == 3:
-                "To the north was a terrible Frost that lay upon the land like a curse."
-            elif persistent.name1Rand == 4:
-                "To the north lived a wild Goat that knew no master, and caused havok and woe to all who crossed its path."
-            elif persistent.name1Rand == 5:
-                "To the north lived a debaucherous Fiend whose laugh was like thunder."
-            elif persistent.name1Rand == 6:
-                "To the north lived a gallant Rake who threw wild parties at all hours of the day and night."
-        if persistent.witchVanished == False:
-            "To the east, a cackling witch."
-        else:
-            if persistent.name2Rand == 1:
-                "To the east, a kindly Midwife."
-            elif persistent.name2Rand == 2:
-                "To the east, the Moon itself had a secret hiding-place, known to no-one."
-            elif persistent.name2Rand == 3:
-                "To the east, a great Mountain towered over the land, and was often heard to rumble in ominous tones."
-            elif persistent.name2Rand == 4:
-                "To the east, a great Pumpkin was said to hold court over the legions of the dead."
-            elif persistent.name2Rand == 5:
-                "To the east, a Tyrant ruled with an iron fist, and all shuddered to hear his name said aloud."
-            elif persistent.name2Rand == 6:
-                "To the east, a kindly Toymaker lived in a curious little shop with no name."
-        if persistent.toadVanished == False:
-            "To the south, a haughty toad."
-        else:
-            if persistent.name3Rand == 1:
-                "To the south was a wandering Beggar with no hands, who was said to know all the languages of the world."
-            elif persistent.name3Rand == 2:
-                "To the south was a crooked Crone who was often heard shrieking at midnight."
-            elif persistent.name3Rand == 3:
-                "To the south was the Firebird itself, which was too bright to look upon."
-            elif persistent.name3Rand == 4:
-                "To the south was a mystical Sausage which (it was said) could grant any wish."
-            elif persistent.name3Rand == 5:
-                "To the south was a humble Shepherd who guarded a flock of grey clouds."
-            elif persistent.name3Rand == 6:
-                "To the south was a gnarled old Baker who (it was said) would bake up a gingerbread child for any couple that asked."
+    if persistent.mushroomVanished == False:
+        "To the west, a wise mushroom."
+    else:
+        if persistent.name4Rand == 1:
+            "To the west, a pack of thieving Swans who were a terror upon the countryside."
+        elif persistent.name4Rand == 2:
+            "To the west, a hideous Blindworm that lurked deep within the earth."
+        elif persistent.name4Rand == 3:
+            "To the west, a magnificent Castle where the streets were paved with gold and the rivers ran with dark red wine."
+        elif persistent.name4Rand == 4:
+            "To the west, there were rumours of an enchanted Glass Coffin with a mysterious shadow trapped within."
+        elif persistent.name4Rand == 5:
+            "To the west, travellers spoke of a strange Singing Bone that could be heard on moonless nights."
+        elif persistent.name4Rand == 6:
+            "To the west, travellers whispered that a miraculous bushel of Snake Leaves could be found, with the power to revive the dead."
 
-        if persistent.mushroomVanished == False:
-            "To the west, a wise mushroom."
-        else:
-            if persistent.name4Rand == 1:
-                "To the west, a pack of thieving Swans who were a terror upon the countryside."
-            elif persistent.name4Rand == 2:
-                "To the west, a hideous Blindworm that lurked deep within the earth."
-            elif persistent.name4Rand == 3:
-                "To the west, a magnificent Castle where the streets were paved with gold and the rivers ran with dark red wine."
-            elif persistent.name4Rand == 4:
-                "To the west, there were rumours of an enchanted Glass Coffin with a mysterious shadow trapped within."
-            elif persistent.name4Rand == 5:
-                "To the west, travellers spoke of a strange Singing Bone that could be heard on moonless nights."
-            elif persistent.name4Rand == 6:
-                "To the west, travellers whispered that a miraculous bushel of Snake Leaves could be found, with the power to revive the dead."
+    #(This next bit alters depending on which character you chose):
+    if persistent.finaleTitle == "Cobbler":
+        "There were even rumours of a humble Cobbler in the heart of the woods, making [his] living repairing the shoes of these strange and mythical figures."
+    elif persistent.finaleTitle == "Trickster":
+        "Worst of all were the rumours of a sly Trickster who swindled [his] way across the country, duping innocent men and women out of their honest coin."
+    elif persistent.finaleTitle == "Crow":
+        "Worst of all was a sinister Crow that haunted you day and night, cawing as it lurked above your mantle."
+    elif persistent.finaleTitle == "Specter":
+        "Worst of all was the sight of a haunting Specter that could sometimes be seen in the fog, beckoning with a pale hand."
+    elif persistent.finaleTitle == "Winter Rose":
+        "There were even rumours of a great beauty deep in the forest, who bloomed like a winter rose."
+    elif persistent.finaleTitle == "Fool":
+        "There were even rumours of a terrible Fool deep in the forest, who travelled the highways and byways freely without a single thought in [his] head."
+    elif persistent.finaleTitle == "Water Nixie":
+        "Worst of all were the rumours of a Water Nixie that lurked deep in the lakes of the forest, dragging unwary travellers to [his] drowned kingdom below."
+    elif persistent.finaleTitle == "Giant":
+        "Worst of all were the rumours of a fell Giant who slumbered under the hills, shaking the earth with [his] snores each night."
+    elif persistent.finaleTitle == "Bushranger":
+        "Worst of all were the rumours of a dastardly bushranger who plagued the roads, stealing everything [he] could and causing havock left and right."
+    elif persistent.finaleTitle == "Butcher":
+        "There were even rumours of a humble Butcher who plied [his] wares in a small red shop deep in the forest. So delicious were [his] wares that travellers would flock there day and night for a bite to eat, though none could say where [he] sourced [his] intoxicating meats."
+    elif persistent.finaleTitle == "Aristocrat":
+        "There were even rumours of an exiled Aristocrat who ruled over a lost kingdom, deep in the woods where no-one had ever returned from alive."
+    elif persistent.finaleTitle == "Warrior-Poet":
+        "There were even rumours of a bold Warrior-Poet from a faraway land who roamed through the forest, trying to live a peaceful life."
+    elif persistent.finaleTitle == "Heirophant":
+        "There were even rumours of a noble Heirophant who lived in quiet prayer deep in the forest."
 
-        #(This next bit alters depending on which character you chose):
-        if persistent.finaleTitle == "Cobbler":
-            "There were even rumours of a humble Cobbler in the heart of the woods, making [his] living repairing the shoes of these strange and mythical figures."
-        elif persistent.finaleTitle == "Trickster":
-            "Worst of all were the rumours of a sly Trickster who swindled [his] way across the country, duping innocent men and women out of their honest coin."
-        elif persistent.finaleTitle == "Crow":
-            "Worst of all was a sinister Crow that haunted you day and night, cawing as it lurked above your mantle."
-        elif persistent.finaleTitle == "Specter":
-            "Worst of all was the sight of a haunting Specter that could sometimes be seen in the fog, beckoning with a pale hand."
-        elif persistent.finaleTitle == "Winter Rose":
-            "There were even rumours of a great beauty deep in the forest, who bloomed like a winter rose."
-        elif persistent.finaleTitle == "Fool":
-            "There were even rumours of a terrible Fool deep in the forest, who travelled the highways and byways freely without a single thought in [his] head."
-        elif persistent.finaleTitle == "Water Nixie":
-            "Worst of all were the rumours of a Water Nixie that lurked deep in the lakes of the forest, dragging unwary travellers to [his] drowned kingdom below."
-        elif persistent.finaleTitle == "Giant":
-            "Worst of all were the rumours of a fell Giant who slumbered under the hills, shaking the earth with [his] snores each night."
-        elif persistent.finaleTitle == "Bushranger":
-            "Worst of all were the rumours of a dastardly bushranger who plagued the roads, stealing everything [he] could and causing havock left and right."
-        elif persistent.finaleTitle == "Butcher":
-            "There were even rumours of a humble Butcher who plied [his] wares in a small red shop deep in the forest. So delicious were [his] wares that travellers would flock there day and night for a bite to eat, though none could say where [he] sourced [his] intoxicating meats."
-        elif persistent.finaleTitle == "Aristocrat":
-            "There were even rumours of an exiled Aristocrat who ruled over a lost kingdom, deep in the woods where no-one had ever returned from alive."
-        elif persistent.finaleTitle == "Warrior-Poet":
-            "There were even rumours of a bold Warrior-Poet from a faraway land who roamed through the forest, trying to live a peaceful life."
-        elif persistent.finaleTitle == "Heirophant":
-            "There were even rumours of a noble Heirophant who lived in quiet prayer deep in the forest."
+    if persistent.finaleTitle == "Crow":
+        "One day, the endless cawing grew too much for you to bear. You packed your belongings into a knapsack, and walked into the forest."
+    else:
+        "One day, you resolved to meet these mysterious figure for yourself. You packed your belongings into a knapsack, and walked into the forest."
+    "\"Be careful!\" Your mother cried after you. But you had resolved to take this path, no matter the danger."
+    show black:
+        alpha 0.0
+        linear 15.0 alpha 1.0
 
-        if persistent.finaleTitle == "Crow":
-            "One day, the endless cawing grew too much for you to bear. You packed your belongings into a knapsack, and walked into the forest."
-        else:
-            "One day, you resolved to meet these mysterious figure for yourself. You packed your belongings into a knapsack, and walked into the forest."
-        "\"Be careful!\" Your mother cried after you. But you had resolved to take this path, no matter the danger."
-        show black:
-            alpha 0.0
-            linear 15.0 alpha 1.0
+    "As you strode into the darkness of the forest, the twilight set in."
+    "The crickets and cicadas all around began their chattering and squabbling, and the evening birds began to laugh and trill, and the wet cool mist of the rainforest settled around you."
+    "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
+    "A small turtle saw you coming and fled into the water with a plop."
+    "The road was long, and the forest was dark, but a smile broke out on your face."
+    "You were home."
+    $purge_saves()
+    pause (10.0)
+    #TK: Include this text saying true ending? or not?
+    # show text "{color=#FFFFFF}True Ending.{/color}" with fade:
+    #     xalign 0.5
+    #     yalign 0.5
+    # ""
 
-        "As you strode into the darkness of the forest, the twilight set in."
-        "The crickets and cicadas all around began their chattering and squabbling, and the evening birds began to laugh and trill, and the wet cool mist of the rainforest settled around you."
-        "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
-        "A small turtle saw you coming and fled into the water with a plop."
-        "The road was long, and the forest was dark, but a smile broke out on your face."
-        "You were home."
-        $purge_saves()
-        pause (10.0)
-        #TK: Include this text saying true ending? or not?
-        # show text "{color=#FFFFFF}True Ending.{/color}" with fade:
-        #     xalign 0.5
-        #     yalign 0.5
-        # ""
+    show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" with fade:
+        xalign 0.5
+        yalign 0.5
+    ""
+    show text "{color=#FFFFFF}Thank you so much for playing.{/color}" with fade:
+        xalign 0.5
+        yalign 0.5
 
-        show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" with fade:
-            xalign 0.5
-            yalign 0.5
-        ""
-        show text "{color=#FFFFFF}Thank you so much for playing.{/color}" with fade:
-            xalign 0.5
-            yalign 0.5
+    ""
+    show text "{color=#FFFFFF}I hope you enjoyed the game, and I hope you have a wonderful life.{/color}" with fade:
+        xalign 0.5
+        yalign 0.5
+    ""
+    $renpy.music.set_volume(0, delay=5.0, channel=u'ambient1')
+    $renpy.music.set_volume(0, delay=5.0, channel=u'ambient2')
+    $renpy.music.set_volume(0, delay=5.0, channel=u'music')
+    #hide text with fade
+    scene black with fade
+    pause (5.0)
+    $renpy.quit()
 
-        ""
-        show text "{color=#FFFFFF}I hope you enjoyed the game, and I hope you have a wonderful life.{/color}" with fade:
-            xalign 0.5
-            yalign 0.5
-        ""
-        $renpy.music.set_volume(0, delay=5.0, channel=u'ambient1')
-        $renpy.music.set_volume(0, delay=5.0, channel=u'ambient2')
-        $renpy.music.set_volume(0, delay=5.0, channel=u'music')
-        #hide text with fade
-        scene black with fade
-        pause (5.0)
-        $renpy.quit()
+label bookBurnedFinale:
+    # You share a tearful moment with the last people left alive as the book burns
+    # Unique finale depending on who is left alive
+    # Can talk to all living NPC's as well (but you have a limited amount of time because the book is burning - maybe there's a real life time limit.
+    # Or maybe it's better to just have a limit on how much stuff you can read - probably better, don't want people to rush really.
+    # Like the ending of Undertale, you can talk to all NPC's and say goodbye etc. The timer is structured so you can only say goodbye to like 70% of them, you won't be able to have a full convo with everyone.
+    # Once the time limit is hit you have a final scene where everyone says goodbye and thank you as the last part of the book burns.
+    # They are grateful to you. It is a bittersweet moment.
+    # The last part of the page burns up and is gone forever.
+    # The black space lingers for a bit.
+    #Game quits after the movie has run its course (IE, the book has burned).
 
-    label bookBurnedFinale:
-        ""
-        show black:
-            alpha 0.0
-            linear 15.0 alpha 1.0
-        # You share a tearful moment with the last people left alive as the book burns
-        # Unique finale depending on who is left alive
-        # Can talk to all living NPC's as well (but you have a limited amount of time because the book is burning - maybe there's a real life time limit.
-        # Or maybe it's better to just have a limit on how much stuff you can read - probably better, don't want people to rush really.
-        # Like the ending of Undertale, you can talk to all NPC's and say goodbye etc. The timer is structured so you can only say goodbye to like 70% of them, you won't be able to have a full convo with everyone.
-        # Once the time limit is hit you have a final scene where everyone says goodbye and thank you as the last part of the book burns.
-        # They are grateful to you. It is a bittersweet moment.
-        # The last part of the page burns up and is gone forever.
-        # The black space lingers for a bit.
-        $persistent.bookBurned = True
-        pause (10.0)
-        show text "{color=#FFFFFF}True Ending.{/color}" with fade:
-            xalign 0.5
-            yalign 0.5
-        ""
-        show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" with fade:
-            xalign 0.5
-            yalign 0.5
-        ""
-        show text "{color=#FFFFFF}Thank you so much for playing.{/color}" with fade:
-            xalign 0.5
-            yalign 0.5
+    #After the book burning movie has finished and you've run out of time, jump to the ending credits
+    #Could add in something where when you only have a few seconds left, jump to a thing where people say "Goodbye" in some of the small remaining pages left
+    $ time = 8         #Note: 8 = Roughly 14 seconds
+    $ timer_jump = 'burnEnd'
+    show screen countdown
+    show bookBurnMovie at fullPos onlayer over_screens zorder 98
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
+    "(test) NPC's talk"
 
-        ""
-        show text "{color=#FFFFFF}I hope you enjoyed the game, and I hope you have a wonderful life.{/color}" with fade:
-            xalign 0.5
-            yalign 0.5
-        ""
-        $renpy.quit()
+#This is the piece of the book burned ending. The book has been destroyed.
+label burnEnd:
+    #TK: Revise and finish this ending
+    $quick_menu = False
+    show black
+    hide bookBurnMovie with fade
+    $purge_saves()
+    show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" with fade:
+        xalign 0.5
+        yalign 0.5
+    ""
+    show text "{color=#FFFFFF}Thank you so much for playing.{/color}" with fade:
+        xalign 0.5
+        yalign 0.5
 
-        # "TRUE ENDING."
-        # The words "THE END." appear, or "A game by Jack McNamee" . Something simple, white on black. Real credits to indicate that the game is truly over. Perhaps even some actual non-diegetic music to finish it off.
-        # If you restart the game, you just see the black screen with the burnt remains of the book there.
+    ""
+    show text "{color=#FFFFFF}I hope you enjoyed the game, and I hope you have a wonderful life.{/color}" with fade:
+        xalign 0.5
+        yalign 0.5
+    ""
+    $renpy.music.set_volume(0, delay=5.0, channel=u'ambient1')
+    $renpy.music.set_volume(0, delay=5.0, channel=u'ambient2')
+    $renpy.music.set_volume(0, delay=5.0, channel=u'music')
+    #hide text with fade
+    scene black with fade
+    pause (5.0)
+    $persistent.bookBurned = True
+    $renpy.quit()
+
 
 label endStamp:
     if persistent.vanished == 0:

@@ -64,6 +64,8 @@ define config.has_voice = False
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
+if persistent.bookBurned:
+    define config.main_menu_music = ""
 if persistent.phoneOn and persistent.vanished <=3:
     define config.main_menu_music = "audio/wildlife2.mp3"
 elif persistent.bookEnd:
