@@ -1,48 +1,68 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 6474, in script
-    pause
-  File "renpy/common/000statements.rpy", line 455, in execute_pause
-    renpy.pause()
-IOError: Couldn't find file 'test.avi'.
+  File "game/script.rpy", line 6590, in script
+    menu:
+  File "game/screens.rpy", line 208, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 208, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 211, in execute
+    window:
+  File "game/screens.rpy", line 211, in keywords
+    window:
+  File "game/screens.rpy", line 217, in keywords
+    if halfScreenMenu:
+  File "game/screens.rpy", line 217, in <module>
+    if halfScreenMenu:
+NameError: name 'halfScreenMenu' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 6474, in script
-    pause
-  File "renpy/ast.py", line 1969, in execute
-    self.call("execute")
-  File "renpy/ast.py", line 1957, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "renpy/statements.py", line 278, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 455, in execute_pause
-    renpy.pause()
-  File "renpy/exports.py", line 1525, in pause
-    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward, pause=delay)
+  File "game/script.rpy", line 6590, in script
+    menu:
+  File "renpy/ast.py", line 1642, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "renpy/exports.py", line 1038, in menu
+    rv = renpy.store.menu(new_items)
+  File "renpy/exports.py", line 1274, in display_menu
+    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
   File "renpy/ui.py", line 298, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "renpy/display/core.py", line 3101, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3794, in interact_core
-    renpy.audio.audio.periodic()
-  File "renpy/audio/audio.py", line 1101, in periodic
-    raise_(exc[0], exc[1], exc[2])
-  File "renpy/audio/audio.py", line 1079, in periodic_thread_main
-    periodic_pass()
-  File "renpy/audio/audio.py", line 1021, in periodic_pass
-    c.periodic()
-  File "renpy/audio/audio.py", line 487, in periodic
-    topf = load(self.file_prefix + filename + self.file_suffix)
-  File "renpy/audio/audio.py", line 69, in load
-    rv = renpy.loader.load(fn)
-  File "renpy/loader.py", line 798, in load
-    raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'test.avi'.
+  File "renpy/display/core.py", line 3512, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "renpy/display/core.py", line 567, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 567, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 567, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/screen.py", line 432, in visit_all
+    callback(self)
+  File "renpy/display/core.py", line 3512, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "renpy/display/screen.py", line 443, in per_interact
+    self.update()
+  File "renpy/display/screen.py", line 631, in update
+    self.screen.function(**self.scope)
+  File "game/screens.rpy", line 208, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 208, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 211, in execute
+    window:
+  File "game/screens.rpy", line 211, in keywords
+    window:
+  File "game/screens.rpy", line 217, in keywords
+    if halfScreenMenu:
+  File "game/screens.rpy", line 217, in <module>
+    if halfScreenMenu:
+NameError: name 'halfScreenMenu' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Lacuna. 0.81
-Sun Aug 21 16:26:09 2022
+Wed Aug 31 16:38:53 2022

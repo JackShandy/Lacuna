@@ -79,7 +79,6 @@ default persistent.hes = "hes"
 default persistent.vanished = 0
 
 #Who has disappeared specifically
-#TK: revert after testing
 default persistent.toadVanished = False
 default persistent.witchVanished = False
 default persistent.thiefVanished = False
@@ -87,7 +86,7 @@ default persistent.mushroomVanished = False
 
 #If you get the final bad ending, who was the last to die?
 #Options: Thief, Toad, Witch, Mushroom
-#TK: Currently not set or used
+#TK: Currently not set or used. Delete?
 default persistent.vanishedLast = "Thief"
 
 #Have you triggered the final ending where the book is born anew?
@@ -123,6 +122,7 @@ define introNeighboursW = False
 
 #A variable that switches on for larger full screen menus to make the choice menu yalign change
 define fullScreenMenu = False
+define halfScreenMenu = False
 
 #Act 1, Chapter 2: The road to the village
 #How many pitiful Noooo's have you shouted
@@ -307,6 +307,18 @@ define mushroomFeast = False
 define mushroomEmbassy = False
 define mushroomPale = False
 define mushroomDeathTale = False
+
+#The final conversation with the wolf in the silence ending
+define silenceWho = False
+define silenceFire = False
+define silenceLeave = False
+define silenceFriends = False
+define silenceTrick = False
+define silenceEat = False
+define silenceRest = False
+define silenceEvil = False
+define silenceAlone = False
+define silenceNo = False
 
 ###==== Countdown
 #This screen counts down automatically and then jumps to a label once the countdown is finished
@@ -1599,6 +1611,7 @@ label introMenu:
                                     #She immediately brightens up with a smile and a jingle.
                                     m "Be right back."
                                     jump basement
+                                #TK: "The you with the mask" - change this, the thief's art is no longer wearing a mask
                                 "If you asked about \"The you with the mask\", turn to page 31." if mushroomTea and not mushroomBody:
                                     m "I'm sorry darling, it's been a long day already. I don't have time to explain your body to you."
                                     m "Again."
@@ -6320,7 +6333,7 @@ label wolf:
 
         "The room was full of dust and decay. It looked like it'd been abandoned for years."
         #"The fireplace was lit."
-        "In front of the fireplace was a figure in a decrepit of old chair."
+        "In front of the fireplace was a figure in a decrepit old chair."
         play sound footstepsInsideApproach
         "You walked closer."
         label wolfHouseExplore:
@@ -6337,7 +6350,9 @@ label wolf:
                     "[He] did not look up."
                     "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time. [His] hands gripped the book tightly. [His] knuckles were white."
                     "There was a shadow behind [him], but you could not see it clearly."
+                    play sound pageFlip
                     "[He] turned the page."
+                    play sound pageFlip2
                     "[He] turned the page again."
                     show hand onlayer transient:
                         yalign 0.7#0.743
@@ -6416,7 +6431,7 @@ label wolf:
         python:
             answer1 = renpy.input("{i}What is my name?:{/i}", length=7)
 
-        if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" :
+        if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa":
             "No. No, it cannot be."
             #Once you say its true name you gain total power over the narrative. You get a menu where you can decide what happens next. Like:
             #I stand up and look around.
@@ -6439,6 +6454,8 @@ label wolf:
                     "You put the book in the fire."
                     jump bookBurnedFinale
                 "If you chose to accept the wolf's deal, turn to page 501.":
+                    "Thank you, my friend. You have done more for me than you can know."
+                    "I hope that this can be a good home for you. You will be safe here for a hundred years, or more."
                     jump wolfEnd
         #You get everything you want. The wolf asks you to make a deal where you live out the rest of your life in the book. It's not such a bad life.
         #You either decide to destroy the book and destroy the wolf forever. Or live out your rest of your life in a fantasy world.
@@ -6447,174 +6464,274 @@ label wolf:
         #You make your final choice and the game ends.
 
         else:
-            "Incorrect."
+            "No. That is not my name."
+            "I'm afraid we are at the end of things now."
+            "You've forced my hand."
+            $persistent.vanished = 4
+            $persistent.toadVanished = True
+            $persistent.witchVanished = True
+            $persistent.thiefVanished = True
+            $persistent.mushroomVanished = True
+            #TK: Small scene featuring whoever's left who's still alive, they disappear.
+            #The villagers also disappear, everyone goes.
+            call endStamp from _call_endStamp_38
+            "Your friends were never seen or heard from again."
+            jump end
+
             #The wolf defeats you and eats a person for your hubris. Someone you like the most.
             #TK: Make the shadows get slowly stronger and stronger.
-            "And then there was rest in the land."
-            play sound pageFlip
-            # show firelight animated onlayer over_screens zorder 98
-            # show firelight animated onlayer over_screens zorder 97
-            # show firelight animated onlayer over_screens zorder 96
-            # show firelight animated onlayer over_screens zorder 95
-            # show firelight animated onlayer over_screens zorder 94
-            # show firelight animated onlayer over_screens zorder 93
-            # show firelight animated onlayer over_screens zorder 92
-            # show firelight animated onlayer over_screens zorder 91
-            # show firelight animated onlayer over_screens zorder 90
-            # show firelight animated onlayer over_screens zorder 89
-
-            "And then there was rest in the land."
-            play sound pageFlip2
-            "And then there was rest in the land."
-            play sound pageFlip3
-            show firelight animated onlayer over_screens zorder 99
-            "And then there was rest in the land."
-            show firelight animated onlayer over_screens zorder 99
-            "And then there was rest in the land."
-            show firelight animated onlayer over_screens zorder 99
-            "And then there was rest in the land."
+            # "And then there was rest in the land."
+            # play sound pageFlip
+            # "And then there was rest in the land."
+            # play sound pageFlip2
+            # "And then there was rest in the land."
+            # play sound pageFlip3
+            # show firelight animated onlayer over_screens zorder 99
+            # "And then there was rest in the land."
+            # show firelight animated onlayer over_screens zorder 99
+            # "And then there was rest in the land."
+            # show firelight animated onlayer over_screens zorder 99
+            # "And then there was rest in the land."
             #If you get it wrong, maybe the wolf disappears 2 people or something in vengeance for your hubris
             #Or kills your favourite character or something
 
 
 
 label allVanishedEnd:
-    #TK: TODO
-    #This is what happens when everyone has been killed.
-    #Basically you have 4 playthroughs to try to solve the mystery.
-    # - 0 people vanished
-    # - 1 person vanished
-    # - 2 people vanished
-    # - 3 people vanished
-    # - Everyone vanished (finale and final ending).
-    # if you solve the mystery in time you get to choose. You can either burn the book or give your soul to the wolf and live in the book forever.
-    # If everyone vanishes and you still have not yet solved the mystery, you don't get to choose. You have to give your soul to the wolf.
     show emptybg at artPos
+    #TK: Dark ambient music in this part? Iron Cthulhu?
     "Silence."
-    "It came out of the walls and the rotten floorboards and the roof and the windows in a great flood."
-    "It had been lying in wait there for all these long years, and it could wait no longer."
-    "It had won."
-    #"It surrounded you with crushing, unstoppable pressure."
-    "You sat alone in your silent corroding house in an empty forest that had no name, keeping your door locked and barred against the vacuum of the corpse-world outside. But still it came, oozing in through the cracks and the gaps and the crevices of your home, swamping you with such force you could barely breathe."
-    "You had lived in this house for as long as you could remember, which was three days."
-    "Where did you come from? What was your name? How did you come to be here? These questions no longer had meaning for you."
-    pov "The House provides."
+    "It oozed out of the gaps in the rotten floorboards and the cracks in the windows and down through the small holes in the roof."
+    "It had been lying in wait there for all those long years, and it could wait no longer."
+    "It had finally won."
+    "You sat alone in your silent corroding house in an empty forest that had no name."
+    "Every day, you barred the windows and stopped up the cracks with plaster and kept your door locked and barred against the vacuum of the corpse-world outside."
+    "But still it came, seeping in through the crevices of your home in a great slow flood, pressing in with such force you could barely breathe."
     "The silence was in everything. It penetrated your meat and your bones and soaked deep into your brain. There were great empty silent spaces in your thoughts. Things you were no longer able to think."
-    "You slept in the beds. You ate the food in the pantry. When you were not doing these things, you stared into the fire."
-    #"Were things ever different? None can say."
-    #"Was there ever anything outside this room, and this house? None can say."
+    "You had lived in this house for as long as you could remember, which was three days."
+    "There were many beds for you to sleep on. The pantry was fully stocked with food for you to eat. In the closets, you found many outfits to wear, of all shapes and sizes. The shelf in the hall held 13 pairs of shoes, from small to large."
+    "Where did it all come from? Who made the food? Who built the beds? These questions no longer had meaning for you."
+    "Whenever you were troubled by such things, you simply shrugged and said:"
+    pov "The House provides."
+    "Was there ever anything outside this room, and this house? None can say."
+    "Did you ever have a name? None can say."
+    "You ate from the pantry of the house, and slept on the beds of the house, and wore the clothes of the house. That is all."
     pov "The House provides."
     "Like all other things, your house slowly fell day by day into greater and greater ruin as the unstoppable and silent force of entropy ground it into the dirt, piece by piece."
-    "Soon the Lacuna would be total and all-encompassing."
-    "The house would corrode into shapeless dust as the forest slowly decayed, and nothing would be left."
+    "Soon the Lacuna would be total and all-encompassing. Nothing would be left."
+    "By that time, of course, you would be long dead."
+    #"Nothing would be left."
     #TK: Maybe change this line
-    "By that time, of course, you would be long dead. Another interesting event to think upon as the world slowly fell into ash."
-    "Note: full conversation with wolf here."
-    # if persistent.vanishedLast == "Thief":
-    #     ""
-    # if persistent.vanishedLast == "Witch":
-    #     ""
-    # if persistent.vanishedLast == "Toad":
-    #     ""
-    # if persistent.vanishedLast == "Mushroom":
-    #     ""
+    #TK: evidence of each disappeared person
+    #Some dress-up clothes from the toad
+    #A cloak and mask, perhaps some train gear from the thief
+    #Soft mud and dirt from the mushroom
+    #Tea and herbs and a cauldron / book from the witch, maybe a hat with a pointed brim
+    label silence:
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
+        menu:
+            "Another interesting event to contemplate as the soft blur of silence slowly spread through your brain."
+            "If you chose to watch the fire, turn to page 481." if not silenceFire:
+                $silenceFire = True
+                "You watched the soft glow of the dying coals."
+                "A memory came to you. You remembered how anxious you used to be."
+                "So much grief and fear and pain over this dying earth of yours, and now it was done."
+                "There was nothing to fear anymore. The worst had already come to pass."
+                "A great wash of relief came over you. The weight of the world lifted from your shoulders."
+                "You were at peace."
+                "Too late to do anything about it now. Too late for anything."
+                #"You watched the fire and felt the soft blur of silence slowly spread through your brain."
+                #"Were things always this bad? Was it always this hard?"
+                #"Didn't there used to be a sun, and a moon?"
+                #"Didn't there used to be a lot of things?"
+                #"As each day, hour and moment passed, more and more of these questions were slowly erased from your mind. More and more weight was lifted from yours shoulders."
+                #"That's when you realised. There never was a time before this one."
+                #"There never was anything but this room and the fire, and your hands shaking in front of you, and the silence outside."
+                #"It was always this way."
+                #"With that thought, a great wash relief came over you. The weight lifted from your shoulders, and you rested in peace."
+                jump silence
+            "If you chose to leave your house, turn to page 482." if not silenceLeave:
+                $silenceLeave = True
+                #"The silence crushed you on all sides with a terrible and overwhelming pressure, like 10,000 fathoms deep under the ocean."
+                #"It felt like a visible, physical force, an endless crushing smothering, the dead world come at last, the silence in your bones, in your meat, even the thoughts in your brain flattened into nothing by it."
+                "You had never dared explore the lands outside the house. One day, you decided to try."
+                if persistent.vanishedLast == "Thief":
+                    "You searched the house and found a midnight cloak and a black mask. In the pockets were small precious gems and soft, mossy stones."
+                if persistent.vanishedLast == "Witch":
+                    "You searched the house and found a black hat with a wide brim and a pointed crown. Nearby was a warm cloak with parcels of herbs and tea in the pockets."
+                if persistent.vanishedLast == "Toad":
+                    "You searched the house and found a tiny suit, top hat and cane. In the pockets you discovered parcels of food and a small decanter of pond scum."
+                if persistent.vanishedLast == "Mushroom":
+                    #TK: Perhaps change this one??
+                    "You searched the house. Deep in the rich dark soil of the basement, you discovered packages of fine food - mushroom risotto and crisp goose roasted in truffle butter and dark red wine and platters of mushroom bourguignon with roast potatoes."
+                "These things belonged to no-one."
+                pov "The house provides."
+                "You gathered them up and reached for the door, but as you took hold of the handle you stopped."
+                "You could feel it outside."
+                "The howling pressure of the vacuum beyond pressed against the door like a physical force."
+                "The weight of it paralysed you. You could not stand the thought of walking down the desolate path to that silent village where no-one lived."
+                #"You could feel the presence of them lurking just outside."
+                "As you gripped the doorknob, you had a vision of hundreds of vacant cars on empty bitumen roads, and yawning blank units sunk into the giant carcass of labyrinthine apartment blocks, and the infinite concrete abyss of shopping centers and plazas and petrol stations and office buildings, and carefully manicured dead lawns stretching on for endless acres, and underneath it all a cavernous cyclopean pit of parking lots that took up the whole underbelly of this hollow earth."
+                "You fell away from the door, shaking."
+                "Better to sit in front of your fire. To keep the silence at bay for a while longer."
+                jump silence
+            "If you chose to rest and wait, turn to page 483." if silenceFire and silenceLeave:
+                "You rested in that house for an uncountable time."
+                "Time, of course, had lost all meaning at this point."
+                "All those petty, meaningless little things you needed to do had either been done already, or could never be done."
+                "Either way, it was finished."
+                "I sat and rested there with you."
+                "My work, too, was done."
+                "There was rest in the land."
+                "The fire was warm."
+                "Nothing left but to lie before the fire for a while, and wait."
+                pov "The house provides."
+                "Yes. The house provides."
+                jump wolfSilence
 
-    #""
-    #pon "The House provides."
-    #"It crushed you on all sides with a terrible and overwhelming pressure, like 10,000 fathoms deep under the ocean."
-    #"It felt like a visible, physical force, an endless crushing smothering, the dead world come at last, the silence in your bones, in your meat, even the thoughts in your brain flattened into nothing by it."
-    # "Soon you could stand it no longer. You searched the pantry and found a package wrapped up with a coinpurse, along with some bread and meat."
-    # pov "The House provides."
-    #So much grief and fear and pain over this dying earth of yours, and now it was done. There was nothing to fear anymore. The worst had already come to pass.
-    #In some ways a great weight was lifted from your shoulders. It was too late to do anything now. Too late for anything but sitting and watching the fire and feeling the soft blur of silence slowly spread through your brain.
-    #Were things always this bad? Was it always this hard?
-    #Didn't there used to be a sun, and a moon?
-    #Didn't there used to be a lot of things?
-    #As each day, hour and moment passed, more and more of these questions were slowly erased from your mind. More and more weight was lifted from yours shoulders."
-    #That's when you realised. There never was a time before this one.
-    #There never was anything but this room and the fire, and your hands shaking in front of you, and the silence outside.
-    #It was always this way. And with that thought, a great relief came over you.
-    #menu: Go to the village.
-    # "You gathered up these provisions and reached for the door, but as you took hold of the handle you stopped."
-    # "You could feel it outside."
-    # "The howling pressure of the vacuum beyond pressed against the door like a physical force, the weight of it paralysing you."
-    # "You could not stand the thought of the trip down the empty street to that silent village where no-one lived."
-    #You could feel the presence of them lurking just outside.
-    #The vacant cards on empty streets, and the abandoned apartments, and the desolate endless abyss of old shopping malls, and the bitumen roads, and the carefully manicured dead lawns stretching for endless acres, and underneath it all the cavernous labyrinthine parking lots that took up the whole underbelly of this hollow earth."
-    #The yawning abyss of that vast infinity terrified you, and you returned.
-    #Better to lie in front of your fire and stare at your phone. To keep the silence at bay for a while longer.
-    #A final piece depending on which character was the last to die.
-    # menu:
-    #     "Who are you?":
-    #         "It doesn't matter."
-    #         "Few know my name now. It's been forgotten."
-    #         "I used to be an old story. Of glory and terror. I lived in the forests. Protected them."
-    #         "I was assigned as a terror to the human race."
-    #         "I was possessed of seven terrors (or in your tongue you may say \"Auras\" or \"Glamours of frightening splendour\") which lay upon me like seven cloaks."
-    #         "My face was a spiral of intenstines. My breath was death."
-    #           "My face was a single coiling line, like the entrails of men and beasts, from which omens can be read."
-    #         "Around those first campfires, they talked of me, and shivered with fear."
-    #         "The first monster."
-    #         "Long time ago now. Barely remember those days."
-    #         "I died, of course. All monsters do. Slowly, I was forgotten. I doubt you've even heard my name."
-    #         "Fragments of me survived. In old stories like this one. The beast in the forest. You know."
-    #
-    #     "What happened to my friends?":
-    #         "What happens to any story? It lingers, for a while. Then is forgotten."
-    #         "Each of them has lived here for a few hundred years now, or more."
-    #         "I fulfilled my bargain with them. They stayed here and lived the life of their dreams for many years."
-    #         "The person they always wanted to be. Their best life. In my story, they each got their chance to rise up as a hero."
-    #         "Real life, of course, was never so kind."
-    #         "In the real world their lives would have been short."
-    #         "The world they were born into was not a good place for them."
-    #         "I offered them another world."
-    #         "Of course, in time, they would disappear. They knew that when they took the deal. Nothing lasts forever."
-    #
-    #     "What now?":
-    #         "I have an offer for you. Come. Join me in this book."
-    #         "It won't be so bad. You can be the hero."
-    #         "I will lurk in the forests. You will live in the village."
-    #         "You will rise up against me. You will defeat me. And you will live happily ever after."
-    #     "Won't you consume me?":
-    #         "Don't fool yourself. Everyone is consumed by something."
-    #         "The only choice you have in this world is to decide what you'll be consumed by."
-    #         "The evil you face in your world is grey, and constant, and soaks into every particle of your being like a slow mould."
-    #         "Every day you live, you must breathe it in, until you can't even see it. Like a fish cannot see the water."
-    #         "It cannot be stopped by any one human."
-    #         "Why not choose my evil?"
-    #         "I live in the woods. I prey on the villagers. You can rise up against me, and defeat me with a single act of courage. Then you live happily ever after."
-    #         "Isn't that the evil you want? You seek it out so greedily, all of you."
-    #     "No. I won't do it.":
-    #         "I'm sorry, my friend. It's a bit too late for that."
-    #         "We have grown weak, in here. The souls have all run dry."
-    #         "Either you give yourself up, or we will die."
-    #     "No.":
-    #         "I'm sorry, friend. I gave you a little leeway to add your own spin to the narrative."
-    #         "But this is my story. And I get to tell it exactly the way I want to."
-    #         "Come now. Give your soul over to me."
-    #     Menu:
-    #         "I will.":
-    #             "Good."
-    #         "I will.":
-    #             "Good."
-    #         "I will.":
-    #             "Good."
-    #         "I will.":
-    #             "Good."
-    #         "I will.":
-    #             "Good."
-    #         "I hereby give my soul over to live in this tale, until my story is finished."
-    #The wolf talks to you. The book has run out of souls. They've all been consumed.
-    #You must give your soul to the book in order to keep it going.
-    #First, you will take the book and leave it in the library, for another soul to read.
-    #Then, you will live in the book forever.
-    #Over, and over, and over again.
-    #POV but you'll consume me.
-    #Yes. But you will always be consumed by something.
-    #That is what living is, in the world that you have built for yourselves outside this story.
-    #Your only choice you get to make, in the end, is what you will be consumed by.
-    #Come now. Give your soul over to me.
-    jump wolfEnd
+    label wolfSilence:
+        $halfScreenMenu = True
+        menu:
+            "Who are you?" if not silenceWho:
+                $silenceWho = True
+                "It doesn't matter."
+                #TK: Double check the humbaba lore
+                "My name was important a long, long time ago. But you wouldn't recognise it now."
+                "I came from an old story. The gods assigned me as a terror to the human race."
+                "I was possessed of seven horrors (or in your tongue you may say \"Auras\" or \"Glamours of terrible splendour\") which lay upon me like seven cloaks."
+                "My face was a single coiling line, like the entrails of men and beasts, from which omens can be read."
+                "I guarded the forests. My breath was fire. My gaze was death. Who would dare stand against me?"
+                "Long time ago now."
+                "Barely remember those days. No-one does."
+                #"Around those first campfires, they whispered of me, and I awoke in the darkness."
+                #"The first monster."
+                "Fragments of me survived. I clung to life in old stories like this one."
+                "The beast in the forest. The wolf at the door."
+                "You know."
+                jump wolfSilence
+            "What happened to my friends?" if not silenceFriends:
+                $silenceFriends = True
+                "I'm sorry, child. You had the misfortune of coming in at the end of things."
+                "Each of them struck a bargain with me. To live here, in this story, in the life of their dreams."
+                "Do not think I was unkind. I kept my deal. Each of them lived here for a hundred years or more."
+                "But nothing lasts forever."
+                "They are forgotten now. As both of us soon will be."
+                "This is the curse you have been born with. To witness the end."
+                "It had to happen to someone."
+                jump wolfSilence
+            "You must have tricked them." if silenceFriends and not silenceTrick:
+                $silenceTrick = True
+                "No, child. There was no trick."
+                "Here, in my story, they got the life they always wanted to live."
+                "Wise, brave, cunning and kind. The best version of themselves."
+                "Real life, of course, was never so kind."
+                #"In your world their lives would have been short."
+                "The world they were born into was not a good place for them."
+                "As I suspect it is not a good place for you."
+                "I offered them another world."
+                "Of course, in time, they would disappear. Nothing lasts forever. They knew that when they took the deal. "
+                jump wolfSilence
+            "Are you going to eat me?" if not silenceEat:
+                $silenceEat = True
+                "Yes, child."
+                "Every one of us is eaten in the end."
+                #"The only choice any of us have, is to decide what will consume us."
+                "But not yet."
+                "We can rest here a little while longer."
+                jump wolfSilence
+            "I am done resting." if not silenceRest:
+                $silenceRest = True
+                "Very well."
+                "I will make you my offer."
+                "Come. Join me in this book. Help me rejuvenate this tired story."
+                "You will live in the village. I will lurk in the forests."
+                "I will be cunning. But you will be brave."
+                "You will rise against me. Our battle will be the stuff of legends."
+                "You will defeat me. And everyone will live happily ever after."
+                "It's everything you've ever dreamed of."
+                jump wolfSilence
+            "But... you're evil." if silenceRest and not silenceEvil:
+                $silenceEvil = True
+                "Yes. Thank you."
+                "I have spent my life honouring the old ways. Preserving the old kind of evil."
+                "Beautiful and terrible. Mystery and horror. Ruthless, captivating. A dark fire."
+                "That type of evil doesn't exist in your world."
+                "The evil in your world is a grey, endless fog that soaks into every particle of your being like mould."
+                "You can't even see it. Like a fish can't see water. It surrounds you. Every day you wake up and breathe it in."
+                "It has been built into every fibre of the human machine."
+                "No one human can stop it. You can't even understand the scope of it."
+                "I offer you a better evil."
+                "Something that can be defeated with a single act of human courage."
+                "Isn't that what we all want?"
+                jump wolfSilence
+            "Will I be alone?" if silenceRest and not silenceAlone:
+                $silenceAlone = True
+                "No. Don't worry. We will find others."
+                "This story will be full of life again, soon."
+                jump wolfSilence
+            "I accept your bargain. I will live here in this story for the rest of my days." if silenceRest:
+                "Thank you, my friend. You have done more for me than you can know."
+                "I hope that this can be a good home for you. You will be safe here for a hundred years, or more."
+                jump wolfEnd
+            "No. I won't do it." if silenceRest and not silenceNo:
+                $silenceNo = True
+                "I'm sorry, my friend. It's a bit too late for that."
+                "We have grown weak, in here. The souls have all run dry."
+                "Either you give yourself up, or we will die."
+                jump wolfSilence
+            "I still won't do it." if silenceNo:
+                "I don't think you understand."
+                "The only choices you ever had here are the ones I gave you."
+                $halfScreenMenu = False
+                menu:
+                    "Do you see now?"
+                    "I understand.":
+                        "Good."
+                    "I understand.":
+                        "Good."
+                    "I understand.":
+                        "Good."
+                    "I understand.":
+                        "Good."
+                    "I understand.":
+                        "Good."
+                    "I understand.":
+                        "Good."
+                    "I understand.":
+                        "Good."
+
+                "I enjoyed our conversation. If you can call it that."
+                "Of course, you could only ask the questions I gave you to ask. I hope they were enough."
+                "Time to finish things."
+
+                menu:
+                    "Will you take my bargain, and live in this story for the rest of your days?"
+                    "I will.":
+                        "Good."
+                    "I will.":
+                        "Good."
+                    "I will.":
+                        "Good."
+                    "I will.":
+                        "Good."
+                    "I will.":
+                        "Good."
+                    "I will.":
+                        "Good."
+
+                jump wolfEnd
+    # The wolf talks to you. The book has run out of souls. They've all been consumed.
+    # You must give your soul to the book in order to keep it going.
+    # First, you will take the book and leave it in the library, for another soul to read.
+    # Then, you will live in the book forever.
+    # Over, and over, and over again.
+    # POV but you'll consume me.
+    # Yes. But you will always be consumed by something.
+    # That is what living is, in the world that you have built for yourselves outside this story.
+    # Your only choice you get to make, in the end, is what you will be consumed by.
+    # Come now. Give your soul over to me.
 
 #The ending when you choose to go with the wolf
 label wolfEnd:
@@ -6622,7 +6739,7 @@ label wolfEnd:
     "Now we must choose your title."
     $fullScreenMenu = True
     call hideAll
-    show text "What should we call you?":
+    show text "What role would you like to play?":
         xalign 0.5
         ypos 125
     show hand:
@@ -6659,12 +6776,16 @@ label wolfEnd:
     call hideAll
     show emptybg at artPos
     $fullScreenMenu = False
-    "Good."
-    "You travelled to a library in your world."
-    "On the shelf, you placed this book. Ready for another reader."
+    "Thank you, my child."
+    "That was the end."
+    "You finally turned the last page and closed the book."
+    "A sense of peace and satisfaction filled you."
+    "It was the perfect ending."
+    "You sat there for many hours, thinking over what you had read. Then, you picked up the book, and walked to the library."
+    "You placed it there on the returns shelf. Ready for another reader."
     "As your hand left the pages, there was a shivering in the air, and you disappeared."
     "Never to be seen again in the world of men."
-    "There was a calmness, then. The silence slowly abated."
+    "There was a calmness. The silence slowly abated."
     "The book sat on the shelf, and waited."
     show white onlayer over_screens zorder 101:
         alpha 0.0
@@ -6678,17 +6799,17 @@ label wolfEnd:
     play audio pageFlip volume 0.8
     "{space=5}And then there was rest in the land."
     play audio pageFlip2 volume 0.6
-    "{space=11}And then there was rest in the land."
+    "{vspace=6}{space=11}And then there was rest in the land."
     play audio pageFlip3 volume 0.5
-    "{space=8}And then there was rest in the land."
+    "{vspace=2}{space=8}And then there was rest in the land."
     play audio pageFlip2 volume 0.4
-    "{space=15}And then there was rest in the land."
+    "{vspace=10}{space=15}And then there was rest in the land."
     play audio pageFlip volume 0.3
     "{space=6}And then there was rest in the land."
     play audio pageFlip3 volume 0.2
-    "{space=20}And then there was rest in the land."
+    "{vspace=5}{space=20}And then there was rest in the land."
     play audio pageFlip2 volume 0.1
-    "{space=9}And then there was rest in the land."
+    "{vspace=12}{space=9}And then there was rest in the land."
     $persistent.bookEnd = True
     $purge_saves()
     $renpy.quit()
@@ -6798,7 +6919,7 @@ label newStoryFinale:
     if persistent.finaleTitle == "Crow":
         "One day, the endless cawing grew too much for you to bear. You packed your belongings into a knapsack, and walked into the forest."
     else:
-        "One day, you resolved to meet these mysterious figure for yourself. You packed your belongings into a knapsack, and walked into the forest."
+        "One day, you resolved to meet these mysterious figures for yourself. You packed your belongings into a knapsack, and walked into the forest."
     "\"Be careful!\" Your mother cried after you. But you had resolved to take this path, no matter the danger."
     show black:
         alpha 0.0
@@ -6857,6 +6978,30 @@ label bookBurnedFinale:
     $ timer_jump = 'burnEnd'
     show screen countdown
     show bookBurnMovie at fullPos onlayer over_screens zorder 98
+    #The village menu reappears, you can roam the village and the woods to talk to people
+    #If thief is alive
+    #If mushroom is alive
+    #if witch is alive
+    #if toad is alive
+    #if the bat, the rat, the cockatoo and the crowshrike are alive
+    #if hunter is alive
+    #if mayor is alive
+    #If scraggs mckenzie and the boys are alive
+    #If your mum is alive
+    #if the woman in black is alive
+    #if the man in white is alive
+    #if the man in red is alive
+    #if the devil's sooty grandma is alive
+    #if the thing in the well is alive
+    #if the gloommonger is alive
+    #if brildebrogue chippingham is alive
+    #if the goose girl is alive
+    #if the goblins are alive
+    #if the goblin queen is alive
+    #if the sparrow-herder is alive
+    #if the first pig, the second pig, and / or the third pig are alive
+    #If the gutterlings are alive
+
     "(test) NPC's talk"
     "(test) NPC's talk"
     "(test) NPC's talk"

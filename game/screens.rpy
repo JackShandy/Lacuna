@@ -214,6 +214,8 @@ screen choice(items):
         #Change for larger menus with lots of options
         if fullScreenMenu:
             yalign -0.3
+        if halfScreenMenu:
+            yalign -0.1
 
         vbox:
             for i in items:
