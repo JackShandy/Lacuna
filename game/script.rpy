@@ -1069,6 +1069,8 @@ label start:
             jump allVanishedEnd
 
         show nightbg at artPos
+        #TK: Testing book burning
+        jump bookBurnedFinale
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
         call hideAll from _call_hideAll
@@ -6474,7 +6476,7 @@ label wolf:
             $persistent.mushroomVanished = True
             #TK: Small scene featuring whoever's left who's still alive, they disappear.
             #The villagers also disappear, everyone goes.
-            call endStamp from _call_endStamp_38
+            call endStamp
             "Your friends were never seen or heard from again."
             jump end
 
@@ -6972,12 +6974,24 @@ label bookBurnedFinale:
     # The black space lingers for a bit.
     #Game quits after the movie has run its course (IE, the book has burned).
 
+    #Disables the quick menu
+    $ quick_menu = False
+
+    #Disables the escape key, so you can't access the main menu at this point
+    $ _game_menu_screen = None
+
     #After the book burning movie has finished and you've run out of time, jump to the ending credits
     #Could add in something where when you only have a few seconds left, jump to a thing where people say "Goodbye" in some of the small remaining pages left
-    $ time = 8         #Note: 8 = Roughly 14 seconds
+    $ time = 60         #Note: 8 = Roughly 14 seconds
     $ timer_jump = 'burnEnd'
     show screen countdown
     show bookBurnMovie at fullPos onlayer over_screens zorder 98
+    #This disables rollback, you can't reverse things and see previous text at this point
+    $ config.rollback_enabled = False
+
+    #The book has been burned - if you quit and re-enter the game at this point you will find yourself in just the burned out ending
+    $persistent.bookBurned = True
+
     #The village menu reappears, you can roam the village and the woods to talk to people
     #If thief is alive
     #If mushroom is alive
@@ -6994,6 +7008,7 @@ label bookBurnedFinale:
     #if the devil's sooty grandma is alive
     #if the thing in the well is alive
     #if the gloommonger is alive
+    #"You'll have to live for all of us, now. You're the only one who will remember any of us.
     #if brildebrogue chippingham is alive
     #if the goose girl is alive
     #if the goblins are alive
@@ -7002,22 +7017,23 @@ label bookBurnedFinale:
     #if the first pig, the second pig, and / or the third pig are alive
     #If the gutterlings are alive
 
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
-    "(test) NPC's talk"
+    "(test) NPC's talk1"
+    #This disables rollback, you can't reverse things and see previous text at this point
+    "(test) NPC's talk2"
+    "(test) NPC's talk3"
+    "(test) NPC's talk4"
+    "(test) NPC's talk5"
+    "(test) NPC's talk6"
+    "(test) NPC's talk7"
+    "(test) NPC's talk8"
+    "(test) NPC's talk9"
+    "(test) NPC's talk0"
+    "(test) NPC's talk11"
+    "(test) NPC's talk12"
+    "(test) NPC's talk13"
+    "(test) NPC's talk14"
+    "(test) NPC's talk15"
+    "(test) NPC's talk16"
 
 #This is the piece of the book burned ending. The book has been destroyed.
 label burnEnd:
@@ -7045,11 +7061,13 @@ label burnEnd:
     #hide text with fade
     scene black with fade
     pause (5.0)
-    $persistent.bookBurned = True
     $renpy.quit()
 
 
 label endStamp:
+
+    #TK: change the "Do you want to quit?" screen during this bit.
+
     if persistent.vanished == 0:
         show text "{b}THE END.{/b} \n \n {i}Ending 1.{/i}": #
             xalign 0.5

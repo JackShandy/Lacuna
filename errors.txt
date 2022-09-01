@@ -2,48 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 6670: expected ':' not found.
-(Perhaps you left out a " at the end of the first line.)
-    "I accept your bargain. I will live hereif silenceRest
-                "No. I won't do it." if silenceRest and not silenceNo:
-                  ^
-                    $silenceNo = True
-                    "I'm sorry, my friend. It's a bit too late for that."
-                    "We have grown weak, in here. The souls have all run dry."
-                    "Either you give yourself up, or we will die."
-                    jump wolfSilence
-                "I still won't do it." if silenceNo:
-                    "I don't think you understand."
-                    "The only choices you ever had here are the choices I gave you."
-                    "Do you see now?"
-                    menu:
-                        "I understand.":
-                            "Good."
-                        "I understand.":
-                            "Good."
-                        "I understand.":
-                            "Good."
-                        "I understand.":
-                            "Good."
-                        "I understand.":
-                            "Good."
-                    "I have enjoyed our conversation, if you can call it that."
-                    "Of course, you could only ever ask the questions I allowed you to ask. I apologise if I did not account for everything you wish to know."
-                    "Time to finish things."
-                    "Will you take my bargain?"
-                    menu:
-                        "I will.":
-                            "Good."
-                        "I will.":
-                            "Good."
-                        "I will.":
-                            "Good."
-                        "I will.":
-                            "Good."
-                        "I will.":
-                            "Good."
-                    jump wolfEnd
-        # The wolf talks to you. The book has run out of souls. They've all been consumed.
+The label _call_endStamp_38 is defined twice, at
+  File "game/script.rpy", line 6248 and
+  File "game/script.rpy", line 6479.
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Wed Aug 31 15:27:51 2022
+Thu Sep  1 16:28:22 2022
