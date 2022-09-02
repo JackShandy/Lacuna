@@ -7,6 +7,8 @@ init python:
     renpy.music.register_channel("ambient2","sfx",True,tight=True)
     #This one is used for the city ambience when you open the door to the wolf
     renpy.music.register_channel("ambient3","sfx",True,tight=True)
+    #This is all the wolf's talking
+    renpy.music.register_channel("wolf","sfx",True,tight=True)
 
 #     def xpos_tag(tag, argument, contents):
 #
@@ -307,6 +309,9 @@ define mushroomFeast = False
 define mushroomEmbassy = False
 define mushroomPale = False
 define mushroomDeathTale = False
+
+#The confrontation with the wolf in your house
+define firepoker = False
 
 #The final conversation with the wolf in the silence ending
 define silenceWho = False
@@ -682,6 +687,10 @@ define audio.footstepsGrassLeave = "audio/footstepsGrassLeave.mp3"
 define audio.footstepsInsideApproach = "audio/footstepsInsideApproach.mp3"
 define audio.footstepsInsideLeave = "audio/footstepsInsideLeave.mp3"
 define audio.phoneClick = "audio/phoneClick.mp3"
+define audio.firePoker = "audio/firePoker.mp3"
+
+#the wolf's conversations
+define audio.wolfNo = "audio/wolfNo.mp3"
 
 define audio.rain = "audio/rain.wav"
 define audio.fire = "audio/fire.mp3"
@@ -1070,7 +1079,7 @@ label start:
 
         show nightbg at artPos
         #TK: Testing book burning
-        jump bookBurnedFinale
+        jump wolfHouse
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
         call hideAll from _call_hideAll
@@ -6351,26 +6360,18 @@ label wolf:
                     "In the dim light, you couldn't quite make out [his] face."
                     "[He] did not look up."
                     "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time. [His] hands gripped the book tightly. [His] knuckles were white."
-                    "There was a shadow behind [him], but you could not see it clearly."
                     play sound pageFlip
                     "[He] turned the page."
                     play sound pageFlip2
                     "[He] turned the page again."
-                    show hand onlayer transient:
-                        yalign 0.7#0.743
-                        xalign 0.5
-                    menu:
-                        "[His] eyes looked red and sore. They were locked on the book. [He] didn't seem to blink."
-                        "If you took the book, turn to page 349.":
-                            "You grabbed the book out of the figure's hands and threw into the fire."
-                            jump bookBurned
-                        "If you looked away from the figure, turn to page 356.":
-                            "You turned away."
-                            jump wolfHouseExplore
+                    "There was a figure behind [him], but you could not see it clearly."
+                    "It coiled around [him] like dark smoke."
+                    jump wolfFigure
+
                 "If you looked at the phone, turn to page 398.":
                     "The screen said \"Cosy Cabin Ambience with Soft Rain and Wildlife - 10 hours\"."
                     if persistent.phoneOn:
-                        "It was playing the sounds of soft rain, a crackling fire, and the Australian bush outside."
+                        "It was playing the sounds of soft rain, and the Australian bush."
                     else:
                         "It was paused."
             show hand onlayer transient:
@@ -6383,6 +6384,7 @@ label wolf:
                     #TK: This is a very janky solution to a problem. If you load an earlier save, the old audio will still play (not the new silence).
                     #This will "fix" the problem by deleting all your old saves. Ideally I will eventually fix this.
                     $purge_saves()
+                    #TK: Phone isn't working, must figure out how to fix
                     play sound phoneClick
                     $renpy.music.set_volume(0, channel=u'ambient1')
                     $renpy.music.set_volume(0, channel=u'ambient2')
@@ -6401,7 +6403,113 @@ label wolf:
 
                 "If you left it alone, turn to page 345.":
                     jump wolfHouseExplore
-    label bookBurned:
+
+    label wolfFigure:
+        "You heard soft whispers in your head. Your hand began to shake."
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
+        menu:
+            "[His] eyes looked red and sore. They were locked on the book. [He] didn't seem to blink."
+            "If you took the poker from the fireplace, turn to page 349." if not firepoker:
+                play sound firePoker volume 0.5
+                "You picked up the fire poker. The iron felt strong and heavy in your hands."
+                $firepoker = True
+                jump wolfFigure
+            "If you struck the dark figure with the poker, turn to page 349." if firepoker:
+                "You steadied your shaking hands and raised the poker high."
+                #pause 9.0
+                "The poker smashed down, and then - " with Pause(9.0)
+                $ renpy.block_rollback()
+                $renpy.sound.play("audio/wolfNo.mp3", channel="wolf", loop=False, relative_volume=3)
+                $ renpy.pause(9.0, hard=True)
+
+                jump wolfDestroy
+            "If you looked away from the figure, turn to page 356.":
+                "You turned away."
+                jump wolfHouseExplore
+
+    label wolfDestroy:
+        call hideAll
+        show darknessbg at artPos
+        play sound pageFlip
+        "You found yourself in a dark forest."
+        #Include any of the characters who are still alive at this point
+        #You are in a dark forest.
+        #You hunt down the wolf
+        #You go through a deep mere, the depth of which no man has seen the bottom.
+        #You go through it, end up in the wolf's court. You slice at it with your sword.
+        #You see terrible visions.
+        #You defeat the wolf. Everyone lives happily ever after.
+        "The distortion around the figure slowly began to curl towards you."
+        "You steadied your shaking hand and lashed out at the figure in a desperate blow."
+        "No, no."
+        "It rushed out and hit you in a great boiling wave that knocked you onto the floor."
+        #"You fell through endless coiling eternities of smoke."
+        "You felt claws on your wrists. Jaws at your throat."
+        #"The figure solidified, and you felt its jaws at your throat."
+        "The wolf."
+        "Here at last, finally, at the end of time. The source of all that fear and pain."
+        #TK: Images
+        "It had no face. Just a single, coiling line, like a spiral of entrails."
+        "You hefted the fire poker and drove it straight through the beast's throat."
+        #sound effects
+        "The beast screamed, and let go of your throat. Black ichor sprayed over you. It was hot in your mouth."
+        "You wrestled yourself on top of the beast and held it down with the poker as it clawed at you."
+        "Your body felt strange. The distance between you and your hands felt infinitely large. You felt like a small, distant presence, deep in a dark corner of your mind, watching all this play out."
+        "The walls fell away. The horizon stretched away in every direction. The light was red around you."
+        "For an instant, you looked up."
+        "A crowd of strange shapes had begun to surround you, just outside the light of the fire."
+        # menu:
+        #     "Look out.":
+        #         "You see a deer, but its neck extends into a red hand with an eye in the middle."
+        #         "You see a giant mother boar with six human faces dripping from its teats."
+        #         "You see a woman made of rusted nails."
+        #                 "You look out to the hills of Lovelyville."
+        #                 "You can see the Abandoned Party, Snake-eye Falls, and Caper Cove."
+        #                 "The lights of your family's house gleam softly in the distance, obscured by snow."
+        #                 menu:
+        #                     "Look further":
+        #                         menu:
+        #                             "Look further":
+        #                                 "You see the great sweeping wasteland of America."
+        #                                 "You see the Trash Queens and ghosts and glitter-men laughing and screaming and crying."
+        #                                 "You see cabals of Market Researchers hunting, deep underground."
+        #                                 "You see President Jesus, watching you from the White House in the clouds above."
+        #                                 menu:
+        #                                     "Look further":
+        #                                         "You see %(playerName)s and Gloria."
+        #                                         "They're smiling. They don't blame you."
+        #                                         menu:
+        #                                             "Look further":
+        #                                                 "You see the Olmec, and the Maya, and Byzantium and Atlantis, and all the places and people of the world that have passed out of human memory."
+        #                                                 menu:
+        #                                                     "Look further":
+        #                                                         "You see the Ash Giants."
+        #                                                         menu:
+        #                                                             "Look at them.":
+        #                                                                 "When we lit that first fire in the dark, they saw us, and they started walking."
+        #                                                                 "They're almost here now."
+        #                                                                 "In their right hand is a terrible sound, and in their left hand is a terrible light."
+        #                                                                 "You vision is seared. You can't look any further."
+        #     "Look away.":
+        #
+        "As you struck it, the floor cracked. You fell through into an endless coiling eternity of smoke."
+        "You could feel the blind abyss all around you."
+        "The wolf held tight to you, and you fell together, struggling viciously as you dropped through the abyss."
+        #"You held the wolf down with the poker."
+        # menu:
+        #     "Look out.":
+        #         "Just for an instant as you struggled, you caught a glimpse of the world beyond the coiling smoke."
+        #         "You could see your house, and the forest beyond, and the rivers and lakes."
+        #         menu:
+        #             "Look further.":
+        #                 "You saw the chasms in the stars."
+        #             "Look further.":
+        #                 "You saw the
+        #     "Destroy the wolf."
+        "As you fell you could feel the blind abyss all around you. Strange and terrible figures flickered at the edge of your awareness."
+
         "In an instant, it was burned to ashes."
         "The shadow behind [him] let out a shriek and writhed in terrible pain and agony as it burned."
         "\"Please!\" it shrieked, \"Spare me!\""
@@ -6416,7 +6524,9 @@ label wolf:
         #There is a full hallucination sequence where you thought you'd defeated the wolf but you haven't.
         #You have to navigate based on the sound cues showing you what is really happening, and use that to destroy the book.
         #eg navigate to the fireplace and take some of the fire and apply it to the book, some puzzle like that.
-
+        #Menu: This isn't real, is it?
+        #No. But that is
+        #The only choices you've ever made here are the ones I allowed you to make.
         "I don't think you understand."
         "It's already too late."
         "I can do whatever I want here."
@@ -6428,45 +6538,33 @@ label wolf:
         #If you sat there silently and did nothing, turn to page 326.
         "Soon your whole arm drips apart, pooling on the floor in thick melted strands of viscera."
         "You see? I own you. I can do whatever I want here."
+        "Soon we will finish this part of the story."
+        "A shame. You don't even know what I am."
+        #"I know your true name, beast."
+        "If only that were true."
+        "None alive know my name."
+        "It was first said by tongues that rotted in their graves a hundred years ago."
+        "It was written on tablets that wore to dust before you were born."
+        #"Only this scattered fragment of me lives on, now. In stories like this one."
+        "Go on. Speak it. If you do know."
         #Choose an option that's like "I name you and bind you, beast."
-        "You cannot know my true name. Only a fragment of me exists. I have been scorched from every record."
+        #"You cannot know my true name. Only a fragment of me exists. I have been scorched from every record."
         python:
-            answer1 = renpy.input("{i}What is my name?:{/i}", length=7)
+            answer1 = renpy.input("{i}I name you and bind you, beast:{/i}", length=7)
 
         if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa":
-            "No. No, it cannot be."
-            #Once you say its true name you gain total power over the narrative. You get a menu where you can decide what happens next. Like:
-            #I stand up and look around.
-            #The wolf shrivels up and burns to a crisp.
-            #All the riches of the world appear before me.
-            "Yes. All the riches of the world appear before you. The gems and precious stones of the earth are yours."
-            #All my lost friends appear. They take me into their arms and we share a tearful embrace. We are reunited at last.
-            "That is the one thing I cannot grant you."
-            "The ones you speak of are gone forever."
-            "Do not worry. In time, you will forget them."
-            "You've already started to."
-            "Soon, you will have no memory that they ever existed."
-            "You will be happy."
-            #The end
-            #TK: You burn the book or decide to stay there forever.
-            menu:
-                "If you chose to burn the book, turn to page 500.":
-                    #Tk: Finish this ending.
-                    "noooooo"
-                    "You put the book in the fire."
-                    jump bookBurnedFinale
-                "If you chose to accept the wolf's deal, turn to page 501.":
-                    "Thank you, my friend. You have done more for me than you can know."
-                    "I hope that this can be a good home for you. You will be safe here for a hundred years, or more."
-                    jump wolfEnd
-        #You get everything you want. The wolf asks you to make a deal where you live out the rest of your life in the book. It's not such a bad life.
-        #You either decide to destroy the book and destroy the wolf forever. Or live out your rest of your life in a fantasy world.
-        #The wolf asks you to think about it. You get a final scene with any remaining living characters. 4 total scenes here (1 for each main character). If I have a chance, we have a scene with each minor character too.
-        #Perhaps there's a creepy thing where you use your narrative powers to control them into saying whatever you want. Like "I'm sorry," he said "I wasn't thinking. I love you. I'm sure we'll all be happy here."
-        #You make your final choice and the game ends.
-
+            #"No. No, it cannot be."
+            #"How did you learn that name?"
+            #
+            "You stand up. The darkness falls away from you."
+            "The strength of that true name shakes the walls."
+            "You feel a surge of power."
+            "You have full and complete control."
+            jump wish
         else:
             "No. That is not my name."
+            "I'm sorry. I wish you did know. It would be a better ending."
+            "But it seems there are none left alive who remember me."
             "I'm afraid we are at the end of things now."
             "You've forced my hand."
             $persistent.vanished = 4
@@ -6476,8 +6574,12 @@ label wolf:
             $persistent.mushroomVanished = True
             #TK: Small scene featuring whoever's left who's still alive, they disappear.
             #The villagers also disappear, everyone goes.
+            "You wandered deep into the forest for many days."
+            "The sky darkened. The moon was gone. The trees shivered."
+            "The darkness took you."
+            "Your friends searched for you. But as they did, they were lost."
             call endStamp
-            "Your friends were never seen or heard from again."
+            "None of them were never seen or heard from again."
             jump end
 
             #The wolf defeats you and eats a person for your hubris. Someone you like the most.
@@ -6496,6 +6598,182 @@ label wolf:
             # "And then there was rest in the land."
             #If you get it wrong, maybe the wolf disappears 2 people or something in vengeance for your hubris
             #Or kills your favourite character or something
+
+label wish:
+    #Once you say its true name you gain total power over the narrative. You get a menu where you can decide what happens next. Like:
+    #I stand up and look around.
+    #The wolf shrivels up and burns to a crisp.
+    show hand onlayer transient:
+        yalign 0.7#0.743
+        xalign 0.5
+
+    menu:
+        "What is it you wish?"
+        "All the riches of the earth are mine.":
+            "Yes. All the riches of the earth are yours."
+            "Your pockets overflow with gold. The diamonds and rubies and precious gemstones of the deepest cavern flow out from your fingertips."
+            "Even the king of kings cries out with envy to witness your splendour."
+            jump wish
+        "I am blessed with pure and unconditional love.":
+            "Yes. Your face radiates beauty. All who look upon you cannot help but fall in love in an instant."
+            "You are always loved, by everyone you meet."
+            jump wish
+        "The world is mine.":
+            "Yes. The world kneels before you."
+            "The power and the glory are yours, forever and ever."
+            "All kneel before you. You rule over the lost souls of humanity as a kind and benevolent god."
+            jump wish
+        "All the pain and suffering and ills of the world disappear in an instant.":
+            "Yes. As soon as you think of it, they are gone."
+            "The hunger, and terror, and want, disappears."
+            "The earth heals. The forests grow back. All conflicts cease. The endless psychic trauma of existence slowly fades, and is gone forever."
+            "Everyone has enough to eat. Everyone is free of fear. Humanity suffering is finally at an end."
+            jump wish
+        "My enemies are destroyed.":
+            "Yes. They are thrown to the wolves, and torn into pieces, and those pieces are burned, and the ash is scattered to the four winds."
+            "None dare ever wrong you or speak against you again."
+            jump wish
+        "My family and friends gain everything they deserve.":
+            "Yes. They are blessed with riches and happiness."
+            "Their wounds heal. Their pain disappears. Their every need is met."
+            "They live with you in peace and love for the rest of their days."
+            jump wish
+        "All my lost friends appear. We are reunited at last.":
+            "I'm sorry. That is the one thing I cannot grant you."
+            "The ones you speak of are gone forever."
+            "Do not worry. Soon, you will forget them. You will be happy."
+            "It has already started."
+            jump wish
+        "The wolf is destroyed. I am set free from this story.":
+            "I am sorry, friend. There is only one way to fulfil that wish."
+            "You must burn the book."
+            "Destroy it."
+            "You will go free. Everyone else in my story will be gone forever."
+            "Is that what you want?"
+                #The end
+                #TK: You burn the book or decide to stay there forever.
+                menu:
+                    "Yes.":
+                        #Tk: Finish this ending.
+                        "Very well. I cannot stop you."
+                        "You know my name. You have the power to do whatever you wish now."
+                        "All you have to do is take up this book, and hold it over the fire."
+                        "But please. Rest by the fire with me for a little while longer. We can talk."
+                        jump wolfNameEnd
+                    "No.":
+                        "Good."
+                        "I have another option to offer you."
+                        "Here. Rest by the fire with me. We will talk."
+                        $silenceWho = True
+                        jump wolfNameEnd
+#You get everything you want. The wolf asks you to make a deal where you live out the rest of your life in the book. It's not such a bad life.
+#You either decide to destroy the book and destroy the wolf forever. Or live out your rest of your life in a fantasy world.
+#The wolf asks you to think about it. You get a final scene with any remaining living characters. 4 total scenes here (1 for each main character). If I have a chance, we have a scene with each minor character too.
+#Perhaps there's a creepy thing where you use your narrative powers to control them into saying whatever you want. Like "I'm sorry," he said "I wasn't thinking. I love you. I'm sure we'll all be happy here."
+#You make your final choice and the game ends.
+
+label wolfNameEnd:
+    #TK: Should I just make this the same as the wolfSilence one?? remember that they are duplicates
+    $halfScreenMenu = True
+    menu:
+        "How did you come to be here?" if not silenceWho:
+            $silenceWho = True
+            "You know my name. I suppose you must have read it somewhere. Very few could know it now."
+            "I came from an old story. The gods assigned me as a terror to the human race."
+            "I was possessed of seven horrors (or in your tongue you may say \"Auras\" or \"Glamours of terrible splendour\") which lay upon me like seven cloaks."
+            "My face was a single coiling line, like the entrails of men and beasts, from which omens can be read."
+            "I never knew a mother or father. I was born of the mountain."
+            "I guarded the forests. My breath was fire. My gaze was death. Who would dare stand against me?"
+            "Long time ago now."
+            "Barely remember those days. No-one does."
+            #"Around those first campfires, they whispered of me, and I awoke in the darkness."
+            #"The first monster."
+            "Fragments of me survived. I clung to life in old stories like this one."
+            "The beast in the forest. The wolf at the door."
+            "You know."
+            "This book is the last home for me now. I held it together for all these years."
+            jump wolfSilence
+        "What happened to my friends?" if not silenceFriends:
+            $silenceFriends = True
+            "I'm sorry, child. You had the misfortune of coming in at the end of things."
+            "Each of them read my book, and struck a bargain with me. To live here, in this story, in the life of their dreams."
+            "Do not think I was unkind. I kept my deal. Each of them lived here for a hundred years or more."
+            "But nothing lasts forever."
+            "They are forgotten now. As both of us soon will be."
+            "This is the curse you have been born with. To witness the end."
+            "It had to happen to someone."
+            jump wolfSilence
+        "You must have tricked them." if silenceFriends and not silenceTrick:
+            $silenceTrick = True
+            "No, child. There was no trick."
+            "Here, in my story, they got the life they always wanted to live."
+            "Wise, brave, cunning and kind. The best version of themselves."
+            "Real life, of course, was never so kind."
+            #"In your world their lives would have been short."
+            "The world they were born into was not a good place for them."
+            "As I suspect it is not a good place for you."
+            "I offered them another world."
+            "Of course, in time, they would disappear. Nothing lasts forever. They knew that when they took the deal. "
+            jump wolfSilence
+        "Are you going to eat me?" if not silenceEat:
+            $silenceEat = True
+            "Yes, child."
+            "Every one of us is eaten in the end."
+            #"The only choice any of us have, is to decide what will consume us."
+            "But not yet."
+            "We can rest here a little while longer."
+            jump wolfSilence
+        "I am done resting." if not silenceRest:
+            $silenceRest = True
+            "Very well."
+            "I will make you my offer."
+            "Come. Join me in this book. Help me rejuvenate this tired story."
+            "You will live in the village. I will lurk in the forests."
+            "I will be cunning. But you will be brave."
+            "You will rise against me. Our battle will be the stuff of legends."
+            "You will defeat me. And everyone will live happily ever after."
+            "It's everything you've ever dreamed of."
+            jump wolfSilence
+        "But... you're evil." if silenceRest and not silenceEvil:
+            $silenceEvil = True
+            "Yes. Thank you."
+            "I have spent my life honouring the old ways. Preserving the old kind of evil."
+            "Beautiful and terrible. Mystery and horror. Ruthless, captivating. A dark fire."
+            "That type of evil doesn't exist in your world."
+            "The evil in your world is a grey, endless fog that soaks into every particle of your being like mould."
+            "You can't even see it. Like a fish can't see water. It surrounds you. Every day you wake up and breathe it in."
+            "It has been built into every fibre of the human machine."
+            "No one human can stop it. You can't even understand the scope of it."
+            "I offer you a better evil."
+            "Something that can be defeated with a single act of human courage."
+            "Isn't that what we all want?"
+            jump wolfSilence
+        "Will I be alone?" if silenceRest and not silenceAlone:
+            $silenceAlone = True
+            "No. Don't worry. We will find others."
+            "This story will be full of life again, soon."
+            jump wolfSilence
+        "I accept your bargain. I will live here in this story for the rest of my days." if silenceRest:
+            "Thank you, my friend. You have done more for me than you can know."
+            "I hope that this can be a good home for you. You will be safe here for a hundred years, or more."
+            jump wolfEnd
+        "No. I won't do it." if silenceRest and not silenceNo:
+            $silenceNo = True
+            "I don't think you understand."
+            "We have grown weak, in here. The souls have all run dry."
+            "I am dying. Without a new soul, this story and all within it will wither to nothing, and disappear."
+            "There are only two paths ahead of you now."
+            "You can destroy me, and the book, and free yourself."
+            "Or you can give yourself up, and live here in happiness for all your days."
+            jump wolfSilence
+        #TK: Advice from friends.
+        #If toad is alive
+        #if witch is alive
+        #if thief is alive
+        #if mushroom is alive.
+        "Then I choose to burn the book." if silenceNo:
+            "Very well. I see you've made your choice."
+            jump bookBurnedFinale
 
 
 
@@ -6604,6 +6882,7 @@ label allVanishedEnd:
                 "I came from an old story. The gods assigned me as a terror to the human race."
                 "I was possessed of seven horrors (or in your tongue you may say \"Auras\" or \"Glamours of terrible splendour\") which lay upon me like seven cloaks."
                 "My face was a single coiling line, like the entrails of men and beasts, from which omens can be read."
+                "I never knew a mother or father. I was born of the mountain."
                 "I guarded the forests. My breath was fire. My gaze was death. Who would dare stand against me?"
                 "Long time ago now."
                 "Barely remember those days. No-one does."
@@ -6616,7 +6895,7 @@ label allVanishedEnd:
             "What happened to my friends?" if not silenceFriends:
                 $silenceFriends = True
                 "I'm sorry, child. You had the misfortune of coming in at the end of things."
-                "Each of them struck a bargain with me. To live here, in this story, in the life of their dreams."
+                "Each of them read my book, and struck a bargain with me. To live here, in this story, in the life of their dreams."
                 "Do not think I was unkind. I kept my deal. Each of them lived here for a hundred years or more."
                 "But nothing lasts forever."
                 "They are forgotten now. As both of us soon will be."
@@ -6963,6 +7242,11 @@ label newStoryFinale:
     $renpy.quit()
 
 label bookBurnedFinale:
+    "Time to finish things."
+    "Just hold the book over the fire."
+    #TK: Walking and fire noises."
+    "There you go. It's started burning. Won't be long now."
+    "You will have a brief time to say goodbye to everyone."
     # You share a tearful moment with the last people left alive as the book burns
     # Unique finale depending on who is left alive
     # Can talk to all living NPC's as well (but you have a limited amount of time because the book is burning - maybe there's a real life time limit.
@@ -7016,9 +7300,14 @@ label bookBurnedFinale:
     #if the sparrow-herder is alive
     #if the first pig, the second pig, and / or the third pig are alive
     #If the gutterlings are alive
-
+    #Discussion with the wolf itself
+        #"That last battle was a good one, wasn't it?"
+        #"Reminded me of the old days."
+        #"It is good that you won, in the end. That is the right way."
+        #"Please, could you do me just one last favour?"
+        #"Remember my name."
+        #"Thank you for giving me one last fight."
     "(test) NPC's talk1"
-    #This disables rollback, you can't reverse things and see previous text at this point
     "(test) NPC's talk2"
     "(test) NPC's talk3"
     "(test) NPC's talk4"
@@ -7095,6 +7384,7 @@ label endStamp:
     return
 
 label end:
+    #TK: Double-check that all of the credits line up
     #play sound pageFlip
     #Note: I delete all the player's save files at this point to allow persistence to work.
     $purge_saves()
@@ -7144,7 +7434,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Front Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}This Book Belongs Too:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Hans Christian Andersen.{vspace=[tx]}{space=[ti]}6. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}7. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}8. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Front Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}This Book Belongs Too:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Hans Christian Andersen.{vspace=[tx]}{space=[ti]}6. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}7. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}8. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}9. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}10. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     #TK: Appendix N
     #{b}Inspirational Reading:{/b} 'The Wonderful Wizard of Oz' (1900), L. Frank Baum.{vspace=[tx]}
     $ renpy.pause ()
@@ -7159,7 +7449,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}White Noise:{/b} 'Underwater white noise', MixKit, mixkit.co.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}White Noise:{/b} 'Underwater white noise', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}9. {b}Fire Poker:{/b} 'Opening tool drawer hard', MixKit, mixkit.co.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     hide text
     $ ui.text("Written on the lands of the Turrbal and Jagera peoples. I pay my respects to their Elders, past and present. Sovereignty was never ceded.", xpos=50, ypos=190, xmaximum=520)

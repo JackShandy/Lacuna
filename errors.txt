@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-The label _call_endStamp_38 is defined twice, at
-  File "game/script.rpy", line 6248 and
-  File "game/script.rpy", line 6479.
+File "game/script.rpy", line 6420: invalid syntax
+    renpy.sound.play("audio/wolfNo.mp3", channel="wolf", loop=False, relative_volume=3) with Pause(9.0)
+                                                                                            ^
+    
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu Sep  1 16:28:22 2022
+Fri Sep  2 14:02:15 2022
