@@ -80,11 +80,47 @@ default persistent.hes = "hes"
 #number of people who have disappeared
 default persistent.vanished = 0
 
-#Who has disappeared specifically
+#Who has disappeared specifically - main cast
 default persistent.toadVanished = False
 default persistent.witchVanished = False
 default persistent.thiefVanished = False
 default persistent.mushroomVanished = False
+
+# Which side characters have disappeared
+#Your mum
+default persistent.mumVanished = False
+#God
+default persistent.miwVanished = False
+#The devil
+default persistent.mirVanished = False
+#Death
+default persistent.wibVanished = False
+#The devil's grandmother
+default persistent.dgVanished = False
+#Brildebrogue chippingham
+default persistent.bcVanished = False
+#The hunter
+default persistent.hVanished = False
+#The old gloom-monger
+default persistent.gmVanished = False
+#The thing in the well
+default persistent.wellVanished = False
+#Scraggs McKenzie and the boys
+default persistent.scVanished = False
+#The mayor
+default persistent.mayVanished = False
+#Goose-girl
+default persistent.goVanished = False
+#The sparrow-herder
+default persistent.shVanished = False
+#Strange and crooked old man
+default persistent.somVanished = False
+#The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
+default persistent.batVanished = False
+#Goblin 1, 2, 3, 4, and the goblin queen
+default goblinsVanished = False
+#Pig 1, 2, and 3
+default pigsVanished = False
 
 #If you get the final bad ending, who was the last to die?
 #Options: Thief, Toad, Witch, Mushroom
@@ -673,6 +709,9 @@ define audio.pageFlip = "audio/page-flip.mp3"
 define audio.pageFlip2 = "audio/page-flip2.wav"
 define audio.pageFlip3 = "audio/page-flip3.wav"
 define audio.whiteNoise = "audio/whiteNoiseEnding.mp3"
+
+##Music
+define music.gameland = "audio/gameland.mp3"
 
 #Sounds for the wolf scene
 define audio.doorKnock = "audio/doorKnock.mp3"
@@ -6366,6 +6405,7 @@ label wolf:
                     "[He] turned the page again."
                     "There was a figure behind [him], but you could not see it clearly."
                     "It coiled around [him] like dark smoke."
+                    "You heard soft whispers in your head. Your hand began to shake."
                     jump wolfFigure
 
                 "If you looked at the phone, turn to page 398.":
@@ -6405,7 +6445,6 @@ label wolf:
                     jump wolfHouseExplore
 
     label wolfFigure:
-        "You heard soft whispers in your head. Your hand began to shake."
         show hand onlayer transient:
             yalign 0.7#0.743
             xalign 0.5
@@ -6430,6 +6469,7 @@ label wolf:
                 jump wolfHouseExplore
 
     label wolfDestroy:
+        play music gameland
         call hideAll
         show darknessbg at artPos
         play sound pageFlip
@@ -6441,11 +6481,11 @@ label wolf:
             f "Master, please. Let us go back to the village."
             f "You have not seen that beast. His mouth is a dragon's maw. His breath is fire."#His chest is like a raging flood. His brow devours the reed-beds."
             f "A lion eating a corpse: he never wipes away the blood."
-            f "No man has seen his like and lived."
             show hand onlayer transient:
                 yalign 0.7#0.743
                 xalign 0.5
             menu:
+                f "No man has seen his like and lived."
                 "I must go on.":
                     f "Very well. Then take my sword."
                     "Unto you he delivered an ancient heirloom."
@@ -6459,27 +6499,27 @@ label wolf:
             w "Master, I beg of you. Go no further."
             w "Before a man can approach within even forty times forty yards, the beast has already caught sight of him."
             w "When he looks upon you, it is the gaze of death. None escape."
-            w "You are still young. But I tell you, you will never again return to the home of the mother that bore you."
             show hand onlayer transient:
                 yalign 0.7#0.743
                 xalign 0.5
             menu:
+                w "You are still young. But I tell you, you will never again return to the home of the mother that bore you."
                 "I must go on.":
                     w "Very well. Then take my draught."
                     "Unto you she delivered a gleaming-drink, which you sipped greedily. Fire spread through your blood, and the secret ways became known to you."
                     pov "Thank you, my friend. I will not forget you."
 
-        "The storm-wind raged. The forest was dark as the air, as black as the rain that the heaven's weep."
+        "The storm-wind raged. The forest was dark as the air, as black as the rain that the heavens weep."
 
         if persistent.thiefVanished == False:
             t "Master, what do you hope to gain out of this?"
             t "Will the beast speak to you with soft words? Will he make a covenant with you?"
             t "Any hope of subduing him is false. Iron is as straw to him. Bronze as rotten wood. The mere sight of him is overwhelming."
-            t "Nothing on earth is his equal. He is king over all that are proud."
             show hand onlayer transient:
                 yalign 0.7#0.743
                 xalign 0.5
             menu:
+                t "Nothing on earth is his equal. He is king over all that are proud."
                 "I must go on.":
                     t "Very well. Then take my cloak."
                     "Unto you they delivered a midnight cloak that hid you from all earthly sight."
@@ -6488,16 +6528,16 @@ label wolf:
         "At last you came to the bank of a great lake."
         "It had never been sounded by the sons of men. No wisdom reaches such depths."
         "The waters burned like a torch. The light of them fell upon your face."
-        "A deer, pursued by hounds, would prefer to die rather than save it's life by entering that water."
+        "A deer, pursued by hounds, would rather die rather than save it's life by entering that water."
 
         if persistent.mushroomVanished == False:
             m "Master, please listen to me."
             m "What's done is done. The lost are lost. We cannot get them back."
-            m "There is nothing for us here."
             show hand onlayer transient:
                 yalign 0.7#0.743
                 xalign 0.5
             menu:
+                m "There is nothing for us here."
                 "I must go on.":
                     pov "It is better to avenge friends than to mourn them."
                     m "Very well. Then take my shield."
@@ -6530,12 +6570,16 @@ label wolf:
         "You rushed into me, and we both fell into the burning mere."
         call hideAll
         play sound pageFlip
-        show mushroomBasementbg at artPos
-        "Down through the murky water we fell, wrestling. I ripped and tore at you, but your cloak held fast."
+        show mushroombasementbg at artPos
+        "Down through the murky water we fell, wrestling. I leapt for your throat, but your midnight cloak hid you from my sight."
         "You grapped onto my throat, and held me fast. The black ichor of my wound flooded all around you, hot in your mouth."
         "As you fell you could feel the blind abyss all around you. Strange and terrible figures flickered at the edge of your awareness."
-        "You could sense a great and terrible revelation there, in those depths beyond human knowledge."
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
+
         menu:
+            "You could sense a great and terrible revelation there, in those depths beyond human knowledge."
             "Look up.":
                 "You saw a crowd of crooked figures surrounding you."
                 "A seven-headed serpent."
@@ -6593,7 +6637,10 @@ label wolf:
         "Holy God had given His judgement."
         "I twitched one final time, and then went still forever."
         play sound pageFlip
-        show darkForestbg at artPos
+        call hideAll
+        stop music fadeout 6.0
+        #Start the wind silence music
+        show darkforestbg at artPos
         "On the shore of the lake, your companions had lost hope."
         "The waters were red with blood. There was no sign of life."
         "They stared at the water for long hours with sickness in their hearts, wishing to see you again."
@@ -6602,21 +6649,28 @@ label wolf:
         if persistent.toadVanished == False:
             f "You saved us all!"
         if persistent.witchVanished == False:
-            w "I'm so glad you're safe."
+            w "I'm so glad you're alive."
         if persistent.thiefVanished == False:
             t "I have to be honest. I didn't think you could do it."
         if persistent.toadVanished == False:
             f "Might I say, I also had no small part in this little adventure myself. I softened it up for you, really."
         if persistent.mushroomVanished == False:
             m "We are forever in your debt."
+        call hideAll
+        show towncrossroadsbg at artPos
         "You placed my head in a leather sack, and your friends carried you back to the village."
+        call endStamp
+        "And so you lived in peace and prosperity for the rest of your days."
+        ""
+        $fullScreenMenu = True
         menu:
-            "And so you lived in peace and prosperity for the rest of your days."
             "But that's not the end of things, is it?":
                 "..."
                 "I thought it ended well enough."
-                "Me dead. You victorious."
+                "The wolf dead. You, victorious."
                 "What more could you want?"
+                call hideAll
+                #show emptybg at artPos
                 menu:
                     "I want you to set everyone free.":
                         if persistent.vanished >= 1:
@@ -6629,6 +6683,7 @@ label wolf:
                             pov "I can feel something keeping me trapped here. I can't look up from the page."
                             pov "I know something's wrong. I know you're causing it."
                             pov "I want you to let me go. Let everyone go."
+        $halfScreenMenu = False
 
         "Hmmm. And how are you planning to make me do that?"
         "I don't think you understand yet."
@@ -6636,29 +6691,74 @@ label wolf:
         "You asked these questions because I allowed you to ask them. Because it was entertaining to me."
         "These friends of yours. I own them, now. They gave themselves over to me."
         #TK: Double-check that this scene works with the disappearances
+        call hideAll
+        play sound pageFlip
+        show nightbg at artPos
         if persistent.toadVanished == False:
             f "I can make them say anything I want."
         else:
             mum "I can make them say anything I want."
+
+        call hideAll
+        play sound pageFlip
+        show sunbg at artPos
         if persistent.witchVanished == False:
             w "I could force you to kill them, if I wished."
         else:
             miw "I could force you to kill them, if I wished."
+
+        call hideAll
+        play sound pageFlip
+        show hellbg at artPos
         if persistent.thiefVanished == False:
             t "I could make them break your limbs, one by one."
         else:
             h "I could make them break your limbs, one by one."
+
+        call hideAll
+        play sound pageFlip
+        show mushroomcavebg at artPos
         gm "They could tear off your fingernails."
+
+        call hideAll
+        play sound pageFlip
+        show silverbg at artPos
         go "They could carve out your eyes."
-        som "They could take off your skin."
+
+        call hideAll
+        play sound pageFlip
+        show mushroomgardensbg at artPos
+        som "They could take off your skin"
+
+        call hideAll
+        play sound pageFlip
+        show deathbg at artPos
         wib "They could wear your teeth."
+
+        call hideAll
+        play sound pageFlip
+        show mushroomcavebg at artPos
         if persistent.mushroomVanished == False:
             m "I am the totality of this world."
         else:
             bc "I am the totality of this world."
-        mum "I am the alpha and the omega."
+
+        call hideAll
+        play sound pageFlip
+        show ruinsbg at artPos
+        mum "I am the beginning and the end."
+
+        call hideAll
+        play sound pageFlip
+        show sunbg at artPos
+
         may "Who has a debt against me that I must pay?"
+
+        call hideAll
+        play sound pageFlip
+        show nightbg at artPos
         pov "Everything under heaven belongs to me."
+        $fullScreenMenu = False
         menu:
             "Do you see now?"
             "I understand.":
@@ -6675,13 +6775,14 @@ label wolf:
                 "Good."
             "I understand.":
                 "Good."
-        "Now you see. What can you offer me? There is nothing in this world that is not already mine."
+        "Now you know how foolish you have been. What can you offer me? What can you hold against me?"
 
         menu:
-            "What can you hold against me?"
+            "There is nothing in this world that is not already mine."
             "I know your true name, beast.":
-                "...You hope to bind me by my true name?"
-                "Now that is an old story. I know it well. A good and powerful tale."
+                "..."
+                "You hope to bind me by my true name?"
+                "Now that is an old story. I know it well."
                 "I would be honoured to be defeated by such a tale, if only that were true."
                 "But none alive know my name."
                 "It was first said by tongues that rotted in their graves a hundred years ago."
@@ -6744,12 +6845,14 @@ label wish:
     #Once you say its true name you gain total power over the narrative. You get a menu where you can decide what happens next. Like:
     #I stand up and look around.
     #The wolf shrivels up and burns to a crisp.
+    #TK: Fix this menu
+    $fullScreenMenu = True
     show hand onlayer transient:
         yalign 0.7#0.743
         xalign 0.5
 
     menu:
-        "What is it you wish, my leige?"
+        "What is it you wish?"
         "All the riches of the earth are mine.":
             "Yes. All the riches of the earth are yours."
             "Your pockets overflow with gold. The diamonds and rubies and precious gemstones of the deepest cavern flow out from your fingertips."
@@ -6762,7 +6865,7 @@ label wish:
         "The world is mine.":
             "Yes. The world kneels before you."
             "The power and the glory are yours, forever and ever."
-            "All kneel before you. You rule over the lost souls of humanity as a kind and benevolent god."
+            "You rule over the lost souls of humanity as a kind and benevolent god."
             jump wish
         "All the pain and suffering and ills of the world disappear in an instant.":
             "Yes. As soon as you think of it, they are gone."
@@ -6790,8 +6893,12 @@ label wish:
             "You must burn the book."
             "Destroy it."
             "You will go free. Everyone else in my story will be gone forever."
-            "Is that what you want?"
+            $fullScreenMenu = False
+            show hand onlayer transient:
+                yalign 0.7#0.743
+                xalign 0.5
             menu:
+                "Is that what you want?"
                 "Yes.":
                     "Very well. I cannot stop you."
                     "You know my true name. You have the power to do whatever you wish now."
@@ -6801,14 +6908,18 @@ label wish:
                 "No.":
                     "Good."
                     "I have another option to offer you."
-                    "Here. Rest by the fire with me. We will talk."
+                    "Here. Rest by the fire with me."
                     $silenceWho = True
                     jump wolfNameEnd
 
 label wolfNameEnd:
     #TK: Should I just make this the same as the wolfSilence one?? remember that they are duplicates
     $halfScreenMenu = True
+    show hand onlayer transient:
+        yalign 0.63#0.743
+        xalign 0.5
     menu:
+        "We can talk as long as you wish."
         "How did you come to be here?" if not silenceWho:
             $silenceWho = True
             "You know my name. I suppose you must have read it somewhere. Very few could know it now."
@@ -6825,7 +6936,7 @@ label wolfNameEnd:
             "The beast in the forest. The wolf at the door."
             "You know."
             "This book is the last home for me now. I held it together for all these years."
-            jump wolfSilence
+            jump wolfNameEnd
         "What happened to my friends?" if not silenceFriends:
             $silenceFriends = True
             "I'm sorry, child. You had the misfortune of coming in at the end of things."
@@ -6835,7 +6946,7 @@ label wolfNameEnd:
             "They are forgotten now. As both of us soon will be."
             "This is the curse you have been born with. To witness the end."
             "It had to happen to someone."
-            jump wolfSilence
+            jump wolfNameEnd
         "You must have tricked them." if silenceFriends and not silenceTrick:
             $silenceTrick = True
             "No, child. There was no trick."
@@ -6847,15 +6958,7 @@ label wolfNameEnd:
             "As I suspect it is not a good place for you."
             "I offered them another world."
             "Of course, in time, they would disappear. Nothing lasts forever. They knew that when they took the deal. "
-            jump wolfSilence
-        "Are you going to eat me?" if not silenceEat:
-            $silenceEat = True
-            "Yes, child."
-            "Every one of us is eaten in the end."
-            #"The only choice any of us have, is to decide what will consume us."
-            "But not yet."
-            "We can rest here a little while longer."
-            jump wolfSilence
+            jump wolfNameEnd
         "I am done resting." if not silenceRest:
             $silenceRest = True
             "Very well."
@@ -6866,7 +6969,7 @@ label wolfNameEnd:
             "You will rise against me. Our battle will be the stuff of legends."
             "You will defeat me. And everyone will live happily ever after."
             "It's everything you've ever dreamed of."
-            jump wolfSilence
+            jump wolfNameEnd
         "But... you're evil." if silenceRest and not silenceEvil:
             $silenceEvil = True
             "Yes. Thank you."
@@ -6880,12 +6983,13 @@ label wolfNameEnd:
             "I offer you a better evil."
             "Something that can be defeated with a single act of human courage."
             "Isn't that what we all want?"
-            jump wolfSilence
+            jump wolfNameEnd
         "Will I be alone?" if silenceRest and not silenceAlone:
             $silenceAlone = True
-            "No. Don't worry. We will find others."
+            "No. Don't worry. All of your friends will be there with you. Those that are still with us."
+            "We will find others, too."
             "This story will be full of life again, soon."
-            jump wolfSilence
+            jump wolfNameEnd
         "I accept your bargain. I will live here in this story for the rest of my days." if silenceRest:
             "Thank you, my friend. You have done more for me than you can know."
             "I hope that this can be a good home for you. You will be safe here for a hundred years, or more."
@@ -6896,9 +7000,9 @@ label wolfNameEnd:
             "We have grown weak, in here. The souls have all run dry."
             "I am dying. Without a new soul, this story and all within it will wither to nothing, and disappear."
             "There are only two paths ahead of you now."
-            "You can destroy me, and the book, and free yourself."
+            "You can burn the book, destroying me and all within it, and free yourself."
             "Or you can give yourself up, and live here in happiness for all your days."
-            jump wolfSilence
+            jump wolfNameEnd
         #TK: Advice from friends.
         #If toad is alive
         #if witch is alive
@@ -7152,6 +7256,7 @@ label allVanishedEnd:
 label wolfEnd:
     "You have made the right choice."
     "Now we must choose your title."
+    $halfScreenMenu = False
     $fullScreenMenu = True
     call hideAll
     show text "What role would you like to play?":
@@ -7380,7 +7485,8 @@ label bookBurnedFinale:
     "Just hold the book over the fire."
     #pause 0.2 with hpunch
     #TK: Walking and fire noises."
-    "There you go. The flames have started to catch. Won't be long now."
+    "There you go."
+    "The flames have started to catch. Won't be long now."
     "I'll take you back to the village."
     "You should take this time to say goodbye."
 
@@ -7394,7 +7500,7 @@ label bookBurnedFinale:
     # The last part of the page burns up and is gone forever.
     # The black space lingers for a bit.
     #Game quits after the movie has run its course (IE, the book has burned).
-
+    play sound pageFlip
     #Disables the quick menu
     $ quick_menu = False
 
@@ -7423,9 +7529,9 @@ label bookBurnedFinale:
         menu:
             "You stood in the middle of the village. The smell of smoke was in the air."
             "If you walked to the banquet, turn to page 64.":
-                jump banquet
+                jump banquetBurning
             "If you walked to the edge of town, turn to page 70.":
-                jump town
+                jump townBurning
             #"If you walked back home, turn to page 1.":
                 #jump homeBurning
             "If you walked out into the deep woods, turn to page 80.":
@@ -7461,6 +7567,7 @@ label bookBurnedFinale:
                 "Fruit bats chirped and swirled overhead."
                 #if toad is alive: Brildebrogue chippingham
                 #if witch is alive
+                #if the thing in the well is alive
 
                 "If you returned to the middle of the village, go back to page 50.":
                     "You turned and walked back to the centre of the village."
@@ -7476,7 +7583,20 @@ label bookBurnedFinale:
                 xalign 0.5
             menu:
                 "The wet cool mist of the rainforest settled around you."
-
+    #If your mum is alive
+                #if the woman in black is alive
+                #if the man in white is alive
+                #if the man in red is alive
+                        #if the devil's sooty grandma is alive - with the devil
+                #Discussion with the wolf itself
+                    #"That last battle was a good one, wasn't it?"
+                    #"Reminded me of the old days."
+                    #"It is good that you won, in the end. With my True Name, too. Classic."
+                    #"That is the right way."
+                    #"Thank you for giving me one last fight."
+                    #"Please, could you do me just one last favour?"
+                    #"Remember my name."
+                    #jump woodsBurning
                 "If you returned to the middle of the village, go back to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
@@ -7487,12 +7607,6 @@ label bookBurnedFinale:
     #if hunter is alive
     #if mayor is alive
     #If scraggs mckenzie and the boys are alive
-    #If your mum is alive
-    #if the woman in black is alive
-    #if the man in white is alive
-    #if the man in red is alive
-    #if the devil's sooty grandma is alive
-    #if the thing in the well is alive
     #if the gloommonger is alive
     #"You'll have to live for all of us, now. You're the only one who will remember any of us.
     #if brildebrogue chippingham is alive
@@ -7501,30 +7615,43 @@ label bookBurnedFinale:
     #if the goblin queen is alive
     #if the sparrow-herder is alive
     #if the first pig, the second pig, and / or the third pig are alive
+    # Which side characters have disappeared
+    # #Your mum
+    # default persistent.mumVanished = False
+    # #God
+    # default persistent.miwVanished = False
+    # #The devil
+    # default persistent.mirVanished = False
+    # #Death
+    # default persistent.wibVanished = False
+    # #The devil's grandmother
+    # default persistent.dgVanished = False
+    # #Brildebrogue chippingham
+    # default persistent.bcVanished = False
+    # #The hunter
+    # default persistent.hVanished = False
+    # #The old gloom-monger
+    # default persistent.gmVanished = False
+    # #The thing in the well
+    # default persistent.wellVanished = False
+    # #Scraggs McKenzie and the boys
+    # default persistent.scVanished = False
+    # #The mayor
+    # default persistent.mayVanished = False
+    # #Goose-girl
+    # default persistent.goVanished = False
+    # #The sparrow-herder
+    # default persistent.shVanished = False
+    # #Strange and crooked old man
+    # default persistent.somVanished = False
+    # #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
+    # default persistent.batVanished = False
+    # #Goblin 1, 2, 3, 4, and the goblin queen
+    # default goblinsVanished = False
+    # #Pig 1, 2, and 3
+    # default pigsVanished = False
+
     #If the gutterlings are alive
-    #Discussion with the wolf itself
-        #"That last battle was a good one, wasn't it?"
-        #"Reminded me of the old days."
-        #"It is good that you won, in the end. That is the right way."
-        #"Please, could you do me just one last favour?"
-        #"Remember my name."
-        #"Thank you for giving me one last fight."
-    "(test) NPC's talk1"
-    "(test) NPC's talk2"
-    "(test) NPC's talk3"
-    "(test) NPC's talk4"
-    "(test) NPC's talk5"
-    "(test) NPC's talk6"
-    "(test) NPC's talk7"
-    "(test) NPC's talk8"
-    "(test) NPC's talk9"
-    "(test) NPC's talk0"
-    "(test) NPC's talk11"
-    "(test) NPC's talk12"
-    "(test) NPC's talk13"
-    "(test) NPC's talk14"
-    "(test) NPC's talk15"
-    "(test) NPC's talk16"
 
 #This is the piece of the book burned ending. The book has been destroyed.
 label burnEnd:
