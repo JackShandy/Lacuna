@@ -1515,10 +1515,10 @@ label introMenu:
             if persistent.vanished == 3:
                 "Soon you could stand it no longer. You searched the pantry and found a package wrapped up with a coinpurse, along with some bread and meat."
                 pov "The House provides."
-                "You gathered up these provisions and reached for the door, but as you took hold of the handle you stopped."
-                "You could feel it outside."
-                "The howling pressure of the vacuum beyond pressed against the door like a physical force, the weight of it paralysing you."
-                "You could not stand the thought of the trip down the empty road to that silent village where no-one lived."
+                #"You gathered up these provisions and reached for the door, but as you took hold of the handle you stopped."
+                #"You could feel it outside."
+                #"The howling pressure of the vacuum beyond pressed against the door like a physical force, the weight of it paralysing you."
+                #"You could not stand the thought of the trip down the empty road to that silent village where no-one lived."
             if godfather == "Black":
                 "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godmother would own your immortal soul as as soon as the clock struck midnight."
                 "You had no doubt that She would soon send Her three messengers for you, and then take you down to the kingdom of ruin forever."
@@ -6433,38 +6433,126 @@ label wolf:
         call hideAll
         show darknessbg at artPos
         play sound pageFlip
-        "You found yourself in a dark forest."
-        #Include any of the characters who are still alive at this point
-        #You are in a dark forest.
-        #You hunt down the wolf
-        #You go through a deep mere, the depth of which no man has seen the bottom.
-        #You go through it, end up in the wolf's court. You slice at it with your sword.
-        #You see terrible visions.
-        #You defeat the wolf. Everyone lives happily ever after.
-        "The distortion around the figure slowly began to curl towards you."
-        "You steadied your shaking hand and lashed out at the figure in a desperate blow."
-        "No, no."
-        "It rushed out and hit you in a great boiling wave that knocked you onto the floor."
-        #"You fell through endless coiling eternities of smoke."
-        "You felt claws on your wrists. Jaws at your throat."
-        #"The figure solidified, and you felt its jaws at your throat."
-        "The wolf."
+        #"You came to the wolf's den in a dark forest."
+        "The darkness of night was about you, and the dense forest, and the wild wind."
+        "Before you, you saw the tracks of your enemy."
+        "The Wolf."
+        if persistent.toadVanished == False:
+            f "Master, please. Let us go back to the village."
+            f "You have not seen that beast. His mouth is a dragon's maw. His breath is fire."#His chest is like a raging flood. His brow devours the reed-beds."
+            f "A lion eating a corpse: he never wipes away the blood."
+            f "No man has seen his like and lived."
+            show hand onlayer transient:
+                yalign 0.7#0.743
+                xalign 0.5
+            menu:
+                "I must go on.":
+                    f "Very well. Then take my sword."
+                    "Unto you he delivered an ancient heirloom."
+                    "Iron was its edge, all etched with poison, hardened with battle-blood."
+                    pov "Thank you, my friend. I will not forget you."
+
+        "You gripped your sword tight and followed the tracks into the darkness."
+        "On you went through narrow passes and unknown ways, deep into the mountains, to the secret places where evil lives."
+
+        if persistent.witchVanished == False:
+            w "Master, I beg of you. Go no further."
+            w "Before a man can approach within even forty times forty yards, the beast has already caught sight of him."
+            w "When he looks upon you, it is the gaze of death. None escape."
+            w "You are still young. But I tell you, you will never again return to the home of the mother that bore you."
+            show hand onlayer transient:
+                yalign 0.7#0.743
+                xalign 0.5
+            menu:
+                "I must go on.":
+                    w "Very well. Then take my draught."
+                    "Unto you she delivered a gleaming-drink, which you sipped greedily. Fire spread through your blood, and the secret ways became known to you."
+                    pov "Thank you, my friend. I will not forget you."
+
+        "The storm-wind raged. The forest was dark as the air, as black as the rain that the heaven's weep."
+
+        if persistent.thiefVanished == False:
+            t "Master, what do you hope to gain out of this?"
+            t "Will the beast speak to you with soft words? Will he make a covenant with you?"
+            t "Any hope of subduing him is false. Iron is as straw to him. Bronze as rotten wood. The mere sight of him is overwhelming."
+            t "Nothing on earth is his equal. He is king over all that are proud."
+            show hand onlayer transient:
+                yalign 0.7#0.743
+                xalign 0.5
+            menu:
+                "I must go on.":
+                    t "Very well. Then take my cloak."
+                    "Unto you they delivered a midnight cloak that hid you from all earthly sight."
+                    pov "Thank you, my friend. I will not forget you."
+
+        "At last you came to the bank of a great lake."
+        "It had never been sounded by the sons of men. No wisdom reaches such depths."
+        "The waters burned like a torch. The light of them fell upon your face."
+        "A deer, pursued by hounds, would prefer to die rather than save it's life by entering that water."
+
+        if persistent.mushroomVanished == False:
+            m "Master, please listen to me."
+            m "What's done is done. The lost are lost. We cannot get them back."
+            m "There is nothing for us here."
+            show hand onlayer transient:
+                yalign 0.7#0.743
+                xalign 0.5
+            menu:
+                "I must go on.":
+                    pov "It is better to avenge friends than to mourn them."
+                    m "Very well. Then take my shield."
+                    "Unto you she delivered an oaken war-shield, gilded and gleaming."
+                    pov "Thank you, my friend. I will not forget you."
+
+        "You stood in silence. The trees whispered."
+        "Finally, you saw me. In the space between the trees."
         "Here at last, finally, at the end of time. The source of all that fear and pain."
-        #TK: Images
-        "It had no face. Just a single, coiling line, like a spiral of entrails."
-        "You hefted the fire poker and drove it straight through the beast's throat."
-        #sound effects
-        "The beast screamed, and let go of your throat. Black ichor sprayed over you. It was hot in your mouth."
-        "You wrestled yourself on top of the beast and held it down with the poker as it clawed at you."
-        "Your body felt strange. The distance between you and your hands felt infinitely large. You felt like a small, distant presence, deep in a dark corner of your mind, watching all this play out."
-        "The walls fell away. The horizon stretched away in every direction. The light was red around you."
-        "For an instant, you looked up."
-        "A crowd of strange shapes had begun to surround you, just outside the light of the fire."
-        # menu:
-        #     "Look out.":
-        #         "You see a deer, but its neck extends into a red hand with an eye in the middle."
-        #         "You see a giant mother boar with six human faces dripping from its teats."
-        #         "You see a woman made of rusted nails."
+        "My face was a single, coiling line. Like the entrails of men and beasts, from which omens can be read."
+        "Upon me lay seven terrors, which I wore like seven cloaks."
+        "I was the kindred of Cain. Father of beasts. The Wolf."
+        #"I was the kindred of Cain. The great, monstrous adversary of Man, God and Beast. The wolf."
+        "You gripped your sword. "
+        "And all at once I came upon you, and welcomed you with my claws."
+        "My jaws bit deep into your shield and splintered it to pieces. I dragged you to the shore of the river."
+        "You lashed at me with your blade. But you discovered that no sword could pierce my evil skin. It shattered as it met my flank."
+        "The shattered edges of that old relic held back my jaws as I pressed you into the lake-mud."
+        #"A crowd of strange and crooked shapes had begun to surround you, around the flickering light of the burning lake."
+        "My jaws sank into your side, and the hot blood began to flow."
+        #If persistent.toadVanished == False:
+        #The toad stabs the wolf and saves you.
+        "Anger doubled your strength. With rage, you took up the shattered sword and drove it deep into my mouth."
+        "My wicked howl pierced the heavens."
+        "I dropped you, and we faced each other, panting."
+        "With fierce joy, I snarled at you."
+        "Come, noble glory of the gods! Bring your weapons against me! Don't be afraid!"
+        "You dropped the hilt of your sword into the muck."
+        "If weapons were useless, you'd use your hands."
+        "You rushed into me, and we both fell into the burning mere."
+        call hideAll
+        play sound pageFlip
+        show mushroomBasementbg at artPos
+        "Down through the murky water we fell, wrestling. I ripped and tore at you, but your cloak held fast."
+        "You grapped onto my throat, and held me fast. The black ichor of my wound flooded all around you, hot in your mouth."
+        "As you fell you could feel the blind abyss all around you. Strange and terrible figures flickered at the edge of your awareness."
+        "You could sense a great and terrible revelation there, in those depths beyond human knowledge."
+        menu:
+            "Look up.":
+                "You saw a crowd of crooked figures surrounding you."
+                "A seven-headed serpent."
+                "A man with no lips, ears or mouth. A woman of rusted nails."
+                "Scorpion-men. Lion-dragons. Worm-like things and twisting figures."
+                "The spawn of Tiamat. The court of the Wolf."
+                # menu:
+                #     "Look further.":
+                #         "Look further":
+                #             "You see the Ash Giants."
+                #             menu:
+                #                 "Look at them.":
+                #                     "When we lit that first fire in the dark, they saw us, and they started walking."
+                #                     "They're almost here now."
+                #                     "In their right hand is a terrible sound, and in their left hand is a terrible light."
+                #                     "You vision is seared. You can't look any further."
+
         #                 "You look out to the hills of Lovelyville."
         #                 "You can see the Abandoned Party, Snake-eye Falls, and Caper Cove."
         #                 "The lights of your family's house gleam softly in the distance, obscured by snow."
@@ -6484,103 +6572,156 @@ label wolf:
         #                                             "Look further":
         #                                                 "You see the Olmec, and the Maya, and Byzantium and Atlantis, and all the places and people of the world that have passed out of human memory."
         #                                                 menu:
-        #                                                     "Look further":
-        #                                                         "You see the Ash Giants."
-        #                                                         menu:
-        #                                                             "Look at them.":
-        #                                                                 "When we lit that first fire in the dark, they saw us, and they started walking."
-        #                                                                 "They're almost here now."
-        #                                                                 "In their right hand is a terrible sound, and in their left hand is a terrible light."
-        #                                                                 "You vision is seared. You can't look any further."
         #     "Look away.":
-        #
-        "As you struck it, the floor cracked. You fell through into an endless coiling eternity of smoke."
-        "You could feel the blind abyss all around you."
-        "The wolf held tight to you, and you fell together, struggling viciously as you dropped through the abyss."
-        #"You held the wolf down with the poker."
-        # menu:
-        #     "Look out.":
-        #         "Just for an instant as you struggled, you caught a glimpse of the world beyond the coiling smoke."
-        #         "You could see your house, and the forest beyond, and the rivers and lakes."
-        #         menu:
-        #             "Look further.":
-        #                 "You saw the chasms in the stars."
-        #             "Look further.":
-        #                 "You saw the
-        #     "Destroy the wolf."
-        "As you fell you could feel the blind abyss all around you. Strange and terrible figures flickered at the edge of your awareness."
+            "Look away.":
+                "Your eyes burned. You looked away from the terrible sights before you."
+        # "And Holy God, who sent him victory, gave judgement. For truth and right, ruler of the heavens,
+        # "once beowulf was back on his feet and fighting."
 
-        "In an instant, it was burned to ashes."
-        "The shadow behind [him] let out a shriek and writhed in terrible pain and agony as it burned."
-        "\"Please!\" it shrieked, \"Spare me!\""
-        "You ignored its pleas and lofted your sword high. In a moment you put it out of its misery and destroyed it for good."
-        "You salted the land and scattered its ashes to the four winds."
-        "As it died, the curse lifted. A cleansing wind swept through the land."
-        t "You did it!"
-        f "Thank the lord, I never thought we would be released from that dreadful curse!"
-        w "Thank you. You've saved all of us."
-        m "You truely deserve a heroes welcome."
-        #TK: Fake ending sequence
-        #There is a full hallucination sequence where you thought you'd defeated the wolf but you haven't.
-        #You have to navigate based on the sound cues showing you what is really happening, and use that to destroy the book.
-        #eg navigate to the fireplace and take some of the fire and apply it to the book, some puzzle like that.
-        #Menu: This isn't real, is it?
-        #No. But that is
-        #The only choices you've ever made here are the ones I allowed you to make.
-        "I don't think you understand."
-        "It's already too late."
-        "I can do whatever I want here."
-        "As you reach towards the book, your fingers begin to melt like candlewax."
-        #If you resisted, turn to page 326.
-        #If you screamed in pain, turn to page 326.
-        #If you fled, turn to page 326.
-        #IF you rose up and attacked the wolf, turn to page 326.
-        #If you sat there silently and did nothing, turn to page 326.
-        "Soon your whole arm drips apart, pooling on the floor in thick melted strands of viscera."
-        "You see? I own you. I can do whatever I want here."
-        "Soon we will finish this part of the story."
-        "A shame. You don't even know what I am."
-        #"I know your true name, beast."
-        "If only that were true."
-        "None alive know my name."
-        "It was first said by tongues that rotted in their graves a hundred years ago."
-        "It was written on tablets that wore to dust before you were born."
-        #"Only this scattered fragment of me lives on, now. In stories like this one."
-        "Go on. Speak it. If you do know."
-        #Choose an option that's like "I name you and bind you, beast."
-        #"You cannot know my true name. Only a fragment of me exists. I have been scorched from every record."
-        python:
-            answer1 = renpy.input("{i}I name you and bind you, beast:{/i}", length=7)
+        #"You saw a deer, but its neck extended into a red hand with an eye in the middle."
+        #"You saw a giant mother boar with six human faces dripping from its teats."
+        #"You saw a woman made of rusted nails."
+        #stabbing with tusks and teeth
+        "The current was seething with blood and gore."
+        "My claws dragged down into your sides. Your leg was mangled and broken."
+        "You held me fast, and spotted the soft white flesh of my neck."
+        "From your belt, you drew a dagger, brown with dried blood."
+        "Savage, angry and desperate, you lifted it high over your head, and struck down with all the strength you had left."
+        "Full of rage and anger, you cut my throat through."
+        "My body fell lifeless. You rejoiced at the sight."
+        "A brilliant light suddenly shone, as bright as heaven's own candle."
+        "Holy God had given His judgement."
+        "I twitched one final time, and then went still forever."
+        play sound pageFlip
+        show darkForestbg at artPos
+        "On the shore of the lake, your companions had lost hope."
+        "The waters were red with blood. There was no sign of life."
+        "They stared at the water for long hours with sickness in their hearts, wishing to see you again."
+        "Then in a sudden gasp, you surfaced, holding my head aloft."
+        "A great cheer went up."
+        if persistent.toadVanished == False:
+            f "You saved us all!"
+        if persistent.witchVanished == False:
+            w "I'm so glad you're safe."
+        if persistent.thiefVanished == False:
+            t "I have to be honest. I didn't think you could do it."
+        if persistent.toadVanished == False:
+            f "Might I say, I also had no small part in this little adventure myself. I softened it up for you, really."
+        if persistent.mushroomVanished == False:
+            m "We are forever in your debt."
+        "You placed my head in a leather sack, and your friends carried you back to the village."
+        menu:
+            "And so you lived in peace and prosperity for the rest of your days."
+            "But that's not the end of things, is it?":
+                "..."
+                "I thought it ended well enough."
+                "Me dead. You victorious."
+                "What more could you want?"
+                menu:
+                    "I want you to set everyone free.":
+                        if persistent.vanished >= 1:
+                            pov "I'm not stupid. I know people have disappeared."
+                            pov "Even if... I can't remember them any more. I can feel the blank spaces in my mind where they used to be."
+                            pov "I can feel something keeping me trapped here. I can't look up from the page."
+                            pov "I know something's wrong. I know you're causing it."
+                            pov "I want you to let me go. Let everyone go."
+                        else:
+                            pov "I can feel something keeping me trapped here. I can't look up from the page."
+                            pov "I know something's wrong. I know you're causing it."
+                            pov "I want you to let me go. Let everyone go."
 
-        if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa":
-            #"No. No, it cannot be."
-            #"How did you learn that name?"
-            #
-            "You stand up. The darkness falls away from you."
-            "The strength of that true name shakes the walls."
-            "You feel a surge of power."
-            "You have full and complete control."
-            jump wish
+        "Hmmm. And how are you planning to make me do that?"
+        "I don't think you understand yet."
+        "This is my story. The only choices you ever had are the ones I gave you."
+        "You asked these questions because I allowed you to ask them. Because it was entertaining to me."
+        "These friends of yours. I own them, now. They gave themselves over to me."
+        #TK: Double-check that this scene works with the disappearances
+        if persistent.toadVanished == False:
+            f "I can make them say anything I want."
         else:
-            "No. That is not my name."
-            "I'm sorry. I wish you did know. It would be a better ending."
-            "But it seems there are none left alive who remember me."
-            "I'm afraid we are at the end of things now."
-            "You've forced my hand."
-            $persistent.vanished = 4
-            $persistent.toadVanished = True
-            $persistent.witchVanished = True
-            $persistent.thiefVanished = True
-            $persistent.mushroomVanished = True
-            #TK: Small scene featuring whoever's left who's still alive, they disappear.
-            #The villagers also disappear, everyone goes.
-            "You wandered deep into the forest for many days."
-            "The sky darkened. The moon was gone. The trees shivered."
-            "The darkness took you."
-            "Your friends searched for you. But as they did, they were lost."
-            call endStamp
-            "None of them were never seen or heard from again."
-            jump end
+            mum "I can make them say anything I want."
+        if persistent.witchVanished == False:
+            w "I could force you to kill them, if I wished."
+        else:
+            miw "I could force you to kill them, if I wished."
+        if persistent.thiefVanished == False:
+            t "I could make them break your limbs, one by one."
+        else:
+            h "I could make them break your limbs, one by one."
+        gm "They could tear off your fingernails."
+        go "They could carve out your eyes."
+        som "They could take off your skin."
+        wib "They could wear your teeth."
+        if persistent.mushroomVanished == False:
+            m "I am the totality of this world."
+        else:
+            bc "I am the totality of this world."
+        mum "I am the alpha and the omega."
+        may "Who has a debt against me that I must pay?"
+        pov "Everything under heaven belongs to me."
+        menu:
+            "Do you see now?"
+            "I understand.":
+                "Good."
+            "I understand.":
+                "Good."
+            "I understand.":
+                "Good."
+            "I understand.":
+                "Good."
+            "I understand.":
+                "Good."
+            "I understand.":
+                "Good."
+            "I understand.":
+                "Good."
+        "Now you see. What can you offer me? There is nothing in this world that is not already mine."
+
+        menu:
+            "What can you hold against me?"
+            "I know your true name, beast.":
+                "...You hope to bind me by my true name?"
+                "Now that is an old story. I know it well. A good and powerful tale."
+                "I would be honoured to be defeated by such a tale, if only that were true."
+                "But none alive know my name."
+                "It was first said by tongues that rotted in their graves a hundred years ago."
+                "It was written on tablets that wore to dust before you were born."
+                "They spoke of my legend in a language that has been dead for centuries."
+                "None remember me now. Only this tiny, scattered fragment of me lives on, clinging to life in this story."
+                "Go on, then. Speak it. If you do know."
+                python:
+                    answer1 = renpy.input("{i}I name you and bind you, beast:{/i}", length=7)
+
+                if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa":
+                    #TK: Add a sound effect
+                    "No. No, it cannot be."
+                    "How did you learn that name?"
+                    "You stand up. The darkness falls away from you."
+                    "The strength of that true name shakes the walls."
+                    "You feel a surge of power. I kneel before you."
+                    "You have full and complete control."
+                    jump wish
+                else:
+                    "No. That is not my name."
+                    "I'm sorry. I wish you did know. It would be a better ending."
+                    "But it seems there are none left alive who remember me."
+                    "I'm afraid we are at the end of things now."
+                    "You've forced my hand."
+                    $persistent.vanished = 4
+                    $persistent.toadVanished = True
+                    $persistent.witchVanished = True
+                    $persistent.thiefVanished = True
+                    $persistent.mushroomVanished = True
+                    #TK: Small scene featuring whoever's left who's still alive, they disappear.
+                    #The villagers also disappear, everyone goes.
+                    "You wandered deep into the forest for many days, holding my severed head in that leather bag."
+                    "My burning blood dripped upon the soil."
+                    "The sky darkened. The moon was gone. The trees shivered."
+                    "The darkness took you."
+                    "Your friends searched for you. But as they did, they were lost."
+                    call endStamp
+                    "None of them were never seen or heard from again."
+                    jump end
 
             #The wolf defeats you and eats a person for your hubris. Someone you like the most.
             #TK: Make the shadows get slowly stronger and stronger.
@@ -6608,7 +6749,7 @@ label wish:
         xalign 0.5
 
     menu:
-        "What is it you wish?"
+        "What is it you wish, my leige?"
         "All the riches of the earth are mine.":
             "Yes. All the riches of the earth are yours."
             "Your pockets overflow with gold. The diamonds and rubies and precious gemstones of the deepest cavern flow out from your fingertips."
@@ -6650,27 +6791,19 @@ label wish:
             "Destroy it."
             "You will go free. Everyone else in my story will be gone forever."
             "Is that what you want?"
-                #The end
-                #TK: You burn the book or decide to stay there forever.
-                menu:
-                    "Yes.":
-                        #Tk: Finish this ending.
-                        "Very well. I cannot stop you."
-                        "You know my name. You have the power to do whatever you wish now."
-                        "All you have to do is take up this book, and hold it over the fire."
-                        "But please. Rest by the fire with me for a little while longer. We can talk."
-                        jump wolfNameEnd
-                    "No.":
-                        "Good."
-                        "I have another option to offer you."
-                        "Here. Rest by the fire with me. We will talk."
-                        $silenceWho = True
-                        jump wolfNameEnd
-#You get everything you want. The wolf asks you to make a deal where you live out the rest of your life in the book. It's not such a bad life.
-#You either decide to destroy the book and destroy the wolf forever. Or live out your rest of your life in a fantasy world.
-#The wolf asks you to think about it. You get a final scene with any remaining living characters. 4 total scenes here (1 for each main character). If I have a chance, we have a scene with each minor character too.
-#Perhaps there's a creepy thing where you use your narrative powers to control them into saying whatever you want. Like "I'm sorry," he said "I wasn't thinking. I love you. I'm sure we'll all be happy here."
-#You make your final choice and the game ends.
+            menu:
+                "Yes.":
+                    "Very well. I cannot stop you."
+                    "You know my true name. You have the power to do whatever you wish now."
+                    "All you have to do is take up this book, and hold it over the fire."
+                    "But please. Rest by the fire with me for a little while longer. We can talk."
+                    jump wolfNameEnd
+                "No.":
+                    "Good."
+                    "I have another option to offer you."
+                    "Here. Rest by the fire with me. We will talk."
+                    $silenceWho = True
+                    jump wolfNameEnd
 
 label wolfNameEnd:
     #TK: Should I just make this the same as the wolfSilence one?? remember that they are duplicates
@@ -6799,6 +6932,7 @@ label allVanishedEnd:
     pov "The House provides."
     "Like all other things, your house slowly fell day by day into greater and greater ruin as the unstoppable and silent force of entropy ground it into the dirt, piece by piece."
     "Soon the Lacuna would be total and all-encompassing. Nothing would be left."
+    #TK: Double check this sentence re androids dream of electric sheep
     "By that time, of course, you would be long dead."
     #"Nothing would be left."
     #TK: Maybe change this line
@@ -7244,9 +7378,12 @@ label newStoryFinale:
 label bookBurnedFinale:
     "Time to finish things."
     "Just hold the book over the fire."
+    #pause 0.2 with hpunch
     #TK: Walking and fire noises."
-    "There you go. It's started burning. Won't be long now."
-    "You will have a brief time to say goodbye to everyone."
+    "There you go. The flames have started to catch. Won't be long now."
+    "I'll take you back to the village."
+    "You should take this time to say goodbye."
+
     # You share a tearful moment with the last people left alive as the book burns
     # Unique finale depending on who is left alive
     # Can talk to all living NPC's as well (but you have a limited amount of time because the book is burning - maybe there's a real life time limit.
@@ -7266,6 +7403,7 @@ label bookBurnedFinale:
 
     #After the book burning movie has finished and you've run out of time, jump to the ending credits
     #Could add in something where when you only have a few seconds left, jump to a thing where people say "Goodbye" in some of the small remaining pages left
+    #Add some extra time to this before the book actually starts burning.
     $ time = 60         #Note: 8 = Roughly 14 seconds
     $ timer_jump = 'burnEnd'
     show screen countdown
@@ -7275,12 +7413,76 @@ label bookBurnedFinale:
 
     #The book has been burned - if you quit and re-enter the game at this point you will find yourself in just the burned out ending
     $persistent.bookBurned = True
+    label villageBurning:
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
+        call hideAll
+        show towncrossroadsbg at artPos
+
+        menu:
+            "You stood in the middle of the village. The smell of smoke was in the air."
+            "If you walked to the banquet, turn to page 64.":
+                jump banquet
+            "If you walked to the edge of town, turn to page 70.":
+                jump town
+            #"If you walked back home, turn to page 1.":
+                #jump homeBurning
+            "If you walked out into the deep woods, turn to page 80.":
+                jump woodsBurning
+
+
+    label banquetBurning:
+        call hideAll
+        show townfeastbg at artPos
+        "You walked down to the river, where the banquet was laid out. Folks sat and watched the river in quiet silence."
+        label banquetBurningMenu:
+            show hand onlayer transient:
+                yalign 0.625#0.743
+                xalign 0.5
+            menu:
+                "You looked out over the dark water."
+                #If thief is alive: There with all the goblins and the goblin queen
+                    #If mushroom is alive: makes a comment
+                #if mushroom is alive: Mushroom
+                "If you returned to the middle of the village, go back to page 50.":
+                    "You turned and walked back to the centre of the village."
+                    jump villageBurning
+
+    label townBurning:
+        call hideAll
+        show townextbg at artPos
+        "You walked out to the edge of town. The stars in the night sky were beautiful to behold."
+        label townBurningMenu:
+            show hand onlayer transient:
+                yalign 0.62#0.743
+                xalign 0.5
+            menu:
+                "Fruit bats chirped and swirled overhead."
+                #if toad is alive: Brildebrogue chippingham
+                #if witch is alive
+
+                "If you returned to the middle of the village, go back to page 50.":
+                    "You turned and walked back to the centre of the village."
+                    jump villageBurning
+
+    label woodsBurning:
+        call hideAll
+        show forest5bg at artPos
+        "You walked into the space between the trees."
+        label woodsBurningMenu:
+            show hand onlayer transient:
+                yalign 0.625#0.743
+                xalign 0.5
+            menu:
+                "The wet cool mist of the rainforest settled around you."
+
+                "If you returned to the middle of the village, go back to page 50.":
+                    "You turned and walked back to the centre of the village."
+                    jump villageBurning
+
 
     #The village menu reappears, you can roam the village and the woods to talk to people
-    #If thief is alive
-    #If mushroom is alive
-    #if witch is alive
-    #if toad is alive
     #if the bat, the rat, the cockatoo and the crowshrike are alive
     #if hunter is alive
     #if mayor is alive

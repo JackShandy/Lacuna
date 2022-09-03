@@ -2,10 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 6420: invalid syntax
-    renpy.sound.play("audio/wolfNo.mp3", channel="wolf", loop=False, relative_volume=3) with Pause(9.0)
-                                                                                            ^
-    
+The label banquetBurningMenu is defined twice, at
+  File "game/script.rpy", line 7439 and
+  File "game/script.rpy", line 7473.
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Fri Sep  2 14:02:15 2022
+Sat Sep  3 14:35:10 2022
