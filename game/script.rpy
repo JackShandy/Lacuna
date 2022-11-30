@@ -72,8 +72,8 @@ default persistent.his = "his"
 default persistent.His = "His"
 default persistent.him = "him"
 default persistent.Him = "Him"
-default persistent.Hes = "Hes"
-default persistent.hes = "hes"
+default persistent.Hes = "He's"
+default persistent.hes = "he's"
 
 #===========Persistent Disappearances
 
@@ -587,6 +587,7 @@ image georgiabg = "Backgrounds/contents-georgia.png"
 image basementfullbg = "Backgrounds/basement-full.png"
 image sabbathfullbg= "Backgrounds/sabbath-full.png"
 image trainfullbg = "Backgrounds/train-full.png"
+image lakefullbg = "Backgrounds/lake-full.png"
 
 ##====Names
 image witchName= "Names/witch.png"
@@ -749,6 +750,7 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         show coverBurned with dissolve
         ""
         $renpy.quit()
+
     scene black
     show firelight animated onlayer over_screens zorder 99
     #If you're at the Book Ending, show 5 bunnies
@@ -962,15 +964,15 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
 
     play sound pageFlip
     if persistent.bookEnd == True:
-        define he = persistent.he
-        define He = persistent.He
-        define his = persistent.his
-        define His = persistent.His
-        define him = persistent.him
-        define Him = persistent.Him
-        define Hes = persistent.Hes
-        define hes = persistent.hes
-        define povname = persistent.povname
+        $he = persistent.he
+        $He = persistent.He
+        $his = persistent.his
+        $His = persistent.His
+        $him = persistent.him
+        $Him = persistent.Him
+        $Hes = persistent.Hes
+        $hes = persistent.hes
+        $povname = persistent.povname
         if persistent.povname == "alex" or persistent.povname == "Alex" or persistent.povname == "Alexandra" or persistent.povname == "alexandra" or persistent.povname == "Alexander" or persistent.povname == "alexander" or persistent.povname == "Alexis" or persistent.povname == "alexis":
             show georgiabg
         else:
@@ -979,19 +981,20 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         jump chapter1
     if persistent.nameSet == False:
         call screen contents
+
     else:
         #$povname = persistent.povname
         #Using the persistent character info to define the temporary pronouns
         #This is really just done so that I don't need to write [persistent.he] every time I use a pronoun
-        define he = persistent.he
-        define He = persistent.He
-        define his = persistent.his
-        define His = persistent.His
-        define him = persistent.him
-        define Him = persistent.Him
-        define Hes = persistent.Hes
-        define hes = persistent.hes
-        define povname = persistent.povname
+        $he = persistent.he
+        $He = persistent.He
+        $his = persistent.his
+        $His = persistent.His
+        $him = persistent.him
+        $Him = persistent.Him
+        $Hes = persistent.Hes
+        $hes = persistent.hes
+        $povname = persistent.povname
         #show screen main_menu
         #$renpy.set_return_stack([])
         #$renpy.set_return_stack([])
@@ -1001,6 +1004,16 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
 
 #TK: Fix this hack - instead of the pronoun screen saying "Return" it goes to this label which says return
 label splashscreen2:
+    $he = persistent.he
+    $He = persistent.He
+    $his = persistent.his
+    $His = persistent.His
+    $him = persistent.him
+    $Him = persistent.Him
+    $Hes = persistent.Hes
+    $hes = persistent.hes
+    $povname = persistent.povname
+
     return
 #Before main menu: Making sure the animated firelight always displays
 # label before_main_menu:
@@ -1080,7 +1093,7 @@ label hideAll:
     hide basementfullbg
     hide sabbathfullbg
     hide trainfullbg
-
+    hide lakefullbg
     hide tornPage1
     hide tornPage1bg
 
@@ -1987,16 +2000,26 @@ label introMenu:
                 "As you walked down the road, sweating in the warmth of the summer night, you heard a great clattering of hooves behind you, and turned to see four horses pulling a magnificent golden carriage."
             "The horses were pure white, with intricate porcelain and shining bridles made of fine-spun ropes laced with gold."
             "The carriage door was open to show a curtain of lush red silk, and behind the curtain you could see the shadow of a lean and graceful figure of noble bearing."
+            if persistent.vanished == 3:
+                eg "Hold!"
+                "There was a long pause."
+                "You stood beside the carriage in an uncertain silence."
+                eg "I..."
+                eg "I forget what I'm supposed to say now."
+                "His words came slowly. He seemed to be having difficulty speaking."
+                pov "You're supposed to say, \"Where are you headed, fellow traveller?\""
+                "The figure nodded gratefully."
+            else:
 
-            eg "Hold!"
+                eg "Hold!"
 
-            "A rich, low voice like dark mahogany came from behind the curtains, showing the distinctive tones of one of good breeding and character. The horses slowed to walk beside you."
-            "A slender hand holding a long cigarette holder emerged from the curtains and beckoned to you. The shadow of the man inside swirled a glass of brandy in his other hand."
-            "From inside the curtain you could smell rich spices, incense and thyme."
-            show hand onlayer transient:
-                yalign 0.63#0.743
-                xalign 0.5
-            #Change: More impact from this choice. More mysterious and interesting sounding locations.
+                "A rich, low voice like dark mahogany came from behind the curtains, showing the distinctive tones of one of good breeding and character. The horses slowed to walk beside you."
+                "A slender hand holding a long cigarette holder emerged from the curtains and beckoned to you. The shadow of the man inside swirled a glass of brandy in his other hand."
+                "From inside the curtain you could smell rich spices, incense and thyme."
+                show hand onlayer transient:
+                    yalign 0.63#0.743
+                    xalign 0.5
+                #Change: More impact from this choice. More mysterious and interesting sounding locations.
             menu:
                 eg "Where are you headed, fellow traveller?"
                 "If you told him about the festival, turn to page 12.":
@@ -2023,6 +2046,19 @@ label introMenu:
                 eg "This is no night to be walking out alone. Haven't you heard there's {color=#f00}something{/color} in these woods?"
                 "If you accepted the lift, turn to page 54.":
                     label toadAccept:
+                        #if persistent.vanished==3:
+                            #TK: Finish the toad last alive route
+                        #    "You stepped up into the carriage."
+                        #    "Inside, of course, was the toad."
+                        #    f "So. To the... place?"
+                        #    pov "Yes. To the village."
+                        #    "He pulled the reins, and you rode on together in silence."
+                        #    f "The, uh... the place, the house place."
+                        #    "The toad tried to talk, but his words did not make sense. He couldn't find the words for everyday objects."
+                        #    pov "Shh, shh. It's ok."
+                        #   "You sat together in silence."
+                        #   "The
+                        #else:
                         $toadArc +=1
                         if pig:
                             "You reached up to take the gentleman's hand, and he whisked you and the pig into the carriage."
@@ -3075,7 +3111,7 @@ label town:
                 jump townExplore
 
 label toadWitchInvestigate:
-    call hideAll
+    call hideAll from _call_hideAll_95
     show hand onlayer transient:
         yalign 0.625#0.743
         xalign 0.5
@@ -3096,7 +3132,7 @@ label toadWitchInvestigate:
             jump village
 
 label thiefMushroomInvestigate:
-    call hideAll
+    call hideAll from _call_hideAll_96
     show hand onlayer transient:
         yalign 0.625#0.743
         xalign 0.5
@@ -3110,8 +3146,7 @@ label thiefMushroomInvestigate:
             jump mushroomInvestigate
         "If you went further in to the depths of the woods, go to page 121." if persistent.thiefVanished:
             #Investigation scene in thief's abandoned train
-            "You walked until you discovered a rusted old train."
-            "It seemed as if it had been recently abandoned."
+            "You walked through the darkness of the woods until you discovered a rusted old train."
             jump thiefInvestigate
         "If you returned to the village, go back to page 50.":
             "You turned and walked back to the light of the village."
@@ -3119,7 +3154,38 @@ label thiefMushroomInvestigate:
 
 label toadInvestigate:
     #You investigate the toad's hole and find clues about the mystery
-    ""
+    "You noticed a small, muddy hole on the edge of the riverbank."
+    "There was no reason to tarry here."
+    call hideAll from _call_hideAll_97
+    show hand onlayer transient:
+        yalign 0.625#0.743
+        xalign 0.5
+    menu:
+        "If you entered the hole, turn to page 207.":
+            "You crouched down and slithered into the hole."
+            "It was wet, and cramped, and crawling with small worms and roaches."
+            "A cold silence lay coiled in the hole like thick fog."
+            "\"Why have I come here?\" you asked yourself in despair. \"I had best return to my home and the people who love me.\""
+            label toadInvestigateMenu:
+                show hand onlayer transient:
+                    yalign 0.625#0.743
+                    xalign 0.5
+                menu:
+                    "If you explored the nearby area, turn to page 208.":
+                        "You uncovered a pantry with a single, mouldy piece of bread, and a hollow sunk into the muck of the wall with the remains of an old fire."
+                        jump toadInvestigateMenu
+                    "If you explored deeper in, turn to page 209.":
+                        "You travelled down a tunnel in the back which lead down into the mud."
+                        "Down the tunnel was a small room with a bed and a closet."
+                        "Inside the closet were two threadbare costumes: a witch and a unicorn."
+                        "Nothing beside remained."
+                        jump toadInvestigateMenu
+                    "If you turned and left this awful place, turn to page 50.":
+                        "You turned around and crawled back up out of the hole."
+                        pov "What a terrible place that was. Never shall I return here again."
+                        jump village
+        "If you returned to the village, return to page 50.":
+            jump village
         # "The toad directed you to a small, muddy hole on the river bank. As soon as you entered, the mud fell down behind you and blocked your exit."
         # "The hole was wet, and cramped, and crawling with small worms and roaches, but it was safe."
         # if pig:
@@ -3133,7 +3199,7 @@ label toadInvestigate:
         #         xalign 0.5
         #     menu:
         #         fq "Well. This is another fine mess I've made."
-        #         "If you explored the nearby area, turn to page 208." if not toadCave:
+        #
         #             $toadCave = True
         #             "You uncovered a rug and a fireplace in the muck, and lit the fire."
         #             if pig:
@@ -3246,6 +3312,7 @@ label mushroomInvestigate:
 
 
 label thiefInvestigate:
+    "The wheels lay on no tracks."
     #You investigate the goblin train and find clues about the mystery
     #goblin food
     #Bathhouse
@@ -3330,7 +3397,7 @@ label woodsInvestigate:
                         # "Unto you she delivered an oaken war-shield, gilded and gleaming."
                         # pov "Thank you, my friend. I will not forget you."
 
-    call hideAll
+    call hideAll from _call_hideAll_98
     show darkForestbg at artPos
     show hand onlayer transient:
         yalign 0.625#0.743
@@ -3362,7 +3429,7 @@ label thief2:
             "You pulled thin tripwires all around the chest tied to old tin cans. As soon as anyone approached it the tin cans would rattle like crazy, alerting the waiting geese."
             $chest = "Tripwires"
         "If you placed a terrible goose inside the chest itself, turn to page 116.":
-            "You picked up the orneriest goose from the pack and carefully placed it inside the chest, shielding your eyes as it pecked at you in rage."
+            "You picked up the most disagreeable goose from the pack and carefully placed it inside the chest, shielding your eyes as it pecked at you in rage."
             "As soon as it was inside the chest, you slammed it shut."
             $chest = "Goose"
     "Then you ducked behind a bush to watch the chest."
@@ -3374,7 +3441,7 @@ label thief2:
     "A fly landed on it."
     "One of the geese waddled up and began to lick it."
     go "Wait a second..."
-    "The goose-girl crawled out and cautiously dragged a finger over the chest, then stuck it in his mouth."
+    "The goose-girl crawled out and cautiously dragged a finger over the chest, then stuck it in her mouth."
     go "It's... icing!"
     "The entire chest had been replaced with a massive cake, baked to look exactly like the chest in every detail."
     if chest == "Traps":
@@ -5141,6 +5208,15 @@ label toad1:
     show darkforestbg at artPos
     "The forest was covered in great puddles of water from the rains. The puddles shone with light."
     "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
+    play sound pageFlip
+    call hideAll
+    show lakefullbg
+    ""
+    play sound pageFlip2
+    call hideAll
+    show darkforestbg at artPos
+
+    "For a brief moment, you thought you saw a figure reflected in the water. But as soon as you blinked, it was gone."
     jump puddle
 
     label puddle:
@@ -6618,16 +6694,16 @@ label toadFinale:
 label wolf:
     #NOTE: Finale scene!
     #Note: Sounds for all of this
-    call hideAll
+    call hideAll from _call_hideAll_99
     show forest5bg at artPos
     "You walked through the village gates and into the forest."
     $renpy.music.set_volume(1.0, delay=7.0, channel=u'ambient1')
     $renpy.music.set_volume(1.0, delay=7.0, channel=u'ambient2')
     $renpy.music.set_volume(1.0, delay=7.0, channel=u'music')
-    call hideAll
+    call hideAll from _call_hideAll_100
     show forest4bg at artPos
     "The woods grew dark."
-    call hideAll
+    call hideAll from _call_hideAll_101
     show forestbg at artPos
     "You passed the crooked old water-dragons. The old turtle eyed you from the water."
     #I think as you walk, maybe you end up in the modern world. Your house is a modern house.
@@ -6806,7 +6882,7 @@ label wolf:
 
     label wolfDestroy:
         play music gameland
-        call hideAll
+        call hideAll from _call_hideAll_102
         show darknessbg at artPos
         play sound pageFlip
         #"You came to the wolf's den in a dark forest."
@@ -6904,7 +6980,7 @@ label wolf:
         "You dropped the hilt of your sword into the muck."
         "If weapons were useless, you'd use your hands."
         "You rushed into me, and we both fell into the burning mere."
-        call hideAll
+        call hideAll from _call_hideAll_103
         play sound pageFlip
         show mushroombasementbg at artPos
         "Down through the murky water we fell, wrestling. I leapt for your throat, but your midnight cloak hid you from my sight."
@@ -6973,7 +7049,7 @@ label wolf:
         "Holy God had given His judgement."
         "I twitched one final time, and then went still forever."
         play sound pageFlip
-        call hideAll
+        call hideAll from _call_hideAll_104
         stop music fadeout 6.0
         #Start the wind silence music
         show darkforestbg at artPos
@@ -6992,10 +7068,10 @@ label wolf:
             f "Might I say, I also had no small part in this little adventure myself. I softened it up for you, really."
         if persistent.mushroomVanished == False:
             m "We are forever in your debt."
-        call hideAll
+        call hideAll from _call_hideAll_105
         show towncrossroadsbg at artPos
         "You placed my head in a leather sack, and your friends carried you back to the village."
-        call endStamp
+        call endStamp from _call_endStamp_39
         "And so you lived in peace and prosperity for the rest of your days."
         ""
         $fullScreenMenu = True
@@ -7005,7 +7081,7 @@ label wolf:
                 "I thought it ended well enough."
                 "The wolf dead. You, victorious."
                 "What more could you want?"
-                call hideAll
+                call hideAll from _call_hideAll_106
                 #show emptybg at artPos
                 menu:
                     "I want you to set everyone free.":
@@ -7027,7 +7103,7 @@ label wolf:
         "You asked these questions because I allowed you to ask them. Because it was entertaining to me."
         "These friends of yours. I own them, now. They gave themselves over to me."
         #TK: Double-check that this scene works with the disappearances
-        call hideAll
+        call hideAll from _call_hideAll_107
         play sound pageFlip
         show nightbg at artPos
         if persistent.toadVanished == False:
@@ -7035,7 +7111,7 @@ label wolf:
         else:
             mum "I can make them say anything I want."
 
-        call hideAll
+        call hideAll from _call_hideAll_108
         play sound pageFlip
         show sunbg at artPos
         if persistent.witchVanished == False:
@@ -7043,7 +7119,7 @@ label wolf:
         else:
             miw "I could force you to kill them, if I wished."
 
-        call hideAll
+        call hideAll from _call_hideAll_109
         play sound pageFlip
         show hellbg at artPos
         if persistent.thiefVanished == False:
@@ -7051,27 +7127,27 @@ label wolf:
         else:
             h "I could make them break your limbs, one by one."
 
-        call hideAll
+        call hideAll from _call_hideAll_110
         play sound pageFlip
         show mushroomcavebg at artPos
         gm "They could tear off your fingernails."
 
-        call hideAll
+        call hideAll from _call_hideAll_111
         play sound pageFlip
         show silverbg at artPos
         go "They could carve out your eyes."
 
-        call hideAll
+        call hideAll from _call_hideAll_112
         play sound pageFlip
         show mushroomgardensbg at artPos
         som "They could take off your skin"
 
-        call hideAll
+        call hideAll from _call_hideAll_113
         play sound pageFlip
         show deathbg at artPos
         wib "They could wear your teeth."
 
-        call hideAll
+        call hideAll from _call_hideAll_114
         play sound pageFlip
         show mushroomcavebg at artPos
         if persistent.mushroomVanished == False:
@@ -7079,18 +7155,18 @@ label wolf:
         else:
             bc "I am the totality of this world."
 
-        call hideAll
+        call hideAll from _call_hideAll_115
         play sound pageFlip
         show ruinsbg at artPos
         mum "I am the beginning and the end."
 
-        call hideAll
+        call hideAll from _call_hideAll_116
         play sound pageFlip
         show sunbg at artPos
 
         may "Who has a debt against me that I must pay?"
 
-        call hideAll
+        call hideAll from _call_hideAll_117
         play sound pageFlip
         show nightbg at artPos
         pov "Everything under heaven belongs to me."
@@ -7156,7 +7232,7 @@ label wolf:
                     "The sky darkened. The moon was gone. The trees shivered."
                     "The darkness took you."
                     "Your friends searched for you. But as they did, they were lost."
-                    call endStamp
+                    call endStamp from _call_endStamp_40
                     "None of them were never seen or heard from again."
                     jump end
 
@@ -7249,7 +7325,7 @@ label wish:
                     jump wolfNameEnd
 
 label wolfNameEnd:
-    call hideAll
+    call hideAll from _call_hideAll_118
     show emptybg at artPos
     #TK: Should I just make this the same as the wolfSilence one?? remember that they are duplicates
     $halfScreenMenu = True
@@ -7300,7 +7376,7 @@ label wolfNameEnd:
         "I want to talk to my friends." if silenceRest and not silenceFriendsTalk:
             $silenceFriendsTalk = True
             "Of course. Take all the time you need."
-            call hideAll
+            call hideAll from _call_hideAll_119
             show forest4bg at artPos
             "A door opened beside the fire. You walked into it and found yourself deep in the woods. Your surviving friends were there to greet you. A campfire crackled in the center of the clearing."
             if persistent.toadVanished == False:
@@ -7680,7 +7756,7 @@ label wolfEnd:
     "Now we must choose your title."
     $halfScreenMenu = False
     $fullScreenMenu = True
-    call hideAll
+    call hideAll from _call_hideAll_120
     show text "What role would you like to play?":
         xalign 0.5
         ypos 125
@@ -7715,7 +7791,7 @@ label wolfEnd:
             define persistent.finaleTitle = "Warrior-Poet"
         "If you chose The Heirophant, turn to page 477.":
             define persistent.finaleTitle = "Heirophant"
-    call hideAll
+    call hideAll from _call_hideAll_121
     show emptybg at artPos
     $fullScreenMenu = False
     "Thank you, my child."
@@ -7945,7 +8021,7 @@ label bookBurnedFinale:
         show hand onlayer transient:
             yalign 0.7#0.743
             xalign 0.5
-        call hideAll
+        call hideAll from _call_hideAll_122
         show towncrossroadsbg at artPos
 
         menu:
@@ -7964,7 +8040,7 @@ label bookBurnedFinale:
         #Listing all the variables
         define thiefBurning = False
 
-        call hideAll
+        call hideAll from _call_hideAll_123
         show townfeastbg at artPos
         "You walked down to the river, where the banquet was laid out. Folks sat and watched the river in quiet silence."
         label banquetBurningMenu:
@@ -7993,7 +8069,7 @@ label bookBurnedFinale:
                     jump villageBurning
 
     label townBurning:
-        call hideAll
+        call hideAll from _call_hideAll_124
         show townextbg at artPos
         "You walked out to the edge of town. The stars in the night sky were beautiful to behold."
         label townBurningMenu:
@@ -8011,7 +8087,7 @@ label bookBurnedFinale:
                     jump villageBurning
 
     label woodsBurning:
-        call hideAll
+        call hideAll from _call_hideAll_125
         show forest5bg at artPos
         "You walked into the space between the trees."
         label woodsBurningMenu:
@@ -8192,7 +8268,7 @@ label end:
     $ ui.text("{space=[ti]}30. {b}Sabbath:{/b} 'Witches' Sabbath' (1510), Hans Baldung (called Hans Baldung Grien).{vspace=[tx]}{space=[ti]}31. {b}Strangler Fig:{/b} 'Poison Tree Strangled by a Fig, Queensland' (Early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}32. {b}Sun:{/b} 'A Wheatfield, with Cypresses' (1889), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}33. {b}Town 3:{/b} 'Our Camp on the Bunya Mountains, Queensland' (Early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}34. {b}Town - Crossroads:{/b} 'St. Hansbål ved Jølstervatnet (St. John's Eve bonfire at Jølstravatn)' (1909), Nikolai Astrup.{vspace=[tx]}{space=[ti]}35. {b}Town Exterior:{/b} 'Small Grain Poles' (1904), Nikolai Astrup.{vspace=[tx]}{space=[ti]}36. {b}Town - Feast:{/b} 'St. John’s Fire' (1912), Nikolai Astrup.{vspace=[tx]}{space=[ti]}37. {b}Train:{/b} 'The Train' (1910), Louise Thuiller.{vspace=[tx]}{space=[ti]}38. {b}Train - Full:{/b} 'Take Me by The Flying Scotsman' (1932), Thomson, A R.{vspace=[tx]}{space=[ti]}39. {b}Tree - Night:{/b} 'Night in the Forest' (1859), William Louis Sonntag.{vspace=[tx]}{space=[ti]}40. {b}Well:{/b} Image taken from page 192 of 'Celebrated American Caverns, especially Mammoth, Wyandot, and at Luray, etc' (1882), Hovey, Horace Carter.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     hide text
-    $ ui.text("{space=[ti]}41. {b}Winter:{/b} 'Snow-covered field with a harrow (after Millet)' (1890), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}42. {b}Devil - Full:{/b} 'Triptych of Earthly Vanity and Divine Salvation' (1485), Hans Memling.{vspace=[tx]}{space=[ti]}43. {b}Dark Forest:{/b} 'Twilight in the Tropics' (1874), Frederic Edwin Church.", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}41. {b}Winter:{/b} 'Snow-covered field with a harrow (after Millet)' (1890), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}42. {b}Devil - Full:{/b} 'Triptych of Earthly Vanity and Divine Salvation' (1485), Hans Memling.{vspace=[tx]}{space=[ti]}43. {b}Dark Forest:{/b} 'Twilight in the Tropics' (1874), Frederic Edwin Church.{vspace=[tx]}{space=[ti]}44. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Andersen, H. C. , Robinson, T. H., ill; Robinson, Charles, ill; Robinson, W. Heath, ill.", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     hide text
 
@@ -8200,8 +8276,8 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Front Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}This Book Belongs Too:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Hans Christian Andersen.{vspace=[tx]}{space=[ti]}6. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}7. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}8. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}9. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}10. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
-    #TK: Appendix N
+    $ ui.text("{space=[ti]}1. {b}Front Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}This Book Belongs Too:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    #TK: Appendix Nd
     #{b}Inspirational Reading:{/b} 'The Wonderful Wizard of Oz' (1900), L. Frank Baum.{vspace=[tx]}
     $ renpy.pause ()
 
@@ -8215,7 +8291,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}White Noise:{/b} 'Underwater white noise', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}9. {b}Fire Poker:{/b} 'Opening tool drawer hard', MixKit, mixkit.co.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}{space=[ti]}9. {b}White Noise:{/b} 'Underwater white noise', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}10. {b}Fire Poker:{/b} 'Opening tool drawer hard', MixKit, mixkit.co.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     hide text
     $ ui.text("Written on the lands of the Turrbal and Jagera peoples. I pay my respects to their Elders, past and present. Sovereignty was never ceded.", xpos=50, ypos=190, xmaximum=520)

@@ -1,30 +1,40 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 6660, in script
-    show towncrossroadsbg at artpos
-  File "game/script.rpy", line 6660, in <module>
-    show towncrossroadsbg at artpos
-NameError: name 'artpos' is not defined
+  File "game/script.rpy", line 5199, in script
+    play sound pageflip
+  File "renpy/common/000statements.rpy", line 300, in execute_play_sound
+    renpy.sound.play(_audio_eval(p["file"]),
+  File "renpy/common/000statements.rpy", line 32, in _audio_eval
+    return eval(expr, locals=store.audio.__dict__)
+  File "game/script.rpy", line 5199, in <module>
+    play sound pageflip
+NameError: name 'pageflip' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 6660, in script
-    show towncrossroadsbg at artpos
-  File "renpy/ast.py", line 1191, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "renpy/ast.py", line 1150, in show_imspec
-    at_list = [ renpy.python.py_eval(i) for i in at_list ]
+  File "game/script.rpy", line 5199, in script
+    play sound pageflip
+  File "renpy/ast.py", line 1969, in execute
+    self.call("execute")
+  File "renpy/ast.py", line 1957, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "renpy/statements.py", line 278, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 300, in execute_play_sound
+    renpy.sound.play(_audio_eval(p["file"]),
+  File "renpy/common/000statements.rpy", line 32, in _audio_eval
+    return eval(expr, locals=store.audio.__dict__)
   File "renpy/python.py", line 2249, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "renpy/python.py", line 2242, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 6660, in <module>
-    show towncrossroadsbg at artpos
-NameError: name 'artpos' is not defined
+  File "game/script.rpy", line 5199, in <module>
+    play sound pageflip
+NameError: name 'pageflip' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Lacuna. 0.81
-Sat Sep  3 15:57:14 2022
+Tue Nov 29 15:06:18 2022
