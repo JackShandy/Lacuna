@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-The label _call_hideAll is defined twice, at
-  File "game/script.rpy", line 1125 and
-  File "game/script.rpy", line 5199.
-
-The label _call_hideAll is defined twice, at
-  File "game/script.rpy", line 5199 and
-  File "game/script.rpy", line 5202.
+File "game/script.rpy", line 1128: expected statement.
+    ""d
+       ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Tue Nov 29 15:04:49 2022
+Wed Nov 30 12:45:20 2022

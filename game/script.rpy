@@ -143,6 +143,9 @@ default persistent.name2Rand = renpy.random.randint(1,6)
 default persistent.name3Rand = renpy.random.randint(1,6)
 default persistent.name4Rand = renpy.random.randint(1,6)
 
+#Safe for work mode
+#Gets rid of all drawings with boobs / gore
+define sfw = True
 
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
@@ -585,7 +588,10 @@ image georgiabg = "Backgrounds/contents-georgia.png"
 
 #Full screen illustrations
 image basementfullbg = "Backgrounds/basement-full.png"
-image sabbathfullbg= "Backgrounds/sabbath-full.png"
+if sfw == False:
+    image sabbathfullbg= "Backgrounds/sabbath-full.png"
+elif sfw == True:
+    image sabbathfullbg= "Backgrounds/sabbath-full-s.png"
 image trainfullbg = "Backgrounds/train-full.png"
 image lakefullbg = "Backgrounds/lake-full.png"
 
@@ -597,10 +603,22 @@ image toadQuollName= "Names/toad-quoll.png"
 image toadGeckoName= "Names/toad-gecko.png"
 image toadRatName= "Names/toad-rat.png"
 
-image mushroomName= "Names/mushroom.png"
-image mushroom2Name= "Names/mushroom2.png"
-image mushroom3Name= "Names/mushroom3.png"
-image mushroom4Name= "Names/mushroom4.png"
+#TK: Clean up and make SFW mode work properly
+elif sfw == False:
+    image mushroomName= "Names/mushroom.png"
+    image mushroom2Name= "Names/mushroom2.png"
+    image mushroom3Name= "Names/mushroom3.png"
+    image mushroom4Name= "Names/mushroom4.png"
+    image goblinqueenName="Names/goblinqueen.png"
+    image skinmaskName="Names/sm.png"
+if sfw == True:
+    image mushroomName= "Names/mushroom-s.png"
+    image mushroom2Name= "Names/mushroom2-s.png"
+    image mushroom3Name= "Names/mushroom3-s.png"
+    image mushroom4Name= "Names/mushroom4-s.png"
+    image goblinqueenName="Names/goblinqueen-s.png"
+    image skinmaskName="Names/sm-s.png"
+
 image mumName= "Names/mum.png"
 image wibName= "Names/wib.png"
 image miwName= "Names/miw.png"
@@ -1105,6 +1123,36 @@ label hideAll:
 
     return
 
+#==This label clears all saves and persistent data and restarts the game.
+#==It's used for the demo version of the game.
+label demoEnd:
+    #$persistent._clear(progress=True)
+    $persistent.nameSet = False
+    $purge_saves()
+    $quick_menu = False
+    call hideAll
+    $renpy.music.set_volume(0, delay=5.0, channel=u'ambient1')
+    $renpy.music.set_volume(0, delay=5.0, channel=u'ambient2')
+    $renpy.music.set_volume(0, delay=5.0, channel=u'music')
+
+    scene black with fade
+    show text "{color=#FFFFFF}This is the end of the demo. Thank you for playing!{/color}" with fade:
+        xalign 0.5
+        yalign 0.5
+    ""
+    show text "{color=#FFFFFF}The full game will have much, much more to explore.{/color}" with fade:
+        xalign 0.5
+        yalign 0.5
+    ""
+    show text "{color=#FFFFFF}If you're interested in the game, please wishlist us on Steam or subscribe to hear when the game releases!{/color}" with fade:
+        xalign 0.5
+        yalign 0.5
+    ""
+    $renpy.music.set_volume(1.0, channel=u'ambient1')
+    $renpy.music.set_volume(1.0, channel=u'ambient2')
+    $renpy.music.set_volume(1.0, channel=u'music')
+    $quick_menu = True
+    return
 
 label start:
     show firelight animated onlayer over_screens zorder 99
@@ -1118,6 +1166,7 @@ label start:
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
+        #"[sfw]"
         #scene bg page
         #show hand onlayer transient:
             #yalign 0.6#0.743
@@ -1319,7 +1368,7 @@ label start:
                 "If she asked the mysterious figure who She was, turn to page 18." if not thirdManWho:
                     mum "I don't know you."
                     wib "Everybody knows me."
-                    "She tilted her head so that the moonlight fell on it, and your mother saw that it was true. It was Lady Death herself."
+                    "She tilted her head so that the moonlight fell upon it, and your mother saw that it was true. It was Lady Death herself."
                     $thirdManWho = True
                     jump thirdMan2
     #label godparentChoose:
@@ -1425,6 +1474,7 @@ label neighbours:
     menu:
         "The lands around your house were strange."
         "To learn about the lands to the north, turn to page 10." if not introNeighboursN:
+            play sound pageFlip
             $introNeighboursN = True
             hide map1 onlayer screens
             $renpy.hide_screen(tag="map")
@@ -1442,10 +1492,11 @@ label neighbours:
                 "Do not ask lightly of the northern forest, my child."
                 "That was a cursed place where wicked sprites and gleeful ghosts held sway. All who lived there slept uneasily in their beds as they heard the Goblin Train rattle past their windows each night."
                 "The worst of them all was the Master Thief, a dextrous and sinister figure who was said to have all manner of powers."
-                "Their long, long, long arms would stretch through your window and up your stairs and into your bedroom and steal your dreams right out from under your pillow. In a single motion their long, long, long legs would carry them away to a secret hideout where they would place your forgotten thoughts in a sack of mysterious things, never to be seen again."
+                "It was said that on moonless nights their long, long, long arms would stretch through your window and up your stairs and into your bedroom and steal your dreams right out from under your pillow. In a single motion their long, long, long legs would carry them away to a secret hideout where they would place your forgotten thoughts in a sack of mysterious things, never to be seen again."
                 "No jail could hold them and no lock could bar them entry. Or so it was said."
                 jump neighbours
         "To learn about the lands to the east, turn to page 15." if not introNeighboursE:
+            play sound pageFlip
             $introNeighboursE = True
             hide map1 onlayer screens
             $renpy.hide_screen(tag="map")
@@ -1462,9 +1513,10 @@ label neighbours:
                 #Coastal swamps and mangroves to the east, leading to the beach and the ocean - The Toad
                 "To the east, the river flowed down to the coast. The mangrove trees swayed in the summer heat, and the air thrummed with chanting in honour of the insect god, Karnopticon."
                 "On the edge of the swamp was a grand manor, owned by a noble frog lord."
-                "He was rarely seen, but people whispered that he was wiser than Solomon and rich beyond the dreams of Avarice."
+                "He was rarely seen, but people whispered that he was wiser than Solomon and richer than Midas."
                 jump neighbours
         "To learn about the lands to the south, turn to page 20." if not introNeighboursS:
+            play sound pageFlip
             $introNeighboursS = True
             hide map1 onlayer screens
             $renpy.hide_screen(tag="map")
@@ -1487,6 +1539,7 @@ label neighbours:
                 "Your family accepted her wishes, and so you let each other be."
                 jump neighbours
         "To learn about the lands to the west, turn to page 26." if not introNeighboursW:
+            play sound pageFlip
             $introNeighboursW = True
             hide map1 onlayer screens
             $renpy.hide_screen(tag="map")
@@ -1503,9 +1556,10 @@ label neighbours:
             else:
                 "None dared venture to the western mountains, for all the lands around it were said to be home to a terrible witch."
                 "People said her hut lay deep under a secret lake, and she would emerge on moonless nights when the waters of that lake turned strange and silver-green."
-                "They said the witches held their sabbath on the mountain to the east, and when the sky was clear you could see the peak blaze with fire, and the Devil himself would emerge to dance in the firelight."
+                "They said the witches held their sabbath on the mountain to the east, and when the sky was clear you could see the peak blaze with fire, and the Destroyer himself would emerge to dance in the firelight."
                 jump neighbours
         "To continue, return to page 9.":
+            play sound pageFlip
             hide map1 onlayer screens
             $renpy.hide_screen(tag="map")
             jump introMenu
@@ -1522,7 +1576,7 @@ label introMenu:
         yalign 0.68#0.743
         xalign 0.5
     menu:
-        "[introMenuSentence]."
+        "[introMenuSentence]"
         "If you want to know about your neighbours and the lands around your house, turn to page 10." if not introNeighbours:
             if persistent.vanished == 3:
                 "Yours was a vast and silent land."
@@ -1578,7 +1632,7 @@ label introMenu:
                 "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godfather would come to take you away as soon as the clock struck midnight, and you had no wish to leave just yet."
     if godfather == "Red":
         "The closer the hour grew, the more frantic you became. You knew you would soon pay dearly for all your years of wicked indolence."
-        pov "I know. I'll go to the village festival this eve. There will be travellers there from all over this haunted land. Surely one of them will know how to save me from this terrible fate."
+        pov "I know. I'll go to the village festival this eve. There will be travellers there from all over this haunted land. Surely one of them will know how to save me from my terrible fate."
         "You gathered up your coinpurse, along with some bread and meat for the journey, and resolved to travel until you found a way to escape the Devil."
     else:
         mum "You must go to the festival tonight, my child. There will be travellers there from all over this wild earth. Surely one of them will know how to save you from this terrible fate."
@@ -1942,7 +1996,7 @@ label introMenu:
                         "They had long, long legs and thin dextrous fingers that twisted in arcane motions around them."
                         "They wore a flowing midnight cloak across their back and a cunning look across their sly face."
                         t "You may have outwitted me this time, but I'll get you yet!"
-                        t "No law shall stand, no magistrate shall know peace and no lawman shall sleep easy in their bed at night, for as long as my legs can run!"
+                        t "No law shall stand, no magistrate shall know peace and no lawman shall sleep easy in his bed, for as long as my legs can run!"
                         "And with a click of their heels they rushed away into the shadows of the woods."
                         "\"Praise the Lord,\" you said to yourself, \"that I know not to help mysterious old women!\""
                         "(A wise habit. Once you've given someone a hand, they'll take your arm.)"
@@ -2202,7 +2256,7 @@ label introMenu:
                         hide tornPage3bg onlayer screens
                         "With a furious clap of his hand, he ordered the horses to ride on. The horses shrugged off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo. You realised that the brilliant carriage they pulled was nothing more than an old rotten squash."
                         "They pulled it bouncing down the road, crashing and rolling and pulling apart pinecones and causing terrible devastation as they went, until they were down the road and out of sight."
-                        pov "Well! It's a good thing I know not to talk to strangers."
+                        pov "Well! It's a good thing I know not to accept lifts from strange gentlemen."
                         "(A wise habit. The Lord knows this world is full of cheats and liars.)"
                         jump chapter6
                 "If you turned and walked into the space between the trees, turn to page 40." if persistent.vanished >=1 and persistent.mushroomVanished and persistent.thiefVanished:
@@ -2383,6 +2437,8 @@ label introMenu:
 # Act 2: Chapter I - Chat and investigation
 #You can investigate the village and choose between 2 main pathways
 label village:
+    #Test: End of the demo
+    jump demoEnd
     show hand onlayer transient:
         yalign 0.7#0.743
         xalign 0.5
@@ -3583,7 +3639,7 @@ label thief2:
         $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
         jump village
     else:
-        t "I know you live near the Mushroom, who is rich beyond the dreams of avarice."
+        t "I know you live near the Mushroom, who has riches nearing those of the King of Kings."
         t "I plan to go there tonight and take her for all she's worth. Want to join?"
     if stuffStolen:
         t "I'll give you all your things back. Promise."
@@ -5531,7 +5587,7 @@ label hellStory:
             w "Once, I was the princess of a vast kingdom very far from here, where we ruled over sapphire seas and emerald skies."
             w "From a young age I had a terrible hunger for knowledge, and soon I had devoured every book in the kingdom."
             w "Librarians everywhere grew to fear me, and they called me The Girl Who Knew Everything."
-            w "Soon the Devil Himself learned of my wisdom and pride, and grew jealous."
+            w "Soon the Great Adversary learned of my wisdom and pride, and grew jealous."
             w "\"I'll teach her a thing or two,\" he said, and whipped himself to my kingdom on the spot."
             mir "Oh Princess! I have need of your wisdom!"
             mir "If you are able to answer 3 riddles of mine, I will grant you a boon. But if you cannot answer, you must come serve me in hell."
@@ -8226,7 +8282,6 @@ label endStamp:
     return
 
 label end:
-    #TK: Double-check that all of the credits line up
     #play sound pageFlip
     #Note: I delete all the player's save files at this point to allow persistence to work.
     $purge_saves()
