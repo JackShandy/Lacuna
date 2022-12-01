@@ -12,7 +12,9 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("The Thief, the Toad, the Witch & the Mushroom")
+define config.name = _("Lacuna.") #The Thief, the Toad, the Witch & the Mushroom
+
+#TK: Edit the config name so that it changes based on who's been killed (IE The Thief, the Toad, & the witch when the mushroom dies, etc)
 
 define config.layers = ['master', 'transient', 'screens', 'over_screens', 'overlay']
 
@@ -29,9 +31,8 @@ define config.version = "0.81"
 
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
-
-define gui.about = _p("""JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. He hears something in the pipes. It’s here. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.
-""")
+#define gui.about = _p("""JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. He hears something in the pipes. It’s here. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.
+#""")
 
 #
 
@@ -63,9 +64,14 @@ define config.has_voice = False
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-define config.main_menu_music = "audio/wildlife2.wav"
-
-
+if persistent.bookBurned:
+    define config.main_menu_music = ""
+if persistent.phoneOn and persistent.vanished <=3:
+    define config.main_menu_music = "audio/wildlife2.mp3"
+elif persistent.bookEnd:
+    define config.main_menu_music = "audio/wildlife2.mp3"
+else:
+    define config.main_menu_music = "audio/windAmbience.mp3"
 ## Transitions #################################################################
 ##
 ## These variables set transitions that are used when certain events occur.

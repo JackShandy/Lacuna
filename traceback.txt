@@ -5,10 +5,6 @@ While running game code:
     call _load_reload_game from _call__load_reload_game_1
   File "renpy/common/00keymap.rpy", line 498, in script
     python hide:
-  File "renpy/common/00start.rpy", line 213, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 498, in script
-    python hide:
   File "renpy/common/00keymap.rpy", line 498, in <module>
     python hide:
   File "renpy/common/00keymap.rpy", line 508, in _execute_python_hide
@@ -18,18 +14,6 @@ Exception: Couldn't find a place to stop rolling back. Perhaps the script change
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 326, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 617, in main
-    run(restart)
-  File "renpy/main.py", line 148, in run
-    renpy.execution.run_context(True)
-  File "renpy/execution.py", line 922, in run_context
-    context.run()
-  File "renpy/common/00start.rpy", line 213, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 498, in script
-    python hide:
   File "renpy/common/00start.rpy", line 213, in script call
     call _load_reload_game from _call__load_reload_game_1
   File "renpy/common/00keymap.rpy", line 498, in script
@@ -54,5 +38,5 @@ Exception: Couldn't find a place to stop rolling back. Perhaps the script change
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
-The Thief, the Toad, the Witch & the Mushroom 0.81
-Fri Dec 31 14:05:02 2021
+Lacuna. 0.81
+Thu Dec  1 13:20:46 2022

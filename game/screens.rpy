@@ -76,7 +76,6 @@ style frame:
     background Frame("gui/frame.png", gui.frame_borders, tile=gui.frame_tile)
 
 
-
 ################################################################################
 ## In-game screens
 ################################################################################
@@ -207,11 +206,23 @@ style input:
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
 screen choice(items):
-    style_prefix "choice"
 
-    vbox:
-        for i in items:
-            textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
+
+    window:
+        style_prefix "choice"
+
+        #Change for larger menus with lots of options
+        if fullScreenMenu:
+            yalign -0.3
+        if halfScreenMenu:
+            yalign -0.1
+
+        vbox:
+            for i in items:
+                textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
+
+
+
 
 
 ## When this is true, menu captions will be spoken by the narrator. When false,
@@ -223,11 +234,18 @@ style choice_vbox is vbox
 style choice_button is button
 style choice_button_text is button_text
 
+# if persistent.vanished >= 4:
+#     style choice_vbox:
+#         xalign 0
+#         ypos 580
+#         yanchor 0.6
+#         spacing gui.choice_spacing
+#
+# else:
 style choice_vbox:
-    xalign 0#0.5
-    ypos 700#550#127
-    yanchor 0.6#0.45#0.5 %0.1
-
+    xalign 0
+    ypos choice_menu_ypos
+    yanchor 0.6
     spacing gui.choice_spacing
 
 style choice_button is default:
@@ -263,9 +281,9 @@ screen quick_menu():
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
             textbutton _("Load") action ShowMenu('load')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            #textbutton _("Q.Save") action QuickSave()
+            #textbutton _("Q.Load") action QuickLoad()
+            textbutton _("Preferences") action ShowMenu('preferences')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -628,7 +646,10 @@ screen about():
 
     tag menu
 
-    add "/gui/about.png"
+    if persistent.vanished >= 4:
+        add "gui/aboutEmpty.png"
+    else:
+        add "/gui/about.png"
 
     #add gui.about_background
     #add "gui/about.png"
@@ -646,9 +667,18 @@ screen about():
             #text _("Version [config.version!t]\n")
             #yalign 0.5
             ## gui.about is usually set in options.rpy.
-            if gui.about:
-                text "{alpha=0.9}{size=-4}[gui.about!t]\n{/size}{/alpha}" #
-
+            #if gui.about:
+            #If 4 people have vanished, the "About the author" text vanishes
+            if persistent.vanished >= 4:
+                text "{alpha=0.9}{size=-4}\n{/size}{/alpha}" #
+            elif persistent.vanished == 3:
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. He hears something in the pipes. It’s here. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
+            elif persistent.vanished == 2:
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. It's coming for him. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
+            elif persistent.vanished == 1:
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
+            elif persistent.vanished == 0:
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a writer and game designer who lives behind a keyboard in Brisbane, Australia. His other works include the megagames God Emperor and We Are Not Alone. For more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
             text _("{alpha=0.9}{size=-4}Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]{/size}{/alpha}")
 
 
@@ -663,6 +693,16 @@ style about_label_text:
 ## My screens #######################################################
 ##
 ##
+## Map ####
+
+screen map: #Preparing the imagemap
+    imagemap:
+        idle "mapClosed.png"
+        hover "mapClosedHover.png"
+
+        hotspot (0, 0, 600, 496) clicked Jump("mapOpens")
+
+
 ## Contents page ####
 
 screen contents():
@@ -770,7 +810,7 @@ screen file_slots(title):
 
                     button:
 
-                        action [FileAction(slot), Play("sound", "audio/pencil-2.wav")]
+                        action [FileAction(slot), Play("sound", "audio/pencil-2.mp3")]
 
                         has vbox
 
