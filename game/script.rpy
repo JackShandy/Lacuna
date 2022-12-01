@@ -147,6 +147,9 @@ default persistent.name4Rand = renpy.random.randint(1,6)
 #Gets rid of all drawings with boobs / gore
 define sfw = True
 
+#Demo mode: cuts you off quickly
+define demo = True
+
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
 define secondManWho = False
@@ -604,14 +607,14 @@ image toadGeckoName= "Names/toad-gecko.png"
 image toadRatName= "Names/toad-rat.png"
 
 #TK: Clean up and make SFW mode work properly
-elif sfw == False:
+if sfw == False:
     image mushroomName= "Names/mushroom.png"
     image mushroom2Name= "Names/mushroom2.png"
     image mushroom3Name= "Names/mushroom3.png"
     image mushroom4Name= "Names/mushroom4.png"
     image goblinqueenName="Names/goblinqueen.png"
     image skinmaskName="Names/sm.png"
-if sfw == True:
+elif sfw == True:
     image mushroomName= "Names/mushroom-s.png"
     image mushroom2Name= "Names/mushroom2-s.png"
     image mushroom3Name= "Names/mushroom3-s.png"
@@ -1367,7 +1370,7 @@ label start:
                     jump chapter2
                 "If she asked the mysterious figure who She was, turn to page 18." if not thirdManWho:
                     mum "I don't know you."
-                    wib "Everybody knows me."
+                    wib "Everyone knows me."
                     "She tilted her head so that the moonlight fell upon it, and your mother saw that it was true. It was Lady Death herself."
                     $thirdManWho = True
                     jump thirdMan2
@@ -2341,10 +2344,10 @@ label introMenu:
                             "She helped you get up on her broom and spirited you away into the sky."
                             "Below you, you heard the witches you chanting praise to Belphegor, lord of Hogs."
                             w "So."
-                            w "You come through here often?"
+                            w "Been out here often?"
                             #TK: Choice
                             pov "Not often, no."
-                            w "Oh, it's lovely out here, you should definitely try coming back when you have a chance. Beautiful views."
+                            w "Oh, it's lovely, you should definitely try coming back when you have a chance. Beautiful views."
                             "A great rumbling broke out all around you. You twisted around to look back. Behind you, you saw the mountain split open and ten thousand hogs burst up from beneath the earth. The witches screeched in demonic glee."
                             w "Oh dear. I'm going to miss everything."
                             w "Alright, here you are. I'd better be getting back."
@@ -2432,13 +2435,14 @@ label introMenu:
         OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
         OOOOOOOOOOOOOOOOOOOOOOOOOOOOO!"
         gm "Told you so."
+        if demo:
+            jump demoEnd
         jump village
 
 # Act 2: Chapter I - Chat and investigation
 #You can investigate the village and choose between 2 main pathways
 label village:
     #Test: End of the demo
-    jump demoEnd
     show hand onlayer transient:
         yalign 0.7#0.743
         xalign 0.5

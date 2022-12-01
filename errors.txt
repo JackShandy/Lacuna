@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1128: expected statement.
-    ""d
-       ^
+File "game/script.rpy", line 607: expected statement.
+    elif sfw == False:
+             ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Wed Nov 30 12:45:20 2022
+Thu Dec  1 13:29:28 2022
