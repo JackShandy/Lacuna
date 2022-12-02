@@ -1295,7 +1295,7 @@ label start:
                     $secondManWho = True
                     jump secondMan2
     label thirdMan1:
-        "In the deepest darkness of the forst, she may or may not have met a handsome woman all in black."
+        "In the deepest darkness of the forest, she may or may not have met a handsome woman all in black."
         "(What can any of us be certain of, except that the mercies of the Almighty are vaster than the deepest ocean and more numerous than all the pebbles on the land?)"
         "Her limbs were broken. She had no hands."
         wib "Poor woman. Let me be the Godmother."
@@ -1975,7 +1975,7 @@ label introMenu:
                         show hand onlayer transient:
                             yalign 0.8#0.743
                             xalign 0.5
-                        "As you trudged back to the road you discovered that all of your coins had been stolen and replaced with I.O.U.'s, the bread was now nothing but crumbs, and the meat had been replaced with a live possum with a label on it saying \"Ham\". It bit you and fled into the trees.{vspace=100}{i}In your notes, write down that {b}Your things have been stolen.{/b}{/i}"
+                        "As you trudged back to the road you discovered that all of your coins had been stolen and replaced with I.O.U.'s, the bread was now nothing but crumbs, and the meat had been turned into a live possum with a label on it saying \"Ham\". It bit you and fled into the trees.{vspace=100}{i}In your notes, write down that {b}Your things have been stolen.{/b}{/i}"
                         if godfather == "White":
                             "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Oh Lord, how could you treat your servant thus?\""
                             "After a long time you drew yourself up from the ground and spoke to the trees."
@@ -2190,7 +2190,7 @@ label introMenu:
                                     hide tornPage2bg onlayer screens
                                     f "Perhaps I could put in a good word for you with Him later. Pond scum?"
                                 if godfather == "Black":
-                                    "I'm searching for a way to escape my godmother, the Reaper."
+                                    pov "I'm searching for a way to escape my godmother, the Reaper."
                                     pov "She said she will soon send 3 messengers, and then take me away. But I have no wish to leave just yet."
                                     f "A sticky situation indeed!"
                                     f "Why, that reminds me of the situation when my own dear old mother was about to die."
@@ -4248,7 +4248,7 @@ label thief3:
                     $thiefDream = True
                     jump thiefConvo3
                 "If you talked about your nightmares, turn to page 96." if not thiefNightmare:
-                    pov "I've had this dream many times. I find myself in the middle of the forst. There is a great crowd around me, but I know someone is missing."
+                    pov "I've had this dream many times. I find myself in the middle of the forest. There is a great crowd around me, but I know someone is missing."
                     pov "I look down, and I realise I have no hands. Then I look down, and realise I have no feet."
                     pov "I always know what will happen next. I will look up, into the space between the trees. I am terrified, but I can't stop myself from doing it."
                     pov "I know I will see {color=#f00}something{/color} there. Waiting for me. In the dream, I know what {color=#f00}it{/color} is. I know what will happen when I see {color=#f00}it{/color}."
