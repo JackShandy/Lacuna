@@ -1,5 +1,4 @@
 ﻿# The script of the game goes in this file.
-
 #Test: Custom Text Tags
 #Registering channel for ambient noise (Fire, rain)
 init python:
