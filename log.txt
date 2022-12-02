@@ -1,41 +1,41 @@
-Thu Dec  1 14:46:39 2022
+Fri Dec  2 19:36:01 2022
 Windows-10-10.0.19044
 Ren'Py 8.0.3.22090809
  
 
-Bootstrap to the start of init.init took 0.04s
-Early init took 0.00s
-Loader init took 0.04s
-Loading error handling took 0.10s
-Loading script took 1.96s
-Loading save slot metadata. took 0.01s
+Bootstrap to the start of init.init took 0.15s
+Early init took 0.01s
+Loader init took 0.13s
+Loading error handling took 0.11s
+Loading script took 3.11s
+Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Faled to initialize steam: FileNotFoundError("Could not find module 'C:\\Users\\214542\\Desktop\\renpy-8.0.3-sdk\\lib\\py3-windows-x86_64\\steam_api64.dll' (or one of its dependencies). Try using the full path with constructor syntax.")
-Running init code took 0.09s
-Loading analysis data took 0.00s
+Running init code took 0.19s
+Loading analysis data took 0.04s
 Analyze and compile ATL took 0.02s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\214542\\AppData\\Roaming/RenPy/backups\\Lacuna':
-Dump and make backups. took 0.06s
+Dump and make backups. took 0.16s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.03s
+Initial gc. took 0.07s
 DPI scale factor: 1.250000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.03s
-Build styles took 0.00s
+Init translation took 0.13s
+Build styles took 0.01s
 Load screen analysis took 0.00s
-Analyze screens took 0.02s
-Save screen analysis took 0.02s
-Prepare screens took 0.10s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.05s
-Running _start took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.05s
+Prepare screens took 0.16s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.16s
+Running _start took 0.01s
 Performance test:
-Interface start took 0.12s
+Interface start took 0.53s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -45,6 +45,14 @@ Vendor: "b'Intel'"
 Renderer: b'Intel(R) UHD Graphics'
 Version: b'4.6.0 - Build 30.0.101.1338'
 Display Info: None
-Screen sizes: virtual=(600, 850) physical=(690, 978) drawable=(690, 978)
-Could not open 'cache/shaders.txt':
+Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
 Maximum texture size: 4096x4096
+Screen sizes: virtual=(600, 850) physical=(1920, 1001) drawable=(1920, 1001)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
