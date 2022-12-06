@@ -147,7 +147,7 @@ default persistent.name4Rand = renpy.random.randint(1,6)
 define sfw = True
 
 #Demo mode: cuts you off quickly
-define demo = True
+define demo = False
 
 #Act 1, Chapter 1 - the 3 Godfathers
 define firstManWho = False
