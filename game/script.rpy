@@ -117,9 +117,9 @@ default persistent.somVanished = False
 #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
 default persistent.batVanished = False
 #Goblin 1, 2, 3, 4, and the goblin queen
-default goblinsVanished = False
+default persistent.goblinsVanished = False
 #Pig 1, 2, and 3
-default pigsVanished = False
+default persistent.pigsVanished = False
 
 #If you get the final bad ending, who was the last to die?
 #Options: Thief, Toad, Witch, Mushroom
@@ -279,6 +279,10 @@ define goblinDrink = False
 define goblinCelebrate = False
 define goblinFood = False
 define thiefPlace = False
+define thiefWrong2 = False
+define thiefMissing = False
+define thiefHome = False
+define goblinNum = 30
 
 
 #=====Act 2, chapter 2: The Toad
@@ -1899,10 +1903,18 @@ label introMenu:
                         mys "FOOOOOL!"
                         "In a flash her clothes tore asunder, and her mask fell to the ground, and you saw it was all nothing but a disguise."
                         "In her stead stood the cunning and terrible form of the Master Thief!"
-                        "They wore a midnight cloak across their back and a cunning look on their sly face."
+                        if persistent.mushroomvanished:
+                            "They wore a midnight cloak across their back and a cunning look on their sly face."
+                        else:
+                            "Their hands shook under their midnight cloak."
                         t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
-                        t "No law shall stand and no magistrate shall ever know peace, for as long as my legs can run!"
-                        "And with a shout of laughter they demonstrated this, running their long legs into the forest and out of sight."
+                        if persistent.mushroomvanished:
+                            t "They'll never catch me, no matter how they try. I have placed my head in the wolf's mouth and never felt the sting of its jaws."
+                            t "I have stolen fire and cheated death. I will live forever. There's nothing you can do to stop me now."
+                            "They laughed a high, feverish laugh and ran into the forest and out of sight."
+                        else:
+                            t "No law shall stand and no magistrate shall ever know peace, for as long as my legs can run!"
+                            "And with a shout of laughter they demonstrated this, running their long legs into the forest and out of sight."
                         "As soon as you tried to chase them you discovered that your clothes had been stolen off your back and replaced with origami paper replicas. Your belt was now a strip of seaweed, your socks were old moss, and you were wearing someone else's shoes."
                         label thiefChase:
                             show hand onlayer transient:
@@ -2388,25 +2400,37 @@ label introMenu:
                 call hideAll from _call_hideAll_16
                 show towncrossroadsbg at artPos
                 "You took your place at the table."
-    if persistent.toadVanished == False:
-        "The hunter was there, and the young goose-girl, the old gloom-monger, the mayor and the toad."
-    else:
-        "The hunter was there, and the young goose-girl, the old gloom-monger, and the mayor."
+    "All the villagers were there."
+    if not persistent.hVanished:
+        "The cunning hunter."
+    if not persistent.goVanished:
+        "The young goose-girl with her unruly geese."
+    if not persistent.gmVanished:
+        "The old gloom-monger."
+    if not persistent.mayVanished:
+        "The town mayor."
+    if not persistent.toadVanished:
+        " Even the warty old toad you met on the road."
     "The stars and the moon slowly arrived to take their places. The birds and moths and the Firmament and the soft mist of night all came and were seated."
-    if persistent.witchVanished == False:
+    if not persistent.witchVanished:
         "But one guest was missing: No one had seen the Wild Witch of the Woods all night."
         "As the festival began a terrible concern and commotion went up amongst the guests, for we all know what terrible luck it is to spurn a witch."
-        may "Did her invitation go missing?"
-        h "Impossible. I delivered it myself."
+        if not persistent.mayVanished:
+            may "Did her invitation go missing?"
+        if not persistent.hVanished:
+            h "Impossible. I delivered it myself."
         if witchArc >=1:
             pov "Um, excuse me."
             pov "I saw the witch just tonight, actually. She was at a ritual in the mountains."
-            may "What!? Why would she spurn our invitation?"
+            if persistent.mayVanished = False:
+                may "What!? Why would she spurn our invitation?"
         else:
             "But still, the witch did not arrive, and soon everyone was a frenzy of worry."
-        gm "We've given offence to her somehow. She'll turn all our hair to straw and infest all our picnics with ants. None shall escape."
-        go "All our spoons will rust, and our forks will get stuck in the drawers! I already have enough on my hands dealing with the geese!"
-        if persistent.thiefVanished == False:
+        if persistent.goVanished == False:
+            gm "We've given offence to her somehow. She'll turn all our hair to straw and infest all our picnics with ants. None shall escape."
+        if persistent.goVanished == False:
+            go "All our spoons will rust, and our forks will get stuck in the drawers! I already have enough on my hands dealing with the geese!"
+        if persistent.thiefVanished == False and not persistent.shVanished:
             "The panic increased when the Sparrow-Herder rushed in and waved for attention."
         else:
             "There was a great hubbub and outcry, and the villagers trembled and wept in fear of the terrible curse."
@@ -2414,6 +2438,8 @@ label introMenu:
     else:
         "Everyone was in their place."
         "No-one was missing."
+        #Note: the sparrow herder can only vanish if the thief has vanished
+        #Double-check though
         if persistent.thiefVanished == False:
             "But soon, panic broke out when the Sparrow-Herder rushed in and waved for attention."
 
@@ -2568,7 +2594,7 @@ label banquet:
                 "They paid no attention to you, but continued shaking their heads and wailing with wretched misery."
                 $banquetChat = True
                 jump banquetMenu
-            "If you talked to the Sparrow-Herder, turn to page 85."  if sparrowherderChat <= 4:
+            "If you talked to the Sparrow-Herder, turn to page 85."  if sparrowherderChat <= 4 and not persistent.shVanished:
                 if persistent.witchVanished and sparrowherderRand == 2:
                     $sparrowherderRand =3
                 if sparrowherderRand ==1:
@@ -2622,7 +2648,7 @@ label banquet:
                         sh "How do I know all this? The sparrows told me."
                 $sparrowherderChat +=1
                 jump banquetMenu
-            "If you talked to the Mayor, turn to page 82." if mayorChat <= 6:
+            "If you talked to the Mayor, turn to page 82." if mayorChat <= 6 and not persistent.mayVanished:
                 #if mayorRand ==1:
                 if mayorChat == 0:
                     if persistent.witchVanished:
@@ -2668,7 +2694,7 @@ label banquet:
             #You will have three days, it said.
             #Three days passed, and I never saw her again.
             #Do you hear that?
-            "If you talked to the Second Pig, turn to page 266." if pig2Rand == 1 and pigChat <= 7:
+            "If you talked to the Second Pig, turn to page 266." if pig2Rand == 1 and pigChat <= 7 and not persistent.pigsVanished:
                 if pig:
                     if pigChat == 0:
                         p2 "Oh. It's you."
@@ -2914,7 +2940,7 @@ label town:
                 h "Shhh! Keep your voice down. This is all part of our plan to catch that dastardly Master Thief."
                 gm "We're sure to fail. This whole plan is doomed."
                 jump villagersConvo
-            "If you talked to the Goose-girl, turn to page 97." if goosemongerChat <= 6:
+            "If you talked to the Goose-girl, turn to page 97." if goosemongerChat <= 6 and not persistent.goVanished:
                 if goosemongerChat == 0:
                     go "Greetings, friend. Be careful of the crystal caverns to the north."
                 elif goosemongerChat == 1:
@@ -2935,7 +2961,7 @@ label town:
                     go "Their beauty was not made for us."
                 $goosemongerChat += 1
                 jump townExplore
-            "If you talked to the Hunter, turn to page 98." if hunterChat <=2:
+            "If you talked to the Hunter, turn to page 98." if hunterChat <=2 and not persistent.hVanished:
                 #The Hunter Side-quest
                 #Even you had no understanding of the true depths of the hunters skill. Each day they would kill a different beast. You see, once, a young boy stumbled into their house. The hunters house secretly had a vast underground cavern full of all types of creatures. The first level held the birds. The second level held the beasts of the earth. The third level held great underground seas where the beasts of the ocean lurked. Each day they would release one to hunt. Their pact with the well-spirit of your village fed them fresh prey always. One day a young girl stumbled into the hunters domain. She was hunted through the tunnels. In the seventh and lowest depth of the house the hunter combined the beasts into new shapes unseen by man. The girl entreated the help of the beasts and fled into the forest. Alas, she was never seen again. The hunters skill was not to be denied. Until myself, of course.
                 #Then have a sub-story where she speaks to one of the beasts.
@@ -2952,7 +2978,7 @@ label town:
                     h "Howling? No. You must be imagining it."
                 $hunterChat += 1
                 jump townExplore
-            "If you talked to the Gloom-monger, turn to page 99." if gloommongerChat <=6:
+            "If you talked to the Gloom-monger, turn to page 99." if gloommongerChat <=6 and not persistent.gmVanished:
                 #TK: Longer gloom-monger chat.
                 if gloommongerChat == 0:
                     gm "Give it up now. You're already doomed."
@@ -2970,7 +2996,7 @@ label town:
                     gm "In their left hand is a terrible light."
                 $gloommongerChat += 1
                 jump townExplore
-            "If you looked in the well, turn to page 346." if wellRand == 1 and wellChat <=2:
+            "If you looked in the well, turn to page 346." if wellRand == 1 and wellChat <=2 and not persistent.wellVanished:
                 if wellChat == 0:
                     well "Evening."
                 elif wellChat == 1:
@@ -3161,7 +3187,7 @@ label town:
             "If you accepted their offer, and head off to catch the Master Thief, turn to page 124." if villagersPlan or villagersCatch:
                 $tarpDone = True
                 h "Excellent! Let's be off at once."
-                "You all leapt on the cart and rattled away down the road, leaving the old Gloom-monger behind."
+                "And so you, the Goose-Girl, the Sparrow-Herder and the Hunter all leapt on the cart and rattled away down the road, leaving the old Gloom-monger behind."
                 gm "You're all doomed! Doooooooomed!"
                 h "Don't worry. He says that every time we go anywhere."
                 jump thief2
@@ -3224,7 +3250,8 @@ label toadInvestigate:
             "You crouched down and slithered into the hole."
             "It was wet, and cramped, and crawling with small worms and roaches."
             "A cold silence lay coiled in the hole like thick fog."
-            "\"Why have I come here?\" you asked yourself in despair. \"I had best return to my home and the people who love me.\""
+            "Why have you come here?"
+            "You had best return to your home and the people who love you."
             label toadInvestigateMenu:
                 show hand onlayer transient:
                     yalign 0.625#0.743
@@ -3474,6 +3501,7 @@ label thief2:
     call hideAll from _call_hideAll_21
     show town3bg at artPos
     "Soon, you arrived at the young goose-girls house, which was overrun by honking geese who tore at the furniture and ransacked the pantry until she was at her wit's end."
+    go "Be careful, my friends! I swear, these geese will be the death of me yet."
     if pig:
         "The pig quailed from the goose's wrath behind you."
     show hand onlayer transient:
@@ -3491,88 +3519,172 @@ label thief2:
             "You picked up the most disagreeable goose from the pack and carefully placed it inside the chest, shielding your eyes as it pecked at you in rage."
             "As soon as it was inside the chest, you slammed it shut."
             $chest = "Goose"
-    "Then you ducked behind a bush to watch the chest."
-    h "Now we wait."
+    "Then the four of you ducked behind a bush to watch the chest."
+    "The geese wandered around the house, hoking softly."
+    sh "Now we wait."
     go "No way the thief can get past us now."
-    echidna "I couldn't agree more, friends. This cunning and charismatic \"Master Thief\" character stands no chance against us."
+    if persistent.mushroomvanished:
+        echidna "I couldn't agree more, friends. This cunning and charismatic \"Master Thief\" character stands no chance against us."
     h "Don't get cocky."
-    "You lay there in silence, watching the chest."
-    "A fly landed on it."
-    "One of the geese waddled up and began to lick it."
-    go "Wait a second..."
-    "The goose-girl crawled out and cautiously dragged a finger over the chest, then stuck it in her mouth."
-    go "It's... icing!"
-    "The entire chest had been replaced with a massive cake, baked to look exactly like the chest in every detail."
-    if chest == "Traps":
-        "You tested the traps to find that they were now all made out of carefully crafted fondant."
-    elif chest == "Tripwires":
-        "You pulled at the tripwires to discover that every can was now a perfect cake replica of a tin can made from sponge and fondant."
-    elif chest == "Goose":
-        "You cut open the cake to find a fine meringue goose inside."
-    "The smell of chocolate wafted from behind you. You turned in horror."
-    label thiefCake:
-        show hand onlayer transient:
-            yalign 0.67#0.743
-            xalign 0.5
-        menu:
-            "The goose-girl's entire cottage had been replaced with a gigantic gingerbread house."
-            "If you all wailed in piteous woe, turn to page 109." if not pitifulGoose:
-                go "{i}NoOOoOOOOOOOOOOoooOOOOOOOOOO
-                OOOOOOOoOOOOOOOOOoOOOOOOOOOOO
-                OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                OOOOOOOOOOoOOOOoOOOOOOOOOOOOO
-                OOOOooOOOOOOOOOoooOOOOOOOOOOO
-                OOOOOOOOOOoooOOOOOOOoooOOOOOO
-                OOOOoOOOooOOOOOOOOOOOOOOOOOOO!{/i}"
-                sh "{i}NOOOooooOOOOoOOOOOOOOOOoOOOOO
-                OOOOOOoOOOOOOOOOOOooOOOOOOOOO
-                OOOOOOOOOooOOOOOOOoOOOOOOooOO
-                OOOOOOOOOOOOOOoOOOoOOOOOOOOOO
-                OOOOOOOOOOOoOOOOOoOOOOOOOOOOO
-                OOOOOOOOOOOOOoOOoOOOOOOOooOOO
-                OOoOOOOOOOOOOOOOOoOOOOoOOOOOO!{/i}"
-                h "{i}NooOOOOOOOOOOOOoOOOOOOOOOOOOOOO
-                OOOOOOOOOOOOOoooOOOoOOOOOOOOO
-                OOOOoOOOOoOOOOOOOOOOOOOOOOOOO
-                OOOoOOOOOOOooOOOOOOOOOOOOOOOO
-                OOOOOOOOOOoOOOOOOOOOoOOOOOOOO
-                OOoooOOOOOoOOOOOOOOOOOOoOOOOO
-                OOOOOOOoOOOOOoOoOOOOOOOOoOOOO!{/i}"
-                pov "{i}NOooOOOOoOOoOOOOOOOoOOOOOOOOOO
-                OOOooOOOOooOOOOOOOOoOOOOOOOOO
-                OOOOOoOOOOooOOOOOOooOOOOOOOOO
-                OOOOOOOOOOOOOOOOOOOOOOOOoOOOO
-                OOOOOOOOOOooOOOOOOOOOOOOOOOOO
-                OOOOOOOOOoOOOOOOoOOOOOOOooOOO
-                OOOOOOOoOOOOOOOoOOOOOOOOOOOOO!{/i}"
-                #echidna2 "What a shame. Oh well! I'd best be off."
-                $pitifulGoose = True
-                $pitiful +=1
-                jump thiefCake
-            "If you asked your pig to find the culprit, turn to page 132." if pig:
-                "The pig leapt from your hands and began snuffling around in the grass. It soon began sniffing at the Echidna, grunting with suspicion."
-                echidna2 "Looks like the jig is up!"
-                "You leapt for the Echidna, but it backflipped away just in time."
-                "Laughing maniacally, it ripped off its mask to reveal none other than the Master Thief."
-                t "That's right, it was I all along! I have stolen the eyes of Heaven and the hands of G-d, and now I use those eyes and hands to wreak mischief upon this cursed earth!"
-                h "Stop them!"
-                "The thief fled into the forest, with you and the loyal pig sprinting after."
-                jump thiefChase2
-            "If you took the cake as evidence, turn to page 131." if not thiefChestCake:
-                "You grabbed a slice of the chest cake to present to the local magistrate."
-                "The goose hissed at your foolishness, then continued devouring the chest."
-                $thiefChestCake = True
-                jump thiefCake
-            "If you searched for the Master Thief, turn to page 130.":
-                "You looked around wildly."
-                echidna2 "What a shame. Oh well! I'd best be off."
-                pov "Wait just a second!"
-                "You leapt for the Echidna, but it backflipped away just in time."
-                "Laughing maniacally, it ripped off its mask to reveal none other than the Master Thief."
-                t "That's right, it was I all along! I have stolen the eyes of Heaven and the hands of G-d, and now I use those eyes and hands to wreak mischief and misery upon this cursed earth!"
-                h "Stop them!"
-                "The thief fled into the forest."
-                jump thiefChase2
+    if persistent.mushroomvanished:
+        #Note: I trigger all of the vanished flags all at the same time now.
+        #So that if you quit the game at this point it doesn't break the game with only some people vanished and others not.
+        #I also need to purge saves here so that you can't reload into a saved game that doesn't work.
+        #TK: Make sure this works and doesn't break anything, also if it's the best option
+        $persistent.hVanished = True
+        $persistent.goVanished = True
+        $persistent.shVanished = True
+        $persistent.goblinsVanished = True
+        $persistent.vanished +=1
+        $persistent.thiefVanished = True
+        $purge_saves()
+
+        "The night was dark and quiet. You thought you heard something rustling in the bushes, outside your line of sight."
+        "But it must have been the wind."
+
+        "The three of you lay there for a long time, watching the chest."
+        go "Wait a moment."
+        go "Was there.. someone else here?"
+        pov "I don't think so."
+        sh "Just us three. You, me and [povname]."
+        "It was always just the three of you."
+        go "For some reason I thought..."
+        "The goose-girl looked around."
+        "After some searching she found a hunter's rifle, lying unused under the bush."
+        go "How odd."
+        sh "I guess someone must have left it there, a long time ago."
+        go "It's brand new."
+        "You all stared at it."
+        #TK: add a choice to keep the rifle or not, make it important.
+        #pov "I think I'd better keep it on me. Just in case."
+        "You lapsed into an uneasy silence as you went back to watching the chest."
+        "The moment stretched on for a long moment."
+        "The area around the house was still, and empty."
+        "The clouds slowly passed over the moon."
+        sh "I think we'd better check the traps. Make sure they're working."
+        "The two of you slowly crawled up to the chest."
+
+        "It was always just the two of you."
+        "The Sparrow Herder looked over the traps."
+        sh "Yep, they're all still there."
+        "You looked around at the cottage."
+        pov "How long has this old house stood here?"
+        sh "No idea. Must have been before my time. Not sure who owns it."
+        "The abandoned house loomed over you."
+        "The lights were on, but it was silent and empty."
+        "Who could say how long it had lain deserted?"
+        sh "I-I think this might have been a mistake. We shouldn't have gone out with just us."
+        sh "Let's head back to the village. Come on."
+        "The trees shivered in the wind. In the distance, you heard a noise."
+        "Almost like howling."
+        if pig:
+            "You and your pig stood alone in the empty clearing."
+        else:
+            "You stood alone in the empty clearing."
+        "It had always been just you."
+        "You felt something grab your hand."
+        t "Run."
+        "The thief wrenched your arm and ran with into the forest."
+        if pig:
+            "Your pig ran after you but was soon lost to sight in the darkness."
+        "You ran over hill and dale, through the shrubs and thorns and tangled thickets, twisting this way and that."
+        "The thief ran like a wild thing, like they were being pursued. They held tight to your hand the whole way, and you heard their mad laughter in the darkness as the trees writhed around you like tormented spirits."
+        "They took a whistle from their pocket and blew on it, making a harsh, shrill whine echo through the forest."
+        "At first there was silence."
+        "Then, you heard an answering whistle, deep and loud enough to deafen you."
+        "A brilliant light shone through the space between the trees. There was the sound of thundering wheels."
+        call hideAll from _call_hideAll_49
+        play sound pageFlip
+        show trainfullbg
+        ""
+        play sound pageFlip
+        call hideAll from _call_hideAll_50
+        show trainbg at artPos
+        "A train crashed through woods, twisting and bending in impossible ways to fit between the trees."
+        "It was swarming with wild and chaotic shapes of all manner of monsters, and you could see a team of things holding onto the front and laying tracks in front of the train as fast as they could as it swerved through the cavern, fungi leaping aside before it."
+        t "Grab on!"
+        "The thief pushed you up to grab onto the side of the carriage, then you reached down and pulled them up beside you."
+        "The train whistled with full force, gathering speed until it burst out of the trees and into a wide open field."
+        jump thiefSolo
+
+    else:
+        "You lay there in silence, watching the chest."
+        "A fly landed on it."
+        "One of the geese waddled up and began to lick it."
+        go "Wait a second..."
+        "The goose-girl crawled out and cautiously dragged a finger over the chest, then stuck it in her mouth."
+        go "It's... icing!"
+        "The entire chest had been replaced with a massive cake, baked to look exactly like the chest in every detail."
+        if chest == "Traps":
+            "You tested the traps to find that they were now all made out of carefully crafted fondant."
+        elif chest == "Tripwires":
+            "You pulled at the tripwires to discover that every can was now a perfect cake replica of a tin can made from sponge and fondant."
+        elif chest == "Goose":
+            "You cut open the cake to find a fine meringue goose inside."
+        "The smell of chocolate wafted from behind you. You turned in horror."
+        label thiefCake:
+            show hand onlayer transient:
+                yalign 0.67#0.743
+                xalign 0.5
+            menu:
+                "The goose-girl's entire cottage had been replaced with a gigantic gingerbread house."
+                "If you all wailed in piteous woe, turn to page 109." if not pitifulGoose:
+                    go "{i}NoOOoOOOOOOOOOOoooOOOOOOOOOO
+                    OOOOOOOoOOOOOOOOOoOOOOOOOOOOO
+                    OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                    OOOOOOOOOOoOOOOoOOOOOOOOOOOOO
+                    OOOOooOOOOOOOOOoooOOOOOOOOOOO
+                    OOOOOOOOOOoooOOOOOOOoooOOOOOO
+                    OOOOoOOOooOOOOOOOOOOOOOOOOOOO!{/i}"
+                    sh "{i}NOOOooooOOOOoOOOOOOOOOOoOOOOO
+                    OOOOOOoOOOOOOOOOOOooOOOOOOOOO
+                    OOOOOOOOOooOOOOOOOoOOOOOOooOO
+                    OOOOOOOOOOOOOOoOOOoOOOOOOOOOO
+                    OOOOOOOOOOOoOOOOOoOOOOOOOOOOO
+                    OOOOOOOOOOOOOoOOoOOOOOOOooOOO
+                    OOoOOOOOOOOOOOOOOoOOOOoOOOOOO!{/i}"
+                    h "{i}NooOOOOOOOOOOOOoOOOOOOOOOOOOOOO
+                    OOOOOOOOOOOOOoooOOOoOOOOOOOOO
+                    OOOOoOOOOoOOOOOOOOOOOOOOOOOOO
+                    OOOoOOOOOOOooOOOOOOOOOOOOOOOO
+                    OOOOOOOOOOoOOOOOOOOOoOOOOOOOO
+                    OOoooOOOOOoOOOOOOOOOOOOoOOOOO
+                    OOOOOOOoOOOOOoOoOOOOOOOOoOOOO!{/i}"
+                    pov "{i}NOooOOOOoOOoOOOOOOOoOOOOOOOOOO
+                    OOOooOOOOooOOOOOOOOoOOOOOOOOO
+                    OOOOOoOOOOooOOOOOOooOOOOOOOOO
+                    OOOOOOOOOOOOOOOOOOOOOOOOoOOOO
+                    OOOOOOOOOOooOOOOOOOOOOOOOOOOO
+                    OOOOOOOOOoOOOOOOoOOOOOOOooOOO
+                    OOOOOOOoOOOOOOOoOOOOOOOOOOOOO!{/i}"
+                    #echidna2 "What a shame. Oh well! I'd best be off."
+                    $pitifulGoose = True
+                    $pitiful +=1
+                    jump thiefCake
+                "If you asked your pig to find the culprit, turn to page 132." if pig:
+                    "The pig leapt from your hands and began snuffling around in the grass. It soon began sniffing at the Echidna, grunting with suspicion."
+                    echidna2 "Looks like the jig is up!"
+                    "You leapt for the Echidna, but it backflipped away just in time."
+                    "Laughing maniacally, it ripped off its mask to reveal none other than the Master Thief."
+                    t "That's right, it was I all along! I have stolen the eyes of Heaven and the hands of G-d, and now I use those eyes and hands to wreak mischief upon this cursed earth!"
+                    h "Stop them!"
+                    "The thief fled into the forest, with you and the loyal pig sprinting after."
+                    jump thiefChase2
+                "If you took the cake as evidence, turn to page 131." if not thiefChestCake:
+                    "You grabbed a slice of the chest cake to present to the local magistrate."
+                    "The goose hissed at your foolishness, then continued devouring the chest."
+                    $thiefChestCake = True
+                    jump thiefCake
+                "If you searched for the Master Thief, turn to page 130.":
+                    "You looked around wildly."
+                    echidna2 "What a shame. Oh well! I'd best be off."
+                    pov "Wait just a second!"
+                    "You leapt for the Echidna, but it backflipped away just in time."
+                    "Laughing maniacally, it ripped off its mask to reveal none other than the Master Thief."
+                    t "That's right, it was I all along! I have stolen the eyes of Heaven and the hands of G-d, and now I use those eyes and hands to wreak mischief and misery upon this cursed earth!"
+                    h "Stop them!"
+                    "The thief fled into the forest."
+                    jump thiefChase2
     label thiefChase2:
         show hand onlayer transient:
             yalign 0.65#0.743
@@ -3620,30 +3732,8 @@ label thief2:
         t "Why not change that?"
     elif godfather == "Black":
         t "You see, I've heard of you. They say you're a strange one. You lurk out late at night and scare people."
-    if persistent.mushroomVanished == True:
-        t "I plan to..."
-        $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient1')
-        $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient2')
-        $renpy.music.set_volume(0.3, delay=3.0, channel=u'music')
-        "They paused."
-        t "I was... going to steal from someone."
-        t "To steal from..."
-        t "Did we talk about this before?"
-        "A vague and desperate confusion settled on their face."
-        t "I'm sorry, I don't remember. I haven't been myself lately."
-        $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
-        $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
-        $renpy.music.set_volume(0, delay=3.0, channel=u'music')
-        t "I don't know who I've been lately."
-        t "You must have chosen the wrong path. There's nothing down this route."
-        t "I'll take you back to the village. Then you can choose again."
-        $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
-        $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
-        $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
-        jump village
-    else:
-        t "I know you live near the Mushroom, who has riches nearing those of the King of Kings."
-        t "I plan to go there tonight and take her for all she's worth. Want to join?"
+    t "I know you live near the Mushroom, who has riches nearing those of the King of Kings."
+    t "I plan to go there tonight and take her for all she's worth. Want to join?"
     if stuffStolen:
         t "I'll give you all your things back. Promise."
     label thiefConvo:
@@ -4271,64 +4361,68 @@ label thief3:
                     t "Alright, suit yourself."
                     jump thiefWatchThis
 
-    label thiefWatchThis:
-        t "Watch this!"
-        "They caught hold of a tree bough and spun around on it, then leapt off and landed on one foot on a nearby branch, balancing precariously."
-        show hand onlayer transient:
-            yalign 0.65#0.743
-            xalign 0.5
-        menu:
-            t "Eh? Eh?"
-            "If you clapped politely, turn to page 103.":
-                t "Thank you, thank you!"
-                "They bowed, blew you a kiss, then drew roses out of the cuffs of their coat and tossed them out to an imaginary audience. Then they leapt down."
-                t "Anyway, enough of my talents for now. We're here!"
-            "If you enquired as to the source of the thief's incredible abilities, turn to page 108":
-                t "The goblins taught me."
-                "They leapt off the branch and landed with perfect poise, posing dramatically."
-                t "Anyway, enough of my talents for now. We're here!"
-            "If you ignored the thief's displays of acrobatics, turn to page 105.":
-                t "What? Come on, that was great!"
-                "The thief sprang from the branch, performed a triple backflip and then landed on their hands. They looked at you expectantly, panting."
-                show hand onlayer transient:
-                    yalign 0.67#0.743
-                    xalign 0.5
-                menu:
-                    t "How about that!"
-                    #TK: Add a path where you keep being dismissive and the thief does bigger and bigger things to impress you
-                    "If you gave a dismissive shrug, turn to page 104.":
-                        t "What the - you're crazy. Come on, you must be out of your mind, that was amazing. You just don't know talent when you see it."
-                        "They got back to their feet and sulked for the rest of the journey."
-                        "Eventually, they brightened up as you approached your goal."
-                        t "Alright. Never mind all that, then. We're here!"
-                    "If you clapped politely, turn to page 106.":
-                        t "Hmph. Acceptable. Thank you."
-                        "They twisted over onto their feet."
-                        t "Anyway, enough of my talents for now. We're here!"
-                    "If you gave rapturous applause, turn to page 107.":
-                        t "Thank you! Thank you!"
-                        t "Now this is the praise I deserve."
-                        "They twisted over onto their feet."
-                        t "Anyway, enough of my talents for now. We're here!"
-        call hideAll from _call_hideAll_44
-        show stranglerfigbg at artPos
-        if pig:
-            "The colossal roots of the Mushroom's strangler fig rose above you. The pig sniffed at them suspiciously."
-        else:
-            "The colossal roots of the Mushroom's strangler fig rose above you."
+        label thiefWatchThis:
+            t "Watch this!"
+            "They caught hold of a tree bough and spun around on it, then leapt off and landed on one foot on a nearby branch, balancing precariously."
+            show hand onlayer transient:
+                yalign 0.65#0.743
+                xalign 0.5
+            menu:
+                t "Eh? Eh?"
+                "If you clapped politely, turn to page 103.":
+                    t "Thank you, thank you!"
+                    "They bowed, blew you a kiss, then drew roses out of the cuffs of their coat and tossed them out to an imaginary audience. Then they leapt down."
+                    t "Anyway, enough of my talents for now. We're here!"
+                "If you enquired as to the source of the thief's incredible abilities, turn to page 108":
+                    t "The goblins taught me."
+                    "They leapt off the branch and landed with perfect poise, posing dramatically."
+                    t "Anyway, enough of my talents for now. We're here!"
+                "If you ignored the thief's displays of acrobatics, turn to page 105.":
+                    t "What? Come on, that was great!"
+                    "The thief sprang from the branch, performed a triple backflip and then landed on their hands. They looked at you expectantly, panting."
+                    show hand onlayer transient:
+                        yalign 0.67#0.743
+                        xalign 0.5
+                    menu:
+                        t "How about that!"
+                        #TK: Add a path where you keep being dismissive and the thief does bigger and bigger things to impress you
+                        "If you gave a dismissive shrug, turn to page 104.":
+                            t "What the - you're crazy. Come on, you must be out of your mind, that was amazing. You just don't know talent when you see it."
+                            "They got back to their feet and sulked for the rest of the journey."
+                            "Eventually, they brightened up as you approached your goal."
+                            t "Alright. Never mind all that, then. We're here!"
+                        "If you clapped politely, turn to page 106.":
+                            t "Hmph. Acceptable. Thank you."
+                            "They twisted over onto their feet."
+                            t "Anyway, enough of my talents for now. We're here!"
+                        "If you gave rapturous applause, turn to page 107.":
+                            t "Thank you! Thank you!"
+                            t "Now this is the praise I deserve."
+                            "They twisted over onto their feet."
+                            t "Anyway, enough of my talents for now. We're here!"
+            call hideAll from _call_hideAll_44
+            show stranglerfigbg at artPos
+            if pig:
+                "The colossal roots of the Mushroom's strangler fig rose above you. The pig sniffed at them suspiciously."
+            else:
+                "The colossal roots of the Mushroom's strangler fig rose above you."
         t "Alright. Here's the job."
         "They drew a floor plan in the dirt."
         t "The treasure is in the central chamber, here. The front door can only be opened with a password."
         t "There's another entrance up through the canopy, guarded by banksia boys."
         t "Or we could try to get in here, through an underground river patrolled by an old crocodile."
-
+        if persistent.mushroomVanished:
+            "They kept looking over your shoulder into the darkness beyond. You noticed bags under their eyes."
         show hand onlayer transient:
             yalign 0.65#0.743
             xalign 0.5
         menu:
             t "So what's the plan, chief?"
             "If your notes say that you {b}know the password{/b}, turn to page 131.":
-                pov "I saw the mushroom put in the password. We can walk straight in the front door."
+                if persistent.mushroomVanished:
+                    pov "I know the password. We can walk straight in the front door."
+                else:
+                    pov "I saw the mushroom put in the password. We can walk straight in the front door."
                 t "You devil, you. Lead the way!"
                 "You walked up to the fig and cut the vines and swamp flowers away to reveal the small blue door, inlaid with precious moonstone and intricate engravings."
                 pov "Gorge, guzzle, gulp and grab; never shall this wound scab."
@@ -4587,13 +4681,13 @@ label thiefFinale:
                 "They took a whistle from their pocket and blew on it, making a harsh, shrill whine echo through the cavern."
                 "At first there was silence. The mushrooms paused."
                 "Then, you heard an answering whistle, deep and loud enough to deafen you."
-                "A brilliant light shine through the windows of the cavern. There was the sound of thundering wheels."
-                call hideAll from _call_hideAll_49
+                "A brilliant light shone through the windows of the cavern. There was the sound of thundering wheels."
+                call hideAll
                 play sound pageFlip
                 show trainfullbg
                 ""
                 play sound pageFlip
-                call hideAll from _call_hideAll_50
+                call hideAll
                 show trainbg at artPos
 
                 "A train crashed through the walls of the cavern."
@@ -4611,7 +4705,6 @@ label thiefFinale:
                 "One crawled like a snail, one prowled like a wombat, one looked like seven doves tied together with string. All of them had a chaos of forms the likes of which you had never seen."
                 "A dozen hands clapped you on the back and drew you into the train carriage."
                 goblin1 "Have a drink with us! Any friend of the thief's is a friend of ours."
-
                 label goblinTrain:
                     show hand onlayer transient:
                         yalign 0.64#0.743
@@ -4747,6 +4840,8 @@ label thiefFinale:
                                                             pov "Well, I don't have a lot of time..."
                                                             t "Alright, my parents are bad and they gave me to the goblins to train as a thief. The goblins made a deal that if they couldn't recognise me when my apprenticeship ended in a year, I would go free."
                                                             jump thiefStoryEnd
+
+
 label thiefStory:
     call hideAll from _call_hideAll_57
     show nightbg at artPos
@@ -4816,7 +4911,7 @@ label thiefStory:
                 "The thief held your hand tight."
                 t "Thank you."
         call hideAll from _call_hideAll_59
-        show darkforestbg at artPos
+
         "In a few short hours, the train stopped on a rocky stretch of coast, and the thief's mother and father came to meet it."
         if godfather == "White" or godfather == "Red":
             "Midnight was approaching fast. You felt a cold chill come over you. Soon, your godfather would come and take you away."
@@ -4919,6 +5014,7 @@ label thiefStory:
         show trainbg at artPos
         "You leapt on the goblin train, and the thief and the goblins danced and celebrated all through the night."
         jump thiefEnd
+
         label thiefEnd:
             if goblinFood or goblinDrink:
                 show hand onlayer transient:
@@ -5172,6 +5268,426 @@ label thiefStory:
                         call endStamp from _call_endStamp_28
                         "She was never seen or heard from again."
                         jump end
+
+##=======================================The thief's path if the mushroom has disappeared
+label thiefSolo:
+    #t "Well! Did you ever doubt me?"
+    call hideAll
+    show goblinint2bg at artPos
+    "From all across the train came a great cheer, and you looked around to see goblins of a thousand shapes emerge to hold up the thief in celebration."
+    "Some had the heads of bats, some had the paws of cats, six heads, three heads, five arms, ten tails, and they bristled with tails and wings and fur and scales."
+    "One crawled like a snail, one prowled like a wombat, one looked like seven doves tied together with string. All of them had a chaos of forms the likes of which you had never seen."
+    "A dozen hands clapped you on the back and drew you into the train carriage."
+    goblin1 "Have a drink with us! Any friend of the thief's is a friend of ours."
+    goblin2 "Aye, it's good to see them come back in one piece."
+    goblin3 "We sent them out on a training mission, you see. To steal from..."
+    goblin3 "To steal... from..."
+    "A vague and desperate confusion settled on the goblins face."
+    t "Barkeep! Drinks for everyone, on me!"
+    "The confusion cleared as the goblins all joined together in a great cheer."
+
+    label thiefSoloMenu:
+        call hideAll
+        show goblinintbg at artPos
+        show hand onlayer transient:
+            yalign 0.64#0.743
+            xalign 0.5
+        menu:
+            "The train was bustling with forty goblins in a chaos of forms."
+            "If you sat down, turn to page 194." if not goblinSit:
+                "You fell into a chair and looked around."
+                call hideAll
+                show goblinint2bg at artPos
+                "This part of the train was some kind of bar or gambling hall. Looking up through a maze of trapdoors in the roof, you could see there were many floors stacked above this one. Bathhouses, gardens, workshops and observatories."
+                if pig:
+                    "Your pig nestled into the chair beside you and began to chat to the nearby goblins in the language of mud."
+                "The thief whirled through the room - juggling, twisting, dancing, the life of the party."
+                $goblinSit = True
+                jump thiefSoloMenu
+            "If you looked outside, turn to page 195." if not goblinLook:
+                call hideAll
+                show trainbg at artPos
+                "A team of goblins hung off the back of the train and picked up the tracks behind it, then climbed around to hand the tracks to the goblins at the front, who laid them in front of the train as it squeezed through the trees of the forest."
+                "The wind howled like a wild beast."
+                t "Let's get some music going!"
+                "The goblin band struck up a wild tune. The thief gestured to push them to play louder and louder until you couldn't even hear the wind outside."
+                $goblinLook = True
+                jump thiefSoloMenu
+            "If you accepted a goblin beverage, turn to page 196." if not goblinDrink:
+                call hideAll
+                show goblinint2bg at artPos
+                "The goblins poured you dozens of goblin brews, bubbling ales and steaming warm ciders, goblin wines that oozed with red fog and goblin brandies that froze and melted and froze again as you drank them."
+                "The thief challenged the largest goblin to a drinking competition and drank them under the table."
+                "Foolishly, you drank deeply of the brews. You guzzled them down until you could drink no more, until your vision was a haze and the brew ran down your mouth and drenched your clothes, and still you thirsted for them."
+                "From that day on, no other drink would ever be able to quench your thirst, and you would always shiver and feel cold without the wild drunken feeling of warmth the goblin drinks gave you."
+                $goblinDrink = True
+                jump thiefSoloMenu
+            "If you cornered the thief and asked them why you were brought here, turn to page 202.":
+                "You managed to corner the thief as they laughed in a group of goblins."
+                pov "Why did you grab me and take me here?"
+                t "It is my nature! Nothing more."
+                t "I am the greatest thief of my generation. I was raised by these goblins to steal the moon and sun and stars, and now I have stolen you away."
+                "They laughed wildly. Their face was slick with sweat."
+                jump thiefSoloMenu
+        # show darkforestbg at artPos
+        # show goblinint2bg at artPos
+        # show goblinintbg at artPos
+        # show nightbg at artPos
+
+    label thiefSoloConvo:
+        show hand onlayer transient:
+            yalign 0.64#0.743
+            xalign 0.5
+        menu:
+            "The [goblinNum] goblins laughed and cheered as the train hurtled into the night."
+            "If you asked the thief if something was wrong, turn to page 204." if not thiefWrong2:
+                t "Nothing at all!"
+                "They wiped the sweat from their forehead and gave you a charming smile. Their fingers were twisting and twitching rapidly, like they couldn't keep still."
+                t "Everything is as it should be. In fact, this is the best it's ever been. Come, let us dance!"
+                "They took your hand in a dance that spiralled out of control. The music was deafening. The goblin faces whirled around you until you were breathless."
+                $thiefWrong2 = True
+                $goblinNum-=10
+                if $goblinNum==0:
+                    jump thiefSoloConvo2
+                else:
+                    jump thiefSoloConvo
+            "If you told the thief you'd better get home, turn to page 210." if not thiefHome:
+                t "Nonsense! There's so much joy to be had here. Stay, and celebrate with us."
+                "Their smile slipped for an instant."
+                t "Please stay."
+                t" I don't want to be alone when it comes."
+                "Then it reappeared like nothing had happened. They drank deeply of their goblin wine and gestured for you to do the same."
+                t "Bedlam! I think a celebration like this calls for some smoke."
+                "A goblin creature shaped like a sack full of rats nodded, and started throwing herbs into the fire."
+                "Purple, twinkling smoke began to ooze out of it. As you breathed it in, your vision twisted and your limbs began to feel far away."
+                $thiefHome = True
+                $goblinNum-=10
+                if $goblinNum==0:
+                    jump thiefSoloConvo2
+                else:
+                    jump thiefSoloConvo
+
+            "Is someone missing?" if not thiefMissing:
+                "The thief twisted away from you, but you managed to track them down at the dice tables. The mass of goblins seethed around you."
+                pov "I need you to tell me what's going on."
+                pov "I feel it. Someone is missing."
+                pov "I don't know how to explain it, but I feel... more alone. More than I've ever been before."
+                t "Don't worry about them, my friend. They made their choice. We all did!"
+                "They rolled the dice and raised their hands in triumph. The goblins around the table groaned and pushed a stack of rocks over to them."
+                $thiefMissing = True
+                $goblinNum-=10
+                if $goblinNum==0:
+                    jump thiefSoloConvo2
+                else:
+                    jump thiefSoloConvo
+
+label thiefSoloConvo2:
+    t "I don't think this train is going fast enough, haha!"
+    "Juggling spoons with their right hand, they grabbed you and pulled you through the empty carriage towards the engine room."
+    call hideAll
+    show trainbg at artPos
+    "You burst out of the carriage door and into the cool night air. Without the sound of the music, you could hear the wind howling like a banshee."
+    "The thief pulled you through and into the engine room, where four sooty goblins were lounging."
+    t "Stoke the engine, will you? Let's see how fast this thing can move!"
+    Goblin4 "Aye, boss!"
+    "The three goblins grabbed their shovels and set to work piling coal into the engine. The heat was intense."
+    "You looked out the window. It was pitch black outside."
+
+    #
+    #     show hand onlayer transient:
+    #         yalign 0.64#0.743
+    #         xalign 0.5
+    #     menu:
+    "The train moved faster and faster, and you could hear sparks coming off the wheels."
+    # "If you asked the thief if something was wrong, turn to page 204." if not thiefWrong2:
+    #     t "Nothing at all!"
+    #     "They wiped the sweat from their forehead and gave you a charming smile. Their fingers were twisting and twitching rapidly, like they couldn't keep still."
+    #     t "Everything is as it should be. Come, let us dance!"
+    #     "They took your hand in a dance that spiralled out of control. The music was deafening. The goblin faces whirled around you until you were breathless."
+    #     $thiefWrong2 = True
+    #     jump thiefSoloConvo
+    #Some questions you can ask them.
+    "You heard something. Like claws, scrabbling in the mechanism underneath the carriage."
+    pov "Do you hear-"
+    t "Nothing to worry about! Just the wind!"
+    t "Help me shovel this coal, will you?"
+    "You looked around. The engine room was empty, except for you and the thief. You picked up a shovel and helped the thief pile coal into the engine."
+    "The thief stared into the flames."
+    t "I made a deal. A long time ago."
+    t "We all took it. You will, too, in the end."
+    "The flames reflected in their dark eyes."
+    t "Ah, well."
+    t "Everyone gets eaten by something. Might as well be this."
+    "The train screeched as it rounded a tight bend, sending you both stumbling."
+    t "I think that's as fast as it'll go."
+    t "Come on. Let's spend the last moment watching it."
+    call hideAll
+    show darknessbg at artPos
+    "They took your hand, and in a single twist of their long, long arms they pulled you both out of the engine and up onto the roof of the train."
+    "You looked out across the night landscape. The land was haunted and beautiful. The smoke stung your eyes."
+    t "Here. I still have this."
+    "They waved an ornate bottle of champagne at you."
+    t "From my father's cellar. One of the first things I ever stole. I was saving it for a special occasion."
+    "They popped the cork."
+    t "Don't worry. It's not goblin drink."
+    "They offered you a swig from the bottle as the train hurtled forward, teetering off the rails."
+    #TK Choice: Drink or not.
+    "You could hear something in the darkness behind you. Like the thudding of great paws."
+
+    t "I had to do it."
+    t "Imagine a culture built around a black hole."
+    t "A tree with nothing at the root."
+    #t "The centre cannot hold. The falcon cannot hear the falconer."
+    t "There's nothing there for us. All we can do is extract as much joy as we can from each single day."
+    t "Until we finally take the westward line."
+    "They took a swig from the champagne bottle."
+    #t "I'd take it again. I wouldn't change a single thing."
+    "The howling wind abated for a single moment. The air was clear. The moon emerged from the clouds."
+    "The thief leaned off the train, holding onto the smoke stack with one hand and the champagne bottle with the other."
+    t "Well. This is it."
+    "You looked at their face. It was fierce with exaltation. A ferocious laugh split their mouth."
+    t "I did it."
+    t "I'm not sorry, you hear me?"
+    t "I struck out from the cruelty and bleakness and grey endless grind, and I lived every day I was alive."
+    "Their laughter faded and they looked out at the moon with relief. They handed you the champagne."
+    t "I won."
+    "The wind returned, howling like a monstrous beast."
+    "They look at you with piercing clarity. You can see the moon reflected in their dark eyes."
+    t "Thank you, [povname]. For everything."
+    t "I'm sorry we didn't get more time together."
+    t "If you get out, tell them..."
+    t "Tell those bastards I hated them all."
+    "They gave you a sudden shove in the centre of your chest. You fell sprawling from the roof of the train and slammed into the dirt, tumbling down the side of the hill and away from the train."
+    "The train hurtled past you in a blaze of smoke and fire, and then was gone."
+    stop music fadeout 1.0
+    play audio wolfApproaches
+    stop ambient2 fadeout 2.0
+    stop ambient1 fadeout 20.0
+    call hideAll
+    show darkForestbg at artPos
+    "You lay in the underbrush, catching your breath, before staggering up."
+    "There was no train. There were no train tracks."
+    "How did you get here? Who were you looking for?"
+    "You shook your head at your foolishness. There's no-one out here."
+    "There never was."
+    "For some reason, you were holding an empty champagne bottle. You couldn't think why."
+    if pig:
+        "You heard a soft grunting coming from the bush."
+        "The bushes rustled, and then your pig leapt out and into your arms, oinking joyfully. You cradled it softly."
+        "You picked yourself up and begin the long walk back home with the pig."
+    else:
+        "You picked yourself up and begin the long walk back home."
+    "The wind whistled in the trees."
+    "It was just the wind."
+    "There is nothing else to tell."
+    "My tale is done."
+    "See the mouse run."
+    call endStamp
+    "Catch it, whoever can, and then you can make a great big cap out of it's fur."
+    jump end
+
+
+        #Constant action - twitching fingers, fiddling with leaves or rocks, juggling, twisting and dancing. Wants loud music, wants to live to the fullest for the last second they're alive.
+        #They serve drinks and food. They pass out goblin drugs like weird purple smoke that makes your vision twist and your limbs feel far away.
+        #You can ask questions and talk to them as they do this.
+        #Is something wrong?
+        #I'd better get home.
+        #"Then it reappeared again."
+        #t "Barkeep, more ale!"
+        #Is there something outside the train?
+        #t "Of course not. Nothing and no-one. Pay it no mind."
+        #Something is happening. I don't know what it is. I feel more alone than I've ever been. Like I'm slowly becoming more alone.
+        #"The thief slowed down and looked at you."
+        #t "Don't worry about them. They made their choice. We all did."
+        # label goblinTrain:
+        #     show hand onlayer transient:
+        #         yalign 0.64#0.743
+        #         xalign 0.5
+        #     menu:
+        #         "The train was bustling with a chaos of forms."
+        #         "If you sat down, turn to page 194." if not goblinSit:
+        #             "You fell into a chair and looked around."
+        #             call hideAll from _call_hideAll_52
+        #             show goblinint2bg at artPos
+        #             "This part of the train was some kind of bar or gambling hall. Looking up through a maze of trapdoors in the roof, you could see there were many floors stacked above this one. Bathhouses, gardens, workshops and observatories."
+        #             if pig:
+        #                 "Your pig nestled into the chair beside you and began to chat to the nearby goblins in the language of mud."
+        #             $goblinSit = True
+        #             jump goblinTrain
+        #         "If you looked outside, turn to page 195." if not goblinLook:
+        #             call hideAll from _call_hideAll_53
+        #             show trainbg at artPos
+        #             "A team of goblins hung off the back of the train and picked up the tracks behind it, then climbed around to hand the tracks to the goblins at the front, who laid them in front of the train as it squeezed through the trees of the forest."
+        #             $goblinLook = True
+        #             jump goblinTrain
+        #         "If you accepted a goblin beverage, turn to page 196." if not goblinDrink:
+        #             call hideAll from _call_hideAll_54
+        #             show goblinint2bg at artPos
+        #             "The goblins poured you dozens of goblin brews, bubbling ales and steaming warm ciders, goblin wines that oozed with red fog and goblin brandies that froze and melted and froze again as you drank them."
+        #             "Foolishly, you drank deeply of the brews. You guzzled them down until you could drink no more, until your vision was a haze and the brew ran down your mouth and drenched your clothes, and still you thirsted for them."
+        #             "From that day on, no other drink would ever be able to quench your thirst, and you would always shiver and feel cold without the wild drunken feeling of warmth the goblin drinks gave you."
+        #             goblin2 "On the house! Just for tonight."
+        #             $goblinDrink = True
+        #             jump goblinTrain
+        #         "If you went to find the Master Thief, turn to page 197.":
+        #             call hideAll from _call_hideAll_55
+        #             show goblinintbg at artPos
+        #             "You walked through the cramped corridors of the train and found yourself in a giant feast hall where they were celebrating the Master Thief at the head of the table."
+        #             goblin3 "Show us the loot!"
+        #             goblin1 "Yeah, what'd you get?"
+        #             "The thief nervously reached into their pockets and turned them out."
+        #             "All the precious gold and gemstones had turned into nothing but mud, sticks, rocks and lichen."
+        #             "A tumble of mould and webcaps and orange peel fungus dropped onto the table."
+        #             "The goblins stared in silence."
+        #             "Then erupted into wild cheers."
+        #             goblin1 "These are some of the shiniest rocks I ever saw!"
+        #             goblin2 "Now, look at that. That right there is a nice stick if ever I seen one, and I seen quite some sticks in my time. That one is goin' in the nest for sure."
+        #             goblin3 "'Ow'd you get such good mould? This is the best mould haul I've seen since the great fungus caper of '48!"
+        #             "The crowd quieted down as a grizzled old goblin called for a toast."
+        #             goblin4 "Ahem! Hem Hem Hem!"
+        #             goblin4 "I declare your apprentiship complete!"
+        #             goblin4 "And so, with all the power invested in me, I hereby dub thee..."
+        #             goblin4 "{b}The Junior Thief!{/b}"
+        #             "She held up the thief's hand and all the goblins cheered and danced and sang and rolled around in celebration."
+        #             "The thief smiled awkwardly. But for some reason, they didn't seem to share in the good mood. The smile quickly slid off their face, and they made an excuse to leave the party."
+        #
+        #             label goblinTrain2:
+        #                 show hand onlayer transient:
+        #                     yalign 0.64#0.743
+        #                     xalign 0.5
+        #                 menu:
+        #                     "The celebration raged on through the train carriage."
+        #                     "If you celebrated with the goblins, turn to page 198." if not goblinCelebrate:
+        #                         $goblinCelebrate = True
+        #                         "The goblins laughed and cheered and served goblin fruits and carved goblin hams made of rich mould and mud and played goblin games all across the table."
+        #                         if pig:
+        #                             "Your pig was quickly drawn into a wager, with it's greatest hopes and dreams as the stakes. Fortunately it won, and was granted a a small kingdom in the mountains as it's prize. It would go on to raise a mighty pig empire there, and rule over it for the rest of it's days."
+        #                         else:
+        #                             "You could see goblins betting on the games with their hopes, dreams and fears as the stakes."
+        #                         jump goblinTrain2
+        #                     "If you partook of the goblin food, turn to page 199." if not goblinFood:
+        #                         $goblinFood = True
+        #                         "Foolishly, you tasted the goblin fruits."
+        #                         "They were sweeter than honey, stronger than wine, clearer than water and darker than tar."
+        #                         "You gorged yourself until you could eat no more, until you knew not whether it was night or day, and still your mouth watered for them."
+        #                         "From that day forward all other foods would be ash in your mouth, and you would wither and go grey with the need of them."
+        #                         jump goblinTrain2
+        #                     "If you went to find the thief, turn to page 167.":
+        #                         call hideAll from _call_hideAll_56
+        #                         show trainbg at artPos
+        #                         "You found them sitting on the rear balcony with their legs over the edge, watching the trees and hills roll by in the smoky night."
+        #                         t "Hi."
+        #                         "You sat there with them in silence for a while, looking out."
+        #                         t "Oh, before I forget."
+        #                         if stuffStolen:
+        #                             "They handed back the suckling pig and all of the loose change stolen from the village, along with your stolen possessions and some extra money for payment."
+        #                         else:
+        #                             "They handed back the suckling pig and all of the loose change stolen from the village, along with some extra money for payment."
+        #                         label thiefConvo2:
+        #                             show hand onlayer transient:
+        #                                 yalign 0.66#0.743
+        #                                 xalign 0.5
+        #                             menu:
+        #                                 t "Sorry about that."
+        #                                 "If you asked about the train, turn to page 168." if not thiefPlace:
+        #                                     $thiefPlace = True
+        #                                     pov "What is this place?"
+        #                                     t "The goblin train."
+        #                                     t "It travels wherever there are thoughts and dreams for the goblins to steal. Provides safe passage to desperate souls. Serves the will of the goblin queens. That kind of thing."
+        #                                     jump thiefConvo2
+        #                                 "If you asked them about the ceremony, turn to page 169." if not thiefJunior:
+        #                                     $thiefJunior = True
+        #                                     pov "So... Junior Thief? I thought you were the Master Thief."
+        #                                     goblin1 "{i}Master{/i}? Oh Lord, that's a good one! Our young thief's been telling you some real porkies if you've picked that up!"
+        #                                     goblin1 "They need to complete the seven year advanced traineeship to even become a Journeyman Thief. Then they MIGHT be able to apply for their masters, IF the queen thinks they're good enough!"
+        #                                     "The goblin wiped tears of laughter from their eyes and headed back into the train, pulling a sack of coal behind them."
+        #                                     t "Um. Sorry about the deception."
+        #                                     t "My skill is nothing compared to the goblins. They can steal the thoughts from your head, quick as a wink."
+        #                                     t "Just thought it sounded more impressive than Apprentice Thief."
+        #                                     jump thiefConvo2
+        #                                 "If you ask them about their apprenticeship, turn to page 163." if thiefJunior and not thiefApprentice:
+        #                                     $thiefApprentice = True
+        #                                     t "Yep. I've proved myself now."
+        #                                     t "I've been training here for a full year. This was my final test."
+        #                                     t "I have to thank you. I couldn't have done it without you."
+        #                                     jump thiefConvo2
+        #                                 "If you asked them why they aren't celebrating, turn to page 170.":
+        #                                     show hand onlayer transient:
+        #                                         yalign 0.67#0.743
+        #                                         xalign 0.5
+        #                                     menu:
+        #                                         t "It's a long story."
+        #                                         "To hear the long version, turn to page 171.":
+        #                                             pov "I don't have anywhere to be."
+        #                                             t "Oh, well. No harm in telling you, I suppose."
+        #                                             jump thiefStory
+        #                                         "To hear the short version, turn to page 181.":
+        #                                             pov "Well, you'd better make it quick."
+        #                                             $thiefShort = True
+        #                                             if godfather == "Red" or godfather == "White":
+        #                                                 pov "Time is moving on, and I need to find a way to escape my Godfather before midnight."
+        #                                             elif godfather == "Black":
+        #                                                 pov "Time is moving on, and I need to find a way to escape my Godmother before midnight."
+        #                                             t "Right. I'll keep it short."
+        #                                             jump thiefStory
+        #                                         "To hear the incredibly short version, turn to page 188.":
+        #                                             pov "Well, I don't have a lot of time..."
+        #                                             t "Alright, my parents are bad and they gave me to the goblins to train as a thief. The goblins made a deal that if they couldn't recognise me when my apprenticeship ended in a year, I would go free."
+        #                                             jump thiefStoryEnd
+
+
+
+    #jump end
+    # if stuffStolen:
+    #     pov "You! Give me back my stuff!"
+    #     "They laughed. As if from nowhere, your loaf of bread appeared in their hands. They tossed it up in the air, and before you could blink it had disappeared again."
+    #     t "I'll give it all back in time, don't worry. But first, I have an offer for you."
+    # else:
+    #     t "You gave me quite the chase. I have an offer you may be interested in."
+    # if godfather == "Red":
+    #     t "You see, I've heard of you. They say you run wild over the hills, doing as you please and living in contempt of the law."
+    # elif godfather == "White":
+    #     t "You see, I've heard of you. They say you're a good little Christian, and you always do as you're told."
+    #     t "Why not change that?"
+    # elif godfather == "Black":
+    #     t "You see, I've heard of you. They say you're a strange one. You lurk out late at night and scare people."
+    # if persistent.mushroomVanished == True:
+    #     t "I plan to..."
+    #     $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient1')
+    #     $renpy.music.set_volume(0.3, delay=3.0, channel=u'ambient2')
+    #     $renpy.music.set_volume(0.3, delay=3.0, channel=u'music')
+    #     "They paused."
+    #     t "I was... going to steal from someone."
+    #     t "To steal from..."
+    #     t "Did we talk about this before?"
+    #     "A vague and desperate confusion settled on their face."
+    #     t "I'm sorry, I don't remember. I haven't been myself lately."
+    #     $renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
+    #     $renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
+    #     $renpy.music.set_volume(0, delay=3.0, channel=u'music')
+    #     t "I don't know who I've been lately."
+    #     $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient1')
+    #     $renpy.music.set_volume(1.0, delay=3.0, channel=u'ambient2')
+    #     $renpy.music.set_volume(1.0, delay=3.0, channel=u'music')
+    #     "They shook their head to clear it."
+    #     t "To steal from an old, abandoned tree nearby!"
+    #     t "It has lain locked and unentered for countless years. Who can say what riches may lay within?"
+    #     t "Join me, won't you? We'll split the take, fifty fifty."
+    #     show hand onlayer transient:
+    #         yalign 0.62#0.743
+    #         xalign 0.5
+    #     menu:
+    #         "They flashed you a charming smile, clicking their fingers absently."
+    #         "If you accepted, and joined the Master Thief on this daring heist, turn to page 143.":
+    #             t "Wonderful! This will be a caper for the books."
+    #             t "You'd best be careful, though. I'm rotten to the core, and I'm sure to betray you sooner or later."
+    #             jump thief3
+    #         "If you accepted, while secretly planning to betray the Master Thief at a critical moment, turn to page 143.":
+    #             t "Wonderful! This will be a caper for the books."
+    #             t "You'd best be careful, though. I'm rotten to the core, and I'm sure to betray you sooner or later."
+    #             jump thief3
+
+
 
 # Act 2, Chapter 2B: Journey with the Toad
 label toad1:
@@ -8225,6 +8741,7 @@ label bookBurnedFinale:
 
     #If the gutterlings are alive
 
+
 #This is the piece of the book burned ending. The book has been destroyed.
 label burnEnd:
     #TK: Revise and finish this ending
@@ -8257,24 +8774,29 @@ label burnEnd:
 label endStamp:
 
     #TK: change the "Do you want to quit?" screen during this bit.
-
+    #TK: Test and check if this works right
     if persistent.vanished == 0:
-        show text "{b}THE END.{/b} \n \n {i}Ending 1.{/i}": #
+        show text "{b}THE END.{/b} \n \n {i}Ending 0 of 4.{/i}": #
             xalign 0.5
             #yalign 0.5
             ypos 650
     if persistent.vanished == 1:
-        show text "{b}THE END.{/b} \n \n {i}Ending 2.{/i}": #
+        show text "{b}THE END.{/b} \n \n {i}Ending 1 of 4.{/i}": #
             xalign 0.5
             #yalign 0.5
             ypos 650
     if persistent.vanished == 2:
-        show text "{b}THE END.{/b} \n \n {i}Ending 3.{/i}": #
+        show text "{b}THE END.{/b} \n \n {i}Ending 2 of 4.{/i}": #
             xalign 0.5
             #yalign 0.5
             ypos 650
     if persistent.vanished == 3:
-        show text "{b}THE END.{/b} \n \n {i}Ending 4.{/i}": #
+        show text "{b}THE END.{/b} \n \n {i}Ending 3 of 4.{/i}": #
+            xalign 0.5
+            #yalign 0.5
+            ypos 650
+    if persistent.vanished >= 4:
+        show text "{b}THE END.{/b} \n \n {i}Ending 4 of 4.{/i}": #
             xalign 0.5
             #yalign 0.5
             ypos 650
@@ -8301,7 +8823,7 @@ label end:
     $ti=20
     $ ui.text("The images in this volume were collated from various illustrations in the public domain. Wherever possible, I have tried to provide the place and date of publication of each literary source. The complete list of contributors follows.{vspace=30}{space=[ti]}1. {b}The Thief:{/b} 'In Powder and Crinoline' (1912), Kay Nielsen.{vspace=[tx]}{space=[ti]}2. {b}The Witch:{/b} 'Portrait of Lady Elizabeth Keppel' (1761), Joshua Reynolds.{vspace=[tx]}{space=[ti]}3. {b}The Toad:{/b} 'Little Miss Muffet, and other stories' (1902), Published by Mcloughlin Bros. Artist unknown. 'The Mammals of Australia' (1845-1863), John Gould, illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}4. {b}The Mushroom:{/b} 'Fantaisie d'Automne: Les Champignons for La Vie Parisienne' (1916), George Barbier.{vspace=[tx]}{space=[ti]}5. {b}G-d:{/b} 'Der Weeg zu Christo' (1682), Jakob Böhme.{vspace=[tx]}{space=[ti]}6. {b}The Devil:{/b} 'The Papal Pyramid' (1600), private collection. Artist unknown.{vspace=[tx]}{space=[ti]}7. {b}Death, The Thief's Mother:{/b} 'De gli habiti antichi et moderni di diversi parti del mondo, libri due ...' (1590). Woodcutting by Christoph Krieger, published by Cesare Vecellio.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
-    $ ui.text("{space=[ti]}8. {b}Mum, You:{/b} 'Regula Emblematica Sancti Benedicti' (1780), Saint Benedict et. al.{vspace=[tx]}{space=[ti]}9. {b}Mysterious Old Woman:{/b} 'The Clothing of the Renaissance World: Europe - Asia - Africa - The Americas' (1590), Cesare Vecellio.{vspace=[tx]}{space=[ti]}10. {b}Enigmatic Gentleman:{/b} 'Silhouette Portrait of a Gentleman Standing in an Army Encampment' (1844), Auguste Edouart.{vspace=[tx]}{space=[ti]}11. {b}The Hunter:{/b} 'Lady Hunter with Rifle' (1912). Artist unknown.{vspace=[tx]}{space=[ti]}12. {b}The Sparrow-Herder:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham. Sparrow from 'Birds of Asia' (1871), John Gould.{vspace=[tx]}{space=[ti]}13. {b}The Mayor:{/b} 'The pipe of freedom' (1869), Thomas Smith.{vspace=[tx]}{space=[ti]}14. {b}The Goose Girl, The Gloom-Monger:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham.{vspace=[tx]}{space=[ti]}15. {b}The Thing in the Well, Passing Echidna, the Skin-Mask, and Goblin No. 2:{/b} 'Devises heroïques' (1551), Claude Paradin. 'A Year Book of Folklore' (1959), Christine Chaundler.{vspace=[tx]}{space=[ti]}16. {b}The Entire Town:{/b} 'Liber Floridus' (between 1090 and 1120), Lambert, Canon of Saint-Omer.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}8. {b}Mum, You:{/b} 'Regula Emblematica Sancti Benedicti' (1780), Saint Benedict et. al.{vspace=[tx]}{space=[ti]}9. {b}Mysterious Old Woman:{/b} 'The Clothing of the Renaissance World: Europe - Asia - Africa - The Americas' (1590), Cesare Vecellio.{vspace=[tx]}{space=[ti]}10. {b}Enigmatic Gentleman:{/b} 'Silhouette Portrait of a Gentleman Standing in an Army Encampment' (1844), Auguste Edouart.{vspace=[tx]}{space=[ti]}11. {b}The Hunter:{/b} 'Lady Hunter with Rifle' (1912). Artist unknown.{vspace=[tx]}{space=[ti]}12. {b}The Sparrow-Herder:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham. Sparrow from 'Birds of Asia' (1871), John Gould.{vspace=[tx]}{space=[ti]}13. {b}The Mayor:{/b} 'The pipe of freedom' (1869), Thomas Smith.{vspace=[tx]}{space=[ti]}14. {b}The Goose-Girl, The Gloom-Monger:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham.{vspace=[tx]}{space=[ti]}15. {b}The Thing in the Well, Passing Echidna, the Skin-Mask, and Goblin No. 2:{/b} 'Devises heroïques' (1551), Claude Paradin. 'A Year Book of Folklore' (1959), Christine Chaundler.{vspace=[tx]}{space=[ti]}16. {b}The Entire Town:{/b} 'Liber Floridus' (between 1090 and 1120), Lambert, Canon of Saint-Omer.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     show tornPage2 onlayer screens zorder 101
     show tornPage2bg onlayer screens zorder 99
