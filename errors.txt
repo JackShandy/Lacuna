@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 5478: else clause expects a non-empty block.
-    else:
-         ^
+File "game/script.rpy", line 389: u'init' is not a keyword argument or valid child for the screen statement.
+    init:
+        ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu Dec  8 18:03:56 2022
+Fri Dec  9 13:31:52 2022
