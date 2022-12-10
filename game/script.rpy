@@ -655,7 +655,7 @@ init:
     image p1Name="Names/p1.png"
     image p2Name="Names/p2.png"
     image p3Name="Names/p3.png"
-
+    image wivesName="Names/wives.png"
     ##====Frippery
     image sword="sword.png"
     image hand= "gui/hand.png"
@@ -723,6 +723,8 @@ init:
     define p1 = Character ("{image=p1Name}{alt}The First Pig:{/alt}")
     define p2 = Character ("{image=p2Name}{alt}The Second Pig:{/alt}")
     define p3 = Character ("{image=p3Name}{alt}The Third Pig:{/alt}")
+    define wives = Character ("{image=wivesName}{alt}The Wives:{/alt}")
+
 
 #=====================AUDIO
 ###Defining all Audio
@@ -1152,7 +1154,7 @@ label demoEnd:
 
 #=====================GAME START
 #The official game script begins here
-# Act 1, Chapter 2: The 3 godparents
+# Act 1, Chapter 2: The 3 Godparents
 #The beginning fo the game.
 label start:
     show firelight animated onlayer over_screens zorder 99
@@ -1181,6 +1183,7 @@ label start:
             jump allVanishedEnd
 
         show nightbg at artPos
+        wives "Test"
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
         call hideAll from _call_hideAll
@@ -1373,7 +1376,7 @@ label start:
                     jump thirdMan2
     #label godparentChoose:
 
-# Act 1, Chapter 2: The Path
+# Act 1, Chapter 2: Your Upbringing
 label chapter2:
     call hideAll from _call_hideAll_1
     show sunbg at artPos
@@ -1565,7 +1568,7 @@ label neighbours:
             $renpy.hide_screen(tag="map")
             jump introMenu
 
-#The introduction to the game
+#You begin to walk to the festival
 label introMenu:
     if persistent.vanished == 3:
         $introMenuSentence = "You woke every morning to silence."
@@ -2171,7 +2174,7 @@ label introMenu:
                                 show hand onlayer transient:
                                     yalign 0.743#0.743
                                     xalign 0.5
-                                "You looked down at your haul and found that you'd managed to swipe a lovely emerald broach in the shape of a dragonfly.{vspace=170}{i}In your notes, write down that {b}You have an Emerald Brooch.{/b}{/i}"
+                                "You looked down at your haul and found that you'd managed to swipe a lovely emerald brooch in the shape of a dragonfly.{vspace=170}{i}In your notes, write down that {b}You have an Emerald Brooch.{/b}{/i}"
                                 "You hid it in your pocket and went on your way."
                                 jump chapter6
                         show hand onlayer transient:
@@ -2750,13 +2753,17 @@ label banquet:
                 $pigChat +=1
                 jump banquetMenu
             "If you talked to the Toad, turn to page 87." if not toadStole2 and not persistent.toadVanished:
-                if toadStole:
+                if toadStole and not persistent.witchVanished:
                     f "You!"
                     f "Hellion! Knave! You'll see justice for your crimes, or my name isn't Brildebrogue Chippingham!"
                     "You quickly hid under the tablecloth until the toad became distracted by a passing prawn platter and gave you time to slip away."
                     "Best avoid him for now."
                     $toadStole2=True
                     jump banquetMenu
+                elif toadStole and persistent.witchVanished:
+                    f "Good evening, my light-fingered friend!"
+                    "He sprayed food as he spoke. He was sitting on a tower of pillows on his chair, so he could reach the table."
+                    f "Don't worry about that little issue of the emerald brooch you made off with. I have so much money now, you see, I'll hardly miss it. Consider it a gift! A memnto of our new friendship, hoho!"
                 else:
                     if toadConvo2Spoke == False and toadArc == 0:
                         f "Hello again, fellow traveller!"
@@ -2807,6 +2814,7 @@ label banquet:
                                 f "...to enjoy this magnificent feast, of course!"
                                 "He brightened up and began filling his wineglass with renewed vigour."
                                 f "Yes, that must have been it. Please, join me!"
+                                f "It's nothing compared to the feasts at my manor, of course."
                                 $toadLong = True
                                 jump toadConvo2
                             else:
@@ -2861,6 +2869,30 @@ label banquet:
                             f "Well, I heard that every winter they shrink down to the size of a pin, and hide away in your house to steal all your odd socks and hairpins and loose change."
                             f "Why do they do it? Why, to make a nest, of course. All the better to lure their suitor, THE DEVIL!"
                             jump toadConvo2
+                        #Manor - solo toad route
+                        "If you asked him about the manor, turn to page 78." if toadLong and persistent.witchVanished:
+                            f "Ah yes, Chippingham Manor! Finest in the world, I tell you."
+                            f "And definitely mine, my own, no doubt about that. Always has been!"
+                            f "Why don't you come visit? In fact, we could head there tonight. I'm planning quite the gala."
+                            show hand onlayer transient:
+                                yalign 0.7#0.743
+                                xalign 0.5
+                            menu:
+                                f "You'll get a taste of the real high life."
+                                "If you accepted, and set off to the toad's manor, turn to page 105.":
+                                    f "Sensational! Stay close to me, and you won\'t have a thing to fear."
+                                    f "It would be the brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
+                                    "He flexed his arms for you. A tiny bump of muscle rose up."
+                                    f "Let us be off at once!"
+                                    jump toadSolo
+                                "If you politely declined (for now, at least), turn to page 102.":
+                                    f "You're missing out, I'm telling you!"
+                                    f "You really should come."
+                                    #$toadDecline = True
+                                    jump toadConvo2
+
+                        #Ask him about the manor
+
                         "If you asked about your Godparent, turn to page 85." if not toadHelp:
                             if godfather== "Black":
                                 pov "I need a way to escape my godmother, Lady Death. Can you help me?"
@@ -5748,190 +5780,6 @@ label puddle:
         f "If you aren't out in ten minutes, I'll come in there to rescue you."
         jump witch2
 
-# Act 2, Chapter 3: The Witch's Cottage
-label witch2:
-    "You walked up the front steps, and put your hand on the doorknob."
-    "The door opened up with a shuddering creak."
-    if pig:
-        "You and the pig slowly crept forward."
-    call hideAll from _call_hideAll_74
-    show cottageintbg at artPos
-    "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
-    "The cottage was tiny, but the walls were covered with bookshelves stuffed with old manuscripts and notebooks and thick textbooks on all kinds of plants and animals."
-    #TK: Herbs and plants
-    "The wooden bookshelves were sprouting with herbs and plants of every type."
-    "In the corner was a small kitchen with a cauldron, and up above was a small attic crawl-space."
-    "Out of the attic poked a small head with a giant black hat. It looked at you with shock."
-    w "Oh!"
-    "It quickly withdrew into the rafters and you heard a great crash."
-    "After a moment, out popped the witch, carrying a thick binder of notes and the remains of a broken pot plant."
-    w "Um... hello!"
-    "She set about trying to fix the pot plant back together with tape from her belt."
-    "Coiling, midnight blue smoke slowly rose out from under her hat, fogging up the whole upper half of the cottage."
-    w "I'm sorry, you startled me!"
-    w "I don't get much visitors here."
-    w "Or... any visitors, I guess."
-    w "Please, h-have a seat! Can I get you some tea?"
-    w "I have so much tea and I never get a chance to drink most of it because..."
-    "Her expression became vague and confused."
-    w "Because, uh... why do I..."
-    w "Oh, the caffeine, that's right. The caffeine makes me too wired and I can't get to sleep at night, so I have to stick to all the herbal stuff."
-    w "But you don't have to take the black tea if you don't want to, I have all kinds, it's fine. Or you don't have to have any kind of tea at all, that's totally fine too, I don't want to be out here stuffing tea down your mouth."
-    w "I-It's just been so long since I had company for tea, so I haven't had a chance to get it out."
-    w "Not that I like company at all, obviously."
-    w "I spurn it!"
-    w "I need no-one, and I want no-one."
-    if pig:
-        "She patted the pig absently. It accepted the gesture with dignity."
-    if witchArc == 0:
-        w "We haven't met before, have we?"
-    else:
-        w "Hold on... we've met before, haven't we?"
-    "She took out her binder of notes and began to leaf through it."
-    label witchConvo1:
-        show hand onlayer transient:
-            yalign 0.625#0.743
-            xalign 0.5
-        menu:
-            w "I-I don't think I have any notes on you?"
-            "If you accepted a tea, turn to page 265." if not witchTea:
-                w "Great!"
-                "The witch leapt up and started rifling through a towering triangular cupboard with dozens of tiny compartments hanging open."
-                w "Ok, um..."
-                #TK: Give you a chance to do false hydra stuff
-                "She slowed down and looked into one of the drawers blankly."
-                w "What was I..."
-                pov "The tea?"
-                w "Oh! Of course!"
-                w "Ok, so I have some fancy sour cherry tea, English breakfast, Australian breakfast if you're feeling patriotic, green tea, lemon and ginger, and a pack of this stuff which, I don't know what it is to be honest, it's all in Japanese and I haven't tried it yet."
-                #TK: More unique responses.
-                show hand onlayer transient:
-                    yalign 0.615#0.743
-                    xalign 0.5
-                menu:
-                    w "What do you think?"
-                    "If you asked for fancy sour cherry tea, turn to page 235.":
-                        w "Nice! Coming right up."
-                    #"If you asked for Oolong tea, turn to page 235.":
-                        #w "Nice! Coming right up."
-                    "If you asked for English breakfast, turn to page 235.":
-                        w "Nice! Coming right up."
-                    "If you asked for Australian breakfast, turn to page 235.":
-                        w "Nice! Coming right up."
-                    #"If you asked for Earl Grey, turn to page 235.":
-                    #    w "Nice! Coming right up."
-                    #"If you asked for Dandy chai, turn to page 235.":
-                        #w "Nice! Coming right up."
-                    #"If you asked for Coconut chai, turn to page 235.":
-                    #    w "Nice! Coming right up."
-                    "If you asked for Green tea, turn to page 235.":
-                        w "Nice! Coming right up."
-                    #"If you asked for Masala tea, turn to page 235.":
-                    #    w "Nice! Coming right up."
-                    "If you asked for Lemon and ginger, turn to page 235.":
-                        w "Nice! Coming right up."
-                    "If you asked for the unknown tea, turn to page 235.":
-                        w "Nice! Coming right up."
-                "She turned on the stove and set a tiny kettle down on it. Then she looked around the clutter until she found two mugs tipped over on the floor, cleaned them out in the sink, and put the tea-bags in them."
-                w "Ready to go, just need the water to boil."
-                w "Sit, sit!"
-                "You nestled down into one of the comfy old chairs by the stove, and she took the other."
-                $witchTea = True
-                jump witchConvo1
-            "If you told her you'd never met, turn to page 271." if witchArc == 0 and not witchMeeting:
-                w "Oh, good."
-                w "It gets so awkward when someone just comes up and starts talking to me out of the blue, and I'm just like \"Mmhmm, yep,\" just nodding and trying to read through my notes when they aren't looking to see who they are, and they always think it's so rude but I'm like, hey, who just walked up and started talking to me without giving me time to read my notes first? THAT's what's really rude here."
-                $witchMeeting = True
-                jump witchConvo1
-            "If you told her you met earlier tonight, turn to page 271." if witchArc >= 1 and not witchMeeting:
-                w "Oh... tonight?"
-                "An expression of panic came over her face. She leafed back and forth through her notes."
-                w "I'm so sorry, this is so embarrassing, I'm... I'm afraid I don't quite remember."
-                w "I mustn't have written it down. It's nothing to do with you, I'm just... if I don't write it down it goes straight out of my head. I'm sorry."
-                $witchMeeting = True
-                jump witchConvo1
-
-            "If you asked about your Godparent, turn to page 262." if not witchGodfather:
-                if godfather == "White":
-                    pov "I'm hoping you can help me with a problem. My godfather is the Lord, and He has sworn to take me away at midnight tonight."
-                    w "That's wild."
-                    w "I mean, I'm a witch, yeah, but I'm not exactly all powerful over here, I'm not sure what you want me to do about that?"
-                    w "But yeah nah, maybe I could help you out. Let me take a look through my books, I'll see what I can come up with."
-                    "And she began rifling through the stack of books lying randomly around the floor."
-                if godfather == "Red":
-                    pov "I'm hoping you can help me with a problem. My godfather is the Devil, and He has sworn to take me away at midnight tonight."
-                    w "Oh no!"
-                    w "Well, I..."
-                    w "To be honest I do know a bit about your red friend, I have had some uh, {i}dealings{/i} with Him, I guess you could say. It wasn't my choice though, I don't want you to think I'm one of those wild women of the woods who dance around naked and worship the Devil and all that kind of thing, know what I mean? I admire them but I tried it once or twice and it gets really chilly, not recommended."
-                    w "But yeah, nah, maybe I could help you out. Let me take a look through my books, I'll see what I can come up with."
-                    "And she began rifling through the stack of books lying randomly around the floor."
-                if godfather == "Black":
-                    pov "I'm hoping you can help me with a problem. My godmother is Death, and She has sworn to take me away."
-                    w "That's wild."
-                    w "I mean, I'm a witch, yeah, but I'm not exactly all powerful over here, I'm not sure what you want me to do about that?"
-                    w "But yeah nah, maybe I could help you out with that problem. Let me take a look through my books, I'll see what I can come up with."
-                    "And she began rifling through the stack of books lying randomly around the floor."
-                $witchGodfather = True
-                if not witchFestival:
-                    jump witchConvo1
-            "If you asked her about the festival, turn to page 282." if not witchFestival:
-                pov "I came to ask why you didn't come to the festival tonight. Everyone's a bit worried."
-                w "The what?"
-                if witchTea:
-                    "She looked at you with unfocused eyes, then sat bolt upright in her chair."
-                else:
-                    "She looked at you with unfocused eyes, then jerked bolt upright."
-                w "That was TONIGHT?"
-                if witchTea:
-                    "She collapsed in the chair in despair, and you saw tears of frustration in her eyes."
-                else:
-                    "She fell back in despair, and you saw tears of frustration in her eyes."
-                w "Not again. I really wanted to go this year. I don't know what happened, I swear I..."
-                "She rustled through her notes."
-                w "Where is it... Where is it..."
-                w "Aha!"
-                "She darted under the table and came out with a sticky note saying {b}{i}\"FESTIVAL!!!!!!\"{/b}{/i} underlined three times."
-                w "It must have fallen out. Oh my God, I'm so sorry. It's just-"
-                "She waved helplessly at the blue smoke leaking out of her hat and pooling under the cottage roof."
-                w "It all leaks out. I can't keep it in."
-                $witchFestival = True
-                if not witchGodfather:
-                    jump witchConvo1
-            "If you complimented her home, turn to page 263." if not witchPlace:
-                $witchPlace = True
-                pov "The place is really lovely."
-                w "What place?"
-                "She looked around blearily."
-                w "Oh! Yeah. Yeah, I guess."
-                w "It's kind of a hole, to be honest."
-                w "It's really gotten away from me, like, I kind of like the wild look, and I really love all the herbs and things growing along the outside, it adds a lot to the {i}mystique{/i} I guess, but realistically it looks that way because I literally can't get it under control, I try pretty hard but it always seems to just slip away from me, it's like... trying to hold on to fog or something, you know what I mean, right?"
-                w "But yeah, it's nice."
-                jump witchConvo1
-    "At that moment, the door smashed open and the toad burst in."
-    "He was shrieking a wild war cry, waving a sword cane, and clearly terrified out of his mind."
-    "The witch yelped and ducked back as he jabbed at her."
-    f "Let my friend go, you wicked Curse-gobbler!"
-    "The witch grabbed a crooked dagger, still gleaming with {color=#f00}wolf{/color}sbane from her potion work earlier, and parried his thrust."
-    w "Do I know you?!"
-    "They began to fight back and forth, crashing around the tiny cottage, and as they did the bookshelves rocked and the chairs went clattering away and the potions began to fall from the walls, breaking open in great bursts of magical smoke and light."
-    "Green and blue and black and ultraviolet liquid and smoke burst out all around you."
-    w "My house!"
-    "The chairs were enveloped by smoke and turned into a pair of chickens, then mulberry bushes, then a pile of prunes that went clattering across the kitchen."
-    "The table warped, went soggy, and splashed across the floor as a cold, swirling purple liquid."
-    "The kitchen and the walls started to twist and turn and sprout with life, and all the books and furniture turned into bats and cats and chittering cicadas that ran and scratched and flew all through the house."
-    "The fire in the kitchen flared up wildly and began to spew flowers in all directions."
-    if pig:
-        "The pig tried to stop the melee but was tossed aside by a rogue bromeliad."
-    show hand onlayer transient:
-        yalign 0.72#0.743
-        xalign 0.5
-    menu:
-        "Brilliant orchids and bottlebrushes and corpse flowers burst out all around the witch and the toad as they fought their way back and forth through the haze."
-        "If you helped the witch, turn to page 281.":
-            jump witchFinale
-        "If you helped the toad, turn to page 203.":
-            jump toadFinale
-
 # Act 3 Finale: The Toad.
 label toadFinale:
     "You leapt to defend the toad, diving and pushing him away from the slashes of the crooked dagger."
@@ -6537,7 +6385,360 @@ label toadFinale:
                     "She was never seen or heard from again."
                     jump end
 
+#==========Solo path
+#The Toad's path if the Witch has disappeared
+label toadSolo:
+    "The toad leapt up from the table and clicked his fingers."
+    f "Prickle! Crawl! Shudder and Wink! Let us be off at once."
+    "His great squash carriage rattled out of the bushes and pulled up right next to the banquet table."
+    f "If you get us there before sundown, there's a tenner in it for you!"
+    "He tossed a bag of shiny coins to the crow-shrike, the rat, the bat and the old black cockatoo."
+    bat "Cheers, boss."
+    "The cockatoo bit into one of the coins."
+    cockatoo "Yep, it's good money. Let's do it, boys."
+    rat "We'll get you there in a jiffy, mate."
+    crowshrike "Caw!"
+    "The squash rattled and bumped down the road with great haste. The toad attempted to amuse you with witty anecdotes, while you politely pretended to listen."
+    $persistent.vanished +=1
+    $persistent.toadVanished = True
+    $purge_saves()
+    $ renpy.block_rollback()
+    call hideAll
+    show manorextbg at artPos
+    "Finally you arrived at a stately riverside manor."
+    "With a clap of his hands, the toad summoned a cavalcade of richly dressed frog manservants, who offered you all the finest delicacies from across the world, such that the king of kings would cry to taste them."
+    "With another click, a dozen beautiful frog maids escorted you to golden baths where all the dirt of the journey was washed away, and you were restored to your true forms as the finest frog soprano choir in all the land serenaded you."
+    "All the while, the toad's servants pretended to laugh at his jokes as he tipped them generously."
+    f "Yes, please make yourself at home, my dear friend! We are friends now, right?"
+    f "That is to say, of course we are! I have so many friends these days, you know, I will be very caught up with them and all the chatting we enjoy doing in our many, many get-togethers, but never fear, I won't forget the little people such as yourself, my dear friend, we shall certainly have some time to spend together."
+    pov "Have you... always owned this manor?"
+    f "Of course! The manor is owned by me, Brildebrogue Chippingham! That's my name! Why would you think otherwise?"
+    f "Anyway, no time to talk about trivialities such as property ownership and who does or does not own the manor right this moment, I have a party to plan! It will begin soon, you'd better make ready!"
+    "And with that the toad flitted out of the room and left you alone to explore the manor."
+    #seven mansion rooms with investigation things
+    # label chippinghamManorSolo:
+    #     show hand onlayer transient:
+    #         yalign 0.57#0.743
+    #         xalign 0.5
+    #     menu:
+    #         blank ""
+    #         "If you explored the first tower, turn to page 256." if not firstTower:
+    #             if pig:
+    #                 "Inside the first tower, the three of you discovered a trio of stately frog wizards, who flushed the last remains of the potions from your systems and restored you to good health."
+    #             else:
+    #                 "Inside the first tower, the two of you discovered a trio of stately frog wizards, who flushed the last remains of the potions from your systems and restored you to good health."
+    #             $firstTower = True
+    #             jump chippinghamManor
+    #         "If you explored the second tower, turn to page 257." if not secondTower:
+    #             if pig:
+    #                 "Inside the second tower, you discovered the finest frog chefs of all the land, who quickly sliced off their own legs and served them to you as the most delicious dish the three of you had ever tasted."
+    #             else:
+    #                 "Inside the second tower, you discovered the finest frog chefs of all the land, who quickly sliced off their own legs and served them to you as the most delicious dish either of you had ever tasted."
+    #             $secondTower = True
+    #             jump chippinghamManor
+    #         "If you explored the third tower, turn to page 258." if not thirdTower:
+    #             if pig:
+    #                 "Inside the third tower, you discovered a great harem of finely-dressed frog courtesans, who poured rich wines and made witty conversation with you until you were all completely sloshed and dizzy from the refined repartee."
+    #             else:
+    #                 "Inside the third tower, you discovered a great harem of finely-dressed frog courtesans, who poured rich wines and made witty conversation with you until you were both completely sloshed and dizzy from the refined repartee."
+    #             $thirdTower = True
+    #             jump chippinghamManor
+    #         "If you explored the fourth tower, turn to page 259." if not fourthTower:
+    #             $fourthTower = True
+    #             "Inside the fourth tower was a great fountain of emeralds and sapphires and precious gems, which splashed out over a scale model replica of the forest. You could see immediately that a single gemstone from this fountain was so valuable that it would bankrupt the richest sultan."
+    #             f "I spent my whole life looking up at this place. Hard to believe we're actually here."
+    #             jump chippinghamManor
+    #         "If you explored the fifth tower, turn to page 260." if not fifthTower:
+    #             $fifthTower = True
+    #             "Inside the fifth tower you found a gigantic closet of the finest clothes, rich silks and suits and uniforms of office, all extremely masculine in cut and befitting of a king."
+    #             jump chippinghamManor
+    #         "If you explored the sixth tower, turn to page 262." if not sixthTower:
+    #             $sixthTower = True
+    #             "Inside the sixth tower you found the Library of Alexandria. A small plaque explained that Brildebrogue had miraculously saved the books from the fires, and they'd been stored here safely for all this time."
+    #             jump chippinghamManor
+    #         "If you explored the seventh tower, turn to page page 264." if firstTower:
+    #             "Inside the seventh and tallest tower you found only a tiny wooden closet."
+    #             show hand onlayer transient:
+    #                 yalign 0.68#0.743
+    #                 xalign 0.5
+    #             menu:
+    #                 "A golden keyhole shone out from the closet door."
+    #                 "If you opened the closet, turn to page 275.":
+    #                     "You inserted the key, and slowly opened the door with a long creak."
+    #                     call hideAll
+    #                     show mushroombasementbg at artPos
+    #                     "As soon as the door opened, a stream of blood flowed over you, and you saw seven dead frog brides hanging all along the walls, some only skeletons."
+    #                     if pig:
+    #                         "The pig squealed in terrible fear."
+    #                     jump brildebrogueCloset
+    #                 "If you went back, turn to page 190.":
+    #                     jump chippinghamManor
+    #         "If you patiently waited for Brildebrogue, turn to page 161.":
+    #             f "Well, if you're not going to open this damn closet, I am."
+    #             "He rushed to the seventh and tallest tower, and unlocked the closet with the golden key."
+    #             "He slowly turned the key, and opened the closet door with a long creak."
+    #             call hideAll
+    #             show mushroombasementbg at artPos
+    #             "As soon as the door opened, a stream of blood flowed over the two of you, and you saw seven dead frog brides hanging all along the closet walls, some only skeletons."
+    #             jump brildebrogueCloset
+
+
+    #Brildebrogue has been killed and the toad has assumed his identity (somehow? disguise?).
+    #Maybe you are there for the assassination and help him with it??
+    #The toad goes more and more extravagant and insecure and nuts
+    #Throws lavish parties
+
+
+    #==Investigation
+    #The toad parties and buys lavish things, growing more and more out of control
+    #He becomes paranoid and terrified of the wolf coming for him
+    #Wolves in the walls etc
+    #He gets more and more crazy security measures
+
+    #Meanwhile you investigate the manor to find out what happened to the real BC
+    #The toad infiltrated the manor by sneaking in through one of the downstairs windows while BC was away
+    #Disguised himself as a lowly servant
+    #He investigated and found the cupboard with BC's wives
+    #lured BC to the room with the cupboard by making it seem like something was wrong, his secret was about to be uncovered
+    #stabbed him in the back and threw him into the cupboard
+    #His wives took him in. Their skeletal arms reached up and grabbed him and took him down
+    #pov "You're living a lie."
+    #t "No. He was the imposter. History will remember me as the real thing."\
+    bc "My darlings. My darlings. Are you still in here?"
+    wives "Come closer."
+    wives "Come closer, our love. We can barely see your face."
+    f "Brildebrogue took one step inside. That's when I drew my dagger and ran him through."
+    bc "The devil - Blort? You bastard -"
+    f "With my last strength I pushed him into the closet."
+    f "His seven wives were waiting."
+    wives "Come to us."
+    bc "No, no-"
+    wives "Stay. Stay."
+    f "Their skeletal arms closed around him and dragged him into the blood-soaked blackness."
+    f "I slammed the door. And I haven't regretted a moment of it since."
+    "The sounds of laughter and partying echo from behind the door."
+    f "This is the life I always wanted. This is why I took the deal. Came here."
+    pov "I don't think this is really what you want."
+    "The closet was closed. A frog sage appeared to inform you that the vault was ready."
+    "The toad walked into the vast, cyclopean mouth of the vault."
+    pov "Why don't you give up the charade? Come with me. You can live in the village. As your true self."
+    f "No. I've come too far now."
+    f "I am Brildebrogue Chippingham, and I will never die."
+    f "The sages will speak of me. The bards will sing poems."
+    f "The great statues outside will stand forever. Historians will speak of me a thousand years hence."
+    f "There will not be a soul on this earth who does not know my name. There is nothing to fear. I am already immortal."
+    "You cry, and embrace. The cavernous emptiness of his vault looms before him."
+    "He was swallowed up into the darkness. The lock seals. The magic vibrates and the great golden sigil appears upon it."
+    "The barriers were set. The guards of silver, gold, lead, rowan, ash, oak, and the final layer of bone. A great silence settled upon the house."
+    "As you wiped the tears away, you wondered what you were crying about."
+    "Where did these tears come from? You strained your memory, but you could not recall."
+    "You found yourself in a large, empty manor, for no reason you can remember."
+    "Ah, well. No need to worry."
+    "You dried your eyes, and began the walk back to the village."
+    "There is nothing else to tell."
+    stop music fadeout 1.0
+    play audio wolfApproaches
+    stop ambient2 fadeout 2.0
+    stop ambient1 fadeout 20.0
+    "Are you getting tired of this story yet?"
+    "No?"
+    "Well, I’ve had enough for this round. If you want any more you can make it up yourself."
+    call endStamp
+    "The rat’s tail is off. That’s the end."
+    jump end
+
+    # call hideAll
+    # show darkforestbg at artPos
+
+
+
+
 #=====================THE WITCH'S STORY
+
+# Act 2, Chapter 3: The Witch's Cottage
+#Entering the witch's cottage for the first time after being brought there by the toad
+label witch2:
+    "You walked up the front steps, and put your hand on the doorknob."
+    "The door opened up with a shuddering creak."
+    if pig:
+        "You and the pig slowly crept forward."
+    call hideAll from _call_hideAll_74
+    show cottageintbg at artPos
+    "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
+    "The cottage was tiny, but the walls were covered with bookshelves stuffed with old manuscripts and notebooks and thick textbooks on all kinds of plants and animals."
+    #TK: Herbs and plants
+    "The wooden bookshelves were sprouting with herbs and plants of every type."
+    "In the corner was a small kitchen with a cauldron, and up above was a small attic crawl-space."
+    "Out of the attic poked a small head with a giant black hat. It looked at you with shock."
+    w "Oh!"
+    "It quickly withdrew into the rafters and you heard a great crash."
+    "After a moment, out popped the witch, carrying a thick binder of notes and the remains of a broken pot plant."
+    w "Um... hello!"
+    "She set about trying to fix the pot plant back together with tape from her belt."
+    "Coiling, midnight blue smoke slowly rose out from under her hat, fogging up the whole upper half of the cottage."
+    w "I'm sorry, you startled me!"
+    w "I don't get much visitors here."
+    w "Or... any visitors, I guess."
+    w "Please, h-have a seat! Can I get you some tea?"
+    w "I have so much tea and I never get a chance to drink most of it because..."
+    "Her expression became vague and confused."
+    w "Because, uh... why do I..."
+    w "Oh, the caffeine, that's right. The caffeine makes me too wired and I can't get to sleep at night, so I have to stick to all the herbal stuff."
+    w "But you don't have to take the black tea if you don't want to, I have all kinds, it's fine. Or you don't have to have any kind of tea at all, that's totally fine too, I don't want to be out here stuffing tea down your mouth."
+    w "I-It's just been so long since I had company for tea, so I haven't had a chance to get it out."
+    w "Not that I like company at all, obviously."
+    w "I spurn it!"
+    w "I need no-one, and I want no-one."
+    if pig:
+        "She patted the pig absently. It accepted the gesture with dignity."
+    if witchArc == 0:
+        w "We haven't met before, have we?"
+    else:
+        w "Hold on... we've met before, haven't we?"
+    "She took out her binder of notes and began to leaf through it."
+    label witchConvo1:
+        show hand onlayer transient:
+            yalign 0.625#0.743
+            xalign 0.5
+        menu:
+            w "I-I don't think I have any notes on you?"
+            "If you accepted a tea, turn to page 265." if not witchTea:
+                w "Great!"
+                "The witch leapt up and started rifling through a towering triangular cupboard with dozens of tiny compartments hanging open."
+                w "Ok, um..."
+                #TK: Give you a chance to do false hydra stuff
+                "She slowed down and looked into one of the drawers blankly."
+                w "What was I..."
+                pov "The tea?"
+                w "Oh! Of course!"
+                w "Ok, so I have some fancy sour cherry tea, English breakfast, Australian breakfast if you're feeling patriotic, green tea, lemon and ginger, and a pack of this stuff which, I don't know what it is to be honest, it's all in Japanese and I haven't tried it yet."
+                #TK: More unique responses.
+                show hand onlayer transient:
+                    yalign 0.615#0.743
+                    xalign 0.5
+                menu:
+                    w "What do you think?"
+                    "If you asked for fancy sour cherry tea, turn to page 235.":
+                        w "Nice! Coming right up."
+                    #"If you asked for Oolong tea, turn to page 235.":
+                        #w "Nice! Coming right up."
+                    "If you asked for English breakfast, turn to page 235.":
+                        w "Nice! Coming right up."
+                    "If you asked for Australian breakfast, turn to page 235.":
+                        w "Nice! Coming right up."
+                    #"If you asked for Earl Grey, turn to page 235.":
+                    #    w "Nice! Coming right up."
+                    #"If you asked for Dandy chai, turn to page 235.":
+                        #w "Nice! Coming right up."
+                    #"If you asked for Coconut chai, turn to page 235.":
+                    #    w "Nice! Coming right up."
+                    "If you asked for Green tea, turn to page 235.":
+                        w "Nice! Coming right up."
+                    #"If you asked for Masala tea, turn to page 235.":
+                    #    w "Nice! Coming right up."
+                    "If you asked for Lemon and ginger, turn to page 235.":
+                        w "Nice! Coming right up."
+                    "If you asked for the unknown tea, turn to page 235.":
+                        w "Nice! Coming right up."
+                "She turned on the stove and set a tiny kettle down on it. Then she looked around the clutter until she found two mugs tipped over on the floor, cleaned them out in the sink, and put the tea-bags in them."
+                w "Ready to go, just need the water to boil."
+                w "Sit, sit!"
+                "You nestled down into one of the comfy old chairs by the stove, and she took the other."
+                $witchTea = True
+                jump witchConvo1
+            "If you told her you'd never met, turn to page 271." if witchArc == 0 and not witchMeeting:
+                w "Oh, good."
+                w "It gets so awkward when someone just comes up and starts talking to me out of the blue, and I'm just like \"Mmhmm, yep,\" just nodding and trying to read through my notes when they aren't looking to see who they are, and they always think it's so rude but I'm like, hey, who just walked up and started talking to me without giving me time to read my notes first? THAT's what's really rude here."
+                $witchMeeting = True
+                jump witchConvo1
+            "If you told her you met earlier tonight, turn to page 271." if witchArc >= 1 and not witchMeeting:
+                w "Oh... tonight?"
+                "An expression of panic came over her face. She leafed back and forth through her notes."
+                w "I'm so sorry, this is so embarrassing, I'm... I'm afraid I don't quite remember."
+                w "I mustn't have written it down. It's nothing to do with you, I'm just... if I don't write it down it goes straight out of my head. I'm sorry."
+                $witchMeeting = True
+                jump witchConvo1
+
+            "If you asked about your Godparent, turn to page 262." if not witchGodfather:
+                if godfather == "White":
+                    pov "I'm hoping you can help me with a problem. My godfather is the Lord, and He has sworn to take me away at midnight tonight."
+                    w "That's wild."
+                    w "I mean, I'm a witch, yeah, but I'm not exactly all powerful over here, I'm not sure what you want me to do about that?"
+                    w "But yeah nah, maybe I could help you out. Let me take a look through my books, I'll see what I can come up with."
+                    "And she began rifling through the stack of books lying randomly around the floor."
+                if godfather == "Red":
+                    pov "I'm hoping you can help me with a problem. My godfather is the Devil, and He has sworn to take me away at midnight tonight."
+                    w "Oh no!"
+                    w "Well, I..."
+                    w "To be honest I do know a bit about your red friend, I have had some uh, {i}dealings{/i} with Him, I guess you could say. It wasn't my choice though, I don't want you to think I'm one of those wild women of the woods who dance around naked and worship the Devil and all that kind of thing, know what I mean? I admire them but I tried it once or twice and it gets really chilly, not recommended."
+                    w "But yeah, nah, maybe I could help you out. Let me take a look through my books, I'll see what I can come up with."
+                    "And she began rifling through the stack of books lying randomly around the floor."
+                if godfather == "Black":
+                    pov "I'm hoping you can help me with a problem. My godmother is Death, and She has sworn to take me away."
+                    w "That's wild."
+                    w "I mean, I'm a witch, yeah, but I'm not exactly all powerful over here, I'm not sure what you want me to do about that?"
+                    w "But yeah nah, maybe I could help you out with that problem. Let me take a look through my books, I'll see what I can come up with."
+                    "And she began rifling through the stack of books lying randomly around the floor."
+                $witchGodfather = True
+                if not witchFestival:
+                    jump witchConvo1
+            "If you asked her about the festival, turn to page 282." if not witchFestival:
+                pov "I came to ask why you didn't come to the festival tonight. Everyone's a bit worried."
+                w "The what?"
+                if witchTea:
+                    "She looked at you with unfocused eyes, then sat bolt upright in her chair."
+                else:
+                    "She looked at you with unfocused eyes, then jerked bolt upright."
+                w "That was TONIGHT?"
+                if witchTea:
+                    "She collapsed in the chair in despair, and you saw tears of frustration in her eyes."
+                else:
+                    "She fell back in despair, and you saw tears of frustration in her eyes."
+                w "Not again. I really wanted to go this year. I don't know what happened, I swear I..."
+                "She rustled through her notes."
+                w "Where is it... Where is it..."
+                w "Aha!"
+                "She darted under the table and came out with a sticky note saying {b}{i}\"FESTIVAL!!!!!!\"{/b}{/i} underlined three times."
+                w "It must have fallen out. Oh my God, I'm so sorry. It's just-"
+                "She waved helplessly at the blue smoke leaking out of her hat and pooling under the cottage roof."
+                w "It all leaks out. I can't keep it in."
+                $witchFestival = True
+                if not witchGodfather:
+                    jump witchConvo1
+            "If you complimented her home, turn to page 263." if not witchPlace:
+                $witchPlace = True
+                pov "The place is really lovely."
+                w "What place?"
+                "She looked around blearily."
+                w "Oh! Yeah. Yeah, I guess."
+                w "It's kind of a hole, to be honest."
+                w "It's really gotten away from me, like, I kind of like the wild look, and I really love all the herbs and things growing along the outside, it adds a lot to the {i}mystique{/i} I guess, but realistically it looks that way because I literally can't get it under control, I try pretty hard but it always seems to just slip away from me, it's like... trying to hold on to fog or something, you know what I mean, right?"
+                w "But yeah, it's nice."
+                jump witchConvo1
+    "At that moment, the door smashed open and the toad burst in."
+    "He was shrieking a wild war cry, waving a sword cane, and clearly terrified out of his mind."
+    "The witch yelped and ducked back as he jabbed at her."
+    f "Let my friend go, you wicked Curse-gobbler!"
+    "The witch grabbed a crooked dagger, still gleaming with {color=#f00}wolf{/color}sbane from her potion work earlier, and parried his thrust."
+    w "Do I know you?!"
+    "They began to fight back and forth, crashing around the tiny cottage, and as they did the bookshelves rocked and the chairs went clattering away and the potions began to fall from the walls, breaking open in great bursts of magical smoke and light."
+    "Green and blue and black and ultraviolet liquid and smoke burst out all around you."
+    w "My house!"
+    "The chairs were enveloped by smoke and turned into a pair of chickens, then mulberry bushes, then a pile of prunes that went clattering across the kitchen."
+    "The table warped, went soggy, and splashed across the floor as a cold, swirling purple liquid."
+    "The kitchen and the walls started to twist and turn and sprout with life, and all the books and furniture turned into bats and cats and chittering cicadas that ran and scratched and flew all through the house."
+    "The fire in the kitchen flared up wildly and began to spew flowers in all directions."
+    if pig:
+        "The pig tried to stop the melee but was tossed aside by a rogue bromeliad."
+    show hand onlayer transient:
+        yalign 0.72#0.743
+        xalign 0.5
+    menu:
+        "Brilliant orchids and bottlebrushes and corpse flowers burst out all around the witch and the toad as they fought their way back and forth through the haze."
+        "If you helped the witch, turn to page 281.":
+            jump witchFinale
+        "If you helped the toad, turn to page 203.":
+            jump toadFinale
 
 # Act 3 Finale: The Witch.
 label witchFinale:
@@ -6564,6 +6765,7 @@ label witchFinale:
         "The witch sighed as you both picked yourself up from the floor, battered and bruised."
         jump hellStory
 
+#You and the witch fall into hell. The witch gives you her tragic backstory.
 label hellStory:
     show hand onlayer transient:
         yalign 0.71#0.743
@@ -7150,7 +7352,6 @@ label witchSolo:
     #You walk through the woods towards the witch's house.
     call hideAll
     show forestbg at artPos
-
     "You walked through the woods."
     "Somehow, you already knew the way to the witch's cottage."
     "Had you ever been this way before? You couldn't recall."
@@ -7210,221 +7411,181 @@ label witchSolo:
                 "The puddle you had jumped into was now a floor, like a silver mirror."
                 "The world all around you shone white."
                 "At the centre of the puddle was the cottage, shining with light."
-        call hideAll
-        show cottagebg at artPos
-        "Up over the walls grew a riot of herbs and flowers of every type, planted directly in the soil, rambling over everything and growing in a lush green-grass garden on the roof. "
-        if pig:
-            "The pig munched on some violets blooming from the windowsill."
-        w "Oh good!"
-        "You stumbled back in surprise as a small, witchy figure popped out from behind the herbs."
-        "Her hands were covered in ink. She had a thick fountain pen tucked behind her ear and a chaotic scramble of notepaper tucked under her arm. She was holding a long bundle of string."
-        w "You're just in time. [povname] right?"
-        "She took out a fork wrapped in string and planted it firmly by her doorstep. It was labelled \"A1\"."
-        "You looked around and noticed that her whole backyard was littered with forks stabbed into the ground. Each fork was tied with a knot of string and labeled with a letter of the alphabet. The knots of string led to a massive knot of twine in her front window."
-        w "Come on. You're just in time for the next round of experiments."
-        "She grabbed your hand and pulled you inside."
-        call hideAll
-        show cottageIntbg at artPos
-        "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
-        "The cottage was cramped, but the walls were covered with lines of string and notes and paper scrawled with indecipherable writing."
-        "The floor was covered in a network of flags and string in a grid pattern, each flag marked with a letter and number. You stepped over them gingerly to enter the room."
-        "A message was painted across the wall in giant red letters: \"I OWN THIRTY TWO FORKS.\""
-        w "We have two experiments running at the moment."
-        jump witchExperiments
-
-
-#witchCrystal
-#witchExperiment1
-#witchExperiment2
-#witchExperiment3
-#witchExperiment4
-    #You hear an echo that sounds like a howl.
-    #
-    #Your mouth tastes like salt and ash. Your vision blurs, and fades. Are you losing sight? Spots appear in front of your eyes.
-    #Sound fades and goes soft. You hear a shrill whine in your ears.
-    #Black spots appear in your vision.
-    #
-    #The edges of spaces don't seem to line up. The angles don't fit.
-    #Your brain begins to shut down. Your organs shut down.
-    #Your heart seems to shudder and burn in your chest.
-    #Your rub your eyes furiously, but your vision doesn't clear.
-    #There is a strange distortion. You can't seem to see past it. The air is completely clear, there's no fog or mist. And it isn't that dark tonight.
-    #But still, for some reason you can't seem to see more than five feet ahead of you.
-
-    #Play up the witch's paranoia and the fact that she hasn't slept
-
-    label witchExperiments:
-        if experiments == 1:
-            "The walls in the cottage didn't seem right. It was like a picture that had been folded in on itself and reflected."
-            "You heard something in the walls. Like clawing."
-        elif experiments == 2:
-            "There was a strange distortion in the air. You couldn't seem to see past it."
-            "The air was completely clear, and the cottage was well-lit."
-            "But still, for some reason you can't seem to see more than five feet ahead of you."
-        elif experiments == 3:
-            "You heard a scrabbling sound."
-            "It was coming from inside you. Like claws scratching in the creases of your brain."
-            "Trying to get in."
-            "You were having difficulty speaking. But you staggered forward and kept asking questions."
-    #There is a strange distortion. You can't seem to see past it. The air is completely clear, there's no fog or mist. And it isn't that dark tonight.
-    #But still, for some reason you can't seem to see more than five feet ahead of you.
-
-        elif experiments >= 4:
-            "You felt a deep pressure settle on you. Like being at the bottom of the ocean. Compressing your body from all angles. Your muscles knotted and twisted."
-            "It was done."
-            "The witch noticed nothing."
-            w "We need to warn people. Your family, especially."
-            jump witchSoloFinale
-        show hand onlayer transient:
-            yalign 0.68#0.743
-            xalign 0.5
-        menu:
-            w "What do you want to see?"
-            "If you asked the witch how she knew you were coming, turn to page 236." if not witchCrystal:
-                w "Crystal ball. Perks of being a witch."
-                w "I was observing your house and saw you set out - not in a creepy way though, I promise."
-                "She lays her pile of notes down on the kitchen bench and scribbles in them as she talks."
-                w "I was so happy when I saw you were coming. There's something here you need to see."
-                "There were dark bags under her eyes. It was clear she hadn't slept in days."
-                $experiments +=1
+                call hideAll
+                show cottagebg at artPos
+                "Up over the walls grew a riot of herbs and flowers of every type, planted directly in the soil, rambling over everything and growing in a lush green-grass garden on the roof. "
+                if pig:
+                    "The pig munched on some violets blooming from the windowsill."
+                w "Oh good!"
+                "You stumbled back in surprise as a small, witchy figure popped out from behind the herbs."
+                "Her hands were covered in ink. She had a thick fountain pen tucked behind her ear and a chaotic scramble of notepaper tucked under her arm. She was holding a long bundle of string."
+                w "You're just in time. [povname] right?"
+                "She took out a fork wrapped in string and planted it firmly by her doorstep. It was labelled \"A1\"."
+                "You looked around and noticed that her whole backyard was littered with forks stabbed into the ground. Each fork was tied with a knot of string and labeled with a letter of the alphabet. The knots of string led to a massive knot of twine in her front window."
+                w "Come on. You're just in time for the next round of experiments."
+                "She grabbed your hand and pulled you inside."
+                call hideAll
+                show cottageIntbg at artPos
+                "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
+                "The cottage was cramped, but the walls were covered with lines of string and notes and paper scrawled with indecipherable writing."
+                "The floor was covered in a network of flags and string in a grid pattern, each flag marked with a letter and number. You stepped over them gingerly to enter the room."
+                "A message was painted across the wall in giant red letters: \"I OWN THIRTY TWO FORKS.\""
+                w "We have two experiments running at the moment."
                 jump witchExperiments
-            "If you looked at experiment 1, turn to page 236." if not witchExperiment1:
-                $experiments +=1
-                pov "So what's experiment 1?"
-                "The witch gestured to the network of flags at her feet."
-                w "This is what started everything."
-                w "When I woke up a few days ago, I noticed something."
-                w "Usually when I make my morning tea, it takes me 4 steps to get from the kettle to my front door."
-                w "But when I made it that morning... it took me 3 steps."
-                pov "What?"
-                w "It's shrinking. You see?"
-                "She points at the grid of flags laid all across the cottage floor."
-                w "The flags start here."
-                "She points to the front left corner of the cottage, at a flag labelled \"G-02\"."
-                w "And they end here."
-                "She points to the lower right corner of the house, at a flag labeled \"Z-10\"."
-                w "But why would I do that? Why would I start the naming system at G-02, instead of A-01? How does that make sense as a numbering system?"
-                #menu choice?
-                pov "It... doesn't?"
-                w "Exactly."
-                w "Here's my hypothesis. The initial numbering system {i}began at A-01/{/i}. Since then, the space has shrunk. That's why the system now begins at this flag here, \"H-03\""
-                pov "But if the cottage was shrinking, we'd notice it. We'd see it."
-                w "Not necessarily. My theory is that there is some kind of pressure, or force, that is stopping us from noticing or remembering. I just couldn't prove it - until I hit on the fork hypothesis."
-                "She looks at you with total seriousness."
-                w "Things are being devoured. Not just from physical reality. From our minds."
-                "You stare down at the starting flag, in the front left corner of the cottage. It reads \"I-03\". Just like it always did."
-                jump witchExperiments
-            "If you looked at experiment 2, turn to page 236." if not witchExperiment2:
-                $experiments +=1
-                "The witch took you over to her front window, which you could see was stuffed with a giant, knotted network of string."
-                "The string was labelled with all the letters of the alphabet. It stretched out through the window."
-                "You looked outside and saw that it was tied onto dozens of mugs that were stuck in the soil, all over her property."
-                w "Once I realised the Lacuna phenomenon was occuring, I tried to think of a way to measure it."
-                pov "Lacuna?"
-                w "A gap, a blind spot. A space that shouldn't be there."
-                w "I tried to figure out where it's coming from - what's causing it. I tested out time of day - no results there. Are some objects more likely to disappear than others? Again, no visible pattern there."
-                w "I had a breakthrough when I considered that it might be {i}location based{/i}. Emanating from a particular point. The closer an object is to that point, the more likely it is to disappear. Look."
-                "She pulled out a giant pad of paper marked with a grid pattern. "
-                w "You see, {i}the mugs{/i} disappear. And once they're gone, it's like they've just, they've been wiped out of all time and space, they never existed."
-                #w "It's not just that I don't remember them - my memory, you know, not the greatest - but {i}my notes{/i} don't remember them either. They're gone, there's no record of them."
-                "She holds up a fork."
-                w "Say this fork disappeared. And not only did it disappear. But you never remembered it existing at all. How would you prove that it ever existed?"
-                w "How do you prove something {i}used{/} to exist, if that thing now {i}does not exist, and never did?{/i}"
-                #pov "I... uh.."
-                w "String."
-                "She reached up and quickly tugged at each piece of string in the window in turn. Most of them held firm. One of them showed no resistance when she tugged."
-                "She pulled that one through the window. It was a long, long piece and she rapidly wound it up until the end came through the window."
-                "The end was tied into a loop with nothing inside."
-                w "You see?"
-                w "When an object disappears, everything around it remains the same."
-                w "So when a fork disappears, {i}{b}the string remains.{/b}{/i}"
-                "She pronounces this last part with maniacal glee."
-                w "The phenomenon seems to be able to wipe objects from our memories, but it's not a perfect deletion. The physical signs that the object used to exist are still there."
-                w "So when I pull back a piece of string that no longer has a fork in it, that means {i}a fork must have been there, and it disappeared.{/i}"
-                w "From there it was simple. All I had to do is tie all my forks with pieces of string, and laying them out in a grid network, and record the location of each piece of string that doesn't have a fork in it. "
-                "She carefully places the string next to a big row of other pieces of looped string. Then she points at the writing on her wall that says \"I OWN TWENTY SEVEN FORKS.\""
-                w "I have twenty seven forked pieces of string here in the window. But I have {i}thirteen{/i} forkless pieces of string. That means at least thirteen forks have disappeared since this experiment began."
-                "She whips out her pencil and begins recording a pattern of dots on her grid."
-                "You notice a place in the top left of the grid labelled \"INCIDENT ZONE\"."
-                pov "So... where are the disappearances coming from?"
-                pov "Is that what your grid shows?"
-                w "That's why I was so glad to speak to you."
-                "She taps the INCIDENT ZONE label."
-                w "It's your house."
-                w "And it seems to be moving outward."
-                jump witchExperiments
-            "If you looked at experiment 3, turn to page 236." if not witchExperiment3:
-                $experiments +=1
-                "You noticed a small closet in the back of the cottage, with a sign on the door said \"Experiment Site 3\"."
-                pov "What's that one?"
-                w "Hmm?"
-                w "Oh... I, uh..."
-                "She looked confused."
-                "You opened the closet and peered in carefully."
-                "Inside was a tiny set of gentlemen's clothes, carefully folded on a stool. Small enough for a rat to wear."
-                "A tiny top hat was placed on top of the pile. A pair of miniature dress shoes next to it."
-                pov "What is this?"
-                "The longer you stared at tiny bundle of clothes, the more a sense of powerful and implicit wrongness crawled under your skin."
-                "Something about them didn't fit. They didn't belong here."
-                "The witch picks up a pile of notes next to you and begins to leaf through them."
-                w "The notes say I found them on... the 4th, just a few days ago."
-                w "I found them in the corner of the cottage. Just lying there."
-                w "I'm sorry, I can't remember - But the notes are here. I record everything."
-                "She flips through her notes faster and faster, looking away from the clothes."
-                w "Note - my mind keeps making up explanations for them. \"My brother must have left them here.\" \"Maybe my grandmother knitted them for me, as a gift.\" Doesn't make any sense, of course - haven't spoken to my family in years."
-                w "But, there is a strong impulse here to explain, to override, to confabulate, to dismiss them and assume that they mean nothing. Do you feel that?"
-                "The closet was suffocating. There was barely room to breathe."
-                "Something about the angles seemed wrong. Sweat streamed down your face."
-                pov "Maybe they were the clothes from... an old childhood toy you used to have."
-                pov "It's probably nothing."
-                w "Exactly. You feel the impulse to ignore them. I feel it too. Like a riptide. Even though I've been investigating these phenomena, the urge grips me to forget it, ignore it, stop worrying."
-                w "The brain pushes us to overwrite these gaps. A natural instinct? Have we always had an instinct like this, to pattern-match, to make things make sense? An inherent impulse to make order of chaos, to remove the blind spot."
-                "You forced yourself to move closer to the clothes. You looked at one of the tiny dress shoes. The bottom was encrusted with mud."
-                w "But then again, what if it isn't a natural impulse? What if it's something external, a force or pressure with the ability to imprint this impulse within us?"
-                w "A gap that does not wish to be observed."
-                "As you stared at it, your vision swam, and you had to look away and scrub your eyes."
-                "Dark spots swam at the corners of your vision. You shook your head, and staggered out of the closet."
-                jump witchExperiments
-        #How did you know I was coming?
-        #Experiment 1: She determines that her cottage is shrinking.
-        #Experiment 2: She uses the grid of mugs and string to determine that the gap or "Lacuna" is a moving entity that is approaching the cottage.
-            #All writing about the mugs disappears. But the strings stay. Clearly the strings were connected to the mugs at some point.
-            #She keeps a record of how many mugs she owns.
-        #Experiment 3:
-            #Control - what would that look like, in this context?
-            #Historical records. She finds evidence that the population has been shrinking.
-        #Experiment 4: The mental influence
-            #The witch experiments with a mug stain. She has a natural impulse to dismiss it. Ignore it.
-            #The object itself is disappeared. But everything around it remains. The stain is still there. That means at some point there must have been a mug, on top of this stain.
-            #w "It seems like our minds have a natural impulse, instinctive, a reflex, maybe, to cover over these things and re-knit over the portions that have vanished."
-            #w "We say, you know - \"These
-            # The edges of spaces don't seem to line up. The angles don't fit.
-            #"Your rubbed your eyes furiously, but your vision doesn't clear."
-            #"You felt scrabbling vibrations through your head. Like claws scratching in the creases of your brain."
 
+    #witchCrystal
+    #witchExperiment1
+    #witchExperiment2
+    #witchExperiment3
+    #witchExperiment4
+        #You hear an echo that sounds like a howl.
+        #
+        #Your mouth tastes like salt and ash. Your vision blurs, and fades. Are you losing sight? Spots appear in front of your eyes.
+        #Sound fades and goes soft. You hear a shrill whine in your ears.
+        #Black spots appear in your vision.
+        #
+        #The edges of spaces don't seem to line up. The angles don't fit.
+        #Your brain begins to shut down. Your organs shut down.
+        #Your heart seems to shudder and burn in your chest.
+        #Your rub your eyes furiously, but your vision doesn't clear.
+        #There is a strange distortion. You can't seem to see past it. The air is completely clear, there's no fog or mist. And it isn't that dark tonight.
+        #But still, for some reason you can't seem to see more than five feet ahead of you.
 
-        #The witch explains that she feels close to a breakthrough.
+        #Play up the witch's paranoia and the fact that she hasn't slept
 
+#The witch's 3 experiments
+label witchExperiments:
+    if experiments == 1:
+        "The walls in the cottage didn't seem right. It was like a picture that had been folded in on itself and reflected."
+        "You heard something in the walls. Like clawing."
+    elif experiments == 2:
+        "There was a strange distortion in the air. You couldn't seem to see past it."
+        "The air was completely clear, and the cottage was well-lit."
+        "But still, for some reason you can't seem to see more than five feet ahead of you."
+    elif experiments == 3:
+        "You heard a scrabbling sound."
+        "It was coming from inside you. Like claws scratching in the creases of your brain."
+        "Trying to get in."
+        "You were having difficulty speaking. But you staggered forward and kept asking questions."
+    elif experiments >= 4:
+        "You felt a deep pressure settle on you. Like being at the bottom of the ocean. Compressing your body from all angles. Your muscles knotted and twisted."
+        "It was done."
+        "The witch noticed nothing."
+        w "We need to warn people. Your family, especially."
+        jump witchSoloFinale
+    show hand onlayer transient:
+        yalign 0.68#0.743
+        xalign 0.5
+    menu:
+        w "What do you want to see?"
+        "If you asked the witch how she knew you were coming, turn to page 236." if not witchCrystal:
+            w "Crystal ball. Perks of being a witch."
+            w "I was observing your house and saw you set out - not in a creepy way though, I promise."
+            "She lays her pile of notes down on the kitchen bench and scribbles in them as she talks."
+            w "I was so happy when I saw you were coming. There's something here you need to see."
+            "There were dark bags under her eyes. It was clear she hadn't slept in days."
+            $experiments +=1
+            jump witchExperiments
+        "If you looked at experiment 1, turn to page 236." if not witchExperiment1:
+            $experiments +=1
+            pov "So what's experiment 1?"
+            "The witch gestured to the network of flags at her feet."
+            w "This is what started everything."
+            w "When I woke up a few days ago, I noticed something."
+            w "Usually when I make my morning tea, it takes me 4 steps to get from the kettle to my front door."
+            w "But when I made it that morning... it took me 3 steps."
+            pov "What?"
+            w "It's shrinking. You see?"
+            "She points at the grid of flags laid all across the cottage floor."
+            w "The flags start here."
+            "She points to the front left corner of the cottage, at a flag labelled \"G-02\"."
+            w "And they end here."
+            "She points to the lower right corner of the house, at a flag labeled \"Z-10\"."
+            w "But why would I do that? Why would I start the naming system at G-02, instead of A-01? How does that make sense as a numbering system?"
+            #menu choice?
+            pov "It... doesn't?"
+            w "Exactly."
+            w "Here's my hypothesis. The initial numbering system {i}began at A-01/{/i}. Since then, the space has shrunk. That's why the system now begins at this flag here, \"H-03\""
+            pov "But if the cottage was shrinking, we'd notice it. We'd see it."
+            w "Not necessarily. My theory is that there is some kind of pressure, or force, that is stopping us from noticing or remembering. I just couldn't prove it - until I hit on the fork hypothesis."
+            "She looks at you with total seriousness."
+            w "Things are being devoured. Not just from physical reality. From our minds."
+            "You stare down at the starting flag, in the front left corner of the cottage. It reads \"I-03\". Just like it always did."
+            jump witchExperiments
+        "If you looked at experiment 2, turn to page 236." if not witchExperiment2:
+            $experiments +=1
+            "The witch took you over to her front window, which you could see was stuffed with a giant, knotted network of string."
+            "The string was labelled with all the letters of the alphabet. It stretched out through the window."
+            "You looked outside and saw that it was tied onto dozens of mugs that were stuck in the soil, all over her property."
+            w "Once I realised the Lacuna phenomenon was occuring, I tried to think of a way to measure it."
+            pov "Lacuna?"
+            w "A gap, a blind spot. A space that shouldn't be there."
+            w "I tried to figure out where it's coming from - what's causing it. I tested out time of day - no results there. Are some objects more likely to disappear than others? Again, no visible pattern there."
+            w "I had a breakthrough when I considered that it might be {i}location based{/i}. Emanating from a particular point. The closer an object is to that point, the more likely it is to disappear. Look."
+            "She pulled out a giant pad of paper marked with a grid pattern. "
+            w "You see, {i}the mugs{/i} disappear. And once they're gone, it's like they've just, they've been wiped out of all time and space, they never existed."
+            #w "It's not just that I don't remember them - my memory, you know, not the greatest - but {i}my notes{/i} don't remember them either. They're gone, there's no record of them."
+            "She holds up a fork."
+            w "Say this fork disappeared. And not only did it disappear. But you never remembered it existing at all. How would you prove that it ever existed?"
+            w "How do you prove something {i}used{/} to exist, if that thing now {i}does not exist, and never did?{/i}"
+            #pov "I... uh.."
+            w "String."
+            "She reached up and quickly tugged at each piece of string in the window in turn. Most of them held firm. One of them showed no resistance when she tugged."
+            "She pulled that one through the window. It was a long, long piece and she rapidly wound it up until the end came through the window."
+            "The end was tied into a loop with nothing inside."
+            w "You see?"
+            w "When an object disappears, everything around it remains the same."
+            w "So when a fork disappears, {i}{b}the string remains.{/b}{/i}"
+            "She pronounces this last part with maniacal glee."
+            w "The phenomenon seems to be able to wipe objects from our memories, but it's not a perfect deletion. The physical signs that the object used to exist are still there."
+            w "So when I pull back a piece of string that no longer has a fork in it, that means {i}a fork must have been there, and it disappeared.{/i}"
+            w "From there it was simple. All I had to do is tie all my forks with pieces of string, and laying them out in a grid network, and record the location of each piece of string that doesn't have a fork in it. "
+            "She carefully places the string next to a big row of other pieces of looped string. Then she points at the writing on her wall that says \"I OWN TWENTY SEVEN FORKS.\""
+            w "I have twenty seven forked pieces of string here in the window. But I have {i}thirteen{/i} forkless pieces of string. That means at least thirteen forks have disappeared since this experiment began."
+            "She whips out her pencil and begins recording a pattern of dots on her grid."
+            "You notice a place in the top left of the grid labelled \"INCIDENT ZONE\"."
+            pov "So... where are the disappearances coming from?"
+            pov "Is that what your grid shows?"
+            w "That's why I was so glad to speak to you."
+            "She taps the INCIDENT ZONE label."
+            w "It's your house."
+            w "And it seems to be moving outward."
+            jump witchExperiments
+        "If you looked at experiment 3, turn to page 236." if not witchExperiment3:
+            $experiments +=1
+            "You noticed a small closet in the back of the cottage, with a sign on the door said \"Experiment Site 3\"."
+            pov "What's that one?"
+            w "Hmm?"
+            w "Oh... I, uh..."
+            "She looked confused."
+            "You opened the closet and peered in carefully."
+            "Inside was a tiny set of gentlemen's clothes, carefully folded on a stool. Small enough for a rat to wear."
+            "A tiny top hat was placed on top of the pile. A pair of miniature dress shoes next to it."
+            pov "What is this?"
+            "The longer you stared at tiny bundle of clothes, the more a sense of powerful and implicit wrongness crawled under your skin."
+            "Something about them didn't fit. They didn't belong here."
+            "The witch picks up a pile of notes next to you and begins to leaf through them."
+            w "The notes say I found them on... the 4th, just a few days ago."
+            w "I found them in the corner of the cottage. Just lying there."
+            w "I'm sorry, I can't remember - But the notes are here. I record everything."
+            "She flips through her notes faster and faster, looking away from the clothes."
+            w "Note - my mind keeps making up explanations for them. \"My brother must have left them here.\" \"Maybe my grandmother knitted them for me, as a gift.\" Doesn't make any sense, of course - haven't spoken to my family in years."
+            w "But, there is a strong impulse here to explain, to override, to confabulate, to dismiss them and assume that they mean nothing. Do you feel that?"
+            "The closet was suffocating. There was barely room to breathe."
+            "Something about the angles seemed wrong. Sweat streamed down your face."
+            pov "Maybe they were the clothes from... an old childhood toy you used to have."
+            pov "It's probably nothing."
+            w "Exactly. You feel the impulse to ignore them. I feel it too. Like a riptide. Even though I've been investigating these phenomena, the urge grips me to forget it, ignore it, stop worrying."
+            w "The brain pushes us to overwrite these gaps. A natural instinct? Have we always had an instinct like this, to pattern-match, to make things make sense? An inherent impulse to make order of chaos, to remove the blind spot."
+            "You forced yourself to move closer to the clothes. You looked at one of the tiny dress shoes. The bottom was encrusted with mud."
+            w "But then again, what if it isn't a natural impulse? What if it's something external, a force or pressure with the ability to imprint this impulse within us?"
+            w "A gap that does not wish to be observed."
+            "As you stared at it, your vision swam, and you had to look away and scrub your eyes."
+            "Dark spots swam at the corners of your vision. You shook your head, and staggered out of the closet."
+            jump witchExperiments
 
-        # "You walked up the front steps, and put your hand on the doorknob."
-        # "The door opened up with a shuddering creak."
-        # if pig:
-        #     "You and the pig slowly crept forward."
-        # call hideAll from _call_hideAll_74
-        # show cottageintbg at artPos
-        # "Out of the attic poked a small head with a giant black hat. It looked at you with shock."
-        # w "Oh!"
-        # "It quickly withdrew into the rafters and you heard a great crash."
-        # "After a moment, out popped the witch, carrying a thick binder of notes and the remains of a broken pot plant."
-        # w "Um... hello!"
-
-    #
-
-    #==You feel more and more brain pressure
-
-    label witchSoloFinale:
-    #==You enter the witch's cottage. She asks you for help with her experiments
-
+#The final moments of the witch, before she disappears.
+label witchSoloFinale:
     #==The wolf takes over you.
     "You felt a strangling pressure in your throat."
     w "Now that we know where it's coming from, we can -"
@@ -7478,6 +7639,11 @@ label witchSolo:
     pov "I'm so glad."
     pov "Don't worry. Everything is going to be ok."
     pov "I'll get the villagers and we'll come back for you and your things."
+    stop music fadeout 1.0
+    play audio wolfApproaches
+    stop ambient2 fadeout 2.0
+    stop ambient1 fadeout 20.0
+
     pov "We can set you up in the village somewhere safe. Where you aren't a danger to yourself."
     "Your muscles clenched, and pulled you upright."
     "The witch's face was scrunched up and she was rubbing her eyes."
@@ -7491,6 +7657,11 @@ label witchSolo:
     "Your muscles constricted, and your legs jerked. Your arms pulled you through the miniature doorway and out of the witch's house."
     "You saw the witch once in the doorway, looking scared and alone in the crushingly small space of her tiny, tiny cottage."
     "Then the door closed, and your body turned around."
+    $persistent.vanished +=1
+    $persistent.witchVanished = True
+    $purge_saves()
+    $ renpy.block_rollback()
+
     call hideAll
     show nightbg at artPos
     "The pressure eased. You felt the tension leave you, like surfacing from the bottom of the ocean."
@@ -7508,155 +7679,6 @@ label witchSolo:
     call endStamp
     "If not, let it be forgotten."
     jump end
-
-    # "The night grew dark."
-    # "You walked through the trees together."
-    # call hideAll from _call_hideAll_66
-    # show nightgodbg at artPos
-    # "The Firmament looked down at you from Her place up above."
-    # call hideAll from _call_hideAll_67
-    # show nightbg at artPos
-    # show hand onlayer transient:
-    #     yalign 0.7#0.743
-    #     xalign 0.5
-    # menu:
-    #     "You followed the toad through a dense swamp of crooked mangroves."
-    #     "If you asked him about the witch's cottage, turn to page 233.":
-    #         pov "How do you know where the witch's cottage is?"
-    #         f "Oh... just my natural good sense of direction, I suppose! Ha ha!"
-    #         f "When you become an adventurer like me, you just know these things."
-    #     "If you asked him about the forest, turn to page 234.":
-    #         pov "Have you been through this part of the forest before?"
-    #         f "Oh... no, of course not. No, I'm far too busy being off at more important places, with more important people. All across the world. Barely have a moment to myself, you know."
-    #         f "I wouldn't have the slightest idea what it's like to live in a swamp like this. Ha. Ha."
-    # f "Come on, we can't let ourselves be cowed by a little darkness! Why, I remember when I was journeying through the pits of Arborkios, where darkness is forged on a black anvil of star-stuff, and the blackest night shelters for rest each night after being torn apart by the light of day each morning! Well, I marched right on through that black pit, and I said -"
-    # f "Ack!"
-    # "You heard him trip over in front of you and go tumbling down and down through the muck of the rainforest until he fell into a deep pit and landed at the bottom with a crash."
-    # "You picked your way carefully down to him."
-    # f "Never fear! I have found... a shortcut!"
-    # if pig:
-    #     "The pig pushed the toad with its snout."
-    # f "I just... need a moment. M-might have... sprained my ankle there, I think. And maybe my arm."
-    # "He wheezed and lay there in the mud for a long time, breathing heavily and trying not to cry."
-    # "You heard him whisper to himself weakly."
-    # f "I am B-brildebrogue Chippingham. And I..."
-    # show hand onlayer transient:
-    #     yalign 0.7#0.743
-    #     xalign 0.5
-    # menu:
-    #     #TK: Have more options here for the different godfathers
-    #     "He trailed off."
-    #     "If you helped the toad up, turn to page 235.":
-    #         "You reached down and found the toad's hand."
-    #         "Even in the darkness, you saw him blush bright red."
-    #         f "Well I - t-this is all most..."
-    #         f "Hand-holding, before marriage? What will people say?"
-    #         "You picked him up out of the muck and put him on your shoulder."
-    #         f "Good, good. I-I'll lead you onward."
-    # "You walked on. Soon, you began to see a glimmer of silver light in the darkness."
-    # call hideAll from _call_hideAll_68
-    # show darkforestbg at artPos
-    # "The forest was covered in great puddles of water from the rains. The puddles shone with light."
-    # "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
-    # play sound pageFlip
-    # call hideAll
-    # show lakefullbg
-    # ""
-    # play sound pageFlip2
-    # call hideAll
-    # show darkforestbg at artPos
-    #
-    # "For a brief moment, you thought you saw a figure reflected in the water. But as soon as you blinked, it was gone."
-    # jump puddle
-
-    #You see the puddle
-    # label puddle:
-    #     show hand onlayer transient:
-    #         yalign 0.68#0.743
-    #         xalign 0.5
-    #     menu:
-    #         "The toad gasped in terror at the sight."
-    #         "If you looked into the puddle carefully, turn to page 236." if not puddleLook:
-    #             "You crawled to the edge and looked down into the puddle."
-    #             "The surface of the water was flat and still."
-    #             call hideAll from _call_hideAll_69
-    #             show cottagebg at artPos
-    #             "The cottage in the reflection shone with bright light, as if the setting sun was behind it."
-    #             call hideAll from _call_hideAll_70
-    #             show darkforestbg at artPos
-    #             "There was no trace of a cottage in the world above the water."
-    #             $puddleLook = True
-    #             jump puddle
-    #         "If you dropped a stick in the puddle, turn to page 206." if not puddleStick:
-    #             "You picked up a stick from the ground, and tossed it into the puddle."
-    #             "It fell in without a single ripple in the water."
-    #             "You saw it drop through into the reflection, and land close to the cottage."
-    #             "You looked up. There was no trace of it in the world outside the reflection."
-    #             $puddleStick = True
-    #             jump puddle
-    #         "If you jumped into the puddle, turn to page 207.":
-    #             if pig:
-    #                 "You grabbed the pig and the toad to you, then leapt into the puddle."
-    #             else:
-    #                 "You held the toad tight, then leapt into the puddle."
-    #             call hideAll from _call_hideAll_71
-    #             show mushroombasementbg at artPos
-    #             "The world flipped over."
-    #             "You felt the water pass over you, and a cool chill tingled all through your body."
-    #             call hideAll from _call_hideAll_72
-    #             show silverbg at artPos
-    #             "When you opened your eyes, you were standing right way up again."
-    #             "The puddle you had jumped into was now a floor, like a silver mirror."
-    #             "The world all around you shone white."
-    #             "At the centre of the puddle was the cottage, shining with light."
-    #     "The toad was very quiet now. His fine suit was ruined with mud. He jumped out of your hand and sat down."
-    #     f "You'd... better go on. I'd just slow you down."
-    #     show hand onlayer transient:
-    #         yalign 0.7#0.743
-    #         xalign 0.5
-    #     menu:
-    #         "He twisted his once-beautiful hat in shaking hands and looked down at the ground."
-    #         "If you encouraged the toad, turn to page 214.":
-    #             pov "Thanks for pretending to fall down back there."
-    #             f "What?"
-    #             pov "Well, I know you must have done it deliberately. Just so I would have something to do."
-    #             pov "After all, you were leading us here so easily!"
-    #             pov "Thanks for making me feel included."
-    #             f "Oh. I..."
-    #             "He brightened up."
-    #             f "Yes, I had to make sure you were included! We're both on this adventure together, after all. We're a team."
-    #             "You saw him start to smile shakily."
-    #             f "I did do an ok job getting us here, didn't I?"
-    #             pov "Of course!"
-    #             "You gently slapped him across the back."
-    #             pov "You're Brildebrogue Chippingham, and you've never failed at anything in your life."
-    #             "With this, the toad wiped the tears from his eyes, and beamed."
-    #         "If you crushed the toad's feelings, turn to page 220.":
-    #             pov "You have. It would be better if you'd never come."
-    #             "The toad winced and looked away, trying not to cry."
-    #             f "You're right. I'm sorry."
-    #             f "I just..."
-    #             f "I wanted to go on an adventure."
-    #             f "I'll stay here, then. Don't want to get in your way."
-    #             f "But if you aren't out in ten minutes, I... I'll come in to rescue you. Alright?"
-    #             "You agreed."
-    #             $toadSad = True
-    #     call hideAll from _call_hideAll_73
-    #     show cottagebg at artPos
-    #     "Soon, you had crossed the river paths to the cottage in the centre."
-    #     "Up over the walls grew a riot of herbs and flowers of every type, rambling over everything and growing in a lush green-grass garden on the roof. "
-    #     if pig:
-    #         "The pig munched on some violets blooming from the windowsill."
-    #     "You saw the glimmer of two red eyes watching you from a small crook in the roof. Then there was a gasp from inside, and they disappeared."
-    #     if not toadSad:
-    #         "The closer you got to the cottage, the more the toad shook with terror."
-    #         pov "You'd better stay behind. Guard the rear."
-    #         f "G-good idea."
-    #         f "But be wary, my friend. Few have ever left that cottage alive"
-    #         f "Witches have red eyes. They see very far, but they have a keen sense of smell, like animals, and can sense when humans are near them."
-    #         f "If you aren't out in ten minutes, I'll come in there to rescue you."
-    #         jump witch2
-
 
 #=====================THE WOLF'S STORY
 #Leaving the village to investigate your house
@@ -9248,7 +9270,7 @@ label end:
     $ ui.text("{space=[ti]}30. {b}Sabbath:{/b} 'Witches' Sabbath' (1510), Hans Baldung (called Hans Baldung Grien).{vspace=[tx]}{space=[ti]}31. {b}Strangler Fig:{/b} 'Poison Tree Strangled by a Fig, Queensland' (Early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}32. {b}Sun:{/b} 'A Wheatfield, with Cypresses' (1889), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}33. {b}Town 3:{/b} 'Our Camp on the Bunya Mountains, Queensland' (Early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}34. {b}Town - Crossroads:{/b} 'St. Hansbål ved Jølstervatnet (St. John's Eve bonfire at Jølstravatn)' (1909), Nikolai Astrup.{vspace=[tx]}{space=[ti]}35. {b}Town Exterior:{/b} 'Small Grain Poles' (1904), Nikolai Astrup.{vspace=[tx]}{space=[ti]}36. {b}Town - Feast:{/b} 'St. John’s Fire' (1912), Nikolai Astrup.{vspace=[tx]}{space=[ti]}37. {b}Train:{/b} 'The Train' (1910), Louise Thuiller.{vspace=[tx]}{space=[ti]}38. {b}Train - Full:{/b} 'Take Me by The Flying Scotsman' (1932), Thomson, A R.{vspace=[tx]}{space=[ti]}39. {b}Tree - Night:{/b} 'Night in the Forest' (1859), William Louis Sonntag.{vspace=[tx]}{space=[ti]}40. {b}Well:{/b} Image taken from page 192 of 'Celebrated American Caverns, especially Mammoth, Wyandot, and at Luray, etc' (1882), Hovey, Horace Carter.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     hide text
-    $ ui.text("{space=[ti]}41. {b}Winter:{/b} 'Snow-covered field with a harrow (after Millet)' (1890), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}42. {b}Devil - Full:{/b} 'Triptych of Earthly Vanity and Divine Salvation' (1485), Hans Memling.{vspace=[tx]}{space=[ti]}43. {b}Dark Forest:{/b} 'Twilight in the Tropics' (1874), Frederic Edwin Church.{vspace=[tx]}{space=[ti]}44. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Andersen, H. C. , Robinson, T. H., ill; Robinson, Charles, ill; Robinson, W. Heath, ill.{vspace=[tx]}{space=[ti]}45. {b}Engine Room:{/b} 'Victorian vintage engraving of workers in an iron foundry, France' (1875), istockphoto.", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}41. {b}Winter:{/b} 'Snow-covered field with a harrow (after Millet)' (1890), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}42. {b}Devil - Full:{/b} 'Triptych of Earthly Vanity and Divine Salvation' (1485), Hans Memling.{vspace=[tx]}{space=[ti]}43. {b}Dark Forest:{/b} 'Twilight in the Tropics' (1874), Frederic Edwin Church.{vspace=[tx]}{space=[ti]}44. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Andersen, H. C. , Robinson, T. H., ill; Robinson, Charles, ill; Robinson, W. Heath, ill.{vspace=[tx]}{space=[ti]}45. {b}Engine Room:{/b} 'Victorian vintage engraving of workers in an iron foundry, France' (1875), istockphoto.{vspace=[tx]}{space=[ti]}46. {b}Brildebrogue's Wives:{/b} 'What she sees there' (1868), Winslow Homer.", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     hide text
 

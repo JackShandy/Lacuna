@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 389: u'init' is not a keyword argument or valid child for the screen statement.
-    init:
-        ^
+The label _call_hideAll_88 is defined twice, at
+  File "game/script.rpy", line 5949 and
+  File "game/script.rpy", line 6468.
+
+The label _call_hideAll_89 is defined twice, at
+  File "game/script.rpy", line 5961 and
+  File "game/script.rpy", line 6480.
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Fri Dec  9 13:31:52 2022
+Sat Dec 10 16:24:57 2022
