@@ -1,22 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 5426, in script
-    Goblin4 "Aye, boss!"
-Exception: Sayer 'Goblin4' is not defined.
+  File "game/script.rpy", line 7485, in script
+    menu:
+  File "game/script.rpy", line 7487, in <module>
+    "If you asked the witch how she knew you were coming, turn to page 236." if not witchCrystal:
+NameError: name 'witchCrystal' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 5426, in script
-    Goblin4 "Aye, boss!"
-  File "renpy/ast.py", line 680, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "renpy/ast.py", line 574, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'Goblin4' is not defined.
+  File "game/script.rpy", line 7485, in script
+    menu:
+  File "renpy/ast.py", line 1642, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "renpy/exports.py", line 1004, in menu
+    condition = renpy.python.py_eval(condition)
+  File "renpy/python.py", line 2249, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2242, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 7487, in <module>
+    "If you asked the witch how she knew you were coming, turn to page 236." if not witchCrystal:
+NameError: name 'witchCrystal' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Lacuna. 0.81
-Fri Dec  9 11:14:38 2022
+Tue Dec 20 18:19:31 2022

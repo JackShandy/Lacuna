@@ -210,6 +210,11 @@ init:
     define witchFestival = False
     define witchPlace = False
     define experiments = 0
+    define witchCrystal = False
+    define witchExperiment1 = False
+    define witchExperiment2 = False
+    define witchExperiment3 = False
+    define witchExperiment4 = False
 
     #===== Act 3 - The Thief Finale
     define thiefJunior = False
@@ -1167,6 +1172,7 @@ label start:
     #     $renpy.music.play("audio/windAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
+
     label chapter1:
         #"[sfw]"
         #scene bg page
@@ -1183,7 +1189,6 @@ label start:
             jump allVanishedEnd
 
         show nightbg at artPos
-        wives "Test"
         "This maybe happened, or maybe did not."
         "The time is long past, and much is forgot."
         call hideAll from _call_hideAll
@@ -6415,6 +6420,11 @@ label toadSolo:
     f "Of course! The manor is owned by me, Brildebrogue Chippingham! That's my name! Why would you think otherwise?"
     f "Anyway, no time to talk about trivialities such as property ownership and who does or does not own the manor right this moment, I have a party to plan! It will begin soon, you'd better make ready!"
     "And with that the toad flitted out of the room and left you alone to explore the manor."
+
+    #There is a desperate descent of him attempting to seal out the wolf, posting guards, building walls, hiring magicians and sorcerers of every type, dogs at the door, the finest locks known to mankind. Finally he creates a great tomb-vault inside his house, where he will be sealed forever. He says a tearful goodbye to you outside the vault. Then he disappears forever.
+
+    #"The toad posted dogs and every door and guards on every wall."
+
     #seven mansion rooms with investigation things
     # label chippinghamManorSolo:
     #     show hand onlayer transient:
@@ -7371,7 +7381,7 @@ label witchSolo:
     call hideAll
     show darkforestbg at artPos
     "For a brief moment, you thought you saw a figure reflected in the water. But as soon as you blinked, it was gone."
-    jump puddle
+    jump puddleSolo
 
     label puddleSolo:
         show hand onlayer transient:
@@ -7418,26 +7428,22 @@ label witchSolo:
                     "The pig munched on some violets blooming from the windowsill."
                 w "Oh good!"
                 "You stumbled back in surprise as a small, witchy figure popped out from behind the herbs."
-                "Her hands were covered in ink. She had a thick fountain pen tucked behind her ear and a chaotic scramble of notepaper tucked under her arm. She was holding a long bundle of string."
-                w "You're just in time. [povname] right?"
+                "Her hands were covered in ink. She had a fountain pen tucked behind her ear, a chaotic scramble of notepaper tucked under her arm and a thick bundle of string wrapped around her hand."
+                w "You're just in time. [povname], right?"
                 "She took out a fork wrapped in string and planted it firmly by her doorstep. It was labelled \"A1\"."
                 "You looked around and noticed that her whole backyard was littered with forks stabbed into the ground. Each fork was tied with a knot of string and labeled with a letter of the alphabet. The knots of string led to a massive knot of twine in her front window."
                 w "Come on. You're just in time for the next round of experiments."
                 "She grabbed your hand and pulled you inside."
                 call hideAll
-                show cottageIntbg at artPos
+                show cottageintbg at artPos
                 "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
                 "The cottage was cramped, but the walls were covered with lines of string and notes and paper scrawled with indecipherable writing."
+                #TK: Images for this stuff
                 "The floor was covered in a network of flags and string in a grid pattern, each flag marked with a letter and number. You stepped over them gingerly to enter the room."
                 "A message was painted across the wall in giant red letters: \"I OWN THIRTY TWO FORKS.\""
                 w "We have two experiments running at the moment."
                 jump witchExperiments
 
-    #witchCrystal
-    #witchExperiment1
-    #witchExperiment2
-    #witchExperiment3
-    #witchExperiment4
         #You hear an echo that sounds like a howl.
         #
         #Your mouth tastes like salt and ash. Your vision blurs, and fades. Are you losing sight? Spots appear in front of your eyes.
@@ -7456,17 +7462,18 @@ label witchSolo:
 #The witch's 3 experiments
 label witchExperiments:
     if experiments == 1:
-        "The walls in the cottage didn't seem right. It was like a picture that had been folded in on itself and reflected."
         "You heard something in the walls. Like clawing."
+        "You looked at the walls of the cottage and noticed something odd about them. It was like a picture that had been folded in on itself and reflected."
+        "The witch didn't seem to notice."
     elif experiments == 2:
-        "There was a strange distortion in the air. You couldn't seem to see past it."
+        "You blinked and rubbed your eyes furiously. There was a queer distortion in the air."
         "The air was completely clear, and the cottage was well-lit."
-        "But still, for some reason you can't seem to see more than five feet ahead of you."
+        "But still, for some reason you couldn't see more than five feet ahead of you."
     elif experiments == 3:
         "You heard a scrabbling sound."
         "It was coming from inside you. Like claws scratching in the creases of your brain."
         "Trying to get in."
-        "You were having difficulty speaking. But you staggered forward and kept asking questions."
+        "You were having difficulty speaking. But you slowly walked forward and kept asking questions."
     elif experiments >= 4:
         "You felt a deep pressure settle on you. Like being at the bottom of the ocean. Compressing your body from all angles. Your muscles knotted and twisted."
         "It was done."
@@ -7474,17 +7481,19 @@ label witchExperiments:
         w "We need to warn people. Your family, especially."
         jump witchSoloFinale
     show hand onlayer transient:
-        yalign 0.68#0.743
+        yalign 0.65#0.743
         xalign 0.5
     menu:
         w "What do you want to see?"
         "If you asked the witch how she knew you were coming, turn to page 236." if not witchCrystal:
             w "Crystal ball. Perks of being a witch."
-            w "I was observing your house and saw you set out - not in a creepy way though, I promise."
-            "She lays her pile of notes down on the kitchen bench and scribbles in them as she talks."
-            w "I was so happy when I saw you were coming. There's something here you need to see."
+            w "I was watching your house."
+            "She laid her pile of notes down on the kitchen bench and scribbled in them as she talked."
             "There were dark bags under her eyes. It was clear she hadn't slept in days."
+            w "I was so happy when I saw you were coming. There's something here you need to see."
+
             $experiments +=1
+            $witchCrystal = True
             jump witchExperiments
         "If you looked at experiment 1, turn to page 236." if not witchExperiment1:
             $experiments +=1
@@ -7498,58 +7507,82 @@ label witchExperiments:
             w "It's shrinking. You see?"
             "She points at the grid of flags laid all across the cottage floor."
             w "The flags start here."
-            "She points to the front left corner of the cottage, at a flag labelled \"G-02\"."
+            "She pointed to the front left corner of the cottage, at a flag labelled \"G-02\"."
             w "And they end here."
             "She points to the lower right corner of the house, at a flag labeled \"Z-10\"."
             w "But why would I do that? Why would I start the naming system at G-02, instead of A-01? How does that make sense as a numbering system?"
             #menu choice?
-            pov "It... doesn't?"
+            pov "It... doesn't."
             w "Exactly."
-            w "Here's my hypothesis. The initial numbering system {i}began at A-01/{/i}. Since then, the space has shrunk. That's why the system now begins at this flag here, \"H-03\""
-            pov "But if the cottage was shrinking, we'd notice it. We'd see it."
+            w "Here's my hypothesis. The initial numbering system {i}began at A-01{/i}. Since then, the space has shrunk."
+            w "That's why the system now begins at this flag here, \"H-03.\""
+            "She pointed at the starting flag."
+            pov "But if the cottage was shrinking, we'd notice it."
             w "Not necessarily. My theory is that there is some kind of pressure, or force, that is stopping us from noticing or remembering. I just couldn't prove it - until I hit on the fork hypothesis."
-            "She looks at you with total seriousness."
+            "She looked at you with a cold certainty."
             w "Things are being devoured. Not just from physical reality. From our minds."
-            "You stare down at the starting flag, in the front left corner of the cottage. It reads \"I-03\". Just like it always did."
+            "You stared down at the starting flag, in the front left corner of the cottage."
+            "It read \"I-03\". Just like it always did."
+            $witchExperiment1 = True
             jump witchExperiments
         "If you looked at experiment 2, turn to page 236." if not witchExperiment2:
             $experiments +=1
             "The witch took you over to her front window, which you could see was stuffed with a giant, knotted network of string."
             "The string was labelled with all the letters of the alphabet. It stretched out through the window."
-            "You looked outside and saw that it was tied onto dozens of mugs that were stuck in the soil, all over her property."
-            w "Once I realised the Lacuna phenomenon was occuring, I tried to think of a way to measure it."
+            "You looked outside and saw that it was tied onto dozens of forks stuck into the soil, all over her property."
+            w "Once I encountered the Lacuna phenomenon, I tried to think of a way to measure it."
             pov "Lacuna?"
             w "A gap, a blind spot. A space that shouldn't be there."
-            w "I tried to figure out where it's coming from - what's causing it. I tested out time of day - no results there. Are some objects more likely to disappear than others? Again, no visible pattern there."
-            w "I had a breakthrough when I considered that it might be {i}location based{/i}. Emanating from a particular point. The closer an object is to that point, the more likely it is to disappear. Look."
-            "She pulled out a giant pad of paper marked with a grid pattern. "
-            w "You see, {i}the mugs{/i} disappear. And once they're gone, it's like they've just, they've been wiped out of all time and space, they never existed."
+            w "I tried to figure out where it's coming from - what's causing it. I tested out time of day - no results there. Are some objects more likely to disappear than others? Again, no visible pattern there. "
+            w "I had a breakthrough when I considered that it might be {i}location based{/i}. Emanating from a particular point. The closer an object is to that point, the more likely it is to disappear. But I couldn't make any meaningful progress because I couldn't prove whether or not something had disappeared."
+            #"She pulled out a giant pad of paper marked with a grid pattern. "
             #w "It's not just that I don't remember them - my memory, you know, not the greatest - but {i}my notes{/i} don't remember them either. They're gone, there's no record of them."
-            "She holds up a fork."
-            w "Say this fork disappeared. And not only did it disappear. But you never remembered it existing at all. How would you prove that it ever existed?"
-            w "How do you prove something {i}used{/} to exist, if that thing now {i}does not exist, and never did?{/i}"
-            #pov "I... uh.."
+            "She held up a fork."
+            w "Say this fork vanished. And not only that, but it vanished so completely that you never remembered it existing at all. How could you prove that it ever existed?"
+
+            #TK: Add a menu of options here
+            show hand onlayer transient:
+                yalign 0.65#0.743
+                xalign 0.5
+            menu:
+                w "How do you prove something {i}used{/} to exist, if that thing now {i}does not exist, and never did?{/i}"
+                "If you suggested making notes, turn to page 238.":
+                    w "That's the scary part. Even my notes no longer mention the fork ever existing."
+                    w "Somehow even they have been re-written by the new, forkless reality."
+                    w "No, I've only found one way to detect the change."
+                "If you suggested using magic or consulting magical beings, turn to page 239.":
+                    w "Fantastic idea, but sadly impractical. I have consulted the Devil on this, of course."
+                    w "I suspect He knows more than he's letting on, but sadly His comments have been completely unscientific. Totally useless for an experiment like this."
+                    w "No, I've only found one way to detect the change."
+                "If you had no idea, turn to page 241.":
+                    pov "I... well..."
+                    pov "I don't think you can, can you?"
+
             w "String."
             "She reached up and quickly tugged at each piece of string in the window in turn. Most of them held firm. One of them showed no resistance when she tugged."
             "She pulled that one through the window. It was a long, long piece and she rapidly wound it up until the end came through the window."
             "The end was tied into a loop with nothing inside."
             w "You see?"
-            w "When an object disappears, everything around it remains the same."
-            w "So when a fork disappears, {i}{b}the string remains.{/b}{/i}"
-            "She pronounces this last part with maniacal glee."
+            w "When an object vanishes, everything around it stays the same."
+            w "So even though the fork is gone, {i}{b}the string remains.{/b}{/i}"
+            "She pronounced this last part with maniacal glee."
             w "The phenomenon seems to be able to wipe objects from our memories, but it's not a perfect deletion. The physical signs that the object used to exist are still there."
             w "So when I pull back a piece of string that no longer has a fork in it, that means {i}a fork must have been there, and it disappeared.{/i}"
             w "From there it was simple. All I had to do is tie all my forks with pieces of string, and laying them out in a grid network, and record the location of each piece of string that doesn't have a fork in it. "
-            "She carefully places the string next to a big row of other pieces of looped string. Then she points at the writing on her wall that says \"I OWN TWENTY SEVEN FORKS.\""
-            w "I have twenty seven forked pieces of string here in the window. But I have {i}thirteen{/i} forkless pieces of string. That means at least thirteen forks have disappeared since this experiment began."
-            "She whips out her pencil and begins recording a pattern of dots on her grid."
-            "You notice a place in the top left of the grid labelled \"INCIDENT ZONE\"."
+            "She carefully placed the string next to a big row of other pieces of looped string. Then she pointed at the writing on her wall that said \"I OWN TWENTY SEVEN FORKS.\""
+            w "This message says I own twenty seven forks. But I have thirteen {i}forkless{/i} pieces of string. That means at least thirteen forks have disappeared since this experiment began."
+            w "The question then of course is, why has the message changed to fit the new forkless reality - yet the strings are left behind?"
+            w "Does this anomaly have some kind of limited ability to warp language, specifically?"
+            w "It almost seems to suggest some kind of active sentience behind it. It notices some things, and changes them, but misses other things. Like it's been carelessly censored."
+            "She whipped out her pencil and began recording a pattern of dots on her grid."
+            "You noticed a place in the top left of the grid labelled \"INCIDENT ZONE\"."
             pov "So... where are the disappearances coming from?"
             pov "Is that what your grid shows?"
             w "That's why I was so glad to speak to you."
-            "She taps the INCIDENT ZONE label."
+            "She tapped the INCIDENT ZONE label."
             w "It's your house."
             w "And it seems to be moving outward."
+            $witchExperiment2 = True
             jump witchExperiments
         "If you looked at experiment 3, turn to page 236." if not witchExperiment3:
             $experiments +=1
@@ -7560,38 +7593,47 @@ label witchExperiments:
             "She looked confused."
             "You opened the closet and peered in carefully."
             "Inside was a tiny set of gentlemen's clothes, carefully folded on a stool. Small enough for a rat to wear."
-            "A tiny top hat was placed on top of the pile. A pair of miniature dress shoes next to it."
+            "A tiny top hat was placed on top of the pile, with a pair of miniature dress shoes next to it."
             pov "What is this?"
             "The longer you stared at tiny bundle of clothes, the more a sense of powerful and implicit wrongness crawled under your skin."
             "Something about them didn't fit. They didn't belong here."
-            "The witch picks up a pile of notes next to you and begins to leaf through them."
-            w "The notes say I found them on... the 4th, just a few days ago."
-            w "I found them in the corner of the cottage. Just lying there."
-            w "I'm sorry, I can't remember - But the notes are here. I record everything."
-            "She flips through her notes faster and faster, looking away from the clothes."
-            w "Note - my mind keeps making up explanations for them. \"My brother must have left them here.\" \"Maybe my grandmother knitted them for me, as a gift.\" Doesn't make any sense, of course - haven't spoken to my family in years."
-            w "But, there is a strong impulse here to explain, to override, to confabulate, to dismiss them and assume that they mean nothing. Do you feel that?"
-            "The closet was suffocating. There was barely room to breathe."
-            "Something about the angles seemed wrong. Sweat streamed down your face."
-            pov "Maybe they were the clothes from... an old childhood toy you used to have."
+            w "I don't remember this."
+            "The closet was suffocating. There was barely room to breathe. You felt the urge to get out in the fresh air."
+            "You forced yourself to move closer to the clothes. You picked up one of the tiny dress shoes. The bottom was encrusted with mud."
+            pov "They must be the clothes from... an old childhood toy you used to have."
             pov "It's probably nothing."
-            w "Exactly. You feel the impulse to ignore them. I feel it too. Like a riptide. Even though I've been investigating these phenomena, the urge grips me to forget it, ignore it, stop worrying."
-            w "The brain pushes us to overwrite these gaps. A natural instinct? Have we always had an instinct like this, to pattern-match, to make things make sense? An inherent impulse to make order of chaos, to remove the blind spot."
-            "You forced yourself to move closer to the clothes. You looked at one of the tiny dress shoes. The bottom was encrusted with mud."
-            w "But then again, what if it isn't a natural impulse? What if it's something external, a force or pressure with the ability to imprint this impulse within us?"
-            w "A gap that does not wish to be observed."
-            "As you stared at it, your vision swam, and you had to look away and scrub your eyes."
-            "Dark spots swam at the corners of your vision. You shook your head, and staggered out of the closet."
+            w "Yes of course, that must be it."
+            w "I remember now. Nothing at all. Just an old toy."
+            # "The witch picked up a pile of notes next to you and begins to leaf through them."
+            # w "The notes say I found them on... the 4th, just a few days ago."
+            # w "I found them in the corner of the cottage. Just lying there."
+            # w "I'm sorry, I can't remember - But the notes are here. I record everything."
+            # "She flips through her notes faster and faster, looking away from the clothes."
+            # w "Note - my mind keeps making up explanations for them. \"My brother must have left them here.\" \"Maybe my grandmother knitted them for me, as a gift.\" Doesn't make any sense, of course - haven't spoken to my family in years."
+            # w "But, there is a strong impulse here to explain, to override, to confabulate, to dismiss them and assume that they mean nothing. Do you feel that?"
+            #
+            # "Something about the angles seemed wrong. Sweat streamed down your face."
+            # pov "Maybe they were the clothes from... an old childhood toy you used to have."
+            # pov "It's probably nothing."
+            # w "Exactly. You feel the impulse to ignore them. I feel it too. Like a riptide. Even though I've been investigating these phenomena, the urge grips me to forget it, ignore it, stop worrying."
+            # w "The brain pushes us to overwrite these gaps. A natural instinct? Have we always had an instinct like this, to pattern-match, to make things make sense? An inherent impulse to make order of chaos, to remove the blind spot."
+            # w "But then again, what if it isn't a natural impulse? What if it's something external, a force or pressure with the ability to imprint this impulse within us?"
+            # w "A gap that does not wish to be observed."
+            # "As you stared at it, your vision swam, and you had to look away and scrub your eyes."
+            "Dark spots swam at the corners of your vision. You dropped the shoe and staggered out of the closet."
+            $witchExperiment3 = True
             jump witchExperiments
 
 #The final moments of the witch, before she disappears.
 label witchSoloFinale:
     #==The wolf takes over you.
     "You felt a strangling pressure in your throat."
-    w "Now that we know where it's coming from, we can -"
+    w "Now that we know this Lacuna is coming from your house, we can -"
     "Your tongue was fat and poisonous in your mouth."
     "It twisted, and spoke."
-    pov "This is a very exciting theory, isn't it? It makes you the hero. A visionary. You saw what no-one else could. Now only you can stop it."
+    pov "This is an exciting theory, isn't it?"
+    pov "It makes you the hero. A visionary."
+    pov "You saw what no-one else could, now only you can stop it, that sort of thing."
     pov "But I think you are overlooking a much simpler explanation."
     w "What do you mean?"
     pov "Memory loss. Confusion."
@@ -7599,10 +7641,11 @@ label witchSoloFinale:
     pov "Withdrawing from friends and family."
     pov "Losing the ability to think clearly."
     pov "What do these symptoms suggest?"
-    w "I- no. No, that's not possible."
+    w "I-"
+    w "No. No, that's not possible."
     "Her voice was unsteady."
-    w "I-I know I have struggled in the past. But it's not just me."
-    w "We proved it. It's not just in my head. What about the strings?"
+    w "I- I know I have struggled in the past. But it's not just me. We proved it."
+    w "It can't just be in my head. What about the strings?"
     pov "What strings?"
     "She turned around. There were no strings on the windowsill."
     "The floor of the cottage was clear. There were no flags."
@@ -7613,7 +7656,7 @@ label witchSoloFinale:
     "The witch looked out the window and saw that you were right. The ground was bare. The cottage was empty. There were no forks in sight."
     "Your throat pulsed and pushed the words out of your teeth."
     pov "You eat with your hands. Your bare hands."
-    pov "Your nails. Your teeth."
+    pov "Your claws. Your teeth."
     pov "You always have. You told me so."
     w "No. No, I wouldn't do that. They have to be here."
     "The witch began to ransack the house, pulling out drawers and shelves, but there was nothing inside."
@@ -7627,27 +7670,26 @@ label witchSoloFinale:
     pov "Of course. So many years now. We wouldn't lie to you. We only want you to be safe."
     pov "You have to trust me. You're not well. These things you're seeing... they aren't there."
     "The witch spoke in a very small voice."
-    w "Ok."
-    pov "Good."
+    w "..."
+    w "Okay."
+    stop music fadeout 1.0
+    play audio wolfApproaches
+    stop ambient2 fadeout 2.0
+    stop ambient1 fadeout 20.0
     pov "This really is the best thing, dear. For your health."
     "She looked down at her hands. They were shaking. Tears welled up in her eyes, and you looked away courteously."
     w "I was doing so well. I thought I was better."
     w "I really, really thought..."
     "There was a long silence."
     w "Well. It doesn't matter now."
-    w "I-I'll pack my things. I know you only want me to be safe."
+    w "I- I'll pack my things. I know you only want me to be safe."
     pov "I'm so glad."
-    pov "Don't worry. Everything is going to be ok."
-    pov "I'll get the villagers and we'll come back for you and your things."
-    stop music fadeout 1.0
-    play audio wolfApproaches
-    stop ambient2 fadeout 2.0
-    stop ambient1 fadeout 20.0
+    pov "Don't worry. Everything is going to be fine."
+    pov "I'll get the villagers, and we'll come back for you and your things."
 
     pov "We can set you up in the village somewhere safe. Where you aren't a danger to yourself."
     "Your muscles clenched, and pulled you upright."
     "The witch's face was scrunched up and she was rubbing her eyes."
-    w "I-"
     w "Thank you. I'm sorry."
     pov "There's no need to be sorry. I forgive you."
     "She looked at you. Her eyes were large and terrified."
@@ -7664,11 +7706,12 @@ label witchSoloFinale:
 
     call hideAll
     show nightbg at artPos
-    "The pressure eased. You felt the tension leave you, like surfacing from the bottom of the ocean."
+    "You felt the tension leave you, like surfacing from the bottom of the ocean. You bent over and hacked some twisted, bloody thing out of from inside you and onto the grass."
+    "It looked like a matted clump of dark fur. You glanced at it once, then looked away and forgot it forever."
     "The night was cool and quiet. There was a lovely breeze blowing."
-    "You looked around. You were in the middle of a large, empty field. The stars twinkled above you. The grass crunched under your feet. Nothing beside remained."
+    "You were in the middle of a large, empty field. The stars twinkled above you. The grass crunched under your feet. Nothing beside remained."
     "Why did you come out here?"
-    "You couldn't recall. There's no-one out this way."
+    "You couldn't recall. There was no-one living out this way."
     "Never has been."
     "You shook your head and laughed at your own foolishness. You must have gotten lost again. You've been so forgetful lately."
     "But no matter. It was a beautiful night. Perfect for a walk."

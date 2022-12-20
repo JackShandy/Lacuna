@@ -2,13 +2,17 @@
 errors listed below, and try again.
 
 
-The label _call_hideAll_88 is defined twice, at
-  File "game/script.rpy", line 5949 and
-  File "game/script.rpy", line 6468.
-
-The label _call_hideAll_89 is defined twice, at
-  File "game/script.rpy", line 5961 and
-  File "game/script.rpy", line 6480.
+File "game/script.rpy", line 7519: end of line expected.
+(Perhaps you left out a " at the end of the first line.)
+    w "That's why the system now begins at this flag here, \"H-03\.""
+                                                                    ^
+                "She pointed at the starting flag."
+                pov "But if the cottage was shrinking, we'd notice it."
+                w "Not necessarily. My theory is that there is some kind of pressure, or force, that is stopping us from noticing or remembering. I just couldn't prove it - until I hit on the fork hypothesis."
+                "She looked at you with a cold certainty."
+                w "Things are being devoured. Not just from physical reality. From our minds."
+                "You stared down at the starting flag, in the front left corner of the cottage."
+                "It read \"I-03\". Just like it always did."
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Dec 10 16:24:57 2022
+Tue Dec 20 18:33:59 2022
