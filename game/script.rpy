@@ -463,6 +463,10 @@ init:
     image mapBlankWitch = "mapBlank-witch.png"
     image mapBlankMushroom = "mapBlank-mushroom.png"
 
+    #Notes found throughout book
+    image note1Closed = "note1Closed.png"
+    image note1Open = "note1Open.png"
+
     #Images for the names for the ending
     image name1-Thief = "titles/name1-Thief.png"
     image name2-Witch = "titles/name2-Witch.png"
@@ -1171,7 +1175,6 @@ label start:
     #     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0)
     #     $renpy.music.play("audio/windAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
-
 
     label chapter1:
         #"[sfw]"
@@ -3154,7 +3157,7 @@ label town:
                 jump townExplore
             "If you wandered into the woods, turn to page 157." if persistent.thiefVanished or persistent.mushroomVanished:
                 "You turned and walked out into the darkness of the woods."
-                jump toadWitchInvestigate
+                jump thiefMushroomInvestigate
             "If you returned to the middle of the village, turn to page 50.":
                 "You turned and walked back."
                 jump village
@@ -3257,7 +3260,7 @@ label toadWitchInvestigate:
             #Investigation scene in Witch's abandoned home
             "You walked until you discovered a strange cottage."
             jump witchInvestigate
-        "If you went searching for the witch, go to page 121." if persistent.witchVanished:
+        "If you went searching for the witch, go to page 121." if not persistent.witchVanished:
             jump witchSolo
         "If you returned to the village, go back to page 50.":
             "You turned and walked back to the light of the village."
@@ -3266,6 +3269,7 @@ label toadWitchInvestigate:
 #Deep in the woods, when the thief or mushroom have disappeared.
 label thiefMushroomInvestigate:
     call hideAll from _call_hideAll_96
+    show forest4bg at artPos
     show hand onlayer transient:
         yalign 0.625#0.743
         xalign 0.5
@@ -3273,13 +3277,17 @@ label thiefMushroomInvestigate:
     #TK: add more text here describing different places
     #Space between the trees?
     menu:
-        "If you walked back to the old fig, go to page 120." if persistent.mushroomVanished:
+        "The trees pressed close around you."
+        "If you discovered a rotting strangler fig, go to page 120." if persistent.mushroomVanished:
             #Investigation scene in mushroom's abandoned tree
             "You walked until you discovered a giant old tree."
             jump mushroomInvestigate
-        "If you went further in to the depths of the woods, go to page 121." if persistent.thiefVanished:
+        "If you discovered a rusting wreck, go to page 122." if persistent.thiefVanished:
             #Investigation scene in thief's abandoned train
-            "You walked through the darkness of the woods until you discovered a rusted old train."
+            call hideAll
+            show darknessbg at artPos
+
+            "You walked through the darkness of the woods until you discovered an abandoned old train."
             jump thiefInvestigate
         "If you returned to the village, go back to page 50.":
             "You turned and walked back to the light of the village."
@@ -3446,62 +3454,68 @@ label mushroomInvestigate:
 
 #Exploring the thief's place when they have disappeared.
 label thiefInvestigate:
-    "The wheels lay on no tracks."
-    #You investigate the goblin train and find clues about the mystery
-    #goblin food
-    #Bathhouse
-    #Outside the train
+    call hideAll
+    show darknessbg at artPos
+    "The train was wedged between two trees. Grass grew over the wheels. There were no train tracks. No sign how it came to lie here."
+    show hand onlayer transient:
+        yalign 0.703
+        xalign 0.5
+    menu:
+        "The iron slowly rusted in the soft rain."
+        "If you entered the train, go to page 120.":
+            call hideAll
+            show enginebg at artPos
 
-    #"A train crashed through the walls of the cavern."
-    #"It was swarming with wild and chaotic shapes of all manner of monsters, and you could see a team of things holding onto the front and laying tracks in front of the train as fast as they could as it swerved through the cavern, fungi leaping aside before it."
-    #"From all across the train came a great cheer, and you looked around to see goblins of a thousand shapes emerge to hold up the thief in celebration."
-    #"Some had the heads of bats, some had the paws of cats, six heads, three heads, five arms, ten tails, and they bristled with tails and wings and fur and scales."
-    #"One crawled like a snail, one prowled like a wombat, one looked like seven doves tied together with string. All of them had a chaos of forms the likes of which you had never seen."
-    #"A dozen hands clapped you on the back and drew you into the train carriage."
-    #goblin1 "Have a drink with us! Any friend of the thief's is a friend of ours."
+            "You hoisted yourself up into the train carriage."
+            "The main room was some kind of bar or gambling hall that now lay silent."
+            "The moonlight gleamed on empty bottles and glasses. The wind whistled through open windows."
+            label thiefInvestigate2:
+                #Main room - bar / gambling hall
+                call hideAll
+                show enginebg at artPos
+                show hand onlayer transient:
+                    yalign 0.675#0.743
+                    xalign 0.5
+                menu:
+                    "Some of the tables still had the rotten remains of strange fruits. No flies or animals would touch them."
+                    "If you investigated the engine room, turn to page 253.":
+                        "This room must have been sweltering, once. Now the gaping maw of the furnace lay cold."
+                        jump thiefInvestigate2
+                    "If you climbed up on the roof of the train, turn to page 254.":
+                        call hideAll
+                        show nightbg at artPos
+                        "You pulled yourself up through the window and onto the roof."
+                        "There was nothing on the roof. But you sat and looked out at the countryside."
+                        "You could barely see the dark lake nearby. Tiny pinpricks of stars shed faint light in the immense blackness."
+                        "After a long moment, you pulled yourself back into the train."
+                        jump thiefInvestigate2
+                    "If you investigated the other carriages, turn to page 250.":
+                        "You walked through the empty compartments."
+                        "Slowly rotting mattesses on the beds. Empty suitcases with no luggage. A ragged, midnight-blue cloak."
+                        label noteShowing:
+                            $renpy.show_screen("note1", _layer="screens", tag="map", _zorder=101)
+                            "Nothing beside remained."
+                            $renpy.hide_screen("note1")
+                            jump thiefInvestigate2
+                    "If you jumped out of the train, turn to page 121.":
+                        "You leapt back out onto the soft grass."
+                        jump thiefInvestigate
+        "If you left the train, turn back to page 157.":
+            "You turned away and walked back through the woods. The wind whistled through the empty wreck behind you."
+            jump thiefMushroomInvestigate
+            #Investigation scene in mushroom's abandoned tree
 
-        # "If your notes say that you {b}know the password{/b}, turn to page 131.":
-        #     pov "I saw the mushroom put in the password. We can walk straight in the front door."
-        #     t "You devil, you. Lead the way!"
-        #     "You walked up to the fig and cut the vines and swamp flowers away to reveal the small blue door, inlaid with precious moonstone and intricate engravings."
-        #     pov "Gorge, guzzle, gulp and grab; never shall this wound scab."
-        #     jump thiefMushroomCavern
-        # "If you climb up and go in from above, turn to page 142.":
-        #     t "Great idea. We'll draw you into a life of crime yet."
-        #     call hideAll from _call_hideAll_45
-        #     show canopybg at artPos
-        #     if pig:
-        #         "You climbed up through the canopy, holding your pig tight in your arms. Before you knew it, a gaggle of Banksia seeds dropped down all around you. Their many mouths gabbled at you in a crazed frenzy."
-        #     else:
-        #         "You climbed up through the canopy. Before you knew it, a gaggle of Banksia seeds dropped down all around you. Their many mouths gabbled at you with wild abandon."
-        #     sc "That's right, it's me!"
-        # "If you entered through the underground river below, turn to page 173.":
-        #     t "Great idea. We'll draw you into a life of crime yet."
-        #     call hideAll from _call_hideAll_46
-        #     show mushroomcaveunderbg at artPos
-        #     if pig:
-        #         "You leapt down a well with the pig in your arms, and crept up the underground river until you came across an ancient, leviathan saltwater crocodile."
-        #     else:
-        #         "You leapt down a well and crept up the underground river until you came across an ancient, leviathan saltwater crocodile."
-        #     t "Watch this."
-        #     "Before you could say anything, they stole right up to the old master. With a flick of their wrist they stole his claws, and with a twist of their fingers stole his brightest emerald scales."
-        #     t "Not impressed yet? How about this?"
-        #     "They began reaching down into his gullet to steal the stones from his belly. You saw the crocodile's jaws about to clamp shut, and you grabbed their midnight cloak and pulled them away just in time."
-        #     "The old lord snapped about in a fury and turned on you."
-        #     t "Watch out!"
-        #     "The thief dived and pulled you to the floor just as its powerful jaws closed above your head."
-        #     "The thief dragged you up and you both darted and dived through the melee until you dove through a door and slammed it behind you."
-        #     "The door opened to reveal the vast cavern of glittering treasure far below. You saw the gold and gems and red mist of incense, just as it was earlier in the night."
-        # else:
-        #     "The door opened to reveal a vast cavern of glittering treasure far below."
-        #     "It was the hollow interior of an enormous strangler fig. A great cavern was formed inside it, cold as ice despite the heat outside."
-        #     "The floor of the cavern was piled with rubies and pearls and glinting onyx and solid gold pieces, larger than your fist."
-        #     "All across the room were lush silks and pillars of precious metals of every type, and riches that would turn the King of Kings green with envy."
-        #     "You inhaled the rich dark scent of incense, and saw glimmering magenta smoke roll across the room and coat it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
-        # t "Jackpot."
-        # "The thief tied a rope around their waist, tied the other end to the doorknob, and began to lower themselves down to the treasure below."
-
-    ""
+#This is the note you can discover when investigating the thiefs disappearance in the abandoned goblin train
+label note1Opens:
+    play sound pageFlip2
+    hide note1Closed onlayer screens
+    $renpy.hide_screen("note1")
+    show note1Open onlayer screens zorder 100 at truecenter
+    "Nothing beside remained."
+    hide note1Closed onlayer screens
+    hide note1Open onlayer screens
+    play sound pageFlip3
+    jump noteShowing
 
 #Exploring the woods to find gilgamesh (when anyone has disappeared).
 label woodsInvestigate:
@@ -9321,7 +9335,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Front Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}This Book Belongs Too:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Front Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}This Book Belongs Too:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}{space=[ti]}10. {b}Note Paper:{/b} 'Old Notepaper Texture.' polkapebble, polkapebble.com.{vspace=[tx]}{space=[ti]}11. {b}Old Paper:{/b} 'Old Paper Texture Background.' daboost, freepik.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     #TK: Appendix Nd
     #{b}Inspirational Reading:{/b} 'The Wonderful Wizard of Oz' (1900), L. Frank Baum.{vspace=[tx]}
     $ renpy.pause ()

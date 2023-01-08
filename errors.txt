@@ -2,17 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 7519: end of line expected.
-(Perhaps you left out a " at the end of the first line.)
-    w "That's why the system now begins at this flag here, \"H-03\.""
-                                                                    ^
-                "She pointed at the starting flag."
-                pov "But if the cottage was shrinking, we'd notice it."
-                w "Not necessarily. My theory is that there is some kind of pressure, or force, that is stopping us from noticing or remembering. I just couldn't prove it - until I hit on the fork hypothesis."
-                "She looked at you with a cold certainty."
-                w "Things are being devoured. Not just from physical reality. From our minds."
-                "You stared down at the starting flag, in the front left corner of the cottage."
-                "It read \"I-03\". Just like it always did."
+File "game/script.rpy", line 3482: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
+    "You could barely see the dark lake nearby. Tiny pinpricks of stars shed faint light in the immense blackness."
+    ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Tue Dec 20 18:33:59 2022
+Sun Jan  8 17:52:47 2023
