@@ -702,6 +702,14 @@ screen map: #Preparing the imagemap
 
         hotspot (0, 0, 600, 496) clicked Jump("mapOpens")
 
+## Note 1 ####
+
+screen note1: #Preparing the imagemap
+    imagemap:
+        idle "note1Closed.png"
+        hover "note1ClosedHover.png"
+
+        hotspot (0, 0, 600, 696) clicked Jump("note1Opens")
 
 ## Contents page ####
 

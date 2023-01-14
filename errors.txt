@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 607: expected statement.
-    elif sfw == False:
-             ^
+File "game/script.rpy", line 3482: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
+    "You could barely see the dark lake nearby. Tiny pinpricks of stars shed faint light in the immense blackness."
+    ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu Dec  1 13:29:28 2022
+Sun Jan  8 17:52:47 2023
