@@ -316,10 +316,10 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 0
+    default persistent.vanished = 1
 
     #Who has disappeared specifically - main cast
-    default persistent.toadVanished = False
+    default persistent.toadVanished = True
     default persistent.witchVanished = False
     default persistent.thiefVanished = False
     default persistent.mushroomVanished = False
@@ -466,6 +466,8 @@ init:
     #Notes found throughout book
     image note1Closed = "note1Closed.png"
     image note1Open = "note1Open.png"
+    image tDiaryClosed = "diaryClosed.png"
+    image tDiaryOpen = "diaryOpen.png"
 
     #Images for the names for the ending
     image name1-Thief = "titles/name1-Thief.png"
@@ -2482,7 +2484,7 @@ label introMenu:
 label village:
     #Test: End of the demo
     show hand onlayer transient:
-        yalign 0.7#0.743
+        yalign 0.68#0.743
         xalign 0.5
     call hideAll from _call_hideAll_17
     show towncrossroadsbg at artPos
@@ -3245,16 +3247,17 @@ label town:
 #Deep in the woods, when the toad or witch have disappeared.
 label toadWitchInvestigate:
     call hideAll from _call_hideAll_95
+    show nightbg at artPos
     show hand onlayer transient:
-        yalign 0.625#0.743
+        yalign 0.676#0.743
         xalign 0.5
     #You can investigate the toad or witch (if they have vanished)
     #TK: add more text here describing different places
     #Space between the trees?
     menu:
+        "Silence lurked behind the trees."
         "If you went down to the river, go to page 120." if persistent.toadVanished:
             #Investigation scene in Toad's abandoned home
-            "You walked until you discovered a hole in the ground."
             jump toadInvestigate
         "If you went further into the depths of the woods, go to page 121." if persistent.witchVanished:
             #Investigation scene in Witch's abandoned home
@@ -3296,36 +3299,42 @@ label thiefMushroomInvestigate:
 #Exploring the toad's house when he has disappeared.
 label toadInvestigate:
     #You investigate the toad's hole and find clues about the mystery
-    "You noticed a small, muddy hole on the edge of the riverbank."
-    "There was no reason to tarry here."
-    call hideAll from _call_hideAll_97
+    "You walked along the side of the river. The water was still and deep. There was a small, muddy hole on the edge of the riverbank."
     show hand onlayer transient:
-        yalign 0.625#0.743
+        yalign 0.675#0.743
         xalign 0.5
     menu:
+        "No reason to tarry here."
         "If you entered the hole, turn to page 207.":
-            "You crouched down and slithered into the hole."
-            "It was wet, and cramped, and crawling with small worms and roaches."
-            "A cold silence lay coiled in the hole like thick fog."
-            "Why have you come here?"
-            "You had best return to your home and the people who love you."
+            "You crouched down and slithered into the hole. Mud covered you."
+            "It was wet, and cramped, and crawling with small worms and roaches. "
+            "A cold silence lay coiled in the hollow like thick fog."
+            "Why did you come here?"
             label toadInvestigateMenu:
                 show hand onlayer transient:
-                    yalign 0.625#0.743
+                    yalign 0.678#0.743
                     xalign 0.5
                 menu:
-                    "If you explored the nearby area, turn to page 208.":
-                        "You uncovered a pantry with a single, mouldy piece of bread, and a hollow sunk into the muck of the wall with the remains of an old fire."
+                    "You had best return to your home and the people who love you."
+                    "If you searched the nearby area, turn to page 208.":
+                        "You uncovered a pantry with a single, mouldy piece of bread, and a pit sunk into the muck of the wall with the remains of an old fire."
+                        "The silence watched you."
                         jump toadInvestigateMenu
                     "If you explored deeper in, turn to page 209.":
-                        "You travelled down a tunnel in the back which lead down into the mud."
-                        "Down the tunnel was a small room with a bed and a closet."
-                        "Inside the closet were two threadbare costumes: a witch and a unicorn."
-                        "Nothing beside remained."
+                        "You crawled through a tunnel in the back which lead down into the mud."
+                        "At the end of the tunnel was a small room with a bed and a closet."
+                        "Inside the closet were two threadbare costumes. A witch and a unicorn."
+                        label toadDiaryShowing:
+                            $renpy.show_screen("tDiary", _layer="screens", tag="map", _zorder=101)
+                            "Nothing beside remained."
+                            $renpy.hide_screen("tDiary")
+                            jump toadInvestigateMenu
                         jump toadInvestigateMenu
                     "If you turned and left this awful place, turn to page 50.":
                         "You turned around and crawled back up out of the hole."
                         pov "What a terrible place that was. Never shall I return here again."
+                        "Without another thought, you rushed back to the warmth of the village."
+                        play sound pageFlip2
                         jump village
         "If you returned to the village, return to page 50.":
             jump village
@@ -3516,6 +3525,19 @@ label note1Opens:
     hide note1Open onlayer screens
     play sound pageFlip3
     jump noteShowing
+
+#This is the Diary page you can discover when investigating the toad's disappearance in his abandoned hole
+
+label tDiaryOpens:
+    play sound pageFlip2
+    hide tDiaryClosed onlayer screens
+    $renpy.hide_screen("tDiary")
+    show tDiaryOpen onlayer screens zorder 100 at truecenter
+    "Nothing beside remained."
+    hide tDiaryOpen onlayer screens
+    play sound pageFlip3
+    jump toadDiaryShowing
+
 
 #Exploring the woods to find gilgamesh (when anyone has disappeared).
 label woodsInvestigate:
@@ -6439,6 +6461,13 @@ label toadSolo:
 
     #"The toad posted dogs and every door and guards on every wall."
 
+    #The toad led a team of master masons through the house, heading for the basement.
+    #Golden locks were placed on every door, and silver bars at every window.
+    #Layers of ash and salt were drawn around the mansion.
+    #The seventh
+    #Layers:
+    #Gold, Silver, Copper, Iron, Mercury, Salt, Ash, Bone. // Ash, Salt, Rowan, Iron, Bone. , Iron, Mercury. Tin, lead,
+
     #seven mansion rooms with investigation things
     # label chippinghamManorSolo:
     #     show hand onlayer transient:
@@ -6518,6 +6547,8 @@ label toadSolo:
     #He becomes paranoid and terrified of the wolf coming for him
     #Wolves in the walls etc
     #He gets more and more crazy security measures
+
+    #
 
     #Meanwhile you investigate the manor to find out what happened to the real BC
     #The toad infiltrated the manor by sneaking in through one of the downstairs windows while BC was away

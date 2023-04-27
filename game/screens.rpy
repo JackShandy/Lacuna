@@ -711,6 +711,15 @@ screen note1: #Preparing the imagemap
 
         hotspot (0, 0, 600, 696) clicked Jump("note1Opens")
 
+## Toad's Diary ####
+
+screen tDiary: #Preparing the imagemap
+    imagemap:
+        idle "diaryClosed.png"
+        hover "diaryClosedHover.png"
+
+        hotspot (0, 0, 600, 696) clicked Jump("tDiaryOpens")
+
 ## Contents page ####
 
 screen contents():
