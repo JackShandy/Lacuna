@@ -700,7 +700,7 @@ screen map: #Preparing the imagemap
         idle "mapClosed.png"
         hover "mapClosedHover.png"
 
-        hotspot (0, 0, 600, 496) clicked Jump("mapOpens")
+        hotspot (0, 0, 600, 496) clicked Jump("mapOpens") hovered [ Play ("sound", "page-flip3.wav")]
 
 ## Note 1 ####
 
@@ -709,7 +709,7 @@ screen note1: #Preparing the imagemap
         idle "note1Closed.png"
         hover "note1ClosedHover.png"
 
-        hotspot (0, 0, 600, 696) clicked Jump("note1Opens")
+        hotspot (0, 0, 600, 696) clicked Jump("note1Opens") hovered [ Play ("sound", "page-flip3.wav")]
 
 ## Toad's Diary ####
 
@@ -718,7 +718,16 @@ screen tDiary: #Preparing the imagemap
         idle "diaryClosed.png"
         hover "diaryClosedHover.png"
 
-        hotspot (0, 0, 600, 696) clicked Jump("tDiaryOpens")
+        hotspot (0, 0, 600, 696) clicked Jump("tDiaryOpens") hovered [ Play ("sound", "page-flip3.wav")]
+
+## Mushroom's Poster ####
+
+screen poster: #Preparing the imagemap
+    imagemap:
+        idle "posterClosed.png"
+        hover "posterClosedHover.png"
+
+        hotspot (0, 0, 600, 810) clicked Jump("posterOpens")
 
 ## Contents page ####
 

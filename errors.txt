@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3482: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
-    "You could barely see the dark lake nearby. Tiny pinpricks of stars shed faint light in the immense blackness."
-    ^
+File "game/script.rpy", line 3442: expected ':' not found.
+    label mushroomPosterShowing
+                               ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Jan  8 17:52:47 2023
+Fri Apr 28 19:45:55 2023

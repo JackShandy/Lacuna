@@ -319,10 +319,10 @@ init:
     default persistent.vanished = 1
 
     #Who has disappeared specifically - main cast
-    default persistent.toadVanished = True
+    default persistent.toadVanished = False
     default persistent.witchVanished = False
     default persistent.thiefVanished = False
-    default persistent.mushroomVanished = False
+    default persistent.mushroomVanished = True
 
     # Which side characters have disappeared
     #Your mum
@@ -468,6 +468,9 @@ init:
     image note1Open = "note1Open.png"
     image tDiaryClosed = "diaryClosed.png"
     image tDiaryOpen = "diaryOpen.png"
+    image posterClosed = "posterClosed.png"
+    image posterOpen = "posterOpen.png"
+    image posterOpen2 = "posterOpen2.png"
 
     #Images for the names for the ending
     image name1-Thief = "titles/name1-Thief.png"
@@ -3435,7 +3438,14 @@ label witchInvestigate:
 label mushroomInvestigate:
     #You investigate the mushroom's tree and find clues about the mystery
     #You have to say you know the password to the tree
-    ""
+    "Note: You explore the mushroom's tree."
+    label mushroomInvestigateMenu:
+        "You check out the house etc, options of where to explore."
+    label mushroomPosterShowing:
+        $renpy.show_screen("poster", _layer="screens", tag="map", _zorder=101)
+        "Nothing beside remained."
+        $renpy.hide_screen("poster")
+        jump mushroomInvestigateMenu
 
     # "She walked into the towering buttress roots of an ancient strangler fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
     # show hand onlayer transient:
@@ -3514,6 +3524,8 @@ label thiefInvestigate:
             jump thiefMushroomInvestigate
             #Investigation scene in mushroom's abandoned tree
 
+### === NOTES
+
 #This is the note you can discover when investigating the thiefs disappearance in the abandoned goblin train
 label note1Opens:
     play sound pageFlip2
@@ -3537,6 +3549,22 @@ label tDiaryOpens:
     hide tDiaryOpen onlayer screens
     play sound pageFlip3
     jump toadDiaryShowing
+
+#This is the film poster you can find when exploring the Mushroom's disappearance
+## To be completed
+label posterOpens:
+    play sound pageFlip2
+    hide posterClosed onlayer screens
+    $renpy.hide_screen("poster")
+    show posterOpen onlayer screens zorder 100 at truecenter
+    "Nothing beside remained."
+    hide posterOpen onlayer screens
+    play sound pageFlip3
+    show posterOpen2 onlayer screens zorder 100 at truecenter
+    "Nothing beside remained."
+    hide posterOpen2 onlayer screens
+    play sound pageFlip
+    jump mushroomPosterShowing
 
 
 #Exploring the woods to find gilgamesh (when anyone has disappeared).
@@ -3568,7 +3596,7 @@ label woodsInvestigate:
                         # pov "Thank you, my friend. I will not forget you."
 
     call hideAll from _call_hideAll_98
-    show darkForestbg at artPos
+    show darkforestbg at artPos
     show hand onlayer transient:
         yalign 0.625#0.743
         xalign 0.5
