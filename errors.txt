@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 729: u'hide' is not a keyword argument or valid child for the imagemap statement.
-    hover "posterClosedHover.png" hide "posterClosed.png"
-                                      ^
+File "game/script.rpy", line 7492: expected 'name' not found.
+    hide news onlayer
+                     ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Fri Apr 28 20:20:33 2023
+Sun Apr 30 18:29:46 2023

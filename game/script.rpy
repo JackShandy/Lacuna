@@ -272,7 +272,8 @@ init:
     define mushroomPale = False
     define mushroomDeathTale = False
 
-    #The confrontation with the wolf in your house
+    #Wolf Variables
+    define wanderedAimlessly = False
     define firepoker = False
     define doorLock = False
 
@@ -471,6 +472,7 @@ init:
     image posterClosed = "posterClosed.png"
     image posterOpen = "posterOpen.png"
     image posterOpen2 = "posterOpen2.png"
+    image news = "newsArticle.png"
 
     #Images for the names for the ending
     image name1-Thief = "titles/name1-Thief.png"
@@ -3243,368 +3245,6 @@ label town:
             "If you made your excuses and left, turn to page 51.":
                 sh "No worries. Have a good one!"
                 jump townExplore
-
-#=====================INVESTIGATION SCENES
-#These scenes allow the player to investigate when characters have disappeared
-
-#Deep in the woods, when the toad or witch have disappeared.
-label toadWitchInvestigate:
-    call hideAll from _call_hideAll_95
-    show nightbg at artPos
-    show hand onlayer transient:
-        yalign 0.676#0.743
-        xalign 0.5
-    #You can investigate the toad or witch (if they have vanished)
-    #TK: add more text here describing different places
-    #Space between the trees?
-    menu:
-        "Silence lurked behind the trees."
-        "If you went down to the river, go to page 120." if persistent.toadVanished:
-            #Investigation scene in Toad's abandoned home
-            jump toadInvestigate
-        "If you went further into the depths of the woods, go to page 121." if persistent.witchVanished:
-            #Investigation scene in Witch's abandoned home
-            "You walked until you discovered a strange cottage."
-            jump witchInvestigate
-        "If you went searching for the witch, go to page 121." if not persistent.witchVanished:
-            jump witchSolo
-        "If you returned to the village, go back to page 50.":
-            "You turned and walked back to the light of the village."
-            jump village
-
-#Deep in the woods, when the thief or mushroom have disappeared.
-label thiefMushroomInvestigate:
-    call hideAll from _call_hideAll_96
-    show forest4bg at artPos
-    show hand onlayer transient:
-        yalign 0.625#0.743
-        xalign 0.5
-    #You can investigate the thief or mushroom (if they have vanished)
-    #TK: add more text here describing different places
-    #Space between the trees?
-    menu:
-        "The trees pressed close around you."
-        "If you discovered a rotting strangler fig, go to page 120." if persistent.mushroomVanished:
-            #Investigation scene in mushroom's abandoned tree
-            "You walked until you discovered a giant old tree."
-            jump mushroomInvestigate
-        "If you discovered a rusting wreck, go to page 122." if persistent.thiefVanished:
-            #Investigation scene in thief's abandoned train
-            call hideAll
-            show darknessbg at artPos
-
-            "You walked through the darkness of the woods until you discovered an abandoned old train."
-            jump thiefInvestigate
-        "If you returned to the village, go back to page 50.":
-            "You turned and walked back to the light of the village."
-            jump village
-
-#Exploring the toad's house when he has disappeared.
-label toadInvestigate:
-    #You investigate the toad's hole and find clues about the mystery
-    "You walked along the side of the river. The water was still and deep. There was a small, muddy hole on the edge of the riverbank."
-    show hand onlayer transient:
-        yalign 0.675#0.743
-        xalign 0.5
-    menu:
-        "No reason to tarry here."
-        "If you entered the hole, turn to page 207.":
-            "You crouched down and slithered into the hole. Mud covered you."
-            "It was wet, and cramped, and crawling with small worms and roaches. "
-            "A cold silence lay coiled in the hollow like thick fog."
-            "Why did you come here?"
-            label toadInvestigateMenu:
-                show hand onlayer transient:
-                    yalign 0.678#0.743
-                    xalign 0.5
-                menu:
-                    "You had best return to your home and the people who love you."
-                    "If you searched the nearby area, turn to page 208.":
-                        "You uncovered a pantry with a single, mouldy piece of bread, and a pit sunk into the muck of the wall with the remains of an old fire."
-                        "The silence watched you."
-                        jump toadInvestigateMenu
-                    "If you explored deeper in, turn to page 209.":
-                        "You crawled through a tunnel in the back which lead down into the mud."
-                        "At the end of the tunnel was a small room with a bed and a closet."
-                        "Inside the closet were two threadbare costumes. A witch and a unicorn."
-                        label toadDiaryShowing:
-                            $renpy.show_screen("tDiary", _layer="screens", tag="map", _zorder=101)
-                            "Nothing beside remained."
-                            $renpy.hide_screen("tDiary")
-                            jump toadInvestigateMenu
-                        jump toadInvestigateMenu
-                    "If you turned and left this awful place, turn to page 50.":
-                        "You turned around and crawled back up out of the hole."
-                        pov "What a terrible place that was. Never shall I return here again."
-                        "Without another thought, you rushed back to the warmth of the village."
-                        play sound pageFlip2
-                        jump village
-        "If you returned to the village, return to page 50.":
-            jump village
-        # "The toad directed you to a small, muddy hole on the river bank. As soon as you entered, the mud fell down behind you and blocked your exit."
-        # "The hole was wet, and cramped, and crawling with small worms and roaches, but it was safe."
-        # if pig:
-        #     "You shivered in the cold. The toad flopped down beside you, becoming a wet quoll. The pig grunted sadly in the form of a fruit bat."
-        # else:
-        #     "You shivered in the cold. The toad flopped down beside you, becoming a wet quoll."
-        # #You explore the toad's home and get to know him better
-        # label toadExplore1:
-        #     show hand onlayer transient:
-        #         yalign 0.65#0.743
-        #         xalign 0.5
-        #     menu:
-        #         fq "Well. This is another fine mess I've made."
-        #
-        #             $toadCave = True
-        #             "You uncovered a rug and a fireplace in the muck, and lit the fire."
-        #             if pig:
-        #                 "The toad uncovered a pantry with a single, mouldy piece of bread and toasted it over the fire for the three of you."
-        #             else:
-        #                 "The toad uncovered a pantry with a single, mouldy piece of bread and toasted it over the fire for the both of you."
-        #             fq "This all the food I have, sorry."
-        #             jump toadExplore1
-        #         "If you explored deeper in, turn to page 209." if not toadBasement:
-        #             $toadBasement = True
-        #             "You travelled down a hole in the back of the cave which lead down into the mud."
-        #             "Down the hole was a small room with a bed and a cupboard."
-        #             "The toad opened the cupboard and took out two threadbare costumes: a witch and a unicorn. You pulled them around you for warmth."
-        #             if pig:
-        #                 "The pig grunted in appreciation."
-        #             fq "I... used to like to dress up in this stuff. I'd put on little plays and things for myself."
-        #             fq "Pretty dumb, I know. Kid's stuff. Haven't done it in years."
-        #             "But the costumes seemed well cared for."
-        #             jump toadExplore1
-        #         "If you asked the toad about this place, turn to page 216." if not toadWhere:
-        #             $toadWhere = True
-        #             pov "Where are we?"
-        #             fq "This is my home. My real home."
-        #             fq "That's right. The grand fortune? The prestigious inheritance? The manor on the hill? All lies."
-        #             fq "I've lived in this hole near the witch's cottage since I was a tadpole."
-        #             fq "Yes, I know it might be hard to believe with my noble bearing. But it's all true."
-        #             jump toadExplore1
-        #         "If you asked about the toad's curse, turn to page 217." if not toadCurse:
-        #             $toadCurse = True
-        #             pov "I'm sorry. Now we'll never be able to cure your curse."
-        #             fq "Oh... don't worry about that."
-        #             fq "There was never a curse."
-        #             fq "I just didn't want to be me anymore."
-        #             jump toadExplore1
-        #
-        #         "If you looked for a way out, turn to page 218.":
-        #             pov "How are we going to get out of here?"
-        #             fq "Don\'t worry. I'm sure {b}{i}he{/i}{/b} will rescue us soon."
-        #             pov "{i}He?{/i}"
-        #             "Suddenly the ceiling burst open and a shining light came upon you, blinding in its glory."
-        #             "Out from the light strode the most beautiful frog you'd ever seen."
-        #             if pig:
-        #                 "The pig rolled over in shock and transformed into a turtle."
-        #             "His skin was glimmering green like the wings of summer beetles, his muscles rippled with strength, his eyes threw out glances of fire, and he was dressed in a gorgeous midnight-blue suit."
-        #             "On each finger gleamed a golden ring inlaid with precious jadestone and chrysoprase and emeralds, and his finely-coiffed hair waved in the breeze with such beauty that none had ever seen the like, not even in a dream."
-        #             mysFrog "Are you quite alright?"
-        #             pov "Who are you?"
-        #             "The toad sighed."
-        #             fq "This..."
-        #             fq "...is Brildebrogue Chippingham."
-        #             bc "The very same!"
-        #             "The frog beamed and helped you to your feet as you transformed into a garden rake."
-        #             bc "Say, that voice is awfully familiar..."
-        #             bc "Is that you, Blort?"
-        #             fq "Yes. Yes, that's my real name."
-        #             fq "I am Blort Bronkum, and I have never succeeded at anything in my life."
-
-#Exploring the witch's house when she has disappeared.
-label witchInvestigate:
-    #You investigate the witch's cottage and find clues about the mystery
-    ""
-
-    #The puddle
-    # "You crawled to the edge and looked down into the puddle."
-    # "The surface of the water was flat and still."
-    # call hideAll from _call_hideAll_69
-    # show cottagebg at artPos
-    # "The cottage in the reflection shone with bright light, as if the setting sun was behind it."
-    # call hideAll from _call_hideAll_70
-    # show darkforestbg at artPos
-    # "There was no trace of a cottage in the world above the water."
-
-    # "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
-    # "The cottage was tiny, but the walls were covered with bookshelves stuffed with old manuscripts and notebooks and thick textbooks on all kinds of plants and animals."
-    # #TK: Herbs and plants
-    # "The wooden bookshelves were sprouting with herbs and plants of every type."
-    # "In the corner was a small kitchen with a cauldron, and up above was a small attic crawl-space."
-    # "Out of the attic poked a small head with a giant black hat. It looked at you with shock."
-
-#Exploring the mushroom's house when she has disappeared.
-label mushroomInvestigate:
-    #You investigate the mushroom's tree and find clues about the mystery
-    #You have to say you know the password to the tree
-    "Note: You explore the mushroom's tree."
-    label mushroomInvestigateMenu:
-        "You check out the house etc, options of where to explore."
-    label mushroomPosterShowing:
-        $renpy.show_screen("poster", _layer="screens", tag="map", _zorder=101)
-        "Nothing beside remained."
-        $renpy.hide_screen("poster")
-        jump mushroomInvestigateMenu
-
-    # "She walked into the towering buttress roots of an ancient strangler fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
-    # show hand onlayer transient:
-    #     yalign 0.73#0.743
-    #     xalign 0.5
-    #
-    # m "Gorge, guzzle, gulp and grab; never shall this wound scab.{vspace=160}{i}In your notes, write down that you {b}know the password.{/b}{/i}"
-    # $mushroomPassword = True
-    # show hand onlayer transient:
-    #     yalign 0.72#0.743
-    #     xalign 0.5
-    # menu:
-    #     "With this, the door opened before her, and she vanished inside immediately."
-    #     "If you entered the door, turn to page 26.":
-    #         $mushroomArc +=1
-    #         $mushroomCavernSeen = True
-    #         "You quickly snuck inside before the door closed behind you."
-    #         call hideAll from _call_hideAll_4
-    #         show mushroomcavebg at artPos
-    #         "Inside you were shocked to find the tree completely hollow. A great cavern was formed inside it, cold as ice despite the heat outside."
-    #         "The floor of the cavern was piled with rubies and pearls and glinting onyx and solid gold pieces, larger than your fist."
-    #         "All across the room you saw lush silks and pillars of precious metals of every type, and riches that would turn the king of kings green with envy."
-    #         "The glimmering magenta smoke of incense rolled across the room and coated it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
-    #         m "Oh darling, what are you doing back again?"
-
-#Exploring the thief's place when they have disappeared.
-label thiefInvestigate:
-    call hideAll
-    show darknessbg at artPos
-    "The train was wedged between two trees. Grass grew over the wheels. There were no train tracks. No sign how it came to lie here."
-    show hand onlayer transient:
-        yalign 0.703
-        xalign 0.5
-    menu:
-        "The iron slowly rusted in the soft rain."
-        "If you entered the train, go to page 120.":
-            call hideAll
-            show enginebg at artPos
-
-            "You hoisted yourself up into the train carriage."
-            "The main room was some kind of bar or gambling hall that now lay silent."
-            "The moonlight gleamed on empty bottles and glasses. The wind whistled through open windows."
-            label thiefInvestigate2:
-                #Main room - bar / gambling hall
-                call hideAll
-                show enginebg at artPos
-                show hand onlayer transient:
-                    yalign 0.675#0.743
-                    xalign 0.5
-                menu:
-                    "Some of the tables still had the rotten remains of strange fruits. No flies or animals would touch them."
-                    "If you investigated the engine room, turn to page 253.":
-                        "This room must have been sweltering, once. Now the gaping maw of the furnace lay cold."
-                        jump thiefInvestigate2
-                    "If you climbed up on the roof of the train, turn to page 254.":
-                        call hideAll
-                        show nightbg at artPos
-                        "You pulled yourself up through the window and onto the roof."
-                        "There was nothing on the roof. But you sat and looked out at the countryside."
-                        "You could barely see the dark lake nearby. Tiny pinpricks of stars shed faint light in the immense blackness."
-                        "After a long moment, you pulled yourself back into the train."
-                        jump thiefInvestigate2
-                    "If you investigated the other carriages, turn to page 250.":
-                        "You walked through the empty compartments."
-                        "Slowly rotting mattesses on the beds. Empty suitcases with no luggage. A ragged, midnight-blue cloak."
-                        label noteShowing:
-                            $renpy.show_screen("note1", _layer="screens", tag="map", _zorder=101)
-                            "Nothing beside remained."
-                            $renpy.hide_screen("note1")
-                            jump thiefInvestigate2
-                    "If you jumped out of the train, turn to page 121.":
-                        "You leapt back out onto the soft grass."
-                        jump thiefInvestigate
-        "If you left the train, turn back to page 157.":
-            "You turned away and walked back through the woods. The wind whistled through the empty wreck behind you."
-            jump thiefMushroomInvestigate
-            #Investigation scene in mushroom's abandoned tree
-
-### === NOTES
-
-#This is the note you can discover when investigating the thiefs disappearance in the abandoned goblin train
-label note1Opens:
-    play sound pageFlip2
-    hide note1Closed onlayer screens
-    $renpy.hide_screen("note1")
-    show note1Open onlayer screens zorder 100 at truecenter
-    "Nothing beside remained."
-    hide note1Closed onlayer screens
-    hide note1Open onlayer screens
-    play sound pageFlip3
-    jump noteShowing
-
-#This is the Diary page you can discover when investigating the toad's disappearance in his abandoned hole
-
-label tDiaryOpens:
-    play sound pageFlip2
-    hide tDiaryClosed onlayer screens
-    $renpy.hide_screen("tDiary")
-    show tDiaryOpen onlayer screens zorder 100 at truecenter
-    "Nothing beside remained."
-    hide tDiaryOpen onlayer screens
-    play sound pageFlip3
-    jump toadDiaryShowing
-
-#This is the film poster you can find when exploring the Mushroom's disappearance
-## To be completed
-label posterOpens:
-    play sound pageFlip2
-    hide posterClosed onlayer screens
-    $renpy.hide_screen("poster")
-    show posterOpen onlayer screens zorder 100 at truecenter
-    "Nothing beside remained."
-    hide posterOpen onlayer screens
-    play sound pageFlip3
-    show posterOpen2 onlayer screens zorder 100 at truecenter
-    "Nothing beside remained."
-    hide posterOpen2 onlayer screens
-    play sound pageFlip
-    jump mushroomPosterShowing
-
-
-#Exploring the woods to find gilgamesh (when anyone has disappeared).
-label woodsInvestigate:
-    "Darkness fell around you. You walked for long hours."
-    #"At last you found yourself at the shores of a great lake."
-    "At last you came to the bank of a great lake."
-    "It had never been sounded by the sons of men. No wisdom reaches such depths."
-    "The waters burned like a torch. The light of them fell upon your face."
-    "A deer, pursued by hounds, would rather die rather than save it's life by entering that water."
-    #TK: Clues
-    #You meet gilg
-    #If you have the cloak (from the thief)
-    #If you have the sword (From the toad)
-    #If you have the potion (from the witch)
-    #If you have the shield (from the mushroom)
-                        # "Unto you he delivered an ancient heirloom."
-                        # "Iron was its edge, all etched with poison, hardened with battle-blood."
-                        # pov "Thank you, my friend. I will not forget you."
-                        # w "Very well. Then take my draught."
-                        # "Unto you she delivered a gleaming-drink, which you sipped greedily. Fire spread through your blood, and the secret ways became known to you."
-                        # pov "Thank you, my friend. I will not forget you."
-                        # t "Very well. Then take my cloak."
-                        # "Unto you they delivered a midnight cloak that hid you from all earthly sight."
-                        # pov "Thank you, my friend. I will not forget you."
-                        # pov "It is better to avenge friends than to mourn them."
-                        # m "Very well. Then take my shield."
-                        # "Unto you she delivered an oaken war-shield, gilded and gleaming."
-                        # pov "Thank you, my friend. I will not forget you."
-
-    call hideAll from _call_hideAll_98
-    show darkforestbg at artPos
-    show hand onlayer transient:
-        yalign 0.625#0.743
-        xalign 0.5
-    menu:
-        "If you walked back to the village, go to page 50.":
-            "You left the lake and walked on through the woods until you saw the light of the village."
-            "The rich dark blanket of night was softly rolling over the town, and cooking fires lit up all across the hills, one by one."
-            jump villageExplore1
 
 #=====================THE THIEF'S STORY
 
@@ -6633,9 +6273,6 @@ label toadSolo:
     # call hideAll
     # show darkforestbg at artPos
 
-
-
-
 #=====================THE WITCH'S STORY
 
 # Act 2, Chapter 3: The Witch's Cottage
@@ -7795,6 +7432,444 @@ label witchSoloFinale:
     call endStamp
     "If not, let it be forgotten."
     jump end
+
+#=====================INVESTIGATION SCENES
+#These scenes allow the player to investigate when characters have disappeared
+
+#Deep in the woods, when the toad or witch have disappeared.
+label toadWitchInvestigate:
+    call hideAll from _call_hideAll_95
+    show nightbg at artPos
+    show hand onlayer transient:
+        yalign 0.676#0.743
+        xalign 0.5
+    #You can investigate the toad or witch (if they have vanished)
+    #TK: add more text here describing different places
+    #Space between the trees?
+    menu:
+        "Silence lurked behind the trees."
+        "If you went down to the river, go to page 120." if persistent.toadVanished:
+            #Investigation scene in Toad's abandoned home
+            jump toadInvestigate
+        "If you went further into the depths of the woods, go to page 121." if persistent.witchVanished:
+            #Investigation scene in Witch's abandoned home
+            "You walked until you discovered a strange cottage."
+            jump witchInvestigate
+        "If you went searching for the witch, go to page 121." if not persistent.witchVanished:
+            jump witchSolo
+        "If you returned to the village, go back to page 50.":
+            "You turned and walked back to the light of the village."
+            jump village
+
+#Deep in the woods, when the thief or mushroom have disappeared.
+label thiefMushroomInvestigate:
+    call hideAll from _call_hideAll_96
+    show forest4bg at artPos
+    show hand onlayer transient:
+        yalign 0.665#0.743
+        xalign 0.5
+    #You can investigate the thief or mushroom (if they have vanished)
+    menu:
+        "The trees pressed close around you."
+        "If you discovered a rotting strangler fig, go to page 120." if persistent.mushroomVanished:
+            #Investigation scene in mushroom's abandoned tree
+            "You walked until you discovered a giant old tree."
+            jump mushroomInvestigate
+        "If you discovered a rusting wreck, go to page 122." if persistent.thiefVanished:
+            #Investigation scene in thief's abandoned train
+            call hideAll
+            show darknessbg at artPos
+            "You walked through the darkness of the woods until you discovered an abandoned old train."
+            jump thiefInvestigate
+        "If you wandered aimlessly, finding nothing, go to page 128." if not wanderedAimlessly:
+            call hideAll
+            show forest5bg at artPos
+            "For some reason you wandered off into the dark woods, picking paths at random."
+            show news onlayer screens zorder 101:
+                yalign 0.175#0.743
+                #xalign 0.5
+            "   You found nothing and no-one. There was nothing there. Nothing but a cold silence that slowly followed you from behind the trees."
+            hide news onlayer screens
+            "..."
+            show hand onlayer transient:
+                yalign 0.665#0.743
+                xalign 0.5
+            menu:
+                "What are you doing?"
+                "Searching for someone I once knew.":
+                    "A foolish endeavour. There is no such person."
+                    "There never was."
+                "Searching for the place between the trees.":
+                    "A foolish dream. There is no such person."
+                    "There never was."
+                "Searching for nothing in particular.":
+                    "Very well. Curiosity is a fine vice for the hero of a tale like this."
+                    "But everything has a limit. You should return to the village. The story is waiting for you."
+                "Searching for you.":
+                    "There is no need for that, child."
+                    "I am here."
+                    "I always have been."
+            "You wandered in circles for a long time."
+            "Finally, you found yourself back where you began."
+            $wanderedAimlessly = True
+            jump thiefMushroomInvestigate
+        "If you returned to the village, go back to page 50.":
+            "The lights and warmth welcomed you back."
+            jump village
+
+#Exploring the toad's house when he has disappeared.
+label toadInvestigate:
+    #You investigate the toad's hole and find clues about the mystery
+    "You walked along the side of the river. The water was still and deep. There was a small, muddy hole on the edge of the riverbank."
+    show hand onlayer transient:
+        yalign 0.675#0.743
+        xalign 0.5
+    menu:
+        "No reason to tarry here."
+        "If you entered the hole, turn to page 207.":
+            "You crouched down and slithered into the hole. Mud covered you."
+            "It was wet, and cramped, and crawling with small worms and roaches. "
+            "A cold silence lay coiled in the hollow like thick fog."
+            "Why did you come here?"
+            label toadInvestigateMenu:
+                show hand onlayer transient:
+                    yalign 0.678#0.743
+                    xalign 0.5
+                menu:
+                    "You had best return to your home and the people who love you."
+                    "If you searched the nearby area, turn to page 208.":
+                        "You uncovered a pantry with a single, mouldy piece of bread, and a pit sunk into the muck of the wall with the remains of an old fire."
+                        "The silence watched you."
+                        jump toadInvestigateMenu
+                    "If you explored deeper in, turn to page 209.":
+                        "You crawled through a tunnel in the back which lead down into the mud."
+                        "At the end of the tunnel was a small room with a bed and a closet."
+                        "Inside the closet were two threadbare costumes. A witch and a unicorn."
+                        label toadDiaryShowing:
+                            $renpy.show_screen("tDiary", _layer="screens", tag="map", _zorder=101)
+                            "Nothing beside remained."
+                            $renpy.hide_screen("tDiary")
+                            jump toadInvestigateMenu
+                        jump toadInvestigateMenu
+                    "If you turned and left this awful place, turn to page 50.":
+                        "You turned around and crawled back up out of the hole."
+                        pov "What a terrible place that was. Never shall I return here again."
+                        "Without another thought, you rushed back to the warmth of the village."
+                        play sound pageFlip2
+                        jump village
+        "If you returned to the village, return to page 50.":
+            jump village
+        # "The toad directed you to a small, muddy hole on the river bank. As soon as you entered, the mud fell down behind you and blocked your exit."
+        # "The hole was wet, and cramped, and crawling with small worms and roaches, but it was safe."
+        # if pig:
+        #     "You shivered in the cold. The toad flopped down beside you, becoming a wet quoll. The pig grunted sadly in the form of a fruit bat."
+        # else:
+        #     "You shivered in the cold. The toad flopped down beside you, becoming a wet quoll."
+        # #You explore the toad's home and get to know him better
+        # label toadExplore1:
+        #     show hand onlayer transient:
+        #         yalign 0.65#0.743
+        #         xalign 0.5
+        #     menu:
+        #         fq "Well. This is another fine mess I've made."
+        #
+        #             $toadCave = True
+        #             "You uncovered a rug and a fireplace in the muck, and lit the fire."
+        #             if pig:
+        #                 "The toad uncovered a pantry with a single, mouldy piece of bread and toasted it over the fire for the three of you."
+        #             else:
+        #                 "The toad uncovered a pantry with a single, mouldy piece of bread and toasted it over the fire for the both of you."
+        #             fq "This all the food I have, sorry."
+        #             jump toadExplore1
+        #         "If you explored deeper in, turn to page 209." if not toadBasement:
+        #             $toadBasement = True
+        #             "You travelled down a hole in the back of the cave which lead down into the mud."
+        #             "Down the hole was a small room with a bed and a cupboard."
+        #             "The toad opened the cupboard and took out two threadbare costumes: a witch and a unicorn. You pulled them around you for warmth."
+        #             if pig:
+        #                 "The pig grunted in appreciation."
+        #             fq "I... used to like to dress up in this stuff. I'd put on little plays and things for myself."
+        #             fq "Pretty dumb, I know. Kid's stuff. Haven't done it in years."
+        #             "But the costumes seemed well cared for."
+        #             jump toadExplore1
+        #         "If you asked the toad about this place, turn to page 216." if not toadWhere:
+        #             $toadWhere = True
+        #             pov "Where are we?"
+        #             fq "This is my home. My real home."
+        #             fq "That's right. The grand fortune? The prestigious inheritance? The manor on the hill? All lies."
+        #             fq "I've lived in this hole near the witch's cottage since I was a tadpole."
+        #             fq "Yes, I know it might be hard to believe with my noble bearing. But it's all true."
+        #             jump toadExplore1
+        #         "If you asked about the toad's curse, turn to page 217." if not toadCurse:
+        #             $toadCurse = True
+        #             pov "I'm sorry. Now we'll never be able to cure your curse."
+        #             fq "Oh... don't worry about that."
+        #             fq "There was never a curse."
+        #             fq "I just didn't want to be me anymore."
+        #             jump toadExplore1
+        #
+        #         "If you looked for a way out, turn to page 218.":
+        #             pov "How are we going to get out of here?"
+        #             fq "Don\'t worry. I'm sure {b}{i}he{/i}{/b} will rescue us soon."
+        #             pov "{i}He?{/i}"
+        #             "Suddenly the ceiling burst open and a shining light came upon you, blinding in its glory."
+        #             "Out from the light strode the most beautiful frog you'd ever seen."
+        #             if pig:
+        #                 "The pig rolled over in shock and transformed into a turtle."
+        #             "His skin was glimmering green like the wings of summer beetles, his muscles rippled with strength, his eyes threw out glances of fire, and he was dressed in a gorgeous midnight-blue suit."
+        #             "On each finger gleamed a golden ring inlaid with precious jadestone and chrysoprase and emeralds, and his finely-coiffed hair waved in the breeze with such beauty that none had ever seen the like, not even in a dream."
+        #             mysFrog "Are you quite alright?"
+        #             pov "Who are you?"
+        #             "The toad sighed."
+        #             fq "This..."
+        #             fq "...is Brildebrogue Chippingham."
+        #             bc "The very same!"
+        #             "The frog beamed and helped you to your feet as you transformed into a garden rake."
+        #             bc "Say, that voice is awfully familiar..."
+        #             bc "Is that you, Blort?"
+        #             fq "Yes. Yes, that's my real name."
+        #             fq "I am Blort Bronkum, and I have never succeeded at anything in my life."
+
+#Exploring the witch's house when she has disappeared.
+label witchInvestigate:
+    #You investigate the witch's cottage and find clues about the mystery
+    ""
+
+    #The puddle
+    # "You crawled to the edge and looked down into the puddle."
+    # "The surface of the water was flat and still."
+    # call hideAll from _call_hideAll_69
+    # show cottagebg at artPos
+    # "The cottage in the reflection shone with bright light, as if the setting sun was behind it."
+    # call hideAll from _call_hideAll_70
+    # show darkforestbg at artPos
+    # "There was no trace of a cottage in the world above the water."
+
+    # "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
+    # "The cottage was tiny, but the walls were covered with bookshelves stuffed with old manuscripts and notebooks and thick textbooks on all kinds of plants and animals."
+    # #TK: Herbs and plants
+    # "The wooden bookshelves were sprouting with herbs and plants of every type."
+    # "In the corner was a small kitchen with a cauldron, and up above was a small attic crawl-space."
+    # "Out of the attic poked a small head with a giant black hat. It looked at you with shock."
+
+#Exploring the mushroom's house when she has disappeared.
+label mushroomInvestigate:
+    #You investigate the mushroom's tree and find clues about the mystery
+    #
+    #You have to say you know the password to the tree
+    call hideAll
+    show stranglerfigbg at artPos
+    "The old strangler fig towered above you."
+    "Under the vines and swamp flowers at the root of the tree lay a small blue door, inlaid with precious moonstone and intricate engravings."
+    show hand onlayer transient:
+        yalign 0.675#0.743
+        xalign 0.5
+    menu:
+        "It was lying open."
+        "If you entered the door, turn to page 131.":
+            "The door creaked slowly open."
+            jump mushroomInvestigateMenu
+        "If you turned around and left (the act of a wise individual), turn to page 157.":
+            "You walked back through the woods. The door creaked slowly in the wind behind you."
+            jump thiefMushroomInvestigate
+    label mushroomInvestigateMenu:
+        call hideAll
+        show mushroomcavebg at artPos
+        show hand onlayer transient:
+            yalign 0.645#0.743
+            xalign 0.5
+        menu:
+            "Nothing awaited within but silence."
+            "If you explored the main hollow, turn to page 131.":
+                "The chamber was still and empty, but for a small black door set into the bark in the centre."
+                "You opened up the door and looked within cautiously."
+                "The basement within was dark. Nothing moved."
+                pov "There is nothing for me here."
+                "You left the basement and returned to the main hollow."
+                jump mushroomInvestigateMenu
+            "If you explored the cavern underground, turn to page 131.":
+                call hideAll
+                show mushroomcaveunderbg at artPos
+                "Under the tree was an ancient underground river."
+                "The mud held old crocodile footprints, long dried. There was no sign of anything living."
+                pov "I had best head back to the village, if I know what is good for me."
+                "You turned and climbed back up the stairs."
+                jump mushroomInvestigateMenu
+            "If you explored the upper canopy, turn to page 131.":
+                call hideAll
+                show canopybg at artPos
+                "The canopy moved gently in the breeze."
+                label mushroomPosterShowing:
+                    $renpy.show_screen("poster", _layer="screens", tag="map", _zorder=101)
+                    "No fruits or flowers grew there. The branches were bare."
+                    $renpy.hide_screen("poster")
+                "The cold wind slowly ate away at you, until you turned and went back inside."
+                jump mushroomInvestigateMenu
+            "If you turned around and left (the act of a wise individual), turn to page 157.":
+                "You walked back through the woods. The door creaked slowly in the wind behind you."
+                jump thiefMushroomInvestigate
+
+
+    # "She walked into the towering buttress roots of an ancient strangler fig and cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
+    # show hand onlayer transient:
+    #     yalign 0.73#0.743
+    #     xalign 0.5
+    #
+    # m "Gorge, guzzle, gulp and grab; never shall this wound scab.{vspace=160}{i}In your notes, write down that you {b}know the password.{/b}{/i}"
+    # $mushroomPassword = True
+    # show hand onlayer transient:
+    #     yalign 0.72#0.743
+    #     xalign 0.5
+    # menu:
+    #     "With this, the door opened before her, and she vanished inside immediately."
+    #     "If you entered the door, turn to page 26.":
+    #         $mushroomArc +=1
+    #         $mushroomCavernSeen = True
+    #         "You quickly snuck inside before the door closed behind you."
+    #         call hideAll from _call_hideAll_4
+    #         show mushroomcavebg at artPos
+    #         "Inside you were shocked to find the tree completely hollow. A great cavern was formed inside it, cold as ice despite the heat outside."
+    #         "The floor of the cavern was piled with rubies and pearls and glinting onyx and solid gold pieces, larger than your fist."
+    #         "All across the room you saw lush silks and pillars of precious metals of every type, and riches that would turn the king of kings green with envy."
+    #         "The glimmering magenta smoke of incense rolled across the room and coated it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
+    #         m "Oh darling, what are you doing back again?"
+
+#Exploring the thief's place when they have disappeared.
+label thiefInvestigate:
+    call hideAll
+    show darknessbg at artPos
+    "The train was wedged between two trees. Grass grew over the wheels. There were no train tracks. No sign how it came to lie here."
+    show hand onlayer transient:
+        yalign 0.703
+        xalign 0.5
+    menu:
+        "The iron slowly rusted in the soft rain."
+        "If you entered the train, go to page 120.":
+            call hideAll
+            show enginebg at artPos
+
+            "You hoisted yourself up into the train carriage."
+            "The main room was some kind of bar or gambling hall that now lay silent."
+            "The moonlight gleamed on empty bottles and glasses. The wind whistled through open windows."
+            label thiefInvestigate2:
+                #Main room - bar / gambling hall
+                call hideAll
+                show enginebg at artPos
+                show hand onlayer transient:
+                    yalign 0.675#0.743
+                    xalign 0.5
+                menu:
+                    "Some of the tables still had the rotten remains of strange fruits. No flies or animals would touch them."
+                    "If you investigated the engine room, turn to page 253.":
+                        "This room must have been sweltering, once. Now the gaping maw of the furnace lay cold."
+                        jump thiefInvestigate2
+                    "If you climbed up on the roof of the train, turn to page 254.":
+                        call hideAll
+                        show nightbg at artPos
+                        "You pulled yourself up through the window and onto the roof."
+                        "There was nothing on the roof. But you sat and looked out at the countryside."
+                        "You could barely see the dark lake nearby. Tiny pinpricks of stars shed faint light in the immense blackness."
+                        "After a long moment, you pulled yourself back into the train."
+                        jump thiefInvestigate2
+                    "If you investigated the other carriages, turn to page 250.":
+                        "You walked through the empty compartments."
+                        "Slowly rotting mattesses on the beds. Empty suitcases with no luggage. A ragged, midnight-blue cloak."
+                        label noteShowing:
+                            $renpy.show_screen("note1", _layer="screens", tag="map", _zorder=101)
+                            "Nothing beside remained."
+                            $renpy.hide_screen("note1")
+                            jump thiefInvestigate2
+                    "If you jumped out of the train, turn to page 121.":
+                        "You leapt back out onto the soft grass."
+                        jump thiefInvestigate
+        "If you left the train, turn back to page 157.":
+            "You turned away and walked back through the woods. The wind whistled through the empty wreck behind you."
+            jump thiefMushroomInvestigate
+            #Investigation scene in mushroom's abandoned tree
+
+
+#Exploring the woods to find gilgamesh (when anyone has disappeared).
+label woodsInvestigate:
+    "Darkness fell around you. You walked for long hours."
+    #"At last you found yourself at the shores of a great lake."
+    "At last you came to the bank of a great lake."
+    "It had never been sounded by the sons of men. No wisdom reaches such depths."
+    "The waters burned like a torch. The light of them fell upon your face."
+    "A deer, pursued by hounds, would rather die rather than save it's life by entering that water."
+    #TK: Clues
+    #You meet gilg
+    #If you have the cloak (from the thief)
+    #If you have the sword (From the toad)
+    #If you have the potion (from the witch)
+    #If you have the shield (from the mushroom)
+                        # "Unto you he delivered an ancient heirloom."
+                        # "Iron was its edge, all etched with poison, hardened with battle-blood."
+                        # pov "Thank you, my friend. I will not forget you."
+                        # w "Very well. Then take my draught."
+                        # "Unto you she delivered a gleaming-drink, which you sipped greedily. Fire spread through your blood, and the secret ways became known to you."
+                        # pov "Thank you, my friend. I will not forget you."
+                        # t "Very well. Then take my cloak."
+                        # "Unto you they delivered a midnight cloak that hid you from all earthly sight."
+                        # pov "Thank you, my friend. I will not forget you."
+                        # pov "It is better to avenge friends than to mourn them."
+                        # m "Very well. Then take my shield."
+                        # "Unto you she delivered an oaken war-shield, gilded and gleaming."
+                        # pov "Thank you, my friend. I will not forget you."
+
+    call hideAll from _call_hideAll_98
+    show darkforestbg at artPos
+    show hand onlayer transient:
+        yalign 0.625#0.743
+        xalign 0.5
+    menu:
+        "If you walked back to the village, go to page 50.":
+            "You left the lake and walked on through the woods until you saw the light of the village."
+            "The rich dark blanket of night was softly rolling over the town, and cooking fires lit up all across the hills, one by one."
+            jump villageExplore1
+
+#=== DISCOVERABLES
+
+#These are the hidden notes that you can find around the place, providing hints leading to the true ending
+
+#This is the note you can discover when investigating the thiefs disappearance in the abandoned goblin train
+label note1Opens:
+    play sound pageFlip2
+    hide note1Closed onlayer screens
+    $renpy.hide_screen("note1")
+    show note1Open onlayer screens zorder 100 at truecenter
+    "Nothing beside remained."
+    hide note1Closed onlayer screens
+    hide note1Open onlayer screens
+    play sound pageFlip3
+    jump noteShowing
+
+#This is the Diary page you can discover when investigating the toad's disappearance in his abandoned hole
+
+label tDiaryOpens:
+    play sound pageFlip2
+    hide tDiaryClosed onlayer screens
+    $renpy.hide_screen("tDiary")
+    show tDiaryOpen onlayer screens zorder 100 at truecenter
+    "Nothing beside remained."
+    hide tDiaryOpen onlayer screens
+    play sound pageFlip3
+    jump toadDiaryShowing
+
+#This is the film poster you can find when exploring the Mushroom's disappearance
+## To be completed
+label posterOpens:
+    play sound pageFlip2
+    hide posterClosed onlayer screens
+    $renpy.hide_screen("poster")
+    show posterOpen onlayer screens zorder 100 at truecenter
+    "Nothing beside remained."
+    hide posterOpen onlayer screens
+    play sound pageFlip3
+    show posterOpen2 onlayer screens zorder 100 at truecenter
+    "Nothing beside remained."
+    hide posterOpen2 onlayer screens
+    play sound pageFlip
+    jump mushroomPosterShowing
 
 #=====================THE WOLF'S STORY
 #Leaving the village to investigate your house
