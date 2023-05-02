@@ -730,6 +730,16 @@ screen poster: #Preparing the imagemap
 
         hotspot (0, 0, 600, 810) clicked Jump("posterOpens") hovered [ Play ("sound", audio.pageFlip3)]
 
+## Witch Essay 1 ####
+
+screen essay4: #Preparing the imagemap
+    imagemap:
+        idle "essayClosed.png"
+        hover "essayClosedHover.png"
+
+        hotspot (0, 0, 600, 810) clicked Jump("essay4Opens") hovered [ Play ("sound", audio.pageFlip3)]
+
+
 ## Contents page ####
 
 screen contents():

@@ -272,10 +272,11 @@ init:
     define mushroomPale = False
     define mushroomDeathTale = False
 
-    #Wolf Variables
+    #Wolf Variables for exploring places when people have disappeared
     define wanderedAimlessly = False
     define firepoker = False
     define doorLock = False
+    define inCottage = False
 
     #The final conversation with the wolf in the silence ending
     define silenceWho = False
@@ -321,9 +322,9 @@ init:
 
     #Who has disappeared specifically - main cast
     default persistent.toadVanished = False
-    default persistent.witchVanished = False
+    default persistent.witchVanished = True
     default persistent.thiefVanished = False
-    default persistent.mushroomVanished = True
+    default persistent.mushroomVanished = False
 
     # Which side characters have disappeared
     #Your mum
@@ -473,6 +474,13 @@ init:
     image posterOpen = "posterOpen.png"
     image posterOpen2 = "posterOpen2.png"
     image news = "newsArticle.png"
+    image essay1 = "essay1.png"
+    image essay2 = "essay2.png"
+    image essay3 = "essay3.png"
+    image essay4 = "essay4.png"
+    image essay5 = "essay5.png"
+    image essay6 = "essay6.png"
+    image essayClosed = "essayClosed.png"
 
     #Images for the names for the ending
     image name1-Thief = "titles/name1-Thief.png"
@@ -1195,26 +1203,29 @@ label start:
         if persistent.bookEnd:
             show nightbg at artPos
             jump newStoryFinale
-        elif persistent.vanished >= 4:
-            jump allVanishedEnd
-
         show nightbg at artPos
-        "This maybe happened, or maybe did not."
-        "The time is long past, and much is forgot."
-        call hideAll from _call_hideAll
-        show forest4bg at artPos
         if persistent.vanished == 0:
+            "This maybe happened, or maybe did not."
+            "The time is long past, and much is forgot."
             "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
             "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         elif persistent.vanished == 1:
+            "Neither here nor there, but long ago..."
             "Back in the old days, when the gods were real, your mother had ten children and had to work night and day just to feed them."
             "When you were born as the eleventh, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         elif persistent.vanished == 2:
-            "Back in the old days, when the beasts spoke and people were silent, your mother had four children and had to work night and day just to feed them."
-            "When you were born as the fifth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+            "Once there was, and once there wasn't."
+            "In the long-distant days of yore, when haystacks winnowed sieves, when genies played jereed in the old bathhouse, fleas were barbers, camels were town criers, I softly rocked my baby grandmother to sleep in her creaking cradle, in an exotic land, far, far away, there was a woman with 4 children who had to work day and night just to feed them."
+            "When you were born to her as the fifth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         elif persistent.vanished == 3:
+            "I've told you what's coming."
             "Back in the old days, when there was still a chance, your mother gave birth to you as her first and only child."
             "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+        elif persistent.vanished >= 4:
+            jump allVanishedEnd
+
+        call hideAll from _call_hideAll
+        show forest4bg at artPos
         "In the darkness of the forest, she may or may not have met a man in white."
         "(Is anything certain these days?)"
         "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
@@ -1902,7 +1913,7 @@ label introMenu:
             "Her eyes were blind, and her back was crooked in 5 directions at once, and her hair floated all around her head like twisting grey fog, and she hobbled about with only the aid of an old cane to help her along."
             mys "Ho, young traveller."
             show hand onlayer transient:
-                yalign 0.72#0.743
+                yalign 0.695#0.743
                 xalign 0.5
             menu:
                 mys "Might you lend a hand for a frail old woman? The woods are dark tonight, and I thought I heard howling from the space between the trees."
@@ -7453,10 +7464,11 @@ label toadWitchInvestigate:
             jump toadInvestigate
         "If you went further into the depths of the woods, go to page 121." if persistent.witchVanished:
             #Investigation scene in Witch's abandoned home
-            "You walked until you discovered a strange cottage."
             jump witchInvestigate
         "If you went searching for the witch, go to page 121." if not persistent.witchVanished:
             jump witchSolo
+
+        #Extra explore scene that shows you your birthday card
         "If you returned to the village, go back to page 50.":
             "You turned and walked back to the light of the village."
             jump village
@@ -7633,24 +7645,88 @@ label toadInvestigate:
 #Exploring the witch's house when she has disappeared.
 label witchInvestigate:
     #You investigate the witch's cottage and find clues about the mystery
-    ""
-
-    #The puddle
-    # "You crawled to the edge and looked down into the puddle."
-    # "The surface of the water was flat and still."
-    # call hideAll from _call_hideAll_69
-    # show cottagebg at artPos
-    # "The cottage in the reflection shone with bright light, as if the setting sun was behind it."
-    # call hideAll from _call_hideAll_70
-    # show darkforestbg at artPos
-    # "There was no trace of a cottage in the world above the water."
-
-    # "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
-    # "The cottage was tiny, but the walls were covered with bookshelves stuffed with old manuscripts and notebooks and thick textbooks on all kinds of plants and animals."
-    # #TK: Herbs and plants
-    # "The wooden bookshelves were sprouting with herbs and plants of every type."
-    # "In the corner was a small kitchen with a cauldron, and up above was a small attic crawl-space."
-    # "Out of the attic poked a small head with a giant black hat. It looked at you with shock."
+    "You walked through the trees until you began to see a glimmer of silver light in the darkness."
+    call hideAll
+    show darkforestbg at artPos
+    "The forest was covered in great puddles of water from the rains. The puddles shone with light."
+    "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
+    label puddle2:
+        show hand onlayer transient:
+            yalign 0.68#0.743
+            xalign 0.5
+        menu:
+            "The sight was strangely familiar."
+            "If you looked into the puddle carefully, turn to page 236." if not puddleLook:
+                "You crawled to the edge and looked down into the puddle."
+                "The surface of the water was flat and still."
+                call hideAll
+                show cottagebg at artPos
+                "The cottage in the reflection shone with bright light, as if the setting sun was behind it."
+                call hideAll
+                show darkforestbg at artPos
+                "There was no trace of a cottage in the world above the water."
+                $puddleLook = True
+                jump puddle2
+            "If you dropped a stick in the puddle, turn to page 206." if not puddleStick:
+                "You picked up a stick from the ground, and tossed it into the puddle."
+                "It fell in without a single ripple in the water."
+                "You saw it drop through into the reflection, and land close to the cottage."
+                "You looked up. There was no trace of it in the world outside the reflection."
+                $puddleStick = True
+                jump puddle2
+            "If you jumped into the puddle, turn to page 207.":
+                if pig:
+                    "You grabbed the pig to you, then leapt into the puddle."
+                else:
+                    "You leapt into the puddle."
+                call hideAll
+                show mushroombasementbg at artPos
+                "The world flipped over."
+                "You felt the water pass over you, and a cool chill tingled all through your body."
+                call hideAll
+                show silverbg at artPos
+                "When you opened your eyes, you were standing right way up again."
+                "The puddle you had jumped into was now a floor, like a silver mirror."
+                "The world all around you shone white."
+                "At the centre of the puddle was a cottage in the middle of a garden."
+                jump witchCottageInvestigate
+    label witchCottageInvestigate:
+        show hand onlayer transient:
+            yalign 0.68#0.743
+            xalign 0.5
+        menu:
+            "The whole scene was still and silent."
+            "If you explored the cottage, turn to page 207.":
+                $inCottage = True
+                "You walked up the front steps, and put your hand on the doorknob."
+                "The door opened up with a shuddering creak."
+                "Inside the cottage was a wild clutter of books and herbs and plants of all description, growing up the walls and roof."
+                "The cottage was tiny, but the walls were covered with bookshelves stuffed with old manuscripts and notebooks and thick textbooks on all kinds of plants and animals."
+                "The wooden bookshelves were sprouting with herbs and plants of every type."
+                "In the corner was a small kitchen with a cauldron, and up above was a small attic crawl-space."
+                jump witchCottageInvestigate
+            "If you explored the attic, turn to page 209." if inCottage:
+                "You climbed up in the crawl-space."
+                label essay4Showing:
+                    $renpy.show_screen("essay4", _layer="screens", tag="note", _zorder=101)
+                    "It was covered in dust. A small bed nestled in the corner, with a half-full teacup beside it."
+                    $renpy.hide_screen("essay4")
+                "Mould was beginning to grow from the teacup."
+                "Nothing beside remained."
+                jump witchCottageInvestigate
+            "If you left the cottage, turn to page 210." if inCottage:
+                "The door swung open, and you saw the shining silver of the puddle-world again."
+                $inCottage = False
+                jump witchCottageInvestigate
+            "If you explored the garden, turn to page 208." if not inCottage:
+                "You looked through the garden. Old pumpkins were failing and going to rot."
+                "You searched through the dirt and found a fork wrapped in string."
+                "It was labelled with the letter A."
+                jump witchCottageInvestigate
+            "If you left and returned to the woods, turn to page 211." if not inCottage:
+                "You turned and slowly walked back into the puddle. The water closed around you."
+                "You soon found yourself back in the woods."
+                jump toadWitchInvestigate
 
 #Exploring the mushroom's house when she has disappeared.
 label mushroomInvestigate:
@@ -7871,6 +7947,18 @@ label posterOpens:
     play sound pageFlip
     jump mushroomPosterShowing
 
+label essay4Opens:
+        play sound pageFlip2
+        hide essay4Closed onlayer screens
+        $renpy.hide_screen("essay4")
+        show essay4 onlayer screens zorder 100 at truecenter
+        "It was covered in dust. A small bed nestled in the corner, with a half-full teacup beside it."
+        hide essay4 onlayer screens
+        play sound pageFlip
+        jump essay4Showing
+
+
+
 #=====================THE WOLF'S STORY
 #Leaving the village to investigate your house
 #This can be done at any time and can trigger the wolf ending if you know the wolf's true name
@@ -7934,9 +8022,10 @@ label wolf:
                 if doorLock:
                     play sound lockAttempt
                     "You jiggled the handle."
+                    #TK: Consider making this marginalia instead
                     gm "You need its true name."
                     pov "What?"
-                    gm "Don't go in there unless you know its true name."
+                    gm "Don't go in there unless you're ready."
                     gm "You'll only get one chance."
                     "He turned, and was gone."
                     jump doorLock

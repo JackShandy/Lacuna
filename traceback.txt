@@ -1,22 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 7871, in script
-    jump mushroomPosterShowing
-ScriptError: could not find label 'mushroomPosterShowing'.
+  File "game/script.rpy", line 7709, in script
+    $renpy.show_screen("essay4", _layer="screens", tag="note", _zorder=101)
+  File "game/script.rpy", line 7709, in <module>
+    $renpy.show_screen("essay4", _layer="screens", tag="note", _zorder=101)
+Exception: Screen essay4 is not known.
+
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 7871, in script
-    jump mushroomPosterShowing
-  File "renpy/ast.py", line 1711, in execute
-    rv = renpy.game.script.lookup(target)
-  File "renpy/script.py", line 910, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'mushroomPosterShowing'.
+  File "game/script.rpy", line 7709, in script
+    $renpy.show_screen("essay4", _layer="screens", tag="note", _zorder=101)
+  File "renpy/ast.py", line 922, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "renpy/python.py", line 2218, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 7709, in <module>
+    $renpy.show_screen("essay4", _layer="screens", tag="note", _zorder=101)
+  File "renpy/display/screen.py", line 1114, in show_screen
+    raise Exception("Screen %s is not known.\n" % (name[0],))
+Exception: Screen essay4 is not known.
+
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Lacuna. 0.81
-Sun Apr 30 18:37:19 2023
+Wed May  3 01:48:24 2023

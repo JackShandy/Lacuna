@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 7492: expected 'name' not found.
-    hide news onlayer
-                     ^
+File "game/script.rpy", line 1221: if statement expects a non-empty block.
+    if persistent.vanished == 0:
+                                ^
+
+File "game/script.rpy", line 1222: expected statement.
+    elif persistent.vanished == 1:
+                   ^
+
+File "game/script.rpy", line 1223: expected statement.
+    elif persistent.vanished == 2:
+                   ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Apr 30 18:29:46 2023
+Tue May  2 17:25:26 2023
