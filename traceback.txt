@@ -1,16 +1,16 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1980, in script
+  File "game/script.rpy", line 8194, in script
     menu:
-  File "game/script.rpy", line 2112, in <module>
-    "If you turned and walked into the space between the trees, turn to page 40." if persistent.vanished >=1 and not wanderAttempted:
-NameError: name 'wanderAttempted' is not defined
+  File "game/script.rpy", line 8221, in <module>
+    "If you opened the door, turn to page 301." if doorlock:
+NameError: name 'doorlock' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1980, in script
+  File "game/script.rpy", line 8194, in script
     menu:
   File "renpy/ast.py", line 1642, in execute
     choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
@@ -20,11 +20,11 @@ Full traceback:
     return py_eval_bytecode(code, globals, locals)
   File "renpy/python.py", line 2242, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 2112, in <module>
-    "If you turned and walked into the space between the trees, turn to page 40." if persistent.vanished >=1 and not wanderAttempted:
-NameError: name 'wanderAttempted' is not defined
+  File "game/script.rpy", line 8221, in <module>
+    "If you opened the door, turn to page 301." if doorlock:
+NameError: name 'doorlock' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Lacuna. 0.81
-Wed May  3 17:50:59 2023
+Wed May  3 19:47:50 2023
