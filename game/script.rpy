@@ -25,18 +25,100 @@ init python:
     def name_func(newstring):
         store.persistent.povname = newstring
 
-#=====================BASIC VARIABLES
-#These are the basic variables used throughout the game
+#=====================PERSISTENT DATA
+#This data carries over between save files and games, permanently.
 init:
+
+    #Persistent Player Name
     default persistent.povname = "Charlie"
-    # ===== List of all persistent variables
-    #Test
     #Number of times the game has been played
     default persistent.timesPlayed = 0
     #The ambience - is it on or not?
     default persistent.phoneOn = True
 
     default persistent.nameSet = False
+
+    #persistent pronouns
+    default persistent.he = "he"
+    default persistent.He = "He"
+    default persistent.his = "his"
+    default persistent.His = "His"
+    default persistent.him = "him"
+    default persistent.Him = "Him"
+    default persistent.Hes = "He's"
+    default persistent.hes = "he's"
+
+    #===========Persistent Disappearances
+
+    #How many of the 4 main characters have disappeared
+    default persistent.vanished = 2
+
+    #Who has disappeared specifically - main cast
+    default persistent.toadVanished = False
+    default persistent.witchVanished = True
+    default persistent.thiefVanished = False
+    default persistent.mushroomVanished = True
+
+    # Which side characters have disappeared
+    #Your mum
+    default persistent.mumVanished = False
+    #God
+    default persistent.miwVanished = False
+    #The devil
+    default persistent.mirVanished = False
+    #Death
+    default persistent.wibVanished = False
+    #The devil's grandmother
+    default persistent.dgVanished = False
+    #Brildebrogue chippingham
+    default persistent.bcVanished = False
+    #The hunter
+    default persistent.hVanished = False
+    #The old gloom-monger
+    default persistent.gmVanished = False
+    #The thing in the well
+    default persistent.wellVanished = False
+    #Scraggs McKenzie and the boys
+    default persistent.scVanished = False
+    #The mayor
+    default persistent.mayVanished = False
+    #Goose-girl
+    default persistent.goVanished = False
+    #The sparrow-herder
+    default persistent.shVanished = False
+    #Strange and crooked old man
+    default persistent.somVanished = False
+    #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
+    default persistent.batVanished = False
+    #Goblin 1, 2, 3, 4, and the goblin queen
+    default persistent.goblinsVanished = False
+    #Pig 1, 2, and 3
+    default persistent.pigsVanished = False
+
+    #If you get the final bad ending, who was the last to die?
+    #Options: Thief, Toad, Witch, Mushroom
+    #TK: Currently not set or used. Delete?
+    default persistent.vanishedLast = "Thief"
+
+    #Have you triggered the final ending where the book is born anew?
+    #TK: Testing, change back to false
+    default persistent.bookEnd = False
+
+    #Has the book been burned?
+    default persistent.bookBurned = False
+
+    #What title did you choose for the book ending?
+    default persistent.finaleTitle = "Cobbler"
+
+    #The other randomly generated titles
+    default persistent.name1Rand = renpy.random.randint(1,6)
+    default persistent.name2Rand = renpy.random.randint(1,6)
+    default persistent.name3Rand = renpy.random.randint(1,6)
+    default persistent.name4Rand = renpy.random.randint(1,6)
+
+#=====================BASIC VARIABLES
+#These are the basic variables used throughout the game
+init:
 
     define pov = Character("[persistent.povname]")
 
@@ -274,9 +356,12 @@ init:
 
     #Wolf Variables for exploring places when people have disappeared
     define wanderedAimlessly = False
+    define wanderedNightGod = False
     define firepoker = False
     define doorLock = False
     define inCottage = False
+    define birthdayNote = "{size=16}{font=fonts/segoesc.ttf}{color=#45413c}{alpha=*0.6}I saw this intriguing article while I was researching online and it seemed like the kind of thing that you would enjoy. It is wonderful what you can find on the internet these days. It was tough to find the book but we were able to track down this volume second-hand, which the bookshop owner told us may be one of the only remaining copies! I hope that you will enjoy it. \n\nPlease give our best to your mum and dad and tell them that we are doing well here. The weather has been lovely.\n\nHappy birthday, [povname].\n\nLove Grandma and Grandpa.{/color}{/font}{/size}"
+    define wanderAttempted = False
 
     #The final conversation with the wolf in the silence ending
     define silenceWho = False
@@ -301,87 +386,6 @@ init:
 
     screen countdown:
         timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
-
-#=====================PERSISTENT DATA
-#This data carries over between save files and games, permanently.
-init:
-    #persistent pronouns
-    default persistent.he = "he"
-    default persistent.He = "He"
-    default persistent.his = "his"
-    default persistent.His = "His"
-    default persistent.him = "him"
-    default persistent.Him = "Him"
-    default persistent.Hes = "He's"
-    default persistent.hes = "he's"
-
-    #===========Persistent Disappearances
-
-    #How many of the 4 main characters have disappeared
-    default persistent.vanished = 1
-
-    #Who has disappeared specifically - main cast
-    default persistent.toadVanished = False
-    default persistent.witchVanished = True
-    default persistent.thiefVanished = False
-    default persistent.mushroomVanished = False
-
-    # Which side characters have disappeared
-    #Your mum
-    default persistent.mumVanished = False
-    #God
-    default persistent.miwVanished = False
-    #The devil
-    default persistent.mirVanished = False
-    #Death
-    default persistent.wibVanished = False
-    #The devil's grandmother
-    default persistent.dgVanished = False
-    #Brildebrogue chippingham
-    default persistent.bcVanished = False
-    #The hunter
-    default persistent.hVanished = False
-    #The old gloom-monger
-    default persistent.gmVanished = False
-    #The thing in the well
-    default persistent.wellVanished = False
-    #Scraggs McKenzie and the boys
-    default persistent.scVanished = False
-    #The mayor
-    default persistent.mayVanished = False
-    #Goose-girl
-    default persistent.goVanished = False
-    #The sparrow-herder
-    default persistent.shVanished = False
-    #Strange and crooked old man
-    default persistent.somVanished = False
-    #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
-    default persistent.batVanished = False
-    #Goblin 1, 2, 3, 4, and the goblin queen
-    default persistent.goblinsVanished = False
-    #Pig 1, 2, and 3
-    default persistent.pigsVanished = False
-
-    #If you get the final bad ending, who was the last to die?
-    #Options: Thief, Toad, Witch, Mushroom
-    #TK: Currently not set or used. Delete?
-    default persistent.vanishedLast = "Thief"
-
-    #Have you triggered the final ending where the book is born anew?
-    #TK: Testing, change back to false
-    default persistent.bookEnd = False
-
-    #Has the book been burned?
-    default persistent.bookBurned = False
-
-    #What title did you choose for the book ending?
-    default persistent.finaleTitle = "Cobbler"
-
-    #The other randomly generated titles
-    default persistent.name1Rand = renpy.random.randint(1,6)
-    default persistent.name2Rand = renpy.random.randint(1,6)
-    default persistent.name3Rand = renpy.random.randint(1,6)
-    default persistent.name4Rand = renpy.random.randint(1,6)
 
 #=====================IMAGES
 #Defining all images
@@ -451,6 +455,59 @@ init:
     image title-wolf = "title-wolf.png"
     image title-allGone = "title-allGone.png"
 
+    ##===========Marginalia
+    image characters = "Marginalia/characters.png"
+    image devil = "Marginalia/devil.png"
+    image eaten = "Marginalia/eaten.png"
+    image flower1 = "Marginalia/flower1.png"
+    image flower2 = "Marginalia/flower2.png"
+    image flower3 = "Marginalia/flower3.png"
+    image mushroom = "Marginalia/mushroom.png"
+    image noteCrumbs = "Marginalia/noteCrumbs.png"
+    image noteDeal = "Marginalia/noteDeal.png"
+    image noteEaten = "Marginalia/noteEaten.png"
+    image noteFood = "Marginalia/noteFood.png"
+    image noteFree = "Marginalia/noteFree.png"
+    image noteHome = "Marginalia/noteHome.png"
+    image noteListen = "Marginalia/noteListen.png"
+    image noteName = "Marginalia/noteName.png"
+    image noteSay = "Marginalia/noteSay.png"
+    image noteSilence = "Marginalia/noteSilence.png"
+    image noteStop = "Marginalia/noteStop.png"
+    image noteWaiting = "Marginalia/noteWaiting.png"
+    image noteWolf = "Marginalia/noteWolf.png"
+    image spiral1 = "Marginalia/spiral1.png"
+    image spiral2 = "Marginalia/spiral2.png"
+    image spiral3 = "Marginalia/spiral3.png"
+    image spiral4 = "Marginalia/spiral4.png"
+    image spiral5 = "Marginalia/spiral5.png"
+    image spiral6 = "Marginalia/spiral6.png"
+    image spiral7 = "Marginalia/spiral7.png"
+    image spirit = "Marginalia/spirit.png"
+    image spirit2 = "Marginalia/spirit2.png"
+    image spirit3 = "Marginalia/spirit3.png"
+    image stars = "Marginalia/stars.png"
+    image swordfight = "Marginalia/swordfight.png"
+    image thief = "Marginalia/thief.png"
+    image toad = "Marginalia/toad.png"
+    image toadAngry = "Marginalia/toadAngry.png"
+    image toadHappy = "Marginalia/toadHappy.png"
+    image toadSad = "Marginalia/toadSad.png"
+    image train = "Marginalia/train.png"
+    image witch = "Marginalia/witch.png"
+    image witches = "Marginalia/witches.png"
+    image wolf1 = "Marginalia/wolf1.png"
+    image wolf2 = "Marginalia/wolf2.png"
+    image wolf3 = "Marginalia/wolf3.png"
+    image wolf4 = "Marginalia/wolf4.png"
+    image wolf5 = "Marginalia/wolf5.png"
+    image wolf6 = "Marginalia/wolf6.png"
+    image wolf7 = "Marginalia/wolf7.png"
+    image wolf8 = "Marginalia/wolf8.png"
+    image wolf9 = "Marginalia/wolf9.png"
+    image wolf10= "Marginalia/wolf10.png"
+    image wolf11 = "Marginalia/wolf11.png"
+    image wolf12 = "Marginalia/wolf12.png"
 
     #Map
     image mapClosed = "mapClosed.png"
@@ -481,6 +538,12 @@ init:
     image essay5 = "essay5.png"
     image essay6 = "essay6.png"
     image essayClosed = "essayClosed.png"
+    image creepiestClosed = "creepiestClosed.png"
+    image creepiestOpen = "creepiestOpen.png"
+    image creepiestOpen2 = "creepiestOpen2.png"
+    image gilgameshClosed =  "gilgameshClosed.png"
+    image gilgameshClosedHover =  "gilgameshClosedHover.png"
+    image gilgameshOpen =  "gilgameshOpen.png"
 
     #Images for the names for the ending
     image name1-Thief = "titles/name1-Thief.png"
@@ -1179,7 +1242,7 @@ label demoEnd:
 #=====================GAME START
 #The official game script begins here
 # Act 1, Chapter 2: The 3 Godparents
-#The beginning fo the game.
+#The beginning of the game.
 label start:
     show firelight animated onlayer over_screens zorder 99
     if persistent.phoneOn and persistent.vanished <=3:
@@ -1890,6 +1953,11 @@ label introMenu:
             "If you ignored her and followed the path like an honest Christian, turn to page 42.":
                 "You turned and kept on walking down the path, just as your mother taught you."
                 jump thief1
+            "If you turned and walked into the space between the trees, turn to page 40." if persistent.vanished >=3:
+                $wanderAttempted = True
+                "You ignored the mushroom and walked deeper and deeper into the woods."
+                jump woodsInvestigate
+
 
     # Act 1, Chapter 4: The Thief.
     label thief1:
@@ -2047,11 +2115,15 @@ label introMenu:
                         "(A wise habit. Once you've given someone a hand, they'll take your arm.)"
                         "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
                         jump toadIntro
-                #TK: Make this a bit less obvious?
-                "If you turned and walked into the space between the trees, turn to page 40." if persistent.vanished >=1:
+                "If you turned and walked into the space between the trees, turn to page 40." if persistent.vanished >=1 and not wanderAttempted:
+                    $wanderAttempted = True
+                    if persistent.vanished >=2:
+                            show noteListen onlayer transient zorder 100
                     mys "Wait, please! Surely you'll help a poor old woman?"
                     #mys "These woods grow dark swiftly. And they say a beast haunts them."
                     #TK: double check that the copying of this is all correct
+                    if persistent.vanished >=2:
+                        show noteSay onlayer transient zorder 100
                     show hand onlayer transient:
                         yalign 0.72#0.743
                         xalign 0.5
@@ -2060,9 +2132,11 @@ label introMenu:
                         #TK: Include option to kick over the old woman if you're the devil child
                         "If you helped the old woman, turn to page 73.":
                             jump thiefAccept
-                        "If you refuse to aid her, turn to page 44.":
+                        "If you refused to aid her, turn to page 44.":
                             jump thiefRefuse
-                        "If you continue to walk into the woods, turn to page 41.":
+                        "If you continued to walk into the woods, turn to page 41.":
+                            call hideAll
+                            show darknessbg at artPos
                             "Without a word, you left the old woman behind and walked deeper and deeper into the woods."
                             jump woodsInvestigate
 
@@ -2304,8 +2378,13 @@ label introMenu:
                         pov "Well! It's a good thing I know not to accept lifts from strange gentlemen."
                         "(A wise habit. The Lord knows this world is full of cheats and liars.)"
                         jump chapter6
-                "If you turned and walked into the space between the trees, turn to page 40." if persistent.vanished >=1 and persistent.mushroomVanished and persistent.thiefVanished:
+                "If you turned and walked into the space between the trees, turn to page 40." if persistent.vanished >=1 and not wanderAttempted:
+                    $wanderAttempted = True
+                    if persistent.vanished >=2:
+                            show noteListen onlayer transient zorder 100
                     eg "W-wait! Where are you going?"
+                    if persistent.vanished >=2:
+                        show noteSay onlayer transient zorder 100
                     show hand onlayer transient:
                         yalign 0.67#0.743
                         xalign 0.5
@@ -2316,6 +2395,9 @@ label introMenu:
                         "If you refused the lift, turn to page 55.":
                             jump toadRefused
                         "If you continued walking deeper into the woods, turn to page 41.":
+                            call hideAll
+                            show darknessbg at artPos
+                            "Without a word, you left him behind and walked deeper and deeper into the woods."
                             jump woodsInvestigate
 
     #---- Act 1, Chapter 6: The Village.
@@ -2408,6 +2490,28 @@ label introMenu:
                     "You walked into town."
                     "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
                     jump villageExplore1
+                "If you turned and walked into the space between the trees, turn to page 40." if persistent.vanished >=1 and not wanderAttempted:
+                    $wanderAttempted = True
+                    if persistent.vanished >=2:
+                            show noteListen onlayer transient zorder 100
+                    h "Hold on. The festival is about to start."
+                    if persistent.vanished >=2:
+                        show noteSay onlayer transient zorder 100
+                    show hand onlayer transient:
+                        yalign 0.67#0.743
+                        xalign 0.5
+                    menu:
+                        h "You'd better not wander off. You'll be late."
+                        "If you entered the village, turn to page 39.":
+                            pov "Thank you for the warning, kind hunter."
+                            "You walked into town."
+                            "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
+                            jump villageExplore1
+                        "If you continued walking deeper into the woods, turn to page 41.":
+                            call hideAll
+                            show darknessbg at artPos
+                            "Without a word, you left the hunter behind and walked deeper and deeper into the woods."
+                            jump woodsInvestigate
 
     label villageExplore1:
         show hand onlayer transient:
@@ -7449,7 +7553,7 @@ label witchSoloFinale:
 
 #Deep in the woods, when the toad or witch have disappeared.
 label toadWitchInvestigate:
-    call hideAll from _call_hideAll_95
+    call hideAll
     show nightbg at artPos
     show hand onlayer transient:
         yalign 0.676#0.743
@@ -7459,16 +7563,31 @@ label toadWitchInvestigate:
     #Space between the trees?
     menu:
         "Silence lurked behind the trees."
-        "If you went down to the river, go to page 120." if persistent.toadVanished:
+        "If you discovered a muddy cave on the riverside, go to page 120." if persistent.toadVanished:
             #Investigation scene in Toad's abandoned home
             jump toadInvestigate
-        "If you went further into the depths of the woods, go to page 121." if persistent.witchVanished:
+        "If you discovered a strange cottage, go to page 121." if persistent.witchVanished:
             #Investigation scene in Witch's abandoned home
             jump witchInvestigate
         "If you went searching for the witch, go to page 121." if not persistent.witchVanished:
             jump witchSolo
-
-        #Extra explore scene that shows you your birthday card
+        "If you wandered through the woods, go to page 124." if not wanderedNightGod:
+            "You walked through the woods for long hours. Eventually, you came to a clearing. You looked up."
+            call hideAll
+            show nightgodbg at artPos
+            "The Firmament was gazing down upon you."
+            "You looked up at Her in awe."
+            label creepiestShowing:
+                $renpy.show_screen("creepiestBooks", _layer="screens", tag="map", _zorder=101)
+                "Where did She come from? What great slow thoughts does She think, up there?"
+                $renpy.hide_screen("creepiestBooks")
+            "No man can say."
+            "A single tear dropped from Her eye, and streaked across the sky like a falling star."
+            "You sat there for a long time."
+            "Finally, you turned around, and found yourself back where you began."
+            $wanderedNightGod = True
+            call hideAll
+            jump toadWitchInvestigate
         "If you returned to the village, go back to page 50.":
             "You turned and walked back to the light of the village."
             jump village
@@ -7500,7 +7619,7 @@ label thiefMushroomInvestigate:
             show news onlayer screens zorder 101:
                 yalign 0.175#0.743
                 #xalign 0.5
-            "   You found nothing and no-one. There was nothing there. Nothing but a cold silence that slowly followed you from behind the trees."
+            "You found nothing and no-one. There was nothing there. Nothing but a cold silence that slowly followed you from behind the trees."
             hide news onlayer screens
             "..."
             show hand onlayer transient:
@@ -7719,8 +7838,8 @@ label witchInvestigate:
                 $inCottage = False
                 jump witchCottageInvestigate
             "If you explored the garden, turn to page 208." if not inCottage:
-                "You looked through the garden. Old pumpkins were failing and going to rot."
-                "You searched through the dirt and found a fork wrapped in string."
+                "You looked through the garden. Old pumpkins were going to rot."
+                "In the dirt was a single fork wrapped in string."
                 "It was labelled with the letter A."
                 jump witchCottageInvestigate
             "If you left and returned to the woods, turn to page 211." if not inCottage:
@@ -7868,10 +7987,37 @@ label thiefInvestigate:
 label woodsInvestigate:
     "Darkness fell around you. You walked for long hours."
     #"At last you found yourself at the shores of a great lake."
+    call hideAll
+    show darkforestbg at artPos
+
     "At last you came to the bank of a great lake."
+    show spiral1 onlayer transient zorder 100
     "It had never been sounded by the sons of men. No wisdom reaches such depths."
-    "The waters burned like a torch. The light of them fell upon your face."
-    "A deer, pursued by hounds, would rather die rather than save it's life by entering that water."
+    show spiral7 onlayer transient zorder 100
+
+    label gilgameshShowing:
+        $renpy.show_screen("gilgamesh", _layer="screens", tag="map", _zorder=101)
+        "The waters burned like a torch. The light of them fell upon your face."
+        $renpy.hide_screen("gilgamesh")
+    "A rabbit, pursued by hounds, would die rather than save its life by entering that water."
+    show noteEaten onlayer transient zorder 100
+    "Nothing lay by the shore. "
+    show noteCrumbs onlayer transient zorder 100
+    "The moon shone down on the scene."
+    show noteFree onlayer transient zorder 100
+    "You looked out at the water in silence. Not a single creature stirred."
+    show noteWolf onlayer transient zorder 100
+    "Even the air was still."
+    show noteName onlayer transient zorder 100
+    "..."
+    "I think that's quite enough."
+    "Let's get back to the story."
+    call hideAll
+    play sound pageFlip2
+    show townextbg at artPos
+    "The rich dark blanket of night was softly rolling over the village as you walked in, and cooking fires lit up all across the hills, one by one."
+    jump villageExplore1
+
     #TK: Clues
     #You meet gilg
     #If you have the cloak (from the thief)
@@ -7948,16 +8094,40 @@ label posterOpens:
     jump mushroomPosterShowing
 
 label essay4Opens:
-        play sound pageFlip2
-        hide essay4Closed onlayer screens
-        $renpy.hide_screen("essay4")
-        show essay4 onlayer screens zorder 100 at truecenter
-        "It was covered in dust. A small bed nestled in the corner, with a half-full teacup beside it."
-        hide essay4 onlayer screens
-        play sound pageFlip
-        jump essay4Showing
+    play sound pageFlip2
+    hide essay4Closed onlayer screens
+    $renpy.hide_screen("essay4")
+    show essay4 onlayer screens zorder 100 at truecenter
+    "It was covered in dust. A small bed nestled in the corner, with a half-full teacup beside it."
+    hide essay4 onlayer screens
+    play sound pageFlip
+    jump essay4Showing
 
+label gilgameshOpens:
+    play sound pageFlip2
+    hide gilgameshClosed onlayer screens
+    $renpy.hide_screen("gilgamesh")
+    show gilgameshOpen onlayer screens zorder 100 at truecenter
+    "The waters burned like a torch. The light of them fell upon your face."
+    hide gilgameshOpen onlayer screens
+    play sound pageFlip
+    jump gilgameshShowing
 
+label creepiestOpens:
+    play sound pageFlip2
+    hide creepiestClosed onlayer screens
+    $renpy.hide_screen("creepiestBooks")
+    show creepiestOpen onlayer screens zorder 100 at truecenter
+    "Where did She come from? What great slow thoughts does She think, up there?"
+    hide creepiestOpen onlayer screens
+    play sound pageFlip3
+    show creepiestOpen2 onlayer screens zorder 100 at truecenter
+    $renpy.show_screen("creepiestBooksText")
+    "Where did She come from? What great slow thoughts does She think, up there?"
+    $renpy.hide_screen("creepiestBooksText")
+    hide creepiestOpen2 onlayer screens
+    play sound pageFlip
+    jump creepiestShowing
 
 #=====================THE WOLF'S STORY
 #Leaving the village to investigate your house
@@ -8208,11 +8378,12 @@ label wolf:
                     t "Very well. Then take my cloak."
                     "Unto you they delivered a midnight cloak that hid you from all earthly sight."
                     pov "Thank you, my friend. I will not forget you."
-
+        call hideAll
+        show darkforestbg at artPos
         "At last you came to the bank of a great lake."
         "It had never been sounded by the sons of men. No wisdom reaches such depths."
         "The waters burned like a torch. The light of them fell upon your face."
-        "A deer, pursued by hounds, would rather die rather than save it's life by entering such water."
+        "A rabbit, pursued by hounds, would die rather than save its life by entering such water."
 
         if persistent.mushroomVanished == False:
             m "Master, please listen to me."
@@ -8618,6 +8789,7 @@ label wolfNameEnd:
             "I guarded the forests. My breath was fire. My gaze was death. Who would dare stand against me?"
             "Long time ago now."
             "Barely remember those days. No-one does."
+            "Gilgamesh cast me down. My head was placed in a leather sack."
             #"Around those first campfires, they whispered of me, and I awoke in the darkness."
             #"The first monster."
             "Fragments of me survived. I clung to life in old stories like this one."
@@ -8646,6 +8818,8 @@ label wolfNameEnd:
             "As I suspect it is not a good place for you."
             "I offered them another world."
             "Of course, in time, they would disappear. Nothing lasts forever. They knew that when they took the deal. "
+            "The terror was great, but the dream was marvellous."
+            "We must treasure the dream, whatever the terror."
             jump wolfNameEnd
         "I want to talk to my friends." if silenceRest and not silenceFriendsTalk:
             $silenceFriendsTalk = True
@@ -9026,6 +9200,7 @@ label allVanishedEnd:
 #The ending when you choose to go with the wolf, leading to newStoryFinale
 label wolfEnd:
     "You have made the right choice."
+    "Hold my hand in yours, and we will not fear what hands like ours can do."
     "Now we must choose your title."
     $halfScreenMenu = False
     $fullScreenMenu = True

@@ -739,6 +739,43 @@ screen essay4: #Preparing the imagemap
 
         hotspot (0, 0, 600, 810) clicked Jump("essay4Opens") hovered [ Play ("sound", audio.pageFlip3)]
 
+## Top Ten Creepiest Books ####
+
+screen creepiestBooks: #Preparing the imagemap
+    imagemap:
+        idle "creepiestClosed.png"
+        hover "creepiestClosedHover.png"
+
+        hotspot (0, 0, 600, 810) clicked Jump("creepiestOpens") hovered [ Play ("sound", audio.pageFlip3)]
+
+screen creepiestBooksText:
+    zorder 101
+    #vbox:
+    #    xalign 0.5
+    #    ypos 335
+    frame:
+        #background Frame("creepiestOpen2.png", 5, 5,)
+        has hbox:
+            spacing 5
+            box_wrap True
+            xpos 317
+            ypos 400
+            xalign 0.5
+            yalign 0.5
+            xsize 360
+            ysize 300
+            transform:
+                rotate 3.5
+                text birthdayNote
+
+## Scrap of information about Gilgamesh ####
+screen gilgamesh: #Preparing the imagemap
+    imagemap:
+        idle "gilgameshClosed.png"
+        hover "gilgameshClosedHover.png"
+
+        hotspot (0, 0, 600, 810) clicked Jump("gilgameshOpens") hovered [ Play ("sound", audio.pageFlip3)]
+
 
 ## Contents page ####
 

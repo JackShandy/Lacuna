@@ -2,17 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1221: if statement expects a non-empty block.
-    if persistent.vanished == 0:
-                                ^
+File "game/script.rpy", line 2483: expected statement.
+    warningShown1 = True
+                  ^
 
-File "game/script.rpy", line 1222: expected statement.
-    elif persistent.vanished == 1:
-                   ^
-
-File "game/script.rpy", line 1223: expected statement.
-    elif persistent.vanished == 2:
-                   ^
+File "game/script.rpy", line 2487: expected statement.
+    warningShown2 = True
+                  ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Tue May  2 17:25:26 2023
+Wed May  3 17:47:51 2023
