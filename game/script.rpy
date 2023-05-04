@@ -51,13 +51,13 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 2
+    default persistent.vanished = 0
 
     #Who has disappeared specifically - main cast
     default persistent.toadVanished = False
-    default persistent.witchVanished = True
+    default persistent.witchVanished = False
     default persistent.thiefVanished = False
-    default persistent.mushroomVanished = True
+    default persistent.mushroomVanished = False
 
     # Which side characters have disappeared
     #Your mum
@@ -319,6 +319,7 @@ init:
     define toadWhere = False
     define toadBasement = False
     define toadCurse = False
+    define construction = 0
 
     #Have you visited each tower?
     define firstTower = False
@@ -2885,11 +2886,11 @@ label banquet:
                 #     ""
                 $mayorChat += 1
                 jump banquetMenu
-            #If you're going out to hunt the witch, be wary. There's a wolf out there.
-            #My sister heard it howling, once. The wolf appeared in her head, and spoke to her.
-            #You will have three days, it said.
-            #Three days passed, and I never saw her again.
-            #Do you hear that?
+                #If you're going out to hunt the witch, be wary. There's a wolf out there.
+                #My sister heard it howling, once. The wolf appeared in her head, and spoke to her.
+                #You will have three days, it said.
+                #Three days passed, and I never saw her again.
+                #Do you hear that?
             "If you talked to the Second Pig, turn to page 266." if pig2Rand == 1 and pigChat <= 7 and not persistent.pigsVanished:
                 if pig:
                     if pigChat == 0:
@@ -3143,7 +3144,7 @@ label banquet:
                             f "Return soon! You can't possibly leave without sampling some of this fine green mango salad over here, absolutely sensational!"
                             jump banquetMenu
             "If you wandered into the woods, turn to page 84." if persistent.toadVanished or persistent.witchVanished:
-                if thief.vanished == False and shStopped == False:
+                if persistent.thiefvanished == False and persistent.mushroomvanished == False and shStopped == False:
                     sh "H-hold on, friend! Leaving so soon?"
                     sh "We're just hatching a plan to catch that dastardly Master Thief. We could use your help!"
                     sh "Come on, let's get back to the village."
@@ -3356,7 +3357,7 @@ label town:
                 $wellChat += 1
                 jump townExplore
             "If you wandered into the woods, turn to page 157." if persistent.thiefVanished or persistent.mushroomVanished:
-                if toad.vanished == False and toadStopped == False:
+                if persistent.toadvanished == False and and persistent.witchvanished == False and toadStopped == False:
                     f "W-wait just a second there!"
                     f "This is no time to be wandering off into the woods! We have an accursed witch to bring to justice. Not to mention a fine banquet to sample."
                     f "Come, let's get back to the village. I can tell you all about the plan."
@@ -6362,94 +6363,129 @@ label toadSolo:
     "With another click, a dozen beautiful frog maids escorted you to golden baths where all the dirt of the journey was washed away, and you were restored to your true forms as the finest frog soprano choir in all the land serenaded you."
     "All the while, the toad's servants pretended to laugh at his jokes as he tipped them generously."
     f "Yes, please make yourself at home, my dear friend! We are friends now, right?"
-    f "That is to say, of course we are! I have so many friends these days, you know, I will be very caught up with them and all the chatting we enjoy doing in our many, many get-togethers, but never fear, I won't forget the little people such as yourself, my dear friend, we shall certainly have some time to spend together."
+    f "That is to say, of course we are! I have so many friends these days, you know, I will be completely tied up with them and all the chatting we enjoy doing in our many, many get-togethers, but never fear, I won't forget the little people such as yourself, my dear friend, we shall certainly have some time to spend together."
     pov "Have you... always owned this manor?"
     show monster2 onlayer transient zorder 100
     f "Of course! The manor is owned by me, Brildebrogue Chippingham! That's my name! Why would you think otherwise?"
     f "Anyway, no time to talk about trivialities such as property ownership and who does or does not own the manor right this moment, I have a party to plan! It will begin soon, you'd better make ready!"
     "And with that the toad flitted out of the room and left you alone to explore the manor."
+    jump chippinghamManorSolo
 
-    #NOTE: When the toad disappears, use
 
-
+    # Great statues of him were erected in the courtyard.
+    #paintings of the frog
+    #Bards compose poems about the frog
+    #A pyramid
+    # A vault
+    # wizards
+    #seven mansion rooms with investigation things
+    label chippinghamManorSolo:
+        show hand onlayer transient:
+            yalign 0.57#0.743
+            xalign 0.5
+        menu:
+            blank ""
+            "If you explored the first tower, turn to page 256." if not firstTower:
+                #The great vault
+                #if pig:
+                    #"Inside the first tower you discovered a trio of stately frog wizards, who flushed the last remains of the potions from your systems and restored you to good health."
+                #else:
+                    #"Inside the first tower, the two of you discovered a trio of stately frog wizards, who flushed the last remains of the potions from your systems and restored you to good health."
+                "Deep underneath the first tower was a great vault full of riches."
+                "Inside the vault was a cornucopia of lush silks, fine food, even great gardens and lakes that produced enough food to last for years - perhaps centuries."
+                "Builders were hard at work reinforcing the walls to make them totally impenetrable."
+                $firstTower = True
+                $construction +=1
+                jump chippinghamManorSolo
+            "If you explored the second tower, turn to page 257." if not secondTower:
+                "Inside the second tower was a trio of stately frog wizards, hard at work placing sigils and wards and runes all across the manor to guard against every possible evil."
+                #if pig:
+                    #"Inside the second tower, you discovered the finest frog chefs of all the land, who quickly sliced off their own legs and served them to you as the most delicious dish the three of you had ever tasted."
+                #else:
+                #    "Inside the second tower, you discovered the finest frog chefs of all the land, who quickly sliced off their own legs and served them to you as the most delicious dish either of you had ever tasted."
+                $secondTower = True
+                $construction +=1
+                jump chippinghamManorSolo
+            "If you explored the third tower, turn to page 258." if not thirdTower:
+                if pig:
+                    "Inside the third tower, you discovered a great harem of finely-dressed frog courtesans, who poured rich wines and made witty conversation with you until you were all completely sloshed and dizzy from the refined repartee."
+                else:
+                    "Inside the third tower, you discovered a great harem of finely-dressed frog courtesans, who poured rich wines and made witty conversation with you until you were both completely sloshed and dizzy from the refined repartee."
+                $thirdTower = True
+                $construction +=1
+                jump chippinghamManorSolo
+            "If you explored the fourth tower, turn to page 259." if not fourthTower:
+                $fourthTower = True
+                "Inside the fourth tower was a great fountain of emeralds and sapphires and precious gems, which splashed out over a scale model replica of the forest. You could see immediately that a single gemstone from this fountain was so valuable that it would bankrupt the richest sultan."
+                f "I spent my whole life looking up at this place. Hard to believe we're actually here."
+                $construction +=1
+                jump chippinghamManorSolo
+            "If you explored the fifth tower, turn to page 260." if not fifthTower:
+                $fifthTower = True
+                "Inside the fifth tower you found a gigantic closet of the finest clothes, rich silks and suits and uniforms of office, all extremely masculine in cut and befitting of a king."
+                $construction +=1
+                jump chippinghamManorSolo
+            "If you explored the sixth tower, turn to page 262." if not sixthTower:
+                $sixthTower = True
+                "Inside the sixth tower you found the Library of Alexandria. A small plaque explained that Brildebrogue had miraculously saved the books from the fires, and they'd been stored here safely for all this time."
+                $construction +=1
+                jump chippinghamManorSolo
+            "If you explored the seventh tower, turn to page page 264." if construction == 2:
+                "Inside the seventh and tallest tower you found only a tiny wooden closet."
+                show hand onlayer transient:
+                    yalign 0.68#0.743
+                    xalign 0.5
+                menu:
+                    "A golden keyhole shone out from the closet door."
+                    "The sounds of the party echoed below you."
+                    "If you opened the closet, turn to page 275.":
+                        "You inserted the key, and slowly opened the door with a long creak."
+                        call hideAll
+                        show mushroombasementbg at artPos
+                        "As soon as the door opened, a stream of blood flowed over you, and you saw seven dead frog brides hanging all along the walls, some only skeletons."
+                        if pig:
+                            "The pig squealed in terrible fear."
+                        jump brildebrogueCloset
+                    "If you went back, turn to page 190.":
+                        jump chippinghamManorSolo
+            # "If you patiently waited for Brildebrogue, turn to page 161.":
+            #     f "Well, if you're not going to open this damn closet, I am."
+            #     "He rushed to the seventh and tallest tower, and unlocked the closet with the golden key."
+            #     "He slowly turned the key, and opened the closet door with a long creak."
+            #     call hideAll
+            #     show mushroombasementbg at artPos
+            #     "As soon as the door opened, a stream of blood flowed over the two of you, and you saw seven dead frog brides hanging all along the closet walls, some only skeletons."
+            #     jump brildebrogueCloset
     #There is a desperate descent of him attempting to seal out the wolf, posting guards, building walls, hiring magicians and sorcerers of every type, dogs at the door, the finest locks known to mankind. Finally he creates a great tomb-vault inside his house, where he will be sealed forever. He says a tearful goodbye to you outside the vault. Then he disappears forever.
 
-    #"The toad posted dogs and every door and guards on every wall."
 
-    #The toad led a team of master masons through the house, heading for the basement.
-    #Golden locks were placed on every door, and silver bars at every window.
-    #Layers of ash and salt were drawn around the mansion.
+
+
     #The seventh
     #Layers:
     #Gold, Silver, Copper, Iron, Mercury, Salt, Ash, Bone. // Ash, Salt, Rowan, Iron, Bone. , Iron, Mercury. Tin, lead,
 
-    #seven mansion rooms with investigation things
-    # label chippinghamManorSolo:
-    #     show hand onlayer transient:
-    #         yalign 0.57#0.743
-    #         xalign 0.5
-    #     menu:
-    #         blank ""
-    #         "If you explored the first tower, turn to page 256." if not firstTower:
-    #             if pig:
-    #                 "Inside the first tower, the three of you discovered a trio of stately frog wizards, who flushed the last remains of the potions from your systems and restored you to good health."
-    #             else:
-    #                 "Inside the first tower, the two of you discovered a trio of stately frog wizards, who flushed the last remains of the potions from your systems and restored you to good health."
-    #             $firstTower = True
-    #             jump chippinghamManor
-    #         "If you explored the second tower, turn to page 257." if not secondTower:
-    #             if pig:
-    #                 "Inside the second tower, you discovered the finest frog chefs of all the land, who quickly sliced off their own legs and served them to you as the most delicious dish the three of you had ever tasted."
-    #             else:
-    #                 "Inside the second tower, you discovered the finest frog chefs of all the land, who quickly sliced off their own legs and served them to you as the most delicious dish either of you had ever tasted."
-    #             $secondTower = True
-    #             jump chippinghamManor
-    #         "If you explored the third tower, turn to page 258." if not thirdTower:
-    #             if pig:
-    #                 "Inside the third tower, you discovered a great harem of finely-dressed frog courtesans, who poured rich wines and made witty conversation with you until you were all completely sloshed and dizzy from the refined repartee."
-    #             else:
-    #                 "Inside the third tower, you discovered a great harem of finely-dressed frog courtesans, who poured rich wines and made witty conversation with you until you were both completely sloshed and dizzy from the refined repartee."
-    #             $thirdTower = True
-    #             jump chippinghamManor
-    #         "If you explored the fourth tower, turn to page 259." if not fourthTower:
-    #             $fourthTower = True
-    #             "Inside the fourth tower was a great fountain of emeralds and sapphires and precious gems, which splashed out over a scale model replica of the forest. You could see immediately that a single gemstone from this fountain was so valuable that it would bankrupt the richest sultan."
-    #             f "I spent my whole life looking up at this place. Hard to believe we're actually here."
-    #             jump chippinghamManor
-    #         "If you explored the fifth tower, turn to page 260." if not fifthTower:
-    #             $fifthTower = True
-    #             "Inside the fifth tower you found a gigantic closet of the finest clothes, rich silks and suits and uniforms of office, all extremely masculine in cut and befitting of a king."
-    #             jump chippinghamManor
-    #         "If you explored the sixth tower, turn to page 262." if not sixthTower:
-    #             $sixthTower = True
-    #             "Inside the sixth tower you found the Library of Alexandria. A small plaque explained that Brildebrogue had miraculously saved the books from the fires, and they'd been stored here safely for all this time."
-    #             jump chippinghamManor
-    #         "If you explored the seventh tower, turn to page page 264." if firstTower:
-    #             "Inside the seventh and tallest tower you found only a tiny wooden closet."
-    #             show hand onlayer transient:
-    #                 yalign 0.68#0.743
-    #                 xalign 0.5
-    #             menu:
-    #                 "A golden keyhole shone out from the closet door."
-    #                 "If you opened the closet, turn to page 275.":
-    #                     "You inserted the key, and slowly opened the door with a long creak."
-    #                     call hideAll
-    #                     show mushroombasementbg at artPos
-    #                     "As soon as the door opened, a stream of blood flowed over you, and you saw seven dead frog brides hanging all along the walls, some only skeletons."
-    #                     if pig:
-    #                         "The pig squealed in terrible fear."
-    #                     jump brildebrogueCloset
-    #                 "If you went back, turn to page 190.":
-    #                     jump chippinghamManor
-    #         "If you patiently waited for Brildebrogue, turn to page 161.":
-    #             f "Well, if you're not going to open this damn closet, I am."
-    #             "He rushed to the seventh and tallest tower, and unlocked the closet with the golden key."
-    #             "He slowly turned the key, and opened the closet door with a long creak."
-    #             call hideAll
-    #             show mushroombasementbg at artPos
-    #             "As soon as the door opened, a stream of blood flowed over the two of you, and you saw seven dead frog brides hanging all along the closet walls, some only skeletons."
-    #             jump brildebrogueCloset
+label toadConstruct:
+    if construction == 1:
+        #"The toad posted dogs and every door and guards on every wall."
+    elif construction == 2:
+        #The toad led a team of master masons through the house, heading for the basement.
 
+    elif construction == 3:
+        #Show wolf image
+        # f "Did you hear that?"
+        # pov "Hear what?"
+        # f "It sounded like howling."
+        # f "Build faster."
+        #Golden locks were placed on every door, and silver bars at every window.
+    elif construction >= 4:
+        #Layers of ash and salt were drawn around the mansion.
+    elif construction >= 5:
+        #Fine craftsmen delivered heaps of Gold, Silver, Copper, Iron, Mercury, Salt, Ash, and finally Bone.
+    elif construction >= 6:
+        #The toad threw lavish parties inside the locked mansion. Guests were not allowed to enter or leave.
+        #Ash, Salt, Rowan, Iron, Bone. , Iron, Mercury. Tin, lead,
+        #Wolves in the walls
 
     #Brildebrogue has been killed and the toad has assumed his identity (somehow? disguise?).
     #Maybe you are there for the assassination and help him with it??
@@ -6464,61 +6500,72 @@ label toadSolo:
     #He gets more and more crazy security measures
 
     #
-
-    #Meanwhile you investigate the manor to find out what happened to the real BC
-    #The toad infiltrated the manor by sneaking in through one of the downstairs windows while BC was away
-    #Disguised himself as a lowly servant
-    #He investigated and found the cupboard with BC's wives
-    #lured BC to the room with the cupboard by making it seem like something was wrong, his secret was about to be uncovered
-    #stabbed him in the back and threw him into the cupboard
-    #His wives took him in. Their skeletal arms reached up and grabbed him and took him down
-    #pov "You're living a lie."
-    #t "No. He was the imposter. History will remember me as the real thing."\
-    bc "My darlings. My darlings. Are you still in here?"
-    wives "Come closer."
-    wives "Come closer, our love. We can barely see your face."
-    f "Brildebrogue took one step inside. That's when I drew my dagger and ran him through."
-    bc "The devil - Blort? You bastard -"
-    f "With my last strength I pushed him into the closet."
-    f "His seven wives were waiting."
-    wives "Come to us."
-    bc "No, no-"
-    wives "Stay. Stay."
-    f "Their skeletal arms closed around him and dragged him into the blood-soaked blackness."
-    f "I slammed the door. And I haven't regretted a moment of it since."
-    "The sounds of laughter echoed from behind the door."
-    f "This is the life I always wanted. This is why I took the deal. Came here."
-    pov "I don't think this is really what you want."
-    "The closet was closed. A frog sage appeared to inform you that the vault was ready."
-    "The toad walked into the vast, cyclopean mouth of the vault."
-    pov "Why don't you give up the charade? Come with me. You can live in the village. As your true self."
-    f "No. I've come too far now."
-    f "I am Brildebrogue Chippingham, and I will never die."
-    f "The sages will speak of me. The bards will sing poems."
-    f "The great statues outside will stand forever. Historians will speak of me a thousand years hence."
-    f "There will not be a soul on this earth who does not know my name."
-    f "There is nothing to fear. I am already immortal."
-    "You embraced. The cavernous emptiness of his vault loomed before him."
-    "He gave you a final wave. Then, he was swallowed up into the darkness."
-    "The lock sealed. The magic shook the earth, and a great golden sigil appeared upon it."
-    show wolf6 onlayer transient zorder 100
-    "The barriers were set. The guards of silver, gold, lead, rowan, ash, oak, and the final layer of bone. A great silence settled upon the house."
-    "As you wiped the tears away, you wondered what you were crying about."
-    "Where did these tears come from? You strained your memory, but you could not recall."
-    "You found yourself in a large, empty manor, for no reason you can remember."
-    "Ah, well. No need to worry."
-    "You dried your eyes, and began the walk back to the village."
-    "There is nothing else to tell."
-    stop music fadeout 1.0
-    play audio wolfApproaches
-    stop ambient2 fadeout 2.0
-    stop ambient1 fadeout 20.0
-    "Are you getting tired of this story yet?"
-    "No?"
-    "Well, I’ve had enough for this round. If you want any more you can make it up yourself."
-    call endStamp
-    "The rat’s tail is off. That’s the end."
-    jump end
+    label toadSoloFinale:
+        #Meanwhile you investigate the manor to find out what happened to the real BC
+        f "I see you've found it."
+        f "Very well. You deserve to know."
+        f "In a time already long past, I came to this mansion as a lowly servant."
+        f "It was owned by a great frog named Brildebrogue Chippingham, who was so handsome that light shone from his face as if from the sun. The wind whistled for him, and the cobblestones sighed in joy to receive his feet upon them. Everyone in the land adored him."
+        f "Sweeping his floors, and dusting his closets, I searched through the manor each night."
+        f "Finally, I found his secret."
+        f "I stole his key, and left it in the hall, so that he would find it and think something was wrong."
+        f "He came across it late at night."
+        bc "What's this?"
+        f "In a panic, he ran to the cupboard on the seventh floor of the seventh tower."
+        f "He wrested open the door in a feverish state."
+        bc "My darlings. My darlings. Are you still in here?"
+        wives "Come closer."
+        wives "Come closer, our love. We can barely see your face."
+        f "Brildebrogue took one step inside. That's when I drew my dagger and ran him through."
+        bc "The devil - Blort? You bastard -"
+        f "With my last strength I pushed him into the closet."
+        f "His seven wives were waiting."
+        wives "Come to us."
+        bc "No, no-"
+        wives "Stay. Stay."
+        f "Their skeletal arms closed around him and dragged him into the blood-soaked blackness."
+        f "I slammed the door. I took up his clothes and his mantle."
+        f "None could tell the difference. Or perhaps they don't care to, as long as the money keeps flowing."
+        "The sounds of laughter echoed from behind the door."
+        pov "You're living a lie."
+        f "No."
+        f "He was the imposter. History will remember me as the real thing."
+        "The toad walked over and swung the closet door shut."
+        "A frog sage appeared to inform you that the vault was ready."
+        f "Good. Come with me."
+        "You both walked down to the vault. It loomed before you."
+        pov "Is this really what you wanted?"
+        f "Of course. This is the life I always wanted. This is why I took the deal."
+        "The toad walked into the vast, cyclopean mouth of the vault."
+        pov "Why don't you give up the charade? Come with me. You can live in the village. As your true self."
+        f "No. I've come too far now."
+        f "I am Brildebrogue Chippingham, and I will never die."
+        f "The sages will speak of me. The bards will sing poems."
+        f "The great statues outside will stand forever. Historians will speak of me a thousand years hence."
+        f "There will not be a soul on this earth who does not know my name."
+        f "There is nothing to fear. I am already immortal."
+        "You embraced. The cavernous emptiness of his vault loomed before him."
+        "He gave you a final wave. Then, he was swallowed up into the darkness."
+        "The lock sealed. The magic shook the earth, and a great golden sigil appeared upon it."
+        "The barriers were set. The guards of silver, gold, lead, rowan, ash, oak, and the final layer of bone."
+        show wolf6 onlayer transient zorder 100
+        "A great silence settled upon the house."
+        "As you wiped the tears away, you wondered what you were crying about."
+        "Where did these tears come from? You strained your memory, but you could not recall."
+        "You found yourself in a large, empty manor, for no reason you could remember."
+        "Ah, well. No need to worry."
+        "You dried your eyes, and began the walk back to the village."
+        "There is nothing else to tell."
+        stop music fadeout 1.0
+        play audio wolfApproaches
+        stop ambient2 fadeout 2.0
+        stop ambient1 fadeout 20.0
+        "Are you getting tired of this story yet?"
+        "No?"
+        "Well, I’ve had enough for this round. If you want any more you can make it up yourself."
+        call endStamp
+        "The rat’s tail is off. That’s the end."
+        jump end
 
     # call hideAll
     # show darkforestbg at artPos
@@ -9002,11 +9049,12 @@ label wolfNameEnd:
             pov "...Do you think I should do it?"
             if persistent.toadVanished == False:
                 "The toad speaks."
-                f "I took the offer myself, my friend. A long time ago."
-                f "I was young. Jealous of everyone and everything. I wanted to be a lot more than I was."
-                f "The world at that time was not kind of me. Coming in here was a fresh start."
+                f "I was just a child, when I came in here. A long, long time ago."
+                f "You may have seen my little drawings. I think they've almost taken a life of their own."
+                f "I was a jealous little thing. Coming in here was everything I ever wanted. The castle, the magic, the adventure."
+                f "And yes, of course after a while I rebelled against it. I wanted you to save us. But now that we come to the pointy end of things..."
                 "His eyes are dark. He stares out at the night sky for a long time."
-                f "I know perhaps it would be best for the beast to be destroyed. And us with it."
+                #f "I know perhaps it would be best for the beast to be destroyed. And us with it."
                 f "I have lived a long time now. But I find I am still a small and selfish man."
                 f "I... I don't want to go."
                 "His voice breaks."
@@ -9020,7 +9068,7 @@ label wolfNameEnd:
                 t "I've had the life and the form I always wanted."
                 t "I could never have had these things in the time I was born."
                 t "I stole the hands of God. I spat in the face of heaven. I danced on the head of the needle. I wreaked chaos on the earth, and all who saw me fell down in awe."
-                t "...I must have lived here a hundred years now. Or more. All of us have."
+                t "...I must have lived here a hundred years now. Or more."
                 t "Long enough, I think."
                 t "Everything needs to end sometime."
                 t "I'm sorry you came in at the end of things. I wish we had more time together."
@@ -9030,7 +9078,7 @@ label wolfNameEnd:
             if persistent.witchVanished == False:
                 "The witch spoke."
                 w "Well. I-I, um... I wish I'd had more time to prepare for this."
-                w "I didn't expect to present, you know, a thesis defense on whether this world should be destroyed."
+                w "I didn't expect to present, you know, a thesis defence on whether this world should be destroyed."
                 w "I could really use some tea."
                 pov "A hot cup of chamomile tea appeared in her hand."
                 "A hot cup of chamomile tea appeared in her hand."
@@ -9909,6 +9957,9 @@ label end:
     #The long sun, Gene Wolff. Hatoful Boyfriend. Higurashi when they cry. Doki Doki literature club. 999, ever 17, virtue's last reward.
     #Various fairy tales available on the internet archives. https://sites.pitt.edu/~dash/perrault02.html
     #https://theconversation.com/how-early-australian-fairy-tales-displaced-aboriginal-people-with-mythical-creatures-and-fantasies-of-empty-land-185592
+    #Ghost Trick: Phantom Detective
+    #Phoenix Wright: Ace Attourney series
+    #The "Heart of Gold" scene from the Hitchhiker's guide to the galaxy game
     #$ renpy.pause ()
     #hide text
 
