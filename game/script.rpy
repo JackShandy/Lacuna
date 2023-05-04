@@ -51,13 +51,13 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 2
+    default persistent.vanished = 0
 
     #Who has disappeared specifically - main cast
     default persistent.toadVanished = False
-    default persistent.witchVanished = True
+    default persistent.witchVanished = False
     default persistent.thiefVanished = False
-    default persistent.mushroomVanished = True
+    default persistent.mushroomVanished = False
 
     # Which side characters have disappeared
     #Your mum
@@ -2885,11 +2885,11 @@ label banquet:
                 #     ""
                 $mayorChat += 1
                 jump banquetMenu
-            #If you're going out to hunt the witch, be wary. There's a wolf out there.
-            #My sister heard it howling, once. The wolf appeared in her head, and spoke to her.
-            #You will have three days, it said.
-            #Three days passed, and I never saw her again.
-            #Do you hear that?
+                #If you're going out to hunt the witch, be wary. There's a wolf out there.
+                #My sister heard it howling, once. The wolf appeared in her head, and spoke to her.
+                #You will have three days, it said.
+                #Three days passed, and I never saw her again.
+                #Do you hear that?
             "If you talked to the Second Pig, turn to page 266." if pig2Rand == 1 and pigChat <= 7 and not persistent.pigsVanished:
                 if pig:
                     if pigChat == 0:
@@ -3143,7 +3143,7 @@ label banquet:
                             f "Return soon! You can't possibly leave without sampling some of this fine green mango salad over here, absolutely sensational!"
                             jump banquetMenu
             "If you wandered into the woods, turn to page 84." if persistent.toadVanished or persistent.witchVanished:
-                if thief.vanished == False and shStopped == False:
+                if persistent.thiefvanished == False and persistent.mushroomvanished == False and shStopped == False:
                     sh "H-hold on, friend! Leaving so soon?"
                     sh "We're just hatching a plan to catch that dastardly Master Thief. We could use your help!"
                     sh "Come on, let's get back to the village."
@@ -3356,7 +3356,7 @@ label town:
                 $wellChat += 1
                 jump townExplore
             "If you wandered into the woods, turn to page 157." if persistent.thiefVanished or persistent.mushroomVanished:
-                if toad.vanished == False and toadStopped == False:
+                if persistent.toadvanished == False and and persistent.witchvanished == False and toadStopped == False:
                     f "W-wait just a second there!"
                     f "This is no time to be wandering off into the woods! We have an accursed witch to bring to justice. Not to mention a fine banquet to sample."
                     f "Come, let's get back to the village. I can tell you all about the plan."
@@ -9002,11 +9002,12 @@ label wolfNameEnd:
             pov "...Do you think I should do it?"
             if persistent.toadVanished == False:
                 "The toad speaks."
-                f "I took the offer myself, my friend. A long time ago."
-                f "I was young. Jealous of everyone and everything. I wanted to be a lot more than I was."
-                f "The world at that time was not kind of me. Coming in here was a fresh start."
+                f "I was just a child, when I came in here. A long, long time ago."
+                f "You may have seen my little drawings. I think they've almost taken a life of their own."
+                f "I was a jealous little thing. Coming in here was everything I ever wanted. The castle, the magic, the adventure."
+                f "And yes, of course after a while I rebelled against it. I wanted you to save us. But now that we come to the pointy end of things..."
                 "His eyes are dark. He stares out at the night sky for a long time."
-                f "I know perhaps it would be best for the beast to be destroyed. And us with it."
+                #f "I know perhaps it would be best for the beast to be destroyed. And us with it."
                 f "I have lived a long time now. But I find I am still a small and selfish man."
                 f "I... I don't want to go."
                 "His voice breaks."
@@ -9020,7 +9021,7 @@ label wolfNameEnd:
                 t "I've had the life and the form I always wanted."
                 t "I could never have had these things in the time I was born."
                 t "I stole the hands of God. I spat in the face of heaven. I danced on the head of the needle. I wreaked chaos on the earth, and all who saw me fell down in awe."
-                t "...I must have lived here a hundred years now. Or more. All of us have."
+                t "...I must have lived here a hundred years now. Or more."
                 t "Long enough, I think."
                 t "Everything needs to end sometime."
                 t "I'm sorry you came in at the end of things. I wish we had more time together."
@@ -9030,7 +9031,7 @@ label wolfNameEnd:
             if persistent.witchVanished == False:
                 "The witch spoke."
                 w "Well. I-I, um... I wish I'd had more time to prepare for this."
-                w "I didn't expect to present, you know, a thesis defense on whether this world should be destroyed."
+                w "I didn't expect to present, you know, a thesis defence on whether this world should be destroyed."
                 w "I could really use some tea."
                 pov "A hot cup of chamomile tea appeared in her hand."
                 "A hot cup of chamomile tea appeared in her hand."
@@ -9909,6 +9910,9 @@ label end:
     #The long sun, Gene Wolff. Hatoful Boyfriend. Higurashi when they cry. Doki Doki literature club. 999, ever 17, virtue's last reward.
     #Various fairy tales available on the internet archives. https://sites.pitt.edu/~dash/perrault02.html
     #https://theconversation.com/how-early-australian-fairy-tales-displaced-aboriginal-people-with-mythical-creatures-and-fantasies-of-empty-land-185592
+    #Ghost Trick: Phantom Detective
+    #Phoenix Wright: Ace Attourney series
+    #The "Heart of Gold" scene from the Hitchhiker's guide to the galaxy game
     #$ renpy.pause ()
     #hide text
 
