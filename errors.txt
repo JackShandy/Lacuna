@@ -2,13 +2,29 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2483: expected statement.
-    warningShown1 = True
-                  ^
+File "game/script.rpy", line 6469: if statement expects a non-empty block.
+    if construction == 1:
+                         ^
 
-File "game/script.rpy", line 2487: expected statement.
-    warningShown2 = True
-                  ^
+File "game/script.rpy", line 6471: expected statement.
+    elif construction == 2:
+                      ^
+
+File "game/script.rpy", line 6474: expected statement.
+    elif construction == 3:
+                      ^
+
+File "game/script.rpy", line 6481: expected statement.
+    elif construction >= 4:
+                      ^
+
+File "game/script.rpy", line 6483: expected statement.
+    elif construction >= 5:
+                      ^
+
+File "game/script.rpy", line 6485: expected statement.
+    elif construction >= 6:
+                      ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Wed May  3 17:47:51 2023
+Sun May  7 17:23:15 2023
