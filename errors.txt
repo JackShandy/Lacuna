@@ -2,29 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 6469: if statement expects a non-empty block.
-    if construction == 1:
-                         ^
-
-File "game/script.rpy", line 6471: expected statement.
-    elif construction == 2:
-                      ^
-
-File "game/script.rpy", line 6474: expected statement.
-    elif construction == 3:
-                      ^
-
 File "game/script.rpy", line 6481: expected statement.
-    elif construction >= 4:
-                      ^
-
-File "game/script.rpy", line 6483: expected statement.
-    elif construction >= 5:
-                      ^
-
-File "game/script.rpy", line 6485: expected statement.
-    elif construction >= 6:
-                      ^
+(Perhaps you left out a " at the end of the first line.)
+    "        "The toad threw lavish parties inside the locked mansion."
+                                                                     ^
+     of guests began arriving for the great gala."
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun May  7 17:23:15 2023
+Sun May 14 15:21:55 2023
