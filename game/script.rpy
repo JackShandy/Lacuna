@@ -391,6 +391,10 @@ init:
     screen countdown:
         timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
 
+    ## Burning Variables
+    #For all the final conversations in the book burning ending
+    define wolfBurning = False
+
 #=====================IMAGES
 #Defining all images
 init:
@@ -1293,6 +1297,8 @@ label start:
             show nightbg at artPos
             jump newStoryFinale
         show nightbg at artPos
+        #TEST please delete
+        jump bookBurnedFinale
 
         if persistent.vanished == 0:
             "This maybe happened, or maybe did not."
@@ -5090,7 +5096,8 @@ label mushroom1:
 label mushroomSolo:
     #TK: To complete
     show rocks onlayer transient zorder 100
-
+    #m "Do I regret it? In some ways."
+    #m "But then, would things have been any better if I stayed behind?"
     #When mushroom disappears show this
     show wolf13 onlayer transient zorder 100
 
@@ -8997,8 +9004,54 @@ label wish:
                     $silenceWho = True
                     jump wolfNameEnd
 
+
+##=============== Nice to have: This is a short part of the ending that changes based on which specific combination of characters are alive
+##label goodbyeFriends:
+    ## SOLO ENDINGS
+    ##
+    ##=Thief Solo Ending
+    #if not persistent.thiefvanished and persistent.witchvanished and persistent.toadvanished and persistent.mushroomvanished:
+    ##=Witch Solo Ending
+    #if not persistent.witchvanished and persistent.toadvanished and persistent.mushroomvanished and persistent.thiefvanished:
+    ##=Toad Solo Ending
+    #if not persistent.toadvanished and persistent.witchvanished and persistent.mushroomvanished and persistent.thiefvanished:
+    ##=Mushroom Solo Ending
+    #if not persistent.mushroomvanished and persistent.toadvanished and persistent.witchvanished and persistent.thiefvanished:
+    ##
+    ## DUO ENDINGS
+    ##
+    ##= Thief + Witch
+    #if not persistent.thiefvanished and not persistent.witchvanished and persistent.toadvanished and persistent.mushroomvanished:
+    ##= Thief + Toad
+    #if not persistent.thiefvanished and not persistent.toadvanished and persistent.witchvanished and persistent.mushroomvanished:
+    ##= Thief + Mushroom
+    #if not persistent.thiefvanished and not persistent.mushroomvanished and persistent.witchvanished and persistent.toadvanished:
+    ##= Witch + Toad
+    #if not persistent.witchvanished and not persistent.toadvanished and persistent.thiefvanished and persistent.mushroomvanished:
+    ##= Witch + Mushroom
+    #if not persistent.witchvanished and not persistent.mushroomvanished and persistent.thiefvanished and persistent.toadvanished:
+    ##= Mushroom + Toad
+    #if not persistent.mushroomvanished and not persistent.toadvanished and persistent.witchvanished and persistent.thiefvanished:
+    ##
+    ## TRIO ENDINGS
+    ##
+    ##= Thief + Witch + Toad
+    #if not persistent.thiefvanished and not persistent.witchvanished and not persistent.toadvanished and persistent.mushroomvanished:
+    ##= Thief + Witch + Mushroom
+    #if not persistent.thiefvanished and not persistent.witchvanished and not persistent.mushroomvanished and persistent.toadvanished:
+    ##= Thief + Toad + Mushroom
+    #if not persistent.thiefvanished and not persistent.toadvanished and not persistent.mushroomvanished and persistent.witchvanished:
+    ##= Witch + Toad + Mushroom
+    #if not persistent.witchvanished and not persistent.toadvanished and not persistent.mushroomvanished and persistent.thiefvanished:
+    ##
+    ## QUAD ENDING
+    ##
+    ##= Thief + Witch + Toad + Mushroom
+    #if not persistent.thiefvanished and not persistent.witchvanished and not persistent.toadvanished and not persistent.mushroomvanished:
+
 #Moment where you talk to the wolf and learn the truth.
 label wolfNameEnd:
+
     call hideAll from _call_hideAll_118
     show emptybg at artPos
     #TK: Should I just make this the same as the wolfSilence one?? remember that they are duplicates
@@ -9047,8 +9100,6 @@ label wolfNameEnd:
             "As I suspect it is not a good place for you."
             "I offered them another world."
             "Of course, in time, they would disappear. Nothing lasts forever. They knew that when they took the deal. "
-            "The terror was great, but the dream was marvellous."
-            "We must treasure the dream, whatever the terror."
             jump wolfNameEnd
         "I want to talk to my friends." if silenceRest and not silenceFriendsTalk:
             $silenceFriendsTalk = True
@@ -9056,6 +9107,8 @@ label wolfNameEnd:
             call hideAll from _call_hideAll_119
             show forest4bg at artPos
             "A door opened beside the fire. You walked into it and found yourself deep in the woods. Your surviving friends were there to greet you. A campfire crackled in the center of the clearing."
+            #TK: unique ending sentence here
+            ##jump goodbyeFriends
             if persistent.toadVanished == False:
                 f "Th-thank God. You're ok?"
                 f "The toad coughs. He can't look you in the eye."
@@ -9178,12 +9231,10 @@ label wolfNameEnd:
             "There are only two paths ahead of you now."
             "You can burn the book, destroying me and all within it, and free yourself."
             "Or you can give yourself up, and live here in happiness for all your days."
+            "Listen. Do not destroy this story lightly."
+            "The terror was great, but the dream was marvellous."
+            "We must treasure the dream, no matter the terror."
             jump wolfNameEnd
-        #TK: Advice from friends.
-        #If toad is alive
-        #if witch is alive
-        #if thief is alive
-        #if mushroom is alive.
         "Then I choose to burn the book." if silenceNo:
             "Very well. I see you've made your choice."
             jump bookBurnedFinale
@@ -9662,6 +9713,8 @@ label newStoryFinale:
 
 #Ending where you burn the book.
 label bookBurnedFinale:
+
+
     "Time to finish things."
     "Just hold the book over the fire."
     #pause 0.2 with hpunch
@@ -9681,6 +9734,7 @@ label bookBurnedFinale:
     # The last part of the page burns up and is gone forever.
     # The black space lingers for a bit.
     #Game quits after the movie has run its course (IE, the book has burned).
+
     play sound pageFlip
     #Disables the quick menu
     $ quick_menu = False
@@ -9732,25 +9786,19 @@ label bookBurnedFinale:
                 xalign 0.5
             menu:
                 "You looked out over the dark water."
-                "If you went to join the thief, go to page 53." if persistent.thiefVanished == False and thiefBurning == False:
-                    $thiefBurning = True
-                    "The goblin train was sitting on tracks in the center of the water, gently puffing clouds of smoke. The goblins were enjoying a great feast on the water's edge."
-                    goblin1 "Go on. Have some of the goblin fruits. No harm in it now!"
-                    #goblin2
-                    #goblin3
-                    #goblin4
-                    #goblinQueen
-                    t "Don't worry. You made the right choice."
-                    #t "My friend, I've been ready to die every day of my life."
-                    "You laughed and drank and celebrated with them for hours."
-
-                #If thief is alive: There with all the goblins and the goblin queen
-                    #If mushroom is alive: makes a comment
-                #if mushroom is alive: Mushroom
                 "If you returned to the middle of the village, turn to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
-
+                "If you waked to Brildebrogue Chippingham's Manor, turn to page X." if not persistent.toadvanished:
+                    ""
+                "If you walked out to the witch's cottage, turn to page X." if not persistent.witchvanished:
+                    ""
+                # #The mayor
+                # default persistent.mayVanished = False
+                #if the first pig, the second pig, and / or the third pig are alive
+                # #Pig 1, 2, and 3
+                # default pigsVanished = False
+                #The Gutterlings
     label townBurning:
         call hideAll from _call_hideAll_124
         show townextbg at artPos
@@ -9761,9 +9809,21 @@ label bookBurnedFinale:
                 xalign 0.5
             menu:
                 "Fruit bats chirped and swirled overhead."
-                #if toad is alive: Brildebrogue chippingham
-                #if witch is alive
-                #if the thing in the well is alive
+                "If you went to join the thief, go to page 53." if persistent.thiefVanished == False and thiefBurning == False:
+                    jump thiefBurning
+                "If you explored the old well, turn to page X.":
+                    ""
+                    # #The thing in the well
+                    # default persistent.wellVanished = False
+                    #Persistent variable for if you explored the well before
+                # #The hunter
+                # default persistent.hVanished = False
+                # #Goose-girl
+                # default persistent.goVanished = False
+                # #The old gloom-monger
+                # default persistent.gmVanished = False
+                # #The sparrow-herder
+                # default persistent.shVanished = False
 
                 "If you returned to the middle of the village, go back to page 50.":
                     "You turned and walked back to the centre of the village."
@@ -9779,75 +9839,100 @@ label bookBurnedFinale:
                 xalign 0.5
             menu:
                 "The wet cool mist of the rainforest settled around you."
-    #If your mum is alive
-                #if the woman in black is alive
-                #if the man in white is alive
-                #if the man in red is alive
-                        #if the devil's sooty grandma is alive - with the devil
-                #Discussion with the wolf itself
-                    #"That battle was a good one, wasn't it?"
-                    #"Reminded me of the old days."
-                    #"It is good that you won, in the end. With my True Name, too."
-                    #"That is the right way."
-                    #"Thank you for giving me one last fight."
-                    #"Please, could you do me just one favour?"
-                    #"Remember my name."
-                    #jump woodsBurning
+                "If you walked home, turn to page X.":
+                    ""
+                    #You meet the 3 travellers.
+                    #if the woman in black is alive
+                    #if the man in white is alive
+                    #if the man in red is alive
+                    #If your mum is alive
+                    # #Your mum
+                    # default persistent.mumVanished = False
+                    # #God
+                    # default persistent.miwVanished = False
+                    # #The devil
+                    # default persistent.mirVanished = False
+                    # #Death
+                    # default persistent.wibVanished = False
+
+                "If you walked to the Mushroom's old tree, turn to page X.":
+                    ""
+
+                    jump woodsBurningMenu
+                "If you talked to the Wolf, turn to page X." if not wolfBurning:
+                    "That battle was a good one, wasn't it?"
+                    "Reminded me of the old days."
+                    "It is good that you won, in the end. With my True Name, too."
+                    "That is the right way."
+                    "Thank you for giving me one last fight."
+                    "Please, could you do me just one favour?"
+                    "Remember my name."
+                    $wolfBurning == True
+                    jump woodsBurningMenu
+                "If you looked up at the Firmament, go to page X.":
+                    ""
+                    #Nightgodbg
+                    #You looked up at the firmament. The eye seemed to be smiling.
                 "If you returned to the middle of the village, go back to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
 
 
-    #The village menu reappears, you can roam the village and the woods to talk to people
-    #if the bat, the rat, the cockatoo and the crowshrike are alive
-    #if hunter is alive
-    #if mayor is alive
-    #If scraggs mckenzie and the boys are alive
-    #if the gloommonger is alive
-    #"You'll have to live for all of us, now. You're the only one who will remember any of us.
-    #if brildebrogue chippingham is alive
-    #if the goose girl is alive
-    #if the goblins are alive
-    #if the goblin queen is alive
-    #if the sparrow-herder is alive
-    #if the first pig, the second pig, and / or the third pig are alive
-    # Which side characters have disappeared
-    # #Your mum
-    # default persistent.mumVanished = False
-    # #God
-    # default persistent.miwVanished = False
-    # #The devil
-    # default persistent.mirVanished = False
-    # #Death
-    # default persistent.wibVanished = False
-    # #The devil's grandmother
-    # default persistent.dgVanished = False
-    # #Brildebrogue chippingham
-    # default persistent.bcVanished = False
-    # #The hunter
-    # default persistent.hVanished = False
-    # #The old gloom-monger
-    # default persistent.gmVanished = False
-    # #The thing in the well
-    # default persistent.wellVanished = False
-    # #Scraggs McKenzie and the boys
-    # default persistent.scVanished = False
-    # #The mayor
-    # default persistent.mayVanished = False
-    # #Goose-girl
-    # default persistent.goVanished = False
-    # #The sparrow-herder
-    # default persistent.shVanished = False
-    # #Strange and crooked old man
-    # default persistent.somVanished = False
-    # #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
-    # default persistent.batVanished = False
-    # #Goblin 1, 2, 3, 4, and the goblin queen
-    # default goblinsVanished = False
-    # #Pig 1, 2, and 3
-    # default pigsVanished = False
 
-    #If the gutterlings are alive
+    label witchBurning:
+        ""
+        #Talk to the witch
+        #Can jump in the fire to go to hell
+        #if the devil's sooty grandma is alive - can talk to her and the devil
+        # #The devil's grandmother
+        # default persistent.dgVanished = False
+        # #The devil
+        # default persistent.mirVanished = False
+
+        jump woodsBurning
+
+    label toadBurning:
+        ""
+        #"Explore Brildebrogue manor
+        # #Brildebrogue chippingham
+        # default persistent.bcVanished = False
+
+        #if the bat, the rat, the cockatoo and the crowshrike are alive
+        #Prickle, crawl, shudder and clink
+        # #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
+        # default persistent.batVanished = False
+
+        jump woodsBurning
+
+    label mushroomBurning:
+        ""
+        #m "You'll have to live for all of us, now. You're the only one who will remember any of us."
+        # #Scraggs McKenzie and the boys
+        # default persistent.scVanished = False
+        # #Strange and crooked old man
+        # default persistent.somVanished = False
+        jump woodsBurning
+
+    label thiefBurning:
+        ""
+        $thiefBurning = True
+        "The goblin train was sitting on tracks in the center of the water, gently puffing clouds of smoke. The goblins were enjoying a great feast on the water's edge."
+        goblin1 "Go on. Have some of the goblin fruits. No harm in it now!"
+        #If the goblins vanished
+        #default persistent.goblinsVanished = False
+
+        #goblin2
+        #goblin3
+        #goblin4
+        #goblinQueen
+        t "Don't worry. You made the right choice."
+        #t "My friend, I've been ready to die every day of my life."
+        "You laughed and drank and celebrated with them for hours."
+
+        #If thief is alive: There with all the goblins and the goblin queen
+            #If mushroom is alive: makes a comment
+
+        jump woodsBurning
 
 #If you restart the game after burning the book, you just see a charred scrap. The book has been destroyed.
 label burnEnd:
