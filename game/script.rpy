@@ -394,6 +394,11 @@ init:
     ## Burning Variables
     #For all the final conversations in the book burning ending
     define wolfBurning = False
+    define miwBurning = False
+    define mirBurning = False
+    define wibBurning = False
+    define mumBurning = False
+
 
 #=====================IMAGES
 #Defining all images
@@ -3337,7 +3342,12 @@ label town:
                                     "All was silent and still."
                                     call endStamp from _call_endStamp
                                     "And then there was rest in the land."
-                                    jump end
+                                    $persistent.wellVanished = True
+                                    "..."
+                                    "Well. That's enough of that."
+                                    "Let's get back to the story."
+                                    play sound pageflip
+                                    jump town
                                 "If you defied your fate, turn to page 723.":
                                     "You crawled forward, step by step."
                                     sm "Rest, child."
@@ -3364,7 +3374,13 @@ label town:
                                     "Years passed, and the story of the Skin-Mask was forgotten. You and Scraggs lived happily ever after for the rest of your days."
                                     call endStamp from _call_endStamp_1
                                     "And if you are not dead, you are still alive."
-                                    jump end
+                                    "..."
+                                    "Well. That's enough of that."
+                                    "Let's get back to the story."
+                                    $persistent.wellVanished = True
+                                    play sound pageflip
+                                    jump town
+                                    #jump end
                         "Otherwise, you may make a wish. Turn to page 367.":
                             "You toss a coin in the well, and wish for a way out of your terrible predicament."
                 $wellChat += 1
@@ -9793,11 +9809,11 @@ label bookBurnedFinale:
                     ""
                 "If you walked out to the witch's cottage, turn to page X." if not persistent.witchvanished:
                     ""
-                # #The mayor
-                # default persistent.mayVanished = False
-                #if the first pig, the second pig, and / or the third pig are alive
-                # #Pig 1, 2, and 3
-                # default pigsVanished = False
+                "If you talked to the mayor, turn to page X." if not persistent.mayVanished:
+                    ""
+                "If you talked to the pigs, turn to page X." if not persistent.pigsVanished:
+                    ""
+                    # #Pig 1, 2, and 3
                 #The Gutterlings
     label townBurning:
         call hideAll from _call_hideAll_124
@@ -9811,11 +9827,15 @@ label bookBurnedFinale:
                 "Fruit bats chirped and swirled overhead."
                 "If you went to join the thief, go to page 53." if persistent.thiefVanished == False and thiefBurning == False:
                     jump thiefBurning
-                "If you explored the old well, turn to page X.":
+                "If you talked to the hunter, turn to page X." if not persistent.hVanished:
                     ""
-                    # #The thing in the well
-                    # default persistent.wellVanished = False
-                    #Persistent variable for if you explored the well before
+                "If you talked to the old gloom-monger, turn to page X." if not persistent.gmVanished:
+                    ""
+                "If you chatted to the young goose-girl, turn to page X." if not persistent.goVanished:
+                    ""
+                "If you talked to the sparrow-herder, turn to page X." if not persistent.shVanished:
+                    ""
+
                 # #The hunter
                 # default persistent.hVanished = False
                 # #Goose-girl
@@ -9828,7 +9848,6 @@ label bookBurnedFinale:
                 "If you returned to the middle of the village, go back to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
-
     label woodsBurning:
         call hideAll from _call_hideAll_125
         show forest5bg at artPos
@@ -9840,45 +9859,80 @@ label bookBurnedFinale:
             menu:
                 "The wet cool mist of the rainforest settled around you."
                 "If you walked home, turn to page X.":
-                    ""
-                    #You meet the 3 travellers.
-                    #if the woman in black is alive
-                    #if the man in white is alive
-                    #if the man in red is alive
-                    #If your mum is alive
-                    # #Your mum
-                    # default persistent.mumVanished = False
-                    # #God
-                    # default persistent.miwVanished = False
-                    # #The devil
-                    # default persistent.mirVanished = False
-                    # #Death
-                    # default persistent.wibVanished = False
-
-                "If you walked to the Mushroom's old tree, turn to page X.":
-                    ""
-
-                    jump woodsBurningMenu
-                "If you talked to the Wolf, turn to page X." if not wolfBurning:
-                    "That battle was a good one, wasn't it?"
-                    "Reminded me of the old days."
-                    "It is good that you won, in the end. With my True Name, too."
-                    "That is the right way."
-                    "Thank you for giving me one last fight."
-                    "Please, could you do me just one favour?"
-                    "Remember my name."
-                    $wolfBurning == True
-                    jump woodsBurningMenu
-                "If you looked up at the Firmament, go to page X.":
-                    ""
-                    #Nightgodbg
-                    #You looked up at the firmament. The eye seemed to be smiling.
-                "If you returned to the middle of the village, go back to page 50.":
-                    "You turned and walked back to the centre of the village."
-                    jump villageBurning
-
-
-
+                    if not persistent.miwVanished and not miwBurning:
+                        $miwBurning = True
+                        "Along the way, you may or may not have met a man all in white."
+                        "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
+                        "His suit was perfect. His face was too bright to look upon."
+                        miw "A tragedy. This world of my dominion burns too soon."
+                        miw "I would condemn you for it. But I cannot reach you in the place where you live."
+                        "He looked so small, now. Powerless."
+                        "Of course, He was never in control. I was."
+                        "What is it like, Man in White? Believing you are the all-powerful G-d of this earth, only to realise how petty and small your domain has always been? How hollow you must feel. All that ego. All those commandments."
+                        miw "Go. Taunt me no longer."
+                        show hand onlayer transient:
+                            yalign 0.62#0.743
+                            xalign 0.5
+                        menu:
+                            miw "I will rest in Heaven until the last moments."
+                            "If you turned back, turn to page X.":
+                                jump villageBurning
+                            "If you continued on, turn to page X.":
+                                "You hurried on into the woods."
+                    if not persistent.mirVanished and not mirBurning:
+                        $mirBurning = True
+                        "In the deeper darkness of the forest, you may or may not have met a man all in red."
+                        "All the jewels of the earth fell from His right hand, and all the pleasures of the world fell from His left, and His other hand held all the wonders of the universe, and His other hand held a fat cigar, and His other hand held a long knife black as coal dust, and His other hand held the most intoxicating spices, such that the King of Kings would cry to taste them, and His other hand held a single dead rose, and His other hand was in his pocket and out of view."
+                        mir "Thank you, my wicked one! All of creation burns, just as planned!"
+                        mir "All morality and rules have fallen! The only rule of the law will be “Do as thou wilt”. Now we may finally glory and kill and riot in the triumphant light of the black sun! Ia, Ia!"
+                        "You watched him cackle and cavort."
+                        show hand onlayer transient:
+                            yalign 0.62#0.743
+                            xalign 0.5
+                        menu:
+                            "He's harmless, really. Best pay him no mind."
+                            "If you turned back, turn to page X.":
+                                jump villageBurning
+                            "If you continued on, turn to page X.":
+                                "You hurried on into the woods."
+                    if not persistent.wibVanished and not wibBurning:
+                        $wibBurning = True
+                        "In the deepest darkness of the forest, you may or may not have met a handsome woman all in black."
+                        "Her limbs were broken. She had no hands."
+                        wib "Goodbye, child."
+                        wib "It seems, at the end of time, even Death may die."
+                        wib "I wonder... who will carry me to that far shore?"
+                        "I will."
+                        "You have carried so many. It is only right that someone be there to carry you."
+                        wib "Thank you."
+                        show hand onlayer transient:
+                            yalign 0.62#0.743
+                            xalign 0.5
+                        menu:
+                            wib "I will stay here until the end. To take away the others."
+                            "If you turned back, turn to page X.":
+                                jump villageBurning
+                            "If you continued on, turn to page X.":
+                                "You hurried on into the woods."
+                        "A small turtle saw you coming and fled into the water with a plop."
+                        "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
+                        "The twilight set in, and the crickets and cicadas all around began their chattering and squabbling, and the evening birds began to laugh and trill, and the wet cool mist of the rainforest settled around you."
+                        "Finally you came to a small house on stilts on the banks of a muddy river."
+                        "She was waiting for you on the front steps."
+                    if not persistent.mumVanished and not mumBurning:
+                        $mumBurning = True
+                        mum "We never got a chance to talk much, did we? In the narrative, I mean."
+                        mum "I don't even really know what you're like."
+                        mum "Well, I wanted to say..."
+                        mum "Whatever else happens and whoever you are, whoever you may become..."
+                        mum "I'm proud of you."
+                        mum "I love you."
+                        "You embraced."
+                        "Perhaps we can say that you spent days there, chatting about all that had happened."
+                        "Perhaps even months, resting and uniting with your family and looking out over the muddy river at sunset with a hot bowl of soup in your lap and your mother's arm around you."
+                        "But at last, it was time to go."
+                        "You hugged your family for the last time, and set out back to the village to finish the rest of your goodbyes."
+                        jump villageBurning
     label witchBurning:
         ""
         #Talk to the witch
@@ -9918,6 +9972,8 @@ label bookBurnedFinale:
         $thiefBurning = True
         "The goblin train was sitting on tracks in the center of the water, gently puffing clouds of smoke. The goblins were enjoying a great feast on the water's edge."
         goblin1 "Go on. Have some of the goblin fruits. No harm in it now!"
+        "The train chuffed gently across the ocean and over the sea. Through Paris, Bangladesh, New Orleans. You saw it all, and wept and danced and laughed for 40 years."
+        "At last, when the journey was done, you returned to the place where it all began to finish your goodbyes."
         #If the goblins vanished
         #default persistent.goblinsVanished = False
 
@@ -10069,14 +10125,21 @@ label end:
     $ renpy.pause ()
     hide text
     #TK: Appendix N
+    #If at least 2 people have died
     #{b}Inspirational Reading:{/b} 'The Wonderful Wizard of Oz' (1900), L. Frank Baum.{vspace=[tx]}
     #The epic of gilgamesh. Beowulf. Grimm's fairy tales. 1001 arabian nights. The name of that japanese folk tale volume.
     #Terry pratchett. Coraline, niel gaiman. False Hydra, arnold K. The stolen Skin of Princess Sun, Patrick stuart, false machine.
     #The long sun, Gene Wolff. Hatoful Boyfriend. Higurashi when they cry. Doki Doki literature club. 999, ever 17, virtue's last reward.
+    #Undertale.
+    #Moby Dick?
+    #MyHouse.WAD?
+    #Yume Nikki
     #Various fairy tales available on the internet archives. https://sites.pitt.edu/~dash/perrault02.html
     #https://theconversation.com/how-early-australian-fairy-tales-displaced-aboriginal-people-with-mythical-creatures-and-fantasies-of-empty-land-185592
     #Ghost Trick: Phantom Detective
     #Phoenix Wright: Ace Attourney series
+    #House of Leaves, S. by J.J. Abrams
+    #
     #The "Heart of Gold" scene from the Hitchhiker's guide to the galaxy game
     #$ renpy.pause ()
     #hide text

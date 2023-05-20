@@ -2,11 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 6481: expected statement.
-(Perhaps you left out a " at the end of the first line.)
-    "        "The toad threw lavish parties inside the locked mansion."
-                                                                     ^
-     of guests began arriving for the great gala."
+File "game/script.rpy", line 3343: end of line expected.
+    call endStamp from _call_endStamp onlayer transient
+                                      ^
+
+File "game/script.rpy", line 3375: end of line expected.
+    call endStamp from _call_endStamp_1 onlayer transient
+                                        ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun May 14 15:21:55 2023
+Sat May 20 14:32:12 2023
