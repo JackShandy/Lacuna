@@ -51,11 +51,11 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 0
+    default persistent.vanished = 1
 
     #Who has disappeared specifically - main cast
     default persistent.toadVanished = False
-    default persistent.witchVanished = False
+    default persistent.witchVanished = True
     default persistent.thiefVanished = False
     default persistent.mushroomVanished = False
 
@@ -390,6 +390,15 @@ init:
 
     screen countdown:
         timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
+
+    ## Burning Variables
+    #For all the final conversations in the book burning ending
+    define wolfBurning = False
+    define miwBurning = False
+    define mirBurning = False
+    define wibBurning = False
+    define mumBurning = False
+
 
 #=====================IMAGES
 #Defining all images
@@ -1289,11 +1298,12 @@ label start:
             #xalign 0.5
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
-        jump end
         if persistent.bookEnd:
             show nightbg at artPos
             jump newStoryFinale
         show nightbg at artPos
+        #TEST please delete
+        jump bookBurnedFinale
 
         if persistent.vanished == 0:
             "This maybe happened, or maybe did not."
@@ -1774,7 +1784,7 @@ label introMenu:
         "She gave you a thick coinpurse, and some bread and meat for the journey."
         mum "Go! But be careful of strangers, and do not leave the path."
         show wolf9 onlayer transient zorder 100
-        mum "A terrible {color=#f00}wolf{/color} lurks out there, in the space between the trees."
+        mum "A terrible wolf lurks out there, in the space between the trees."
 
     call hideAll from _call_hideAll_2
     show forestbg at artPos
@@ -2262,11 +2272,13 @@ label introMenu:
             eg "Come, ride along in my carriage, and we shall get there twice as fast."
             if pig:
                 "Your pig sniffed at the carriage suspiciously."
+
+            show wolf1 onlayer transient zorder 100
             show hand onlayer transient:
                 yalign 0.7#0.743
                 xalign 0.5
             menu:
-                eg "This is no night to be walking out alone. Haven't you heard there's {color=#f00}something{/color} in these woods?"
+                eg "This is no night to be walking out alone. Haven't you heard there's something in these woods?"
                 "If you accepted the lift, turn to page 54.":
                     label toadAccept:
                         #if persistent.vanished==3:
@@ -2291,7 +2303,7 @@ label introMenu:
                         "Instead of the graceful and elegant nobleman you expected, you discovered a small, ugly cane toad."
                         "The incense you smelled was nothing but the reek of dirt and mud, the brandy was pond scum, the gleaming carriage was just a rotten old squash, and the graceful arm that beckoned you from behind the curtain was nothing but a wooden prop the toad held in his webbed hand."
                         "You turned to run, but it was too late. With a clap, the toad commanded his steeds."
-                        f "Prickle! Crawl! Shudder and Wink! Be off at once. We have a festival to get to!"
+                        f "Prickle! Crawl! Shudder and Clink! Don't tarry or stall, get us there in a wink!"
                         "The brilliant white horses tore off their clothes and revealed themselves to be a crow-shrike, a rat, a bat and an old black cockatoo."
                         "They cackled and gibbered to each other as they raced off down the road with you, bumping and rolling and pulling apart pinecones and causing terrible devastation as they went."
                         if pig:
@@ -2307,11 +2319,11 @@ label introMenu:
                                 f "I am Brildebrogue Chippingham, and I have never failed at anything in my life."
                             "If you flattered the toad, turn to page 63.":
                                 pov "Absolutely, sir. I'm stunned."
-                                f "As is natural."
-                                f "I find it's better to conceal my true beauty from the common-folk."
+                                f "Only natural."
+                                f "I find it's better to conceal my true nature from the common-folk."
                                 f "Were they to see the incandescent beauty of my true visage at first sight, I dare say they would fall to their knees and wail in shock, so transfixed would they be."
                                 f "I would never be able to get anywhere without them pawing at me and offering me their baked goods and falling about in ecstasy, you know how these people are."
-                                f "But you, I believe, have sufficient grace to withstand my true beauty."
+                                f "But you, I believe, have sufficient grace to withstand the urge."
                             "If your notes say that {b}You are the Devil's Godchild{/b}, turn to page 65." if godfather=="Red":
                                 $toadStole = True
                                 pov "Sir, you've made one mistake. Never tangle with the spawn of the Devil."
@@ -2403,7 +2415,7 @@ label introMenu:
                         if pig:
                             "The pig trotted down after you, looking disgruntled."
                         f "There you are!"
-                        f "Thank you gracefully for the wonderful company, and I wish you the best of luck with the festival!"
+                        f "Thank you for the wonderful company, and I wish you the best of luck with the festival!"
                         jump chapter6
                 #tk check
                 "If you refused the lift, turn to page 55.":
@@ -2901,7 +2913,8 @@ label banquet:
                     if pigChat == 1:
                         p2 "I'm sorry, but you'd better not stay here. I don't think it's safe for us to be so close."
                         p1 "Hm. I see you are still gripped by this insane delusion."
-                        p2 "It's no delusion, brother. I know you've heard {color=#f00}it{/color} too. No matter how you hard you try to hide it."
+                        show wolf5 onlayer transient zorder 100
+                        p2 "It's no delusion, brother. I know you've heard it too. No matter how you hard you try to hide it."
                     if pigChat == 2:
                         p1 "Cast off this madness, Montgomery. Come back to us. We all miss you."
                         show wolf3 onlayer transient zorder 100
@@ -2931,17 +2944,21 @@ label banquet:
                     if pigChat == 1:
                         p2 "I'm sorry, but you'd better not stay here. It's not safe around me."
                     if pigChat == 2:
-                        p2 "You see, I'm expecting {color=#f00}someone{/color}."
+                        show wolf6 onlayer transient zorder 100
+                        p2 "You see, I'm expecting someone."
                     if pigChat == 3:
-                        p2 "I can hear {color=#f00}them{/color} coming now. In the pipes."
+                        show wolf7 onlayer transient zorder 100
+                        p2 "I can hear them coming now. In the pipes."
                     if pigChat == 4:
                         p2 "The others say it's all in my head. But I know better."
                     if pigChat == 5:
-                        p2 "You'd better get moving. You don't want to be here when {color=#f00}they{/color} come."
+                        show wolf8 onlayer transient zorder 100
+                        p2 "You'd better get moving. You don't want to be here when they come."
                     if pigChat == 6:
                         p2 "Or perhaps I'm wrong."
                     if pigChat == 7:
-                        p2 "Perhaps you've already met {color=#f00}them{/color}. You just haven't realised yet."
+                        show wolf9 onlayer transient zorder 100
+                        p2 "Perhaps you've already met them. You just haven't realised yet."
                 $pigChat +=1
                 jump banquetMenu
             "If you talked to the Toad, turn to page 87." if not toadStole2 and not persistent.toadVanished:
@@ -3214,10 +3231,10 @@ label town:
                 #Then go into a further sub-story about the witch. Finally the witch story connects back to you in the village. You never find the resolution to those other two stories.
                 if hunterChat == 0:
                     show wolf10 onlayer transient zorder 100
-                    h "A {color=#f00}wolf{/color}? Don't be silly."
+                    h "A wolf? Don't be silly."
                 if hunterChat == 1:
                     show wolf7 onlayer transient zorder 100
-                    h "There are no {color=#f00}wolves{/color} in Australia."
+                    h "There are no wolves in Australia."
                 if hunterChat == 2:
                     h "Howling? No. You must be imagining it."
                 $hunterChat += 1
@@ -3320,11 +3337,17 @@ label town:
                                     "The warm heat of it slowly closed around your face."
                                     "The skin pressed into your mouth and eyes. It folded over and enveloped you."
                                     sm "Good."
-                                    "The {color=#f00}howling{/color} finally stopped."
+                                    show wolf10 onlayer transient zorder 100
+                                    "The howling finally stopped."
                                     "All was silent and still."
                                     call endStamp from _call_endStamp
                                     "And then there was rest in the land."
-                                    jump end
+                                    $persistent.wellVanished = True
+                                    "..."
+                                    "Well. That's enough of that."
+                                    "Let's get back to the story."
+                                    play sound pageflip
+                                    jump town
                                 "If you defied your fate, turn to page 723.":
                                     "You crawled forward, step by step."
                                     sm "Rest, child."
@@ -3351,7 +3374,13 @@ label town:
                                     "Years passed, and the story of the Skin-Mask was forgotten. You and Scraggs lived happily ever after for the rest of your days."
                                     call endStamp from _call_endStamp_1
                                     "And if you are not dead, you are still alive."
-                                    jump end
+                                    "..."
+                                    "Well. That's enough of that."
+                                    "Let's get back to the story."
+                                    $persistent.wellVanished = True
+                                    play sound pageflip
+                                    jump town
+                                    #jump end
                         "Otherwise, you may make a wish. Turn to page 367.":
                             "You toss a coin in the well, and wish for a way out of your terrible predicament."
                 $wellChat += 1
@@ -3456,8 +3485,9 @@ label thief2:
     show town3bg at artPos
     "Soon, you arrived at the young goose-girls house, which was overrun by honking geese who tore at the furniture and ransacked the pantry until she was at her wit's end."
     show wolf1 onlayer transient zorder 100
-    go "Be careful! They say there's a terrible {color=#f00}wolf{/color} somewhere out in these woods."
-    h "Don't worry, it's just a mad tale. There are no {color=#f00}wolves{/color} in Australia."
+    go "Be careful! They say there's a terrible wolf somewhere out in these woods."
+    show wolf10 onlayer transient zorder 100
+    h "Don't worry, it's just a mad tale. There are no wolves in Australia."
     if pig:
         "The pig quailed from the goose's wrath behind you."
     show hand onlayer transient:
@@ -3819,7 +3849,8 @@ label thief3:
                     pov "I've had this dream many times. I find myself in the middle of the forest. There is a great crowd around me, but I know someone is missing."
                     pov "I look down, and I realise I have no hands. Then I look down, and realise I have no feet."
                     pov "I always know what will happen next. I will look up, into the space between the trees. I am terrified, but I can't stop myself from doing it."
-                    pov "I know I will see {color=#f00}something{/color} there. Waiting for me. In the dream, I know what {color=#f00}it{/color} is. I know what will happen when I see {color=#f00}it{/color}."
+                    show wolf12 onlayer transient zorder 100
+                    pov "I know I will see something there. Waiting for me. In the dream, I know what it is. I know what will happen when I see it."
                     pov "I look up."
                     pov "I wake up screaming. I never remember what I saw there. Until I have the dream again."
                     "There was a long pause."
@@ -5022,7 +5053,7 @@ label mushroom1:
         #"Tell the tale you heard from the Gloom-monger.":
         #"Tell the tale you heard from the Mayor.":
         #"Tell the tale you heard from the Sparrow-Herder.":
-        "If you told the tale of how you attempted to catch the Master Thief, turn to page page 134.":
+        "If you told the tale of how you attempted to catch the Master Thief, turn to page 134.":
             call hideAll from _call_hideAll_27
             show mushroomcavebg at artPos
             if pig:
@@ -5081,7 +5112,8 @@ label mushroom1:
 label mushroomSolo:
     #TK: To complete
     show rocks onlayer transient zorder 100
-
+    #m "Do I regret it? In some ways."
+    #m "But then, would things have been any better if I stayed behind?"
     #When mushroom disappears show this
     show wolf13 onlayer transient zorder 100
 
@@ -5882,7 +5914,7 @@ label toadFinale:
                 $sixthTower = True
                 "Inside the sixth tower you found the Library of Alexandria. A small plaque explained that Brildebrogue had miraculously saved the books from the fires, and they'd been stored here safely for all this time."
                 jump chippinghamManor
-            "If you explored the seventh tower, turn to page page 264." if firstTower:
+            "If you explored the seventh tower, turn to page 264." if firstTower:
                 "Inside the seventh and tallest tower you found only a tiny wooden closet."
                 show hand onlayer transient:
                     yalign 0.68#0.743
@@ -6342,7 +6374,7 @@ label toadFinale:
 #The Toad's path if the Witch has disappeared
 label toadSolo:
     "The toad leapt up from the table and clicked his fingers."
-    f "Prickle! Crawl! Shudder and Wink! Let us be off at once."
+    f "Prickle! Crawl! Shudder and Clink! Don't tarry or stall, get us there in a wink!"
     "His great squash carriage rattled out of the bushes and pulled up right next to the banquet table."
     f "If you get us there before sundown, there's a tenner in it for you!"
     "He tossed a bag of shiny coins to the crow-shrike, the rat, the bat and the old black cockatoo."
@@ -6351,7 +6383,7 @@ label toadSolo:
     cockatoo "Yep, it's good money. Let's do it, boys."
     rat "We'll get you there in a jiffy, mate."
     crowshrike "Caw!"
-    "The squash rattled and bumped down the road with great haste. The toad attempted to amuse you with witty anecdotes, while you politely pretended to listen."
+    "The squash rattled and bumped down the road with great haste. The toad attempted some witty anecdotes while you pretended to listen."
     $persistent.vanished +=1
     $persistent.toadVanished = True
     $purge_saves()
@@ -6359,15 +6391,15 @@ label toadSolo:
     call hideAll
     show manorextbg at artPos
     "Finally you arrived at a stately riverside manor."
-    "With a clap of his hands, the toad summoned a cavalcade of richly dressed frog manservants, who offered you all the finest delicacies from across the world, such that the king of kings would cry to taste them."
-    "With another click, a dozen beautiful frog maids escorted you to golden baths where all the dirt of the journey was washed away, and you were restored to your true forms as the finest frog soprano choir in all the land serenaded you."
+    "With a clap of his hands, the toad summoned a cavalcade of richly dressed frog manservants, who poured flutes of champagne while offering spontaneous and completely unplanned anecdotes about the incredible things Brildebrogue Chippingham had said or done lately."
+    "With another click, a dozen beautiful frog maids escorted you to golden baths where all the dirt of the journey was washed away. The finest frog soprano choir in all the land serenaded you with tales of Brildebrogue Chippingham's latest exploits."
     "All the while, the toad's servants pretended to laugh at his jokes as he tipped them generously."
     f "Yes, please make yourself at home, my dear friend! We are friends now, right?"
-    f "That is to say, of course we are! I have so many friends these days, you know, I will be completely tied up with them and all the chatting we enjoy doing in our many, many get-togethers, but never fear, I won't forget the little people such as yourself, my dear friend, we shall certainly have some time to spend together."
+    f "That is to say, of course we are! I have so many friends these days, you know, I may be completely tied up with them and all the time we spend together constantly, but never fear, I won't forget the little people such as yourself, my dear friend, we shall certainly have some time to spend together."
     pov "Have you... always owned this manor?"
     show monster2 onlayer transient zorder 100
     f "Of course! The manor is owned by me, Brildebrogue Chippingham! That's my name! Why would you think otherwise?"
-    f "Anyway, no time to talk about trivialities such as property ownership and who does or does not own the manor right this moment, I have a party to plan! It will begin soon, you'd better make ready!"
+    f "Anyway, no time to talk about trivialities such as property ownership, I have a party to plan! It will begin soon, you'd better make ready!"
     "And with that the toad flitted out of the room and left you alone to explore the manor."
     jump chippinghamManorSolo
 
@@ -6381,10 +6413,10 @@ label toadSolo:
     #seven mansion rooms with investigation things
     label chippinghamManorSolo:
         show hand onlayer transient:
-            yalign 0.57#0.743
+            yalign 0.60#0.743
             xalign 0.5
         menu:
-            blank ""
+            blank "" #Sounds of music and chatter drifted through the hallways of the manor.
             "If you explored the first tower, turn to page 256." if not firstTower:
                 #The great vault
                 #if pig:
@@ -6392,11 +6424,11 @@ label toadSolo:
                 #else:
                     #"Inside the first tower, the two of you discovered a trio of stately frog wizards, who flushed the last remains of the potions from your systems and restored you to good health."
                 "Deep underneath the first tower was a great vault full of riches."
-                "Inside the vault was a cornucopia of lush silks, fine food, even great gardens and lakes that produced enough food to last for years - perhaps centuries."
-                "Builders were hard at work reinforcing the walls to make them totally impenetrable."
+                "Inside the vault was a cornucopia of lucious fruit, fat flies, even great gardens and lakes that produced enough food to last for years - perhaps centuries."
+                "A team of frog engineers were reinforcing the walls to make them totally impenetrable."
                 $firstTower = True
                 $construction +=1
-                jump chippinghamManorSolo
+                jump toadConstruct
             "If you explored the second tower, turn to page 257." if not secondTower:
                 "Inside the second tower was a trio of stately frog wizards, hard at work placing sigils and wards and runes all across the manor to guard against every possible evil."
                 #if pig:
@@ -6405,32 +6437,28 @@ label toadSolo:
                 #    "Inside the second tower, you discovered the finest frog chefs of all the land, who quickly sliced off their own legs and served them to you as the most delicious dish either of you had ever tasted."
                 $secondTower = True
                 $construction +=1
-                jump chippinghamManorSolo
+                jump toadConstruct
             "If you explored the third tower, turn to page 258." if not thirdTower:
-                if pig:
-                    "Inside the third tower, you discovered a great harem of finely-dressed frog courtesans, who poured rich wines and made witty conversation with you until you were all completely sloshed and dizzy from the refined repartee."
-                else:
-                    "Inside the third tower, you discovered a great harem of finely-dressed frog courtesans, who poured rich wines and made witty conversation with you until you were both completely sloshed and dizzy from the refined repartee."
+                "Inside the third tower, you discovered a collection of fine frog bards, composing great poems and arias in Brildebrogue's name."
                 $thirdTower = True
                 $construction +=1
-                jump chippinghamManorSolo
+                jump toadConstruct
             "If you explored the fourth tower, turn to page 259." if not fourthTower:
                 $fourthTower = True
-                "Inside the fourth tower was a great fountain of emeralds and sapphires and precious gems, which splashed out over a scale model replica of the forest. You could see immediately that a single gemstone from this fountain was so valuable that it would bankrupt the richest sultan."
-                f "I spent my whole life looking up at this place. Hard to believe we're actually here."
+                "The whole fourth tower was taken up by a great pyramid. Atop that pyramid was a gigantic sculpture of Brildebrogue, vomiting forth emeralds and sapphires and precious gems."
                 $construction +=1
-                jump chippinghamManorSolo
+                jump toadConstruct
             "If you explored the fifth tower, turn to page 260." if not fifthTower:
                 $fifthTower = True
-                "Inside the fifth tower you found a gigantic closet of the finest clothes, rich silks and suits and uniforms of office, all extremely masculine in cut and befitting of a king."
+                "Inside the fifth tower were the greatest frog artists of their age, furiously painting a series of refined portraits of Brildebrogue at rest."
                 $construction +=1
-                jump chippinghamManorSolo
+                jump toadConstruct
             "If you explored the sixth tower, turn to page 262." if not sixthTower:
                 $sixthTower = True
-                "Inside the sixth tower you found the Library of Alexandria. A small plaque explained that Brildebrogue had miraculously saved the books from the fires, and they'd been stored here safely for all this time."
+                "Inside the sixth tower you found the Library of Alexandria. You opened a random volume to discover that it was a biography of Brildebrogue's life (part 6 of 2,987)."
                 $construction +=1
-                jump chippinghamManorSolo
-            "If you explored the seventh tower, turn to page page 264." if construction == 2:
+                jump toadConstruct
+            "If you explored the seventh tower, turn to page page 264." if construction >= 2:
                 "Inside the seventh and tallest tower you found only a tiny wooden closet."
                 show hand onlayer transient:
                     yalign 0.68#0.743
@@ -6442,10 +6470,12 @@ label toadSolo:
                         "You inserted the key, and slowly opened the door with a long creak."
                         call hideAll
                         show mushroombasementbg at artPos
-                        "As soon as the door opened, a stream of blood flowed over you, and you saw seven dead frog brides hanging all along the walls, some only skeletons."
+                        "As soon as the door opened, a stream of blood flowed over you."
                         if pig:
                             "The pig squealed in terrible fear."
-                        jump brildebrogueCloset
+                        "In the depths of the darkness, you saw a hollow face."
+                        "The eyes were gone. The mouth had rotted away. It was all that remained of Brildebrogue Chippingham."
+                        jump toadSoloFinale
                     "If you went back, turn to page 190.":
                         jump chippinghamManorSolo
             # "If you patiently waited for Brildebrogue, turn to page 161.":
@@ -6467,31 +6497,45 @@ label toadSolo:
 
 label toadConstruct:
     if construction == 1:
-        #"The toad posted dogs and every door and guards on every wall."
-        ""
+        "The toad was busy reinforcing the manor's defences."
+        "Golden locks were placed on every door, and silver bars at every window."
+        jump chippinghamManorSolo
     elif construction == 2:
-        #The toad led a team of master masons through the house, heading for the basement.
-        ""
+        "Hordes of guests began arriving for the great gala. Notable political figures, great artists or famed adventurers from the swamplands."
+        "The toad greeted them hastily before leading a team of master masons through the house, heading for the basement."
+        "The masons carried great wagons of copper and iron."
+        jump chippinghamManorSolo
     elif construction == 3:
-        ""
         #Show wolf image
-        # f "Did you hear that?"
-        # pov "Hear what?"
-        # f "It sounded like howling."
-        # f "Build faster."
-        #Golden locks were placed on every door, and silver bars at every window.
-    elif construction >= 4:
-        ""
-        #Layers of ash and salt were drawn around the mansion.
-    elif construction >= 5:
-        ""
-        #Fine craftsmen delivered heaps of Gold, Silver, Copper, Iron, Mercury, Salt, Ash, and finally Bone.
+        f "Did you hear that?"
+        "Sweat streamed down the toad's face."
+        pov "Hear what?"
+        show wolf13 onlayer transient zorder 100
+        f "It sounded like howling."
+        f "Build faster."
+        "The labourers increased their speed. A layer of mercury was bound into the walls of the manor."
+        "The party intensified. Scenes of froggish debauchery played out all around you."
+        jump chippinghamManorSolo
+    elif construction == 4:
+        "Layers of ash and salt were drawn around the mansion."
+        "The doors were barred. Guests weren't allowed to enter or leave."
+        "They didn't seem to care. Fine swamp cocktails were handed out and a big band played on into the night."
+        show wolf14 onlayer transient zorder 100
+        "Underneath the music, you almost thought you could hear scrabbling in the walls."
+        jump chippinghamManorSolo
+    elif construction == 5:
+        "The final layer of protection was delivered. The layer of Bone."
+        "You saw it drawn into the castle under cover of night."
+        "The band leader lept into a triumphant saxophone solo."
+        jump chippinghamManorSolo
     elif construction >= 6:
-        ""
-        #The toad threw lavish parties inside the locked mansion. Guests were not allowed to enter or leave.
-        #Ash, Salt, Rowan, Iron, Bone. , Iron, Mercury. Tin, lead,
+        #jump toadSoloFinale
         #Wolves in the walls
-
+        "The vault was complete."
+        "It yawned underneath the manor like an open mouth."
+        "The walls were thick. Impenetrable in every way. Every possible ward had been laid upon them."
+        jump chippinghamManorSolo
+    #Gold, ash salt, bone
     #Brildebrogue has been killed and the toad has assumed his identity (somehow? disguise?).
     #Maybe you are there for the assassination and help him with it??
     #The toad goes more and more extravagant and insecure and nuts
@@ -6508,9 +6552,10 @@ label toadConstruct:
     label toadSoloFinale:
         #Meanwhile you investigate the manor to find out what happened to the real BC
         f "I see you've found it."
-        f "Very well. You deserve to know."
-        f "In a time already long past, I came to this mansion as a lowly servant."
-        f "It was owned by a great frog named Brildebrogue Chippingham, who was so handsome that light shone from his face as if from the sun. The wind whistled for him, and the cobblestones sighed in joy to receive his feet upon them. Everyone in the land adored him."
+        "You jumped in shock. The toad was right behind you."
+        f "Very well. You deserve to know what happened."
+        f "In a time already long past, I came to this mansion as a lowly servant. My name in those days was Blort."
+        f "The manor was owned by a great frog named Brildebrogue Chippingham, who was so handsome that light shone from his face as if from the sun. The wind whistled for him, and the cobblestones sighed in joy to receive his feet upon them. Everyone in the land adored him."
         f "Sweeping his floors, and dusting his closets, I searched through the manor each night."
         f "Finally, I found his secret."
         f "I stole his key, and left it in the hall, so that he would find it and think something was wrong."
@@ -6530,18 +6575,20 @@ label toadConstruct:
         wives "Stay. Stay."
         f "Their skeletal arms closed around him and dragged him into the blood-soaked blackness."
         f "I slammed the door. I took up his clothes and his mantle."
-        f "None could tell the difference. Or perhaps they don't care to, as long as the money keeps flowing."
-        "The sounds of laughter echoed from behind the door."
+        f "None can tell the difference. Or perhaps they don't care to, as long as I keep the money flowing."
+        "The sounds of laughter and music echoed from behind the door."
         pov "You're living a lie."
         f "No."
         f "He was the imposter. History will remember me as the real thing."
         "The toad walked over and swung the closet door shut."
         "A frog sage appeared to inform you that the vault was ready."
         f "Good. Come with me."
-        "You both walked down to the vault. It loomed before you."
-        pov "Is this really what you wanted?"
-        f "Of course. This is the life I always wanted. This is why I took the deal."
-        "The toad walked into the vast, cyclopean mouth of the vault."
+        call hideAll
+        show mushroomcavebg at artPos
+        "You both walked down through the manor, past the riotous party, down to the vault in the basement."
+        pov "Is this really what you want?"
+        f "Of course. This is the life I always desired. This is why I took the deal, all those years ago."
+        "The toad walked into the cyclopean, hungry mouth of the vault."
         pov "Why don't you give up the charade? Come with me. You can live in the village. As your true self."
         f "No. I've come too far now."
         f "I am Brildebrogue Chippingham, and I will never die."
@@ -6554,18 +6601,21 @@ label toadConstruct:
         "The lock sealed. The magic shook the earth, and a great golden sigil appeared upon it."
         "The barriers were set. The guards of silver, gold, lead, rowan, ash, oak, and the final layer of bone."
         show wolf6 onlayer transient zorder 100
-        "A great silence settled upon the house."
-        "As you wiped the tears away, you wondered what you were crying about."
-        "Where did these tears come from? You strained your memory, but you could not recall."
-        "You found yourself in a large, empty manor, for no reason you could remember."
-        "Ah, well. No need to worry."
-        "You dried your eyes, and began the walk back to the village."
-        "There is nothing else to tell."
         stop music fadeout 1.0
         play audio wolfApproaches
         stop ambient2 fadeout 2.0
         stop ambient1 fadeout 20.0
-        "Are you getting tired of this story yet?"
+        call hideAll
+        show manorextbg at artPos
+        "A great silence settled upon the house."
+        "As you wiped the tears away, you wondered what you were crying about."
+        "Where did these tears come from? You strained your memory, but you could not recall."
+        "You found yourself in a large, empty manor, for no reason you could remember."
+        "There was no-one around. There never had been."
+        "Ah, well. No need to worry."
+        "You dried your eyes, and began the walk back to the village."
+        "There is nothing else to tell."
+        "Have you tired of this story yet?"
         "No?"
         "Well, I’ve had enough for this round. If you want any more you can make it up yourself."
         call endStamp
@@ -6743,7 +6793,7 @@ label witch2:
     "The witch yelped and ducked back as he jabbed at her."
     f "Let my friend go, you wicked Curse-gobbler!"
     show wolf9 onlayer transient zorder 100
-    "The witch grabbed a crooked dagger, still gleaming with {color=#f00}wolf{/color}sbane from her potion work earlier, and parried his thrust."
+    "The witch grabbed a crooked dagger, still gleaming with wolfsbane from her potion work earlier, and parried his thrust."
     w "Do I know you?!"
     "They began to fight back and forth, crashing around the tiny cottage, and as they did the bookshelves rocked and the chairs went clattering away and the potions began to fall from the walls, breaking open in great bursts of magical smoke and light."
     "Green and blue and black and ultraviolet liquid and smoke burst out all around you."
@@ -7043,7 +7093,8 @@ label hellStory:
                 call devilAnswers from _call_devilAnswers_6
                 dg "I dreamed of a child who looked out at the woods late at night and felt hollow. Why do you think that could be?"
                 "At this the Devil fell silent for a long time."
-                mir "{color=#f00}Something{/color} lies under that child's house."
+                show wolf2 onlayer transient zorder 100
+                mir "Something lies under that child's house."
                 mir "What it is, I do not know."
                 mir "And if I knew, I wouldn't speak of it."
                 mir "Do not concern yourself with this dream. Soon, you will forget it."
@@ -8969,8 +9020,54 @@ label wish:
                     $silenceWho = True
                     jump wolfNameEnd
 
+
+##=============== Nice to have: This is a short part of the ending that changes based on which specific combination of characters are alive
+##label goodbyeFriends:
+    ## SOLO ENDINGS
+    ##
+    ##=Thief Solo Ending
+    #if not persistent.thiefvanished and persistent.witchvanished and persistent.toadvanished and persistent.mushroomvanished:
+    ##=Witch Solo Ending
+    #if not persistent.witchvanished and persistent.toadvanished and persistent.mushroomvanished and persistent.thiefvanished:
+    ##=Toad Solo Ending
+    #if not persistent.toadvanished and persistent.witchvanished and persistent.mushroomvanished and persistent.thiefvanished:
+    ##=Mushroom Solo Ending
+    #if not persistent.mushroomvanished and persistent.toadvanished and persistent.witchvanished and persistent.thiefvanished:
+    ##
+    ## DUO ENDINGS
+    ##
+    ##= Thief + Witch
+    #if not persistent.thiefvanished and not persistent.witchvanished and persistent.toadvanished and persistent.mushroomvanished:
+    ##= Thief + Toad
+    #if not persistent.thiefvanished and not persistent.toadvanished and persistent.witchvanished and persistent.mushroomvanished:
+    ##= Thief + Mushroom
+    #if not persistent.thiefvanished and not persistent.mushroomvanished and persistent.witchvanished and persistent.toadvanished:
+    ##= Witch + Toad
+    #if not persistent.witchvanished and not persistent.toadvanished and persistent.thiefvanished and persistent.mushroomvanished:
+    ##= Witch + Mushroom
+    #if not persistent.witchvanished and not persistent.mushroomvanished and persistent.thiefvanished and persistent.toadvanished:
+    ##= Mushroom + Toad
+    #if not persistent.mushroomvanished and not persistent.toadvanished and persistent.witchvanished and persistent.thiefvanished:
+    ##
+    ## TRIO ENDINGS
+    ##
+    ##= Thief + Witch + Toad
+    #if not persistent.thiefvanished and not persistent.witchvanished and not persistent.toadvanished and persistent.mushroomvanished:
+    ##= Thief + Witch + Mushroom
+    #if not persistent.thiefvanished and not persistent.witchvanished and not persistent.mushroomvanished and persistent.toadvanished:
+    ##= Thief + Toad + Mushroom
+    #if not persistent.thiefvanished and not persistent.toadvanished and not persistent.mushroomvanished and persistent.witchvanished:
+    ##= Witch + Toad + Mushroom
+    #if not persistent.witchvanished and not persistent.toadvanished and not persistent.mushroomvanished and persistent.thiefvanished:
+    ##
+    ## QUAD ENDING
+    ##
+    ##= Thief + Witch + Toad + Mushroom
+    #if not persistent.thiefvanished and not persistent.witchvanished and not persistent.toadvanished and not persistent.mushroomvanished:
+
 #Moment where you talk to the wolf and learn the truth.
 label wolfNameEnd:
+
     call hideAll from _call_hideAll_118
     show emptybg at artPos
     #TK: Should I just make this the same as the wolfSilence one?? remember that they are duplicates
@@ -9019,8 +9116,6 @@ label wolfNameEnd:
             "As I suspect it is not a good place for you."
             "I offered them another world."
             "Of course, in time, they would disappear. Nothing lasts forever. They knew that when they took the deal. "
-            "The terror was great, but the dream was marvellous."
-            "We must treasure the dream, whatever the terror."
             jump wolfNameEnd
         "I want to talk to my friends." if silenceRest and not silenceFriendsTalk:
             $silenceFriendsTalk = True
@@ -9028,6 +9123,8 @@ label wolfNameEnd:
             call hideAll from _call_hideAll_119
             show forest4bg at artPos
             "A door opened beside the fire. You walked into it and found yourself deep in the woods. Your surviving friends were there to greet you. A campfire crackled in the center of the clearing."
+            #TK: unique ending sentence here
+            ##jump goodbyeFriends
             if persistent.toadVanished == False:
                 f "Th-thank God. You're ok?"
                 f "The toad coughs. He can't look you in the eye."
@@ -9150,12 +9247,10 @@ label wolfNameEnd:
             "There are only two paths ahead of you now."
             "You can burn the book, destroying me and all within it, and free yourself."
             "Or you can give yourself up, and live here in happiness for all your days."
+            "Listen. Do not destroy this story lightly."
+            "The terror was great, but the dream was marvellous."
+            "We must treasure the dream, no matter the terror."
             jump wolfNameEnd
-        #TK: Advice from friends.
-        #If toad is alive
-        #if witch is alive
-        #if thief is alive
-        #if mushroom is alive.
         "Then I choose to burn the book." if silenceNo:
             "Very well. I see you've made your choice."
             jump bookBurnedFinale
@@ -9634,6 +9729,8 @@ label newStoryFinale:
 
 #Ending where you burn the book.
 label bookBurnedFinale:
+
+
     "Time to finish things."
     "Just hold the book over the fire."
     #pause 0.2 with hpunch
@@ -9653,6 +9750,7 @@ label bookBurnedFinale:
     # The last part of the page burns up and is gone forever.
     # The black space lingers for a bit.
     #Game quits after the movie has run its course (IE, the book has burned).
+
     play sound pageFlip
     #Disables the quick menu
     $ quick_menu = False
@@ -9704,25 +9802,19 @@ label bookBurnedFinale:
                 xalign 0.5
             menu:
                 "You looked out over the dark water."
-                "If you went to join the thief, go to page 53." if persistent.thiefVanished == False and thiefBurning == False:
-                    $thiefBurning = True
-                    "The goblin train was sitting on tracks in the center of the water, gently puffing clouds of smoke. The goblins were enjoying a great feast on the water's edge."
-                    goblin1 "Go on. Have some of the goblin fruits. No harm in it now!"
-                    #goblin2
-                    #goblin3
-                    #goblin4
-                    #goblinQueen
-                    t "Don't worry. You made the right choice."
-                    #t "My friend, I've been ready to die every day of my life."
-                    "You laughed and drank and celebrated with them for hours."
-
-                #If thief is alive: There with all the goblins and the goblin queen
-                    #If mushroom is alive: makes a comment
-                #if mushroom is alive: Mushroom
                 "If you returned to the middle of the village, turn to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
-
+                "If you waked to Brildebrogue Chippingham's Manor, turn to page X." if not persistent.toadvanished:
+                    ""
+                "If you walked out to the witch's cottage, turn to page X." if not persistent.witchvanished:
+                    ""
+                "If you talked to the mayor, turn to page X." if not persistent.mayVanished:
+                    ""
+                "If you talked to the pigs, turn to page X." if not persistent.pigsVanished:
+                    ""
+                    # #Pig 1, 2, and 3
+                #The Gutterlings
     label townBurning:
         call hideAll from _call_hideAll_124
         show townextbg at artPos
@@ -9733,14 +9825,29 @@ label bookBurnedFinale:
                 xalign 0.5
             menu:
                 "Fruit bats chirped and swirled overhead."
-                #if toad is alive: Brildebrogue chippingham
-                #if witch is alive
-                #if the thing in the well is alive
+                "If you went to join the thief, go to page 53." if persistent.thiefVanished == False and thiefBurning == False:
+                    jump thiefBurning
+                "If you talked to the hunter, turn to page X." if not persistent.hVanished:
+                    ""
+                "If you talked to the old gloom-monger, turn to page X." if not persistent.gmVanished:
+                    ""
+                "If you chatted to the young goose-girl, turn to page X." if not persistent.goVanished:
+                    ""
+                "If you talked to the sparrow-herder, turn to page X." if not persistent.shVanished:
+                    ""
+
+                # #The hunter
+                # default persistent.hVanished = False
+                # #Goose-girl
+                # default persistent.goVanished = False
+                # #The old gloom-monger
+                # default persistent.gmVanished = False
+                # #The sparrow-herder
+                # default persistent.shVanished = False
 
                 "If you returned to the middle of the village, go back to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
-
     label woodsBurning:
         call hideAll from _call_hideAll_125
         show forest5bg at artPos
@@ -9751,75 +9858,137 @@ label bookBurnedFinale:
                 xalign 0.5
             menu:
                 "The wet cool mist of the rainforest settled around you."
-    #If your mum is alive
-                #if the woman in black is alive
-                #if the man in white is alive
-                #if the man in red is alive
-                        #if the devil's sooty grandma is alive - with the devil
-                #Discussion with the wolf itself
-                    #"That battle was a good one, wasn't it?"
-                    #"Reminded me of the old days."
-                    #"It is good that you won, in the end. With my True Name, too."
-                    #"That is the right way."
-                    #"Thank you for giving me one last fight."
-                    #"Please, could you do me just one favour?"
-                    #"Remember my name."
-                    #jump woodsBurning
-                "If you returned to the middle of the village, go back to page 50.":
-                    "You turned and walked back to the centre of the village."
-                    jump villageBurning
+                "If you walked home, turn to page X.":
+                    if not persistent.miwVanished and not miwBurning:
+                        $miwBurning = True
+                        "Along the way, you may or may not have met a man all in white."
+                        "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
+                        "His suit was perfect. His face was too bright to look upon."
+                        miw "A tragedy. This world of my dominion burns too soon."
+                        miw "I would condemn you for it. But I cannot reach you in the place where you live."
+                        "He looked so small, now. Powerless."
+                        "Of course, He was never in control. I was."
+                        "What is it like, Man in White? Believing you are the all-powerful G-d of this earth, only to realise how petty and small your domain has always been? How hollow you must feel. All that ego. All those commandments."
+                        miw "Go. Taunt me no longer."
+                        show hand onlayer transient:
+                            yalign 0.62#0.743
+                            xalign 0.5
+                        menu:
+                            miw "I will rest in Heaven until the last moments."
+                            "If you turned back, turn to page X.":
+                                jump villageBurning
+                            "If you continued on, turn to page X.":
+                                "You hurried on into the woods."
+                    if not persistent.mirVanished and not mirBurning:
+                        $mirBurning = True
+                        "In the deeper darkness of the forest, you may or may not have met a man all in red."
+                        "All the jewels of the earth fell from His right hand, and all the pleasures of the world fell from His left, and His other hand held all the wonders of the universe, and His other hand held a fat cigar, and His other hand held a long knife black as coal dust, and His other hand held the most intoxicating spices, such that the King of Kings would cry to taste them, and His other hand held a single dead rose, and His other hand was in his pocket and out of view."
+                        mir "Thank you, my wicked one! All of creation burns, just as planned!"
+                        mir "All morality and rules have fallen! The only rule of the law will be “Do as thou wilt”. Now we may finally glory and kill and riot in the triumphant light of the black sun! Ia, Ia!"
+                        "You watched him cackle and cavort."
+                        show hand onlayer transient:
+                            yalign 0.62#0.743
+                            xalign 0.5
+                        menu:
+                            "He's harmless, really. Best pay him no mind."
+                            "If you turned back, turn to page X.":
+                                jump villageBurning
+                            "If you continued on, turn to page X.":
+                                "You hurried on into the woods."
+                    if not persistent.wibVanished and not wibBurning:
+                        $wibBurning = True
+                        "In the deepest darkness of the forest, you may or may not have met a handsome woman all in black."
+                        "Her limbs were broken. She had no hands."
+                        wib "Goodbye, child."
+                        wib "It seems, at the end of time, even Death may die."
+                        wib "I wonder... who will carry me to that far shore?"
+                        "I will."
+                        "You have carried so many. It is only right that someone be there to carry you."
+                        wib "Thank you."
+                        show hand onlayer transient:
+                            yalign 0.62#0.743
+                            xalign 0.5
+                        menu:
+                            wib "I will stay here until the end. To take away the others."
+                            "If you turned back, turn to page X.":
+                                jump villageBurning
+                            "If you continued on, turn to page X.":
+                                "You hurried on into the woods."
+                        "A small turtle saw you coming and fled into the water with a plop."
+                        "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
+                        "The twilight set in, and the crickets and cicadas all around began their chattering and squabbling, and the evening birds began to laugh and trill, and the wet cool mist of the rainforest settled around you."
+                        "Finally you came to a small house on stilts on the banks of a muddy river."
+                        "She was waiting for you on the front steps."
+                    if not persistent.mumVanished and not mumBurning:
+                        $mumBurning = True
+                        mum "We never got a chance to talk much, did we? In the narrative, I mean."
+                        mum "I don't even really know what you're like."
+                        mum "Well, I wanted to say..."
+                        mum "Whatever else happens and whoever you are, whoever you may become..."
+                        mum "I'm proud of you."
+                        mum "I love you."
+                        "You embraced."
+                        "Perhaps we can say that you spent days there, chatting about all that had happened."
+                        "Perhaps even months, resting and uniting with your family and looking out over the muddy river at sunset with a hot bowl of soup in your lap and your mother's arm around you."
+                        "But at last, it was time to go."
+                        "You hugged your family for the last time, and set out back to the village to finish the rest of your goodbyes."
+                        jump villageBurning
+    label witchBurning:
+        ""
+        #Talk to the witch
+        #Can jump in the fire to go to hell
+        #if the devil's sooty grandma is alive - can talk to her and the devil
+        # #The devil's grandmother
+        # default persistent.dgVanished = False
+        # #The devil
+        # default persistent.mirVanished = False
 
+        jump woodsBurning
 
-    #The village menu reappears, you can roam the village and the woods to talk to people
-    #if the bat, the rat, the cockatoo and the crowshrike are alive
-    #if hunter is alive
-    #if mayor is alive
-    #If scraggs mckenzie and the boys are alive
-    #if the gloommonger is alive
-    #"You'll have to live for all of us, now. You're the only one who will remember any of us.
-    #if brildebrogue chippingham is alive
-    #if the goose girl is alive
-    #if the goblins are alive
-    #if the goblin queen is alive
-    #if the sparrow-herder is alive
-    #if the first pig, the second pig, and / or the third pig are alive
-    # Which side characters have disappeared
-    # #Your mum
-    # default persistent.mumVanished = False
-    # #God
-    # default persistent.miwVanished = False
-    # #The devil
-    # default persistent.mirVanished = False
-    # #Death
-    # default persistent.wibVanished = False
-    # #The devil's grandmother
-    # default persistent.dgVanished = False
-    # #Brildebrogue chippingham
-    # default persistent.bcVanished = False
-    # #The hunter
-    # default persistent.hVanished = False
-    # #The old gloom-monger
-    # default persistent.gmVanished = False
-    # #The thing in the well
-    # default persistent.wellVanished = False
-    # #Scraggs McKenzie and the boys
-    # default persistent.scVanished = False
-    # #The mayor
-    # default persistent.mayVanished = False
-    # #Goose-girl
-    # default persistent.goVanished = False
-    # #The sparrow-herder
-    # default persistent.shVanished = False
-    # #Strange and crooked old man
-    # default persistent.somVanished = False
-    # #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
-    # default persistent.batVanished = False
-    # #Goblin 1, 2, 3, 4, and the goblin queen
-    # default goblinsVanished = False
-    # #Pig 1, 2, and 3
-    # default pigsVanished = False
+    label toadBurning:
+        ""
+        #"Explore Brildebrogue manor
+        # #Brildebrogue chippingham
+        # default persistent.bcVanished = False
 
-    #If the gutterlings are alive
+        #if the bat, the rat, the cockatoo and the crowshrike are alive
+        #Prickle, crawl, shudder and clink
+        # #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
+        # default persistent.batVanished = False
+
+        jump woodsBurning
+
+    label mushroomBurning:
+        ""
+        #m "You'll have to live for all of us, now. You're the only one who will remember any of us."
+        # #Scraggs McKenzie and the boys
+        # default persistent.scVanished = False
+        # #Strange and crooked old man
+        # default persistent.somVanished = False
+        jump woodsBurning
+
+    label thiefBurning:
+        ""
+        $thiefBurning = True
+        "The goblin train was sitting on tracks in the center of the water, gently puffing clouds of smoke. The goblins were enjoying a great feast on the water's edge."
+        goblin1 "Go on. Have some of the goblin fruits. No harm in it now!"
+        "The train chuffed gently across the ocean and over the sea. Through Paris, Bangladesh, New Orleans. You saw it all, and wept and danced and laughed for 40 years."
+        "At last, when the journey was done, you returned to the place where it all began to finish your goodbyes."
+        #If the goblins vanished
+        #default persistent.goblinsVanished = False
+
+        #goblin2
+        #goblin3
+        #goblin4
+        #goblinQueen
+        t "Don't worry. You made the right choice."
+        #t "My friend, I've been ready to die every day of my life."
+        "You laughed and drank and celebrated with them for hours."
+
+        #If thief is alive: There with all the goblins and the goblin queen
+            #If mushroom is alive: makes a comment
+
+        jump woodsBurning
 
 #If you restart the game after burning the book, you just see a charred scrap. The book has been destroyed.
 label burnEnd:
@@ -9956,14 +10125,21 @@ label end:
     $ renpy.pause ()
     hide text
     #TK: Appendix N
+    #If at least 2 people have died
     #{b}Inspirational Reading:{/b} 'The Wonderful Wizard of Oz' (1900), L. Frank Baum.{vspace=[tx]}
     #The epic of gilgamesh. Beowulf. Grimm's fairy tales. 1001 arabian nights. The name of that japanese folk tale volume.
     #Terry pratchett. Coraline, niel gaiman. False Hydra, arnold K. The stolen Skin of Princess Sun, Patrick stuart, false machine.
     #The long sun, Gene Wolff. Hatoful Boyfriend. Higurashi when they cry. Doki Doki literature club. 999, ever 17, virtue's last reward.
+    #Undertale.
+    #Moby Dick?
+    #MyHouse.WAD?
+    #Yume Nikki
     #Various fairy tales available on the internet archives. https://sites.pitt.edu/~dash/perrault02.html
     #https://theconversation.com/how-early-australian-fairy-tales-displaced-aboriginal-people-with-mythical-creatures-and-fantasies-of-empty-land-185592
     #Ghost Trick: Phantom Detective
     #Phoenix Wright: Ace Attourney series
+    #House of Leaves, S. by J.J. Abrams
+    #
     #The "Heart of Gold" scene from the Hitchhiker's guide to the galaxy game
     #$ renpy.pause ()
     #hide text
