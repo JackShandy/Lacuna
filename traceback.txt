@@ -1,6 +1,6 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-After initialization, but before game start.
+After loading the script.
 PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\214542\\Desktop\\renpy-8.0.3-sdk\\Lacuna\\game\\saves\\navigation.json.new' -> 'C:\\Users\\214542\\Desktop\\renpy-8.0.3-sdk\\Lacuna\\game\\saves\\navigation.json'
 
 -- Full Traceback ------------------------------------------------------------
@@ -8,8 +8,14 @@ PermissionError: [WinError 32] The process cannot access the file because it is 
 Full traceback:
   File "C:\Users\214542\Desktop\renpy-8.0.3-sdk\renpy\bootstrap.py", line 277, in bootstrap
     renpy.main.main()
-  File "C:\Users\214542\Desktop\renpy-8.0.3-sdk\renpy\main.py", line 610, in main
-    renpy.dump.dump(False)
+  File "C:\Users\214542\Desktop\renpy-8.0.3-sdk\renpy\main.py", line 548, in main
+    if renpy.parser.report_parse_errors():
+  File "C:\Users\214542\Desktop\renpy-8.0.3-sdk\renpy\parser.py", line 3109, in report_parse_errors
+    renpy.display.error.report_parse_errors(full_text, error_fn)
+  File "C:\Users\214542\Desktop\renpy-8.0.3-sdk\renpy\display\error.py", line 174, in report_parse_errors
+    error_dump()
+  File "C:\Users\214542\Desktop\renpy-8.0.3-sdk\renpy\display\error.py", line 86, in error_dump
+    renpy.dump.dump(True)
   File "C:\Users\214542\Desktop\renpy-8.0.3-sdk\renpy\dump.py", line 262, in dump
     os.rename(new, filename)
 PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\214542\\Desktop\\renpy-8.0.3-sdk\\Lacuna\\game\\saves\\navigation.json.new' -> 'C:\\Users\\214542\\Desktop\\renpy-8.0.3-sdk\\Lacuna\\game\\saves\\navigation.json'
@@ -17,4 +23,4 @@ PermissionError: [WinError 32] The process cannot access the file because it is 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.0.3.22090809
 Lacuna. 0.81
-Wed May  3 23:19:51 2023
+Thu May  4 14:08:34 2023

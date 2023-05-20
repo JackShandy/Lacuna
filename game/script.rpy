@@ -6468,10 +6468,12 @@ label toadSolo:
 label toadConstruct:
     if construction == 1:
         #"The toad posted dogs and every door and guards on every wall."
+        ""
     elif construction == 2:
         #The toad led a team of master masons through the house, heading for the basement.
-
+        ""
     elif construction == 3:
+        ""
         #Show wolf image
         # f "Did you hear that?"
         # pov "Hear what?"
@@ -6479,10 +6481,13 @@ label toadConstruct:
         # f "Build faster."
         #Golden locks were placed on every door, and silver bars at every window.
     elif construction >= 4:
+        ""
         #Layers of ash and salt were drawn around the mansion.
     elif construction >= 5:
+        ""
         #Fine craftsmen delivered heaps of Gold, Silver, Copper, Iron, Mercury, Salt, Ash, and finally Bone.
     elif construction >= 6:
+        ""
         #The toad threw lavish parties inside the locked mansion. Guests were not allowed to enter or leave.
         #Ash, Salt, Rowan, Iron, Bone. , Iron, Mercury. Tin, lead,
         #Wolves in the walls
