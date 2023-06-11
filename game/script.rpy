@@ -51,11 +51,11 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 1
+    default persistent.vanished = 0
 
     #Who has disappeared specifically - main cast
     default persistent.toadVanished = False
-    default persistent.witchVanished = True
+    default persistent.witchVanished = False
     default persistent.thiefVanished = False
     default persistent.mushroomVanished = False
 
@@ -140,7 +140,7 @@ init:
     define sfw = True
 
     #Demo mode: cuts you off quickly
-    define demo = False
+    define demo = True
 
     #Act 1, Chapter 1 - the 3 Godfathers
     define firstManWho = False
@@ -398,7 +398,8 @@ init:
     define mirBurning = False
     define wibBurning = False
     define mumBurning = False
-
+    define gmBurning = False
+    define thiefBurning = False
 
 #=====================IMAGES
 #Defining all images
@@ -1303,7 +1304,7 @@ label start:
             jump newStoryFinale
         show nightbg at artPos
         #TEST please delete
-        jump bookBurnedFinale
+        #jump bookBurnedFinale
 
         if persistent.vanished == 0:
             "This maybe happened, or maybe did not."
@@ -9751,6 +9752,26 @@ label bookBurnedFinale:
     # The black space lingers for a bit.
     #Game quits after the movie has run its course (IE, the book has burned).
 
+
+    ## ======================Burning Variables
+    #For all the final conversations in the book burning ending
+    # define wolfBurning = False
+    # define miwBurning = False
+    # define mirBurning = False
+    # define wibBurning = False
+    # define mumBurning = False
+    # define gmBurning = False
+    #define thiefBurning = False
+
+    #To add to top
+    define toadBurning = False
+    define hBurning = False
+    define mayBurning = False
+    define witchBurning = False
+    define pigsBurning = False
+    define shBurning = False
+    define goBurning = False
+
     play sound pageFlip
     #Disables the quick menu
     $ quick_menu = False
@@ -9788,10 +9809,7 @@ label bookBurnedFinale:
             "If you walked out into the deep woods, turn to page 80.":
                 jump woodsBurning
 
-
     label banquetBurning:
-        #Listing all the variables
-        define thiefBurning = False
 
         call hideAll from _call_hideAll_123
         show townfeastbg at artPos
@@ -9805,13 +9823,13 @@ label bookBurnedFinale:
                 "If you returned to the middle of the village, turn to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
-                "If you waked to Brildebrogue Chippingham's Manor, turn to page X." if not persistent.toadvanished:
+                "If you waked to Brildebrogue Chippingham's Manor, turn to page X." if not persistent.toadvanished and not toadBurning:
                     ""
-                "If you walked out to the witch's cottage, turn to page X." if not persistent.witchvanished:
+                "If you walked out to the witch's cottage, turn to page X." if not persistent.witchvanished and not witchBurning:
                     ""
-                "If you talked to the mayor, turn to page X." if not persistent.mayVanished:
+                "If you talked to the mayor, turn to page X." if not persistent.mayVanished and not mayBurning:
                     ""
-                "If you talked to the pigs, turn to page X." if not persistent.pigsVanished:
+                "If you talked to the pigs, turn to page X." if not persistent.pigsVanished and not pigsBurning:
                     ""
                     # #Pig 1, 2, and 3
                 #The Gutterlings
@@ -9825,17 +9843,20 @@ label bookBurnedFinale:
                 xalign 0.5
             menu:
                 "Fruit bats chirped and swirled overhead."
-                "If you went to join the thief, go to page 53." if persistent.thiefVanished == False and thiefBurning == False:
+                "If you went to join the thief, go to page 53." if not persistent.thiefVanished and not thiefBurning:
                     jump thiefBurning
-                "If you talked to the hunter, turn to page X." if not persistent.hVanished:
+                "If you talked to the hunter, turn to page X." if not persistent.hVanished and not hBurning:
                     ""
-                "If you talked to the old gloom-monger, turn to page X." if not persistent.gmVanished:
+                "If you talked to the old gloom-monger, turn to page X." if not persistent.gmVanished and not gmBurning:
+                    gm "I told you we were doomed! Doomed, I said! I told you so!"
+                    pov "Yes. You told us all."
+                    "The old Gloom-monger sat back with a sigh of profound satisfaction. His smile flickered in the light of the flames."
+                    $gmBurning = True
+                    jump townBurningMenu
+                "If you chatted to the young goose-girl, turn to page X." if not persistent.goVanished and not goBurning:
                     ""
-                "If you chatted to the young goose-girl, turn to page X." if not persistent.goVanished:
+                "If you talked to the sparrow-herder, turn to page X." if not persistent.shVanished and not shBurning:
                     ""
-                "If you talked to the sparrow-herder, turn to page X." if not persistent.shVanished:
-                    ""
-
                 # #The hunter
                 # default persistent.hVanished = False
                 # #Goose-girl
