@@ -1703,7 +1703,7 @@ label neighbours:
                 show witch onlayer transient zorder 100
                 "None dared venture to the western mountains, for all the lands around it were said to be home to a terrible witch."
                 "People said her hut lay deep under a secret lake, and she would emerge on moonless nights when the waters of that lake turned strange and silver-green."
-                "They said the witches held their sabbath on the mountain to the east, and when the sky was clear you could see the peak blaze with fire, and the Destroyer himself would emerge to dance in the firelight."
+                "They said the witches held their Sabbath on the mountain to the east, and when the sky was clear you could see the peak blaze with fire, and the Destroyer himself would emerge to dance in the firelight."
                 jump neighbours
         "To continue, return to page 9.":
             play sound pageFlip
@@ -1772,7 +1772,7 @@ label introMenu:
                 #"The howling pressure of the vacuum beyond pressed against the door like a physical force, the weight of it paralysing you."
                 #"You could not stand the thought of the trip down the empty road to that silent village where no-one lived."
             if godfather == "Black":
-                "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godmother would own your immortal soul as as soon as the clock struck midnight."
+                "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godmother would own your immortal soul as soon as the clock struck midnight."
                 "You had no doubt that She would soon send Her three messengers for you, and then take you down to the kingdom of ruin forever."
             else:
                 "Alas, all too soon, the eve of your 18th birthday arrived. You set about in wild terror, for you knew that your Godfather would come to take you away as soon as the clock struck midnight, and you had no wish to leave just yet."
@@ -2523,7 +2523,7 @@ label introMenu:
                     play sound pageFlip
                     call hideAll from _call_hideAll_13
                     show mountainsbg at artPos
-                    "A witches sabbath was afoot. A great fire raged on the peak before you, and the witches danced before it."
+                    "A witches Sabbath was afoot. A great fire raged on the peak before you, and the witches danced before it."
                     show witches onlayer transient zorder 100
                     "The old baba yagas cackled and jibbered and danced around you with glee, poking you cruelly in your sides and making cutting remarks like, \"Now who's not real, eh?\" and \"We don't believe in YOU! How do you like that?\" which wounded your feelings most grievously."
                     w "Oh gosh, oh no, are you all right?"
@@ -2841,7 +2841,7 @@ label banquet:
                 elif sparrowherderRand == 3:
                     if sparrowherderChat == 0:
                         sh "G'day."
-                        sh "Be careful as you walk around town, friend. Stick to the center of the street, and never cross the gutters without crossing your path with salt."
+                        sh "Be careful as you walk around town, friend. Stick to the centre of the street, and never cross the gutters without crossing your path with salt."
                         sh "The Gutterlings hide there."
                     elif sparrowherderChat == 1:
                         sh "They are thin, pale and wretched creatures."
@@ -2973,7 +2973,7 @@ label banquet:
                 elif toadStole and persistent.witchVanished:
                     f "Good evening, my light-fingered friend!"
                     "He sprayed food as he spoke. He was sitting on a tower of pillows on his chair, so he could reach the table."
-                    f "Don't worry about that little issue of the emerald brooch you made off with. I have so much money now, you see, I'll hardly miss it. Consider it a gift! A memnto of our new friendship, hoho!"
+                    f "Don't worry about that little issue of the emerald brooch you made off with. I have so much money now, you see, I'll hardly miss it. Consider it a gift! A memento of our new friendship, hoho!"
                 else:
                     if toadConvo2Spoke == False and toadArc == 0:
                         f "Hello again, fellow traveller!"
@@ -6527,7 +6527,7 @@ label toadConstruct:
     elif construction == 5:
         "The final layer of protection was delivered. The layer of Bone."
         "You saw it drawn into the castle under cover of night."
-        "The band leader lept into a triumphant saxophone solo."
+        "The band leader leapt into a triumphant saxophone solo."
         jump chippinghamManorSolo
     elif construction >= 6:
         #jump toadSoloFinale
@@ -7252,7 +7252,7 @@ label hellStory:
             "Although she would never be the Girl Who Knew Everything again, she knew enough."
             if witchFree == False:
                 "Alas, despite everything you'd done, she still remained sworn to the Devil. Her promise to him was kept in a secret place that he guarded jealously, and you were never able to find it."
-                "Every witch's sabbath, she was forced to ride away to dance on the Thornton Peak, and commit all kinds of wicked and terrible acts in his name."
+                "Every witch's Sabbath, she was forced to ride away to dance on the Thornton Peak, and commit all kinds of wicked and terrible acts in his name."
                 "Still, you spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
             else:
                 "You spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
@@ -7263,7 +7263,7 @@ label hellStory:
             "Sadly, you knew not how. She would never be the Girl Who Knew Everything again. You tried everything you could, but for the rest of her days, her thoughts were cursed to leak from her head in heavy smoke."
             if witchFree == False:
                 "Alas, despite everything you'd done, she still remained sworn to the Devil. Her promise to him was kept in a secret place that he guarded jealously, and you were never able to find it."
-                "Every witch's sabbath, she was forced to ride away to dance on the peak of Thornton Peak, and commit all kinds of wicked and terrible acts in his name."
+                "Every witch's Sabbath, she was forced to ride away to dance on the peak of Thornton Peak, and commit all kinds of wicked and terrible acts in his name."
             "Still, you spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
         show hand onlayer transient:
             yalign 0.72#0.743
@@ -9123,7 +9123,7 @@ label wolfNameEnd:
             "Of course. Take all the time you need."
             call hideAll from _call_hideAll_119
             show forest4bg at artPos
-            "A door opened beside the fire. You walked into it and found yourself deep in the woods. Your surviving friends were there to greet you. A campfire crackled in the center of the clearing."
+            "A door opened beside the fire. You walked into it and found yourself deep in the woods. Your surviving friends were there to greet you. A campfire crackled in the centre of the clearing."
             #TK: unique ending sentence here
             ##jump goodbyeFriends
             if persistent.toadVanished == False:
@@ -9731,7 +9731,6 @@ label newStoryFinale:
 #Ending where you burn the book.
 label bookBurnedFinale:
 
-
     "Time to finish things."
     "Just hold the book over the fire."
     #pause 0.2 with hpunch
@@ -9762,6 +9761,7 @@ label bookBurnedFinale:
     # define mumBurning = False
     # define gmBurning = False
     #define thiefBurning = False
+    #define dgBurning = False
 
     #To add to top
     define toadBurning = False
@@ -9955,7 +9955,51 @@ label bookBurnedFinale:
                         "You hugged your family for the last time, and set out back to the village to finish the rest of your goodbyes."
                         jump villageBurning
     label witchBurning:
-        ""
+        "You walked through crooked mangroves. Soon, you began to see a glimmer of silver light in the darkness."
+        call hideAll
+        show darkforestbg at artPos
+        "The forest was covered in great puddles of water from the rains. The puddles shone with light."
+        "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
+        "You leapt into the puddle without a second thought and soon found yourself in a world of glimmering white with an old cottage in the centre."
+        "Up over the walls grew a riot of herbs and flowers of every type, rambling over everything and growing in a lush green-grass garden on the roof. "
+        "The witch was waiting there, looking out over the water."
+        w "Hello."
+        w "I suppose this is it, isn't it? You know, it's funny, I spent all these years thinking about this moment and trying to understand what was going on and, you know, get to the truth of it all, and now..."
+        w "I thought I'd feel different."
+        "She looks at you, wiping her eyes."
+        w "I'm very glad I had the time to know you. You made the right decision."
+        menu:
+            "Embrace the witch":
+                ""
+            "Investigate the cottage":
+                "Inside the cottage was a roaring fire."
+                menu:
+                    "Jump into the fire and straight to hell." if not persistent.mirVanished:
+                        "You leapt into the fireplace and fell straight down to the pits of hell in a single bound."
+                        "Hell was a small cave, draughty and full of coal dust."
+                        "In the centre of the cavern was a small, homely cottage. You peered in the window."
+                        dg "Welcome, child!"
+                        dg "Come in, come in, you'll catch your death!"
+                        dg "I must thank you, my dear, for efforts with my grandson. He's a simple lad, you understand."
+                        #mir ""
+        #     w "We'd better get moving. I want to get back and see if my cottage is still standing."
+        #     "If you investigated the cavern wall, turn to page 205.":
+        #         "Hell was a small cave, draughty and full of coal dust."
+        #         "You looked through a hole in the cave wall and marvelled to see the imps cavorting in drunken song and dance beyond, each of them plotting to destroy the works of man and G-d."
+        #         "You quickly retreated for fear of being seen."
+        #         jump hell
+        #     "If you investigated the centre of the cavern, turn to page 206.":
+        #         "In the centre of the cavern was a small, homely cottage. You peered in the window."
+        #         call hideAll from _call_hideAll_76
+        #         show hellcottagebg at artPos
+        #         "The Devil was not home. But in a rocking chair in the corner you saw His old grandmother. She spotted you both at once."
+        # dg "Oh, my dears! You must be terribly lost. You'd better get out of here."
+        # w "We don't know how - and I'm sworn to serve the Devil for the rest of my days."
+        # dg "Then you have a hard road ahead. My grandson will be home soon, and He will eat you up whole if He sees you."
+        # dg "But since I feel sorry for you, I'll see if I can help."
+
+
+
         #Talk to the witch
         #Can jump in the fire to go to hell
         #if the devil's sooty grandma is alive - can talk to her and the devil
@@ -9991,7 +10035,7 @@ label bookBurnedFinale:
     label thiefBurning:
         ""
         $thiefBurning = True
-        "The goblin train was sitting on tracks in the center of the water, gently puffing clouds of smoke. The goblins were enjoying a great feast on the water's edge."
+        "The goblin train was sitting on tracks in the centre of the water, gently puffing clouds of smoke. The goblins were enjoying a great feast on the water's edge."
         goblin1 "Go on. Have some of the goblin fruits. No harm in it now!"
         "The train chuffed gently across the ocean and over the sea. Through Paris, Bangladesh, New Orleans. You saw it all, and wept and danced and laughed for 40 years."
         "At last, when the journey was done, you returned to the place where it all began to finish your goodbyes."

@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3343: end of line expected.
-    call endStamp from _call_endStamp onlayer transient
-                                      ^
-
-File "game/script.rpy", line 3375: end of line expected.
-    call endStamp from _call_endStamp_1 onlayer transient
-                                        ^
+The label _call_hideAll_68 is defined twice, at
+  File "game/script.rpy", line 5653 and
+  File "game/script.rpy", line 9959.
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat May 20 14:32:12 2023
+Mon Jun 12 17:38:37 2023
