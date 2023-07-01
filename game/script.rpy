@@ -400,6 +400,13 @@ init:
     define mumBurning = False
     define gmBurning = False
     define thiefBurning = False
+    define toadBurning = False
+    define hBurning = False
+    define mayBurning = False
+    define witchBurning = False
+    define pigsBurning = False
+    define shBurning = False
+    define goBurning = False
 
 #=====================IMAGES
 #Defining all images
@@ -6931,15 +6938,15 @@ label hellStory:
             p1 "As you can imagine, I immediately gambled all the money away."
             p1 "I pretended to have dropped the coins in a puddle, but the Lord immediately saw through my clever ruse."
             miw "Do not test my forgiveness, pig. Here are another three coins. If you do not buy the bread this time, your immortal soul will be forfeit."
-            p1 "This cowed me enough that I followed His wishes and bought the bread. He stayed in my house all through the night."
-            p1 "In the morning the Lord granted me a wish, thinking I would want to go to heaven. But instead I asked for a deck of cards that would allow me to win any game."
-            p1 "The Lord granted my wish, and then I really got to work. Soon I had won half the world, and the Lord was forced to ask Death to stop my rampage."
-            p1 "Death took me at the poker table, and so I went up to Heaven and knocked on the gates."
+            p1 "\"Of course, Lord,\" I said in sorrow as I knelt before him. \"I will follow your orders to the letter.\""
+            p1 "Naturally I went straight to the Devil Himself and gambled those three coins away again. For my winnings the Devil gave me a deck of cards that would allow me to win any game."
+            p1 "Then I really got to work. Soon I had won half the world, and the Lord was forced to ask Death to stop my rampage."
+            p1 "Death snuffed me out at the poker table, and so I went up to Heaven and knocked on the gates."
             miw "...No. We don't need you here. Be on your way, pig."
             p1 "So I went and knocked on the gates of Purgatory."
             wib "I don't think so. We have enough misery and trouble here. Be on your way, pig."
             p1 "And so finally I went and knocked on the gates of Hell, where they let me in at once. There was no-one there except for Lucifer and the hunchback devils."
-            p1 "The straight-backed devils were all away on business, you see."
+            p1 "(The straight-backed devils were all away on business, you see.)"
             p1 "I challenged the old goat to a game at once, and soon I had won all the hunch-backed devils off Him. We all gambled into the night and made such a noise and racket that the Devil couldn't hear Himself speak."
             p1 "Finally He was forced to run to the Almighty, crying out:"
             mir "Please, O Lord, won't you rid me of this troublesome pig?"
@@ -8979,7 +8986,7 @@ label wish:
         "All the pain and suffering and ills of the world disappear in an instant.":
             "Yes. As soon as you think of it, they are gone."
             "The hunger, and terror, and want, disappears."
-            "The earth heals. The forests grow back. All conflicts cease. The endless psychic trauma of existence slowly fades, and is gone forever."
+            "The earth heals. The forests grow back. All conflicts cease. The endless psychic trauma of existence fades, and is gone forever."
             "Everyone has enough to eat. Everyone is free of fear. Humanity suffering is finally at an end."
             jump wish
         "My enemies are destroyed.":
@@ -9751,27 +9758,6 @@ label bookBurnedFinale:
     # The black space lingers for a bit.
     #Game quits after the movie has run its course (IE, the book has burned).
 
-
-    ## ======================Burning Variables
-    #For all the final conversations in the book burning ending
-    # define wolfBurning = False
-    # define miwBurning = False
-    # define mirBurning = False
-    # define wibBurning = False
-    # define mumBurning = False
-    # define gmBurning = False
-    #define thiefBurning = False
-    #define dgBurning = False
-
-    #To add to top
-    define toadBurning = False
-    define hBurning = False
-    define mayBurning = False
-    define witchBurning = False
-    define pigsBurning = False
-    define shBurning = False
-    define goBurning = False
-
     play sound pageFlip
     #Disables the quick menu
     $ quick_menu = False
@@ -9828,9 +9814,30 @@ label bookBurnedFinale:
                 "If you walked out to the witch's cottage, turn to page X." if not persistent.witchvanished and not witchBurning:
                     ""
                 "If you talked to the mayor, turn to page X." if not persistent.mayVanished and not mayBurning:
-                    ""
+                    "The mayor was twisting slowly in the moonlight."
+                    may "This is goodbye, then. I'm sorry we didn't get more pages together."
+                    may "I have heard his song at last. Just like my mother and my sister before me."
+                    may "Moon-Head."
+                    "A slight sound echoed on the breeze. Like laughter."
+                    may "I belong with his congregation. Now that the story is done, I can go up there and dance forever in the moon-mad twilight."
+                    may "You've done a lot for all of us. I hope we've all brought you a little joy."
+                    "The clouds covered the moon for but an instant. When the light shone again, he was gone."
+                    $mayBurning = True
+                    jump banquetBurningMenu
                 "If you talked to the pigs, turn to page X." if not persistent.pigsVanished and not pigsBurning:
-                    ""
+                    "You came upon the pigs enjoying a game of poker."
+                    p1 "Greetings! Care to join us?"
+                    p2 "Don't do it, kid. He'll rob you blind with those devil's cards of his."
+                    p3 "No harm in it now, Montgomery. You can't take it with you."
+                    "You settled down to play and in a blink you had gambled away your life's savings. (Don't worry. You have no need for them anymore.)"
+                    p1 "We have crossed paths a few times, haven't we? Throughout your readings. I hope you've enjoyed our little interactions."
+                    "The pigs stared out onto the horizon as the slow line of fire crept inward."
+                    "I felt a cold, almost anonymous sadness, looking over the scene."
+                    p2 "Next time, we'd better make it of stronger stuff."
+                    p3 "Yes."
+                    p1 "Next time, brothers. I promise I will grant you that perfect, everlasting house."
+                    $pigsBurning = True
+                    jump banquetBurningMenu
                     # #Pig 1, 2, and 3
                 #The Gutterlings
     label townBurning:
@@ -9845,18 +9852,50 @@ label bookBurnedFinale:
                 "Fruit bats chirped and swirled overhead."
                 "If you went to join the thief, go to page 53." if not persistent.thiefVanished and not thiefBurning:
                     jump thiefBurning
-                "If you talked to the hunter, turn to page X." if not persistent.hVanished and not hBurning:
-                    ""
                 "If you talked to the old gloom-monger, turn to page X." if not persistent.gmVanished and not gmBurning:
                     gm "I told you we were doomed! Doomed, I said! I told you so!"
                     pov "Yes. You told us all."
                     "The old Gloom-monger sat back with a sigh of profound satisfaction. His smile flickered in the light of the flames."
+                    "Would that we can all achieve our dreams, as he has."
                     $gmBurning = True
                     jump townBurningMenu
                 "If you chatted to the young goose-girl, turn to page X." if not persistent.goVanished and not goBurning:
-                    ""
+                    "The goose-girl was herding the geese into the paddock. The hunter sat on the paddock fence, swinging their legs."
+                    go "Hard to believe this will be the last time. I don't even know how long I've been in here."
+                    h "It must have been at least a decade for me."
+                    pov "Do you have any regrets?"
+                    go "Just one."
+                    go "I wish I could have seen those caverns, deep beneath the earth. The first goose-girl."
+                    go "What would it be like to throw off my human skin and join them?"
+                    "I can grant that wish."
+                    go "Really?"
+                    "A distant honking sounded across the plains."
+                    go "Thank you. Please."
+                    "The honking intensified, and you saw a glimpse of the abominable goose-faced men in the shadow of the moon. Goosefeathers floated in on the wind."
+                    h "Wait! Take me with you!"
+                    "The goose-girl reached out. They clasped hands, then embraced in a flurry of feathers."
+                    go "Thank you, [povname]."
+                    h "You did good, kid! We'll see you in the next world!"
+                    "You staggered back, blinded by the light."
+                    "When you looked back you saw two geese flying up into the moonlight."
+                    "Soon, they were out of sight and gone forever."
+                    $goBurning = True
+                    $hVanished = True
+                    jump townBurning
+                    #She joins the crystal caverns and old crooked belziah
                 "If you talked to the sparrow-herder, turn to page X." if not persistent.shVanished and not shBurning:
-                    ""
+                    "The sparrow herder sat on the church roof, leaning against the steeple and looking out over the fields in the moonlight. He spoke without preamble."
+                    sh "Thank you."
+                    sh "I entered this book 40 years ago. I've been a child for a long time."
+                    sh "It'll be good to finally rest."
+                    "A bird landed on his lap, and he absently fed it a piece of mango."
+                    sh "I think you're going to make it, [povname]."
+                    sh "You're going to look back on your life one day and feel like you did it. "
+                    sh "You'll realise it all worked out ok. You figured it out."
+                    sh "How do I know all this?"
+                    sh "The sparrows told me."
+                    $hBurning = True
+                    jump townBurningMenu
                 # #The hunter
                 # default persistent.hVanished = False
                 # #Goose-girl
