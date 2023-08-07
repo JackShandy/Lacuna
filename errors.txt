@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-The label _call_hideAll_68 is defined twice, at
-  File "game/script.rpy", line 5653 and
-  File "game/script.rpy", line 9959.
+File "game/script.rpy", line 905: expected an indented block
+    persistent.set_volumes = True
+              ^
+    
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Mon Jun 12 17:38:37 2023
+Mon Aug  7 18:07:56 2023

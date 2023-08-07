@@ -140,7 +140,7 @@ init:
     define sfw = True
 
     #Demo mode: cuts you off quickly
-    define demo = True
+    define demo = False
 
     #Act 1, Chapter 1 - the 3 Godfathers
     define firstManWho = False
@@ -899,6 +899,13 @@ init:
 
 #Splashscreen - The front cover of the book that appears before the main menu.
 label before_main_menu: #splashscreen - changed to before_main_menu so it always displays
+    #Default music volume = 50%
+    python:
+        if not persistent.set_volumes:
+            persistent.set_volumes = True
+
+            _preferences.volumes['music'] *= .50
+
     if persistent.bookBurned:
         show coverBurned with dissolve
         ""
@@ -969,7 +976,7 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     elif persistent.bookEnd:
-        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient3", loop=True)
         #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     #else:
@@ -1174,10 +1181,12 @@ label after_load:
     if persistent.phoneOn and persistent.vanished <=3:
         play sound pageFlip
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     elif persistent.bookEnd:
         play sound pageFlip
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     else:
         play sound pageFlip
@@ -1291,6 +1300,7 @@ label start:
     show firelight animated onlayer over_screens zorder 99
     if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     # else:
     #     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True, relative_volume=0)
@@ -10001,26 +10011,29 @@ label bookBurnedFinale:
         "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
         "You leapt into the puddle without a second thought and soon found yourself in a world of glimmering white with an old cottage in the centre."
         "Up over the walls grew a riot of herbs and flowers of every type, rambling over everything and growing in a lush green-grass garden on the roof. "
-        "The witch was waiting there, looking out over the water."
+        "A witch's sabbath was afoot. You saw women and crooked things dance around a bonfire in the garden, gibbering with joy."
+        "Belphegor, Lord of Hogs, lounged beneath the cottage partaking of occaisional truffles offered to Him by His many worshippers."
         w "Hello."
-        w "I suppose this is it, isn't it? You know, it's funny, I spent all these years thinking about this moment and trying to understand what was going on and, you know, get to the truth of it all, and now..."
+        "The witch was leaning against the fencepost, away from the party, looking out over the water."
+        w "I suppose this is it, isn't it?"
+        w "You know, it's funny, I spent all these years thinking about this moment and trying to understand what was going on and, you know, get to the truth of it all, and now..."
         w "I thought I'd feel different."
         "She looks at you, wiping her eyes."
         w "I'm very glad I had the time to know you. You made the right decision."
-        menu:
-            "Embrace the witch":
-                ""
-            "Investigate the cottage":
-                "Inside the cottage was a roaring fire."
-                menu:
-                    "Jump into the fire and straight to hell." if not persistent.mirVanished:
-                        "You leapt into the fireplace and fell straight down to the pits of hell in a single bound."
-                        "Hell was a small cave, draughty and full of coal dust."
-                        "In the centre of the cavern was a small, homely cottage. You peered in the window."
-                        dg "Welcome, child!"
-                        dg "Come in, come in, you'll catch your death!"
-                        dg "I must thank you, my dear, for efforts with my grandson. He's a simple lad, you understand."
-                        #mir ""
+        # menu:
+        #     "Embrace the witch":
+        #         ""
+        #     "Investigate the cottage":
+        #         "Inside the cottage was a roaring fire."
+        #         menu:
+        #             "Jump into the fire and straight to hell." if not persistent.mirVanished:
+        #                 "You leapt into the fireplace and fell straight down to the pits of hell in a single bound."
+        #                 "Hell was a small cave, draughty and full of coal dust."
+        #                 "In the centre of the cavern was a small, homely cottage. You peered in the window."
+        #                 dg "Welcome, child!"
+        #                 dg "Come in, come in, you'll catch your death!"
+        #                 dg "I must thank you, my dear, for efforts with my grandson. He's a simple lad, you understand."
+        #                 #mir ""
         #     w "We'd better get moving. I want to get back and see if my cottage is still standing."
         #     "If you investigated the cavern wall, turn to page 205.":
         #         "Hell was a small cave, draughty and full of coal dust."
@@ -10080,7 +10093,17 @@ label bookBurnedFinale:
         "At last, when the journey was done, you returned to the place where it all began to finish your goodbyes."
         #If the goblins vanished
         #default persistent.goblinsVanished = False
-
+        t "No, that's bullshit."
+        t "That's right, I can swear now. The fourth wall has been destroyed, I get to do whatever the fuck I want!"
+        t "Listen, we did it. We won. All of us managed to get in hear and live decades of our lives being the people we want to be and doing the things we want to do."
+        t "Hey, big guy."
+        "Yes?"
+        t "What was all this about? What's the moral of the story? What's the point?"
+        "There is none."
+        "Morality tales are a modern invention. I come from an older tradition."
+        "I told the story just to tell it."
+        t "That's it?"
+        "That's it."
         #goblin2
         #goblin3
         #goblin4

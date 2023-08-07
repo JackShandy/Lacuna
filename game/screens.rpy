@@ -1033,14 +1033,14 @@ screen preferences():
                 vbox:
 
                     if config.has_music:
-                        label _("Wildlife Volume")
+                        label _("Music Volume")
 
                         hbox:
                             bar value Preference("music volume")
 
                     if config.has_sound:
 
-                        label _("Sound and Ambience Volume")
+                        label _("Ambience Volume")
 
                         hbox:
                             bar value Preference("sound volume")
