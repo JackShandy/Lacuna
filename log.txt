@@ -1,45 +1,46 @@
-Mon Aug  7 18:12:28 2023
+Wed Aug  9 16:35:55 2023
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
 
-Bootstrap to the start of init.init took 0.05s
+Bootstrap to the start of init.init took 0.06s
 Early init took 0.00s
 Loader init took 0.01s
-Loading error handling took 0.04s
-Loading script took 0.19s
+Loading error handling took 0.05s
+Loading script took 1.73s
 Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.06s
-Loading analysis data took 0.16s
-Analyze and compile ATL took 0.00s
+Running init code took 0.07s
+Loading analysis data took 0.17s
+Analyze and compile ATL took 0.02s
 Index archives took 0.00s
-Dump and make backups. took 0.05s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.08s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.05s
+Initial gc. took 0.06s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.24s
+Creating interface object took 0.29s
 Cleaning stores took 0.00s
-Init translation took 0.06s
+Init translation took 0.07s
 Build styles took 0.00s
-Load screen analysis took 0.08s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.04s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
-Running _start took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.93s
+Save bytecode. took 0.04s
+Running _start took 0.01s
 Performance test:
 Interface start took 0.09s
 
 Initializing gl renderer:
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
-Windowed mode.
+Fullscreen mode.
 Vendor: 'NVIDIA Corporation'
 Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
 Version: '4.6.0 NVIDIA 536.67'
@@ -58,7 +59,7 @@ Texture testing:
 - 512px textures work.
 - 1024px textures work.
 - 2048px textures work.
-Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Screen sizes: virtual=(600, 850) physical=(1920, 1080) drawable=(1920, 1080)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 1.42545413971s
+Total time until interface ready: 4.0853099823s
