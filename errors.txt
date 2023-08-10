@@ -2,77 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 5324: expected statement.
+File "game/script.rpy", line 9662: is not terminated with a newline. (Check strings and parenthesis.)
 (Perhaps you left out a " at the end of the first line.)
-    "You almost thought you heard the impact of 
-            call hideAll
-            show night11bg at artPos
-            m "I had to plan them and save up for them and spend every day just trying to hold out for the next one. Those tiny, tiny moments where I got to be alive."
-                                                                                                                      ^
-            call hideAll
-            show night12bg at artPos
-            m "All I have left now is that number. That percentage of waste."
-            play audio wolfApproaches
-            stop ambient2 fadeout 2.0
-            stop ambient1 fadeout 20.0
-            call hideAll
-            show darkforestbg at artPos
-            call hideAll
-            show night13bg at artPos
-            m "It'll never get any smaller. It's done. It's all done."
-            "Tears ran down her cheeks. She made no effort to hide them anymore. "
-            call hideAll
-            show night14bg at artPos
-            m "Hold me, please."
-            "You tentatively put your arm around her, and she nestled into your shoulder and wept."
-            "You held her tight as you stared out into the night sky."
-            show wolf14 onlayer transient zorder 100
-            "It was pitch black. No stars or moon brightened that abyss."
-            "You reached for the wine bottle, and realised there was none."
-            "The were no wineglasses. There was no food."
-            "You felt the touch of moss underneath you. There was no blanket."
-            "You looked down."
-            "You were holding nothing at all. Your arms were embracing thin air."
-            "Why were you here?"
-            "You must have needed a rest. A night outdoors. "
-            "All of us need some time to ourselves every now and then, don't we?"
-            "No harm in that."
-            "You stood up. Brushed away the moss. Breathed in the cool night air."
-            "You felt warm, full, and sad, for no reason you could name."
-            "Finally you began the long walk home in silence, with the dark night sky looming above you."
-            "There's nothing else left to tell."
-            "That's the end."
-            call endStamp
-            "Run away with it now, as fast as you can."
-            jump end
-    
-                    #m "Do I regret it? In some ways."
-                    #m "But then, would things have been any better if I stayed behind?"
-                    #When mushroom disappears show this
-                    # show wolf13 onlayer transient zorder 100
-                    # call hideAll
-                    # show nightbg at artPos
-                    # "Test"
-                    # call hideAll
-                    # show night2bg at artPos
-                    # "test"
-                    #mushroomGardens
-                    #
-                    #"You walked out into the lush expanse of the underground kingdom. Rich moss and lichens flowered from every surface. "
-    
-                    #"Soon, you emerged into a colossal underground kingdom lit with flickering silver light."
-                    #show death onlayer transient zorder 100
-                    #"All around you pressed a blooming mass of webcaps, milkcaps, scarlet elf caps, poisonpies, decievers, pinkgills, brittlegills, veiled ladies, lawyer's wigs, stinkhorns, earthstars, beefsteaks, chicken of the woods, earthballs, sculpted puffballs, yellowfoots, lungworts, brown-eyed wolves, golden-eyed umbrellas, Satan's boletes, false chanterelles, death caps and destroying angels, and all members of the mysterious Dark Taxa, the dark matter fungi that lie unknown to mankind."
-                    #show scribble3 onlayer transient zorder 100
-                    #"They all swept to and fro through a twisted city of endless tunnels. The shape of a giant, pale and broken mountain loomed over the city, barely visible through the thick fog of spores."
-    
-                    #"You saw the four seasons all flowering at once. To the north, the cicadas and crickets chirped loudly in a summer haze. To the south, the ground was silver white with snow. To the west, the autumn rains fell, and to the east was the full glory of spring."
-                    #"The wonders of those gardens were so stunning that the tongue fails to describe them, and you walked and watched for days, until your eyes were so full that they couldn't stand to see another scrap of beauty."
-    
-                    #"The mushroom took you closer to the shape you saw from the palace. It loomed over you, larger than life. With a start, you saw that it was breathing."
-    
-    
-    #The normal finale of the mushroom's story
+                    w "I found out
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Wed Aug  9 16:19:04 2023
+Thu Aug 10 18:24:25 2023

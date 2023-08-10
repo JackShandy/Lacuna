@@ -1,4 +1,4 @@
-Wed Aug  9 16:35:55 2023
+Thu Aug 10 17:07:47 2023
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
@@ -7,23 +7,23 @@ Bootstrap to the start of init.init took 0.06s
 Early init took 0.00s
 Loader init took 0.01s
 Loading error handling took 0.05s
-Loading script took 1.73s
+Loading script took 1.59s
 Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.07s
-Loading analysis data took 0.17s
-Analyze and compile ATL took 0.02s
+Running init code took 0.06s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.00s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
-Dump and make backups. took 0.08s
+Dump and make backups. took 0.07s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc. took 0.06s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.29s
+Creating interface object took 0.25s
 Cleaning stores took 0.00s
 Init translation took 0.07s
 Build styles took 0.00s
@@ -31,16 +31,16 @@ Load screen analysis took 0.00s
 Analyze screens took 0.01s
 Save screen analysis took 0.05s
 Prepare screens took 0.05s
-Save pyanalysis. took 0.93s
-Save bytecode. took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.03s
 Running _start took 0.01s
 Performance test:
-Interface start took 0.09s
+Interface start took 0.10s
 
 Initializing gl renderer:
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
-Fullscreen mode.
+Windowed mode.
 Vendor: 'NVIDIA Corporation'
 Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
 Version: '4.6.0 NVIDIA 536.67'
@@ -59,7 +59,3400 @@ Texture testing:
 - 512px textures work.
 - 1024px textures work.
 - 2048px textures work.
-Screen sizes: virtual=(600, 850) physical=(1920, 1080) drawable=(1920, 1080)
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 4.0853099823s
+Total time until interface ready: 3.00138711929s
+Resetting cache.
+Bootstrap to the start of init.init took 263.26s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 1.32s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.03s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 266.698683023s
+Resetting cache.
+Bootstrap to the start of init.init took 467.33s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.33s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.25s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 469.760957956s
+Resetting cache.
+Bootstrap to the start of init.init took 595.71s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.34s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.26s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.06s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 598.177474976s
+Resetting cache.
+Bootstrap to the start of init.init took 620.07s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.76s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+
+File "game/script.rpy", line 9276: expected end of line
+    play sound thunder with flash
+                       ^
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Interface start took 0.31s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 621.274840117s
+Resetting cache.
+Bootstrap to the start of init.init took 633.73s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.45s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.07s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.26s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.06s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.04s
+Save bytecode. took 0.03s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 637.324155092s
+Resetting cache.
+Bootstrap to the start of init.init took 673.16s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 1.29s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 675.546692133s
+Resetting cache.
+Bootstrap to the start of init.init took 682.47s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.35s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.25s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.05s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 685.970315933s
+Resetting cache.
+Bootstrap to the start of init.init took 693.26s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.32s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 695.67258811s
+Resetting cache.
+Bootstrap to the start of init.init took 711.64s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.36s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.26s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 714.099170923s
+Resetting cache.
+Bootstrap to the start of init.init took 742.09s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.31s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.23s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.04s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 745.512022018s
+Resetting cache.
+Bootstrap to the start of init.init took 866.19s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.33s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 868.607269049s
+Resetting cache.
+Bootstrap to the start of init.init took 933.85s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.20s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.92s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.09s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.09s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 936.063635111s
+Resetting cache.
+Bootstrap to the start of init.init took 959.79s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.05s
+Loading script took 1.40s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.05s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 963.360013962s
+Resetting cache.
+Bootstrap to the start of init.init took 1018.83s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 1.39s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.10s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.04s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1022.38708401s
+
+Full traceback:
+  File "game/script.rpy", line 9417, in script
+    show emptybg at artpos
+  File "renpy/ast.py", line 1191, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "renpy/ast.py", line 1150, in show_imspec
+    at_list = [ renpy.python.py_eval(i) for i in at_list ]
+  File "renpy/python.py", line 2249, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2242, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 9417, in <module>
+    show emptybg at artpos
+NameError: name 'artpos' is not defined
+
+While running game code:
+  File "game/script.rpy", line 9417, in script
+    show emptybg at artpos
+  File "game/script.rpy", line 9417, in <module>
+    show emptybg at artpos
+NameError: name 'artpos' is not defined
+Resetting cache.
+Bootstrap to the start of init.init took 1055.24s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.31s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1057.63028502s
+Resetting cache.
+Bootstrap to the start of init.init took 1180.64s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.34s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.06s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1184.13420606s
+Resetting cache.
+Bootstrap to the start of init.init took 1202.20s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.20s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.08s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.94s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.09s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1204.43325996s
+Resetting cache.
+Bootstrap to the start of init.init took 1205.48s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.05s
+Loading script took 1.40s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.21s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.23s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.05s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1209.04237604s
+Resetting cache.
+Bootstrap to the start of init.init took 1261.60s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 1.31s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.04s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1265.05697203s
+Resetting cache.
+Bootstrap to the start of init.init took 2437.13s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.41s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.10s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.26s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2439.69618893s
+Resetting cache.
+Bootstrap to the start of init.init took 2555.26s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.20s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.95s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.09s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2557.53608799s
+Resetting cache.
+Bootstrap to the start of init.init took 2557.65s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.05s
+Loading script took 1.38s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.10s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.23s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.06s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.07s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2561.2341001s
+Resetting cache.
+Bootstrap to the start of init.init took 2585.08s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 1.35s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.06s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.06s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2588.62351394s
+Resetting cache.
+Bootstrap to the start of init.init took 2612.43s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.58s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.07s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2616.17356896s
+Resetting cache.
+Bootstrap to the start of init.init took 2642.82s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.20s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.97s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.09s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.09s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2645.11480594s
+Resetting cache.
+Bootstrap to the start of init.init took 2645.23s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.05s
+Loading script took 0.31s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.04s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2647.69877601s
+Resetting cache.
+Bootstrap to the start of init.init took 2656.14s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.32s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2657.55901694s
+Resetting cache.
+Bootstrap to the start of init.init took 2659.42s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.43s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.10s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.06s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.05s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2663.0309689s
+Resetting cache.
+Bootstrap to the start of init.init took 2686.80s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.32s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.23s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.05s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2689.26544499s
+Resetting cache.
+Bootstrap to the start of init.init took 2706.67s
+Early init took 0.00s
+Loader init took 0.02s
+Loading error handling took 0.01s
+Loading script took 0.36s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.10s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.06s
+Prepare screens took 0.07s
+Save pyanalysis. took 1.12s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2709.28635597s
+
+Full traceback:
+  File "game/script.rpy", line 9491, in script
+    menu:
+  File "renpy/ast.py", line 1642, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "renpy/exports.py", line 1038, in menu
+    rv = renpy.store.menu(new_items)
+  File "renpy/exports.py", line 1274, in display_menu
+    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "renpy/display/core.py", line 3101, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3512, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "renpy/display/core.py", line 567, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 567, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 567, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/screen.py", line 432, in visit_all
+    callback(self)
+  File "renpy/display/core.py", line 3512, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "renpy/display/screen.py", line 443, in per_interact
+    self.update()
+  File "renpy/display/screen.py", line 631, in update
+    self.screen.function(**self.scope)
+  File "game/screens.rpy", line 208, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 208, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 211, in execute
+    window:
+  File "game/screens.rpy", line 211, in keywords
+    window:
+  File "game/screens.rpy", line 219, in keywords
+    if wolfMenu:
+  File "game/screens.rpy", line 219, in <module>
+    if wolfMenu:
+NameError: name 'wolfMenu' is not defined
+
+While running game code:
+  File "game/script.rpy", line 9491, in script
+    menu:
+  File "game/screens.rpy", line 208, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 208, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 211, in execute
+    window:
+  File "game/screens.rpy", line 211, in keywords
+    window:
+  File "game/screens.rpy", line 219, in keywords
+    if wolfMenu:
+  File "game/screens.rpy", line 219, in <module>
+    if wolfMenu:
+NameError: name 'wolfMenu' is not defined
+Resetting cache.
+Bootstrap to the start of init.init took 2728.02s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.46s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.06s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.08s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2731.67047596s
+Resetting cache.
+Bootstrap to the start of init.init took 2749.38s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 1.34s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.08s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2752.90575194s
+Resetting cache.
+Bootstrap to the start of init.init took 2764.71s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.32s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.23s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.08s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2767.20973992s
+Resetting cache.
+Bootstrap to the start of init.init took 2875.22s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.20s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.97s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.09s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2877.48707795s
+Resetting cache.
+Bootstrap to the start of init.init took 2881.63s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.05s
+Loading script took 0.19s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.07s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.09s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2882.93578196s
+Resetting cache.
+Bootstrap to the start of init.init took 2890.96s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.05s
+Loading script took 1.41s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.10s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.09s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2893.53540301s
+Resetting cache.
+Bootstrap to the start of init.init took 2915.41s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 1.34s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.09s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2917.86521697s
+Resetting cache.
+Bootstrap to the start of init.init took 2974.61s
+Early init took 0.00s
+Loader init took 0.02s
+Loading error handling took 0.01s
+Loading script took 1.39s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.25s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2977.14886308s
+
+Full traceback:
+  File "game/script.rpy", line 9547, in script
+    if persistent.vanished => 3:
+  File "renpy/ast.py", line 1852, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 9547)
+
+While running game code:
+  File "game/script.rpy", line 9547, in script
+    if persistent.vanished => 3:
+SyntaxError: invalid syntax (script.rpy, line 9547)
+Resetting cache.
+Bootstrap to the start of init.init took 2982.40s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.37s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2984.86544013s
+Resetting cache.
+Bootstrap to the start of init.init took 2993.21s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.36s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.06s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 2995.67146897s
+Resetting cache.
+Bootstrap to the start of init.init took 3008.54s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.40s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.25s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 3011.07123613s
+Resetting cache.
+Bootstrap to the start of init.init took 3049.51s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.34s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.10s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.08s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 3053.04569507s
+Resetting cache.
+Bootstrap to the start of init.init took 3208.17s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.40s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.10s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.23s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.08s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 3211.75439906s
+Resetting cache.
+Bootstrap to the start of init.init took 3318.38s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.35s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.25s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.07s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 3321.91321802s
+Resetting cache.
+Bootstrap to the start of init.init took 3360.94s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.45s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.09s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 3363.50401592s
+Resetting cache.
+Bootstrap to the start of init.init took 3442.52s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.40s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.10s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.07s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 3446.09893203s
+Resetting cache.
+Bootstrap to the start of init.init took 3563.47s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.37s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.23s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.07s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 3567.0138309s
+Resetting cache.
+Bootstrap to the start of init.init took 3578.84s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.32s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 3581.26125312s
+Resetting cache.
+Bootstrap to the start of init.init took 3886.41s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.39s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.24s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 1.08s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 3890.0007s
+Resetting cache.
+Bootstrap to the start of init.init took 4158.31s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.32s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.10s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 4160.75566912s
+Resetting cache.
+Bootstrap to the start of init.init took 4187.20s
+Early init took 0.00s
+Loader init took 0.02s
+Loading error handling took 0.01s
+Loading script took 1.38s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.23s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 4189.70736313s
+Resetting cache.
+Bootstrap to the start of init.init took 4407.37s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.24s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+
+File "game/script.rpy", line 9660: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a " at the end of the first line.)
+                    w "I found out
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Interface start took 0.31s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 4408.06253099s
+Resetting cache.
+Bootstrap to the start of init.init took 4598.13s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 0.24s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+
+File "game/script.rpy", line 9662: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a " at the end of the first line.)
+                    w "I found out
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Interface start took 0.29s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 4598.80125904s
+Resetting cache.
+Bootstrap to the start of init.init took 4806.90s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.01s
+Loading script took 1.51s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.07s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.26s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.06s
+Save pyanalysis. took 1.09s
+Save bytecode. took 0.03s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 4810.62046409s
+Resetting cache.
+Bootstrap to the start of init.init took 4828.21s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 1.37s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.22s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.24s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.67'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 4830.66404796s

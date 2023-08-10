@@ -216,6 +216,8 @@ screen choice(items):
             yalign -0.3
         if halfScreenMenu:
             yalign -0.1
+        if wolfMenu:
+            yalign -0.02
 
         vbox:
             for i in items:
@@ -662,7 +664,7 @@ screen about():
 
         style_prefix "about"
 
-        vbox ypos 373 xpos 20:
+        vbox ypos 373 xpos 15:
             #label "[config.name!t]"
             #text _("Version [config.version!t]\n")
             #yalign 0.5
@@ -672,13 +674,13 @@ screen about():
             if persistent.vanished >= 4:
                 text "{alpha=0.9}{size=-4}\n{/size}{/alpha}" #
             elif persistent.vanished == 3:
-                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. He hears something in the pipes. It’s here. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a writer and game designer. {b}{color=#f00}H{/b}{/color}is other works incl{b}{color=#f00}u{/b}{/color}de the {b}{color=#f00}m{/b}{/color}egagames God Emperor and We Are Not Alone. He lives {b}{color=#f00}b{/b}{/color}ehind {b}{color=#f00}a{/b}{/color} keyboard in {b}{color=#f00}B{/b}{/color}risbane, {b}{color=#f00}A{/b}{/color}ustralia. He hears me in the pipes now. It's too late for him. For more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}"  #
             elif persistent.vanished == 2:
-                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. It's coming for him. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a writer and game designer. {color=#f00}H{/color}is other works incl{color=#f00}u{/color}de the {color=#f00}m{/color}egagames God Emperor and We Are Not Alone. He lives {color=#f00}b{/color}ehind {color=#f00}a{/color} keyboard in {color=#f00}B{/color}risbane, {color=#f00}A{/color}ustralia. Hurry. There isn't much time left. For more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}"  #
             elif persistent.vanished == 1:
-                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a {color=#f00}w{/color}riter and game designer wh{color=#f00}o{/color} lives behind a keyboard in Brisbane, Australia. His other works inc{color=#f00}l{/color}ude the megagames God Emperor and We Are Not Alone. {color=#f00}F{/color}or more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a writer and game designer. {color=#f00}H{/color}is other works incl{color=#f00}u{/color}de the {color=#f00}m{/color}egagames God Emperor and We Are Not Alone. He lives {color=#f00}b{/color}ehind {color=#f00}a{/color} keyboard in {color=#f00}B{/color}risbane, {color=#f00}A{/color}ustralia. I began whispering to him some time ago. This text is the result. For more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}"  #
             elif persistent.vanished == 0:
-                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a writer and game designer who lives behind a keyboard in Brisbane, Australia. His other works include the megagames God Emperor and We Are Not Alone. For more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}" #
+                text "{alpha=0.9}{size=-4}JACK MCNAMEE is a writer and game designer. {color=#f00}H{/color}is other works incl{color=#f00}u{/color}de the {color=#f00}m{/color}egagames God Emperor and We Are Not Alone. He lives {color=#f00}b{/color}ehind {color=#f00}a{/color} keyboard in {color=#f00}B{/color}risbane, {color=#f00}A{/color}ustralia. For more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\n{/size}{/alpha}"  #
             text _("{alpha=0.9}{size=-4}Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]{/size}{/alpha}")
 
 
