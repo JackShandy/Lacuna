@@ -13,9 +13,6 @@ init python:
     #This is all the wolf's talking
     renpy.music.register_channel("wolf","sfx",True,tight=True)
 
-
-
-
 #==Purge Save Function
 #Note: This function deletes all of the player's save files. This is necessary to work with the meta-narrative stuff I'm trying to do.
 init python:
@@ -56,13 +53,13 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 3
+    default persistent.vanished = 0
 
     #Who has disappeared specifically - main cast
-    default persistent.toadVanished = True
+    default persistent.toadVanished = False
     default persistent.witchVanished = False
-    default persistent.thiefVanished = True
-    default persistent.mushroomVanished = True
+    default persistent.thiefVanished = False
+    default persistent.mushroomVanished = False
 
     # Which side characters have disappeared
     #Your mum
@@ -379,6 +376,9 @@ init:
     define toadStopped = False
     define shStopped = False
 
+    #Investigating the clearing
+    define clearing =""
+
     #The final conversation with the wolf in the silence ending
     define lookUp = 1
     define silenceWho = False
@@ -458,6 +458,9 @@ init:
     #White screen
     image white = "#FFFFFF"
 
+    #Flash effect
+    $ flash = Fade(.25, 0, 2, color="#fff")
+
     #Covers with no bunnies vanished
     image cover = "cover.png"
     image cover5 = "cover-5.png"
@@ -520,6 +523,7 @@ init:
     image noteFree = "Marginalia/noteFree.png"
     image noteHome = "Marginalia/noteHome.png"
     image noteListen = "Marginalia/noteListen.png"
+    image noteListen2 = "Marginalia/noteListen2.png"
     image noteName = "Marginalia/noteName.png"
     image noteSay = "Marginalia/noteSay.png"
     image noteSilence = "Marginalia/noteSilence.png"
@@ -933,7 +937,7 @@ init:
     define audio.footstepsInsideLeave = "audio/footstepsInsideLeave.mp3"
     define audio.phoneClick = "audio/phoneClick.mp3"
     define audio.firePoker = "audio/firePoker.mp3"
-
+    define audio.fireLit = "audio/fireLit.mp3"
     #the wolf's conversations
     define audio.wolfNo = "audio/wolfNo.mp3"
 
@@ -1407,10 +1411,12 @@ label start:
             #xalign 0.5
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
-        if persistent.bookEnd:
-            show nightbg at artPos
-            jump newStoryFinale
         show nightbg at artPos
+        if persistent.bookEnd:
+            jump newStoryFinale
+        #test
+        jump bookBurnedFinale
+
         if persistent.vanished == 0:
             "This maybe happened, or maybe did not."
             "The time is long past, and much is forgot."
@@ -1960,7 +1966,7 @@ label introMenu:
             call musicReturn
             "As you walked down the road, you saw the wise mushroom moving through the deep darkness of the trees, her pale spores flowing in a fog behind her."
             show hand onlayer transient:
-                yalign 0.7#0.743
+                yalign 0.66#0.743
                 xalign 0.5
             menu:
                 "In her left hand she held a small lantern, and in her right hand she held a crooked knife stained green."
@@ -2847,8 +2853,11 @@ label village:
         "If you turned around and went home, turn to page 1.":
             #TK: This option gets ripped out if you try it, then go back without succeeding
             if turnedHome == 0:
-                if persistent.vanished >=2:
+                if persistent.vanished ==2:
                     show wolf2 onlayer transient zorder 100
+                if persistent.vanished >=3:
+                    show notelisten2 onlayer transient zorder 100
+
                 $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient1')
                 $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient2')
                 $renpy.music.set_volume(0.9, delay=3.0, channel=u'music')
@@ -3038,7 +3047,10 @@ label banquet:
                     may "His robes are rich blue silk with clouds and fog rippling across them, and they flow around him in hypnotising waves as he dances. Or so they tell me, at least."
                 elif mayorChat == 4:
                     may "He leaps through the trees calling for his disciples, the lost and insane, and they all spring together through the woods with glee, singing moon-mad songs."
-                    may "It's quite the sight to see."
+                    label essay1Showing:
+                        $renpy.show_screen("essay1", _layer="screens", tag="note", _zorder=101)
+                        may "It's quite the sight to see."
+                        $renpy.hide_screen("essay1")
                 elif mayorChat == 5:
                     may "He winked at my mother once, and I never saw her again."
                 elif mayorChat >= 6:
@@ -3408,7 +3420,7 @@ label town:
                     gm "In their left hand is a terrible light."
                 $gloommongerChat += 1
                 jump townExplore
-            "If you looked in the well, turn to page 346." if wellRand == 1 and wellChat <=2 and not persistent.wellVanished:
+            "If you looked in the well, turn to page 346." if wellRand == 1 and wellChat <=2 and not persistent.wellVanished and persistent.vanished<=1:
                 if wellChat == 0:
                     well "Evening."
                 elif wellChat == 1:
@@ -4018,9 +4030,14 @@ label thief3:
                     t "This is my money-maker. If I lose it, I'm finished."
                     $ThiefConvo3Options +=1
                     jump thiefConvo3
-                "If you said nothing, turn to page 101.":
-                    t "Alright, suit yourself."
-                    jump thiefWatchThis
+                "If you turned and walked into the woods, turn to page 110." if persistent.vanished >=1:
+                    t "Wait - where are you going?"
+                    "Their voice faded behind you as you walked away into the darkness."
+                    $clearing = "thief"
+                    jump clearingInvestigate
+                #"If you said nothing, turn to page 101.":
+                    #t "Alright, suit yourself."
+                    #jump thiefWatchThis
 
         label thiefWatchThis:
             t "Watch this!"
@@ -4061,196 +4078,197 @@ label thief3:
                             t "Now this is the praise I deserve."
                             "They twisted over onto their feet."
                             t "Anyway, enough of my talents for now. We're here!"
+        label thiefFig:
             call hideAll from _call_hideAll_44
             show stranglerfigbg at artPos
             if pig:
                 "The colossal roots of the Mushroom's strangler fig rose above you. The pig sniffed at them suspiciously."
             else:
                 "The colossal roots of the Mushroom's strangler fig rose above you."
-        t "Alright. Here's the job."
-        "They drew a floor plan in the dirt."
-        t "The treasure is in the central chamber, here. The front door can only be opened with a password."
-        t "There's another entrance up through the canopy, guarded by banksia boys."
-        t "Or we could try to get in here, through an underground river patrolled by an old crocodile."
-        if persistent.mushroomVanished:
-            "They kept looking over your shoulder into the darkness beyond. You noticed bags under their eyes."
-        show hand onlayer transient:
-            yalign 0.65#0.743
-            xalign 0.5
-        menu:
-            t "So what's the plan, chief?"
-            "If your notes say that you {b}know the password{/b}, turn to page 131.":
-                if persistent.mushroomVanished:
-                    pov "I know the password. We can walk straight in the front door."
-                else:
-                    pov "I saw the mushroom put in the password. We can walk straight in the front door."
-                t "You devil, you. Lead the way!"
-                "You walked up to the fig and cut the vines and swamp flowers away to reveal the small blue door, inlaid with precious moonstone and intricate engravings."
-                pov "Gorge, guzzle, gulp and grab; never shall this wound scab."
-                jump thiefMushroomCavern
-            "If you climb up and go in from above, turn to page 142.":
-                t "Great idea. We'll draw you into a life of crime yet."
-                call hideAll from _call_hideAll_45
-                show canopybg at artPos
-                if pig:
-                    "You climbed up through the canopy, holding your pig tight in your arms. Before you knew it, a gaggle of Banksia seeds dropped down all around you. Their many mouths gabbled at you in a crazed frenzy."
-                else:
-                    "You climbed up through the canopy. Before you knew it, a gaggle of Banksia seeds dropped down all around you. Their many mouths gabbled at you with wild abandon."
-                sc "That's right, it's me!"
-                sc "Scraggs McKenzie, the baddest banksia in the bush."
-                boys "You tell 'em, Scraggs! {vspace=30}                                             {w=0.4} Yeah! {vspace=30}                         {w=0.8}You're the best, Scraggs!"
-                label scraggsConvo:
-                    show hand onlayer transient:
-                        yalign 0.68#0.743
-                        xalign 0.5
-                    menu:
-                        sc "I bet you weren't expecting to run into me and my boys."
-                        "If you asked the thief if they'd ever met these people, turn to page 172." if not scraggsBoys:
-                            t "Never heard of him."
-                            sc "What! Everyone's heard of Scraggs McKenzie and the boys."
-                            boys "You know it, Scraggs! {vspace=30}                                             {w=0.4} Yeah! {vspace=30}                         {w=0.8}No-one messes with us!"
-                            $scraggsBoys = True
-                            jump scraggsConvo
-                        "If you asked who they are, turn to page 173" if not scraggsMusical:
-                            $scraggsMusical = True
-                            sc "Why, they call us..."
-                            "Scraggs and company launched into a long, flashy musical number explaining their backstory, the details of which I won't bore you with here."
-                            boys "...we're just tryna survive, in a world of baa-aad seeeeeeeds!"
-                            sc "That's right!"
-                            "You and the thief clapped politely."
-                            jump scraggsConvo
-                        "If you asked them to let you past, turn to page 174.":
-                            sc "NO-ONE gets past Scraggs McKenzie."
-                            sc "Not without answering one of my riddles first."
-                            show hand onlayer transient:
-                                yalign 0.66#0.743
-                                xalign 0.5
-                            menu:
-                                sc "What walks on 4 legs in the morning, 2 legs at noon, and 3 legs in the evening?"
-                                "If you answered \"Time\", turn to page 175.":
-                                    sc "Ha Ha Ha! Wrong!"
-                                    jump scraggsWrong
-                                "If you answered \"Fate\", turn to page 175.":
-                                    sc "Ha Ha Ha! Wrong!"
-                                    jump scraggsWrong
-                                "If you answered \"A dog jumping around on its hind legs\", turn to page 175.":
-                                    sc "Ha Ha Ha! Wrong!"
-                                    jump scraggsWrong
-                                "If you answered \"Man.\", turn to page 176.":
-                                    sc "That's... that's correct. You may pass."
-                                    boys "You'll get 'em next time, Scraggs. {vspace=30}                                             {w=0.4} Don't worry about it. {vspace=30}                         {w=0.8} We still love you, Scraggs!"
-                                    sc "I know, boys. I know."
-                                    sc "Alright, go on through. But if me or my boys see you around here again, you'll be in serious trouble."
-                                    "You walked down passed the banksias, and found a little yellow door in the tree."
-                                    "You pulled it open and peered down inside."
-                                    jump thiefMushroomCavern
-                label scraggsWrong:
-                    sc "You're in serious trouble now. Me and my boys are going to make you think twice before you step in this neck of the woods again."
-                    boys "That's right, Scraggs. {vspace=30}                                             {w=0.4} You've got it handled! {vspace=30}                         {w=0.8} No-one does it like you, Scraggs."
-                    sc "Alright boys, that's enough. Now listen here-"
-                    boys "You tell 'em, Scraggs. {vspace=30}                                             {w=0.4}  They're nothing. {vspace=30}    {w=0.4}                              These jokers have nothing on you. {vspace=30}{w=0.4}This is in the bag, Scraggs. {vspace=30}                                   {w=0.8} You got this -"
-                    sc "Boys! Please! Just give me a second."
-                    sc "Aw geeze, now look what you've done. Y-you made me lose it with the boys."
-                    sc "I'm sorry boys, I never shoulda spoken to you in that way. You don't deserve that kind of treatment."
-                    boys "It's ok Scraggs!  {vspace=30}                                             {w=0.4}  We forgive you Scraggs. {vspace=30}                         {w=0.8}  Forget about it."
-                    sc "Now it's personal. No-one disrespects my boys like that."
-                    t "Watch out!"
-                    "The thief dived into you and pulled you to the floor just as a razor-sharp banksia leaf slashed above you."
-                    if pig:
-                        "The pig tackled Scraggs McKenzie and he fell from the branch, screaming vengeance."
-                    "The banksia boys swung their leaves around them like sawblades, and their dozens of eyes opened and closed in fury."
-                    if pig:
-                        "The thief dragged you up and grabbed the pig. You all darted and dived through the melee until you dove through a door in the tree trunk and slammed it behind you."
+            t "Alright. Here's the job."
+            "They drew a floor plan in the dirt."
+            t "The treasure is in the central chamber, here. The front door can only be opened with a password."
+            t "There's another entrance up through the canopy, guarded by banksia boys."
+            t "Or we could try to get in here, through an underground river patrolled by an old crocodile."
+            if persistent.mushroomVanished:
+                "They kept looking over your shoulder into the darkness beyond. You noticed bags under their eyes."
+            show hand onlayer transient:
+                yalign 0.65#0.743
+                xalign 0.5
+            menu:
+                t "So what's the plan, chief?"
+                "If your notes say that you {b}know the password{/b}, turn to page 131.":
+                    if persistent.mushroomVanished:
+                        pov "I know the password. We can walk straight in the front door."
                     else:
-                        "The thief dragged you up and you both darted and dived through the melee until you dove through a door in the tree trunk and slammed it behind you."
-                    "You fell to the floor, gasping. You had some bruises, and you saw that the Master Thief had suffered a slash across their arm."
-                    t "N-nothing to worry about."
+                        pov "I saw the mushroom put in the password. We can walk straight in the front door."
+                    t "You devil, you. Lead the way!"
+                    "You walked up to the fig and cut the vines and swamp flowers away to reveal the small blue door, inlaid with precious moonstone and intricate engravings."
+                    pov "Gorge, guzzle, gulp and grab; never shall this wound scab."
+                    jump thiefMushroomCavern
+                "If you climb up and go in from above, turn to page 142.":
+                    t "Great idea. We'll draw you into a life of crime yet."
+                    call hideAll from _call_hideAll_45
+                    show canopybg at artPos
                     if pig:
-                        "The pig nuzzled them with a concerned oink."
-                    show hand onlayer transient:
-                        yalign 0.7#0.743
-                        xalign 0.5
-                    menu:
-                        "The thief sprung to their feet, then faltered and fell against the wall."
-                        "If you tried to help the thief, turn to page 182.":
-                            "You tore off one of your sleeves and bound it around the thief's arm as a bandage. They grumbled about it, but accepted your help."
-                            t "You're wasting your time, I'm telling you."
-                            t "One day soon I will make love to the ropemaker's daughter, and the croaking of ravens will be our music for the occasion, and the world will be a better place for it."
-                            show hand onlayer transient:
-                                yalign 0.68#0.743
-                                xalign 0.5
-                            menu:
-                                t "And then all your work will be for naught."
-                                "If you tried to motivate the thief by telling them you plan to betray them, turn to page 183.":
-                                    pov "Well, you'd better hold on a while longer. I plan to betray you and grab all the treasure for my own, and I can't do that if you're dead."
-                                    t "Fantastic!"
-                                    t "Then let the best betrayer win."
-                                    "They grabbed your hand and shook it."
-                                    if pig:
-                                        "You pulled them up, and you all crept through the tree until you found a rotted red door."
-                                    else:
-                                        "You pulled them up, and you both crept through the tree until you found a rotted red door."
-                                    jump thiefMushroomCavern
-                                "If you tried to push the thief onwards, turn to page 184":
-                                    pov "Come on. Don't talk like that."
-                                    "The thief shrugged."
-                                    t "I never learned any other way to talk."
-                                    "They struggled to their feet, and you both crept through the tree until you found a rotted red door."
-                                    jump thiefMushroomCavern
-            "If you entered through the underground river below, turn to page 173.":
-                t "Great idea. We'll draw you into a life of crime yet."
-                call hideAll from _call_hideAll_46
-                show mushroomcaveunderbg at artPos
-                if pig:
-                    "You leapt down a well with the pig in your arms, and crept up the underground river until you came across an ancient, leviathan saltwater crocodile."
-                else:
-                    "You leapt down a well and crept up the underground river until you came across an ancient, leviathan saltwater crocodile."
-                t "Watch this."
-                "Before you could say anything, they stole right up to the old master. With a flick of their wrist they stole his claws, and with a twist of their fingers stole his brightest emerald scales."
-                t "Not impressed yet? How about this?"
-                "They began reaching down into his gullet to steal the stones from his belly. You saw the crocodile's jaws about to clamp shut, and you grabbed their midnight cloak and pulled them away just in time."
-                "The old lord snapped about in a fury and turned on you."
-                t "Watch out!"
-                "The thief dived and pulled you to the floor just as its powerful jaws closed above your head."
-                "The thief dragged you up and you both darted and dived through the melee until you dove through a door and slammed it behind you."
-                "You fell to the floor, gasping. You had some bruises, and you saw that the Master Thief had suffered a slash across their arm."
-                label thiefHeal:
-                    show hand onlayer transient:
-                        yalign 0.68#0.743
-                        xalign 0.5
-                    menu:
+                        "You climbed up through the canopy, holding your pig tight in your arms. Before you knew it, a gaggle of Banksia seeds dropped down all around you. Their many mouths gabbled at you in a crazed frenzy."
+                    else:
+                        "You climbed up through the canopy. Before you knew it, a gaggle of Banksia seeds dropped down all around you. Their many mouths gabbled at you with wild abandon."
+                    sc "That's right, it's me!"
+                    sc "Scraggs McKenzie, the baddest banksia in the bush."
+                    boys "You tell 'em, Scraggs! {vspace=30}                                             {w=0.4} Yeah! {vspace=30}                         {w=0.8}You're the best, Scraggs!"
+                    label scraggsConvo:
+                        show hand onlayer transient:
+                            yalign 0.68#0.743
+                            xalign 0.5
+                        menu:
+                            sc "I bet you weren't expecting to run into me and my boys."
+                            "If you asked the thief if they'd ever met these people, turn to page 172." if not scraggsBoys:
+                                t "Never heard of him."
+                                sc "What! Everyone's heard of Scraggs McKenzie and the boys."
+                                boys "You know it, Scraggs! {vspace=30}                                             {w=0.4} Yeah! {vspace=30}                         {w=0.8}No-one messes with us!"
+                                $scraggsBoys = True
+                                jump scraggsConvo
+                            "If you asked who they are, turn to page 173" if not scraggsMusical:
+                                $scraggsMusical = True
+                                sc "Why, they call us..."
+                                "Scraggs and company launched into a long, flashy musical number explaining their backstory, the details of which I won't bore you with here."
+                                boys "...we're just tryna survive, in a world of baa-aad seeeeeeeds!"
+                                sc "That's right!"
+                                "You and the thief clapped politely."
+                                jump scraggsConvo
+                            "If you asked them to let you past, turn to page 174.":
+                                sc "NO-ONE gets past Scraggs McKenzie."
+                                sc "Not without answering one of my riddles first."
+                                show hand onlayer transient:
+                                    yalign 0.66#0.743
+                                    xalign 0.5
+                                menu:
+                                    sc "What walks on 4 legs in the morning, 2 legs at noon, and 3 legs in the evening?"
+                                    "If you answered \"Time\", turn to page 175.":
+                                        sc "Ha Ha Ha! Wrong!"
+                                        jump scraggsWrong
+                                    "If you answered \"Fate\", turn to page 175.":
+                                        sc "Ha Ha Ha! Wrong!"
+                                        jump scraggsWrong
+                                    "If you answered \"A dog jumping around on its hind legs\", turn to page 175.":
+                                        sc "Ha Ha Ha! Wrong!"
+                                        jump scraggsWrong
+                                    "If you answered \"Man.\", turn to page 176.":
+                                        sc "That's... that's correct. You may pass."
+                                        boys "You'll get 'em next time, Scraggs. {vspace=30}                                             {w=0.4} Don't worry about it. {vspace=30}                         {w=0.8} We still love you, Scraggs!"
+                                        sc "I know, boys. I know."
+                                        sc "Alright, go on through. But if me or my boys see you around here again, you'll be in serious trouble."
+                                        "You walked down passed the banksias, and found a little yellow door in the tree."
+                                        "You pulled it open and peered down inside."
+                                        jump thiefMushroomCavern
+                    label scraggsWrong:
+                        sc "You're in serious trouble now. Me and my boys are going to make you think twice before you step in this neck of the woods again."
+                        boys "That's right, Scraggs. {vspace=30}                                             {w=0.4} You've got it handled! {vspace=30}                         {w=0.8} No-one does it like you, Scraggs."
+                        sc "Alright boys, that's enough. Now listen here-"
+                        boys "You tell 'em, Scraggs. {vspace=30}                                             {w=0.4}  They're nothing. {vspace=30}    {w=0.4}                              These jokers have nothing on you. {vspace=30}{w=0.4}This is in the bag, Scraggs. {vspace=30}                                   {w=0.8} You got this -"
+                        sc "Boys! Please! Just give me a second."
+                        sc "Aw geeze, now look what you've done. Y-you made me lose it with the boys."
+                        sc "I'm sorry boys, I never shoulda spoken to you in that way. You don't deserve that kind of treatment."
+                        boys "It's ok Scraggs!  {vspace=30}                                             {w=0.4}  We forgive you Scraggs. {vspace=30}                         {w=0.8}  Forget about it."
+                        sc "Now it's personal. No-one disrespects my boys like that."
+                        t "Watch out!"
+                        "The thief dived into you and pulled you to the floor just as a razor-sharp banksia leaf slashed above you."
+                        if pig:
+                            "The pig tackled Scraggs McKenzie and he fell from the branch, screaming vengeance."
+                        "The banksia boys swung their leaves around them like sawblades, and their dozens of eyes opened and closed in fury."
+                        if pig:
+                            "The thief dragged you up and grabbed the pig. You all darted and dived through the melee until you dove through a door in the tree trunk and slammed it behind you."
+                        else:
+                            "The thief dragged you up and you both darted and dived through the melee until you dove through a door in the tree trunk and slammed it behind you."
+                        "You fell to the floor, gasping. You had some bruises, and you saw that the Master Thief had suffered a slash across their arm."
                         t "N-nothing to worry about."
-                        #TK: More menu options
-                        "If you admonish the thief for their wild actions, turn to page 153." if not thiefCroc:
-                            $thiefCroc = True
-                            pov "Are you crazy? That crocodile could have swallowed you whole!"
-                            t "So much the better. A crocodile's belly is no less than I deserve."
-                            t "And you'd be better off not saving me next time, for I plan to soon betray you."
-                            jump thiefHeal
-                        "If you helped the thief in silence, turn to page 156." if not thiefHelp:
-                            $thiefHelp = True
-                            "You tore off one of your sleeves and bound it around the thief's arm as a bandage. They grumbled about it, but accepted your help."
-                            t "You're wasting your time, I'm telling you."
-                            t "One day soon I will make love to the ropemaker's daughter, and the croaking of ravens will be our music for the occasion, and the world will be a better place for it."
-                            #"They smiled, but you could see pain behind the smile."
-                            show hand onlayer transient:
-                                yalign 0.68#0.743
-                                xalign 0.5
-                            menu:
-                                t "And then all your work will be for naught!"
-                                "If you told the thief you plan to betray them, turn to page 183.":
-                                    pov "Well, you'd better hold on a while longer. I plan to soon betray you and grab all the treasure for my own, and I can't do that if you're dead."
-                                    t "Fantastic!"
-                                    t "Then let the best betrayer win."
-                                    "They grabbed your hand and shook it."
-                                    "You pulled them up, and you both ventured further into the tunnel. Eventually you found a little silver door in the rock."
-                                    jump thiefMushroomCavern
-                                "If you tried to push the thief onwards, turn to page 184":
-                                    pov "Come on. Don't talk like that."
-                                    "The thief shrugged."
-                                    t "I never learned any other way to talk."
-                                    "They struggled to their feet, and you both ventured further into the tunnel. Eventually you found a little silver door in the rock."
-                                    jump thiefMushroomCavern
+                        if pig:
+                            "The pig nuzzled them with a concerned oink."
+                        show hand onlayer transient:
+                            yalign 0.7#0.743
+                            xalign 0.5
+                        menu:
+                            "The thief sprung to their feet, then faltered and fell against the wall."
+                            "If you tried to help the thief, turn to page 182.":
+                                "You tore off one of your sleeves and bound it around the thief's arm as a bandage. They grumbled about it, but accepted your help."
+                                t "You're wasting your time, I'm telling you."
+                                t "One day soon I will make love to the ropemaker's daughter, and the croaking of ravens will be our music for the occasion, and the world will be a better place for it."
+                                show hand onlayer transient:
+                                    yalign 0.68#0.743
+                                    xalign 0.5
+                                menu:
+                                    t "And then all your work will be for naught."
+                                    "If you tried to motivate the thief by telling them you plan to betray them, turn to page 183.":
+                                        pov "Well, you'd better hold on a while longer. I plan to betray you and grab all the treasure for my own, and I can't do that if you're dead."
+                                        t "Fantastic!"
+                                        t "Then let the best betrayer win."
+                                        "They grabbed your hand and shook it."
+                                        if pig:
+                                            "You pulled them up, and you all crept through the tree until you found a rotted red door."
+                                        else:
+                                            "You pulled them up, and you both crept through the tree until you found a rotted red door."
+                                        jump thiefMushroomCavern
+                                    "If you tried to push the thief onwards, turn to page 184":
+                                        pov "Come on. Don't talk like that."
+                                        "The thief shrugged."
+                                        t "I never learned any other way to talk."
+                                        "They struggled to their feet, and you both crept through the tree until you found a rotted red door."
+                                        jump thiefMushroomCavern
+                "If you entered through the underground river below, turn to page 173.":
+                    t "Great idea. We'll draw you into a life of crime yet."
+                    call hideAll from _call_hideAll_46
+                    show mushroomcaveunderbg at artPos
+                    if pig:
+                        "You leapt down a well with the pig in your arms, and crept up the underground river until you came across an ancient, leviathan saltwater crocodile."
+                    else:
+                        "You leapt down a well and crept up the underground river until you came across an ancient, leviathan saltwater crocodile."
+                    t "Watch this."
+                    "Before you could say anything, they stole right up to the old master. With a flick of their wrist they stole his claws, and with a twist of their fingers stole his brightest emerald scales."
+                    t "Not impressed yet? How about this?"
+                    "They began reaching down into his gullet to steal the stones from his belly. You saw the crocodile's jaws about to clamp shut, and you grabbed their midnight cloak and pulled them away just in time."
+                    "The old lord snapped about in a fury and turned on you."
+                    t "Watch out!"
+                    "The thief dived and pulled you to the floor just as its powerful jaws closed above your head."
+                    "The thief dragged you up and you both darted and dived through the melee until you dove through a door and slammed it behind you."
+                    "You fell to the floor, gasping. You had some bruises, and you saw that the Master Thief had suffered a slash across their arm."
+                    label thiefHeal:
+                        show hand onlayer transient:
+                            yalign 0.68#0.743
+                            xalign 0.5
+                        menu:
+                            t "N-nothing to worry about."
+                            #TK: More menu options
+                            "If you admonish the thief for their wild actions, turn to page 153." if not thiefCroc:
+                                $thiefCroc = True
+                                pov "Are you crazy? That crocodile could have swallowed you whole!"
+                                t "So much the better. A crocodile's belly is no less than I deserve."
+                                t "And you'd be better off not saving me next time, for I plan to soon betray you."
+                                jump thiefHeal
+                            "If you helped the thief in silence, turn to page 156." if not thiefHelp:
+                                $thiefHelp = True
+                                "You tore off one of your sleeves and bound it around the thief's arm as a bandage. They grumbled about it, but accepted your help."
+                                t "You're wasting your time, I'm telling you."
+                                t "One day soon I will make love to the ropemaker's daughter, and the croaking of ravens will be our music for the occasion, and the world will be a better place for it."
+                                #"They smiled, but you could see pain behind the smile."
+                                show hand onlayer transient:
+                                    yalign 0.68#0.743
+                                    xalign 0.5
+                                menu:
+                                    t "And then all your work will be for naught!"
+                                    "If you told the thief you plan to betray them, turn to page 183.":
+                                        pov "Well, you'd better hold on a while longer. I plan to soon betray you and grab all the treasure for my own, and I can't do that if you're dead."
+                                        t "Fantastic!"
+                                        t "Then let the best betrayer win."
+                                        "They grabbed your hand and shook it."
+                                        "You pulled them up, and you both ventured further into the tunnel. Eventually you found a little silver door in the rock."
+                                        jump thiefMushroomCavern
+                                    "If you tried to push the thief onwards, turn to page 184":
+                                        pov "Come on. Don't talk like that."
+                                        "The thief shrugged."
+                                        t "I never learned any other way to talk."
+                                        "They struggled to their feet, and you both ventured further into the tunnel. Eventually you found a little silver door in the rock."
+                                        jump thiefMushroomCavern
     label thiefMushroomCavern:
                 call hideAll from _call_hideAll_47
                 show mushroomcavebg at artPos
@@ -6011,6 +6029,12 @@ label toad1:
             f "Hand-holding, before marriage? What will people say?"
             "You picked him up out of the muck and put him on your shoulder."
             f "Good, good. I-I'll lead you onward."
+        "If you turned and walked into the woods without another word, turn to page 237." if persistent.vanished>=1:
+            f "W-what are you doing? Wait!"
+            "His voice faded behind you as you walked away into the darkness."
+            $clearing = "toad"
+            jump clearingInvestigate
+
     "You walked on. Soon, you began to see a glimmer of silver light in the darkness."
     call hideAll from _call_hideAll_68
     show darkforestbg at artPos
@@ -8223,7 +8247,7 @@ label thiefMushroomInvestigate:
                     "A foolish endeavour. There is no such person."
                     "There never was."
                 "Searching for the place between the trees.":
-                    "A foolish dream. There is no such person."
+                    "A foolish dream. There is no such place."
                     "There never was."
                 "Searching for nothing in particular.":
                     "Very well. Curiosity is a fine vice for the hero of a tale like this."
@@ -8261,7 +8285,10 @@ label toadInvestigate:
                 menu:
                     "You had best return to your home and the people who love you."
                     "If you searched the nearby area, turn to page 208.":
-                        "You uncovered a pantry with a single, mouldy piece of bread, and a pit sunk into the muck of the wall with the remains of an old fire."
+                        label essay2Showing:
+                            $renpy.show_screen("essay2", _layer="screens", tag="note", _zorder=101)
+                            "You uncovered a pantry with a single, mouldy piece of bread, and a pit sunk into the muck of the wall with the remains of an old fire."
+                            $renpy.hide_screen("essay2")
                         "The silence watched you."
                         jump toadInvestigateMenu
                     "If you explored deeper in, turn to page 209.":
@@ -8407,7 +8434,7 @@ label witchInvestigate:
             xalign 0.5
         menu:
             "The whole scene was still and silent."
-            "If you explored the cottage, turn to page 207.":
+            "If you explored the cottage, turn to page 207." if not inCottage:
                 $inCottage = True
                 "You walked up the front steps, and put your hand on the doorknob."
                 "The door opened up with a shuddering creak."
@@ -8470,7 +8497,10 @@ label mushroomInvestigate:
             "If you explored the main hollow, turn to page 131.":
                 "The chamber was still and empty, but for a small black door set into the bark in the centre."
                 "You opened up the door and looked within cautiously."
-                "The basement within was dark. Nothing moved."
+                label essay5Showing:
+                    $renpy.show_screen("essay5", _layer="screens", tag="note", _zorder=101)
+                    "The basement within was dark. Nothing moved."
+                    $renpy.hide_screen("essay5")
                 pov "There is nothing for me here."
                 "You left the basement and returned to the main hollow."
                 jump mushroomInvestigateMenu
@@ -8548,7 +8578,11 @@ label thiefInvestigate:
                 menu:
                     "Some of the tables still had the rotten remains of strange fruits. No flies or animals would touch them."
                     "If you investigated the engine room, turn to page 253.":
-                        "This room must have been sweltering, once. Now the gaping maw of the furnace lay cold."
+                        label essay3Showing:
+                            $renpy.show_screen("essay3", _layer="screens", tag="note", _zorder=101)
+                            "This room must have been sweltering, once."
+                            $renpy.hide_screen("essay3")
+                        "Now the gaping maw of the furnace lay cold."
                         jump thiefInvestigate2
                     "If you climbed up on the roof of the train, turn to page 254.":
                         call hideAll
@@ -8640,7 +8674,53 @@ label woodsInvestigate:
             "The rich dark blanket of night was softly rolling over the town, and cooking fires lit up all across the hills, one by one."
             jump villageExplore1
 
-#=== DISCOVERABLES
+label clearingInvestigate:
+    call hideAll
+    show darknessbg at artPos
+    call musicSilence
+    "You wandered through the trees until you found a dark clearing."
+    "A gap in the forest. A lacuna."
+    "Nothing stirred. The only sound was the crunch of your feet upon the scattered grass."
+    "In the center of the clearing was an old stone. An archaic monument or shrine, weathered almost to dust. Remembered by no-one."
+    "It showed the carven image of some warrior or ancient king holding a severed head aloft."
+    "The severed head was strange."
+    "It looked out from the tablet with a face formed from spiralling coils that looped over and around to create the eyes, the mouth, and the gritted, coiling teeth."
+    "You would not know this face. Few do now."
+    "I am forgotten."
+    "The trees around you rustled, but made no noise."
+    "The silence was strong here."
+    label essay6Showing:
+        $renpy.show_screen("essay6", _layer="screens", tag="note", _zorder=101)
+        "It wrapped itself around you like an old coat."
+        $renpy.hide_screen("essay6")
+    call musicReturn
+    if clearing=="thief":
+        t "There you are! "
+        t "You're a wild one, running off like that! I can relate. But come, that treasure isn't going to steal itself!"
+        "They took you firmly by your hand and dragged you back to the path."
+        jump thiefFig
+    elif clearing=="toad":
+        f "There you are!"
+        f "My word, I was beginning to get quite worried. Come on, let us be off! That curse isn't going to lift itself."
+        "He took you firmly by your hand and dragged you back to the path."
+        call hideAll
+        show darkforestbg at artPos
+        "Soon, you began to see a glimmer of silver light in the darkness."
+        "The forest was covered in puddles of water from the rains. Each one shone with light."
+        "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
+        play sound pageFlip
+        call hideAll
+        show lakefullbg
+        ""
+        play sound pageFlip2
+        call hideAll
+        show darkforestbg at artPos
+
+        "For a brief moment, you thought you saw a figure reflected in the water. But as soon as you blinked, it was gone."
+        jump puddle
+
+
+#========= DISCOVERABLES
 
 #These are the hidden notes that you can find around the place, providing hints leading to the true ending
 
@@ -8684,6 +8764,37 @@ label posterOpens:
     play sound pageFlip
     jump mushroomPosterShowing
 
+label essay1Opens:
+    play sound pageFlip2
+    hide essay1Closed onlayer screens
+    $renpy.hide_screen("essay1")
+    show essay1 onlayer screens zorder 100 at truecenter
+    "It's quite the sight to see."
+    hide essay1 onlayer screens
+    play sound pageFlip
+    jump essay1Showing
+
+label essay2Opens:
+    play sound pageFlip2
+    hide essay2Closed onlayer screens
+    $renpy.hide_screen("essay2")
+    show essay2 onlayer screens zorder 100 at truecenter
+    "You uncovered a pantry with a single, mouldy piece of bread, and a pit sunk into the muck of the wall with the remains of an old fire."
+    hide essay2 onlayer screens
+    play sound pageFlip
+    jump essay2Showing
+
+label essay3Opens:
+    play sound pageFlip2
+    hide essay3Closed onlayer screens
+    $renpy.hide_screen("essay4")
+    show essay3 onlayer screens zorder 100 at truecenter
+    "This room must have been sweltering, once."
+    hide essay3 onlayer screens
+    play sound pageFlip
+    jump essay3Showing
+
+
 label essay4Opens:
     play sound pageFlip2
     hide essay4Closed onlayer screens
@@ -8693,6 +8804,26 @@ label essay4Opens:
     hide essay4 onlayer screens
     play sound pageFlip
     jump essay4Showing
+
+label essay5Opens:
+    play sound pageFlip2
+    hide essay5Closed onlayer screens
+    $renpy.hide_screen("essay5")
+    show essay5 onlayer screens zorder 100 at truecenter
+    "The basement within was dark. Nothing moved."
+    hide essay5 onlayer screens
+    play sound pageFlip
+    jump essay5Showing
+
+label essay6Opens:
+    play sound pageFlip2
+    hide essay6Closed onlayer screens
+    $renpy.hide_screen("essay6")
+    show essay6 onlayer screens zorder 100 at truecenter
+    "It wrapped itself around you like an old coat."
+    hide essay6 onlayer screens
+    play sound pageFlip
+    jump essay6Showing
 
 label gilgameshOpens:
     play sound pageFlip2
@@ -9279,8 +9410,6 @@ label wolf:
                 "None remember me now. Only this tiny, scattered fragment of me lives on, clinging to life in this scrap of a story."
                 "Go on, then. Speak it. If you do know."
 
-                $ flash = Fade(.25, 0, 2, color="#fff")
-
                 python:
                     answer1 = renpy.input("{i}I name you and bind you:{/i}", length=7)
 
@@ -9785,7 +9914,7 @@ label allVanishedEnd:
             "If you explored the attic, turn to page 482." if not silenceAttic:
                 $silenceAttic = True
                 "One day, you went up to the attic."
-                "In the darkness there you found a midnight cloak and a black mask. In the pockets were small precious gems and soft, mossy stones."
+                "In the darkness there you found a midnight cloak and a black mask. The pockets held small precious gems and soft, mossy stones."
                 "These things belonged to no-one."
                 pov "The house provides."
                 "That night you slept in warmth, wrapped in the midnight cloak."
@@ -10225,11 +10354,13 @@ label bookBurnedFinale:
     "Just hold the book over the fire."
     #pause 0.2 with hpunch
     #TK: Walking and fire noises."
-    show emptybg with flash
-    "There you go."
+    play sound fireLit
+
+    show nightbg at artPos with flash
+    "Good. It's done."
     "The flames have started to catch. Won't be long now."
     "I'll take you back to the village."
-    "You should take this time to say goodbye."
+    "You won't have much time left. You should choose who you want to spend it with."
 
     # You share a tearful moment with the last people left alive as the book burns
     # Unique finale depending on who is left alive
@@ -10274,10 +10405,55 @@ label bookBurnedFinale:
                 jump banquetBurning
             "If you walked to the edge of town, turn to page 70.":
                 jump townBurning
-            #"If you walked back home, turn to page 1.":
-                #jump homeBurning
-            "If you walked out into the deep woods, turn to page 80.":
-                jump woodsBurning
+            "If you walked back home, turn to page 1.":
+                jump homeBurning
+            #witch
+            #Goblin Train
+            #"If you walked out into the deep woods, turn to page 80.":
+                #jump woodsBurning
+    # label witchBurning:
+    #     "You walked through crooked mangroves. Soon, you began to see a glimmer of silver light in the darkness."
+    #     call hideAll
+    #     show darkforestbg at artPos
+    #     "The forest was covered in puddles of water from the rains. Each one shone with light."
+    #     "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
+    #     "You leapt into the puddle without a second thought and soon found yourself in a world of glimmering white with an old cottage in the centre."
+    #     "Up over the walls grew a riot of herbs and flowers of every type, rambling over everything and growing in a lush green-grass garden on the roof. "
+
+
+    # "If you explored the attic, turn to page 482." if not silenceAttic:
+    #     $silenceAttic = True
+    #     "One day, you went up to the attic."
+    #     "In the darkness there you found a midnight cloak and a black mask. In the pockets were small precious gems and soft, mossy stones."
+    #     "These things belonged to no-one."
+    #     pov "The house provides."
+    #     "That night you slept in warmth, wrapped in the midnight cloak."
+    #     jump silence
+    # "If you explored the bedrooms, turn to page 482." if not silenceLivingRoom:
+    #     $silenceLivingRoom = True
+    #     "One day, you decided to search the bedrooms."
+    #
+    #     "These things belonged to no-one."
+    #     pov "The house provides."
+    #     "You had no use for the coins, but you sipped the pond scum when you became thirsty."
+    #     jump silence
+    # "If you explored the study, turn to page 482." if not silenceStudy:
+    #     $silenceStudy = True
+    #     "One day, you decided to search the study."
+    #     "In the drawers of the desk, you found a black hat with a wide brim and a pointed crown. Underneath the hat were bundles of lavender and herbs and parcels of fine tea."
+    #     "These things belonged to no-one."
+    #     pov "The house provides."
+    #     "You planted the herbs in pots around the house, where they slowly wilted."
+    #     jump silence
+    # "If you explored the basement, turn to page 482." if not silenceBasement:
+    #     $silenceBasement = True
+    #     "One day, you went down to the basement."
+    #     "Deep in the rich dark soil there, you discovered bottles of red wine, a picnic basket, and packages of truffle cheese and crackers."
+    #     "These things belonged to no-one."
+    #     pov "The house provides."
+    #     "You gathered them up and returned to enjoy the cheese and wine before the fire."
+    #     jump silence
+
 
     label banquetBurning:
 
@@ -10293,10 +10469,32 @@ label bookBurnedFinale:
                 "If you returned to the middle of the village, turn to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
-                "If you waked to Brildebrogue Chippingham's Manor, turn to page X." if not persistent.toadVanished and not toadBurning:
+                "If you walked to Brildebrogue Chippingham's Manor, turn to page X." if not persistent.toadVanished and not toadBurning:
                     ""
-                "If you walked out to the witch's cottage, turn to page X." if not persistent.witchVanished and not witchBurning:
+                "If you explored the river, turn to page X." if persistent.toadVanished and not toadBurning:
+                    "You walked out along the banks of the river until you found a small, muddy hole."
+                    "Inside the hole you found a tiny suit, top hat and cane. Silver coins and a small decanter of pond scum were hidden away within the pockets."
+                    "Who did these things belong to? You found you couldn't recall."
+                    "You took the coins and commissioned a great stone slab with ornate angels and sigils engraved upon it, in pride of place at the top of the cemetary."
+                    "You buried the suit, hat and cane beneath the slab. You had no name to place upon it. But for some reason, it felt right."
+                    $toadBurning = True
+                    jump banquetBurningMenu
+                "If you talked to the mushroom, turn to page X." if not persistent.mushroomVanished and not mushroomBurning:
                     ""
+                    $mushroomBurning = True
+                    jump banquetBurningMenu
+
+                "If you walked through the forest, looking for an old fig, turn to page X." if persistent.mushroomVanished and not mushroomBurning:
+                    call hideAll
+                    show stranglerFigbg at artPos
+                    "You wandered away from the party, searching through the forest until you found an old strangler fig rotting away."
+                    "In its depths you discovered bottles of red wine, a picnic basket, and packages of truffle cheese and crackers."
+                    "You took these things and enjoyed them with your friends in the village. You poured the wine, and raised a toast."
+                    "You had no name to dedicate the toast to. But for some reason, it felt right."
+                    #TK perhaps extra from toad, witch, thief in reaction to this
+                    $mushroomBurning = True
+                    jump banquetBurningMenu
+
                 "If you talked to the mayor, turn to page X." if not persistent.mayVanished and not mayBurning:
                     "The mayor was twisting slowly in the moonlight."
                     may "This is goodbye, then. I'm sorry we didn't get more pages together."
@@ -10328,15 +10526,47 @@ label bookBurnedFinale:
     label townBurning:
         call hideAll from _call_hideAll_124
         show townextbg at artPos
-        "You walked out to the edge of town. The stars in the night sky were beautiful to behold."
+        "You walked out to the edge of town. The stars in the night sky were beautiful to behold. You heard dancing and laughter on the wind."
         label townBurningMenu:
             show hand onlayer transient:
                 yalign 0.62#0.743
                 xalign 0.5
             menu:
                 "Fruit bats chirped and swirled overhead."
-                "If you went to join the thief, go to page 53." if not persistent.thiefVanished and not thiefBurning:
-                    jump thiefBurning
+                "If you went out to the goblin train, go to page 53." if not persistent.thiefVanished and not thiefBurning:
+                    $thiefBurning = True
+                    jump townBurningMenu
+
+                "If you searched for an old wreck, go to page 53." if persistent.thiefVanished and not thiefBurning:
+                    call hideAll
+                    show enginebg at artPos
+                    "You walked through the forest until you found the rusting remains of an old train."
+                    "In the darkness there you found a midnight cloak and a black mask. The pockets held small precious gems and soft, mossy stones."
+                    "Who did these things belong to? You found you could not recall."
+                    "You stole them away in a wink, and kept them hidden in a secret pocket. For some reason, that felt right."
+                    $thiefBurning = True
+                    jump townBurningMenu
+                "If you searched for the witch, turn to page X." if not persistent.witchVanished and not witchBurning:
+                    call hideAll
+                    show mountainsbg at artPos
+                    "A witch's sabbath was afoot on the edge of the forest, just outside of town. You saw women and crooked things dance around a bonfire, gibbering with joy."
+                    "Belphegor, Lord of Hogs, lounged beneath the cottage partaking of occaisional truffles offered to Him by His many worshippers."
+                    w "Hello."
+                    "The witch was leaning against the fencepost, away from the party, looking out over the water."
+                    w "I suppose this is it, isn't it?"
+                    w "You know, it's funny, I spent all these years thinking about this moment and trying to understand what was going on and, you know, get to the truth of it all, and now..."
+                    w "I thought I'd feel different."
+                    "She looks at you, wiping her eyes."
+                    w "I'm very glad I had the time to know you. You made the right decision."
+                    $witchBurning = True
+                    jump townBurningMenu
+                "If you searched the forest, trying to find someone, turn to page X." if persistent.witchVanished and not witchBurning:
+                    "You left the sounds of laughter behind you and went to the edge of the woods."
+                    "In a silver-green puddle, you found a black hat with a wide brim and a pointed crown. Underneath the hat were bundles of lavender and herbs and parcels of fine tea."
+                    "Who did these things belong to? You found you could not recall."
+                    "You buried the hat beneath an old oak, and planted the lavender and herbs all around the mound."
+                    $witchBurning = True
+                    jump townBurningMenu
                 "If you talked to the old gloom-monger, turn to page X." if not persistent.gmVanished and not gmBurning:
                     gm "I told you we were doomed! Doomed, I said! I told you so!"
                     pov "Yes. You told us all."
@@ -10385,108 +10615,85 @@ label bookBurnedFinale:
                 "If you returned to the middle of the village, go back to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
-    label woodsBurning:
+    label homeBurning:
         call hideAll from _call_hideAll_125
         show forest5bg at artPos
-        "You walked into the space between the trees."
-        label woodsBurningMenu:
+        "You began the long walk home."
+        "The wet cool mist of the rainforest settled around you."
+        if not persistent.miwVanished and not miwBurning:
+            $miwBurning = True
+            "Along the way, you may or may not have met a man all in white."
+            "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
+            "His suit was perfect. His face was too bright to look upon."
+            miw "A tragedy. This world of my dominion burns too soon."
+            miw "I would condemn you for it. But I cannot reach you in the place where you live."
+            "He looked so small, now. Powerless."
+            "Of course, He was never in control. I was."
+            "What is it like, Man in White? Believing you are the all-powerful G-d of this earth, only to realise how petty and small your domain has always been? How hollow you must feel. All that ego. All those commandments."
+            miw "Go. Taunt me no longer."
             show hand onlayer transient:
-                yalign 0.625#0.743
+                yalign 0.62#0.743
                 xalign 0.5
             menu:
-                "The wet cool mist of the rainforest settled around you."
-                "If you walked home, turn to page X.":
-                    if not persistent.miwVanished and not miwBurning:
-                        $miwBurning = True
-                        "Along the way, you may or may not have met a man all in white."
-                        "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
-                        "His suit was perfect. His face was too bright to look upon."
-                        miw "A tragedy. This world of my dominion burns too soon."
-                        miw "I would condemn you for it. But I cannot reach you in the place where you live."
-                        "He looked so small, now. Powerless."
-                        "Of course, He was never in control. I was."
-                        "What is it like, Man in White? Believing you are the all-powerful G-d of this earth, only to realise how petty and small your domain has always been? How hollow you must feel. All that ego. All those commandments."
-                        miw "Go. Taunt me no longer."
-                        show hand onlayer transient:
-                            yalign 0.62#0.743
-                            xalign 0.5
-                        menu:
-                            miw "I will rest in Heaven until the last moments."
-                            "If you turned back, turn to page X.":
-                                jump villageBurning
-                            "If you continued on, turn to page X.":
-                                "You hurried on into the woods."
-                    if not persistent.mirVanished and not mirBurning:
-                        $mirBurning = True
-                        "In the deeper darkness of the forest, you may or may not have met a man all in red."
-                        "All the jewels of the earth fell from His right hand, and all the pleasures of the world fell from His left, and His other hand held all the wonders of the universe, and His other hand held a fat cigar, and His other hand held a long knife black as coal dust, and His other hand held the most intoxicating spices, such that the King of Kings would cry to taste them, and His other hand held a single dead rose, and His other hand was in his pocket and out of view."
-                        mir "Thank you, my wicked one! All of creation burns, just as planned!"
-                        mir "All morality and rules have fallen! The only rule of the law will be “Do as thou wilt”. Now we may finally glory and kill and riot in the triumphant light of the black sun! Ia, Ia!"
-                        "You watched him cackle and cavort."
-                        show hand onlayer transient:
-                            yalign 0.62#0.743
-                            xalign 0.5
-                        menu:
-                            "He's harmless, really. Best pay him no mind."
-                            "If you turned back, turn to page X.":
-                                jump villageBurning
-                            "If you continued on, turn to page X.":
-                                "You hurried on into the woods."
-                    if not persistent.wibVanished and not wibBurning:
-                        $wibBurning = True
-                        "In the deepest darkness of the forest, you may or may not have met a handsome woman all in black."
-                        "Her limbs were broken. She had no hands."
-                        wib "Goodbye, child."
-                        wib "It seems, at the end of time, even Death may die."
-                        wib "I wonder... who will carry me to that far shore?"
-                        "I will."
-                        "You have carried so many. It is only right that someone be there to carry you."
-                        wib "Thank you."
-                        show hand onlayer transient:
-                            yalign 0.62#0.743
-                            xalign 0.5
-                        menu:
-                            wib "I will stay here until the end. To take away the others."
-                            "If you turned back, turn to page X.":
-                                jump villageBurning
-                            "If you continued on, turn to page X.":
-                                "You hurried on into the woods."
-                        "A small turtle saw you coming and fled into the water with a splash."
-                        "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
-                        "The twilight set in, and the crickets and cicadas all around began their chattering and squabbling, and the evening birds began to laugh and trill, and the wet cool mist of the rainforest settled around you."
-                        "Finally you came to a small house on stilts on the banks of a muddy river."
-                        "She was waiting for you on the front steps."
-                    if not persistent.mumVanished and not mumBurning:
-                        $mumBurning = True
-                        mum "We never got a chance to talk much, did we? In the narrative, I mean."
-                        mum "I don't even really know what you're like."
-                        mum "Well, I wanted to say..."
-                        mum "Whatever else happens and whoever you are, whoever you may become..."
-                        mum "I'm proud of you."
-                        mum "I love you."
-                        "You embraced."
-                        "Perhaps we can say that you spent days there, chatting about all that had happened."
-                        "Perhaps even months, resting and uniting with your family and looking out over the muddy river at sunset with a hot bowl of soup in your lap and your mother's arm around you."
-                        "But at last, it was time to go."
-                        "You hugged your family for the last time, and set out back to the village to finish the rest of your goodbyes."
-                        jump villageBurning
-    label witchBurning:
-        "You walked through crooked mangroves. Soon, you began to see a glimmer of silver light in the darkness."
-        call hideAll
-        show darkforestbg at artPos
-        "The forest was covered in puddles of water from the rains. Each one shone with light."
-        "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
-        "You leapt into the puddle without a second thought and soon found yourself in a world of glimmering white with an old cottage in the centre."
-        "Up over the walls grew a riot of herbs and flowers of every type, rambling over everything and growing in a lush green-grass garden on the roof. "
-        "A witch's sabbath was afoot. You saw women and crooked things dance around a bonfire in the garden, gibbering with joy."
-        "Belphegor, Lord of Hogs, lounged beneath the cottage partaking of occaisional truffles offered to Him by His many worshippers."
-        w "Hello."
-        "The witch was leaning against the fencepost, away from the party, looking out over the water."
-        w "I suppose this is it, isn't it?"
-        w "You know, it's funny, I spent all these years thinking about this moment and trying to understand what was going on and, you know, get to the truth of it all, and now..."
-        w "I thought I'd feel different."
-        "She looks at you, wiping her eyes."
-        w "I'm very glad I had the time to know you. You made the right decision."
+                miw "I will rest in Heaven until the last moments."
+                "If you turned back, turn to page X.":
+                    jump villageBurning
+                "If you continued on, turn to page X.":
+                    "You hurried on into the woods."
+        if not persistent.mirVanished and not mirBurning:
+            $mirBurning = True
+            "In the deeper darkness of the forest, you may or may not have met a man all in red."
+            "All the jewels of the earth fell from His right hand, and all the pleasures of the world fell from His left, and His other hand held all the wonders of the universe, and His other hand held a fat cigar, and His other hand held a long knife black as coal dust, and His other hand held the most intoxicating spices, such that the King of Kings would cry to taste them, and His other hand held a single dead rose, and His other hand was in his pocket and out of view."
+            mir "Thank you, my wicked one! All of creation burns, just as planned!"
+            mir "All morality and rules have fallen! The only rule of the law will be “Do as thou wilt”. Now we may finally glory and kill and riot in the triumphant light of the black sun! Ia, Ia!"
+            "You watched him cackle and cavort."
+            show hand onlayer transient:
+                yalign 0.62#0.743
+                xalign 0.5
+            menu:
+                "He's harmless, really. Best pay him no mind."
+                "If you turned back, turn to page X.":
+                    jump villageBurning
+                "If you continued on, turn to page X.":
+                    "You hurried on into the woods."
+        if not persistent.wibVanished and not wibBurning:
+            $wibBurning = True
+            "In the deepest darkness of the forest, you may or may not have met a handsome woman all in black."
+            "Her limbs were broken. She had no hands."
+            wib "Goodbye, child."
+            wib "It seems, at the end of time, even Death may die."
+            wib "I wonder... who will carry me to that far shore?"
+            "I will."
+            "You have carried so many. It is only right that someone be there to carry you."
+            wib "Thank you."
+            show hand onlayer transient:
+                yalign 0.62#0.743
+                xalign 0.5
+            menu:
+                wib "I will stay here until the end. To take away the others."
+                "If you turned back, turn to page X.":
+                    jump villageBurning
+                "If you continued on, turn to page X.":
+                    "You hurried on into the woods."
+            "A small turtle saw you coming and fled into the water with a splash."
+            "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
+            "The twilight set in, and the crickets and cicadas all around began their chattering and squabbling, and the evening birds began to laugh and trill, and the wet cool mist of the rainforest settled around you."
+            "Finally you came to a small house on stilts on the banks of a muddy river."
+            "She was waiting for you on the front steps."
+        if not persistent.mumVanished and not mumBurning:
+            $mumBurning = True
+            mum "We never got a chance to talk much, did we? In the narrative, I mean."
+            mum "I don't even really know what you're like."
+            mum "Well, I wanted to say..."
+            mum "Whatever else happens and whoever you are, whoever you may become..."
+            mum "I'm proud of you."
+            mum "I love you."
+            "You embraced."
+            "Perhaps we can say that you spent days there, chatting about all that had happened."
+            "Perhaps even months, resting and uniting with your family and looking out over the muddy river at sunset with a hot bowl of soup in your lap and your mother's arm around you."
+            "But at last, it was time to go."
+            "You hugged your family for the last time, and set out back to the village to finish the rest of your goodbyes."
+            jump villageBurning
         # menu:
         #     "Embrace the witch":
         #         ""
@@ -10588,19 +10795,19 @@ label bookBurnedFinale:
 label burnEnd:
     #TK: Revise and finish this ending
     $quick_menu = False
-    show black
-    hide bookBurnMovie with fade
+    show black onlayer over_screens zorder 98
+    #hide bookBurnMovie with fade
     $purge_saves()
-    show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" with fade:
+    show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" onlayer over_screens zorder 101 with fade:
         xalign 0.5
         yalign 0.5
     ""
-    show text "{color=#FFFFFF}Thank you so much for playing.{/color}" with fade:
+    show text "{color=#FFFFFF}Thank you so much for playing.{/color}" onlayer over_screens zorder 101 with fade:
         xalign 0.5
         yalign 0.5
 
     ""
-    show text "{color=#FFFFFF}I hope you enjoyed the game, and I hope you have a wonderful life.{/color}" with fade:
+    show text "{color=#FFFFFF}I hope you enjoyed the game, and I hope you have a wonderful life.{/color}" onlayer over_screens zorder 101 with fade:
         xalign 0.5
         yalign 0.5
     ""
@@ -10716,7 +10923,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}{space=[ti]}9. {b}White Noise:{/b} 'Underwater white noise', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}10. {b}Fire Poker:{/b} 'Opening tool drawer hard', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}11. {b}Thunder:{/b} 'Thunder', Pixabay, pixabay.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}{space=[ti]}9. {b}White Noise:{/b} 'Underwater white noise', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}10. {b}Fire Poker:{/b} 'Opening tool drawer hard', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}11. {b}Thunder:{/b} 'Thunder', Pixabay, pixabay.com.{vspace=[tx]}{space=[ti]}13. {b}Fire Lit:{/b} 'Lighting a Fire', Pixabay, pixabay.com.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     hide text
     #TK: Appendix N

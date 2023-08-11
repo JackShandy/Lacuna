@@ -732,7 +732,27 @@ screen poster: #Preparing the imagemap
 
         hotspot (0, 0, 600, 810) clicked Jump("posterOpens") hovered [ Play ("sound", audio.pageFlip3)]
 
-## Witch Essay 1 ####
+## Witch Essays ####
+screen essay1: #Preparing the imagemap
+    imagemap:
+        idle "essayClosed.png"
+        hover "essayClosedHover.png"
+
+        hotspot (0, 0, 600, 810) clicked Jump("essay1Opens") hovered [ Play ("sound", audio.pageFlip3)]
+
+screen essay2: #Preparing the imagemap
+    imagemap:
+        idle "essayClosed.png"
+        hover "essayClosedHover.png"
+
+        hotspot (0, 0, 600, 810) clicked Jump("essay2Opens") hovered [ Play ("sound", audio.pageFlip3)]
+
+screen essay3: #Preparing the imagemap
+    imagemap:
+        idle "essayClosed.png"
+        hover "essayClosedHover.png"
+
+        hotspot (0, 0, 600, 810) clicked Jump("essay3Opens") hovered [ Play ("sound", audio.pageFlip3)]
 
 screen essay4: #Preparing the imagemap
     imagemap:
@@ -740,6 +760,20 @@ screen essay4: #Preparing the imagemap
         hover "essayClosedHover.png"
 
         hotspot (0, 0, 600, 810) clicked Jump("essay4Opens") hovered [ Play ("sound", audio.pageFlip3)]
+
+screen essay5: #Preparing the imagemap
+    imagemap:
+        idle "essayClosed.png"
+        hover "essayClosedHover.png"
+
+        hotspot (0, 0, 600, 810) clicked Jump("essay5Opens") hovered [ Play ("sound", audio.pageFlip3)]
+
+screen essay6: #Preparing the imagemap
+    imagemap:
+        idle "essayClosed.png"
+        hover "essayClosedHover.png"
+
+        hotspot (0, 0, 600, 810) clicked Call("essay6Opens") hovered [ Play ("sound", audio.pageFlip3)]
 
 ## Top Ten Creepiest Books ####
 
@@ -983,6 +1017,9 @@ screen preferences():
     tag menu
 
     add "/images/bg page.png"
+
+    #if persistent.vanished >=2:
+    #$renpy.show_screen("essay6", _layer="screens", tag="note", _zorder=101)
 
     use game_menu(_("Preferences"), scroll="viewport"):
 
