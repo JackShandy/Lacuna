@@ -1,28 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 10358, in script
-    show emptybg with flash
-  File "game/script.rpy", line 10358, in <module>
-    show emptybg with flash
-NameError: name 'flash' is not defined
+  File "game/script.rpy", line 10662, in script
+    menu:
+  File "game/script.rpy", line 10673, in <module>
+    "If you talked to the Devil's sooty grandmother, turn to page X." if not dgBurning:
+NameError: name 'dgBurning' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 10358, in script
-    show emptybg with flash
-  File "renpy/ast.py", line 1393, in execute
-    paired = renpy.python.py_eval(self.paired)
+  File "game/script.rpy", line 10662, in script
+    menu:
+  File "renpy/ast.py", line 1642, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "renpy/exports.py", line 1004, in menu
+    condition = renpy.python.py_eval(condition)
   File "renpy/python.py", line 2249, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "renpy/python.py", line 2242, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 10358, in <module>
-    show emptybg with flash
-NameError: name 'flash' is not defined
+  File "game/script.rpy", line 10673, in <module>
+    "If you talked to the Devil's sooty grandmother, turn to page X." if not dgBurning:
+NameError: name 'dgBurning' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Lacuna. 0.81
-Fri Aug 11 15:28:45 2023
+Sat Aug 12 14:49:36 2023

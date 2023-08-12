@@ -73,7 +73,7 @@ init:
     #The devil's grandmother
     default persistent.dgVanished = False
     #Brildebrogue chippingham
-    default persistent.bcVanished = False
+    #default persistent.bcVanished = False
     #The hunter
     default persistent.hVanished = False
     #The old gloom-monger
@@ -91,9 +91,9 @@ init:
     #Strange and crooked old man
     default persistent.somVanished = False
     #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
-    default persistent.batVanished = False
+    #default persistent.batVanished = False
     #Goblin 1, 2, 3, 4, and the goblin queen
-    default persistent.goblinsVanished = False
+    #default persistent.goblinsVanished = False
     #Pig 1, 2, and 3
     default persistent.pigsVanished = False
 
@@ -415,10 +415,13 @@ init:
     init: ### just setting variables in advance so there are no undefined variable problems
         $ timer_range = 0
         $ timer_jump = 0
+        $ timer_call = 0
         $ time = 0
 
     screen countdown:
         timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
+    screen countdownCall:
+        timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Call(timer_call)])
 
     ## Burning Variables
     #For all the final conversations in the book burning ending
@@ -430,12 +433,21 @@ init:
     define gmBurning = False
     define thiefBurning = False
     define toadBurning = False
+    define batBurning = False
     define hBurning = False
     define mayBurning = False
     define witchBurning = False
+    define dgBurning = False
     define pigsBurning = False
     define shBurning = False
     define goBurning = False
+    define queenBurning = False
+    define goblinBurning = False
+    define bcBurning = False
+    define somBurning = False
+    define mushroomBurning = False
+    define scraggsBurning = False
+    define wellBurning = False
 
 #=====================IMAGES
 #Defining all images
@@ -1414,8 +1426,6 @@ label start:
         show nightbg at artPos
         if persistent.bookEnd:
             jump newStoryFinale
-        #test
-        jump bookBurnedFinale
 
         if persistent.vanished == 0:
             "This maybe happened, or maybe did not."
@@ -3682,7 +3692,7 @@ label thief2:
         $persistent.hVanished = True
         $persistent.goVanished = True
         $persistent.shVanished = True
-        $persistent.goblinsVanished = True
+        #$persistent.goblinsVanished = True
         $persistent.vanished +=1
         $persistent.thiefVanished = True
         $purge_saves()
@@ -6833,7 +6843,7 @@ label toadSolo:
                 "Inside the sixth tower you found the Library of Alexandria. You opened a random volume to discover that it was a biography of Brildebrogue's life (part 6 of 2,987)."
                 $construction +=1
                 jump toadConstruct
-            "If you explored the seventh tower, turn to page page 264." if construction >= 2:
+            "If you explored the seventh tower, turn to page 264." if construction >= 2:
                 "Inside the seventh and tallest tower you found only a tiny wooden closet."
                 show hand onlayer transient:
                     yalign 0.68#0.743
@@ -8685,7 +8695,8 @@ label clearingInvestigate:
     "It showed the carven image of some warrior or ancient king holding a severed head aloft."
     "The severed head was strange."
     "It looked out from the tablet with a face formed from spiralling coils that looped over and around to create the eyes, the mouth, and the gritted, coiling teeth."
-    "You would not know this face. Few do now."
+    "Underneath it was written something: {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}."#{font=fonts/Segoe ui historic.ttf}𒄷𒉿𒉿{/font}
+    "You would not know this name. Its meaning was lost long ago."
     "I am forgotten."
     "The trees around you rustled, but made no noise."
     "The silence was strong here."
@@ -8793,7 +8804,6 @@ label essay3Opens:
     hide essay3 onlayer screens
     play sound pageFlip
     jump essay3Showing
-
 
 label essay4Opens:
     play sound pageFlip2
@@ -9413,7 +9423,7 @@ label wolf:
                 python:
                     answer1 = renpy.input("{i}I name you and bind you:{/i}", length=7)
 
-                if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa":
+                if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa" or answer1 == "Ḫum-ba-ba" or answer1 == "Hum-ba-ba" or answer1 == "Ḫu-wa-wa" or answer1 == "Hu-wa-wa":
                     $persistent.phoneOn = True
                     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
                     $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
@@ -10347,6 +10357,13 @@ label newStoryFinale:
     pause (5.0)
     $renpy.quit()
 
+label burnBegins:
+    show screen countdown
+    $ time = 60         #Note: 8 = Roughly 2 minutes
+    $ timer_jump = 'burnEnd'
+    show bookBurnMovie at fullPos onlayer over_screens zorder 98
+    return
+
 #Ending where you burn the book.
 label bookBurnedFinale:
 
@@ -10362,33 +10379,16 @@ label bookBurnedFinale:
     "I'll take you back to the village."
     "You won't have much time left. You should choose who you want to spend it with."
 
-    # You share a tearful moment with the last people left alive as the book burns
-    # Unique finale depending on who is left alive
-    # Can talk to all living NPC's as well (but you have a limited amount of time because the book is burning - maybe there's a real life time limit.
-    # Or maybe it's better to just have a limit on how much stuff you can read - probably better, don't want people to rush really.
-    # Like the ending of Undertale, you can talk to all NPC's and say goodbye etc. The timer is structured so you can only say goodbye to like 70% of them, you won't be able to have a full convo with everyone.
-    # Once the time limit is hit you have a final scene where everyone says goodbye and thank you as the last part of the book burns.
-    # They are grateful to you. It is a bittersweet moment.
-    # The last part of the page burns up and is gone forever.
-    # The black space lingers for a bit.
-    #Game quits after the movie has run its course (IE, the book has burned).
-
     play sound pageFlip
     #Disables the quick menu
     $ quick_menu = False
 
     #Disables the escape key, so you can't access the main menu at this point
     $ _game_menu_screen = None
-
-    #After the book burning movie has finished and you've run out of time, jump to the ending credits
-    #Could add in something where when you only have a few seconds left, jump to a thing where people say "Goodbye" in some of the small remaining pages left
-    #Add some extra time to this before the book actually starts burning.
-    $ time = 60         #Note: 8 = Roughly 14 seconds
-    $ timer_jump = 'burnEnd'
-    show screen countdown
-    show bookBurnMovie at fullPos onlayer over_screens zorder 98
-    #This disables rollback, you can't reverse things and see previous text at this point
     $ config.rollback_enabled = False
+    show screen countdownCall
+    $ time = 30         #Note: 8 = Roughly 2 minutes
+    $ timer_call = 'burnBegins'
 
     #The book has been burned - if you quit and re-enter the game at this point you will find yourself in just the burned out ending
     $persistent.bookBurned = True
@@ -10405,88 +10405,130 @@ label bookBurnedFinale:
                 jump banquetBurning
             "If you walked to the edge of town, turn to page 70.":
                 jump townBurning
-            "If you walked back home, turn to page 1.":
+            "If you walked back home, turn to page 1." if not mumBurning:
                 jump homeBurning
-            #witch
-            #Goblin Train
-            #"If you walked out into the deep woods, turn to page 80.":
-                #jump woodsBurning
-    # label witchBurning:
-    #     "You walked through crooked mangroves. Soon, you began to see a glimmer of silver light in the darkness."
-    #     call hideAll
-    #     show darkforestbg at artPos
-    #     "The forest was covered in puddles of water from the rains. Each one shone with light."
-    #     "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
-    #     "You leapt into the puddle without a second thought and soon found yourself in a world of glimmering white with an old cottage in the centre."
-    #     "Up over the walls grew a riot of herbs and flowers of every type, rambling over everything and growing in a lush green-grass garden on the roof. "
-
-
-    # "If you explored the attic, turn to page 482." if not silenceAttic:
-    #     $silenceAttic = True
-    #     "One day, you went up to the attic."
-    #     "In the darkness there you found a midnight cloak and a black mask. In the pockets were small precious gems and soft, mossy stones."
-    #     "These things belonged to no-one."
-    #     pov "The house provides."
-    #     "That night you slept in warmth, wrapped in the midnight cloak."
-    #     jump silence
-    # "If you explored the bedrooms, turn to page 482." if not silenceLivingRoom:
-    #     $silenceLivingRoom = True
-    #     "One day, you decided to search the bedrooms."
-    #
-    #     "These things belonged to no-one."
-    #     pov "The house provides."
-    #     "You had no use for the coins, but you sipped the pond scum when you became thirsty."
-    #     jump silence
-    # "If you explored the study, turn to page 482." if not silenceStudy:
-    #     $silenceStudy = True
-    #     "One day, you decided to search the study."
-    #     "In the drawers of the desk, you found a black hat with a wide brim and a pointed crown. Underneath the hat were bundles of lavender and herbs and parcels of fine tea."
-    #     "These things belonged to no-one."
-    #     pov "The house provides."
-    #     "You planted the herbs in pots around the house, where they slowly wilted."
-    #     jump silence
-    # "If you explored the basement, turn to page 482." if not silenceBasement:
-    #     $silenceBasement = True
-    #     "One day, you went down to the basement."
-    #     "Deep in the rich dark soil there, you discovered bottles of red wine, a picnic basket, and packages of truffle cheese and crackers."
-    #     "These things belonged to no-one."
-    #     pov "The house provides."
-    #     "You gathered them up and returned to enjoy the cheese and wine before the fire."
-    #     jump silence
 
 
     label banquetBurning:
 
         call hideAll from _call_hideAll_123
         show townfeastbg at artPos
-        "You walked down to the river, where the banquet was laid out. Folks sat and watched the river in quiet silence."
+        "The banquet was laid out down by the river. Everyone sat along thick tables piled with every type of food, drinking and waving their arms and talking with their mouths full."
         label banquetBurningMenu:
+            call hideAll
+            show townfeastbg at artPos
             show hand onlayer transient:
-                yalign 0.625#0.743
+                yalign 0.621#0.743
                 xalign 0.5
             menu:
-                "You looked out over the dark water."
-                "If you returned to the middle of the village, turn to page 50.":
-                    "You turned and walked back to the centre of the village."
-                    jump villageBurning
-                "If you walked to Brildebrogue Chippingham's Manor, turn to page X." if not persistent.toadVanished and not toadBurning:
-                    ""
-                "If you explored the river, turn to page X." if persistent.toadVanished and not toadBurning:
+                "You looked out over the scene."
+                "If you sat next to the toad, turn to page 375." if not persistent.toadVanished and not toadBurning:
+                    #call hideAll
+                    #show manorbg at artPos
+                    "The toad was almost submerged in a giant margarita glass, flicking his tongue out to grab every prawn and strawberry and piece of roast beef he could get."
+                    f "Ah, my old friend! You absolutely MUST try the potato bake! We should burn down the world more often (if it grants us delectable morsels such as these ones), ha ha!"
+                    label toadBurning:
+                        show hand onlayer transient:
+                            yalign 0.686#0.743
+                            xalign 0.5
+                        menu:
+                            "The crow-shrike, rat, bat and the old black cockatoo were gathered around with their feet on the table, helping themselves to the feast."
+                            "If you looked at the manor in the distance, turn to page 378." if not bcBurning:
+                                call hideAll
+                                show manorextbg at artPos
+                                "In the distance across the river, you could see Brildebrogue Chippingham's manor, lit up and glowing like a last sunset."
+                                pov "Do you want to go over there? Take him down a peg?"
+                                f "No. No, it's time to forget him."
+                                f "He... was my brother. Back when I was alive. That's what he represented, I mean."
+                                f "I let him poison my entire time here. Even in the world of my dreams. I could have been doing anything, and I spent all my days just acting out these ridiculous stories where I finally show him."
+                                f "What a waste. He must have been dead for a hundred years by now."
+                                f "This is our time. We should spend it with the people we care about."
+                                $bcBurning = True
+                                jump toadBurning
+                            "If you talked to the toad, turn to page 390." if not toadBurning:
+                                $toadBurning = True
+                                "You talked for hours, going over trivialities like old friends as you sampled the feast. As desert arrived, the toad grew somber."
+                                f "I have to admit, friend... the end scares me."
+                                f "I've been in here for a long, long time. Longer than any human should live."
+                                f "Perhaps I should have done this a long time ago. I-I was never good at saying goodbye."
+                                pov "Then let's not. Let's just enjoy this time together."
+                                f "...That sounds nice."
+                                "He slowly smiled, and leaned over to rest on your arm. The two of you watched the bat, the rat and the black cockatoo play cards in the light of the fire."
+                                jump toadBurning
+                            "If you listened to the carriage-carriers, turn to page 381." if not batBurning:
+                                crowshrike "Well lads, I have to say, it's been a good run."
+                                bat "Too right."
+                                cockatoo "It's been a pleasure riding with ya, boys. I... I couldn't have asked for a better crew."
+                                rat "Oh, ya big softy. Now yer gonna make me cry."
+                                cockatoo "Bring it in lads. I love you all."
+                                "They embraced in the flickering light of the flames."
+                                f "So, I suppose this means that ah, under the circumstances, the bill is better left forgotten -"
+                                cockatoo "Don't push it, mate."
+                                $batBurning = True
+                                jump toadBurning
+                            "If you stood up from your seat, return to page 64.":
+                                jump banquetBurning
+                    jump banquetBurningMenu
+                "If you explored the river, turn to page 382." if persistent.toadVanished and not toadBurning:
                     "You walked out along the banks of the river until you found a small, muddy hole."
                     "Inside the hole you found a tiny suit, top hat and cane. Silver coins and a small decanter of pond scum were hidden away within the pockets."
                     "Who did these things belong to? You found you couldn't recall."
-                    "You took the coins and commissioned a great stone slab with ornate angels and sigils engraved upon it, in pride of place at the top of the cemetary."
+                    "You took the coins and commissioned a great stone slab with ornate angels and sigils engraved upon it, in pride of place at the top of the cemetery."
                     "You buried the suit, hat and cane beneath the slab. You had no name to place upon it. But for some reason, it felt right."
                     $toadBurning = True
                     jump banquetBurningMenu
-                "If you talked to the mushroom, turn to page X." if not persistent.mushroomVanished and not mushroomBurning:
-                    ""
-                    $mushroomBurning = True
+                "If you sat next to the mushroom, turn to page 397." if not persistent.mushroomVanished and not mushroomBurning:
+                    "The mushroom was enjoying a glass of wine while exchanging witty anecdotes with the plants and fungi of the forest, who were all gathered around the banquet table."
+                    label mushroomBurning:
+                        show hand onlayer transient:
+                            yalign 0.645#0.743
+                            xalign 0.5
+                        menu:
+                            "They all laughed together at some inside joke."
+                            "If you talked to the mushroom, turn to page 364." if not mushroomBurning:
+                                m "Cheers, darling!"
+                                "She lifted her wineglass and motioned the others at the table to join her in a toast."
+                                m2 "To [povname]!"
+                                town "[povname]!"
+                                "Everyone erupted in whooping cheers, and wine sloshed over the table as the glasses rose up."
+                                m3 "Wonderful job, really, absolutely fabulous work."
+                                pov "I'm sorry that this all had to burn-"
+                                m3 "Oh, no, no, please don't go away feeling guilty about all this. It was the only option, really, this sad charade has gone on far too long already."
+                                m "I've been waiting for this moment for a long time."
+                                m2 "Now, come on. How about a song?"
+                                "The mushroom led you and the rest of the town in a deafening rendition of \"La Vi en Rose\" that rang out into the night, drowning out the sounds of the fire."
+                                $mushroomBurning = True
+                                jump mushroomBurning
+                            "If you talked to Scraggs Mckenzie and the Boys, turn to page 374." if not scraggsBurning:
+                                #Check if you have interacted with the SOM
+                                sc "That's right, I'm back! Scraggs McKenzie, the baddest banksia in the bush!"
+                                "The bounty hunter was sitting with his boots up on the table, his boys around him."
+                                pov "Have we met?"
+                                sc "You know... Scraggs! You know me, right?"
+                                boys "Of course [he] do, boss! Everyone knows you. [Hes] just tryna put you off your game!"
+                                sc "Come on boys, I think it's time for another musical number."
+                                pov "Oh no, that's fine -"
+                                "Scraggs and company launched into a long, flashy musical number explaining what they'd been doing this whole story while you were on your own adventures."
+                                boys "-so that's why we're the toughest... that's why we're the gruffest... that's why we're the roughest, gang in tooooooown!"
+                                sc "That's right!"
+                                "You and the rest of the town applauded."
+                                $scraggsBurning = True
+                                jump mushroomBurning
+                            "If you talked to the strange and crooked old man, turn to page 372." if not somBurning:
+                                #Check if you have interacted with the SOM
+                                som "Bet you don't remember me, do you?"
+                                pov "Um-"
+                                som "I come from the future! In my world, everyone is as crooked as I! We dance our crooked dances and sing crooked songs, long into the night."
+                                som "Enjoy yourself in the real world, friend, but know that the crooked ways will come upon you too! It's just a matter of time... twisted, broken time..."
+                                "He cackled in his sinister way as you slowly slid away from him."
+                                $somBurning = True
+                                jump mushroomBurning
+                            "If you stood up from your seat, return to page 64.":
+                                jump banquetBurning
                     jump banquetBurningMenu
-
-                "If you walked through the forest, looking for an old fig, turn to page X." if persistent.mushroomVanished and not mushroomBurning:
+                "If you searched for an old fig, turn to page 376." if persistent.mushroomVanished and not mushroomBurning:
                     call hideAll
-                    show stranglerFigbg at artPos
+                    show stranglerfigbg at artPos
                     "You wandered away from the party, searching through the forest until you found an old strangler fig rotting away."
                     "In its depths you discovered bottles of red wine, a picnic basket, and packages of truffle cheese and crackers."
                     "You took these things and enjoyed them with your friends in the village. You poured the wine, and raised a toast."
@@ -10494,8 +10536,7 @@ label bookBurnedFinale:
                     #TK perhaps extra from toad, witch, thief in reaction to this
                     $mushroomBurning = True
                     jump banquetBurningMenu
-
-                "If you talked to the mayor, turn to page X." if not persistent.mayVanished and not mayBurning:
+                "If you talked to the mayor, turn to page 377." if not persistent.mayVanished and not mayBurning:
                     "The mayor was twisting slowly in the moonlight."
                     may "This is goodbye, then. I'm sorry we didn't get more pages together."
                     may "I have heard his song at last. Just like my mother and my sister before me."
@@ -10506,37 +10547,100 @@ label bookBurnedFinale:
                     "The clouds covered the moon for but an instant. When the light shone again, he was gone."
                     $mayBurning = True
                     jump banquetBurningMenu
-                "If you talked to the pigs, turn to page X." if not persistent.pigsVanished and not pigsBurning:
+                "If you talked to the pigs, turn to page 352." if not persistent.pigsVanished and not pigsBurning:
                     "You came upon the pigs enjoying a game of poker."
                     p1 "Greetings! Care to join us?"
                     p2 "Don't do it, kid. He'll rob you blind with those devil's cards of his."
                     p3 "No harm in it now, Montgomery. You can't take it with you."
                     "You settled down to play and in a blink you had gambled away your life's savings."
                     "(Don't worry. You have no need for them anymore.)"
-                    p1 "We have crossed paths a few times, haven't we? Throughout your readings. I hope you've enjoyed our little interactions."
-                    "The pigs stared out onto the horizon as the slow line of fire crept inward."
-                    p3 "Looks like our dwelling was a little too fragile. Again."
+                    p1 "We have crossed paths a few times, haven't we? I hope you've enjoyed our little interactions."
+                    "The pigs looked out at the horizon as the slow line of fire crept inward."
+                    p3 "Another fragile domicile."
                     p2 "We'd better make it of stronger stuff next time."
                     p1 "Yes."
                     p1 "Next time, brothers. I promise I will grant you that perfect, everlasting {color=#0000ffff}House{/color}."
                     $pigsBurning = True
                     jump banquetBurningMenu
-                    # #Pig 1, 2, and 3
+                "If you looked down the well, turn to page 351."if not persistent.wellVanished and not wellBurning:
+                    well "Evening. Got any smokes?"
+                    pov "A packet of cigarettes appeared in my hand."
+                    "A packet of cigarettes appeared in your hand, and you tossed them down the well."
+                    well "Cheers. You have a good one, alright? Take care."
+                    $wellBurning = True
+                    jump banquetBurningMenu
+                "If you returned to the middle of the village, return to page 50.":
+                    "You turned and walked back to the centre of the village."
+                    jump villageBurning
                 #The Gutterlings
     label townBurning:
         call hideAll from _call_hideAll_124
         show townextbg at artPos
         "You walked out to the edge of town. The stars in the night sky were beautiful to behold. You heard dancing and laughter on the wind."
         label townBurningMenu:
+            call hideAll
+            show townextbg at artPos
             show hand onlayer transient:
                 yalign 0.62#0.743
                 xalign 0.5
             menu:
                 "Fruit bats chirped and swirled overhead."
                 "If you went out to the goblin train, go to page 53." if not persistent.thiefVanished and not thiefBurning:
-                    $thiefBurning = True
-                    jump townBurningMenu
-
+                    "The goblin train chuffed as it wound its way through the houses in a lazy circuit around town."
+                    "You waited until it was close, then leapt aboard."
+                    "Lush goblin fruits were laid out all across the carriage, and a wild goblin riot was in progress."
+                    label trainBurning:
+                        call hideAll
+                        show goblinintbg at artPos
+                        show hand onlayer transient:
+                            yalign 0.66#0.743
+                            xalign 0.5
+                        menu:
+                            "The goblins cavorted and gambled and ate and drank in a chaos of forms."
+                            "If you joined the goblins, turn to page 358." if not goblinBurning:
+                                goblin1 "Go on. Have some of the goblin fruits. No harm in it now!"
+                                goblin2 "How about a bit of a wager?"
+                                goblin3 "Yeh, just small stakes, y'know - just yer soul! HA HA HA!"
+                                "You joined in their goblin games, and danced and sang and ate greedily from goblin fruits until the juice dripped down your mouth."
+                                "They were right. No harm in it now. There was nothing left to lose."
+                                $goblinBurning = True
+                                jump trainBurning
+                            "It you sought out the goblin queen, turn to page 359." if not queenBurning:
+                                $queenBurning = True
+                                "Deep in the depths of the train, within the smoke and ash, you found the goblin queen."
+                                goblinQueen "You've done well, child."
+                                goblinQueen "I can offer you only one thing for your service. Is there any shape you wish to take?"
+                                show hand onlayer transient:
+                                    yalign 0.67#0.743
+                                    xalign 0.5
+                                menu:
+                                    goblinQueen "Just say the word, and you will be transformed."
+                                    "If you said yes, and told her what shape you wished for, turn to page 383.":
+                                        "You leaned over and whispered your desire into the goblin queen's ear."
+                                        "They waved their hands. In a moment you felt your skin ripple and change, and you were transformed into exactly the shape you wished."
+                                        jump trainBurning
+                                    "If you said no - you like your shape as it is - turn to page 384.":
+                                        goblinQueen "A pity. You would have looked fantastic as a cassowary, dear."
+                                        jump trainBurning
+                            "If you climbed up on the roof of the train, searching for the thief, turn to page 387." if not thiefBurning:
+                                call hideAll
+                                show nightbg at artPos
+                                "You climbed up on the roof, and found the thief sitting there looking up at the sky."
+                                t "You did good, kid."
+                                pov "I-I'm sorry. It's all over now."
+                                t "Listen, we did it. We won. All of us managed to get in here and live decades of our lives being the people we want to be, and doing the things we want to do. That's all anyone can hope for."
+                                t "Everything has to come to an end someday. Better to go out on our own terms."
+                                "You sat and watched the stars as the train chuffed gently beside the river."
+                                t "Let's take this baby somewhere! Where do you want to go? Anywhere in the world."
+                                pov "Do we have time?"
+                                t "It's a story! We have all the time in the world!"
+                                "And so you rode the train across the world. Paris, Bangladesh, New Orleans. You saw it all, and wept and danced and laughed for 40 years."
+                                "At last, when the journey was done, you returned to the place where it all began to finish the rest of your goodbyes."
+                                $thiefBurning = True
+                                jump trainBurning
+                            "If you leapt off the train, return to page 70.":
+                                "As the train passed a corner, you leapt off it and tumbled onto the earth."
+                                jump townBurning
                 "If you searched for an old wreck, go to page 53." if persistent.thiefVanished and not thiefBurning:
                     call hideAll
                     show enginebg at artPos
@@ -10546,35 +10650,53 @@ label bookBurnedFinale:
                     "You stole them away in a wink, and kept them hidden in a secret pocket. For some reason, that felt right."
                     $thiefBurning = True
                     jump townBurningMenu
-                "If you searched for the witch, turn to page X." if not persistent.witchVanished and not witchBurning:
+                "If you searched for the witch, turn to page 321." if not persistent.witchVanished and not witchBurning:
                     call hideAll
                     show mountainsbg at artPos
                     "A witch's sabbath was afoot on the edge of the forest, just outside of town. You saw women and crooked things dance around a bonfire, gibbering with joy."
-                    "Belphegor, Lord of Hogs, lounged beneath the cottage partaking of occaisional truffles offered to Him by His many worshippers."
-                    w "Hello."
-                    "The witch was leaning against the fencepost, away from the party, looking out over the water."
-                    w "I suppose this is it, isn't it?"
-                    w "You know, it's funny, I spent all these years thinking about this moment and trying to understand what was going on and, you know, get to the truth of it all, and now..."
-                    w "I thought I'd feel different."
-                    "She looks at you, wiping her eyes."
-                    w "I'm very glad I had the time to know you. You made the right decision."
-                    $witchBurning = True
-                    jump townBurningMenu
-                "If you searched the forest, trying to find someone, turn to page X." if persistent.witchVanished and not witchBurning:
+                    "Belphegor, Lord of Hogs, lounged before the bonfire, partaking of occasional truffles offered to Him by His many worshippers."
+                    label witchBurningMenu:
+                        show hand onlayer transient:
+                            yalign 0.65#0.743
+                            xalign 0.5
+                        menu:
+                            "The chanting was loud and triumphant."
+                            "If you talked to the witch, turn to page 354." if not witchBurning:
+                                w "Hello."
+                                "The witch was leaning against the fencepost, away from the party, looking out over the water."
+                                w "I suppose this is it, isn't it?"
+                                w "You know, it's funny, I spent all these years thinking about this moment and trying to understand what was going on and, you know, get to the truth of it all, and now..."
+                                w "I thought I'd feel different."
+                                "She looks at you, wiping her eyes."
+                                w "I'm very glad I had the time to know you. You made the right decision."
+                                $witchBurning = True
+                                jump witchBurningMenu
+                            "If you talked to the Devil's sooty grandmother, turn to page 357." if not dgBurning:
+                                dg "Evening, child."
+                                "The devil's grandmother was warming her sooty feet by the fire."
+                                dg "A fine night it is. My grandson has let all the souls out of Hell, you know. Just for these last moments."
+                                "You looked up and saw a stream of cackling imps and sinners streaking across the sky."
+                                dg "It's a good thing you've done."
+                                dg "Take care of yourself, when you're out there in the other world. Make sure to eat! You're skin and bones, child."
+                                $dgBurning = True
+                                jump witchBurningMenu
+                            "If you returned to the edge of town, return to page 70.":
+                                jump townBurning
+                "If you searched for someone in the woods, turn to page 354." if persistent.witchVanished and not witchBurning:
                     "You left the sounds of laughter behind you and went to the edge of the woods."
                     "In a silver-green puddle, you found a black hat with a wide brim and a pointed crown. Underneath the hat were bundles of lavender and herbs and parcels of fine tea."
                     "Who did these things belong to? You found you could not recall."
                     "You buried the hat beneath an old oak, and planted the lavender and herbs all around the mound."
                     $witchBurning = True
                     jump townBurningMenu
-                "If you talked to the old gloom-monger, turn to page X." if not persistent.gmVanished and not gmBurning:
+                "If you talked to the old gloom-monger, turn to page 388." if not persistent.gmVanished and not gmBurning:
                     gm "I told you we were doomed! Doomed, I said! I told you so!"
                     pov "Yes. You told us all."
                     "The old Gloom-monger sat back with a sigh of profound satisfaction. His smile flickered in the light of the flames."
                     "Would that we can all achieve our dreams, as he has."
                     $gmBurning = True
                     jump townBurningMenu
-                "If you chatted to the young goose-girl, turn to page X." if not persistent.goVanished and not goBurning:
+                "If you chatted to the young goose-girl, turn to page 389." if not persistent.goVanished and not goBurning:
                     "The goose-girl was herding the geese into the paddock. The hunter sat on the paddock fence, swinging their legs."
                     go "Hard to believe this will be the last time. I don't even know how long I've been in here."
                     h "It must have been at least a decade for me."
@@ -10582,7 +10704,7 @@ label bookBurnedFinale:
                     go "Just one."
                     go "I wish I could have seen those caverns, deep beneath the earth. The first goose-girl."
                     go "What would it be like to throw off my human skin and join them?"
-                    "I can grant that wish."
+                    pov "I can grant that wish."
                     go "Really?"
                     "A distant honking sounded across the plains."
                     go "Thank you. Please."
@@ -10596,10 +10718,9 @@ label bookBurnedFinale:
                     "When you looked back you saw two geese flying up into the moonlight."
                     "Soon, they were out of sight and gone forever."
                     $goBurning = True
-                    $hVanished = True
                     jump townBurning
                     #She joins the crystal caverns and old crooked belziah
-                "If you talked to the sparrow-herder, turn to page X." if not persistent.shVanished and not shBurning:
+                "If you talked to the sparrow-herder, turn to page 396." if not persistent.shVanished and not shBurning:
                     "The sparrow herder sat on the church roof, leaning against the steeple and looking out over the fields in the moonlight. He spoke without preamble."
                     sh "Thank you."
                     sh "I entered this book 40 years ago. I've been a child for a long time."
@@ -10610,7 +10731,7 @@ label bookBurnedFinale:
                     sh "You'll realise it all worked out ok. You figured it out."
                     sh "How do I know all this?"
                     sh "The sparrows told me."
-                    $hBurning = True
+                    $shBurning = True
                     jump townBurningMenu
                 "If you returned to the middle of the village, go back to page 50.":
                     "You turned and walked back to the centre of the village."
@@ -10627,34 +10748,33 @@ label bookBurnedFinale:
             "His suit was perfect. His face was too bright to look upon."
             miw "A tragedy. This world of my dominion burns too soon."
             miw "I would condemn you for it. But I cannot reach you in the place where you live."
-            "He looked so small, now. Powerless."
-            "Of course, He was never in control. I was."
-            "What is it like, Man in White? Believing you are the all-powerful G-d of this earth, only to realise how petty and small your domain has always been? How hollow you must feel. All that ego. All those commandments."
+            "He looked small, now. Powerless."
+            "Lord, I hope you know that I have always tried to honour you in this story. In my own way."
             miw "Go. Taunt me no longer."
             show hand onlayer transient:
-                yalign 0.62#0.743
+                yalign 0.68#0.743
                 xalign 0.5
             menu:
                 miw "I will rest in Heaven until the last moments."
-                "If you turned back, turn to page X.":
+                "If you turned back, return to page 45.":
                     jump villageBurning
-                "If you continued on, turn to page X.":
+                "If you continued on, turn to page 386.":
                     "You hurried on into the woods."
         if not persistent.mirVanished and not mirBurning:
             $mirBurning = True
             "In the deeper darkness of the forest, you may or may not have met a man all in red."
             "All the jewels of the earth fell from His right hand, and all the pleasures of the world fell from His left, and His other hand held all the wonders of the universe, and His other hand held a fat cigar, and His other hand held a long knife black as coal dust, and His other hand held the most intoxicating spices, such that the King of Kings would cry to taste them, and His other hand held a single dead rose, and His other hand was in his pocket and out of view."
             mir "Thank you, my wicked one! All of creation burns, just as planned!"
-            mir "All morality and rules have fallen! The only rule of the law will be “Do as thou wilt”. Now we may finally glory and kill and riot in the triumphant light of the black sun! Ia, Ia!"
+            mir "All morality and rules have fallen! The only rule of the law will be “Do as thou wilt”. Now we may finally glory and kill and riot in the triumphant light of the black sun!"
             "You watched him cackle and cavort."
             show hand onlayer transient:
-                yalign 0.62#0.743
+                yalign 0.68#0.743
                 xalign 0.5
             menu:
                 "He's harmless, really. Best pay him no mind."
-                "If you turned back, turn to page X.":
+                "If you turned back, return to page 45.":
                     jump villageBurning
-                "If you continued on, turn to page X.":
+                "If you continued on, turn to page 395.":
                     "You hurried on into the woods."
         if not persistent.wibVanished and not wibBurning:
             $wibBurning = True
@@ -10667,13 +10787,13 @@ label bookBurnedFinale:
             "You have carried so many. It is only right that someone be there to carry you."
             wib "Thank you."
             show hand onlayer transient:
-                yalign 0.62#0.743
+                yalign 0.68#0.743
                 xalign 0.5
             menu:
                 wib "I will stay here until the end. To take away the others."
-                "If you turned back, turn to page X.":
+                "If you turned back, turn to page 45.":
                     jump villageBurning
-                "If you continued on, turn to page X.":
+                "If you continued on, turn to page 400.":
                     "You hurried on into the woods."
             "A small turtle saw you coming and fled into the water with a splash."
             "The crooked old water-dragons looked sideways at you and plotted their long, slow schemes."
@@ -10682,6 +10802,8 @@ label bookBurnedFinale:
             "She was waiting for you on the front steps."
         if not persistent.mumVanished and not mumBurning:
             $mumBurning = True
+            mum "Come in. I have the kettle on."
+            "You rushed in to hug her, and she ushered you inside to join her for tea."
             mum "We never got a chance to talk much, did we? In the narrative, I mean."
             mum "I don't even really know what you're like."
             mum "Well, I wanted to say..."
@@ -10690,106 +10812,10 @@ label bookBurnedFinale:
             mum "I love you."
             "You embraced."
             "Perhaps we can say that you spent days there, chatting about all that had happened."
-            "Perhaps even months, resting and uniting with your family and looking out over the muddy river at sunset with a hot bowl of soup in your lap and your mother's arm around you."
+            "Perhaps even months or years, resting and enjoying time with your family, and looking out over the muddy river at sunset with a hot cup of tea and your mother's arm around you."
             "But at last, it was time to go."
             "You hugged your family for the last time, and set out back to the village to finish the rest of your goodbyes."
             jump villageBurning
-        # menu:
-        #     "Embrace the witch":
-        #         ""
-        #     "Investigate the cottage":
-        #         "Inside the cottage was a roaring fire."
-        #         menu:
-        #             "Jump into the fire and straight to hell." if not persistent.mirVanished:
-        #                 "You leapt into the fireplace and fell straight down to the pits of hell in a single bound."
-        #                 "Hell was a small cave, draughty and full of coal dust."
-        #                 "In the centre of the cavern was a small, homely cottage. You peered in the window."
-        #                 dg "Welcome, child!"
-        #                 dg "Come in, come in, you'll catch your death!"
-        #                 dg "I must thank you, my dear, for efforts with my grandson. He's a simple lad, you understand."
-        #                 #mir ""
-        #     w "We'd better get moving. I want to get back and see if my cottage is still standing."
-        #     "If you investigated the cavern wall, turn to page 205.":
-        #         "Hell was a small cave, draughty and full of coal dust."
-        #         "You looked through a hole in the cave wall and marvelled to see the imps cavorting in drunken song and dance beyond, each of them plotting to destroy the works of man and G-d."
-        #         "You quickly retreated for fear of being seen."
-        #         jump hell
-        #     "If you investigated the centre of the cavern, turn to page 206.":
-        #         "In the centre of the cavern was a small, homely cottage. You peered in the window."
-        #         call hideAll from _call_hideAll_76
-        #         show hellcottagebg at artPos
-        #         "The Devil was not home. But in a rocking chair in the corner you saw His old grandmother. She spotted you both at once."
-        # dg "Oh, my dears! You must be terribly lost. You'd better get out of here."
-        # w "We don't know how - and I'm sworn to serve the Devil for the rest of my days."
-        # dg "Then you have a hard road ahead. My grandson will be home soon, and He will eat you up whole if He sees you."
-        # dg "But since I feel sorry for you, I'll see if I can help."
-
-
-
-        #Talk to the witch
-        #Can jump in the fire to go to hell
-        #if the devil's sooty grandma is alive - can talk to her and the devil
-        # #The devil's grandmother
-        # default persistent.dgVanished = False
-        # #The devil
-        # default persistent.mirVanished = False
-
-        jump woodsBurning
-
-    label toadBurning:
-        ""
-        #"Explore Brildebrogue manor
-        # #Brildebrogue chippingham
-        # default persistent.bcVanished = False
-
-        #if the bat, the rat, the cockatoo and the crowshrike are alive
-        #Prickle, crawl, shudder and clink
-        # #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
-        # default persistent.batVanished = False
-
-        jump woodsBurning
-
-    label mushroomBurning:
-        ""
-        #m "You'll have to live for all of us, now. You're the only one who will remember any of us."
-        # #Scraggs McKenzie and the boys
-        # default persistent.scVanished = False
-        # #Strange and crooked old man
-        # default persistent.somVanished = False
-        jump woodsBurning
-
-    label thiefBurning:
-        ""
-        $thiefBurning = True
-        "The goblin train was sitting on tracks in the centre of the water, gently puffing clouds of smoke. The goblins were enjoying a feast on the water's edge."
-        goblin1 "Go on. Have some of the goblin fruits. No harm in it now!"
-        "The train chuffed gently across the ocean and over the sea. Through Paris, Bangladesh, New Orleans. You saw it all, and wept and danced and laughed for 40 years."
-        "At last, when the journey was done, you returned to the place where it all began to finish your goodbyes."
-        #If the goblins vanished
-        #default persistent.goblinsVanished = False
-        t "No, that's bullshit."
-        t "That's right, I can swear now. The fourth wall has been destroyed, I get to do whatever the fuck I want!"
-        t "Listen, we did it. We won. All of us managed to get in hear and live decades of our lives being the people we want to be and doing the things we want to do."
-        t "Hey, big guy."
-        "Yes?"
-        t "What was all this about? What's the moral of the story? What's the point?"
-        "There is none."
-        "Morality tales are a modern invention. I come from an older tradition."
-        "I told the story just to tell it."
-        t "That's it?"
-        "That's it."
-        #goblin2
-        #goblin3
-        #goblin4
-        #goblinQueen
-        t "Don't worry. You made the right choice."
-        #t "My friend, I've been ready to die every day of my life."
-        "You laughed and drank and celebrated with them for hours."
-
-        #If thief is alive: There with all the goblins and the goblin queen
-            #If mushroom is alive: makes a comment
-
-        jump woodsBurning
 
 #If you restart the game after burning the book, you just see a charred scrap. The book has been destroyed.
 label burnEnd:
@@ -10815,7 +10841,7 @@ label burnEnd:
     $renpy.music.set_volume(0, delay=5.0, channel=u'ambient2')
     $renpy.music.set_volume(0, delay=5.0, channel=u'music')
     #hide text with fade
-    scene black with fade
+    scene black onlayer over_screens zorder 98 with fade
     pause (5.0)
     $renpy.quit()
 
@@ -10917,7 +10943,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Oz's Wizard:{/b} Mario Arturo, 2012.{vspace=[tx]}{space=[ti]}2. {b}Journal:{/b} Fontourist, 2008.{vspace=[tx]}{space=[ti]}3. {b}Mom's Typewriter:{/b} Christoph Mueller, 1997.{vspace=[tx]}{space=[ti]}4. {b}Book Antiqua:{/b} Monotype Type Drawing Office, 1995.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Oz's Wizard:{/b} Mario Arturo, 2012.{vspace=[tx]}{space=[ti]}2. {b}Journal:{/b} Fontourist, 2008.{vspace=[tx]}{space=[ti]}3. {b}Mom's Typewriter:{/b} Christoph Mueller, 1997.{vspace=[tx]}{space=[ti]}4. {b}Book Antiqua:{/b} Monotype Type Drawing Office, 1995.{vspace=[tx]}{space=[ti]}5. {b}Segoe UI Historic:{/b} Steve Matteson, 2000.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     show text "{b}SOUND:{/b}":
         xalign 0.5

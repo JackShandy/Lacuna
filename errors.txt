@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 776: u'call' is not a keyword argument or valid child for the hotspot statement.
-    hotspot (0, 0, 600, 810) clicked call("essay6Opens") hovered [ Play ("sound", audio.pageFlip3)]
-                                         ^
+File "game/script.rpy", line 10687: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "If you returned to the edge of town, turn to page X."
+                                                          ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Fri Aug 11 14:02:33 2023
+Sat Aug 12 13:08:17 2023
