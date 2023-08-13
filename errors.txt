@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 10687: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "If you returned to the edge of town, turn to page X."
-                                                          ^
+File "game/script.rpy", line 1451: expected statement.
+    wolfNameEnd
+               ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Aug 12 13:08:17 2023
+Sun Aug 13 16:22:52 2023

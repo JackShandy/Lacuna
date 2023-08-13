@@ -96,6 +96,8 @@ init:
     #default persistent.goblinsVanished = False
     #Pig 1, 2, and 3
     default persistent.pigsVanished = False
+    #Have the stars disappeared during the mushroom's solo disappearance ending?
+    default persistent.starsVanished = False
 
     #If you get the final bad ending, who was the last to die?
     #Options: Thief, Toad, Witch, Mushroom
@@ -408,6 +410,8 @@ init:
     define wishHappy = False
     define wishImmortal = False
 
+    #Showing the photo of Humbaba for the help screen
+    define humbabaShowing = True
 
     ###==== Countdown
     #This screen counts down automatically and then jumps to a label once the countdown is finished
@@ -633,6 +637,9 @@ init:
     image gilgameshClosed =  "gilgameshClosed.png"
     image gilgameshClosedHover =  "gilgameshClosedHover.png"
     image gilgameshOpen =  "gilgameshOpen.png"
+    image humbabaFront =  "Names/humbaba.png"
+    image humbabaBack =  "Names/humbaba-back.png"
+    image humbabaBack2 =  "Names/humbaba-back2.png"
 
     #Images for the names for the ending
     image name1-Thief = "titles/name1-Thief.png"
@@ -704,7 +711,10 @@ init:
         repeat
 
     ##====Backgrounds
-    image nightbg= "Backgrounds/night.png"
+    if persistent.starsVanished:
+        image nightbg= "Backgrounds/night14.png"
+    else:
+        image nightbg= "Backgrounds/night.png"
     image night2bg= "Backgrounds/night2.png"
     image night3bg= "Backgrounds/night3.png"
     image night4bg= "Backgrounds/night4.png"
@@ -719,7 +729,10 @@ init:
     image night13bg= "Backgrounds/night13.png"
     image night14bg= "Backgrounds/night14.png"
 
-    image nightgodbg= "Backgrounds/nightgod.png"
+    if persistent.starsVanished:
+        image nightgodbg= "Backgrounds/nightgod-nostars.png"
+    else:
+        image nightgodbg= "Backgrounds/nightgod.png"
     image sunbg= "Backgrounds/sun.png"
     image winterbg= "Backgrounds/winter.png"
     image hellbg= "Backgrounds/hell.png"
@@ -733,7 +746,10 @@ init:
     image manorextbg = "Backgrounds/manorExt.png"
     image riverbg = "Backgrounds/river.png"
     image mountainsbg = "Backgrounds/mountains.png"
-    image deathbg =  "Backgrounds/death.png"
+    if persistent.starsVanished:
+        image deathbg = "Backgrounds/death-nostars.png"
+    else:
+        image deathbg =  "Backgrounds/death.png"
     image death2bg =  "Backgrounds/death2.png"
     image death3bg =  "Backgrounds/death3.png"
     image death4bg =  "Backgrounds/death4.png"
@@ -749,12 +765,18 @@ init:
     image forest2bg = "Backgrounds/forest2.png"
     image forest4bg = "Backgrounds/forest4.png"
     image forest5bg = "Backgrounds/forest5.png"
-    image darkforestbg= "Backgrounds/darkForest.png"
+    if persistent.starsVanished:
+        image darkforestbg= "Backgrounds/darkForest-nostars.png"
+    else:
+        image darkforestbg= "Backgrounds/darkForest.png"
 
     image townfeastbg = "Backgrounds/town-feast.png"
     image towncrossroadsbg = "Backgrounds/town-cross.png"
     image townextbg = "Backgrounds/town-ext.png"
-    image town3bg = "Backgrounds/town3.png"
+    if persistent.starsVanished:
+        image town3bg = "Backgrounds/town3-nostars.png"
+    else:
+        image town3bg = "Backgrounds/town3.png"
 
     image mushroomcavebg = "Backgrounds/mushroomCave.png"
     image mushroomcaveunderbg = "Backgrounds/mushroomCaveUnder.png"
@@ -1426,7 +1448,6 @@ label start:
         show nightbg at artPos
         if persistent.bookEnd:
             jump newStoryFinale
-
         if persistent.vanished == 0:
             "This maybe happened, or maybe did not."
             "The time is long past, and much is forgot."
@@ -1716,7 +1737,6 @@ label mapOpens:
             show mapBlankThief onlayer screens zorder 101 at truecenter
         if persistent.mushroomVanished:
             show mapBlankMushroom onlayer screens zorder 101 at truecenter
-        #TK: >= 2?? Looks like a mistake
         if persistent.vanished >= 2:
             show mapBlankMisc onlayer screens zorder 101 at truecenter
     elif persistent.vanished == 3:
@@ -1895,13 +1915,15 @@ label introMenu:
                 "No matter how many people were around you, you felt like something was missing."
                 "Every year, on the day before your birthday, the village would throw a twilight festival for no reason anyone could name. On these nights you always felt strange."
                 "You would avoid the festival and stare deep into the woods all through the night."
+                jump introMenu
             elif persistent.vanished == 2:
                 #TK: finish silence.
                 "Well, it was a happy home. The house was always full of chatter from your four siblings, and you were always cramped for space with all of them around."
                 "But at night, when the others had gone to bed, you felt a latent silence lurking in the house."
                 "Underneath the old floorboards. Inside the crooked walls."
-                "Waiting for it's time to come."
+                "Waiting for its time to come."
                 "Not long now."
+                jump introMenu
             elif persistent.vanished == 3:
                 call musicSilence
                 $renpy.music.set_volume(0, delay=15.0, channel=u'ambient1')
@@ -2236,7 +2258,7 @@ label introMenu:
                         t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
                         if persistent.mushroomVanished:
                             show wolf1 onlayer transient zorder 100
-                            t "They'll never catch me, no matter how they try. I have placed my head in the wolf's mouth and never felt the sting of its jaws."
+                            t "They'll never catch me, no matter how they try. I have placed my head in the wolf's mouth and never felt the sting of its coiling jaws."
                             t "I have stolen fire and cheated death. I will live forever. There's nothing you can do to stop me now."
                             "They laughed a high, feverish laugh and ran into the forest and out of sight."
                         else:
@@ -2348,7 +2370,7 @@ label introMenu:
                         t "You may have outwitted me this time, but I'll get you yet!"
                         if persistent.mushroomVanished:
                             show wolf1 onlayer transient zorder 100
-                            t "They'll never catch me, no matter how they try. I have placed my head in the wolf's mouth and never felt the sting of its jaws."
+                            t "They'll never catch me, no matter how they try. I have placed my head in the wolf's mouth and never felt the sting of its coiling jaws."
                             t "I have stolen fire and cheated death. I will live forever. There's nothing you can do to stop me now."
                             "They laughed a high, feverish laugh and ran into the forest and out of sight."
                         else:
@@ -2790,7 +2812,10 @@ label introMenu:
     if not persistent.toadVanished:
         " Even the warty old toad you met on the road."
     show spiral6 onlayer transient zorder 100
-    "The stars and the moon slowly arrived to take their places. The birds and moths and the Firmament and the soft mist of night all came and were seated."
+    if persistent.starsVanished:
+        "The birds and moths and the soft mist of night all came and were seated."
+    else:
+        "The stars and the moon slowly arrived to take their places. The birds and moths and the Firmament and the soft mist of night all came and were seated."
     if not persistent.witchVanished:
         "But one guest was missing: No one had seen the Wild Witch of the Woods all night."
         "As the festival began a terrible concern and commotion went up amongst the guests, for we all know what terrible luck it is to spurn a witch."
@@ -2899,6 +2924,7 @@ label village:
                     "They looked around. Their eyes were bleary."
                     h "I'm sorry, I - I don't remember why I came here."
                     h "I don't think you should go down that road. There's something..."
+                    h "Something twisting in the darkness there... like the coiling of entrails..."
                     "They looked down."
                     h "My hands... they haven't been working properly. They don't do what I tell them to do anymore."
                     h "I don't know who is telling them what to do now."
@@ -3104,13 +3130,15 @@ label banquet:
                         show wolf5 onlayer transient zorder 100
                         p2 "It's no delusion, brother. I know you've heard it too. No matter how you hard you try to hide it."
                     if pigChat == 2:
-                        p1 "Cast off this madness, Montgomery. Come back to us. We all miss you."
+                        p1 "Cast off this madness, Montgomery. It's all in your head."
+                        p1 "Come back to us. We all miss you."
                         show wolf3 onlayer transient zorder 100
                         p2 "Look me in the eyes and tell me you haven't heard the scrabbling in the walls."
                         p1 "Nothing but rats."
                         p2 "Tell me you haven't heard the howling in the pipes."
                         p1 "The wind. Just the wind."
-                        p2 "You cannot tell me you don't see the house twist with it. Swollen. You can barely breathe in there for the stink of it."
+                        p2 "You cannot tell me you don't seen the visions. The seven terrors, which it wears like seven cloaks. Its face, a single coiling line, like tangled entrails."
+                        p2 "The house twists with it. Swollen. You can barely breathe in there for the stink of it."
                         p1 "Only a dream."
                     if pigChat == 3:
                         p2 "Perhaps it is a dream."
@@ -3136,7 +3164,7 @@ label banquet:
                         p2 "You see, I'm expecting someone."
                     if pigChat == 3:
                         show wolf7 onlayer transient zorder 100
-                        p2 "I can hear them coming now. In the pipes."
+                        p2 "I can hear them coming now. I can see the spiral."
                     if pigChat == 4:
                         p2 "The others say it's all in my head. But I know better."
                     if pigChat == 5:
@@ -3507,7 +3535,7 @@ label town:
                                 "If you accepted your fate, turn to page 722.":
                                     "You put on the mask."
                                     "The warm heat of it slowly closed around your face."
-                                    "The skin pressed into your mouth and eyes. It folded over and enveloped you."
+                                    "The skin pressed into your mouth and eyes. Its coils folded over and enveloped you."
                                     sm "Good."
                                     show wolf10 onlayer transient zorder 100
                                     "The howling finally stopped."
@@ -3725,7 +3753,7 @@ label thief2:
         "You lapsed into an uneasy silence as you went back to watching the chest."
         "The silence stretched on for a long moment."
         "The area around the house was still, and empty."
-        "The clouds slowly passed over the moon."
+        "The clouds slowly passed over the moon. Their shape was ragged and spiralling, like twisting entrails."
         sh "I think we'd better check the traps. Make sure they're working."
         $ renpy.block_rollback()
         show wolf12 onlayer transient zorder 100
@@ -4021,7 +4049,7 @@ label thief3:
                 "If you talked about your nightmares, turn to page 96." if not thiefNightmare:
                     pov "I've had this dream many times. I find myself in the middle of the forest. There is a crowd around me, but I know someone is missing."
                     pov "I look down, and I realise I have no hands. Then I look down, and realise I have no feet."
-                    pov "I always know what will happen next. I will look up, into the space between the trees. I am terrified, but I can't stop myself from doing it."
+                    pov "I always know what will happen next. I will look up, into the space between the trees. Into the spiral. I am terrified, but I can't stop myself from doing it."
                     show wolf12 onlayer transient zorder 100
                     pov "I know I will see something there. Waiting for me. In the dream, I know what it is. I know what will happen when I see it."
                     pov "I look up."
@@ -4539,14 +4567,14 @@ label thiefStory:
         t "Long ago, the Lord came to visit my parents. I heard my mother gesture to me, and talk to The Lord of me thus:"
         thiefmum "Inside all good people there dwells a golden soul, given by you, oh Lord. But as soon as you look, anyone can see this one has nothing but a hollow nest of spiders and rats inside. What trade can I teach such a one as this?"
         #TK: Some kind of text effect for g-d's speech
-        t "The Lord thought on this, and said {b}\"Bring all your children before me.\"{/b} To the first child He said:"
-        miw "{b}You shall become a powerful King.{/b}"
+        t "The Lord thought on this, and said \"Bring all your children before me.\" To the first child He said:"
+        miw "You shall become a powerful King."
         t "Then to the second, and third, and so on down the line:"
-        miw "{b}You shall become a Duke.{/b}"
-        miw "{b}You, a rich Merchant.{/b}"
-        miw "{b}You, a Tanner. You, a Shoemaker. You, a Butcher. You, a Beggar.{/b}"
+        miw "You shall become a Duke."
+        miw "You, a rich Merchant."
+        miw "You, a Tanner. You, a Shoemaker. You, a Butcher. You, a Beggar."
         t "Then He finally reached me at the end of the line."
-        miw "{b}And you shall be a Thief.{/b}"
+        miw "And you shall be a Thief."
         t "My parents took me to the goblins to learn the art of Thievery as the Lord instructed."
         t "One of the Goblin Queens sat and talked with me for a long time. Then they went to my parents and said:"
         goblinQueen "Your child will be taught well. We will keep them as an apprentice for one year."
@@ -4562,14 +4590,14 @@ label thiefStory:
         t "I saw Him often from the crack in the door to the coal chute. I cried to see His glory, and my tears carved trails of pale gold down my cheeks."
         t "One day I heard my mother talk of me to the Lord, saying \"What are we to do with this one?\""
         thiefmum "Inside all good people there dwells a golden soul, given by you, oh Lord. But as soon as you look, anyone can see this one has nothing but a hollow nest of spiders and rats inside. What trade can I teach such a one as this?"
-        t "The Lord thought on this, and said {b}\"Bring all your children before me.\"{/b} To the first child He said:"
-        miw "{b}You shall become a powerful King.{/b}"
+        t "The Lord thought on this, and said \"Bring all your children before me.\" To the first child He said:"
+        miw "You shall become a powerful King."
         t "Then to the second, and third, and so on down the line:"
-        miw "{b}You shall become a Duke.{/b}"
-        miw "{b}You, a rich Merchant.{/b}"
-        miw "{b}You, a Tanner. You, a Shoemaker. You, a Butcher. You, a Beggar.{/b}"
+        miw "You shall become a Duke."
+        miw "You, a rich Merchant."
+        miw "You, a Tanner. You, a Shoemaker. You, a Butcher. You, a Beggar."
         t "Then He finally reached me at the end of the line."
-        miw "{b}And you shall be a Thief.{/b}"
+        miw "And you shall be a Thief."
         t "My parents took me to the goblins to learn the art of Thievery as the Lord instructed."
         t "One of the Goblin Queens sat and talked with me for a long time. Then they went to my parents and said:"
         goblinQueen "Your child will be taught well. We will keep them as an apprentice for one year."
@@ -4601,7 +4629,7 @@ label thiefStory:
                 "The thief held your hand tight."
                 t "Thank you."
         call hideAll from _call_hideAll_59
-
+        show darkforestbg at artPos
         "In a few short hours, the train stopped on a rocky stretch of coast, and the thief's mother and father came to meet it."
         if godfather == "White" or godfather == "Red":
             "Midnight was approaching fast. You felt a cold chill come over you. Soon, your godfather would come and take you away."
@@ -4713,7 +4741,7 @@ label thiefStory:
                 menu:
                     "Alas, having tasted the goblin fruits, you could never return home to your family again."
                     "If you married the thief, turn to page 242.":
-                        "After many adventures, the Goblin Queen married you on the train. There was a joyous goblin riot for 40 days and 40 nights."
+                        "After many adventures, the Goblin Queen married you on the train. There was a joyous goblin riot for forty days and forty nights."
                         if pig:
                             "Your pig watched over the wedding ceremony with tears in his eyes, and stayed with you as your constant companion and friend."
                         "You lived there in happiness for all of your days, venturing from place to place with wild abandon"
@@ -4726,10 +4754,12 @@ label thiefStory:
                             "And what happened to the mushroom, you ask?"
                             $persistent.vanished +=1
                             $persistent.mushroomVanished = True
+                            $persistent.starsVanished = True
                             $ renpy.block_rollback()
                             "Long did she germinate in the dark hollows of the world."
                             "But she could not hide there forever."
                             "After many days, she finally emerged from the dirt, into the cold air."
+                            "The stars had gone out."
                             "No-one was there."
                             "Nothing was left."
                             #"Nothing but the {color=#f00}lacuna{/color}."
@@ -4754,10 +4784,12 @@ label thiefStory:
                             "And what happened to the mushroom, you ask?"
                             $persistent.vanished +=1
                             $persistent.mushroomVanished = True
+                            $persistent.starsVanished = True
                             $ renpy.block_rollback()
                             "Long did she germinate in the dark hollows of the world."
                             "But she could not hide there forever."
                             "After many days, she finally emerged from the dirt, into the cold air."
+                            "The stars had gone out."
                             "No-one was there."
                             "Nothing was left."
                             #"Nothing but the {color=#f00}lacuna{/color}."
@@ -4789,10 +4821,12 @@ label thiefStory:
                             "What happened to the mushroom, you ask?"
                             $persistent.vanished +=1
                             $persistent.mushroomVanished = True
+                            $persistent.starsVanished = True
                             $ renpy.block_rollback()
                             "Long did she germinate in the dark hollows of the world."
                             "But she could not hide there forever."
                             "After many days, she finally emerged from the dirt, into the cold air."
+                            "The stars had gone out."
                             "No-one was there."
                             "Nothing was left."
                             #"Nothing but the {color=#f00}lacuna{/color}."
@@ -4818,10 +4852,12 @@ label thiefStory:
                             "And what happened to the mushroom, you ask?"
                             $persistent.vanished +=1
                             $persistent.mushroomVanished = True
+                            $persistent.starsVanished = True
                             $ renpy.block_rollback()
                             "Long did she germinate in the dark hollows of the world."
                             "But she could not hide there forever."
                             "After many days, she finally emerged from the dirt, into the cold air."
+                            "The stars had gone out."
                             "No-one was there."
                             "Nothing was left."
                             #"Nothing but the {color=#f00}lacuna{/color}."
@@ -4831,7 +4867,7 @@ label thiefStory:
                             "She was never seen or heard from again."
                             jump end
                     "If you stayed on the goblin train and married the thief, turn to page 248.":
-                        "After many adventures, the Goblin Queen married you on the train. There was a joyous goblin riot for 40 days and 40 nights."
+                        "After many adventures, the Goblin Queen married you on the train. There was a joyous goblin riot for forty days and forty nights."
                         if pig:
                             "Your pig watched over the wedding ceremony with tears in his eyes."
                             if goblinCelebrate:
@@ -4851,10 +4887,12 @@ label thiefStory:
                             "What happened to the mushroom, you ask?"
                             $persistent.vanished +=1
                             $persistent.mushroomVanished = True
+                            $persistent.starsVanished = True
                             $ renpy.block_rollback()
                             "Long did she germinate in the dark hollows of the world."
                             "But she could not hide there forever."
                             "After many days, she finally emerged from the dirt, into the cold air."
+                            "The stars had gone out."
                             "No-one was there."
                             "Nothing was left."
                             #"Nothing but the {color=#f00}lacuna{/color}."
@@ -4941,10 +4979,12 @@ label thiefStory:
                         "What happened to the mushroom, you ask?"
                         $persistent.vanished +=1
                         $persistent.mushroomVanished = True
+                        $persistent.starsVanished = True
                         $ renpy.block_rollback()
                         "Long did she germinate in the dark hollows of the world."
                         "But she could not hide there forever."
                         "After many days, she finally emerged from the dirt, into the cold air."
+                        "The stars had gone out."
                         "No-one was there."
                         "Nothing was left."
                         #"Nothing but the {color=#f00}lacuna{/color}."
@@ -5430,7 +5470,7 @@ label mushroomSolo:
         m "I had to plan them and save up for them and spend every day just trying to hold out for the next one. Those tiny, tiny moments where I got to be alive."
         call hideAll
         show night12bg at artPos
-        "Something was very close to you now. You didn't dare look."
+        "Something was very close to you now. You didn't dare look. There was a smell like rotting entrails."
         m "All I have left now is that number. That percentage of waste."
         play audio wolfApproaches
         #stop ambient2 fadeout 2.0
@@ -5448,6 +5488,7 @@ label mushroomSolo:
         "You held her tight as you stared out into the night sky."
         $persistent.vanished +=1
         $persistent.mushroomVanished = True
+        $persistent.starsVanished = True
         $purge_saves()
         $ renpy.block_rollback()
         show wolf14 onlayer transient zorder 100
@@ -5959,7 +6000,10 @@ label toad1:
     call hideAll from _call_hideAll_65
     show nightbg at artPos
     "As you went down the road, the forest began to get darker and darker."
-    "The trees closed in like a wall around you, and the moon and stars fled in fear."
+    if persistent.starsVanished:
+        "The trees closed in like a wall around you. The night sky was black, and shed no light."
+    else:
+        "The trees closed in like a wall around you, and the moon and stars fled in fear."
     f "Nothing to fear, my friend! My boys will get us through this dark road, quick smart!"
     "He waved the crow-shrike, the rat, the bat and the old black cockatoo onwards. But instead of going faster, they slowed down and came to a stop."
     f "What? Why are you stopping?"
@@ -6259,11 +6303,11 @@ label toadFinale:
     "With a click of his fingers, Brildebrogue summoned a cavalcade of richly dressed frog manservants, who offered you all the finest delicacies from across the world, such that the king of kings would cry to taste them."
     "With another click, a dozen beautiful frog maids escorted you to golden baths where all the muck and grime was washed away, and you were restored to your true forms as the finest frog soprano choir in all the land serenaded you."
     "Brildebrogue himself regaled you with witty anecdotes of his thrilling adventures, which had everyone rolling around on the floor laughing, except for the toad, who sat in the corner and scowled."
-    show scribble3 onlayer transient zorder 100
     bc "Please make yourselves at home, my friends!"
     bc "I'm afraid I must leave immediately. Business with the jewelled serpent-kings of the City of Brass, you understand."
     f "Of course. Actually, I recall I was chatting with the jewelled serpent-kings myself just the other day, and -{w=1.0}{nw}"
     bc "Help yourselves to all the delights of Chippingham Manor! Here are the keys to the whole place. You may go wherever you wish, and open every door!"
+    show scribble3 onlayer transient zorder 100
     bc "...except one."
     bc "This little golden key will unlock the smallest closet in the tallest tower. Do not open that closet."
     bc "But I'm sure that won't be a problem! I know I can trust you, my dear friends. I'll see you on my return!"
@@ -6780,7 +6824,7 @@ label toadSolo:
     "With another click, a dozen beautiful frog maids escorted you to golden baths where all the dirt of the journey was washed away. The finest frog soprano choir in all the land serenaded you with tales of Brildebrogue Chippingham's latest exploits."
     "All the while, the toad's servants pretended to laugh at his jokes as he tipped them generously."
     f "Yes, please make yourself at home, my dear friend! We are friends now, right?"
-    f "That is to say, of course we are! I have so many friends these days, you know, I may be completely tied up with them and all the time we spend together constantly, but never fear, I won't forget the little people such as yourself, my dear friend, we shall certainly have some time to spend together."
+    f "That is to say, of course we are! I have so many friends these days, you know. In fact I may be completely tied up with them and all the time we spend together constantly, doing all the things friends do, you know, but never fear, I won't forget the little people such as yourself, my dear friend, we shall certainly have some time to spend together."
     pov "Have you... always owned this manor?"
     show monster2 onlayer transient zorder 100
     f "Of course! The manor is owned by me, Brildebrogue Chippingham! That's my name! Why would you think otherwise?"
@@ -6919,6 +6963,7 @@ label toadConstruct:
         "The vault was complete."
         "It yawned underneath the manor like an open mouth."
         "The walls were thick. Impenetrable in every way. Every possible ward had been laid upon them."
+        "They formed a twisting spiral, like a knot of entrails from which omens could be read."
         jump chippinghamManorSolo
     #Gold, ash salt, bone
     #Brildebrogue has been killed and the toad has assumed his identity (somehow? disguise?).
@@ -6966,7 +7011,7 @@ label toadConstruct:
         f "No."
         f "He was the imposter. History will remember me as the real thing."
         "The toad walked over and swung the closet door shut."
-        "A frog sage appeared to inform you that the vault was ready."
+        "A frog sage appeared to inform you both that the vault was ready."
         f "Good. Come with me."
         call hideAll
         show mushroomcavebg at artPos
@@ -6975,6 +7020,7 @@ label toadConstruct:
         f "Of course. This is the life I always desired. This is why I took the deal, all those years ago."
         "The toad walked into the cyclopean, hungry mouth of the vault."
         pov "Why don't you give up the charade? Come with me. You can live in the village. As your true self."
+        call musicSilence
         f "No. I've come too far now."
         f "I am Brildebrogue Chippingham, and I will never die."
         f "The sages will speak of me. The bards will sing poems."
@@ -6984,9 +7030,9 @@ label toadConstruct:
         "You embraced. The cavernous emptiness of his vault loomed before him."
         "He gave you a final wave. Then, he was swallowed up into the darkness."
         "The lock sealed. The magic shook the earth, and a golden sigil appeared upon it."
-        "The barriers were set. The guards of silver, gold, lead, rowan, ash, oak, and the final layer of bone."
+        "The barriers were set. The guards of silver, gold, lead, rowan, ash, oak, and the final layer of bone. Seven auras, which lay upon the manor like seven cloaks."
         show wolf6 onlayer transient zorder 100
-        call wolfApproaches
+        #call wolfApproaches
         call hideAll
         show manorextbg at artPos
         "A slow silence seeped up into the house."
@@ -7921,7 +7967,7 @@ label witchExperiments:
         "Trying to get in."
         "You were having difficulty speaking. But you slowly walked forward and kept asking questions."
     elif experiments >= 4:
-        "You felt a deep pressure settle on you. Like being at the bottom of the ocean. Compressing your body from all angles. Your muscles knotted and twisted."
+        "You felt a deep pressure settle on you. Like being at the bottom of the ocean. Compressing your body from all angles. Your intestines knotted and twisted in coiled spirals."
         "It was done."
         "The witch noticed nothing."
         w "We need to warn people. Your family, especially."
@@ -8152,7 +8198,10 @@ label witchSoloFinale:
     "You felt the tension leave you, like surfacing from the bottom of the ocean. You bent over and hacked some twisted, bloody thing out of from inside you and onto the grass."
     "It looked like a matted clump of dark fur. You glanced at it once, then looked away and forgot it forever."
     "The night was cool and quiet. There was a lovely breeze blowing."
-    "You were in the middle of a large, empty field. The stars twinkled above you. The grass crunched under your feet. Nothing beside remained."
+    if persistent.starsVanished:
+        "You were in the middle of a large, empty field. The blank sky was above you. The grass crunched under your feet. Nothing beside remained."
+    else:
+        "You were in the middle of a large, empty field. The stars twinkled above you. The grass crunched under your feet. Nothing beside remained."
     "Why did you come out here?"
     "You couldn't recall. There was no-one living out this way."
     "Never has been."
@@ -8599,7 +8648,10 @@ label thiefInvestigate:
                         show nightbg at artPos
                         "You pulled yourself up through the window and onto the roof."
                         "There was nothing on the roof. But you sat and looked out at the countryside."
-                        "You could barely see the dark lake nearby. Tiny pinpricks of stars shed faint light in the immense blackness."
+                        if persistent.starsVanished:
+                            "You could barely see the dark lake nearby. The immense abyss of the night sky loomed over you."
+                        else:
+                            "You could barely see the dark lake nearby. Tiny pinpricks of stars shed faint light in the immense blackness."
                         "After a long moment, you pulled yourself back into the train."
                         jump thiefInvestigate2
                     "If you investigated the other carriages, turn to page 250.":
@@ -8693,11 +8745,15 @@ label clearingInvestigate:
     "Nothing stirred. The only sound was the crunch of your feet upon the scattered grass."
     "In the center of the clearing was an old stone. An archaic monument or shrine, weathered almost to dust. Remembered by no-one."
     "It showed the carven image of some warrior or ancient king holding a severed head aloft."
+    show humbabaFront at artPos onlayer screens zorder 100
     "The severed head was strange."
     "It looked out from the tablet with a face formed from spiralling coils that looped over and around to create the eyes, the mouth, and the gritted, coiling teeth."
-    "Underneath it was written something: {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}."#{font=fonts/Segoe ui historic.ttf}𒄷𒉿𒉿{/font}
+    "Something was written on the stone beneath it:"
+    "{font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}."#{font=fonts/Segoe ui historic.ttf}𒄷𒉿𒉿{/font}
     "You would not know this name. Its meaning was lost long ago."
     "I am forgotten."
+    hide humbabaFront at artPos onlayer screens
+    play sound pageFlip
     "The trees around you rustled, but made no noise."
     "The silence was strong here."
     label essay6Showing:
@@ -9002,7 +9058,10 @@ label wolf:
                 "A phone was open on the desk. "
                 #More exploration stuff in the room
                 "If you examined the figure, turn to page 399.":
-                    "[He] was reading a book."
+                    if He == "They":
+                        "[He] were reading a book."
+                    else:
+                        "[He] was reading a book."
                     "In the dim light, you couldn't quite make out [his] face."
                     "[He] did not look up."
                     "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time. [His] hands gripped the book tightly. [His] knuckles were white."
@@ -9063,6 +9122,7 @@ label wolf:
                 $firepoker = True
                 jump wolfFigure
             "If you struck the dark figure with the poker, turn to page 349." if firepoker:
+                call musicSilence
                 "You steadied your shaking hands and raised the poker high."
                 #pause 9.0
                 "The poker smashed down, and then - " with Pause(9.0)
@@ -9081,6 +9141,25 @@ label wolf:
         play sound pageFlip
         #"You came to the wolf's den in a dark forest."
         "The darkness of night was about you, and the dense forest, and the wild wind."
+        if persistent.vanished ==3:
+            if not persistent.thiefVanished:
+                "The thief stood beside you, shivering with fear."
+                "They were the last of your companions left alive."
+            elif not persistent.witchVanished:
+                "The witch stood beside you, shivering with fear."
+                "She was the last of your companions left alive."
+            elif not persistent.toadVanished:
+                "The Toad stood beside you, shivering with fear."
+                "He was the last of your companions left alive."
+            elif not persistent.mushroomVanished:
+                "The mushroom stood beside you, shivering with fear."
+                "She was the last of your companions left alive."
+        elif persistent.vanished ==2:
+            "Your two surviving friends all stood beside you, shivering with fear."
+        elif persistent.vanished ==1:
+            "Your three surviving friends all stood beside you, shivering with fear."
+        elif persistent.vanished ==0:
+            "Your four friends all stood beside you, shivering with fear."
         #$renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         "Before you, you saw the tracks of your enemy."
         $renpy.music.play("audio/Gameland.mp3", channel="ambient4", loop=True)
@@ -9156,7 +9235,8 @@ label wolf:
         "You stood in silence. The trees whispered."
         "Finally, you saw me. In the space between the trees."
         "Here at last, at the end of time. The source of all that fear and pain."
-        "My face was a single, coiling line. Like the entrails of men and beasts, from which omens can be read."
+        "My face was a single, twisting line. Like the entrails of men and beasts, from which omens can be read."
+        "As you looked into it, you saw the future in those coils. They foretold death."
         "Upon me lay seven terrors, which I wore like seven cloaks."
         "I was the kindred of Cain. Father of beasts. The Wolf."
         #"I was the kindred of Cain. The great, monstrous adversary of Man, God and Beast. The wolf."
@@ -9238,7 +9318,7 @@ label wolf:
         "In a single thrust you cut my throat through."
         "My body fell into the depths. You rejoiced at the sight."
         "A brilliant light suddenly shone through the water, as bright as heaven's own candle."
-        "Holy God had given His judgement."
+        "Holy G-d had given His judgement."
         "I twitched one final time, and then went still forever."
         play sound pageFlip
         call hideAll from _call_hideAll_104
@@ -9250,12 +9330,22 @@ label wolf:
         show darkforestbg at artPos
         #$renpy.music.set_volume(1.0, delay=10.0, channel=u'ambient1')
         #$renpy.music.set_volume(1.0, delay=10.0, channel=u'ambient2')
-        if persistent.vanished >=3:
+        if persistent.vanished ==3:
             "On the shore of the lake, your companion had lost hope."
         else:
             "On the shore of the lake, your companions had lost hope."
         "The waters were red with blood. There was no sign of life."
-        "They stared at the water for long hours with sickness in their hearts, wishing to see you again."
+        if persistent.vanished ==3:
+            if persistent.thiefVanished == False:
+                "The thief stared at the water for long hours with sickness in their heart, wishing to see you again."
+            elif persistent.witchVanished == False:
+                "The witch stared at the water for long hours with sickness in her heart, wishing to see you again."
+            elif persistent.toadVanished == False:
+                "The toad stared at the water for long hours with sickness in her heart, wishing to see you again."
+            elif persistent.mushroomVanished == False:
+                "The mushroom stared at the water for long hours with sickness in her heart, wishing to see you again."
+        elif persistent.vanished <=2:
+            "They stared at the water for long hours with sickness in their hearts, wishing to see you again."
         #call musicReturn
         "Then, in a sudden gasp, you surfaced, holding my head aloft."
         if persistent.vanished >=3:
@@ -9272,6 +9362,7 @@ label wolf:
             f "Might I say, I also had no small part in this little adventure myself. I softened it up for you, really."
         if persistent.mushroomVanished == False:
             m "We are forever in your debt."
+        "You embraced in triumph."
         call hideAll from _call_hideAll_105
         show towncrossroadsbg at artPos
         if persistent.vanished >=3:
@@ -9309,7 +9400,8 @@ label wolf:
         "Hmmm. And how are you planning to make me do that?"
         "I don't think you understand yet."
         "This is my story. The only choices you ever had are the ones I gave you."
-        "You asked these questions because I allowed you to ask them. Because it was entertaining to me."
+        "You asked these questions because I allowed you to ask them."
+        "Because it entertained me."
         "These friends of yours. I own them, now. They gave themselves over to me."
         #TK: Double-check that this scene works with the disappearances
         call hideAll from _call_hideAll_107
@@ -9333,17 +9425,21 @@ label wolf:
         show hellbg at artPos
         if persistent.thiefVanished == False:
             t "I could make them break your limbs, one by one."
-        elif persistent.hVanished == False:
-            h "I could make them break your limbs, one by one."
-        elif persistent.batVanished == False:
+        elif persistent.toadVanished == False:
             bat "I could make them break your limbs, one by one."
-        elif persistent.dgVanished == False:
-            dg "I could make them break your limbs, one by one."
+        elif persistent.shVanished == False:
+            sh "I could make them break your limbs, one by one."
+        else:
+            town "I could make them break your limbs, one by one."
+
         call hideAll from _call_hideAll_110
         play sound pageFlip
         show mushroomcavebg at artPos
-        if persistent.gmVanished == False:
-            gm "They could tear off your fingernails."
+        gm "They could tear off your fingernails."
+
+        # elif persistent.hVanished == False:
+        #     h "I could make them break your limbs, one by one."
+
 
         call hideAll from _call_hideAll_111
         play sound pageFlip
@@ -9356,7 +9452,10 @@ label wolf:
         call hideAll from _call_hideAll_112
         play sound pageFlip
         show mushroomgardensbg at artPos
-        som "They could take off your skin"
+        if persistent.hVanished == False:
+            h "They could take off your skin"
+        else:
+            som "They could take off your skin"
 
         call hideAll from _call_hideAll_113
         play sound pageFlip
@@ -9368,8 +9467,12 @@ label wolf:
         show mushroomcavebg at artPos
         if persistent.mushroomVanished == False:
             m "I am the totality of this world."
-        else:
+        elif persistent.toadVanished == False:
             bc "I am the totality of this world."
+        elif persistent.witchVanished == False:
+            dg "I am the totality of this world."
+        elif persistent.thiefVanished == False:
+            goblin1 "I am the totality of this world."
 
         call hideAll from _call_hideAll_115
         play sound pageFlip
@@ -9387,7 +9490,7 @@ label wolf:
         show nightbg at artPos
         pov "Everything under heaven belongs to me."
         $fullScreenMenu = False
-        $halfScreenMenu = True
+        $wolfMenu = True
         menu:
             "Do you see now?"
             "I understand.":
@@ -9419,27 +9522,39 @@ label wolf:
                 "They spoke of my legend in a language that has been dead for centuries."
                 "None remember me now. Only this tiny, scattered fragment of me lives on, clinging to life in this scrap of a story."
                 "Go on, then. Speak it. If you do know."
-
+                "I warn you. I will only give you one chance."
+                "If you are wrong, you will be eaten forever."
                 python:
                     answer1 = renpy.input("{i}I name you and bind you:{/i}", length=7)
 
-                if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa" or answer1 == "Ḫum-ba-ba" or answer1 == "Hum-ba-ba" or answer1 == "Ḫu-wa-wa" or answer1 == "Hu-wa-wa":
+                if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa" or answer1 == "HUWAWA" or answer1 == "Ḫum-ba-ba" or answer1 == "hum-ba-ba" or answer1 == "Ḫu-wa-wa" or answer1 == "hu-wa-wa":
                     $persistent.phoneOn = True
                     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
                     $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
                     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+                    $purge_saves()
                     call musicReturn
                     play sound thunder
                     call hideAll
                     show emptybg at artPos with flash
+                    $ renpy.block_rollback()
                     "No. No, it cannot be."
                     "How did you learn that name?"
-                    "You stand up. The darkness falls away from you."
-                    "I can stand against you no longer. You've taken your victory - in the old way, as is right."
-                    "You feel a surge of power. The wolf kneels before you."
-                    "You have full and complete control."
+                    "That's impossible. It was buried a thousand years ago. None can stand against-"
+                    pov "I stand up."
+                    "You stand up."
+                    pov "The darkness falls away."
+                    "Yes. The darkness falls away."
+                    pov "You cower before me. You kneel. You swear fealty. Your power is torn away from you."
+                    pov "The light burns you away until nothing is left but a cringing shadow beneath my boot."
+                    "Yes. Yes. It all comes to pass."
+                    "I can stand against you no longer."
+                    "You've taken your victory - in the old way, as is right."
+                    "You have full and total control."
                     jump wish
                 else:
+                    $purge_saves()
+                    $ renpy.block_rollback()
                     "No. That is not my name."
                     "I'm sorry. I wish you did know. It would be a better ending."
                     "But it seems there are none left alive who remember me."
@@ -9450,6 +9565,7 @@ label wolf:
                     $persistent.witchVanished = True
                     $persistent.thiefVanished = True
                     $persistent.mushroomVanished = True
+                    $persistent.starsVanished = True
                     #TK: Small scene featuring whoever's left who's still alive, they disappear.
                     #The villagers also disappear, everyone goes.
                     "You wandered deep into the forest for many days, holding my severed head in that leather bag."
@@ -9481,6 +9597,7 @@ label wolf:
 #Moment where you say the wolf's true name and gain total power over the narrative
 label wish:
     $halfScreenMenu = False
+    $wolfMenu = False
     $fullScreenMenu = True
     call hideAll
     show text "What is it you wish?":
@@ -9562,7 +9679,7 @@ label wish:
             "Do not worry. Soon, you will forget them. You will be happy."
             "It has already started."
             jump wish
-        "The wolf is destroyed. I am set free from this story.":
+        "You are destroyed. I am set free from this story.":
             call hideAll
             show emptybg at artPos
             "I am sorry, friend. There is only one way to fulfil that wish."
@@ -9646,7 +9763,7 @@ label wolfNameEnd:
         xalign 0.5
     menu:
         "We can talk as long as you wish."
-        "How did you come to be here?" if not silenceWho:
+        "How did you come to be here?" if not silenceWho and not silenceRest:
             $silenceWho = True
             "You know my name. I suppose you must have read it somewhere. Very few could know it now."
             "I came from an old story. The gods assigned me as a terror to the human race."
@@ -9662,22 +9779,23 @@ label wolfNameEnd:
             "Fragments of me survived. I clung to life in old stories like this one."
             "The beast in the forest. The wolf at the door."
             "You know."
+            "I don't think I was always a beast, or demon. My true nature... who I really was, all those years ago... the real meaning of my name... it has all been lost, even to me."
             "This book is the last home for me now. I held it together for all these years."
             jump wolfNameEnd
-        "What happened to my friends? The ones that disappeared." if not silenceFriends and persistent.vanished >=1:
+        "What happened to my friends? The ones that disappeared." if not silenceFriends and not silenceRest and persistent.vanished >=1:
             $silenceFriends = True
             "I'm sorry, child. You had the misfortune of coming in at the end of things."
-            "Each of them read my book, and struck a bargain with me. To live here, in this story, in the life of their dreams."
+            "Each of your friends read my book, and struck a bargain with me. To live here, in this story, in the life of their dreams. Everyone you have met here made that deal."
             "Do not think I was unkind. I kept my deal. Each of them lived here for a hundred years or more."
             "But nothing lasts forever."
             "They are forgotten now. As both of us soon will be."
             "This is the curse you have been born with. To witness the end."
             "It had to happen to someone."
             jump wolfNameEnd
-        "Were you planning to eat me?" if not silenceEat:
+        "Were you planning to eat me?" if not silenceEat and not silenceRest:
             $silenceEat = True
             "Yes, child."
-            "Everyone is eaten by something. Your only choice as a human is what it will be."
+            "Everyone is eaten by something. The only choice any human has is what it will be."
             #"The only choice any of us have, is to decide what will consume us."
             "Now comes the time for you to make that choice."
             jump wolfNameEnd
@@ -9695,7 +9813,10 @@ label wolfNameEnd:
             jump wolfNameEnd
         "I want to talk to my friends." if silenceRest and not silenceFriendsTalk:
             $silenceFriendsTalk = True
-            "Of course. Take all the time you need."
+            if persistent.vanished ==3:
+                "I can show you to the one that remains. Take all the time you need."
+            else:
+                "Of course. Take all the time you need."
             call hideAll from _call_hideAll_119
             show forest4bg at artPos
             if persistent.vanished >= 3:
@@ -9717,21 +9838,31 @@ label wolfNameEnd:
                 w "I'm sorry - when it spoke through us... it's left us all a bit shook up."
             elif persistent.toadVanished == False:
                 f "I-I must apologise, my dear friend. That scene earlier, where it spoke through us... it's left us all a bit shook up."
-            if persistent.mushroomVanished == False:
-                m "..."
-                m "When it spoke from my mouth, it was like a thick hand took hold of my mind. I couldn't think. I couldn't breathe."
+            elif persistent.thiefVanished == False:
+                "They twisted in on themselves as their body was wracked by a deep cough."
+                t "I-I'm sorry. That scene earlier, where it spoke from my mouth..."
+                t "It was like a thick hand took hold of my mind. I couldn't think. I couldn't breathe."
+            elif persistent.mushroomVanished == False:
+                "She twisted in on herself as her body was wracked by a deep cough."
+                m "I do apologise, dear."
+                m "When it spoke from my mouth... it was like a thick hand took hold of my mind. I couldn't think. I couldn't breathe."
             if persistent.witchVanished == False:
+                w "..."
                 w "How do I know... how much of what I say is my own words, anymore? How can we ever know that our thoughts are our own, ever again?"
-                w "Am I saying these words because I want to... or did It speak them through me?"
+                w "Am I saying these words because I want to?"
+                w "Or did It speak them through me?"
             elif persistent.toadVanished == False:
                 f "How do I know... how much of what I say is my own words, anymore? How can we ever know that our thoughts are our own, ever again?"
-                f "Am I saying these words because I want to... or did It speak them through me?"
+                f "Am I saying these words because I want to?"
+                f "Or did It speak them through me?"
             elif persistent.mushroomVanished == False:
                 m "How do I know... how much of what I say is my own words, anymore? How can we ever know that our thoughts are our own, ever again?"
-                m "Am I saying these words because I want to... or did It speak them through me?"
+                m "Am I saying these words because I want to?"
+                m "Or did It speak them through me?"
             elif persistent.thiefVanished == False:
                 t "How do I know... how much of what I say is my own words, anymore? How can we ever know that our thoughts are our own, ever again?"
-                t "Am I saying these words because I want to... or did It speak them through me?"
+                t "Am I saying these words because I want to?"
+                t "Or did It speak them through me?"
 
             else:
                 "There was a pause."
@@ -9744,8 +9875,9 @@ label wolfNameEnd:
                 pov "It wants me to take the deal. Live in here, with all of you."
             pov "If I don't, everything here will be destroyed."
             pov "...Do you think I should do it?"
+            "There was a long silence."
             if persistent.toadVanished == False:
-                "The toad speaks."
+                "The toad spoke."
                 f "I was just a child, when I came in here. A long, long time ago. I-I used to be german, I think."
                 f "You may have seen my little drawings. I think they've almost taken a life of their own."
                 f "I was a jealous little thing. Coming in here was everything I ever wanted. The castle, the magic, the adventure. When the wolf spoke to me, I jumped at the chance."
@@ -9769,7 +9901,7 @@ label wolfNameEnd:
                 t "...I must have lived here a hundred years now. Or more."
                 t "Long enough, I think."
                 t "Everything needs to end sometime."
-                t "I'm sorry you came in at the end of things. I wish we had more time together."
+                t "I'm sorry you came in at the end of things. I wish we could have had more time together."
                 t "But it's better to end on a high note."
                 t "I think you know the right thing to do."
                 "They fell into silence. The campfire burned low."
@@ -9885,7 +10017,7 @@ label allVanishedEnd:
     "Did you ever have a name? None can say."
     "You ate from the pantry of the house, and slept on the beds of the house, and wore the clothes of the house. That is all."
     pov "The House provides."
-    "Like all other things, your house slowly fell day by day into greater and greater ruin as the unstoppable and silent force of entropy ground it into the dirt, piece by piece."
+    "Like all other things, your house slowly fell day by day into greater and greater ruin as the vast unstoppable silence of the universe ground it into dirt, piece by piece."
     "Soon the lacuna would be total and all-encompassing. Nothing would be left. And that was just about alright by you. You found you had no opinions on the matter one way or the other."
     #TK: Double check this sentence re androids dream of electric sheep
     #"By that time, of course, you would be long dead."
@@ -9987,7 +10119,6 @@ label allVanishedEnd:
             "Who are you?" if not silenceWho:
                 $silenceWho = True
                 "It doesn't matter."
-                #TK: Double check the humbaba lore
                 "My name was important a long, long time ago. But you wouldn't recognise it now."
                 "I came from an old story. The gods assigned me as a terror to the human race."
                 "I was possessed of seven horrors (or, in your tongue you might say \"Auras\" or \"Glamours of terrible splendour\") which lay upon me like seven cloaks."
@@ -10197,14 +10328,19 @@ label wolfEnd:
     show wolf3 onlayer transient zorder 100
     "{vspace=6}{space=11}And then there was rest in the land."
     play audio pageFlip3 volume 0.5
+    show wolf8 onlayer transient zorder 100
     "{vspace=2}{space=8}And then there was rest in the land."
     play audio pageFlip2 volume 0.4
+    show wolf9 onlayer transient zorder 100
     "{vspace=10}{space=15}And then there was rest in the land."
     play audio pageFlip volume 0.3
+    show wolf10 onlayer transient zorder 100
     "{space=6}And then there was rest in the land."
     play audio pageFlip3 volume 0.2
+    show wolf11 onlayer transient zorder 100
     "{vspace=5}{space=20}And then there was rest in the land."
     play audio pageFlip2 volume 0.1
+    show wolf12 onlayer transient zorder 100
     "{vspace=12}{space=9}And then there was rest in the land."
     $persistent.bookEnd = True
     $purge_saves()
@@ -10213,7 +10349,6 @@ label wolfEnd:
 #Ending where you choose to live in the book forever
 label newStoryFinale:
     play sound pageFlip
-    #TK: Make sure that it's clear that this is a new reader. Maybe the book looks different, more banged up. Maybe quitting the game so that players have to restart it would help that impression? Not sure
     #The game goes into the beginning of the story right away (no load / start game):
     if persistent.povname == "alex" or persistent.povname =="Alex" or persistent.povname =="Alexandra" or persistent.povname =="alexandra" or persistent.povname =="Alexander" or persistent.povname =="alexander" or persistent.povname =="Alexis" or persistent.povname =="alexis":
         "At last. Welcome, Georgia."
@@ -10366,13 +10501,15 @@ label burnBegins:
 
 #Ending where you burn the book.
 label bookBurnedFinale:
-
+    $halfScreenMenu = False
+    $wolfMenu = True
+    $fullScreenMenu = False
     "Time to finish things."
     "Just hold the book over the fire."
     #pause 0.2 with hpunch
     #TK: Walking and fire noises."
     play sound fireLit
-
+    call hideAll
     show nightbg at artPos with flash
     "Good. It's done."
     "The flames have started to catch. Won't be long now."
@@ -10576,7 +10713,10 @@ label bookBurnedFinale:
     label townBurning:
         call hideAll from _call_hideAll_124
         show townextbg at artPos
-        "You walked out to the edge of town. The stars in the night sky were beautiful to behold. You heard dancing and laughter on the wind."
+        if persistent.starsVanished:
+            "You walked out to the edge of town. The blank night sky was beautiful to behold. You heard dancing and laughter on the wind."
+        else:
+            "You walked out to the edge of town. The stars in the night sky were beautiful to behold. You heard dancing and laughter on the wind."
         label townBurningMenu:
             call hideAll
             show townextbg at artPos
@@ -10630,11 +10770,14 @@ label bookBurnedFinale:
                                 pov "I-I'm sorry. It's all over now."
                                 t "Listen, we did it. We won. All of us managed to get in here and live decades of our lives being the people we want to be, and doing the things we want to do. That's all anyone can hope for."
                                 t "Everything has to come to an end someday. Better to go out on our own terms."
-                                "You sat and watched the stars as the train chuffed gently beside the river."
+                                if persistent.starsVanished:
+                                    "You sat and watched the black night sky as the train chuffed gently beside the river."
+                                else:
+                                    "You sat and watched the stars as the train chuffed gently beside the river."
                                 t "Let's take this baby somewhere! Where do you want to go? Anywhere in the world."
                                 pov "Do we have time?"
                                 t "It's a story! We have all the time in the world!"
-                                "And so you rode the train across the world. Paris, Bangladesh, New Orleans. You saw it all, and wept and danced and laughed for 40 years."
+                                "And so you rode the train across the world. Paris, Bangladesh, New Orleans. You saw it all, and wept and danced and laughed for forty years."
                                 "At last, when the journey was done, you returned to the place where it all began to finish the rest of your goodbyes."
                                 $thiefBurning = True
                                 jump trainBurning
@@ -10723,7 +10866,7 @@ label bookBurnedFinale:
                 "If you talked to the sparrow-herder, turn to page 396." if not persistent.shVanished and not shBurning:
                     "The sparrow herder sat on the church roof, leaning against the steeple and looking out over the fields in the moonlight. He spoke without preamble."
                     sh "Thank you."
-                    sh "I entered this book 40 years ago. I've been a child for a long time."
+                    sh "I entered this book forty years ago. I've been a child for a long time."
                     sh "It'll be good to finally rest."
                     "A bird landed on his lap, and he absently fed it a piece of mango."
                     sh "I think you're going to make it, [povname]."
@@ -10903,12 +11046,13 @@ label end:
     $ renpy.pause ()
     show tornPage2 onlayer screens zorder 101
     show tornPage2bg onlayer screens zorder 99
-    $ ui.text("{space=[ti]}8. {b}Mum, You:{/b} 'Regula Emblematica Sancti Benedicti' (1780), Saint Benedict et. al.{vspace=[tx]}{space=[ti]}9. {b}Mysterious Old Woman:{/b} 'The Clothing of the Renaissance World: Europe - Asia - Africa - The Americas' (1590), Cesare Vecellio.{vspace=[tx]}{space=[ti]}10. {b}Enigmatic Gentleman:{/b} 'Silhouette Portrait of a Gentleman Standing in an Army Encampment' (1844), Auguste Edouart.{vspace=[tx]}{space=[ti]}11. {b}The Hunter:{/b} 'Lady Hunter with Rifle' (1912). Artist unknown.{vspace=[tx]}{space=[ti]}12. {b}The Sparrow-Herder:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham. Sparrow from 'Birds of Asia' (1871), John Gould.{vspace=[tx]}{space=[ti]}13. {b}The Mayor:{/b} 'The pipe of freedom' (1869), Thomas Smith.{vspace=[tx]}{space=[ti]}14. {b}The Goose-Girl, The Gloom-Monger:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham.{vspace=[tx]}{space=[ti]}15. {b}The Thing in the Well, Passing Echidna, the Skin-Mask, and Goblin No. 2:{/b} 'Devises heroïques' (1551), Claude Paradin. 'A Year Book of Folklore' (1959), Christine Chaundler.{vspace=[tx]}{space=[ti]}16. {b}The Entire Town:{/b} 'Liber Floridus' (between 1090 and 1120), Lambert, Canon of Saint-Omer.{vspace=[tx]}{space=[ti]}17. {b}Humbaba:{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}8. {b}Mum, You:{/b} 'Regula Emblematica Sancti Benedicti' (1780), Saint Benedict et. al.{vspace=[tx]}{space=[ti]}9. {b}Mysterious Old Woman:{/b} 'The Clothing of the Renaissance World: Europe - Asia - Africa - The Americas' (1590), Cesare Vecellio.{vspace=[tx]}{space=[ti]}10. {b}Enigmatic Gentleman:{/b} 'Silhouette Portrait of a Gentleman Standing in an Army Encampment' (1844), Auguste Edouart.{vspace=[tx]}{space=[ti]}11. {b}The Hunter:{/b} 'Lady Hunter with Rifle' (1912). Artist unknown.{vspace=[tx]}{space=[ti]}12. {b}The Sparrow-Herder:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham. Sparrow from 'Birds of Asia' (1871), John Gould.{vspace=[tx]}{space=[ti]}13. {b}The Mayor:{/b} 'The pipe of freedom' (1869), Thomas Smith.{vspace=[tx]}{space=[ti]}14. {b}The Goose-Girl, The Gloom-Monger:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham.{vspace=[tx]}{space=[ti]}15. {b}The Thing in the Well, Passing Echidna, the Skin-Mask, and Goblin No. 2:{/b} 'Devises heroïques' (1551), Claude Paradin. 'A Year Book of Folklore' (1959), Christine Chaundler.{vspace=[tx]}{space=[ti]}16. {b}The Entire Town:{/b} 'Liber Floridus' (between 1090 and 1120), Lambert, Canon of Saint-Omer.{vspace=[tx]}{space=[ti]}17. {b}Humbaba:{/b} 'Mask; religious/ritual equipment' (1800BC-1600BC), © The Trustees of the British Museum.", xpos=50, ypos=150, xmaximum=520)
+    #
     $ renpy.pause ()
     hide tornPage2 onlayer screens zorder 101
     hide tornPage2bg onlayer screens zorder 99
 
-    $ ui.text("{space=[ti]}18. {b}Scraggs McKenzie:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}19. {b}The Devil's Sooty Grandmother:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}20. {b}Brildebrogue Chippingham:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}21. {b}The Bat:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}22. {b}The Rat:{/b} 'The Wiviparous Quadrupeds of North America' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}23. {b}The Black Cockatoo and The Crow-Shrike:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}24. {b}The Strange Old Man:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}25. {b}Goblin No. 1, No. 3, and No. 4:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}{space=[ti]}26. {b}The First and Second Pigs:{/b} 'Dictionnaire Universel D'Histoire Naturelle' (1845), Charles Dessalines D'orbigny.{vspace=[tx]}{space=[ti]}27. {b}The Third Pig:{/b} 'Dead Pig' (1796), Jean Bernard.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}18. {b}Scraggs McKenzie:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}19. {b}The Devil's Sooty Grandmother:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}20. {b}Brildebrogue Chippingham:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}21. {b}The Bat:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}22. {b}The Rat:{/b} 'The Wiviparous Quadrupeds of North Amerfica' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}23. {b}The Black Cockatoo and The Crow-Shrike:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}24. {b}The Strange Old Man:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}25. {b}Goblin No. 1, No. 3, and No. 4:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}{space=[ti]}26. {b}The First and Second Pigs:{/b} 'Dictionnaire Universel D'Histoire Naturelle' (1845), Charles Dessalines D'orbigny.{vspace=[tx]}{space=[ti]}27. {b}The Third Pig:{/b} 'Dead Pig' (1796), Jean Bernard.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
 
     $ renpy.pause ()
     show text "{b}BACKGROUNDS:{/b}":
@@ -10936,7 +11080,7 @@ label end:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Front Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}This Book Belongs To:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}{space=[ti]}10. {b}Note Paper:{/b} 'Old Notepaper Texture.' polkapebble, polkapebble.com.", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}Cartouche:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}{space=[ti]}10. {b}Note Paper:{/b} 'Old Notepaper Texture.' polkapebble, polkapebble.com.{vspace=[tx]}{space=[ti]}11. {b}Cover Wolf:{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
 
     show text "{b}FONTS:{/b}":
@@ -10956,7 +11100,7 @@ label end:
     #If at least 2 people have died
     #{b}Inspirational Reading:{/b} 'The Wonderful Wizard of Oz' (1900), L. Frank Baum.{vspace=[tx]}
     #The epic of gilgamesh. Beowulf. Grimm's fairy tales. 1001 arabian nights. The name of that japanese folk tale volume.
-    #Terry pratchett. Coraline, niel gaiman. False Hydra, arnold K. The stolen Skin of Princess Sun, Patrick stuart, false machine.
+    #Terry pratchett. Coraline, niel gaiman. False Hydra, arnold K. The stolen Skin of Princess Sun, Patrick stuart, false machine. Do Androids Dream of Electric Sheep (for the silence scene).
     #The long sun, Gene Wolff. Hatoful Boyfriend. Higurashi when they cry. Doki Doki literature club. 999, ever 17, virtue's last reward.
     #Undertale.
     #Moby Dick?

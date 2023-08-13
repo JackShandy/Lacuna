@@ -1,4 +1,4 @@
-Sat Aug 12 15:23:30 2023
+Sun Aug 13 16:23:16 2023
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
@@ -6,32 +6,32 @@ Ren'Py 7.4.4.1439
 Bootstrap to the start of init.init took 0.05s
 Early init took 0.00s
 Loader init took 0.01s
-Loading error handling took 0.02s
-Loading script took 0.21s
+Loading error handling took 0.06s
+Loading script took 0.22s
 Loading save slot metadata. took 0.00s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
 Running init code took 0.06s
-Loading analysis data took 0.22s
+Loading analysis data took 0.25s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
-Dump and make backups. took 0.06s
+Dump and make backups. took 0.05s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.06s
+Initial gc. took 0.07s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.25s
+Creating interface object took 0.26s
 Cleaning stores took 0.00s
-Init translation took 0.07s
+Init translation took 0.08s
 Build styles took 0.00s
-Load screen analysis took 0.97s
+Load screen analysis took 0.14s
 Analyze screens took 0.00s
 Save screen analysis took 0.00s
 Prepare screens took 0.05s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.12s
+Save bytecode. took 0.00s
 Running _start took 0.00s
 Performance test:
 Interface start took 0.11s
@@ -61,4 +61,4 @@ Texture testing:
 Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 2.56408190727s
+Total time until interface ready: 1.72349596024s

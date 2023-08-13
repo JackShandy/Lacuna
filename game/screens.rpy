@@ -704,6 +704,33 @@ screen map: #Preparing the imagemap
 
         hotspot (0, 0, 600, 496) clicked Jump("mapOpens") hovered [ Play ("sound", audio.pageFlip3)]
 
+## Humbaba Back Photo ####
+
+screen humbaba1: #Preparing the imagemap
+    imagemap:
+
+        idle "photo-1.png"
+        hover "photo-2.png"
+
+        hotspot (0, 736, 213, 115) clicked Show("humbaba2"), Hide("humbaba1"), [ Play ("sound", audio.pageFlip2)], SetVariable("humbabaShowing",False) hovered [ Play ("sound", audio.pageFlip3)]
+
+screen humbaba2:
+    imagemap:
+
+        idle "photo-3.png"
+        hover "photo-4.png"
+
+        hotspot (75, 13, 450, 470) clicked Show("humbaba3"), Hide("humbaba2"),[ Play ("sound", audio.pageFlip2)] hovered [ Play ("sound", audio.pageFlip3)]
+
+screen humbaba3:
+    imagemap:
+
+        idle "photo-5.png"
+        hover "photo-6.png"
+
+        hotspot (75, 13, 450, 470) clicked Hide("humbaba3"), [ Play ("sound", audio.pageFlip2)], SetVariable("humbabaShowing",True) hovered [ Play ("sound", audio.pageFlip3)]
+
+
 ## Note 1 ####
 
 screen note1: #Preparing the imagemap
@@ -773,7 +800,7 @@ screen essay6: #Preparing the imagemap
         idle "essayClosed.png"
         hover "essayClosedHover.png"
 
-        hotspot (0, 0, 600, 810) clicked Call("essay6Opens") hovered [ Play ("sound", audio.pageFlip3)]
+        hotspot (0, 0, 600, 810) clicked Jump("essay6Opens") hovered [ Play ("sound", audio.pageFlip3)]
 
 ## Top Ten Creepiest Books ####
 
@@ -1282,9 +1309,15 @@ style history_label_text:
 
 screen help():
 
+    #python:
+    #    renpy.play("audio/page-flip.mp3")
+
     tag menu
 
     add "/images/bg page.png"
+
+    if persistent.vanished >=1 and humbabaShowing:
+        use humbaba1
 
     default device = "keyboard"
 
