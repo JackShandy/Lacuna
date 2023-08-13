@@ -9799,6 +9799,7 @@ label wolfNameEnd:
             "Do not think I was unkind. I kept my deal. Each of them lived here for a hundred years or more."
             "But nothing lasts forever."
             "I don't know how... but you have managed to seek me out and throw me down before a single one was eaten."
+            "How exactly did you - never mind."
             "If you acted less swiftly, they would have been devoured one by one."
             "Such is the deal they made."
             jump wolfNameEnd
