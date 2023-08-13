@@ -9670,7 +9670,7 @@ label wish:
             "Time never dulls your splendour, and age has no effect on you."
             "You remain strong, young, healthy and beautiful for the rest of time."
             jump wish
-        "All my lost friends appear. We are reunited at last." if not wishLost:
+        "All my lost friends appear. We are reunited at last." if not wishLost and persistent.vanished >=1:
             $wishLost = True
             call hideAll
             show emptybg at artPos
@@ -9792,6 +9792,17 @@ label wolfNameEnd:
             "This is the curse you have been born with. To witness the end."
             "It had to happen to someone."
             jump wolfNameEnd
+        "What's really going on here?" if not silenceFriends and not silenceRest and persistent.vanished ==0:
+            $silenceFriends = True
+            "This book is a repository of souls."
+            "Each of your friends read my book, and struck a bargain with me. To live here, in this story, in the life of their dreams. Everyone you have met here made that deal."
+            "Do not think I was unkind. I kept my deal. Each of them lived here for a hundred years or more."
+            "But nothing lasts forever."
+            "I don't know how... but you have managed to seek me out and throw me down before a single one was eaten."
+            "If you acted less swiftly, they would have been devoured one by one."
+            "Such is the deal they made."
+            jump wolfNameEnd
+
         "Were you planning to eat me?" if not silenceEat and not silenceRest:
             $silenceEat = True
             "Yes, child."
@@ -9969,7 +9980,10 @@ label wolfNameEnd:
             jump wolfNameEnd
         "Will I be alone?" if silenceRest and not silenceAlone:
             $silenceAlone = True
-            "No. Don't worry. All of your friends will be there with you. Those that are still with us."
+            if persistent.vanished == 0:
+            "No. Don't worry. All of your friends will be there with you."
+            else:
+                "No. Don't worry. All of your friends will be there with you. Those that are still with us."
             "We will find others, too."
             "This story will be full of life again, soon."
             jump wolfNameEnd
