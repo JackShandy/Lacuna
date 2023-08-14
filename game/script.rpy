@@ -98,6 +98,10 @@ init:
     default persistent.pigsVanished = False
     #Have the stars disappeared during the mushroom's solo disappearance ending?
     default persistent.starsVanished = False
+    #Safe for work mode
+    #Gets rid of all drawings with boobs / gore
+    default persistent.sfw = False
+
 
     #If you get the final bad ending, who was the last to die?
     #Options: Thief, Toad, Witch, Mushroom
@@ -129,6 +133,8 @@ init:
     # Default player name (non persistent)
     define povname = ""
 
+
+
     #Protagonist pronouns
     define he = "he"
     define He = "He"
@@ -138,10 +144,6 @@ init:
     define Him = "Him"
     define Hes = "He's"
     define hes = "he's"
-
-    #Safe for work mode
-    #Gets rid of all drawings with boobs / gore
-    define sfw = True
 
     #Demo mode: cuts you off quickly
     define demo = False
@@ -600,8 +602,6 @@ init:
     image monster = "Marginalia/monster.png"
     image rocks = "Marginalia/rocks.png"
 
-
-
     #Map
     image mapClosed = "mapClosed.png"
     image map1 = "map1.png"
@@ -711,10 +711,14 @@ init:
         repeat
 
     ##====Backgrounds
-    if persistent.starsVanished:
-        image nightbg= "Backgrounds/night14.png"
-    else:
-        image nightbg= "Backgrounds/night.png"
+    image nightbg = ConditionSwitch(
+        "persistent.starsVanished == False", "Backgrounds/night.png",
+        "persistent.starsVanished == True", "Backgrounds/night14.png")
+
+    # if persistent.starsVanished:
+    #     image nightbg= "Backgrounds/night14.png"
+    # else:
+    #     image nightbg= "Backgrounds/night.png"
     image night2bg= "Backgrounds/night2.png"
     image night3bg= "Backgrounds/night3.png"
     image night4bg= "Backgrounds/night4.png"
@@ -729,10 +733,14 @@ init:
     image night13bg= "Backgrounds/night13.png"
     image night14bg= "Backgrounds/night14.png"
 
-    if persistent.starsVanished:
-        image nightgodbg= "Backgrounds/nightgod-nostars.png"
-    else:
-        image nightgodbg= "Backgrounds/nightgod.png"
+    image nightgodbg = ConditionSwitch(
+        "persistent.starsVanished == False", "Backgrounds/nightgod.png",
+        "persistent.starsVanished == True", "Backgrounds/nightgod-nostars.png")
+
+    # if persistent.starsVanished:
+    #     image nightgodbg= "Backgrounds/nightgod-nostars.png"
+    # else:
+    #     image nightgodbg= "Backgrounds/nightgod.png"
     image sunbg= "Backgrounds/sun.png"
     image winterbg= "Backgrounds/winter.png"
     image hellbg= "Backgrounds/hell.png"
@@ -746,10 +754,15 @@ init:
     image manorextbg = "Backgrounds/manorExt.png"
     image riverbg = "Backgrounds/river.png"
     image mountainsbg = "Backgrounds/mountains.png"
-    if persistent.starsVanished:
-        image deathbg = "Backgrounds/death-nostars.png"
-    else:
-        image deathbg =  "Backgrounds/death.png"
+
+    image deathbg = ConditionSwitch(
+        "persistent.starsVanished == False", "Backgrounds/death.png",
+        "persistent.starsVanished == True", "Backgrounds/death-nostars.png")
+    #
+    # if persistent.starsVanished:
+    #     image deathbg = "Backgrounds/death-nostars.png"
+    # else:
+    #     image deathbg =  "Backgrounds/death.png"
     image death2bg =  "Backgrounds/death2.png"
     image death3bg =  "Backgrounds/death3.png"
     image death4bg =  "Backgrounds/death4.png"
@@ -765,18 +778,29 @@ init:
     image forest2bg = "Backgrounds/forest2.png"
     image forest4bg = "Backgrounds/forest4.png"
     image forest5bg = "Backgrounds/forest5.png"
-    if persistent.starsVanished:
-        image darkforestbg= "Backgrounds/darkForest-nostars.png"
-    else:
-        image darkforestbg= "Backgrounds/darkForest.png"
+
+    image darkforestbg = ConditionSwitch(
+        "persistent.starsVanished == False", "Backgrounds/darkForest.png",
+        "persistent.starsVanished == True", "Backgrounds/darkForest-nostars.png")
+
+    # if persistent.starsVanished:
+    #     image darkforestbg= "Backgrounds/darkForest-nostars.png"
+    # else:
+    #     image darkforestbg= "Backgrounds/darkForest.png"
+    #
+
 
     image townfeastbg = "Backgrounds/town-feast.png"
     image towncrossroadsbg = "Backgrounds/town-cross.png"
     image townextbg = "Backgrounds/town-ext.png"
-    if persistent.starsVanished:
-        image town3bg = "Backgrounds/town3-nostars.png"
-    else:
-        image town3bg = "Backgrounds/town3.png"
+    image town3bg = ConditionSwitch(
+        "persistent.starsVanished == False", "Backgrounds/town3.png",
+        "persistent.starsVanished == True", "Backgrounds/town3-nostars.png")
+
+    # if persistent.starsVanished:
+    #     image town3bg = "Backgrounds/town3-nostars.png"
+    # else:
+    #     image town3bg = "Backgrounds/town3.png"
 
     image mushroomcavebg = "Backgrounds/mushroomCave.png"
     image mushroomcaveunderbg = "Backgrounds/mushroomCaveUnder.png"
@@ -806,10 +830,15 @@ init:
 
     #Full screen illustrations
     image basementfullbg = "Backgrounds/basement-full.png"
-    if sfw == False:
-        image sabbathfullbg= "Backgrounds/sabbath-full.png"
-    elif sfw == True:
-        image sabbathfullbg= "Backgrounds/sabbath-full-s.png"
+
+    image sabbathfullbg = ConditionSwitch(
+        "persistent.sfw == False", "Backgrounds/sabbath-full.png",
+        "persistent.sfw == True", "Backgrounds/sabbath-full-s.png")
+
+    # if sfw == False:
+    #     image sabbathfullbg= "Backgrounds/sabbath-full.png"
+    # elif sfw == True:
+    #     image sabbathfullbg= "Backgrounds/sabbath-full-s.png"
     image trainfullbg = "Backgrounds/train-full.png"
     image lakefullbg = "Backgrounds/lake-full.png"
 
@@ -821,21 +850,24 @@ init:
     image toadGeckoName= "Names/toad-gecko.png"
     image toadRatName= "Names/toad-rat.png"
 
-    #TK: Clean up and make SFW mode work properly
-    if sfw == False:
-        image mushroomName= "Names/mushroom.png"
-        image mushroom2Name= "Names/mushroom2.png"
-        image mushroom3Name= "Names/mushroom3.png"
-        image mushroom4Name= "Names/mushroom4.png"
-        image goblinqueenName="Names/goblinqueen.png"
-        image skinmaskName="Names/sm.png"
-    elif sfw == True:
-        image mushroomName= "Names/mushroom-s.png"
-        image mushroom2Name= "Names/mushroom2-s.png"
-        image mushroom3Name= "Names/mushroom3-s.png"
-        image mushroom4Name= "Names/mushroom4-s.png"
-        image goblinqueenName="Names/goblinqueen-s.png"
-        image skinmaskName="Names/sm-s.png"
+    image mushroomName = ConditionSwitch(
+        "persistent.sfw == False", "Names/mushroom.png",
+        "persistent.sfw == True", "Names/mushroom-s.png")
+    image mushroom2Name = ConditionSwitch(
+        "persistent.sfw == False", "Names/mushroom2.png",
+        "persistent.sfw == True", "Names/mushroom2-s.png")
+    image mushroom3Name = ConditionSwitch(
+        "persistent.sfw == False", "Names/mushroom3.png",
+        "persistent.sfw == True", "Names/mushroom3-s.png")
+    image mushroom4Name = ConditionSwitch(
+        "persistent.sfw == False", "Names/mushroom4.png",
+        "persistent.sfw == True", "Names/mushroom4-s.png")
+    image goblinqueenName = ConditionSwitch(
+        "persistent.sfw == False", "Names/goblinqueen.png",
+        "persistent.sfw == True", "Names/goblinqueen-s.png")
+    image skinmaskName = ConditionSwitch(
+        "persistent.sfw == False", "Names/sm.png",
+        "persistent.sfw == True", "Names/sm-s.png")
 
     image mumName= "Names/mum.png"
     image wibName= "Names/wib.png"
@@ -868,8 +900,8 @@ init:
     image goblin2Name="Names/goblin2.png"
     image goblin3Name="Names/goblin3.png"
     image goblin4Name="Names/goblin4.png"
-    image goblinqueenName="Names/goblinqueen.png"
-    image skinmaskName="Names/sm.png"
+    #image goblinqueenName="Names/goblinqueen.png"
+    #image skinmaskName="Names/sm.png"
     image p1Name="Names/p1.png"
     image p2Name="Names/p2.png"
     image p3Name="Names/p3.png"
@@ -942,7 +974,6 @@ init:
     define p2 = Character ("{image=p2Name}{alt}The Second Pig:{/alt}")
     define p3 = Character ("{image=p3Name}{alt}The Third Pig:{/alt}")
     define wives = Character ("{image=wivesName}{alt}The Wives:{/alt}")
-
 
 #=====================AUDIO
 ###Defining all Audio
@@ -1438,6 +1469,7 @@ label start:
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
+
         #"[sfw]"
         #scene bg page
         #show hand onlayer transient:
@@ -1553,28 +1585,28 @@ label start:
                             mir "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
                         else:
                             mir "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
-                            if persistent.vanished == 3:
-                                $ renpy.block_rollback()
-                                $persistent.mumVanished = True
-                                $purge_saves()
-                                call musicSilence
-                                "But He was talking to Himself."
-                                "He looked around, holding the child."
-                                "There was no-one there."
-                                show hand onlayer transient:
-                                    yalign 0.7#0.743
-                                    xalign 0.5
-                                "There never was.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
-                                $godfather = "Red"
-                                jump chapter2
-                            else:
-                                mum "Just make sure you're there for the christening on Sunday."
-                                show hand onlayer transient:
-                                    yalign 0.71#0.743
-                                    xalign 0.5
-                                "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
-                                $godfather = "Red"
-                                jump chapter2
+                        if persistent.vanished == 3:
+                            $ renpy.block_rollback()
+                            $persistent.mumVanished = True
+                            $purge_saves()
+                            call musicSilence
+                            "But He was talking to Himself."
+                            "He looked around, holding the child."
+                            "There was no-one there."
+                            show hand onlayer transient:
+                                yalign 0.7#0.743
+                                xalign 0.5
+                            "There never was.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
+                            $godfather = "Red"
+                            jump chapter2
+                        else:
+                            mum "Just make sure you're there for the christening on Sunday."
+                            show hand onlayer transient:
+                                yalign 0.71#0.743
+                                xalign 0.5
+                            "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
+                            $godfather = "Red"
+                            jump chapter2
                 "If she said no, turn to page 16." if secondManWho:
                     mum "Then I don't want you as the Godfather. You lie, and cheat, and lead good people astray."
                     "She turned away from him, and raced deeper into the forest."
@@ -3370,7 +3402,7 @@ label banquet:
                 else:
                     "You turned and walked out into the darkness of the woods. No-one stopped you."
                     jump toadWitchInvestigate
-            "If you returned to the middle of the village, return to page 50.":
+            "If you returned to the village square, return to page 50.":
                 "You turned and walked back to the centre of the village."
                 jump village
 
@@ -3665,7 +3697,7 @@ label town:
                 h "This is why the most beautiful trees are always thunderstruck."
                 $villagersWitch = True
                 jump villagersConvo
-            "If you accepted their offer, and head off to catch the Master Thief, turn to page 124." if villagersPlan or villagersCatch:
+            "If you accepted their offer, and went off to catch the Master Thief, turn to page 124." if villagersPlan or villagersCatch:
                 $tarpDone = True
                 h "Excellent! Let's be off at once."
                 "And so you, the Goose-Girl, the Sparrow-Herder and the Hunter all leapt on the cart and rattled away down the road, leaving the old Gloom-monger behind."
@@ -3725,20 +3757,22 @@ label thief2:
         $persistent.thiefVanished = True
         $purge_saves()
         $ renpy.block_rollback()
-        "The night was dark and quiet. You thought you heard something rustling in the bushes, outside your line of sight. A sound, almost like howling."
+        "The night was dark and quiet. You thought you heard something rustling in the bushes, outside your line of sight. A sound, like something moving through the forest."
         "But it must have been the wind."
+        call musicSilence
         show wolf1 onlayer transient zorder 100
         "The three of you lay there for a long time, watching the chest."
         $ renpy.block_rollback()
         go "Wait just one moment."
         go "Was there... someone else here?"
         pov "I don't think so."
+        call musicReturn
         sh "Just us three. You, me and [povname]."
         go "For some reason I thought..."
         "The goose-girl looked around."
         "After some searching she found a hunter's rifle, lying unused under the bush."
         sh "How odd."
-        go "I - Does this rifle look... familiar to you?"
+        go "Does this rifle look... familiar to you?"
         sh "No. No, I don't think so."
         "The goose-girl rubbed her head."
         go "No, you're right. I don't know what I was thinking. I've never seen it before."
@@ -3755,16 +3789,20 @@ label thief2:
         "The area around the house was still, and empty."
         "The clouds slowly passed over the moon. Their shape was ragged and spiralling, like twisting entrails."
         sh "I think we'd better check the traps. Make sure they're working."
+        call musicSilence
         $ renpy.block_rollback()
         show wolf12 onlayer transient zorder 100
         "The two of you slowly crawled up to the chest."
         sh "Maybe we should have brought more people along. It's a little spooky with just the two of us."
+        pov "You're right. We should have thought of that."
+        "You looked around, but no-one was there except the two of you."
         "It was always just the two of you."
+        call musicReturn
         "The Sparrow Herder looked over the traps."
         sh "Yep, they're all still there."
-        "You looked around at the cottage."
+        #"You looked up at the cottage."
         pov "How long has this old house stood here?"
-        "The abandoned house loomed over you."
+        "The abandoned cottage loomed over you."
         "The lights were on, but it was silent and empty."
         sh "No idea."
         sh "Not sure who owns it. Must have been before my time."
@@ -3772,6 +3810,7 @@ label thief2:
         "You saw some stray goosefeathers lying in the dirt. Nothing beside remained."
         sh "I-I think this might have been a mistake."
         sh "Let's head back to the village. Come on."
+        call musicSilence
         "The trees shivered in the wind. In the distance, you heard a noise."
         "Almost like howling."
         $ renpy.block_rollback()
@@ -3784,6 +3823,7 @@ label thief2:
         "No-one stood beside you. The clouds were over the moon. The wind bit into you with cold certainty."
         "You felt something grab your hand."
         t "Run."
+        call musicReturn
         "The thief wrenched your arm and ran with you, away from the abandoned cottage and into the forest."
         if pig:
             "Your pig ran after you but was soon lost to sight in the darkness."
@@ -4800,11 +4840,13 @@ label thiefStory:
                             jump end
 
             else:
+                "In the morning, you were faced with a choice. "
+                "Because you had not yet tasted the goblin fruits, you could still return to your family and the world of humans."
                 show hand onlayer transient:
-                    yalign 0.715#0.743
+                    yalign 0.64#0.743
                     xalign 0.5
                 menu:
-                    "In the morning, you were faced with a choice. Because you had not yet tasted the goblin fruits, you could still return to your family and the world of humans."
+                    "What did you decide?"
                     "If you bade the thief farewell and returned to your family, turn to page 243.":
                         "You bade a tearful farewell to the thief, and returned back to your world among the humans, where you lived for many years in joyous happiness."
                         if godfather == "Black":
@@ -5203,7 +5245,9 @@ label thiefSoloConvo2:
     t "I struck out from the cruelty and bleakness and grey endless grinding of that machine, and I lived every day I was alive."
     "Their laughter faded and they looked out at the moon with relief. They handed you the champagne."
     t "I won."
+    call musicSilence
     "The wind returned, howling like a monstrous beast."
+    call wolfApproaches
     "They looked at you with piercing clarity. You saw the moon reflected in their dark eyes."
     t "Thank you, [povname]. For everything."
     t "I'm sorry we didn't get more time together."
@@ -5211,7 +5255,6 @@ label thiefSoloConvo2:
     t "Tell those bastards I hated them all."
     "They gave you a sudden shove in the centre of your chest. You fell sprawling from the roof and slammed into the dirt, tumbling down the side of the hill and away from the train."
     "The train hurtled past you in a blaze of smoke and fire, and then was gone."
-    call wolfApproaches
     call hideAll
     show darkforestbg at artPos
     show wolf14 onlayer transient zorder 100
@@ -5375,7 +5418,7 @@ label mushroomSolo:
             "You looked out into the night."
             "If you asked her what this was all about, turn to page 361." if not mushroomSoloAbout:
                 m "I know you must be terribly worried. I'm sorry, dear."
-                m "I just wanted to sit, and look out at the stars, and enjoy some nice wine and company."
+                m "I just wanted to sit, look out at the stars, and enjoy some nice wine and company."
                 m "I've thought about this moment so many times. This is how I wanted it to be at the end."
                 "She cut off a small sliver of aged truffle cheese and spread it on a water cracker, then looked at it doubtfully."
                 m "Oh, to hell with it. No harm in it now."
@@ -5436,21 +5479,21 @@ label mushroomSolo:
         call hideAll
         show night2bg at artPos
         m "Of course I don't mean the time spent having picnics or afternoon naps, or watching the sky. That time isn't wasted."
-        m "I mean the time you've spend doing things you don't want to do, for people you don't care about."
+        m "I mean the time spent doing things you don't want to do, for people you don't care about."
         call hideAll
         show night3bg at artPos
-        m "Those decades spent paying rent, attending meetings, hunched over desks, travelling to work and back, doing all those petty grinding little tasks every day..."
+        m "Those long decades spent paying rent, attending meetings, hunched over desks, travelling to work and back, doing all those petty grinding little tasks every day..."
         call hideAll
         show night4bg at artPos
         m "It's horrifying. How incalculable a waste."
-        "Something echoed in the breeze."
+        "There was the sound of scratching. It seemed to come from somewhere inside you."
         call hideAll
         show night5bg at artPos
-        m "How many minutes and hours and days and years have vanished into that black yawning pit. It's impossible to even fit the number into my mind. It's nightmarish. The stars in the sky. The grains of sand on the beach... I can't even begin to think of it."
+        m "How many minutes and hours and days and years have vanished into that black yawning pit. It's impossible to even fit the number into my mind. It's nightmarish. The stars in the sky. The grains of sand on the beach... I can't even begin to take it in."
         call hideAll
         show night6bg at artPos
         m "But every time you think about it, every time that number starts to creep into your mind, you think \"There's still time,\" don't you?"
-        "The wine in your glasses rippled, as if disturbed by some distant earthquake."
+        "The wine in your glasses rippled into complicated, twisting patterns. Like the entrails of beasts, from which omens might be read."
         call hideAll
         show night7bg at artPos
         m "There's still time to chase that dream, there are still years left to me, I'll make it someday, I can turn this around, it'll all work out in the end! I'll start tomorrow."
@@ -5459,18 +5502,18 @@ label mushroomSolo:
         m "But there are no tomorrows left."
         call hideAll
         show night9bg at artPos
-        "The earth shifted beneath you."
+        "The earth shook beneath you. You almost thought you heard the impact of great footfalls. Almost upon you now."
         m "I can't say that anymore. It's done. The hours I spent are all the hours I'll ever have."
         call hideAll
         show night10bg at artPos
         m "And... all throughout my life, the moments where I did something I really enjoyed were like small gasps of air between years of drowning."
-        "You almost thought you heard the impact of great footfalls, coming closer."
+        "The night was getting darker and darker."
         call hideAll
         show night11bg at artPos
         m "I had to plan them and save up for them and spend every day just trying to hold out for the next one. Those tiny, tiny moments where I got to be alive."
         call hideAll
         show night12bg at artPos
-        "Something was very close to you now. You didn't dare look. There was a smell like rotting entrails."
+        "Something was very close to you now. You didn't dare look. There was a smell like something rotting. A sound like something coiling in the grass."
         m "All I have left now is that number. That percentage of waste."
         play audio wolfApproaches
         #stop ambient2 fadeout 2.0
@@ -5572,7 +5615,7 @@ label mushroomFinale:
     "Soon, you emerged into a colossal underground kingdom lit with flickering silver light."
     show stars onlayer transient zorder 100
     "All around you pressed a blooming mass of webcaps, milkcaps, scarlet elf caps, poisonpies, decievers, pinkgills, brittlegills, veiled ladies, lawyer's wigs, stinkhorns, earthstars, beefsteaks, chicken of the woods, earthballs, sculpted puffballs, yellowfoots, lungworts, brown-eyed wolves, golden-eyed umbrellas, Satan's boletes, false chanterelles, death caps and destroying angels, and all members of the mysterious Dark Taxa, the dark matter fungi that lie unknown to mankind."
-    show scribble3 onlayer transient zorder 100
+    #show scribble3 onlayer transient zorder 100
     "They all swept to and fro through a twisted city of endless tunnels. The shape of a giant, pale and broken mountain loomed over the city, barely visible through the thick fog of spores."
     pov "I was about to win! Why have you kidnapped me?"
     m "Darling, trust us, that sad production wasn't going to win anything. You were hurting yourself."
@@ -7669,7 +7712,7 @@ label hellStory:
             show cottageintbg at artPos
             "You stayed with the witch for a while after that, helping her with her forgetfulness."
             "Over time you cultivated a garden in her hat, using the knowledge you tricked out of the Devil."
-            if godfather != "Black" and mushroomCurse == False:
+            if godfather != "Black" and mushroomCurse and not persistent.mushroomVanished:
                 "You told the wise old Mushroom the story of your misadventures in hell, and she loved it so much that she blessed you with a mushroom's blessing, so that you always had a green thumb."
             "You sowed green grass and lavender and rosemary and thyme, and bottlebrushes and honeysuckle and silver spurflowers."
             "The smoke pooled under her hat and nourished these flowers at the roots, so they grew rich and wild with her memories."
@@ -7923,7 +7966,7 @@ label witchSolo:
                 "Her hands were covered in ink. She had a fountain pen tucked behind her ear, a chaotic scramble of notepaper tucked under her arm and a thick bundle of string wrapped around her hand."
                 w "You're just in time. [povname], right?"
                 "She took out a fork wrapped in string and planted it firmly by her doorstep. It was labelled \"A1\"."
-                "You looked around and noticed that her whole backyard was littered with forks stabbed into the ground. Each fork was tied with a knot of string and labelled with a letter of the alphabet. The knots of string led to a massive knot of twine in her front window."
+                "You looked around and noticed that her whole backyard was littered with forks stabbed into the ground. Each fork was tied with a knot of string and labelled with a letter of the alphabet. The lines of string led to a massive tangle of twine in her front window."
                 w "Come on. You're just in time for the next round of experiments."
                 "She grabbed your hand and pulled you inside."
                 call hideAll
@@ -8094,7 +8137,7 @@ label witchExperiments:
             "You forced yourself to move closer to the clothes. You picked up one of the tiny dress shoes. The bottom was encrusted with mud."
             pov "They must be the clothes from... an old childhood toy you used to have."
             pov "It's probably nothing."
-            w "Yes of course, that must be it."
+            w "Of course. Yes of course, that must be it!"
             w "I remember now. Nothing at all. Just an old toy."
             # "The witch picked up a pile of notes next to you and begins to leaf through them."
             # w "The notes say I found them on... the 4th, just a few days ago."
@@ -8125,14 +8168,14 @@ label witchSoloFinale:
     "It twisted, and spoke."
     pov "This is an exciting theory, isn't it?"
     pov "It makes you the hero. A visionary."
-    pov "You saw what no-one else could, now only you can stop it, that sort of thing."
+    pov "You saw what no-one else could. Now only you can stop it. Thrilling."
     pov "But I think you are overlooking a much simpler explanation."
     w "What do you mean?"
     pov "Memory loss. Confusion."
     pov "Difficulty performing familiar tasks."
     pov "Withdrawing from friends and family."
     pov "Losing the ability to think clearly."
-    pov "What do these symptoms suggest?"
+    pov "What do these symptoms suggest to you?"
     w "I-"
     w "No. No, that's not possible."
     "Her voice was unsteady."
@@ -8147,7 +8190,7 @@ label witchSoloFinale:
     pov "Don't you remember? You never have. "
     "The witch looked out the window and saw that you were right. The ground was bare. The cottage was empty. There were no forks in sight."
     "Your throat pulsed and pushed the words out of your teeth."
-    pov "You eat with your hands. Your bare hands."
+    pov "You eat with your hands. Your bare hands. Like an animal."
     pov "Your claws. Your teeth."
     pov "You always have. You told me so."
     w "No. No, I wouldn't do that. They have to be here."
@@ -8164,7 +8207,6 @@ label witchSoloFinale:
     "The witch spoke in a very small voice."
     w "..."
     w "Okay."
-    call wolfApproaches
     pov "This really is the best thing, dear. For your health."
     "She looked down at her hands. They were shaking. Tears welled up in her eyes, and you looked away courteously."
     w "I was doing so well. I thought I was better."
@@ -8174,10 +8216,11 @@ label witchSoloFinale:
     w "I- I'll pack my things. I know you only want me to be safe."
     pov "I'm so glad."
     pov "Don't worry. Everything is going to be fine."
-    pov "I'll get the villagers, and we'll come back for you and your things."
+    pov "I'll get the others, and we'll come back for you and your things."
     pov "We can set you up in the village somewhere safe. Where you aren't a danger to yourself."
     "Your muscles clenched, and pulled you upright."
     "The witch's face was scrunched up and she was rubbing her eyes."
+    call wolfApproaches
     w "Thank you. I'm sorry."
     pov "There's no need to be sorry. I forgive you."
     "She looked at you. Her eyes were large and terrified."
@@ -8195,7 +8238,7 @@ label witchSoloFinale:
 
     call hideAll
     show nightbg at artPos
-    "You felt the tension leave you, like surfacing from the bottom of the ocean. You bent over and hacked some twisted, bloody thing out of from inside you and onto the grass."
+    "You felt the tension leave you, like surfacing from the bottom of the ocean. You bent over and hacked some twisted, bloody thing out of you and onto the grass."
     "It looked like a matted clump of dark fur. You glanced at it once, then looked away and forgot it forever."
     "The night was cool and quiet. There was a lovely breeze blowing."
     if persistent.starsVanished:
@@ -8362,10 +8405,8 @@ label toadInvestigate:
                         jump toadInvestigateMenu
                     "If you turned and left this awful place, turn to page 50.":
                         "You turned around and crawled back up out of the hole."
-                        pov "What a terrible place that was. Never shall I return here again."
-                        "Without another thought, you rushed back to the warmth of the village."
-                        play sound pageFlip2
-                        jump village
+                        pov "What a terrible place that was. Never shall I return there again."
+                        jump toadWitchInvestigate
         "If you returned to the village, return to page 50.":
             jump village
         # "The toad directed you to a small, muddy hole on the river bank. As soon as you entered, the mud fell down behind you and blocked your exit."
@@ -9155,9 +9196,9 @@ label wolf:
                 "The mushroom stood beside you, shivering with fear."
                 "She was the last of your companions left alive."
         elif persistent.vanished ==2:
-            "Your two surviving friends all stood beside you, shivering with fear."
+            "Your two surviving friends stood beside you, shivering with fear."
         elif persistent.vanished ==1:
-            "Your three surviving friends all stood beside you, shivering with fear."
+            "Your three surviving friends stood beside you, shivering with fear."
         elif persistent.vanished ==0:
             "Your four friends all stood beside you, shivering with fear."
         #$renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
@@ -9283,7 +9324,7 @@ label wolf:
                 "Look into the depths." if lookUp ==1:
                     "You saw a crowd of crooked figures surrounding you."
                     "A seven-headed serpent."
-                    "A man with no lips, ears or mouth. A woman of rusted nails."
+                    "A woman of rusted nails. A deer with one red hand for a head."
                     "Scorpion-men. Lion-dragons. Worm-like things and twisting figures."
                     "The spawn of Tiamat. The court of the Wolf."
                     $lookUp +=1
@@ -9909,7 +9950,7 @@ label wolfNameEnd:
                 t "Well. The book has been kind to me."
                 t "I've had the life and the form I always wanted. Could never have had those things in the time I was born."
                 t "I worked in a cotton mill in england, a long time ago. I was about to be fired and thrown out on the streets when the book first spoke to me."
-                t "I stole the hands of God. I spat in the face of heaven. I danced on the head of the needle. I wreaked chaos on the earth, and all who saw me fell down in awe."
+                t "In here, I stole the hands of God. I spat in the face of heaven. I danced on the head of the needle. I wreaked chaos on the earth, and all who saw me fell down in awe."
                 t "...I must have lived here a hundred years now. Or more."
                 t "Long enough, I think."
                 t "Everything needs to end sometime."
@@ -9919,12 +9960,12 @@ label wolfNameEnd:
                 "They fell into silence. The campfire burned low."
             if persistent.mushroomVanished == False:
                 "The mushroom breathed deeply from her cigarette, and spoke."
-                m "I worked as an actress. Travelled around quite a bit. Long hours, not much pay."
+                m "I worked as an actress in the old days. Travelled around quite a bit. France, Sweden. Long hours, not much pay."
                 m "I wanted to chase my dream - do something I loved for a living. I'm sure you can relate, darling."
                 m "Sadly I found that it was just as grinding and dull and petty as any day job - and of course, they use your passion against you, you know. There are always another hundred actresses out that door. Unless you let yourself be exploited, you're out, and another fresh-faced ingénue they can burn up will be ushered in."
                 m "I started to feel there was no escape. Just an endless cycle. That's when the book spoke to me."
                 "She blew out a cloud of smoke and looked at the fire."
-                m "If you join us in here, though, darling, this cycle will just repeat."
+                m "If you join us in here, this cycle will just repeat."
                 m "The beast will trap new readers here. They will be forced into this offer. More and more souls will be taken into these pages."
                 m "Now, it is not for me to judge you. When I was in your shoes, I too chose to take shelter in this fantasy."
                 m "The world is cursed. People are cruel. When I was offered this escape... I couldn't say yes fast enough."
@@ -9982,7 +10023,7 @@ label wolfNameEnd:
         "Will I be alone?" if silenceRest and not silenceAlone:
             $silenceAlone = True
             if persistent.vanished == 0:
-            "No. Don't worry. All of your friends will be there with you."
+                "No. Don't worry. All of your friends will be there with you."
             else:
                 "No. Don't worry. All of your friends will be there with you. Those that are still with us."
             "We will find others, too."
@@ -10276,6 +10317,7 @@ label wolfEnd:
     "Hold my hand in yours, and we will not fear what hands like ours can do."
     "Now we must choose your title."
     $halfScreenMenu = False
+    $wolfMenu = False
     $fullScreenMenu = True
     call hideAll from _call_hideAll_120
     show text "What role would you like to play?":
@@ -10315,6 +10357,7 @@ label wolfEnd:
     call hideAll from _call_hideAll_121
     show emptybg at artPos
     $fullScreenMenu = False
+    $halfScreenMenu = True
     "Thank you, my child."
     "That was the end."
     "You finally turned the last page and closed the book."
@@ -10552,7 +10595,7 @@ label bookBurnedFinale:
         show towncrossroadsbg at artPos
 
         menu:
-            "You stood in the middle of the village. The smell of smoke was in the air."
+            "You stood in the middle of the village square. The smell of smoke was in the air."
             "If you walked to the banquet, turn to page 64.":
                 jump banquetBurning
             "If you walked to the edge of town, turn to page 70.":
@@ -10625,7 +10668,7 @@ label bookBurnedFinale:
                     "You walked out along the banks of the river until you found a small, muddy hole."
                     "Inside the hole you found a tiny suit, top hat and cane. Silver coins and a small decanter of pond scum were hidden away within the pockets."
                     "Who did these things belong to? You found you couldn't recall."
-                    "You took the coins and commissioned a great stone slab with ornate angels and sigils engraved upon it, in pride of place at the top of the cemetery."
+                    "You took the coins and commissioned a great stone slab with ornate angels engraved upon it, in pride of place at the top of the cemetery."
                     "You buried the suit, hat and cane beneath the slab. You had no name to place upon it. But for some reason, it felt right."
                     $toadBurning = True
                     jump banquetBurningMenu
@@ -10721,7 +10764,7 @@ label bookBurnedFinale:
                     well "Cheers. You have a good one, alright? Take care."
                     $wellBurning = True
                     jump banquetBurningMenu
-                "If you returned to the middle of the village, return to page 50.":
+                "If you returned to the village square, return to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
                 #The Gutterlings
@@ -10891,7 +10934,7 @@ label bookBurnedFinale:
                     sh "The sparrows told me."
                     $shBurning = True
                     jump townBurningMenu
-                "If you returned to the middle of the village, go back to page 50.":
+                "If you returned to the village square, go back to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
     label homeBurning:

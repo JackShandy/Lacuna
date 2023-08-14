@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1451: expected statement.
-    wolfNameEnd
-               ^
+File "game/script.rpy", line 715: invalid syntax
+    image nightbg = ConditionSwitch(
+                 ^
+    
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Aug 13 16:22:52 2023
+Mon Aug 14 11:51:25 2023

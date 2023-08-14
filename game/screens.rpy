@@ -362,7 +362,10 @@ screen navigation():
         #
         # else:
 
-        add "gui/bookmark.png"
+        if persistent.sfw:
+            add "gui/bookmark-s.png"
+        else:
+            add "gui/bookmark.png"
         if main_menu:
             add "gui/saveCrossOff.png"
             imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), Return() hovered [ Play("sound", "audio/pencil.wav") ]
@@ -1136,6 +1139,11 @@ screen preferences():
                         textbutton _("Mute All"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
+                vbox:
+                    style_prefix "radio"
+                    label _("Safe For Work Mode")
+                    textbutton _("Off") action SetVariable("persistent.sfw", False)
+                    textbutton _("On") action SetVariable("persistent.sfw", True)
 
 
 style pref_label is gui_label
