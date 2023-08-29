@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Lacuna.") #The Thief, the Toad, the Witch & the Mushroom
+define config.name = _("The Thief, the Toad, the Witch & the Mushroom.") #
 
 #TK: Edit the config name so that it changes based on who's been killed (IE The Thief, the Toad, & the witch when the mushroom dies, etc)
 
@@ -26,7 +26,7 @@ define gui.show_name = False
 
 ## The version of the game.
 
-define config.version = "0.81"
+define config.version = "1.0"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -40,7 +40,7 @@ define config.version = "0.81"
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "Lacuna"
+define build.name = "Lacuna-Demo"
 
 
 ## Sounds and music ############################################################
@@ -67,10 +67,13 @@ define config.has_voice = False
 if persistent.bookBurned:
     define config.main_menu_music = ""
 if persistent.phoneOn and persistent.vanished <=3:
-    define config.main_menu_music = "audio/cottagegore.mp3"
+    define config.main_menu_music = "audio/Gymnopedies.mp3"
+    #define config.main_menu_music = "audio/cottagegore.mp3"
+
     #define config.main_menu_music = "audio/wildlife2.mp3"
 elif persistent.bookEnd:
-    define config.main_menu_music = "audio/cottagegore.mp3"
+    define config.main_menu_music = "audio/Gymnopedies.mp3"
+    #define config.main_menu_music = "audio/cottagegore.mp3"
 
     #define config.main_menu_music = "audio/wildlife2.mp3"
 else:
