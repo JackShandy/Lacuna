@@ -102,7 +102,6 @@ init:
     #Gets rid of all drawings with boobs / gore
     default persistent.sfw = False
 
-
     #If you get the final bad ending, who was the last to die?
     #Options: Thief, Toad, Witch, Mushroom
     #TK: Currently not set or used. Delete?
@@ -132,8 +131,6 @@ init:
 
     # Default player name (non persistent)
     define povname = ""
-
-
 
     #Protagonist pronouns
     define he = "he"
@@ -185,6 +182,7 @@ init:
     define thiefArc = 0
     define toadArc = 0
     define witchArc = 0
+    define houseLockOut = False
 
     #Mushroom stuff
     #Have the mushroom threatened to curse you?
@@ -2921,7 +2919,7 @@ label village:
         "If you investigated the edge of town, turn to page 70.":
             call musicReturn from _call_musicReturn_17
             jump town
-        "If you turned around and went home, turn to page 1.":
+        "If you turned around and went home, turn to page 1." if not houseLockOut:
             #TK: This option gets ripped out if you try it, then go back without succeeding
             if turnedHome == 0:
                 if persistent.vanished ==2:
@@ -9037,6 +9035,56 @@ label wolf:
                 $doorLock = True
                 jump doorLock
             "If you opened the door, turn to page 301." if doorLock:
+                if persistent.vanished == 3:
+                    "Child. The hour grows late."
+                    "This choice leads to The End. You will never be able to return to the world you once knew."
+                    "Ever."
+                    "There is not much time left. But still, you should only open this door once you are certain you know the truth."
+                    "Once you know everything you need to know."
+                    show hand onlayer transient:
+                        yalign 0.675#0.743
+                        xalign 0.5
+                    menu:
+                        "Are you sure you want to do this?"
+                        "Yes. I'm certain.":
+                            "Very well."
+                        "I'm not sure.":
+                            "Then you are not ready."
+                            "There is not much time. If you plan to return, return soon."
+                            "You blinked, and found yourself back in the village."
+                            jump village
+                        "No. I'm not ready yet.":
+                            "Very well."
+                            "There is not much time. If you plan to return, return soon."
+                            "You blinked, and found yourself back in the village."
+                            jump village
+                else:
+                    "Child. Make sure you know what you are doing."
+                    "This choice leads to The End. You will never be able to return to the world you once knew."
+                    "Ever."
+                    "You should only open this door once you are certain you know the truth."
+                    "Once you know everything you need to know."
+                    show hand onlayer transient:
+                        yalign 0.675#0.743
+                        xalign 0.5
+                    menu:
+                        "Are you sure you want to do this?"
+                        "Yes. I'm certain.":
+                            "Very well."
+                        "I'm not sure.":
+                            $ renpy.block_rollback()
+                            "Then you are not ready."
+                            "Perhaps another time. In another life."
+                            "You blinked, and found yourself back in the village."
+                            $houseLockOut = True
+                            jump village
+                        "No. I'm not ready yet.":
+                            $ renpy.block_rollback()
+                            "Very well."
+                            "Another time, then. In another life."
+                            "You blinked, and found yourself back in the village."
+                            $houseLockOut = True
+                            jump village
                 play sound doorOpen
                 $renpy.music.play("audio/windAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
                 "The door swung slowly open."

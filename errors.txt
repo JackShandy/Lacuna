@@ -2,10 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 715: invalid syntax
-    image nightbg = ConditionSwitch(
-                 ^
-    
+File "game/script.rpy", line 9053: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "No. I'm not ready yet."
+                            ^
+
+File "game/script.rpy", line 9074: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "No. I'm not ready yet."
+                            ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Mon Aug 14 11:51:25 2023
+Sat Sep  9 20:37:50 2023
