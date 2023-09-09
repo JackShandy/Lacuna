@@ -1458,6 +1458,7 @@ label demoEnd:
 #The official game script begins here
 # Act 1, Chapter 2: The 3 Godparents
 #The beginning of the game.
+
 label start:
     show firelight animated onlayer over_screens zorder 99
     if persistent.phoneOn and persistent.vanished <=3:
