@@ -1,22 +1,50 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1336, in script
-    return
-Exception: Could not find return label (u'game/script.rpy', 1691562870, 27).
+  File "game/script.rpy", line 1492, in script
+    "Neither here nor there, but long ago..."
+  File "renpy/common/000window.rpy", line 114, in _window_auto_callback
+    _window_show(auto=True)
+  File "renpy/common/000window.rpy", line 69, in _window_show
+    renpy.with_statement(trans)
+IOError: Couldn't find file 'audio/cottagegore.mp3'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1336, in script
-    return
-  File "renpy/ast.py", line 1521, in execute
-    next_node(renpy.game.context().lookup_return(pop=True))
-  File "renpy/execution.py", line 710, in lookup_return
-    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
-Exception: Could not find return label (u'game/script.rpy', 1691562870, 27).
+  File "game/script.rpy", line 1492, in script
+    "Neither here nor there, but long ago..."
+  File "renpy/ast.py", line 685, in execute
+    statement_name("say")
+  File "renpy/ast.py", line 46, in statement_name
+    i(name)
+  File "renpy/common/000window.rpy", line 114, in _window_auto_callback
+    _window_show(auto=True)
+  File "renpy/common/000window.rpy", line 69, in _window_show
+    renpy.with_statement(trans)
+  File "renpy/exports.py", line 1646, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "renpy/display/core.py", line 2610, in do_with
+    clear=clear)
+  File "renpy/display/core.py", line 3101, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3794, in interact_core
+    renpy.audio.audio.periodic()
+  File "renpy/audio/audio.py", line 1101, in periodic
+    raise_(exc[0], exc[1], exc[2])
+  File "renpy/audio/audio.py", line 1079, in periodic_thread_main
+    periodic_pass()
+  File "renpy/audio/audio.py", line 1021, in periodic_pass
+    c.periodic()
+  File "renpy/audio/audio.py", line 487, in periodic
+    topf = load(self.file_prefix + filename + self.file_suffix)
+  File "renpy/audio/audio.py", line 69, in load
+    rv = renpy.loader.load(fn)
+  File "renpy/loader.py", line 798, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'audio/cottagegore.mp3'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
-Lacuna. 0.81
-Mon Aug 14 12:46:21 2023
+The Thief, the Toad, the Witch & the Mushroom. 1.0
+Sat Sep  2 14:57:24 2023

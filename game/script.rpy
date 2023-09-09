@@ -1300,14 +1300,14 @@ label after_load:
     if persistent.phoneOn and persistent.vanished <=3:
         play sound pageFlip
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
-        $renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
-        #$renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
+        #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
+        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     elif persistent.bookEnd:
         play sound pageFlip
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
-        $renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
-        #$renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
+        #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
+        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     else:
         play sound pageFlip
@@ -1462,8 +1462,8 @@ label start:
     show firelight animated onlayer over_screens zorder 99
     if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
-        $renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
-        #$renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
+        #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
+        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     # else:
     #     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True, relative_volume=0)
@@ -9556,8 +9556,8 @@ label wolf:
                 if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa" or answer1 == "HUWAWA" or answer1 == "Ḫum-ba-ba" or answer1 == "hum-ba-ba" or answer1 == "Ḫu-wa-wa" or answer1 == "hu-wa-wa":
                     $persistent.phoneOn = True
                     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
-                    $renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
-                    #$renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
+                    #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
+                    $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
                     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
                     $purge_saves()
                     call musicReturn from _call_musicReturn_26
@@ -11148,6 +11148,7 @@ label end:
     #{b}Inspirational Reading:{/b} 'The Wonderful Wizard of Oz' (1900), L. Frank Baum.{vspace=[tx]}
     #The epic of gilgamesh. Beowulf. Grimm's fairy tales. 1001 arabian nights. The name of that japanese folk tale volume.
     #Terry pratchett. Coraline, niel gaiman. False Hydra, arnold K. The stolen Skin of Princess Sun, Patrick stuart, false machine. Do Androids Dream of Electric Sheep (for the silence scene).
+    #The Moon Apes from Fire on the Velvet Horizon
     #The long sun, Gene Wolff. Hatoful Boyfriend. Higurashi when they cry. Doki Doki literature club. 999, ever 17, virtue's last reward.
     #Undertale.
     #Moby Dick?
