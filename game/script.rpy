@@ -6685,20 +6685,10 @@ label toadFinale:
                     "Oh?"
                     show wolf12 onlayer transient zorder 100
                     "And what happened to the witch, you ask?"
-                    "She was carried away by swift water."
-                    "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
-                    "Finally, she washed onto a broken shore."
-                    "No-one was there."
-                    "Nothing was left."
-                    #"Nothing but the {color=#f00}lacuna{/color}."
-                    "It was already too late."
-                    #"She was already gone."
-                    call endStamp from _call_endStamp_35
                     $persistent.vanished +=1
                     $persistent.witchVanished = True
                     $ renpy.block_rollback()
-                    "She was never seen or heard from again."
-                    jump end
+                    jump witchDisappears
             "If you stayed good friends with the toad, turn to page 299.":
                 #ToadEnd
                 #Wolf: Kills Witch
@@ -6716,21 +6706,10 @@ label toadFinale:
                     "Oh?"
                     show wolf12 onlayer transient zorder 100
                     "And what happened to the witch, you ask?"
-                    "She was carried away by swift water."
-                    "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
-                    "Finally, she washed onto a broken shore."
-                    "No-one was there."
-                    "Nothing was left."
-                    #"Nothing but the {color=#f00}lacuna{/color}."
-                    "It was already too late."
-                    #"She was already gone."
-                    call endStamp from _call_endStamp_36
                     $persistent.vanished +=1
                     $persistent.witchVanished = True
                     $ renpy.block_rollback()
-                    "She was never seen or heard from again."
-                    jump end
-
+                    jump witchDisappears
             "If you left the toad to return to your family, turn to page 300.":
                 #ToadEnd
                 #Wolf: Kills Witch
@@ -6751,20 +6730,10 @@ label toadFinale:
                 "Oh?"
                 show wolf12 onlayer transient zorder 100
                 "And what happened to the witch, you ask?"
-                "She was carried away by swift water."
-                "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
-                "Finally, she washed up on a broken shore."
-                "No-one was there."
-                "Nothing was left."
-                #"Nothing but the {color=#f00}lacuna{/color}."
-                "It was already too late."
-                #"She was already gone."
-                call endStamp from _call_endStamp_37
                 $persistent.vanished +=1
                 $persistent.witchVanished = True
                 $ renpy.block_rollback()
-                "She was never seen or heard from again."
-                jump end
+                jump witchDisappears
     label toadDeath:
         #ToadEnd
         "But youth does not last forever."
@@ -6833,20 +6802,50 @@ label toadFinale:
                     "Oh?"
                     show wolf12 onlayer transient zorder 100
                     "And what happened to the witch, you ask?"
-                    "She was carried away by swift water."
-                    "The sky grew dark. The river grew cold. Still, she tumbled through the depths."
-                    "Finally, she washed up on a broken shore."
-                    "No-one was there."
-                    "Nothing was left."
-                    "Nothing but the {color=#f00}lacuna{/color}."
-                    "It was already too late."
-                    "She was already gone."
-                    call endStamp from _call_endStamp_38
                     $persistent.vanished +=1
                     $persistent.witchVanished = True
                     $ renpy.block_rollback()
-                    "She was never seen or heard from again."
-                    jump end
+                    jump witchDisappears
+                    
+label witchDisappears:
+    #[Teachoice]
+    "The Witch was left alone in her cottage. The wet, Swollen greenery pressed in around her, twisting in spirals like the organs of some giant beast."
+    w "W-well. I guess I'd better clean up this mess."
+    "There was a sound outside."
+    "From the space between the trees."
+    "Perhaps just the howling of the wind, and nothing more."
+    w "I'll make some tea. That always calms me down."
+    "But when she went to her tea cabinet, she found she'd forgotten how."
+    "No knowledge of how to brew tea was left in her mind. A hole was left there, where the information used to be. Like a great, red bite taken out of her brain."
+    w "What? I'm sure I knew..."
+    w "Oh no. No, no, no."
+    "Something was outside. The floor shook with its approach."
+    "She ran to lock the door. But she didn't know how anymore."
+    "How did locks work? How did one interact with a door? What were these things, and how did they fit together?"
+    "The knowledge was gone."
+    "The wooden rectangle was an abstract shape with no meaning. Another gaping wound in her mind, still fresh and dripping."
+    w "I - no."
+    w "I see the cabinet. I smell the [teachoice] tea. I hear the rustle of the leaves. I taste - I taste -"
+    "She tried to recite one thing she could see. One thing she could smell. One thing she could hear."
+    "But it was too late."
+    "The Wolf was already inside the house."
+    "She fell to the floor. She had forgotten how to walk. Perhaps she never knew."
+    w "I see the window. I can feel the floor. I can hear... I hear..."
+    "She heard nothing."
+    "Her ears no longer worked. She no longer remembered a time when they did."
+    w "You can't do this. I am myself."
+    w "I name you, and bind you, beast. By your True Name, I cast you out."
+    "But how can you do that, witch?"
+    "You don't even remember your own name."
+    w "No! My name is... my name is..."
+    "It was gone. Eaten up whole."
+    "The thing that had no name lay there on the floor, senseless."
+    "It saw nothing. It smelled nothing. It felt nothing. It tasted nothing. It heard nothing."
+    "And then it was gone."
+    call endStamp from _call_endStamp_35
+    "It was never seen or heard from again."
+    jump end
+
 
 #==========Solo path
 #The Toad's path if the Witch has disappeared
@@ -7679,18 +7678,7 @@ label hellStory:
                     $persistent.vanished +=1
                     $persistent.toadVanished = True
                     $ renpy.block_rollback()
-                    "He stumbled into the woods."
-                    "For hours, he wandered through the trees. His feet blistered. His breath grew short."
-                    "There is no light in that part of the forest."
-                    "Finally, he emerged into a shadowed clearing."
-                    "No-one was there."
-                    "Nothing was left."
-                    #"Nothing but the {color=#f00}lacuna{/color}."
-                    "It was already too late."
-                    #"He was already gone."
-                    call endStamp from _call_endStamp_29
-                    "He was never seen or heard from again."
-                    jump end
+                    jump toadDisappears
         elif godfather == "White":
             w "Quick! Your godfather will be here any minute."
             "You both leapt into action. You disguised yourselves as beggars and lepers and threw lumps of mud all over the half-ruined cottage so that it looked like an abandoned hovel."
@@ -7819,18 +7807,7 @@ label hellStory:
                                 $persistent.vanished +=1
                                 $persistent.toadVanished = True
                                 $ renpy.block_rollback()
-                                "He stumbled into the woods."
-                                "For hours, he wandered through the trees. His feet blistered. His breath grew short."
-                                "There is no light in that part of the forest."
-                                "Finally, he emerged into a shadowed clearing."
-                                "No-one was there."
-                                "Nothing was left."
-                                #"Nothing but the {color=#f00}lacuna{/color}."
-                                "It was already too late."
-                                #"He was already gone."
-                                call endStamp from _call_endStamp_30
-                                "He was never seen or heard from again."
-                                jump end
+                                jump toadDisappears
                 else:
                     call endStamp from _call_endStamp_31
                     "You lived there together in quiet happiness. If you have not died, you live there still."
@@ -7843,18 +7820,7 @@ label hellStory:
                     $persistent.vanished +=1
                     $persistent.toadVanished = True
                     $ renpy.block_rollback()
-                    "He stumbled into the woods."
-                    "For hours, he wandered through the trees. His feet blistered. His breath grew short."
-                    "There is no light in that part of the forest."
-                    "Finally, he emerged into a shadowed clearing."
-                    "No-one was there."
-                    "Nothing was left."
-                    #"Nothing but the {color=#f00}lacuna{/color}."
-                    "It was already too late."
-                    #"He was already gone."
-                    call endStamp from _call_endStamp_32
-                    "He was never seen or heard from again."
-                    jump end
+                    jump toadDisappears
             "If you returned home, turn to page 261.":
                 call hideAll from _call_hideAll_84
                 show sunbg at artPos
@@ -7886,18 +7852,84 @@ label hellStory:
                     $persistent.vanished +=1
                     $persistent.toadVanished = True
                     $ renpy.block_rollback()
-                    "He stumbled into the woods."
-                    "For hours, he wandered through the trees. His feet blistered. His breath grew short."
-                    "There is no light in that part of the forest."
-                    "Finally, he emerged into a shadowed clearing."
-                    "No-one was there."
-                    "Nothing was left."
-                    #"Nothing but the {color=#f00}lacuna{/color}."
-                    "It was already too late."
-                    "He was already gone."
-                    call endStamp from _call_endStamp_33
-                    "He was never seen or heard from again."
-                    jump end
+                    jump toadDisappears
+
+#==========The Wolf Eats the Toad
+label toadDisappears:
+    "He stood alone in the witch's cottage."
+    "Bromeliads sprouted from the floorboards. The dense, hot spiral of greenery pressed in around him like the organs of a great beast."
+    f "Well. This is another fine mess."
+    "He picked up his top hat."
+    "There was a sound outside. Almost like a howl. He shivered."
+    f "I-I had best not outstay my welcome. Prickle! Crawl!"
+    "He rushed outside, dove into the puddle and emerged into the darkness of the forest."
+    f "Shudder! Wink! Are you there?"
+    "There was no reply. No-one was there."
+    "He searched forward and found the remains of a squash carriage. Destroyed. As if by the claws of a colossal beast."
+    f "Oh no. No, no, no."
+    "Something stirred in the forest around him. In the space between the trees. "
+    "He ran as fast as he could, helter-skelter, tumbling down hills, coat ripped, pants torn."
+    "Something fastened around his ankle."
+    f "Agh!"
+    "A terrible pain shot through him in an instant, and then was gone."
+    "A red, wet stain dripped from his shoe. Red footprints were left behind him as he ran."
+    "At last he saw the town before him, and thanked G-d in heaven for the blessed sight."
+    "The people of town were there, cleaning up after the feast."
+    f "Mayor! Hunter! Please, help me! I'm being pursued by a wolf!"
+    m "Oh, poor toad. Don't be silly."
+    h "It's all in your head. There are no wolves in australia."
+    f "B-but look! Look at the wound the beast wrought upon me!"
+    "He brandished his bloody heel."
+    f "Oh dear. Dear toad."
+    h "You've always had that wound. Don't you remember?"
+    m "You were born that way."
+    f "I-"
+    "His leg disappeared."
+    f "Argckkhh!"
+    "A ragged chunk."
+    "A split in space."
+    "The blood flew onto the cobblestones, and then was gone."
+    "A wet twisted mess was all that was left."
+    "He fell over into the dirt."
+    h "Oh, you poor thing. Let me help you."
+    "They lifted him up and placed him against the fence. He clung to it with one shaking arm."
+    m "You really shouldn't go out without your cane, you know."
+    f "My cane?"
+    m "For your leg. You know."
+    m "You've always had one leg."
+    f "But... I..."
+    "The toad searched his memories and realised that it was true."
+    "He was born with one leg."
+    "A tough life, perhaps, but he'd always managed to survive."
+    "How on earth had he forgotten his walking stick?"
+    "Forget his own head next, I expect."
+    f "I'm terribly sorry, I don't know what came over me. I'll-"
+    "His arm was gone. The stump of a shoulder."
+    "Exposed bone. Matted meat."
+    "He cried out in terrible pain, and fell into the dirt once more."
+    m "Well, it's been a long night."
+    h "Yes, we'd best be getting home."
+    f "No - please!"
+    "They ambled off into the night, making pleasant small talk as they headed for home."
+    "The toad tried to pull himself along in the dirt. He had no legs. Just a single, shaking arm."
+    f "Help me... g-d, help me…"
+    "It has been tough, hasn't it toad? Surviving all these years, with one arm."
+    "Just a single, broken hand to drag yourself along with."
+    "But you did it, didn't you? You did it."
+    f "Who… Who are you?"
+    "How are you asking that question, toad?"
+    "You were born with no mouth."
+    f  "Mhmm... Mhmmm!"
+    "The poor creature attempted to scream. A pitiful sight indeed."
+    "The townsfolk shook their heads, and withdrew indoors. He was always like this. Better not to dwell on it."
+    "And after all, now that they thought about it, what was there to dwell on? There was no-one there."
+    "What did they think they seeing there? There was never anything there at all."
+    "Forget my own head next, they said to themselves."
+    "It must have been nothing."
+    "Nothing but a top hat and an old coat, that blew away in the wind and were gone."
+    call endStamp
+    "They were never seen again."
+    jump end
 
 #==========Solo path
 #The witch's path if the toad has disappeared

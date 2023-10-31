@@ -27,14 +27,14 @@ init python:
 define gui.accent_color = u'#cc6600'
 
 ## The color used for a text button when it is neither selected nor hovered.
-define gui.idle_color = u'#aaaaaa'
+define gui.idle_color = u'#808080'#u'#aaaaaa'
 
 ## The small color is used for small text, which needs to be brighter/darker to
 ## achieve the same effect.
 define gui.idle_small_color = u'#888888'
 
 ## The color that is used for buttons and bars that are hovered.
-define gui.hover_color = u'#cc6600'
+define gui.hover_color =u'#FF5733' # u'#cc6600'
 
 ## The color used for a text button when it is selected but not focused. A
 ## button is selected if it is the current screen or preference value.
@@ -260,7 +260,7 @@ define gui.file_slot_rows = 7 #2
 define gui.navigation_xpos = 19
 
 ## The position of the Return button
-define gui.return_xpos = 50
+define gui.return_xpos = 40
 
 ## The vertical position of the skip indicator.
 define gui.skip_ypos = 5
