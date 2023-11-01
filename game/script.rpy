@@ -5840,18 +5840,8 @@ label mushroomFinale:
                             $persistent.vanished +=1
                             $persistent.thiefVanished = True
                             $ renpy.block_rollback()
-                            "Long did they run from the law."
-                            "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
-                            "Finally one night, they ran deep into the desert."
-                            "They caught their breath and looked around. The sky was vast and empty above them."
-                            "No-one was there."
-                            "Nothing was left."
-                            #"Nothing but the {color=#f00}lacuna{/color}."
-                            "It was already too late."
-                            #"They were already gone."
-                            call endStamp from _call_endStamp_7
-                            "They were never seen or heard from again."
-                            jump end
+                            jump thiefDisappears
+
                         "If you held fast to your desire to return to the world above, turn to page 164.":
                             if godfather == "Red":
                                 pov "Don't think that I want to leave you. It's just that I must see my old country again."
@@ -5934,18 +5924,7 @@ label mushroomFinale:
                     $persistent.vanished +=1
                     $persistent.thiefVanished = True
                     $ renpy.block_rollback()
-                    "Long did they run from the law."
-                    "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
-                    "Finally one night, they ran deep into the desert."
-                    "They caught their breath and looked around. The sky was vast and empty above them."
-                    "No-one was there."
-                    "Nothing was left."
-                    #"Nothing but the {color=#f00}lacuna{/color}."
-                    "It was already too late."
-                    #"They were already gone."
-                    call endStamp from _call_endStamp_15
-                    "They were never seen or heard from again."
-                    jump end
+                    jump thiefDisappears
                 "If you refused to open the box, even when all hope was lost, turn to page 179.":
                     if godfather == "White":
                         "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
@@ -5960,18 +5939,7 @@ label mushroomFinale:
                         $persistent.vanished +=1
                         $persistent.thiefVanished = True
                         $ renpy.block_rollback()
-                        "Long did they run from the law."
-                        "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
-                        "Finally one night, they ran deep into the desert."
-                        "They caught their breath and looked around. The sky was vast and empty above them."
-                        "No-one was there."
-                        "Nothing was left."
-                        #"Nothing but the {color=#f00}lacuna{/color}."
-                        "It was already too late."
-                        #"They were already gone."
-                        call endStamp from _call_endStamp_17
-                        "They were never seen or heard from again."
-                        jump end
+                        jump thiefDisappears
                     elif godfather == "Red":
                         "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
                         call endStamp from _call_endStamp_5
@@ -5985,18 +5953,7 @@ label mushroomFinale:
                         $persistent.vanished +=1
                         $persistent.thiefVanished = True
                         $ renpy.block_rollback()
-                        "Long did they run from the law."
-                        "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
-                        "Finally one night, they ran deep into the desert."
-                        "They caught their breath and looked around. The sky was vast and empty above them."
-                        "No-one was there."
-                        "Nothing was left."
-                        #"Nothing but the {color=#f00}lacuna{/color}."
-                        "It was already too late."
-                        #"They were already gone."
-                        call endStamp from _call_endStamp_21
-                        "They were never seen or heard from again."
-                        jump end
+                        jump thiefDisappears
                     else:
                         "And so you stayed there, forever searching for an entrance back to that kingdom you missed so much."
                         "For years you searched, with no success. Soon, the Ash Giants came upon the world, and you felt their searing light upon your skin."
@@ -6023,18 +5980,66 @@ label mushroomFinale:
                         $persistent.vanished +=1
                         $persistent.thiefVanished = True
                         $ renpy.block_rollback()
-                        "Long did they run from the law."
-                        "Over hill and dale, through the valleys, under the mountains and across the sea they ran."
-                        "Finally one night, they ran deep into the desert."
-                        "They caught their breath and looked around. The sky was vast and empty above them."
-                        "No-one was there."
-                        "Nothing was left."
-                        #"Nothing but the {color=#f00}lacuna{/color}."
-                        "It was already too late."
-                        #"They were already gone."
-                        call endStamp from _call_endStamp_22
-                        "They were never seen or heard from again."
-                        jump end
+                        jump thiefDisappears
+
+#=====The Thief Disappears
+label thiefDisappears:
+    "They strolled away from the tree, laughing and stroking their ill-gotten gains with their long, dexterous fingers. "
+    t "Another successful heist."
+    h "Hold it right there!"
+    "The Hunter, sparrow-herder and goose-girl leapt from the bushes and surrounded the thief, holding pitchforks and rakes and an old Shovel."
+    go "Looks like your day is done, scoundrel!"
+    sh "Yeah! We got you bang to rights, we have."
+    "The three of them jeered and prodded the thief with glee."
+    t "Ha ha ha! Well, if you think you're going to take me to jail, I'm afraid..."
+    "The thief trailed off."
+    "There was a sound in the woods."
+    "A low, hushed and ragged sound, like a howl in the wind."
+    t "Did you hear that?"
+    t "Was that... the wolf?"
+    h "Don't try to distract us, you wretched cur. There are no wolves in Australia."
+    sh "Yeah! We won't be turned away that easily!"
+    "The two of them jabbed at the thief."
+    "It was always just the two of them, and the thief. There was never anyone else."
+    "The thief looked down."
+    "There was a dark red stain on the dirt. In the position where a third person would have stood, if any such person had been there."
+    "Which, of course, they hadn't."
+    T "Something's wrong. I think we need to run."
+    "The trees rustled, as if with the movement of a great beast."
+    sh "Ha! You'd like that, wouldn't you? Just when I've got you cornered."
+    sh "No, you're coming with me, chum."
+    "The sparrow-herder and the thief were standing there, alone in the clearing."
+    "There was no-one else there."
+    "There never was."
+    t "Come on!"
+    sh "Hold on, I -"
+    "The thief dragged the sparrow hunter through the woods and burst out of the woods to a small cottage, surrounded by geese."
+    sh "What?"
+    "It was echoing and empty. Most of the houses had been abandoned a long time ago."
+    "No-one lived here but geese. No-one ever had."
+    t "Help! Someone help us!"
+    "Who are you calling out to, thief?"
+    "You're alone. You always have been."
+    t "No, they're right here, they -"
+    "They looked around. There was no-one there."
+    "The trees were silent."
+    "No animals lived in this part of the woods. No bird calls troubled its vast, silent depths. The silence was complete."
+    "They were running through the forest, ragged and alone."
+    "They searched their memories. Had there every been anyone else? Had there ever been a time before this one?"
+    "They could remember nothing before this moment. Their entire life was just this single frozen moment of running through the woods in fear."
+    "They felt hot breath against their neck."
+    "It was no use running, of course. The wolf was already there."
+    t "Please... I-"
+    "And then there was nothing."
+    "The woods were silent "
+    "There was no-one there."
+    "No-one had ever been there."
+    "Just a ragged midnight cloak, stained red, that floated away in the breeze and was gone forever."
+    call endStamp from _call_endStamp_7
+    "It was never seen or heard from again."
+    jump end
+
+
 
 #=====================THE TOAD'S STORY
 
@@ -6806,7 +6811,7 @@ label toadFinale:
                     $persistent.witchVanished = True
                     $ renpy.block_rollback()
                     jump witchDisappears
-                    
+
 label witchDisappears:
     #[Teachoice]
     "The Witch was left alone in her cottage. The wet, Swollen greenery pressed in around her, twisting in spirals like the organs of some giant beast."
