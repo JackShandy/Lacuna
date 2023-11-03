@@ -5000,14 +5000,14 @@ label mushroomDisappears:
     "The wolf was already inside."
     m "Get out! Get out!"
     "Get out to where, Mushroom?"
-    "No place but here exists."
-    "There is only this room. Nothing else. That's the way it's always been."
+    "This room is the only thing that exists. There is nothing outside. There is nowhere but here."
+    "That's the way it's always been."
     "She screamed and clawed at the walls."
     "But there were no walls."
     "There were no doors. There were no windows. There was no floor."
     "There was no air. There was no light. There was no space."
     "And then there was nothing at all."
-    "Nothing but a bottle of wine, that fell and smashed into pieces."
+    "Nothing but a bottle of wine, that fell through the emptiness and smashed into pieces."
     call endStamp from _call_endStamp_23
     "It was never seen or heard from again."
     jump end
