@@ -4801,18 +4801,8 @@ label thiefStory:
                             $persistent.mushroomVanished = True
                             $persistent.starsVanished = True
                             $ renpy.block_rollback()
-                            "Long did she germinate in the dark hollows of the world."
-                            "But she could not hide there forever."
-                            "After many days, she finally emerged from the dirt, into the cold air."
-                            "The stars had gone out."
-                            "No-one was there."
-                            "Nothing was left."
-                            #"Nothing but the {color=#f00}lacuna{/color}."
-                            "It was already too late."
-                            #"She was already gone."
-                            call endStamp from _call_endStamp_23
-                            "She was never seen or heard from again."
-                            jump end
+                            jump mushroomDisappears
+
                     "If you remained good friends with the thief, turn to page 246.":
                         "You lived on the train in happiness with your friend the thief for all of your days, venturing from place to place with wild abandon."
                         if goblinCelebrate and pig:
@@ -4831,19 +4821,7 @@ label thiefStory:
                             $persistent.mushroomVanished = True
                             $persistent.starsVanished = True
                             $ renpy.block_rollback()
-                            "Long did she germinate in the dark hollows of the world."
-                            "But she could not hide there forever."
-                            "After many days, she finally emerged from the dirt, into the cold air."
-                            "The stars had gone out."
-                            "No-one was there."
-                            "Nothing was left."
-                            #"Nothing but the {color=#f00}lacuna{/color}."
-                            "It was already too late."
-                            #"She was already gone."
-                            call endStamp from _call_endStamp_24
-                            "She was never seen or heard from again."
-                            jump end
-
+                            jump mushroomDisappears
             else:
                 "In the morning, you were faced with a choice. "
                 "Because you had not yet tasted the goblin fruits, you could still return to your family and the world of humans."
@@ -4870,18 +4848,8 @@ label thiefStory:
                             $persistent.mushroomVanished = True
                             $persistent.starsVanished = True
                             $ renpy.block_rollback()
-                            "Long did she germinate in the dark hollows of the world."
-                            "But she could not hide there forever."
-                            "After many days, she finally emerged from the dirt, into the cold air."
-                            "The stars had gone out."
-                            "No-one was there."
-                            "Nothing was left."
-                            #"Nothing but the {color=#f00}lacuna{/color}."
-                            "It was already too late."
-                            #"She was already gone."
-                            call endStamp from _call_endStamp_25
-                            "She was never seen or heard from again."
-                            jump end
+                            jump mushroomDisappears
+
                     "If you stayed on the goblin train and remained good friends with the thief forever after, turn to page 244.":
                         "You lived on the train in happiness with your friend the thief for all of your days, venturing from place to place with wild abandon."
                         if goblinCelebrate and pig:
@@ -4901,18 +4869,8 @@ label thiefStory:
                             $persistent.mushroomVanished = True
                             $persistent.starsVanished = True
                             $ renpy.block_rollback()
-                            "Long did she germinate in the dark hollows of the world."
-                            "But she could not hide there forever."
-                            "After many days, she finally emerged from the dirt, into the cold air."
-                            "The stars had gone out."
-                            "No-one was there."
-                            "Nothing was left."
-                            #"Nothing but the {color=#f00}lacuna{/color}."
-                            "It was already too late."
-                            #"She was already gone."
-                            call endStamp from _call_endStamp_26
-                            "She was never seen or heard from again."
-                            jump end
+                            jump mushroomDisappears
+
                     "If you stayed on the goblin train and married the thief, turn to page 248.":
                         "After many adventures, the Goblin Queen married you on the train. There was a joyous goblin riot for forty days and forty nights."
                         if pig:
@@ -4936,18 +4894,8 @@ label thiefStory:
                             $persistent.mushroomVanished = True
                             $persistent.starsVanished = True
                             $ renpy.block_rollback()
-                            "Long did she germinate in the dark hollows of the world."
-                            "But she could not hide there forever."
-                            "After many days, she finally emerged from the dirt, into the cold air."
-                            "The stars had gone out."
-                            "No-one was there."
-                            "Nothing was left."
-                            #"Nothing but the {color=#f00}lacuna{/color}."
-                            "It was already too late."
-                            #"She was already gone."
-                            call endStamp from _call_endStamp_27
-                            "She was never seen or heard from again."
-                            jump end
+                            jump mushroomDisappears
+
     label thiefDeath:
         if godfather == "Black":
             "But youth does not last forever."
@@ -5028,18 +4976,41 @@ label thiefStory:
                         $persistent.mushroomVanished = True
                         $persistent.starsVanished = True
                         $ renpy.block_rollback()
-                        "Long did she germinate in the dark hollows of the world."
-                        "But she could not hide there forever."
-                        "After many days, she finally emerged from the dirt, into the cold air."
-                        "The stars had gone out."
-                        "No-one was there."
-                        "Nothing was left."
-                        #"Nothing but the {color=#f00}lacuna{/color}."
-                        "It was already too late."
-                        #"She was already gone."
-                        call endStamp from _call_endStamp_28
-                        "She was never seen or heard from again."
-                        jump end
+                        jump mushroomDisappears
+
+#==========Mushroom Disappears
+label mushroomDisappears:
+    "The three mushrooms looked around at the chaos of their plundered domain and shrugged."
+    m "Oh well."
+    m1 "Nothing we can do now."
+    "The last of the treasure fell onto the floor."
+    m2 "Perhaps a drink?"
+    "She pulled out a bottle of wine and uncorked it."
+    "As she did so, there was a sound from outside. Like the howling of the wind."
+    m "Oh no. No."
+    "She looked around. There was no treasure. The floor was bare."
+    "It always had been."
+    m "We'll have to run. Come on-"
+    "But as she looked around for her sisters, she realised she was alone."
+    "There was only one mushroom there. Standing alone, in the centre of an empty room."
+    "There had never been anything more."
+    #"Things start disappearing around her. The treasure disappears. The Walls disappear. She tries to retreat and lock the door, carrying a bottle of wine."
+    "She ran to her hidden chamber and locked the door tight."
+    "It was too late, of course."
+    "The wolf was already inside."
+    m "Get out! Get out!"
+    "Get out of where?"
+    "Poor, poor thing. You are nowhere."
+    "She screamed and clawed at the walls."
+    "But there were no walls."
+    "There were no doors. There were no windows. There was no floor."
+    "There was no air. There was no light. There was no space."
+    "And then there was nothing at all."
+    "Nothing but a bottle of wine, that fell and smashed into pieces."
+    call endStamp from _call_endStamp_23
+    "It was never seen or heard from again."
+    jump end
+
 
 #==========Solo path
 #The thief's path if the mushroom has disappeared
