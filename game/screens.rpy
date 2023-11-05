@@ -391,6 +391,7 @@ screen navigation():
         #Help
         imagebutton auto "gui/mm_help2_%s.png" xpos 23 ypos 430 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
 
+
         #TK: Look at the game on smartphones, figure it out
         if renpy.variant("pc"):
 
@@ -462,12 +463,18 @@ screen main_menu():
         #textbutton _("Help") action ShowMenu("help")
         imagebutton auto "gui/mm_help_%s.png" xpos 29 ypos 454 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
 
+    #Credits / Acknowledgements
+    imagebutton auto "gui/mm_acknowledgements_%s.png" xpos 24 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Hide("main_menu"), Jump("credits")  hovered [ Play("sound", "audio/pencil.wav") ]
+    #475
+    #Hide(main_menu())
+
+
     if renpy.variant("pc"):
 
         ## The quit button is banned on iOS and unnecessary on Android and
         ## Web.
         #textbutton _("Quit") action Quit(confirm=not main_menu)
-        imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 485 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
+        imagebutton auto "gui/mm_quit_%s.png" xpos 27 ypos 520 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
 
     if gui.show_name:
 
@@ -1080,6 +1087,7 @@ screen preferences():
                     textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
 
+
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
 
@@ -1144,6 +1152,14 @@ screen preferences():
                     label _("Safe For Work Mode")
                     textbutton _("Off") action SetVariable("persistent.sfw", False)
                     textbutton _("On") action SetVariable("persistent.sfw", True)
+
+                vbox:
+                    #style_prefix "radio"
+                    #label _("Change Name & Pronouns")
+                    textbutton _("Change Name & Pronouns") action Play("sound", "audio/page-flip.mp3"), ShowMenu("contents")
+                    #textbutton _("Off") action call screen contents
+                    #SetVariable("persistent.sfw", False)
+                    #call screen contents
 
 
 style pref_label is gui_label

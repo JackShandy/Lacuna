@@ -1,58 +1,34 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 213, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 498, in script
-    python hide:
-  File "renpy/common/00start.rpy", line 213, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 498, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 498, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 508, in _execute_python_hide
-    renpy.load("_reload-2")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "renpy/common/00start.rpy", line 274, in script
+    python:
+  File "renpy/common/00start.rpy", line 278, in <module>
+    renpy.call_in_new_context("_main_menu")
+ScriptError: could not find label 'contents'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 326, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 617, in main
-    run(restart)
-  File "renpy/main.py", line 148, in run
-    renpy.execution.run_context(True)
-  File "renpy/execution.py", line 922, in run_context
-    context.run()
-  File "renpy/common/00start.rpy", line 213, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 498, in script
-    python hide:
-  File "renpy/common/00start.rpy", line 213, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 498, in script
-    python hide:
+  File "renpy/common/00start.rpy", line 274, in script
+    python:
   File "renpy/ast.py", line 922, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "renpy/python.py", line 2218, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "renpy/common/00keymap.rpy", line 498, in <module>
+  File "renpy/common/00start.rpy", line 278, in <module>
+    renpy.call_in_new_context("_main_menu")
+  File "renpy/game.py", line 344, in call_in_new_context
+    return renpy.execution.run_context(False)
+  File "renpy/execution.py", line 922, in run_context
+    context.run()
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
     python hide:
-  File "renpy/common/00keymap.rpy", line 508, in _execute_python_hide
-    renpy.load("_reload-2")
-  File "renpy/loadsave.py", line 767, in load
-    log.unfreeze(roots, label="_after_load")
-  File "renpy/python.py", line 2173, in unfreeze
-    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
-  File "renpy/python.py", line 2005, in rollback
-    self.load_failed()
-  File "renpy/python.py", line 1923, in load_failed
-    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "renpy/script.py", line 910, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'contents'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom. 1.0
-Tue Oct  3 12:02:46 2023
+Sun Nov  5 13:07:18 2023

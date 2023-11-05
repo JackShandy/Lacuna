@@ -32,7 +32,7 @@ init python:
 init:
 
     #Persistent Player Name
-    default persistent.povname = "Charlie"
+    default persistent.povname = ""
     #Number of times the game has been played
     default persistent.timesPlayed = 0
     #The ambience - is it on or not?
@@ -1289,9 +1289,14 @@ label splashscreen2:
     $Him = persistent.Him
     $Hes = persistent.Hes
     $hes = persistent.hes
+    if persistent.povname == "":
+        $persistent.povname = "Charlie"
     $povname = persistent.povname
+    call screen main_menu
+    #show("main_menu")
+    #$MainMenu(confirm=False)()
 
-    return
+    #ShowMenu("main_menu")
 
 #Setting up the firelight and music whenever the game loads
 label after_load:
@@ -1485,25 +1490,37 @@ label start:
         if persistent.vanished == 0:
             "This maybe happened, or maybe did not."
             "The time is long past, and much is forgot."
-            "Back in the old days, when wishing worked, your mother had twelve children and had to work night and day just to feed them."
+            "Back in the old days, when wishing worked, your mother lived in a vast forest teeming with strange figures."
+            call characterIntros
+            "She had little time to spend wondering about these odd folks, for she had twelve children and had to work night and day just to feed them."
             "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         elif persistent.vanished == 1:
             "Neither here nor there, but long ago..."
-            "Back in the old days, when the gods were real, your mother had ten children and had to work night and day just to feed them."
+            "Back in the old days, when the gods were real, your mother lived in a vast and mysterious rainforest full of strange figures."
+            call characterIntros
+            "She had little time to spend wondering about these odd folks, for she had ten children and had to work night and day just to feed them."
             "When you were born as the eleventh, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         elif persistent.vanished == 2:
             "Once there was, and once there wasn't."
-            "In the long-distant days of yore, when haystacks winnowed sieves, when genies played jereed in the old bathhouse, fleas were barbers, camels were town criers, I softly rocked my baby grandmother to sleep in her creaking cradle, in an exotic land, far, far away, there was a woman with four children who had to work day and night just to feed them."
+            "In the long-distant days of yore, when haystacks winnowed sieves, when genies played jereed in the old bathhouse, fleas were barbers, camels were town criers, I softly rocked my baby grandmother to sleep in her creaking cradle, in an exotic land, far, far away, there was a woman who lived in a vast rainforest full of strange, empty spaces."
+            call characterIntros
+            "She had little time to think about these things, for she had four children and had to work day and night just to feed them."
             "When you were born to her as the fifth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
             show noteFood onlayer transient zorder 100
         elif persistent.vanished == 3:
             "I've told you what's coming."
-            "Back in the old days, when there was still a chance, your mother gave birth to you as her first and only child."
+            "Back in the old days, when there was still a chance, your mother lived in a vast, empty forest."
+            call characterIntros
+            "One day, she gave birth to you as her first and only child."
             show noteStop onlayer transient zorder 100
             "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         elif persistent.vanished >= 4:
             jump allVanishedEnd
 
+    # "This maybe happened, or maybe did not."
+    # "The time is long past, and much is forgot."
+    # "Back in the old days, when wishing worked, you lived in a lovely cottage on the edge of a magical forest."
+    # "Many strange figures lived in the woods around your house."
         call hideAll from _call_hideAll
         show forest4bg at artPos
         show scribble2 onlayer transient zorder 100
@@ -1515,55 +1532,107 @@ label start:
             show noteSilence onlayer transient zorder 100
         miw "Poor woman. Let me be the godfather."
         miw "I shall hold this child, and make sure [hes] happy on this Earth for the rest of [his] days."
+        jump firstMan
+
+    label characterIntros:
+        call hideAll
+        if persistent.thiefVanished == False:
+            show forest4bg at artPos
+            "To the north lived a cunning thief."
+        else:
+            show emptybg at artPos
+            call musicSilence
+            show wolf9 onlayer transient zorder 100
+            "To the north, there was nothing and no-one."
+            if persistent.witchVanished == False:
+                call musicReturn
+
+        call hideAll
+        if persistent.witchVanished == False:
+            show darkforestbg at artPos
+            "To the east, there was a cackling witch."
+        else:
+            show emptybg at artPos
+            call musicSilence
+            show wolf10 onlayer transient zorder 100
+            "To the east, there was nothing and no-one."
+            if persistent.toadVanished == False:
+                call musicReturn
+
+        call hideAll
+        if persistent.toadVanished == False:
+            show manorextbg at artPos
+            "To the south, there was a haughty toad."
+        else:
+            show emptybg at artPos
+            call musicSilence
+            show wolf5 onlayer transient zorder 100
+            "To the south, there was nothing and no-one."
+            if persistent.mushroomVanished == False:
+                call musicReturn
+
+        call hideAll
+        if persistent.mushroomVanished == False:
+            show mushroompalacebg at artPos
+            "To the west, there was a wise mushroom."
+        else:
+            show emptybg at artPos
+            call musicSilence
+            show wolf1 onlayer transient zorder 100
+            "To the west, there was nothing and no-one."
+            call musicReturn
+        call hideAll
+        show nightbg at artPos
+        return
 
     label firstMan:
-            show hand onlayer transient:
-                yalign 0.7#0.743
-                xalign 0.5
-            menu:
-                miw "I will ask only one thing: [He] must work hard, and earn every dollar, and obey me above all else."
-                #"{image=sword}{space=15}If she said yes, turn to page 13.": #"Yes.":
-                #"{image=dot}{space=10}If she said yes, turn to page 13.": #"Yes.":
-                "If she said yes, turn to page 13.": #"Yes.":
-                    label godYes:
-                        miw "As I have foreseen."
-                        "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
-                        miw "You will name [him] [povname]."
-                        if he == "they":
-                            miw "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
-                        else:
-                            miw "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
-                        if persistent.vanished == 3:
-                            $ renpy.block_rollback()
-                            $persistent.mumVanished = True
-                            $purge_saves()
-                            call musicSilence from _call_musicSilence
-                            "But He was talking to Himself."
-                            "He looked around, holding the child."
-                            "There was no-one there."
-                            show hand onlayer transient:
-                                yalign 0.7#0.743
-                                xalign 0.5
-                            "There never was.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
-                            $godfather = "White"
-                            jump chapter2
-                        else:
-                            mum "Just make sure you're there for the christening."
-                            show hand onlayer transient:
-                                yalign 0.71#0.743
-                                xalign 0.5
-                            "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
-                            $godfather = "White"
-                            jump chapter2
-                "If she said no, turn to page 14." if firstManWho:
-                    mum "Then I don't want you as the Godfather. You give to the rich, and take from the poor. You are no Lord of mine."
-                    "(She said this foolish thing, with no understanding of how wisely the Lord distributes wealth and poverty.)"
-                    "Then she turned away from Him and ran into the forest."
-                    jump secondMan1
-                "If she asked the mysterious figure who He was, turn to page 11." if not firstManWho:#"Who are you?"
-                    miw "I am your dear Lord."
-                    $firstManWho = True
-                    jump firstMan
+        show hand onlayer transient:
+            yalign 0.7#0.743
+            xalign 0.5
+        menu:
+            miw "I will ask only one thing: [He] must work hard, and earn every dollar, and obey me above all else."
+            #"{image=sword}{space=15}If she said yes, turn to page 13.": #"Yes.":
+            #"{image=dot}{space=10}If she said yes, turn to page 13.": #"Yes.":
+            "If she said yes, turn to page 13.": #"Yes.":
+                label godYes:
+                    miw "As I have foreseen."
+                    "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
+                    miw "You will name [him] [povname]."
+                    if he == "they":
+                        miw "I will come for the child the moment [he] turn eighteen. Keep [him] safe for me until then."
+                    else:
+                        miw "I will come for the child the moment [he] turns eighteen. Keep [him] safe for me until then."
+                    if persistent.vanished == 3:
+                        $ renpy.block_rollback()
+                        $persistent.mumVanished = True
+                        $purge_saves()
+                        call musicSilence from _call_musicSilence
+                        "But He was talking to Himself."
+                        "He looked around, holding the child."
+                        "There was no-one there."
+                        show hand onlayer transient:
+                            yalign 0.7#0.743
+                            xalign 0.5
+                        "There never was.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
+                        $godfather = "White"
+                        jump chapter2
+                    else:
+                        mum "Just make sure you're there for the christening."
+                        show hand onlayer transient:
+                            yalign 0.71#0.743
+                            xalign 0.5
+                        "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
+                        $godfather = "White"
+                        jump chapter2
+            "If she said no, turn to page 14." if firstManWho:
+                mum "Then I don't want you as the Godfather. You give to the rich, and take from the poor. You are no Lord of mine."
+                "(She said this foolish thing, with no understanding of how wisely the Lord distributes wealth and poverty.)"
+                "Then she turned away from Him and ran into the forest."
+                jump secondMan1
+            "If she asked the mysterious figure who He was, turn to page 11." if not firstManWho:#"Who are you?"
+                miw "I am your dear Lord."
+                $firstManWho = True
+                jump firstMan
 
     label secondMan1:
         "In the deeper darkness of the forest, she may or may not have met a man all in red."
@@ -11133,9 +11202,17 @@ label end:
     #play sound pageFlip
     #Note: I delete all the player's save files at this point to allow persistence to work.
     $purge_saves()
-    call hideAll from _call_hideAll_94
+    call hideAll
     hide text
     ""
+    play sound pageFlip
+    return
+
+label credits:
+    call hideAll from _call_hideAll_94
+    hide text
+    show firelight animated onlayer over_screens zorder 99
+    scene bg page
     #play sound pageFlip
     scene bg credits
     #define gui.dialogue_ypos = 100#480
@@ -11226,4 +11303,4 @@ label end:
     $ renpy.pause ()
 
     play sound pageFlip
-    return
+    $ renpy.full_restart()
