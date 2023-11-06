@@ -1,34 +1,38 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 274, in script
-    python:
-  File "renpy/common/00start.rpy", line 278, in <module>
-    renpy.call_in_new_context("_main_menu")
-ScriptError: could not find label 'contents'.
+  File "game/script.rpy", line 11393, in script
+    $ ui.text("{space=[ti]}20. {b}Mountains:{/b} 'Winter Landscape in Moonlight' (1919), Ernst Ludwig Kirchner.{vspace=[tx]}{space=[ti]}21. {b}[mBasement2Credits]:{/b} 'It Is a Skull, Crowned with Roses. It Dominates a Woman’s Pearly–White Torso' (1888), Jean Bernard.{vspace=[tx]}{space=[ti]}22. {b}[mCaveCredits]:{/b} 'Expulsion. Moon and Firelight' (1828), Thomas Cole.{vspace=[tx]}{space=[ti]}23. {b}[mCave2Credits]:{/b} 'A Cavern, Evening' (1774), Joseph Wright.{vspace=[tx]}{space=[ti]}24. {b}[mGarCredits]:{/b} 'Emperor Humayun with his brothers' (1540), Dust Muhammad.{vspace=[tx]}{space=[ti]}25. {b}[mPaCredits]:{/b} 'Old French Fairytales' (1920), Virginia Frances Sterrett.{vspace=[tx]}{space=[ti]}26. {b}Night:{/b} 'So the man gave him a pair of snow shoes', East of the Sun and West of the Moon (1914), Kay Neilsen.{vspace=[tx]}{space=[ti]}27. {b}Night G-d:{/b} 'Eye Vintage Art Drawing' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}28. {b}River:{/b} 'Rushing Water' (1901), John Singer Sargent.{vspace=[tx]}{space=[ti]}29. {b}Ruins:{/b} 'Vintage Art Scenic View Card' (Early 20th Century), RT&S publishers, UK.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+  File "game/script.rpy", line 11393, in <module>
+    $ ui.text("{space=[ti]}20. {b}Mountains:{/b} 'Winter Landscape in Moonlight' (1919), Ernst Ludwig Kirchner.{vspace=[tx]}{space=[ti]}21. {b}[mBasement2Credits]:{/b} 'It Is a Skull, Crowned with Roses. It Dominates a Woman’s Pearly–White Torso' (1888), Jean Bernard.{vspace=[tx]}{space=[ti]}22. {b}[mCaveCredits]:{/b} 'Expulsion. Moon and Firelight' (1828), Thomas Cole.{vspace=[tx]}{space=[ti]}23. {b}[mCave2Credits]:{/b} 'A Cavern, Evening' (1774), Joseph Wright.{vspace=[tx]}{space=[ti]}24. {b}[mGarCredits]:{/b} 'Emperor Humayun with his brothers' (1540), Dust Muhammad.{vspace=[tx]}{space=[ti]}25. {b}[mPaCredits]:{/b} 'Old French Fairytales' (1920), Virginia Frances Sterrett.{vspace=[tx]}{space=[ti]}26. {b}Night:{/b} 'So the man gave him a pair of snow shoes', East of the Sun and West of the Moon (1914), Kay Neilsen.{vspace=[tx]}{space=[ti]}27. {b}Night G-d:{/b} 'Eye Vintage Art Drawing' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}28. {b}River:{/b} 'Rushing Water' (1901), John Singer Sargent.{vspace=[tx]}{space=[ti]}29. {b}Ruins:{/b} 'Vintage Art Scenic View Card' (Early 20th Century), RT&S publishers, UK.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+KeyError: u'mBasement2Credits'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 274, in script
-    python:
+  File "game/script.rpy", line 11393, in script
+    $ ui.text("{space=[ti]}20. {b}Mountains:{/b} 'Winter Landscape in Moonlight' (1919), Ernst Ludwig Kirchner.{vspace=[tx]}{space=[ti]}21. {b}[mBasement2Credits]:{/b} 'It Is a Skull, Crowned with Roses. It Dominates a Woman’s Pearly–White Torso' (1888), Jean Bernard.{vspace=[tx]}{space=[ti]}22. {b}[mCaveCredits]:{/b} 'Expulsion. Moon and Firelight' (1828), Thomas Cole.{vspace=[tx]}{space=[ti]}23. {b}[mCave2Credits]:{/b} 'A Cavern, Evening' (1774), Joseph Wright.{vspace=[tx]}{space=[ti]}24. {b}[mGarCredits]:{/b} 'Emperor Humayun with his brothers' (1540), Dust Muhammad.{vspace=[tx]}{space=[ti]}25. {b}[mPaCredits]:{/b} 'Old French Fairytales' (1920), Virginia Frances Sterrett.{vspace=[tx]}{space=[ti]}26. {b}Night:{/b} 'So the man gave him a pair of snow shoes', East of the Sun and West of the Moon (1914), Kay Neilsen.{vspace=[tx]}{space=[ti]}27. {b}Night G-d:{/b} 'Eye Vintage Art Drawing' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}28. {b}River:{/b} 'Rushing Water' (1901), John Singer Sargent.{vspace=[tx]}{space=[ti]}29. {b}Ruins:{/b} 'Vintage Art Scenic View Card' (Early 20th Century), RT&S publishers, UK.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
   File "renpy/ast.py", line 922, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "renpy/python.py", line 2218, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "renpy/common/00start.rpy", line 278, in <module>
-    renpy.call_in_new_context("_main_menu")
-  File "renpy/game.py", line 344, in call_in_new_context
-    return renpy.execution.run_context(False)
-  File "renpy/execution.py", line 922, in run_context
-    context.run()
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
-    python hide:
-  File "renpy/script.py", line 910, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'contents'.
+  File "game/script.rpy", line 11393, in <module>
+    $ ui.text("{space=[ti]}20. {b}Mountains:{/b} 'Winter Landscape in Moonlight' (1919), Ernst Ludwig Kirchner.{vspace=[tx]}{space=[ti]}21. {b}[mBasement2Credits]:{/b} 'It Is a Skull, Crowned with Roses. It Dominates a Woman’s Pearly–White Torso' (1888), Jean Bernard.{vspace=[tx]}{space=[ti]}22. {b}[mCaveCredits]:{/b} 'Expulsion. Moon and Firelight' (1828), Thomas Cole.{vspace=[tx]}{space=[ti]}23. {b}[mCave2Credits]:{/b} 'A Cavern, Evening' (1774), Joseph Wright.{vspace=[tx]}{space=[ti]}24. {b}[mGarCredits]:{/b} 'Emperor Humayun with his brothers' (1540), Dust Muhammad.{vspace=[tx]}{space=[ti]}25. {b}[mPaCredits]:{/b} 'Old French Fairytales' (1920), Virginia Frances Sterrett.{vspace=[tx]}{space=[ti]}26. {b}Night:{/b} 'So the man gave him a pair of snow shoes', East of the Sun and West of the Moon (1914), Kay Neilsen.{vspace=[tx]}{space=[ti]}27. {b}Night G-d:{/b} 'Eye Vintage Art Drawing' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}28. {b}River:{/b} 'Rushing Water' (1901), John Singer Sargent.{vspace=[tx]}{space=[ti]}29. {b}Ruins:{/b} 'Vintage Art Scenic View Card' (Early 20th Century), RT&S publishers, UK.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+  File "renpy/ui.py", line 527, in __call__
+    w = self.function(*args, **keyword)
+  File "renpy/text/text.py", line 1525, in __init__
+    self.set_text(text, scope, substitute)
+  File "renpy/text/text.py", line 1644, in set_text
+    i, did_sub = renpy.substitutions.substitute(i, scope, substitute)
+  File "renpy/substitutions.py", line 270, in substitute
+    s = formatter.vformat(s, (), kwargs)
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 563, in vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 585, in _vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 646, in get_field
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 605, in get_value
+KeyError: u'mBasement2Credits'
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom. 1.0
-Sun Nov  5 13:07:18 2023
+Mon Nov  6 21:01:40 2023

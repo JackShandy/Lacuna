@@ -40,7 +40,7 @@ define config.version = "1.0"
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "Lacuna-Demo"
+define build.name = "Thief-Toad-Witch-Mushroom"
 
 
 ## Sounds and music ############################################################

@@ -11221,37 +11221,184 @@ label credits:
     $tx = 5
     #indent space for each number
     $ti=20
-    $ ui.text("The images in this volume were collated from various illustrations in the public domain. Wherever possible, I have tried to provide the place and date of publication of each literary source. The complete list of contributors follows.{vspace=30}{space=[ti]}1. {b}The Thief:{/b} 'In Powder and Crinoline' (1912), Kay Nielsen.{vspace=[tx]}{space=[ti]}2. {b}The Witch:{/b} 'Portrait of Lady Elizabeth Keppel' (1761), Joshua Reynolds.{vspace=[tx]}{space=[ti]}3. {b}The Toad:{/b} 'Little Miss Muffet, and other stories' (1902), Published by Mcloughlin Bros. Artist unknown. 'The Mammals of Australia' (1845-1863), John Gould, illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}4. {b}The Mushroom:{/b} 'Fantaisie d'Automne: Les Champignons for La Vie Parisienne' (1916), George Barbier.{vspace=[tx]}{space=[ti]}5. {b}G-d:{/b} 'Der Weeg zu Christo' (1682), Jakob Böhme.{vspace=[tx]}{space=[ti]}6. {b}The Devil:{/b} 'The Papal Pyramid' (1600), private collection. Artist unknown.{vspace=[tx]}{space=[ti]}7. {b}Death; The Thief's Mother:{/b} 'De gli habiti antichi et moderni di diversi parti del mondo, libri due ...' (1590). Woodcutting by Christoph Krieger, published by Cesare Vecellio.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
+
+    #The names in the credits disappear as people disappear.
+    if persistent.toadVanished:
+        $toadCredits = "           "
+        $tGentCredits = "                      "
+    else:
+        $toadCredits = "The Toad"
+        $tGentCredits = "Enigmatic Gentleman"
+
+    if persistent.witchVanished:
+        $witchCredits = "           "
+        $wCottageCredits = "                  "
+        $wCottage2Credits = "                           "
+    else:
+        $witchCredits = "The Witch"
+        $wCottageCredits = "Witch's Cottage"
+        $wCottage2Credits = "Witch's Cottage Interior"
+
+    if persistent.thiefVanished:
+        $thiefCredits = "           "
+        $tEchCredits = "           "
+        $tMumCredits = "                      "
+    else:
+        $thiefCredits = "The Thief"
+        $tEchCredits = "Passing Echidna"
+        $tMumCredits = "The Thief's Mother"
+
+    if persistent.mushroomVanished:
+        $mushroomCredits = "              "
+        $mBasementCredits = "                    "
+        $mBasement2Credits = "                      "
+        $mCaveCredits = "                "
+        $mCave2Credits = "                         "
+        $mGarCredits = "                    "
+        $mPaCredits = "                    "
+
+    else:
+        $mushroomCredits = "The Mushroom"
+        $mBasementCredits = "Mushroom Basement"
+        $mBasement2Credits = "Mushroom Basement 2"
+        $mCaveCredits = "Mushroom Cave"
+        $mCave2Credits = "Mushroom Cave - Under"
+        $mGarCredits = "Mushroom Gardens"
+        $mPaCredits = "Mushroom Palace"
+
+    if persistent.mumVanished:
+        $mumCredits = "       "
+    else:
+        $mumCredits = "Mum"
+
+    if persistent.miwVanished:
+        $godCredits = "       "
+    else:
+        $godCredits = "G-d"
+
+    if persistent.mirVanished:
+        $devilCredits = "          "
+        $devil2Credits = "          "
+    else:
+        $devilCredits = "The Devil"
+        $devil2Credits = "Devil - Full"
+
+    if persistent.wibVanished:
+        $deathCredits = "       "
+    else:
+        $deathCredits = "Death"
+
+    if persistent.dgVanished:
+        $dgCredits = "                                "
+    else:
+        $dgCredits = "The Devil's Sooty Grandmother"
+
+    if persistent.bcVanished:
+        $bcCredits = "                           "
+        $bc2Credits = "                       "
+    else:
+        $bcCredits = "Brildebrogue Chippingham"
+        $bc2Credits = "Brildebrogue's Wives"
+
+    if persistent.hVanished:
+        $hCredits = "                           "
+    else:
+        $hCredits = "The Hunter"
+
+    if persistent.gmVanished:
+        $gmCredits = "                   "
+    else:
+        $gmCredits = "The Gloom-Monger"
+
+    if persistent.wellVanished:
+        $wellCredits = "                        "
+    else:
+        $wellCredits = "The Thing in the Well"
+
+    if persistent.scVanished:
+        $scCredits = "                   "
+    else:
+        $scCredits = "Scraggs McKenzie"
+
+    if persistent.mayVanished:
+        $mayCredits = "            "
+    else:
+        $mayCredits = "The Mayor"
+
+    if persistent.goVanished:
+        $goCredits = "                 "
+    else:
+        $goCredits = "The Goose-Girl"
+
+    if persistent.shVanished:
+        $shCredits = "                 "
+    else:
+        $shCredits = "The Sparrow-Herder"
+
+    if persistent.somVanished:
+        $somCredits = "                      "
+    else:
+        $somCredits = "The Strange Old Man"
+
+    if persistent.batVanished:
+        $batCredits = "          "
+        $ratCredits = "          "
+        $CoCredits = "                                         "
+    else:
+        $batCredits = "The Bat"
+        $ratCredits = "The Rat"
+        $CoCredits = "The Black Cockatoo and The Crow-Shrike"
+
+    if persistent.goblinsVanished:
+        $goblins1Credits = "                             "
+        $goblins2Credits = "              "
+        $goblins3Credits = "                  "
+        $goblins4Credits = "                     "
+    else:
+        $goblins1Credits = "Goblin No. 1; No. 3; No. 4"
+        $goblins2Credits = "Goblin No. 2"
+        $goblins3Credits = "Goblin Interior"
+        $goblins4Credits = "Goblin Interior 2"
+
+    if persistent.pigsVanished:
+        $pig1Credits = "                            "
+        $pig2Credits = "                "
+    else:
+        $pig1Credits = "The First and Second Pigs"
+        $pig2Credits = "The Third Pig"
+
+
+    $ ui.text("The images in this volume were collated from various illustrations in the public domain. Wherever possible, I have tried to provide the place and date of publication of each literary source. The complete list of contributors follows.{vspace=30}{space=[ti]}1. {b}[thiefCredits]:{/b} 'In Powder and Crinoline' (1912), Kay Nielsen.{vspace=[tx]}{space=[ti]}2. {b}[witchCredits]:{/b} 'Portrait of Lady Elizabeth Keppel' (1761), Joshua Reynolds.{vspace=[tx]}{space=[ti]}3. {b}[toadCredits]:{/b} 'Little Miss Muffet, and other stories' (1902), Published by Mcloughlin Bros. Artist unknown. 'The Mammals of Australia' (1845-1863), John Gould, illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}4. {b}[mushroomCredits]:{/b} 'Fantaisie d'Automne: Les Champignons for La Vie Parisienne' (1916), George Barbier.{vspace=[tx]}{space=[ti]}5. {b}[godCredits]:{/b} 'Der Weeg zu Christo' (1682), Jakob Böhme.{vspace=[tx]}{space=[ti]}6. {b}[devilCredits]:{/b} 'The Papal Pyramid' (1600), private collection. Artist unknown.{vspace=[tx]}{space=[ti]}7. {b}[deathCredits]; [tMumCredits]:{/b} 'De gli habiti antichi et moderni di diversi parti del mondo, libri due ...' (1590). Woodcutting by Christoph Krieger, published by Cesare Vecellio.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     show tornPage2 onlayer screens zorder 101
     show tornPage2bg onlayer screens zorder 99
-    $ ui.text("{space=[ti]}8. {b}Mum, You:{/b} 'Regula Emblematica Sancti Benedicti' (1780), Saint Benedict et. al.{vspace=[tx]}{space=[ti]}9. {b}Mysterious Old Woman:{/b} 'The Clothing of the Renaissance World: Europe - Asia - Africa - The Americas' (1590), Cesare Vecellio.{vspace=[tx]}{space=[ti]}10. {b}Enigmatic Gentleman:{/b} 'Silhouette Portrait of a Gentleman Standing in an Army Encampment' (1844), Auguste Edouart.{vspace=[tx]}{space=[ti]}11. {b}The Hunter:{/b} 'Lady Hunter with Rifle' (1912). Artist unknown.{vspace=[tx]}{space=[ti]}12. {b}The Sparrow-Herder:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham. Sparrow from 'Birds of Asia' (1871), John Gould.{vspace=[tx]}{space=[ti]}13. {b}The Mayor:{/b} 'The pipe of freedom' (1869), Thomas Smith.{vspace=[tx]}{space=[ti]}14. {b}The Goose-Girl; The Gloom-Monger:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham.{vspace=[tx]}{space=[ti]}15. {b}The Thing in the Well; Passing Echidna; the Skin-Mask; Goblin No. 2:{/b} 'Devises heroïques' (1551), Claude Paradin. 'A Year Book of Folklore' (1959), Christine Chaundler.{vspace=[tx]}{space=[ti]}16. {b}The Entire Town:{/b} 'Liber Floridus' (between 1090 and 1120), Lambert, Canon of Saint-Omer.{vspace=[tx]}{space=[ti]}17. {b}Humbaba:{/b} 'Mask; religious/ritual equipment' (1800BC-1600BC), © The Trustees of the British Museum.", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}8. {b}[mumCredits], You:{/b} 'Regula Emblematica Sancti Benedicti' (1780), Saint Benedict et. al.{vspace=[tx]}{space=[ti]}9. {b}Mysterious Old Woman:{/b} 'The Clothing of the Renaissance World: Europe - Asia - Africa - The Americas' (1590), Cesare Vecellio.{vspace=[tx]}{space=[ti]}10. {b}[tGentCredits]:{/b} 'Silhouette Portrait of a Gentleman Standing in an Army Encampment' (1844), Auguste Edouart.{vspace=[tx]}{space=[ti]}11. {b}[hCredits]:{/b} 'Lady Hunter with Rifle' (1912). Artist unknown.{vspace=[tx]}{space=[ti]}12. {b}[shCredits]:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham. Sparrow from 'Birds of Asia' (1871), John Gould.{vspace=[tx]}{space=[ti]}13. {b}[mayCredits]:{/b} 'The pipe of freedom' (1869), Thomas Smith.{vspace=[tx]}{space=[ti]}14. {b}[goCredits]; [gmCredits]:{/b} 'Grimm's Fairy Tales' (1909), Arthur Rackham.{vspace=[tx]}{space=[ti]}15. {b}[wellCredits]; [tEchCredits]; the Skin-Mask; [goblins2Credits]:{/b} 'Devises heroïques' (1551), Claude Paradin. 'A Year Book of Folklore' (1959), Christine Chaundler.{vspace=[tx]}{space=[ti]}16. {b}The Entire Town:{/b} 'Liber Floridus' (between 1090 and 1120), Lambert, Canon of Saint-Omer.{vspace=[tx]}{space=[ti]}17. {b}Humbaba:{/b} 'Mask; religious/ritual equipment' (1800BC-1600BC), © The Trustees of the British Museum.", xpos=50, ypos=150, xmaximum=520)
     #
     $ renpy.pause ()
     hide tornPage2 onlayer screens zorder 101
     hide tornPage2bg onlayer screens zorder 99
 
-    $ ui.text("{space=[ti]}18. {b}Scraggs McKenzie:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}19. {b}The Devil's Sooty Grandmother:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}20. {b}Brildebrogue Chippingham:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}21. {b}The Bat:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}22. {b}The Rat:{/b} 'The Wiviparous Quadrupeds of North Amerfica' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}23. {b}The Black Cockatoo and The Crow-Shrike:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}24. {b}The Strange Old Man:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}25. {b}Goblin No. 1; No. 3; No. 4:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}{space=[ti]}26. {b}The First and Second Pigs:{/b} 'Dictionnaire Universel D'Histoire Naturelle' (1845), Charles Dessalines D'orbigny.{vspace=[tx]}{space=[ti]}27. {b}The Third Pig:{/b} 'Dead Pig' (1796), Jean Bernard.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}18. {b}[scCredits]:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}19. {b}[dgCredits]:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}20. {b}[bcCredits]:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}21. {b}[batCredits]:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}22. {b}[ratCredits]:{/b} 'The Wiviparous Quadrupeds of North Amerfica' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}23. {b}[CoCredits]:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}24. {b}[somCredits]:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}25. {b}[goblins1Credits]:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}{space=[ti]}26. {b}[pig1Credits]:{/b} 'Dictionnaire Universel D'Histoire Naturelle' (1845), Charles Dessalines D'orbigny.{vspace=[tx]}{space=[ti]}27. {b}[pig2Credits]:{/b} 'Dead Pig' (1796), Jean Bernard.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
 
     $ renpy.pause ()
     show text "{b}BACKGROUNDS:{/b}":
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Mushroom Basement:{/b} 'I Saw a Flash of Light. Large and Pale' (1896), Odilon Redon.{vspace=[tx]}{space=[ti]}2. {b}Canopy:{/b} ‘Drawing, Rain Forest, Jamaica, West Indies’ (1865), Frederic Edwin Church.{vspace=[tx]}{space=[ti]}3. {b}Image Frames:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Thomas, Charles and William Robinson.{vspace=[tx]}{space=[ti]}4. {b}Silver, Witch's Cottage, Silver Trees:{/b} 'Morning Haze' (1888), ‘A Morning on the Seine at Giverny’ (1897), 'The Customs House at Varengeville' (1897), Claude Monet.{vspace=[tx]}{space=[ti]}5. {b}Witch's Cottage Interior:{/b} 'Interieur einer Villa mit Blick auf den Garten' (Date Unkown), Marie Dücker.{vspace=[tx]}{space=[ti]}6. {b}Dark Forest:{/b} 'Australian Landscape' (1918), Stanislaw Witkiewicz.{vspace=[tx]}{space=[ti]}7. {b}Darkness:{/b} 'Dante Meeting the Lion in the Dark Forest' (1892), Gustave Doré.{vspace=[tx]}{space=[ti]}8. {b}Death:{/b} 'Starry Night' (1926–1927), Hiroaki Takahashi. 'Reclining Nude' (18th Century) Original from The MET Museum. Digitally enhanced by rawpixel.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}[mBasementCredits]:{/b} 'I Saw a Flash of Light. Large and Pale' (1896), Odilon Redon.{vspace=[tx]}{space=[ti]}2. {b}Canopy:{/b} ‘Drawing, Rain Forest, Jamaica, West Indies’ (1865), Frederic Edwin Church.{vspace=[tx]}{space=[ti]}3. {b}Image Frames:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Thomas, Charles and William Robinson.{vspace=[tx]}{space=[ti]}4. {b}Silver, [wCottageCredits], Silver Trees:{/b} 'Morning Haze' (1888), ‘A Morning on the Seine at Giverny’ (1897), 'The Customs House at Varengeville' (1897), Claude Monet.{vspace=[tx]}{space=[ti]}5. {b}[wCottage2Credits]:{/b} 'Interieur einer Villa mit Blick auf den Garten' (Date Unkown), Marie Dücker.{vspace=[tx]}{space=[ti]}6. {b}Dark Forest:{/b} 'Australian Landscape' (1918), Stanislaw Witkiewicz.{vspace=[tx]}{space=[ti]}7. {b}Darkness:{/b} 'Dante Meeting the Lion in the Dark Forest' (1892), Gustave Doré.{vspace=[tx]}{space=[ti]}8. {b}Death, at rest:{/b} 'Starry Night' (1926–1927), Hiroaki Takahashi. 'Reclining Nude' (18th Century) Original from The MET Museum. Digitally enhanced by rawpixel.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     hide text
-    $ ui.text("{space=[ti]}9. {b}Forest:{/b} 'Interior of a forest' (1880 - 1890), Paul Cézanne.{vspace=[tx]}{space=[ti]}10. {b}Forest 2:{/b} 'Palms and Ferns, a Scene in the Botanic Garden, Queensland' (early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}11. {b}Forest 4 and Forest 5:{/b} 'Papier Peint Panoramique' (1861), Joseph Fuchs.{vspace=[tx]}{space=[ti]}12. {b}Future:{/b} 'Over London by Rail' (1872), Gustave Doré.{vspace=[tx]}{space=[ti]}13. {b}Goblin Interior:{/b} Fruit and Vegetable Market with a Young Fruit Seller' (1650–1660), Jan van Kessel.{vspace=[tx]}{space=[ti]}14. {b}Goblin Interior 2:{/b} 'The Goblin Market' (1914), Hilda Hechle.{vspace=[tx]}{space=[ti]}15. {b}God:{/b} 'Vision of the Empyrean' (1867), Gustave Dore.{vspace=[tx]}{space=[ti]}16. {b}Hell:{/b} 'The Destruction of Pompeii and Herculaneum' (1822), John Martin.{vspace=[tx]}{space=[ti]}17. {b}Hell Cottage:{/b} 'Interior of a Highland Cottage' (1840), John Glass.{vspace=[tx]}{space=[ti]}18. {b}Manor Exterior:{/b} 'Puss-in-Boots' (1913), Maxfield Parrish.{vspace=[tx]}{space=[ti]}19. {b}Memento:{/b} 'Memento Mori' (1916), Julie de Graag.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}9. {b}Forest:{/b} 'Interior of a forest' (1880 - 1890), Paul Cézanne.{vspace=[tx]}{space=[ti]}10. {b}Forest 2:{/b} 'Palms and Ferns, a Scene in the Botanic Garden, Queensland' (early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}11. {b}Forest 4 and Forest 5:{/b} 'Papier Peint Panoramique' (1861), Joseph Fuchs.{vspace=[tx]}{space=[ti]}12. {b}Future:{/b} 'Over London by Rail' (1872), Gustave Doré.{vspace=[tx]}{space=[ti]}13. {b}[goblins3Credits]:{/b} Fruit and Vegetable Market with a Young Fruit Seller' (1650–1660), Jan van Kessel.{vspace=[tx]}{space=[ti]}14. {b}[goblins4Credits]:{/b} 'The Goblin Market' (1914), Hilda Hechle.{vspace=[tx]}{space=[ti]}15. {b}[godCredits], descending:{/b} 'Vision of the Empyrean' (1867), Gustave Dore.{vspace=[tx]}{space=[ti]}16. {b}Hell:{/b} 'The Destruction of Pompeii and Herculaneum' (1822), John Martin.{vspace=[tx]}{space=[ti]}17. {b}Hell Cottage:{/b} 'Interior of a Highland Cottage' (1840), John Glass.{vspace=[tx]}{space=[ti]}18. {b}Manor Exterior:{/b} 'Puss-in-Boots' (1913), Maxfield Parrish.{vspace=[tx]}{space=[ti]}19. {b}Memento:{/b} 'Memento Mori' (1916), Julie de Graag.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     hide text
-    $ ui.text("{space=[ti]}20. {b}Mountains:{/b} 'Winter Landscape in Moonlight' (1919), Ernst Ludwig Kirchner.{vspace=[tx]}{space=[ti]}21. {b}Mushroom Basement 2:{/b} 'It Is a Skull, Crowned with Roses. It Dominates a Woman’s Pearly–White Torso' (1888), Jean Bernard.{vspace=[tx]}{space=[ti]}22. {b}Mushroom Cave:{/b} 'Expulsion. Moon and Firelight' (1828), Thomas Cole.{vspace=[tx]}{space=[ti]}23. {b}Mushroom Cave - Under:{/b} 'A Cavern, Evening' (1774), Joseph Wright.{vspace=[tx]}{space=[ti]}24. {b}Mushroom Gardens:{/b} 'Emperor Humayun with his brothers' (1540), Dust Muhammad.{vspace=[tx]}{space=[ti]}25. {b}Mushroom Palace:{/b} 'Old French Fairytales' (1920), Virginia Frances Sterrett.{vspace=[tx]}{space=[ti]}26. {b}Night:{/b} 'So the man gave him a pair of snow shoes', East of the Sun and West of the Moon (1914), Kay Neilsen.{vspace=[tx]}{space=[ti]}27. {b}Night God:{/b} 'Eye Vintage Art Drawing' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}28. {b}River:{/b} 'Rushing Water' (1901), John Singer Sargent.{vspace=[tx]}{space=[ti]}29. {b}Ruins:{/b} 'Vintage Art Scenic View Card' (Early 20th Century), RT&S publishers, UK.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}20. {b}Mountains:{/b} 'Winter Landscape in Moonlight' (1919), Ernst Ludwig Kirchner.{vspace=[tx]}{space=[ti]}21. {b}[mBasement2Credits]:{/b} 'It Is a Skull, Crowned with Roses. It Dominates a Woman’s Pearly–White Torso' (1888), Jean Bernard.{vspace=[tx]}{space=[ti]}22. {b}[mCaveCredits]:{/b} 'Expulsion. Moon and Firelight' (1828), Thomas Cole.{vspace=[tx]}{space=[ti]}23. {b}[mCave2Credits]:{/b} 'A Cavern, Evening' (1774), Joseph Wright.{vspace=[tx]}{space=[ti]}24. {b}[mGarCredits]:{/b} 'Emperor Humayun with his brothers' (1540), Dust Muhammad.{vspace=[tx]}{space=[ti]}25. {b}[mPaCredits]:{/b} 'Old French Fairytales' (1920), Virginia Frances Sterrett.{vspace=[tx]}{space=[ti]}26. {b}Night:{/b} 'So the man gave him a pair of snow shoes', East of the Sun and West of the Moon (1914), Kay Neilsen.{vspace=[tx]}{space=[ti]}27. {b}Night G-d:{/b} 'Eye Vintage Art Drawing' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}28. {b}River:{/b} 'Rushing Water' (1901), John Singer Sargent.{vspace=[tx]}{space=[ti]}29. {b}Ruins:{/b} 'Vintage Art Scenic View Card' (Early 20th Century), RT&S publishers, UK.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     hide text
     ####
     $ ui.text("{space=[ti]}30. {b}Sabbath:{/b} 'Witches' Sabbath' (1510), Hans Baldung (called Hans Baldung Grien).{vspace=[tx]}{space=[ti]}31. {b}Strangler Fig:{/b} 'Poison Tree Strangled by a Fig, Queensland' (Early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}32. {b}Sun:{/b} 'A Wheatfield, with Cypresses' (1889), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}33. {b}Town 3:{/b} 'Our Camp on the Bunya Mountains, Queensland' (Early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}34. {b}Town - Crossroads:{/b} 'St. Hansbål ved Jølstervatnet (St. John's Eve bonfire at Jølstravatn)' (1909), Nikolai Astrup.{vspace=[tx]}{space=[ti]}35. {b}Town Exterior:{/b} 'Small Grain Poles' (1904), Nikolai Astrup.{vspace=[tx]}{space=[ti]}36. {b}Town - Feast:{/b} 'St. John’s Fire' (1912), Nikolai Astrup.{vspace=[tx]}{space=[ti]}37. {b}Train:{/b} 'The Train' (1910), Louise Thuiller.{vspace=[tx]}{space=[ti]}38. {b}Train - Full:{/b} 'Take Me by The Flying Scotsman' (1932), Thomson, A R.{vspace=[tx]}{space=[ti]}39. {b}Tree - Night:{/b} 'Night in the Forest' (1859), William Louis Sonntag.{vspace=[tx]}{space=[ti]}40. {b}Well:{/b} Image taken from page 192 of 'Celebrated American Caverns, especially Mammoth, Wyandot, and at Luray, etc' (1882), Hovey, Horace Carter.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     hide text
-    $ ui.text("{space=[ti]}41. {b}Winter:{/b} 'Snow-covered field with a harrow (after Millet)' (1890), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}42. {b}Devil - Full:{/b} 'Triptych of Earthly Vanity and Divine Salvation' (1485), Hans Memling.{vspace=[tx]}{space=[ti]}43. {b}Dark Forest:{/b} 'Twilight in the Tropics' (1874), Frederic Edwin Church.{vspace=[tx]}{space=[ti]}44. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Andersen, H. C. , Robinson, T. H., ill; Robinson, Charles, ill; Robinson, W. Heath, ill.{vspace=[tx]}{space=[ti]}45. {b}Engine Room:{/b} 'Victorian vintage engraving of workers in an iron foundry, France' (1875), istockphoto.{vspace=[tx]}{space=[ti]}46. {b}Brildebrogue's Wives:{/b} 'What she sees there' (1868), Winslow Homer.{vspace=[tx]}{space=[ti]}47. {b}Film Poster:{/b} 'Original Swedish poster for Häxan' (1922), AB Svensk Filmindustri.{vspace=[tx]}{space=[ti]}48. {b}Poster Wolf:{/b} 'the Were-wolf Of Anarchy' (1893), Mary Evans Picture Library.{vspace=[tx]}{space=[ti]}49. {b}Spiral:{/b} 'An engraving depicting an Edible or Vine snail' (1900's), World History Archive.{vspace=[tx]}{space=[ti]}50. {b}Old Paper:{/b} 'Old Paper Texture Background.' daboost, freepik.com.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}41. {b}Winter:{/b} 'Snow-covered field with a harrow (after Millet)' (1890), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}42. {b}[devil2Credits]:{/b} 'Triptych of Earthly Vanity and Divine Salvation' (1485), Hans Memling.{vspace=[tx]}{space=[ti]}43. {b}Dark Forest:{/b} 'Twilight in the Tropics' (1874), Frederic Edwin Church.{vspace=[tx]}{space=[ti]}44. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Andersen, H. C. , Robinson, T. H., ill; Robinson, Charles, ill; Robinson, W. Heath, ill.{vspace=[tx]}{space=[ti]}45. {b}Engine Room:{/b} 'Victorian vintage engraving of workers in an iron foundry, France' (1875), istockphoto.{vspace=[tx]}{space=[ti]}46. {b}[bc2Credits]:{/b} 'What she sees there' (1868), Winslow Homer.{vspace=[tx]}{space=[ti]}47. {b}Film Poster:{/b} 'Original Swedish poster for Häxan' (1922), AB Svensk Filmindustri.{vspace=[tx]}{space=[ti]}48. {b}Poster Wolf:{/b} 'the Were-wolf Of Anarchy' (1893), Mary Evans Picture Library.{vspace=[tx]}{space=[ti]}49. {b}Spiral:{/b} 'An engraving depicting an Edible or Vine snail' (1900's), World History Archive.{vspace=[tx]}{space=[ti]}50. {b}Old Paper:{/b} 'Old Paper Texture Background.' daboost, freepik.com.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
     hide text
 
