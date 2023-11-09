@@ -13,6 +13,11 @@ init python:
     #This is all the wolf's talking
     renpy.music.register_channel("wolf","sfx",True,tight=True)
 
+    #Disabling the middle mouse button
+    config.keymap['hide_windows'].remove('mouseup_2')
+
+
+
 #==Purge Save Function
 #Note: This function deletes all of the player's save files. This is necessary to work with the meta-narrative stuff I'm trying to do.
 init python:

@@ -1,4 +1,4 @@
-Mon Nov  6 21:05:42 2023
+Thu Nov  9 18:15:26 2023
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
@@ -6,29 +6,60 @@ Ren'Py 7.4.4.1439
 Bootstrap to the start of init.init took 0.17s
 Early init took 0.00s
 Loader init took 0.03s
-Loading error handling took 0.05s
-Loading script took 0.55s
+Loading error handling took 0.06s
+Loading script took 4.61s
 Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
 Running init code took 0.16s
-Loading analysis data took 0.13s
-Analyze and compile ATL took 0.02s
+Loading analysis data took 0.15s
+Analyze and compile ATL took 0.03s
 Index archives took 0.00s
-Dump and make backups. took 0.16s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.19s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.10s
+Initial gc. took 0.13s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.68s
+Creating interface object took 0.70s
 Cleaning stores took 0.00s
-Init translation took 0.13s
+Init translation took 0.16s
 Build styles took 0.01s
-Load screen analysis took 0.53s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.13s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.10s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.13s
+Prepare screens took 0.14s
+Save pyanalysis. took 0.55s
+Save bytecode. took 0.09s
+Running _start took 0.02s
+Performance test:
+Interface start took 0.20s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 536.99'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 32768
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 8.07739305496s
