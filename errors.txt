@@ -2,10 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1293: invalid syntax
-    persistent.povname = "Charlie":
-                                   ^
-    
+File "game/script.rpy", line 1076: Line is indented, but the preceding with statement statement does not expect a block. Please check this line's indentation.
+    show coverOverlay
+    ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Nov  5 13:42:48 2023
+Sun Nov 12 15:46:18 2023

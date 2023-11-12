@@ -483,31 +483,42 @@ init:
     $ flash = Fade(.25, 0, 2, color="#fff")
 
     #Covers with no bunnies vanished
-    image cover = "cover.png"
-    image cover5 = "cover-5.png"
-    image cover6 = "cover-6.png"
-    image cover9= "cover-9.png"
-    image cover14= "cover-14.png"
-    #Covers with 1 bunny vanished
-    image covera = "covera.png"
-    image cover5a = "cover-5a.png"
-    image cover6a = "cover-6a.png"
-    image cover9a= "cover-9a.png"
-    image cover14a= "cover-14a.png"
-    #Covers with 2 bunnies vanished
-    image coverb = "coverb.png"
-    image cover5b = "cover-5b.png"
-    image cover6b = "cover-6b.png"
-    image cover9b= "cover-9b.png"
-    image cover14b= "cover-14b.png"
-    #Covers with 3 bunnies vanished
-    image coverc = "coverc.png"
-    image cover5c = "cover-5c.png"
-    image cover6c = "cover-6c.png"
-    image cover9c= "cover-9c.png"
-    image cover14c= "cover-14c.png"
+    image coverBase = "cover-base.png"
+    image coverOverlay = "cover-overlay.png"
+    image coverWitch = "cover-witch.png"
+    image coverThief = "cover-thief.png"
+    image coverToad = "cover-toad.png"
+    image coverMushroom = "cover-mushroom.png"
+    image coverWolf1 = "cover-wolf-1.png"
+    image coverWolf2 = "cover-wolf-2.png"
+    image coverWolf3 = "cover-wolf-3.png"
+    image coverWolf4 = "cover-wolf-4.png"
+
+
+    # #image cover5 = "cover-5.png"
+    # #image cover6 = "cover-6.png"
+    # #image cover9= "cover-9.png"
+    # #image cover14= "cover-14.png"
+    # #Covers with 1 bunny vanished
+    # image covera = "covera.png"
+    # #image cover5a = "cover-5a.png"
+    # image cover6a = "cover-6a.png"
+    # image cover9a= "cover-9a.png"
+    # image cover14a= "cover-14a.png"
+    # #Covers with 2 bunnies vanished
+    # image coverb = "coverb.png"
+    # image cover5b = "cover-5b.png"
+    # image cover6b = "cover-6b.png"
+    # image cover9b= "cover-9b.png"
+    # image cover14b= "cover-14b.png"
+    # #Covers with 3 bunnies vanished
+    # image coverc = "coverc.png"
+    # image cover5c = "cover-5c.png"
+    # image cover6c = "cover-6c.png"
+    # image cover9c= "cover-9c.png"
+    # image cover14c= "cover-14c.png"
     #Covers with all bunnies vanished
-    image coverd = "coverd.png"
+    #image coverd = "coverd.png"
     #Cover once you have gotten ending A: The book continues on
     image coverFinaleA = "coverFinale.png"
     #Cover if the book is burned
@@ -520,12 +531,20 @@ init:
     image title-witchGone = "title-witchGone.png"
     image title-thiefGone = "title-thiefGone.png"
     image title-mushroomGone = "title-mushroomGone.png"
+
+    image title-toadAlone = "title-toadAlone.png"
+    image title-witchAlone = "title-witchAlone.png"
+    image title-thiefAlone = "title-thiefAlone.png"
+    image title-mushroomAlone = "title-mushroomAlone.png"
+
     image title-toadwitchGone = "title-toad+witchGone.png"
     image title-toadthiefGone = "title-toad+thiefGone.png"
     image title-toadmushGone = "title-toad+mushGone.png"
     image title-witchthiefGone = "title-witch+thiefGone.png"
     image title-witchmushGone = "title-witch+mushGone.png"
     image title-thiefmushGone = "title-thief+mushGone.png"
+
+
     image title-wolf = "title-wolf.png"
     image title-allGone = "title-allGone.png"
 
@@ -1029,7 +1048,27 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
             _preferences.volumes['music'] *= .50
 
     if persistent.bookBurned:
-        show coverBurned with dissolve
+        if persistent.vanished != 4:
+            show coverBase
+        if persistent.witchVanished == False:
+            show coverWitch
+        if persistent.toadVanished == False:
+            show coverToad
+        if persistent.thiefVanished == False:
+            show coverThief
+        if persistent.mushroomVanished == False:
+            show coverMushroom
+        if persistent.vanished == 1:
+            show coverWolf1
+        elif persistent.vanished == 2:
+            show coverWolf2
+        elif persistent.vanished == 3:
+            show coverWolf3
+        elif persistent.vanished == 4:
+            show coverWolf4
+
+        show coverBurned
+        with dissolve
         ""
         $renpy.quit()
 
@@ -1040,58 +1079,28 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         show coverFinaleA with dissolve
     else:
         #Shows a random cover each time. 13.32% chance of a variant cover.
-        $randomCover = renpy.random.randint(1, 30)
-        #If no-one has vanished, all covers have all bunnies visible
-        if persistent.vanished == 0:
-            if randomCover <=22:
-                show cover with dissolve
-            elif randomCover ==23 or randomCover == 24:
-                show cover14 with dissolve
-            elif randomCover ==25 or randomCover == 26:
-                show cover5 with dissolve
-            elif randomCover ==27 or randomCover == 28:
-                show cover6 with dissolve
-            elif randomCover ==29 or randomCover == 30:
-                show cover9 with dissolve
-        #If 1 character has vanished, 1 bunny disappears
-        elif persistent.vanished == 1:
-            if randomCover <=18:
-                show covera with dissolve
-            elif randomCover >=19 and randomCover <= 21:
-                show cover14a with dissolve
-            elif randomCover >=22 and randomCover <= 24:
-                show cover5a with dissolve
-            elif randomCover >=25 and randomCover <= 27:
-                show cover6a with dissolve
-            elif randomCover >=28 and randomCover <= 30:
-                show cover9a with dissolve
-        #If 2 characters have vanished, 2 bunnies disappear
+        if persistent.vanished != 4:
+            show coverBase
+        if persistent.witchVanished == False:
+            show coverWitch
+        if persistent.toadVanished == False:
+            show coverToad
+        if persistent.thiefVanished == False:
+            show coverThief
+        if persistent.mushroomVanished == False:
+            show coverMushroom
+
+        if persistent.vanished == 1:
+            show coverWolf1
         elif persistent.vanished == 2:
-            if randomCover <=14:
-                show coverb with dissolve
-            elif randomCover >=15 and randomCover <= 18:
-                show cover14b with dissolve
-            elif randomCover >=19 and randomCover <= 22:
-                show cover5b with dissolve
-            elif randomCover >=23 and randomCover <= 26:
-                show cover6b with dissolve
-            elif randomCover >=27 and randomCover <= 30:
-                show cover9b with dissolve
-        #If 3 characters have vanished, 3 bunnies disappear
+            show coverWolf2
         elif persistent.vanished == 3:
-            if randomCover <=10:
-                show coverc with dissolve
-            elif randomCover >=11 and randomCover <= 15:
-                show cover14c with dissolve
-            elif randomCover >=16 and randomCover <= 20:
-                show cover5c with dissolve
-            elif randomCover >=21 and randomCover <= 25:
-                show cover6c with dissolve
-            elif randomCover >=26 and randomCover <= 30:
-                show cover9c with dissolve
-        #If 4 characters have vanished, all bunnies and the wolf disappear
-        elif persistent.vanished >= 4:
-            show coverd with dissolve
+            show coverWolf3
+        elif persistent.vanished == 4:
+            show coverWolf4
+
+        #show coverOverlay
+        with dissolve
 
     if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
@@ -1233,9 +1242,17 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
             elif persistent.thiefVanished and persistent.mushroomVanished:
                 show title-thiefmushGone
         elif persistent.vanished == 3:
-            show title-wolf
+            if persistent.toadVanished == False:
+                show title-toadAlone
+            if persistent.witchVanished == False:
+                show title-witchAlone
+            if persistent.thiefVanished == False:
+                show title-thiefAlone
+            if persistent.mushroomVanished == False:
+                show title-mushroomAlone
+
         elif persistent.vanished >= 4:
-            show title-allGone
+            show title-wolf
     ""
     #with Pause(5)
     #show screen music_screen
