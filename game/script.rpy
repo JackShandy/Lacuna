@@ -1530,7 +1530,8 @@ label start:
             "When you were born to her as the fifth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
             show noteFood onlayer transient zorder 100
         elif persistent.vanished == 3:
-            "I've told you what's coming."
+            "Listen closely."
+            "I won't repeat myself again."
             "Back in the old days, when there was still a chance, your mother lived in a vast, empty forest."
             call characterIntros
             "One day, she gave birth to you as her first and only child."
@@ -1538,6 +1539,21 @@ label start:
             "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         elif persistent.vanished >= 4:
             jump allVanishedEnd
+
+        #Test Menu
+        menu:
+            "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
+            "Jump to the Thief finale.":
+                jump thiefFinale
+            "Jump to the Toad finale.":
+                jump toadFinale
+            "Jump to the Witch finale.":
+                jump witchFinale
+            "Jump to the Mushroom finale.":
+                jump mushroomFinale
+            "Continue.":
+                "DEV NOTE: Continuing with the normal story."
+
 
     # "This maybe happened, or maybe did not."
     # "The time is long past, and much is forgot."
@@ -5895,14 +5911,10 @@ label mushroomFinale:
                             call endStamp from _call_endStamp_2
                             "You stayed there at the side of the Pale Lady, forever and ever, until the final horn and the coming of the end of days."
                             #Wolf: Kills Thief
-                            call wolfApproaches from _call_wolfApproaches_7
                             "..."
                             "Oh?"
                             show wolf14 onlayer transient zorder 100
                             "And what happened to the thief, you ask?"
-                            $persistent.vanished +=1
-                            $persistent.thiefVanished = True
-                            $ renpy.block_rollback()
                             jump thiefDisappears
 
                         "If you held fast to your desire to return to the world above, turn to page 164.":
@@ -5979,43 +5991,32 @@ label mushroomFinale:
                     call endStamp from _call_endStamp_3
                     "Little children, never be disobedient to those who are wiser than you, for disobedience is the mother of all misery and father of all woe."
                     #Wolf: Kills Thief
-                    call wolfApproaches from _call_wolfApproaches_8
                     "..."
                     "Oh?"
                     show wolf14 onlayer transient zorder 100
                     "And what happened to the thief, you ask?"
-                    $persistent.vanished +=1
-                    $persistent.thiefVanished = True
-                    $ renpy.block_rollback()
                     jump thiefDisappears
+
                 "If you refused to open the box, even when all hope was lost, turn to page 179.":
                     if godfather == "White":
                         "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
                         call endStamp from _call_endStamp_4
                         "And so the Lord took you, and you rested in the basement of His White House forever and ever, until the final horn and the coming of the end of days."
                         #Wolf: Kills Thief
-                        call wolfApproaches from _call_wolfApproaches_9
                         "..."
                         "Oh?"
                         show wolf14 onlayer transient zorder 100
                         "And what happened to the thief, you ask?"
-                        $persistent.vanished +=1
-                        $persistent.thiefVanished = True
-                        $ renpy.block_rollback()
                         jump thiefDisappears
                     elif godfather == "Red":
                         "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
                         call endStamp from _call_endStamp_5
                         "And so the Devil took you, and you were trapped as his servant in Hell forever and ever, until the final horn and the coming of the end of days."
                         #Wolf: Kills Thief
-                        call wolfApproaches from _call_wolfApproaches_10
                         "..."
                         "Oh?"
                         show wolf14 onlayer transient zorder 100
                         "And what happened to the thief, you ask?"
-                        $persistent.vanished +=1
-                        $persistent.thiefVanished = True
-                        $ renpy.block_rollback()
                         jump thiefDisappears
                     else:
                         "And so you stayed there, forever searching for an entrance back to that kingdom you missed so much."
@@ -6035,18 +6036,21 @@ label mushroomFinale:
                         else:
                             "The mushrooms took you down into the earth. There you stayed at the side of Lady Death, forever and ever, until the work was complete, and the glory of it shone out forevermore."
                         #Wolf: Kills Thief
-                        call wolfApproaches from _call_wolfApproaches_11
                         "..."
                         "Oh?"
-                        show wolf14 onlayer transient zorder 100
                         "And what happened to the thief, you ask?"
-                        $persistent.vanished +=1
-                        $persistent.thiefVanished = True
-                        $ renpy.block_rollback()
                         jump thiefDisappears
 
 #=====The Thief Disappears
 label thiefDisappears:
+    $persistent.hVanished = True
+    $persistent.goVanished = True
+    $persistent.shVanished = True
+    $persistent.thiefVanished = True
+    $persistent.vanished +=1
+    $ renpy.block_rollback()
+    call hideAll
+    show forestbg at artPos
     "They strolled away from the tree, laughing and stroking their ill-gotten gains with their long, dexterous fingers. "
     t "Another successful heist."
     h "Hold it right there!"
@@ -6057,46 +6061,59 @@ label thiefDisappears:
     t "Ha ha ha! Well, if you think you're going to take me to jail, I'm afraid..."
     "The thief trailed off."
     "There was a sound in the woods."
+    show wolf14 onlayer transient zorder 100
     "A low, hushed and ragged sound, like a howl in the wind."
     t "Did you hear that?"
     t "Was that... the wolf?"
     h "Don't try to distract us, you wretched cur. There are no wolves in Australia."
     sh "Yeah! We won't be turned away that easily!"
+    call wolfApproaches
     "The two of them jabbed at the thief."
-    "It was always just the two of them, and the thief. There was never anyone else."
+    "It was always just the two of them. The hunter and the sparrow-herder, jabbing at the thief."
+    "There was never anyone else."
+    h "Come on, let's grab them."
     "The thief looked down."
-    "There was a dark red stain on the dirt. In the position where a third person would have stood, if any such person had been there."
-    "Which, of course, they hadn't."
-    T "Something's wrong. I think we need to run."
-    "The trees rustled, as if with the movement of a great beast."
+    "There was a dark red stain on the ground. In the dirt where a third person would have stood."
+    "But of course, no such person had ever been there."
+    t "Something's wrong. I think we need to run."
+    show wolf12 onlayer transient zorder 100
+    "The trees rustled, as if with the movement of something colossal."
     sh "Ha! You'd like that, wouldn't you? Just when I've got you cornered."
     sh "No, you're coming with me, chum."
-    "The sparrow-herder and the thief were standing there, alone in the clearing."
-    "There was no-one else there."
-    "There never was."
+    "The sparrow-herder grabbed the thief and they stood there."
+    "The two of them were alone in the clearing."
+    "There was no-one else."
+    #"There never was."
     t "Come on!"
     sh "Hold on, I -"
-    "The thief dragged the sparrow hunter through the woods and burst out of the woods to a small cottage, surrounded by geese."
+    call hideAll
+    show town3bg at artPos
+    "The thief dragged the sparrow hunter through the woods and burst out of the woods to a field with a small cottage, surrounded by geese."
     sh "What?"
-    "It was echoing and empty. Most of the houses had been abandoned a long time ago."
-    "No-one lived here but geese. No-one ever had."
+    "It was echoing and empty."
+    "No-one lived there but geese. No-one ever had."
     t "Help! Someone help us!"
     "Who are you calling out to, thief?"
     "You're alone. You always have been."
     t "No, they're right here, they -"
+    show wolf8 onlayer transient zorder 100
+    call hideAll
+    show darknessbg at artPos
     "They looked around. There was no-one there."
     "The trees were silent."
     "No animals lived in this part of the woods. No bird calls troubled its vast, silent depths. The silence was complete."
     "They were running through the forest, ragged and alone."
-    "They searched their memories. Had there every been anyone else? Had there ever been a time before this one?"
-    "They could remember nothing before this moment. Their entire life was just this single frozen moment of running through the woods in fear."
-    "They felt hot breath against their neck."
-    "It was no use running, of course. The wolf was already there."
+    "They searched their memories. Had there ever been anyone else in the world but them?"
+    "Had there ever been a time before this one? Another place?"
+    "They could remember nothing except this. A single frozen moment of running through the woods in fear, alone."
+    "There was nothing else."
+    "There had never been anything else."
+    "Hot breath warmed the back of their neck."
+    "They ran on. But it was no use, of course. The wolf was already there."
     t "Please... I-"
     "And then there was nothing."
     "The woods were silent "
     "There was no-one there."
-    "No-one had ever been there."
     "Just a ragged midnight cloak, stained red, that floated away in the breeze and was gone forever."
     call endStamp from _call_endStamp_7
     "It was never seen or heard from again."
