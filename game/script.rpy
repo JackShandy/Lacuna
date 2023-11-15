@@ -493,6 +493,8 @@ init:
     image coverWolf2 = "cover-wolf-2.png"
     image coverWolf3 = "cover-wolf-3.png"
     image coverWolf4 = "cover-wolf-4.png"
+    image coverBack = "coverBack.png"
+    image backPage = "backPage.png"
 
 
     # #image cover5 = "cover-5.png"
@@ -1004,6 +1006,10 @@ init:
     define audio.pageFlip = "audio/page-flip.mp3"
     define audio.pageFlip2 = "audio/page-flip2.wav"
     define audio.pageFlip3 = "audio/page-flip3.wav"
+    define audio.bookClose = "audio/bookClose.mp3"
+    define audio.bookClose2 = "audio/bookClose2.mp3"
+    define audio.bookClose3 = "audio/bookClose3.mp3"
+
     define audio.whiteNoise = "audio/whiteNoiseEnding.mp3"
     define audio.thunder = "audio/thunder.mp3"
 
@@ -1119,7 +1125,7 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
 
     #with Pause(5)
     ""
-    play sound pageFlip
+    play sound bookClose3 volume 0.45
     #=========================This shows the title of the book
     ##===This part generates a unique title for the Book ending, based on who is alive, randomly generating.
     if persistent.bookEnd:
@@ -1544,7 +1550,7 @@ label start:
         menu:
             "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
             "Jump to the Thief finale.":
-                jump thiefFinale
+                jump end
             "Jump to the Toad finale.":
                 jump toadFinale
             "Jump to the Witch finale.":
@@ -11234,6 +11240,7 @@ label endStamp:
     show stamp:
         xalign 0.5
         ypos 680
+
     return
 
 #The ending credits and acknowledgements
@@ -11244,7 +11251,16 @@ label end:
     call hideAll
     hide text
     ""
-    play sound pageFlip
+    $ quick_menu = False
+    play sound pageFlip2
+    call hideAll
+    show backPage
+    ""
+    play sound bookClose
+    call hideAll
+    show coverBack
+    ""
+    play sound bookClose2
     return
 
 label credits:
