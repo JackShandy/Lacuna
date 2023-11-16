@@ -7761,14 +7761,9 @@ label hellStory:
                     call endStamp from _call_endStamp_13
                     "When misfortune is after someone, they may try to hide in all sorts of places or flee across the whole wide world, but it will still know where to find them."
                     #Wolf: Kills Toad
-                    call wolfApproaches from _call_wolfApproaches_16
                     "..."
                     "Oh?"
-                    show wolf6 onlayer transient zorder 100
                     "What happened to the toad, you ask?"
-                    $persistent.vanished +=1
-                    $persistent.toadVanished = True
-                    $ renpy.block_rollback()
                     jump toadDisappears
         elif godfather == "White":
             w "Quick! Your godfather will be here any minute."
@@ -7890,27 +7885,17 @@ label hellStory:
                                 call endStamp from _call_endStamp_14
                                 "And what happened to you after that, none who live can say."
                                 #Wolf: Kills toad
-                                call wolfApproaches from _call_wolfApproaches_17
                                 "..."
                                 "Oh?"
-                                show wolf6 onlayer transient zorder 100
                                 "What happened to the toad, you ask?"
-                                $persistent.vanished +=1
-                                $persistent.toadVanished = True
-                                $ renpy.block_rollback()
                                 jump toadDisappears
                 else:
                     call endStamp from _call_endStamp_31
                     "You lived there together in quiet happiness. If you have not died, you live there still."
-                    call wolfApproaches from _call_wolfApproaches_18
                     #Wolf: Kills toad
                     "..."
                     "Oh?"
-                    show wolf6 onlayer transient zorder 100
                     "What happened to the toad, you ask?"
-                    $persistent.vanished +=1
-                    $persistent.toadVanished = True
-                    $ renpy.block_rollback()
                     jump toadDisappears
             "If you returned home, turn to page 261.":
                 call hideAll from _call_hideAll_84
@@ -7935,36 +7920,46 @@ label hellStory:
                     call endStamp from _call_endStamp_16
                     "You lived there for many long, happy years, visiting the Witch each summer. If you have not died, you live there still."
                     #Wolf: Kills toad
-                    call wolfApproaches from _call_wolfApproaches_19
                     "..."
                     "Oh?"
-                    show wolf6 onlayer transient zorder 100
                     "What happened to the toad, you ask?"
-                    $persistent.vanished +=1
-                    $persistent.toadVanished = True
-                    $ renpy.block_rollback()
                     jump toadDisappears
 
 #==========The Wolf Eats the Toad
 label toadDisappears:
+    $persistent.vanished +=1
+    $persistent.toadVanished = True
+    $ renpy.block_rollback()
+    #call wolfApproaches from _call_wolfApproaches_16
+    #show wolf6 onlayer transient zorder 100
+    call hideAll
+    show cottageintbg at artPos
     "He stood alone in the witch's cottage."
     "Bromeliads sprouted from the floorboards. The dense, hot spiral of greenery pressed in around him like the organs of a great beast."
     f "Well. This is another fine mess."
     "He picked up his top hat."
     "There was a sound outside. Almost like a howl. He shivered."
     f "I-I had best not outstay my welcome. Prickle! Crawl!"
+    call hideAll
+    show darkforestbg at artPos
     "He rushed outside, dove into the puddle and emerged into the darkness of the forest."
     f "Shudder! Wink! Are you there?"
     "There was no reply. No-one was there."
     "He searched forward and found the remains of a squash carriage. Destroyed. As if by the claws of a colossal beast."
     f "Oh no. No, no, no."
     "Something stirred in the forest around him. In the space between the trees. "
+    call hideAll
+    show forest5bg at artPos
     "He ran as fast as he could, helter-skelter, tumbling down hills, coat ripped, pants torn."
     "Something fastened around his ankle."
     f "Agh!"
     "A terrible pain shot through him in an instant, and then was gone."
     "A red, wet stain dripped from his shoe. Red footprints were left behind him as he ran."
-    "At last he saw the town before him, and thanked G-d in heaven for the blessed sight."
+    call hideAll
+    show townextbg at artPos
+    "At last he saw the outskirts of town before him, and thanked G-d in heaven for the blessed sight."
+    call hideAll
+    show townextbg at artPos
     "The people of town were there, cleaning up after the feast."
     f "Mayor! Hunter! Please, help me! I'm being pursued by a wolf!"
     m "Oh, poor toad. Don't be silly."
