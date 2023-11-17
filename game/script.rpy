@@ -6771,14 +6771,9 @@ label toadFinale:
                 else:
                     #"You were very happy, had many children, and you still would live if you had not died."
                     #Wolf: Kills Witch
-                    call wolfApproaches from _call_wolfApproaches_12
                     "..."
                     "Oh?"
-                    show wolf12 onlayer transient zorder 100
                     "And what happened to the witch, you ask?"
-                    $persistent.vanished +=1
-                    $persistent.witchVanished = True
-                    $ renpy.block_rollback()
                     jump witchDisappears
             "If you stayed good friends with the toad, turn to page 299.":
                 #ToadEnd
@@ -6792,14 +6787,9 @@ label toadFinale:
                     call endStamp from _call_endStamp_18
                     "You were happy there for the rest of your days, and you still would live if you had not died."
                     #Wolf: Kills Witch
-                    call wolfApproaches from _call_wolfApproaches_13
                     "..."
                     "Oh?"
-                    show wolf12 onlayer transient zorder 100
                     "And what happened to the witch, you ask?"
-                    $persistent.vanished +=1
-                    $persistent.witchVanished = True
-                    $ renpy.block_rollback()
                     jump witchDisappears
             "If you left the toad to return to your family, turn to page 300.":
                 #ToadEnd
@@ -6816,15 +6806,11 @@ label toadFinale:
                     call endStamp from _call_endStamp_19
                     "You were very happy there for the rest of your days, and you still would live if you had not died."
                 #Wolf: Kills Witch
-                call wolfApproaches from _call_wolfApproaches_14
                 "..."
                 "Oh?"
-                show wolf12 onlayer transient zorder 100
                 "And what happened to the witch, you ask?"
-                $persistent.vanished +=1
-                $persistent.witchVanished = True
-                $ renpy.block_rollback()
                 jump witchDisappears
+
     label toadDeath:
         #ToadEnd
         "But youth does not last forever."
@@ -6888,17 +6874,18 @@ label toadFinale:
                     call endStamp from _call_endStamp_20
                     "And you lie there still."
                     #Wolf: Kills Witch
-                    call wolfApproaches from _call_wolfApproaches_15
                     "..."
                     "Oh?"
-                    show wolf12 onlayer transient zorder 100
                     "And what happened to the witch, you ask?"
-                    $persistent.vanished +=1
-                    $persistent.witchVanished = True
-                    $ renpy.block_rollback()
                     jump witchDisappears
 
 label witchDisappears:
+    $persistent.vanished +=1
+    $persistent.witchVanished = True
+    $ renpy.block_rollback()
+    call hideAll
+    show cottageintbg at artPos
+
     #[Teachoice]
     "The Witch was left alone in her cottage. The wet, Swollen greenery pressed in around her, twisting in spirals like the organs of some giant beast."
     w "W-well. I guess I'd better clean up this mess."
@@ -6918,6 +6905,7 @@ label witchDisappears:
     w "I - no."
     w "I see the cabinet. I smell the [teachoice] tea. I hear the rustle of the leaves. I taste - I taste -"
     "She tried to recite one thing she could see. One thing she could smell. One thing she could hear."
+    call wolfApproaches from _call_wolfApproaches_12
     "But it was too late."
     "The Wolf was already inside the house."
     "She fell to the floor. She had forgotten how to walk. Perhaps she never knew."
@@ -6932,6 +6920,8 @@ label witchDisappears:
     "It was gone. Eaten up whole."
     "The thing that had no name lay there on the floor, senseless."
     "It saw nothing. It smelled nothing. It felt nothing. It tasted nothing. It heard nothing."
+    show wolf12 onlayer transient zorder 100
+
     "And then it was gone."
     call endStamp from _call_endStamp_35
     "It was never seen or heard from again."
