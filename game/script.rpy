@@ -1549,14 +1549,32 @@ label start:
         #Test Menu
         menu:
             "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
-            "Jump to the Thief finale.":
-                jump end
-            "Jump to the Toad finale.":
+            "Jump to the Thief finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
+                jump thiefFinale
+            "Jump to the Thief path (with the Mushroom disappeared)." if persistent.mushroomVanished and not persistent.thiefVanished:
+                $persistent.hVanished = True
+                $persistent.goVanished = True
+                $persistent.shVanished = True
+                #$persistent.goblinsVanished = True
+                $persistent.vanished +=1
+                $persistent.thiefVanished = True
+                $purge_saves()
+                $ renpy.block_rollback()
+                jump thiefSolo
+
+            "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
                 jump toadFinale
-            "Jump to the Witch finale.":
+            "Jump to the Toad path (with the Witch disappeared)." if persistent.witchVanished and not persistent.toadVanished:
+                jump toadSolo
+            "Jump to the Witch finale." if not persistent.toadVanished and not persistent.witchVanished:
                 jump witchFinale
-            "Jump to the Mushroom finale.":
+            "Jump to the Witch path (with the Toad disappeared)." if persistent.toadVanished and not persistent.witchVanished:
+                jump witchSolo
+            "Jump to the Mushroom finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
                 jump mushroomFinale
+            "Jump to the Mushroom path (with the Thief disappeared)." if persistent.thiefVanished and not persistent.mushroomVanished:
+                jump mushroomSolo
+
             "Continue.":
                 "DEV NOTE: Continuing with the normal story."
 
@@ -4906,14 +4924,11 @@ label thiefStory:
                         if godfather == "Black":
                             jump thiefDeath
                         else:
+                            call endStamp from _call_endStamp_8
                             "You live there still, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
-                            call wolfApproaches from _call_wolfApproaches
-                            show wolf13 onlayer transient zorder 100
+                            "..."
+                            "Oh?"
                             "And what happened to the mushroom, you ask?"
-                            $persistent.vanished +=1
-                            $persistent.mushroomVanished = True
-                            $persistent.starsVanished = True
-                            $ renpy.block_rollback()
                             jump mushroomDisappears
 
                     "If you remained good friends with the thief, turn to page 246.":
@@ -4925,15 +4940,11 @@ label thiefStory:
                         if godfather == "Black":
                             jump thiefDeath
                         else:
-                            call endStamp from _call_endStamp_8
+                            call endStamp
                             "You live there still, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
-                            call wolfApproaches from _call_wolfApproaches_1
-                            show wolf13 onlayer transient zorder 100
+                            "..."
+                            "Oh?"
                             "And what happened to the mushroom, you ask?"
-                            $persistent.vanished +=1
-                            $persistent.mushroomVanished = True
-                            $persistent.starsVanished = True
-                            $ renpy.block_rollback()
                             jump mushroomDisappears
             else:
                 "In the morning, you were faced with a choice. "
@@ -4952,15 +4963,9 @@ label thiefStory:
                             call endStamp from _call_endStamp_9
                             "And then came an elephant with a very long snout, and it blew the story out."
                             #Wolf: Kills mushroom
-                            call wolfApproaches from _call_wolfApproaches_2
                             "..."
                             "Oh?"
-                            show wolf13 onlayer transient zorder 100
                             "What happened to the mushroom, you ask?"
-                            $persistent.vanished +=1
-                            $persistent.mushroomVanished = True
-                            $persistent.starsVanished = True
-                            $ renpy.block_rollback()
                             jump mushroomDisappears
 
                     "If you stayed on the goblin train and remained good friends with the thief forever after, turn to page 244.":
@@ -4974,14 +4979,9 @@ label thiefStory:
                         else:
                             call endStamp from _call_endStamp_10
                             "You live there still, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
-                            #Wolf: Kills mushroom
-                            call wolfApproaches from _call_wolfApproaches_3
-                            show wolf13 onlayer transient zorder 100
+                            "..."
+                            "Oh?"
                             "And what happened to the mushroom, you ask?"
-                            $persistent.vanished +=1
-                            $persistent.mushroomVanished = True
-                            $persistent.starsVanished = True
-                            $ renpy.block_rollback()
                             jump mushroomDisappears
 
                     "If you stayed on the goblin train and married the thief, turn to page 248.":
@@ -4998,15 +4998,9 @@ label thiefStory:
                             call endStamp from _call_endStamp_11
                             "And if you have not died, you live there still. On windless nights, your siblings whisper that they can hear your laughter, and the rattling wheels of the goblin train."
                             #Wolf: Kills mushroom
-                            call wolfApproaches from _call_wolfApproaches_4
                             "..."
                             "Oh?"
-                            show wolf13 onlayer transient zorder 100
                             "What happened to the mushroom, you ask?"
-                            $persistent.vanished +=1
-                            $persistent.mushroomVanished = True
-                            $persistent.starsVanished = True
-                            $ renpy.block_rollback()
                             jump mushroomDisappears
 
     label thiefDeath:
@@ -5080,34 +5074,38 @@ label thiefStory:
                         call endStamp from _call_endStamp_12
                         "And what you did after that, none who live can say."
                         #Wolf: Kills toad
-                        call wolfApproaches from _call_wolfApproaches_5
                         "..."
                         "Oh?"
-                        show wolf13 onlayer transient zorder 100
                         "What happened to the mushroom, you ask?"
-                        $persistent.vanished +=1
-                        $persistent.mushroomVanished = True
-                        $persistent.starsVanished = True
-                        $ renpy.block_rollback()
                         jump mushroomDisappears
 
 #==========Mushroom Disappears
 label mushroomDisappears:
+    $persistent.vanished +=1
+    $persistent.mushroomVanished = True
+    $persistent.starsVanished = True
+    $ renpy.block_rollback()
+    call hideAll
+    show mushroomcavebg at artPos
+
     "The three mushrooms looked around at the chaos of their plundered domain and shrugged."
     m "Oh well."
-    m1 "Nothing we can do now."
+    m2 "Nothing we can do now."
     "The last of the treasure fell onto the floor."
-    m2 "Perhaps a drink?"
+    m3 "Perhaps a drink?"
     "She pulled out a bottle of wine and uncorked it."
     "As she did so, there was a sound from outside. Like the howling of the wind."
-    m "Oh no. No."
+    m4 "Oh no. No."
     "She looked around. There was no treasure. The floor was bare."
     "It always had been."
+    call wolfApproaches from _call_wolfApproaches_5
     m "We'll have to run. Come on-"
     "But as she looked around for her sisters, she realised she was alone."
     "There was only one mushroom there. Standing alone, in the centre of an empty room."
     "There had never been anything more."
     #"Things start disappearing around her. The treasure disappears. The Walls disappear. She tries to retreat and lock the door, carrying a bottle of wine."
+    call hideAll
+    show mushroombasementbg at artPos
     "She ran to her hidden chamber and locked the door tight."
     "It was too late, of course."
     "The wolf was already inside."
@@ -5119,6 +5117,7 @@ label mushroomDisappears:
     "But there were no walls."
     "There were no doors. There were no windows. There was no floor."
     "There was no air. There was no light. There was no space."
+    show wolf13 onlayer transient zorder 100
     "And then there was nothing at all."
     "Nothing but a bottle of wine, that fell through the emptiness and smashed into pieces."
     call endStamp from _call_endStamp_23
@@ -6903,7 +6902,7 @@ label witchDisappears:
     "The knowledge was gone."
     "The wooden rectangle was an abstract shape with no meaning. Another gaping wound in her mind, still fresh and dripping."
     w "I - no."
-    w "I see the cabinet. I smell the [teachoice] tea. I hear the rustle of the leaves. I taste - I taste -"
+    w "I see the cabinet. I smell the tea. I hear the rustle of the leaves. I taste - I taste -" #[teachoice] 
     "She tried to recite one thing she could see. One thing she could smell. One thing she could hear."
     call wolfApproaches from _call_wolfApproaches_12
     "But it was too late."
@@ -6931,6 +6930,9 @@ label witchDisappears:
 #==========Solo path
 #The Toad's path if the Witch has disappeared
 label toadSolo:
+    call hideAll
+    #TD: Test
+    show townfeastbg at artPos
     "The toad leapt up from the table and clicked his fingers."
     f "Prickle! Crawl! Shudder and Clink! Don't tarry or stall, get us there in a wink!"
     "His great squash carriage rattled out of the bushes and pulled up right next to the banquet table."
@@ -11197,27 +11199,27 @@ label endStamp:
     #TK: change the "Do you want to quit?" screen during this bit.
     #TK: Test and check if this works right
     if persistent.vanished == 0:
-        show text "{b}THE END.{/b} \n \n {i}Ending 0 of 4.{/i}": #
+        show text "{b}THE END.{/b} \n \n {i}{/i}": #Ending 0 of 4
             xalign 0.5
             #yalign 0.5
             ypos 650
     if persistent.vanished == 1:
-        show text "{b}THE END.{/b} \n \n {i}Ending 1 of 4.{/i}": #
+        show text "{b}THE END.{/b} \n \n {i}You have seen one ending.{/i}": #
             xalign 0.5
             #yalign 0.5
             ypos 650
     if persistent.vanished == 2:
-        show text "{b}THE END.{/b} \n \n {i}Ending 2 of 4.{/i}": #
+        show text "{b}THE END.{/b} \n \n {i}You have seen two endings.{/i}": #
             xalign 0.5
             #yalign 0.5
             ypos 650
     if persistent.vanished == 3:
-        show text "{b}THE END.{/b} \n \n {i}Ending 3 of 4.{/i}": #
+        show text "{b}THE END.{/b} \n \n {i}You have seen three endings.{/i}": #
             xalign 0.5
             #yalign 0.5
             ypos 650
     if persistent.vanished >= 4:
-        show text "{b}THE END.{/b} \n \n {i}Ending 4 of 4.{/i}": #
+        show text "{b}THE END.{/b} \n \n {i}You have seen the last ending.{/i}": #
             xalign 0.5
             #yalign 0.5
             ypos 650

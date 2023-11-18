@@ -1,22 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 6076, in script
-    T "Something's wrong. I think we need to run."
-Exception: Sayer 'T' is not defined.
+  File "game/script.rpy", line 6905, in script
+    w "I see the cabinet. I smell the [teachoice] tea. I hear the rustle of the leaves. I taste - I taste -"
+KeyError: u'teachoice'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 6076, in script
-    T "Something's wrong. I think we need to run."
-  File "renpy/ast.py", line 680, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "renpy/ast.py", line 574, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'T' is not defined.
+  File "game/script.rpy", line 6905, in script
+    w "I see the cabinet. I smell the [teachoice] tea. I hear the rustle of the leaves. I taste - I taste -"
+  File "renpy/ast.py", line 715, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "renpy/exports.py", line 1393, in say
+    who(what, *args, **kwargs)
+  File "renpy/character.py", line 1190, in __call__
+    what = what_pattern.replace("[what]", sub(what, translate=True))
+  File "renpy/character.py", line 1179, in sub
+    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
+  File "renpy/substitutions.py", line 270, in substitute
+    s = formatter.vformat(s, (), kwargs)
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 563, in vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 585, in _vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 646, in get_field
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 605, in get_value
+KeyError: u'teachoice'
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom. 1.0
-Tue Nov 14 18:23:18 2023
+Sat Nov 18 18:56:41 2023

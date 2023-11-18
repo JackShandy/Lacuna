@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1076: Line is indented, but the preceding with statement statement does not expect a block. Please check this line's indentation.
-    show coverOverlay
-    ^
+The label _call_endStamp_8 is defined twice, at
+  File "game/script.rpy", line 4909 and
+  File "game/script.rpy", line 4925.
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Nov 12 15:46:18 2023
+Sat Nov 18 18:39:02 2023
