@@ -1519,19 +1519,19 @@ label start:
             "This maybe happened, or maybe did not."
             "The time is long past, and much is forgot."
             "Back in the old days, when wishing worked, your mother lived in a vast forest teeming with strange figures."
-            call characterIntros
+            call characterIntros from _call_characterIntros
             "She had little time to spend wondering about these odd folks, for she had twelve children and had to work night and day just to feed them."
             "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         elif persistent.vanished == 1:
             "Neither here nor there, but long ago..."
             "Back in the old days, when the gods were real, your mother lived in a vast and mysterious rainforest full of strange figures."
-            call characterIntros
+            call characterIntros from _call_characterIntros_1
             "She had little time to spend wondering about these odd folks, for she had ten children and had to work night and day just to feed them."
             "When you were born as the eleventh, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         elif persistent.vanished == 2:
             "Once there was, and once there wasn't."
             "In the long-distant days of yore, when haystacks winnowed sieves, when genies played jereed in the old bathhouse, fleas were barbers, camels were town criers, I softly rocked my baby grandmother to sleep in her creaking cradle, in an exotic land, far, far away, there was a woman who lived in a vast rainforest full of strange, empty spaces."
-            call characterIntros
+            call characterIntros from _call_characterIntros_2
             "She had little time to think about these things, for she had four children and had to work day and night just to feed them."
             "When you were born to her as the fifth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
             show noteFood onlayer transient zorder 100
@@ -1539,7 +1539,7 @@ label start:
             "Listen closely."
             "I won't repeat myself again."
             "Back in the old days, when there was still a chance, your mother lived in a vast, empty forest."
-            call characterIntros
+            call characterIntros from _call_characterIntros_3
             "One day, she gave birth to you as her first and only child."
             show noteStop onlayer transient zorder 100
             "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
@@ -1561,7 +1561,6 @@ label start:
                 $purge_saves()
                 $ renpy.block_rollback()
                 jump thiefSolo
-
             "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
                 jump toadFinale
             "Jump to the Toad path (with the Witch disappeared)." if persistent.witchVanished and not persistent.toadVanished:
@@ -1597,53 +1596,53 @@ label start:
         jump firstMan
 
     label characterIntros:
-        call hideAll
+        call hideAll from _call_hideAll_231
         if persistent.thiefVanished == False:
             show forest4bg at artPos
             "To the north lived a cunning thief."
         else:
             show emptybg at artPos
-            call musicSilence
+            call musicSilence from _call_musicSilence_28
             show wolf9 onlayer transient zorder 100
             "To the north, there was nothing and no-one."
             if persistent.witchVanished == False:
-                call musicReturn
+                call musicReturn from _call_musicReturn_27
 
-        call hideAll
+        call hideAll from _call_hideAll_232
         if persistent.witchVanished == False:
             show darkforestbg at artPos
-            "To the east, there was a cackling witch."
+            "To the east, a cackling witch."
         else:
             show emptybg at artPos
-            call musicSilence
+            call musicSilence from _call_musicSilence_29
             show wolf10 onlayer transient zorder 100
             "To the east, there was nothing and no-one."
             if persistent.toadVanished == False:
-                call musicReturn
+                call musicReturn from _call_musicReturn_28
 
-        call hideAll
+        call hideAll from _call_hideAll_233
         if persistent.toadVanished == False:
             show manorextbg at artPos
-            "To the south, there was a haughty toad."
+            "To the south, a haughty toad."
         else:
             show emptybg at artPos
-            call musicSilence
+            call musicSilence from _call_musicSilence_30
             show wolf5 onlayer transient zorder 100
             "To the south, there was nothing and no-one."
             if persistent.mushroomVanished == False:
-                call musicReturn
+                call musicReturn from _call_musicReturn_29
 
-        call hideAll
+        call hideAll from _call_hideAll_234
         if persistent.mushroomVanished == False:
             show mushroompalacebg at artPos
-            "To the west, there was a wise mushroom."
+            "To the west, a wise mushroom."
         else:
             show emptybg at artPos
-            call musicSilence
+            call musicSilence from _call_musicSilence_31
             show wolf1 onlayer transient zorder 100
             "To the west, there was nothing and no-one."
-            call musicReturn
-        call hideAll
+            call musicReturn from _call_musicReturn_30
+        call hideAll from _call_hideAll_235
         show nightbg at artPos
         return
 
@@ -4940,7 +4939,7 @@ label thiefStory:
                         if godfather == "Black":
                             jump thiefDeath
                         else:
-                            call endStamp
+                            call endStamp from _call_endStamp_15
                             "You live there still, rattling across the whole world on the Goblin Train, and you will have no rest until the Day of Judgement."
                             "..."
                             "Oh?"
@@ -5085,29 +5084,32 @@ label mushroomDisappears:
     $persistent.mushroomVanished = True
     $persistent.starsVanished = True
     $ renpy.block_rollback()
-    call hideAll
+    call hideAll from _call_hideAll_236
+    play sound pageFlip
     show mushroomcavebg at artPos
 
-    "The three mushrooms looked around at the chaos of their plundered domain and shrugged."
+    "After you left, the three mushrooms looked around at the chaos of their plundered domain and shrugged."
     m "Oh well."
-    m2 "Nothing we can do now."
+    m2 "Nothing to do about it now."
     "The last of the treasure fell onto the floor."
     m3 "Perhaps a drink?"
     "She pulled out a bottle of wine and uncorked it."
     "As she did so, there was a sound from outside. Like the howling of the wind."
     m4 "Oh no. No."
+    call musicSilence from _call_musicSilence_32
     "She looked around. There was no treasure. The floor was bare."
     "It always had been."
-    call wolfApproaches from _call_wolfApproaches_5
     m "We'll have to run. Come on-"
     "But as she looked around for her sisters, she realised she was alone."
     "There was only one mushroom there. Standing alone, in the centre of an empty room."
     "There had never been anything more."
     #"Things start disappearing around her. The treasure disappears. The Walls disappear. She tries to retreat and lock the door, carrying a bottle of wine."
-    call hideAll
+    call hideAll from _call_hideAll_237
     show mushroombasementbg at artPos
     "She ran to her hidden chamber and locked the door tight."
     "It was too late, of course."
+    call wolfApproaches from _call_wolfApproaches_5
+
     "The wolf was already inside."
     m "Get out! Get out!"
     "Get out to where, Mushroom?"
@@ -5918,7 +5920,7 @@ label mushroomFinale:
                             #Wolf: Kills Thief
                             "..."
                             "Oh?"
-                            show wolf14 onlayer transient zorder 100
+                            #show wolf14 onlayer transient zorder 100
                             "And what happened to the thief, you ask?"
                             jump thiefDisappears
 
@@ -5998,7 +6000,7 @@ label mushroomFinale:
                     #Wolf: Kills Thief
                     "..."
                     "Oh?"
-                    show wolf14 onlayer transient zorder 100
+                    #show wolf14 onlayer transient zorder 100
                     "And what happened to the thief, you ask?"
                     jump thiefDisappears
 
@@ -6010,7 +6012,7 @@ label mushroomFinale:
                         #Wolf: Kills Thief
                         "..."
                         "Oh?"
-                        show wolf14 onlayer transient zorder 100
+                        #show wolf14 onlayer transient zorder 100
                         "And what happened to the thief, you ask?"
                         jump thiefDisappears
                     elif godfather == "Red":
@@ -6020,7 +6022,7 @@ label mushroomFinale:
                         #Wolf: Kills Thief
                         "..."
                         "Oh?"
-                        show wolf14 onlayer transient zorder 100
+                        #show wolf14 onlayer transient zorder 100
                         "And what happened to the thief, you ask?"
                         jump thiefDisappears
                     else:
@@ -6054,17 +6056,17 @@ label thiefDisappears:
     $persistent.thiefVanished = True
     $persistent.vanished +=1
     $ renpy.block_rollback()
-    call hideAll
+    call hideAll from _call_hideAll_238
     show forestbg at artPos
-    "They strolled away from the tree, laughing and stroking their ill-gotten gains with their long, dexterous fingers. "
+    "After you were taken away they strolled away from the tree, laughing and stroking their ill-gotten gains. "
     t "Another successful heist."
     h "Hold it right there!"
-    "The Hunter, sparrow-herder and goose-girl leapt from the bushes and surrounded the thief, holding pitchforks and rakes and an old Shovel."
+    "The hunter, the sparrow-herder and the goose-girl leapt from the bushes and surrounded the thief, holding pitchforks and rakes and an old shovel."
     go "Looks like your day is done, scoundrel!"
     sh "Yeah! We got you bang to rights, we have."
     "The three of them jeered and prodded the thief with glee."
     t "Ha ha ha! Well, if you think you're going to take me to jail, I'm afraid..."
-    "The thief trailed off."
+    "The Thief trailed off."
     "There was a sound in the woods."
     show wolf14 onlayer transient zorder 100
     "A low, hushed and ragged sound, like a howl in the wind."
@@ -6072,10 +6074,10 @@ label thiefDisappears:
     t "Was that... the wolf?"
     h "Don't try to distract us, you wretched cur. There are no wolves in Australia."
     sh "Yeah! We won't be turned away that easily!"
-    call wolfApproaches
     "The two of them jabbed at the thief."
-    "It was always just the two of them. The hunter and the sparrow-herder, jabbing at the thief."
-    "There was never anyone else."
+    call musicSilence from _call_musicSilence_33
+    "It was always just the two of them. The Hunter and the Sparrow-herder, cornering the thief."
+    "No-one else was there."
     h "Come on, let's grab them."
     "The thief looked down."
     "There was a dark red stain on the ground. In the dirt where a third person would have stood."
@@ -6091,25 +6093,26 @@ label thiefDisappears:
     #"There never was."
     t "Come on!"
     sh "Hold on, I -"
-    call hideAll
+    call hideAll from _call_hideAll_239
     show town3bg at artPos
-    "The thief dragged the sparrow hunter through the woods and burst out of the woods to a field with a small cottage, surrounded by geese."
-    sh "What?"
+    "The thief dragged the sparrow-herder through the woods and burst out of the woods to a field with a small cottage, surrounded by geese."
+    sh "What are you doing?"
     "It was echoing and empty."
     "No-one lived there but geese. No-one ever had."
     t "Help! Someone help us!"
-    "Who are you calling out to, thief?"
+    "Who are you calling out to, Thief?"
     "You're alone. You always have been."
+    call wolfApproaches from _call_wolfApproaches
     t "No, they're right here, they -"
     show wolf8 onlayer transient zorder 100
-    call hideAll
+    call hideAll from _call_hideAll_240
     show darknessbg at artPos
     "They looked around. There was no-one there."
     "The trees were silent."
-    "No animals lived in this part of the woods. No bird calls troubled its vast, silent depths. The silence was complete."
-    "They were running through the forest, ragged and alone."
-    "They searched their memories. Had there ever been anyone else in the world but them?"
-    "Had there ever been a time before this one? Another place?"
+    "No animals lived in this part of the woods. No bird calls troubled its vast, silent depths. The woods were dead."
+    "They ran through the forest, ragged and alone."
+    "They searched their memories. Had there ever been a time before this one? Another place?"
+    "Had there ever been anyone else in the world but them?"
     "They could remember nothing except this. A single frozen moment of running through the woods in fear, alone."
     "There was nothing else."
     "There had never been anything else."
@@ -6882,35 +6885,36 @@ label witchDisappears:
     $persistent.vanished +=1
     $persistent.witchVanished = True
     $ renpy.block_rollback()
-    call hideAll
+    call hideAll from _call_hideAll_241
     show cottageintbg at artPos
 
     #[Teachoice]
-    "The Witch was left alone in her cottage. The wet, Swollen greenery pressed in around her, twisting in spirals like the organs of some giant beast."
-    w "W-well. I guess I'd better clean up this mess."
+    "The witch was left alone in her cottage. The wet, swollen greenery pressed in around her, twisting in spirals like the organs of some giant beast."
+    w "Well. I guess I'd better clean up this mess."
     "There was a sound outside."
     "From the space between the trees."
-    "Perhaps just the howling of the wind, and nothing more."
+    "Perhaps it was just the howling of the wind, and nothing more."
     w "I'll make some tea. That always calms me down."
     "But when she went to her tea cabinet, she found she'd forgotten how."
-    "No knowledge of how to brew tea was left in her mind. A hole was left there, where the information used to be. Like a great, red bite taken out of her brain."
+    call musicSilence from _call_musicSilence_34
+    "No knowledge of how to brew tea was left in her mind. A hole was left there, where the information had been. Like a great, red bite taken out of her brain."
     w "What? I'm sure I knew..."
     w "Oh no. No, no, no."
-    "Something was outside. The floor shook with its approach."
+    "Something was outside."
     "She ran to lock the door. But she didn't know how anymore."
     "How did locks work? How did one interact with a door? What were these things, and how did they fit together?"
     "The knowledge was gone."
     "The wooden rectangle was an abstract shape with no meaning. Another gaping wound in her mind, still fresh and dripping."
-    w "I - no."
-    w "I see the cabinet. I smell the tea. I hear the rustle of the leaves. I taste - I taste -" #[teachoice] 
+    w "I - No."
+    w "I see the cabinet. I smell the tea. I hear the rustle of the leaves. I taste - I taste -" #[teachoice]
     "She tried to recite one thing she could see. One thing she could smell. One thing she could hear."
-    call wolfApproaches from _call_wolfApproaches_12
     "But it was too late."
-    "The Wolf was already inside the house."
+    "The wolf was already inside the house."
     "She fell to the floor. She had forgotten how to walk. Perhaps she never knew."
     w "I see the window. I can feel the floor. I can hear... I hear..."
     "She heard nothing."
-    "Her ears no longer worked. She no longer remembered a time when they did."
+    call wolfApproaches from _call_wolfApproaches_12
+    "Her ears did not work. Her eyes did not work. She no longer remembered a time when they did."
     w "You can't do this. I am myself."
     w "I name you, and bind you, beast. By your True Name, I cast you out."
     "But how can you do that, witch?"
@@ -6918,9 +6922,12 @@ label witchDisappears:
     w "No! My name is... my name is..."
     "It was gone. Eaten up whole."
     "The thing that had no name lay there on the floor, senseless."
-    "It saw nothing. It smelled nothing. It felt nothing. It tasted nothing. It heard nothing."
+    "It saw nothing."
+    "It smelled nothing."
+    "It felt nothing."
+    "It tasted nothing."
+    "It heard nothing."
     show wolf12 onlayer transient zorder 100
-
     "And then it was gone."
     call endStamp from _call_endStamp_35
     "It was never seen or heard from again."
@@ -6930,7 +6937,7 @@ label witchDisappears:
 #==========Solo path
 #The Toad's path if the Witch has disappeared
 label toadSolo:
-    call hideAll
+    call hideAll from _call_hideAll_242
     #TD: Test
     show townfeastbg at artPos
     "The toad leapt up from the table and clicked his fingers."
@@ -7409,7 +7416,7 @@ label hellStory:
         yalign 0.71#0.743
         xalign 0.5
     menu:
-        w "The truth is, I have worked for the Devil all this time, and wrought his wicked works upon the world - though it pleased me none to do so."
+        w "The truth is, I have served the Devil all this time, and wrought his wicked works upon the world - though it pleased me none to do so."
         "If you asked the witch to tell her tale, turn to page 215." if not witchStory:
             $witchStory = True
             if pig:
@@ -7922,45 +7929,60 @@ label toadDisappears:
     $persistent.vanished +=1
     $persistent.toadVanished = True
     $ renpy.block_rollback()
-    #call wolfApproaches from _call_wolfApproaches_16
-    #show wolf6 onlayer transient zorder 100
-    call hideAll
+
+    call hideAll from _call_hideAll_243
     show cottageintbg at artPos
-    "He stood alone in the witch's cottage."
+    "After you fell into the flames, he stood alone in the witch's cottage."
     "Bromeliads sprouted from the floorboards. The dense, hot spiral of greenery pressed in around him like the organs of a great beast."
     f "Well. This is another fine mess."
     "He picked up his top hat."
     "There was a sound outside. Almost like a howl. He shivered."
     f "I-I had best not outstay my welcome. Prickle! Crawl!"
-    call hideAll
+    call hideAll from _call_hideAll_244
     show darkforestbg at artPos
     "He rushed outside, dove into the puddle and emerged into the darkness of the forest."
     f "Shudder! Wink! Are you there?"
     "There was no reply. No-one was there."
-    "He searched forward and found the remains of a squash carriage. Destroyed. As if by the claws of a colossal beast."
+    "He searched forward and found the remains of his squash carriage. "
+    "It had been torn in twain. Jagged claw marks rent the sides."
     f "Oh no. No, no, no."
+    call musicSilence from _call_musicSilence_35
     "Something stirred in the forest around him. In the space between the trees. "
-    call hideAll
+    call hideAll from _call_hideAll_245
     show forest5bg at artPos
     "He ran as fast as he could, helter-skelter, tumbling down hills, coat ripped, pants torn."
     "Something fastened around his ankle."
     f "Agh!"
-    "A terrible pain shot through him in an instant, and then was gone."
-    "A red, wet stain dripped from his shoe. Red footprints were left behind him as he ran."
-    call hideAll
+    "A terrible agony shot through him in an instant, and then was gone."
+    "A red, wet stain dripped from his shoe. Red footprints were left behind him as he ran. His foot felt numb. There was no pain."
+    call hideAll from _call_hideAll_246
     show townextbg at artPos
     "At last he saw the outskirts of town before him, and thanked G-d in heaven for the blessed sight."
-    call hideAll
+    call hideAll from _call_hideAll_247
     show townextbg at artPos
     "The people of town were there, cleaning up after the feast."
-    f "Mayor! Hunter! Please, help me! I'm being pursued by a wolf!"
-    m "Oh, poor toad. Don't be silly."
-    h "It's all in your head. There are no wolves in australia."
+    #gmVanished
+    #goVanished
+    #shVanished
+    #hVanished
+    f "Please, fine townsfolk, help me! I'm being pursued by a wolf!"
+    may "Oh, poor toad. Don't be silly."
+    if not persistent.goVanished:
+        go "There's no need to be afraid."
+    if not persistent.hVanished:
+        h "It's all in your head. There are no wolves in Australia."
+    else:
+        gm "It's all in your head, you crazy old thing! There are no wolves in Australia."
+    if not persistent.hVanished:
+        sh "Everyone knows that."
     f "B-but look! Look at the wound the beast wrought upon me!"
     "He brandished his bloody heel."
-    f "Oh dear. Dear toad."
-    h "You've always had that wound. Don't you remember?"
-    m "You were born that way."
+    may "Oh dear. Dear toad."
+    if not persistent.hVanished:
+        h "You've always had that wound. Don't you remember?"
+    else:
+        gm "You've always had that wound. Don't you remember?"
+    may "You were born that way."
     f "I-"
     "His leg disappeared."
     f "Argckkhh!"
@@ -7969,43 +7991,51 @@ label toadDisappears:
     "The blood flew onto the cobblestones, and then was gone."
     "A wet twisted mess was all that was left."
     "He fell over into the dirt."
-    h "Oh, you poor thing. Let me help you."
+    if not persistent.hVanished:
+        h "Oh, you poor thing. Let me help you."
+    else:
+        gm "Oh dear, you've gotten yourself into a scrape again. Come on."
     "They lifted him up and placed him against the fence. He clung to it with one shaking arm."
-    m "You really shouldn't go out without your cane, you know."
-    f "My cane?"
-    m "For your leg. You know."
-    m "You've always had one leg."
-    f "But... I..."
+    may "You really shouldn't go out without your cane."
+    f "My... cane?"
+    may "For your leg. You know."
+    may "You've always had one leg."
+    #f "But... I..."
     "The toad searched his memories and realised that it was true."
     "He was born with one leg."
-    "A tough life, perhaps, but he'd always managed to survive."
+    "A tough life, perhaps, but he'd always been able to survive."
     "How on earth had he forgotten his walking stick?"
     "Forget his own head next, I expect."
     f "I'm terribly sorry, I don't know what came over me. I'll-"
     "His arm was gone. The stump of a shoulder."
     "Exposed bone. Matted meat."
     "He cried out in terrible pain, and fell into the dirt once more."
-    m "Well, it's been a long night."
-    h "Yes, we'd best be getting home."
+    may "Well, it's been a long night."
+    if not persistent.hVanished:
+        h "Yes, we'd best be getting home."
+    else:
+        gm "Too right. We'd best be off."
     f "No - please!"
-    "They ambled off into the night, making pleasant small talk as they headed for home."
-    "The toad tried to pull himself along in the dirt. He had no legs. Just a single, shaking arm."
-    f "Help me... g-d, help me…"
-    "It has been tough, hasn't it toad? Surviving all these years, with one arm."
+    call wolfApproaches from _call_wolfApproaches_16
+    "They ambled off into the night, making pleasant small talk as they headed down the road."
+    "The toad tried to pull himself along in the dirt. He had no legs to walk with. Just a single, shaking arm."
+    f "Help me... G-d, help me…"
+    "It has been tough, hasn't it, Toad? Surviving all these years, with just one arm."
     "Just a single, broken hand to drag yourself along with."
-    "But you did it, didn't you? You did it."
+    "But you did it. What an inspiration."
     f "Who… Who are you?"
-    "How are you asking that question, toad?"
+    "How are you asking that question, Toad?"
     "You were born with no mouth."
     f  "Mhmm... Mhmmm!"
     "The poor creature attempted to scream. A pitiful sight indeed."
     "The townsfolk shook their heads, and withdrew indoors. He was always like this. Better not to dwell on it."
+    show wolf6 onlayer transient zorder 100
     "And after all, now that they thought about it, what was there to dwell on? There was no-one there."
-    "What did they think they seeing there? There was never anything there at all."
-    "Forget my own head next, they said to themselves."
-    "It must have been nothing."
+    "The streets were empty. There was never anything there at all."
+    #"Forget my own head next, they said to themselves."
+    #"It must have been nothing."
     "Nothing but a top hat and an old coat, that blew away in the wind and were gone."
-    call endStamp
+    call endStamp from _call_endStamp_17
     "They were never seen again."
     jump end
 
@@ -11235,16 +11265,16 @@ label end:
     #play sound pageFlip
     #Note: I delete all the player's save files at this point to allow persistence to work.
     $purge_saves()
-    call hideAll
+    call hideAll from _call_hideAll_248
     hide text
     ""
     $ quick_menu = False
     play sound pageFlip2
-    call hideAll
+    call hideAll from _call_hideAll_249
     show backPage
     ""
     play sound bookClose
-    call hideAll
+    call hideAll from _call_hideAll_250
     show coverBack
     ""
     play sound bookClose2

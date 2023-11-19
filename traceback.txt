@@ -1,32 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 6905, in script
-    w "I see the cabinet. I smell the [teachoice] tea. I hear the rustle of the leaves. I taste - I taste -"
-KeyError: u'teachoice'
+  File "game/script.rpy", line 1369, in script
+    return
+Exception: Could not find return label (u'game/script.rpy', 1699949700, 28).
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 6905, in script
-    w "I see the cabinet. I smell the [teachoice] tea. I hear the rustle of the leaves. I taste - I taste -"
-  File "renpy/ast.py", line 715, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "renpy/exports.py", line 1393, in say
-    who(what, *args, **kwargs)
-  File "renpy/character.py", line 1190, in __call__
-    what = what_pattern.replace("[what]", sub(what, translate=True))
-  File "renpy/character.py", line 1179, in sub
-    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
-  File "renpy/substitutions.py", line 270, in substitute
-    s = formatter.vformat(s, (), kwargs)
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 563, in vformat
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 585, in _vformat
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 646, in get_field
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 605, in get_value
-KeyError: u'teachoice'
+  File "game/script.rpy", line 1369, in script
+    return
+  File "renpy/ast.py", line 1521, in execute
+    next_node(renpy.game.context().lookup_return(pop=True))
+  File "renpy/execution.py", line 710, in lookup_return
+    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
+Exception: Could not find return label (u'game/script.rpy', 1699949700, 28).
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 The Thief, the Toad, the Witch & the Mushroom. 1.0
-Sat Nov 18 18:56:41 2023
+Sun Nov 19 22:25:57 2023
