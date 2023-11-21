@@ -11491,7 +11491,12 @@ label credits:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}{space=[ti]}9. {b}White Noise:{/b} 'Underwater white noise', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}10. {b}Fire Poker:{/b} 'Opening tool drawer hard', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}11. {b}Thunder:{/b} 'Thunder', Pixabay, pixabay.com.{vspace=[tx]}{space=[ti]}13. {b}Fire Lit:{/b} 'Lighting a Fire'{vspace=[tx]}{space=[ti]}14. {b}Gymnopedies:{/b} 'Gymnopedie 1, 2 and 3, Erik Satie, performed by Kevin MacLeod, incompetech.com, licensed under Creative Commons: By Attribution 3.0 License http://creativecommons.org/licenses/by/3.0/.{vspace=[tx]}{space=[ti]}15. {b}The Final Battle:{/b} 'Gameland'. This music piece kindly created for the game by an enigmatic individual who wished to remain uncredited.", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Pencil:{/b} 'Pencil', Joseph Sardin, BigSoundBank.com.{vspace=[tx]}{space=[ti]}2. {b}Page Turn:{/b} 'Page Flip Sound Effect 1', SoundJay.com.{vspace=[tx]}{space=[ti]}3. {b}Fire:{/b} 'Fire Sound Effect 01', SoundJay.com.{vspace=[tx]}{space=[ti]}4. {b}Rain:{/b} 'Thunderstorm and Rain Loop', Mixkit.co.{vspace=[tx]}{space=[ti]}5. {b}Wildlife Ambience:{/b} 'Forest Twilight - for John', kangaroovindaloo, Freesound.org.{vspace=[tx]}{space=[ti]}6. {b}Various Sound Effects:{/b} Fesliyan Studios, fesliyanstudios.com.{vspace=[tx]}{space=[ti]}7. {b}Wind Ambience:{/b} Haniebal, pixabay.com.{vspace=[tx]}{space=[ti]}8. {b}Phone Click:{/b} 'Phone Typing JTC', James T. Campbell, pixabay.com.{vspace=[tx]}{space=[ti]}9. {b}White Noise:{/b} 'Underwater white noise', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}10. {b}Fire Poker:{/b} 'Opening tool drawer hard', MixKit, mixkit.co.{vspace=[tx]}{space=[ti]}11. {b}Thunder:{/b} 'Thunder', Pixabay, pixabay.com.{vspace=[tx]}{space=[ti]}13. {b}Fire Lit:{/b} 'Lighting a Fire', Pixabay, pixabay.com.", xpos=50, ypos=190, xmaximum=520)
+    $ renpy.pause ()
+    hide text
+
+    $ ui.text("{space=[ti]}14. {b}Gymnopedies:{/b} 'Gymnopedie 1, 2 and 3, Erik Satie, performed by Kevin MacLeod, incompetech.com, licensed under Creative Commons: By Attribution 3.0 License http://creativecommons.org/licenses/by/3.0/.{vspace=[tx]}{space=[ti]}16. {b}Book Closing:{/b} 'Closing A Book', Pixabay, pixabay.com.{vspace=[tx]}{space=[ti]}17. {b}The Final Battle:{/b} 'Gameland'. This music piece kindly created for the author by an enigmatic individual who wished to remain uncredited.", xpos=50, ypos=150, xmaximum=520)
+
     #Gymnopedie No. 3 Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 3.0 License http://creativecommons.org/licenses/by/3.0/
 
 
@@ -11521,5 +11526,5 @@ label credits:
     $ ui.text("Written on the lands of the Turrbal and Jagera peoples. I pay my respects to their Elders, past and present. Sovereignty was never ceded.", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
 
-    play sound pageFlip
+    play sound bookClose2 #pageFlip
     $ renpy.full_restart()
