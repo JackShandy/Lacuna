@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-The label _call_endStamp_8 is defined twice, at
-  File "game/script.rpy", line 4909 and
-  File "game/script.rpy", line 4925.
+File "game/options.rpy", line 15: invalid syntax
+    config.window_title = _("Other Name").
+    
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Nov 18 18:39:02 2023
+Sat Nov 25 18:44:02 2023

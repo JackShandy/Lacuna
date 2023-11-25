@@ -1,22 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1369, in script
-    return
-Exception: Could not find return label (u'game/script.rpy', 1699949700, 28).
+  File "renpy/common/00start.rpy", line 310, in script call
+    call expression "before_main_menu"
+  File "game/script.rpy", line 1070, in script
+    if persistent.thiefVanished && persistent.toadVanished:
+SyntaxError: invalid syntax (script.rpy, line 1070)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1369, in script
-    return
-  File "renpy/ast.py", line 1521, in execute
-    next_node(renpy.game.context().lookup_return(pop=True))
-  File "renpy/execution.py", line 710, in lookup_return
-    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
-Exception: Could not find return label (u'game/script.rpy', 1699949700, 28).
+  File "renpy/common/00start.rpy", line 310, in script call
+    call expression "before_main_menu"
+  File "game/script.rpy", line 1070, in script
+    if persistent.thiefVanished && persistent.toadVanished:
+  File "renpy/ast.py", line 1852, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1070)
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
-The Thief, the Toad, the Witch & the Mushroom. 1.0
-Sun Nov 19 22:25:57 2023
+The Wolf. 1.0
+Sat Nov 25 18:52:41 2023

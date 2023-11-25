@@ -12,7 +12,47 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("The Thief, the Toad, the Witch & the Mushroom.") #
+
+if persistent.vanished == 0:
+    define config.name = _("The Thief, the Toad, the Witch & the Mushroom.")
+elif persistent.vanished == 1:
+    if persistent.thiefVanished:
+        define config.name = _("The Toad, the Witch & the Mushroom.")
+    if persistent.toadVanished:
+        define config.name = _("The Thief, the Witch & the Mushroom.")
+    if persistent.witchVanished:
+        define config.name = _("The Thief, the Toad & the Mushroom.")
+    if persistent.mushroomVanished:
+        define config.name = _("The Thief, the Toad & the Witch.")
+elif persistent.vanished == 2:
+    if persistent.thiefVanished && persistent.toadVanished:
+        define config.name = _("The Witch & the Mushroom.")
+    if persistent.thiefVanished && persistent.witchVanished:
+        define config.name = _("The Toad & the Mushroom.")
+    if persistent.thiefVanished && persistent.mushroomVanished:
+        define config.name = _("The Toad & the Witch.")
+    if persistent.toadVanished && persistent.witchVanished:
+        define config.name = _("The Thief & the Mushroom.")
+    if persistent.toadVanished && persistent.mushroomVanished:
+        define config.name = _("The Thief & the Witch.")
+    if persistent.witchVanished && persistent.mushroomVanished:
+        define config.name = _("The Thief & the Toad.")
+elif persistent.vanished == 3:
+    if not persistent.thiefVanished:
+        define config.name = _("The Thief.")
+    if not persistent.toadVanished:
+        define config.name = _("The Toad.")
+    if not persistent.witchVanished:
+        define config.name = _("The Witch.")
+    if not persistent.mushroomVanished:
+        define config.name = _("The Mushroom.")
+elif persistent.vanished == 4:
+    define config.name = _("The Wolf.")
+
+
+#else:
+    #define config.name = _("TestFailed.") #
+
 
 #TK: Edit the config name so that it changes based on who's been killed (IE The Thief, the Toad, & the witch when the mushroom dies, etc)
 

@@ -1053,6 +1053,46 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
 
             _preferences.volumes['music'] *= .50
 
+    if persistent.bookEnd:
+        $ config.window_title = _("")
+    elif persistent.vanished == 0:
+        $ config.window_title = _("The Thief, the Toad, the Witch & the Mushroom.")
+    elif persistent.vanished == 1:
+        if persistent.thiefVanished:
+            $ config.window_title  = _("The Toad, the Witch & the Mushroom.")
+        if persistent.toadVanished:
+            $ config.window_title = _("The Thief, the Witch & the Mushroom.")
+        if persistent.witchVanished:
+            $ config.window_title = _("The Thief, the Toad & the Mushroom.")
+        if persistent.mushroomVanished:
+            $ config.window_title = _("The Thief, the Toad & the Witch.")
+    elif persistent.vanished == 2:
+        if persistent.thiefVanished and persistent.toadVanished:
+            $ config.window_title = _("The Witch & the Mushroom.")
+        if persistent.thiefVanished and persistent.witchVanished:
+            $ config.window_title = _("The Toad & the Mushroom.")
+        if persistent.thiefVanished and persistent.mushroomVanished:
+            $ config.window_title = _("The Toad & the Witch.")
+        if persistent.toadVanished and persistent.witchVanished:
+            $ config.window_title = _("The Thief & the Mushroom.")
+        if persistent.toadVanished and persistent.mushroomVanished:
+            $ config.window_title = _("The Thief & the Witch.")
+        if persistent.witchVanished and persistent.mushroomVanished:
+            $ config.window_title = _("The Thief & the Toad.")
+    elif persistent.vanished == 3:
+        if not persistent.thiefVanished:
+            $ config.window_title = _("The Thief.")
+        if not persistent.toadVanished:
+            $ config.window_title = _("The Toad.")
+        if not persistent.witchVanished:
+            $ config.window_title = _("The Witch.")
+        if not persistent.mushroomVanished:
+            $ config.window_title = _("The Mushroom.")
+    elif persistent.vanished == 4:
+        $ config.window_title = _("The Wolf.")
+
+
+
     if persistent.bookBurned:
         if persistent.vanished != 4:
             show coverBase
@@ -1608,40 +1648,41 @@ label start:
             if persistent.witchVanished == False:
                 call musicReturn from _call_musicReturn_27
 
-        call hideAll from _call_hideAll_232
-        if persistent.witchVanished == False:
-            show darkforestbg at artPos
-            "To the east, a cackling witch."
-        else:
-            show emptybg at artPos
-            call musicSilence from _call_musicSilence_29
-            show wolf10 onlayer transient zorder 100
-            "To the east, there was nothing and no-one."
-            if persistent.toadVanished == False:
-                call musicReturn from _call_musicReturn_28
-
         call hideAll from _call_hideAll_233
         if persistent.toadVanished == False:
             show manorextbg at artPos
-            "To the south, a haughty toad."
+            "To the east, a haughty toad."
         else:
             show emptybg at artPos
             call musicSilence from _call_musicSilence_30
             show wolf5 onlayer transient zorder 100
-            "To the south, there was nothing and no-one."
+            "To the east, there was nothing and no-one."
             if persistent.mushroomVanished == False:
                 call musicReturn from _call_musicReturn_29
 
         call hideAll from _call_hideAll_234
         if persistent.mushroomVanished == False:
             show mushroompalacebg at artPos
-            "To the west, a wise mushroom."
+            "To the south, a wise mushroom."
         else:
             show emptybg at artPos
             call musicSilence from _call_musicSilence_31
             show wolf1 onlayer transient zorder 100
-            "To the west, there was nothing and no-one."
+            "To the south, there was nothing and no-one."
             call musicReturn from _call_musicReturn_30
+
+        call hideAll from _call_hideAll_232
+        if persistent.witchVanished == False:
+            show darkforestbg at artPos
+            "To the west, a cackling witch."
+        else:
+            show emptybg at artPos
+            call musicSilence from _call_musicSilence_29
+            show wolf10 onlayer transient zorder 100
+            "To the west, there was nothing and no-one."
+            if persistent.toadVanished == False:
+                call musicReturn from _call_musicReturn_28
+
         call hideAll from _call_hideAll_235
         show nightbg at artPos
         return
@@ -6323,7 +6364,7 @@ label puddle:
             $toadSad = True
     call hideAll from _call_hideAll_73
     show cottagebg at artPos
-    "Soon, you had crossed the river paths to the cottage in the centre."
+    "You crossed the river paths to the cottage in the centre."
     "Up over the walls grew a riot of herbs and flowers of every type, rambling over everything and growing in a lush green-grass garden on the roof. "
     if pig:
         "The pig munched on some violets blooming from the windowsill."
@@ -6335,7 +6376,7 @@ label puddle:
         f "But be wary, my friend. Few have ever left that cottage alive."
         f "Witches have red eyes. They see very far, but they have a keen sense of smell, like animals, and can sense when humans are near them."
         f "If you aren't out in ten minutes, I'll come in there to rescue you."
-        jump witch2
+    jump witch2
 
 # Act 3 Finale: The Toad.
 label toadFinale:
