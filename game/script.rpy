@@ -1844,10 +1844,10 @@ label start:
                         xalign 0.5
                     menu:
                         "Your mother looked around the dark forest in panic."
-                        "If she chose The Lord, turn to page 5.":
+                        "If she chose the Lord, turn to page 5.":
                             "In desperation, she renounced her foolish pride and sought the protection of the Most High Himself."
                             jump godYes
-                        "If she chose The Devil, turn to page 6.":
+                        "If she chose the Devil, turn to page 6.":
                             "In desperation, she turned back and sought the protection of the deceiver Himself."
                             jump devilYes
                         "If she chose Death, turn to page 7.":
@@ -4216,10 +4216,10 @@ label thief3:
                 #TK: Make this go down when your family is disappeared
                 "If you talked about your family, turn to page 88." if not thiefFam:
                     if godfather == "Red":
-                        pov "I have a family. 12 brothers and sisters. No mother anymore, though. She was driven into the grave by my wicked ways."
+                        pov "I have a family. Twelve brothers and sisters. No mother anymore, though. She was driven into the grave by my wicked ways."
                         t "My condolences and/or congratulations!"
                     else:
-                        pov "I have a family. 12 brothers and sisters. No mother anymore"
+                        pov "I have a family. Twelve brothers and sisters. No mother anymore."
                         t "How prolific your mother is! It must be hard to get a word in edgewise."
                     t "I have no family, of course. One day a horned toad sat on a magpie egg and I popped out fully formed."
                     t "I stole my first breath of air, then I stole these hands and these legs and this body of mine, and I've been stealing ever since."
@@ -4765,11 +4765,10 @@ label thiefFinale:
                                                                 pov "Time is moving on, and I need to find a way to escape my Godfather before midnight."
                                                             elif godfather == "Black":
                                                                 pov "Time is moving on, and I need to find a way to escape my Godmother before midnight."
-                                                            t "Right. I'll keep it short."
                                                             jump thiefStory
                                                         "To hear the incredibly short version, turn to page 188.":
                                                             pov "Well, I don't have a lot of time..."
-                                                            t "My awful parents sent me here to train as a thief. The goblins made a deal that if they couldn't recognise me when my apprenticeship ended in a year, I would go free. Now that year is up, and they're sure to recognise me and take me away."
+                                                            t "My parents are terrible. They sent me to the goblins to train as a thief. Now they're coming back to take me away."
                                                             jump thiefStoryEnd
 
 #The thief's tragic backstory, related in their finale.
@@ -4777,17 +4776,11 @@ label thiefStory:
     call hideAll from _call_hideAll_57
     show nightbg at artPos
     if thiefShort:
-        t "Long ago, the Lord came to visit my parents. I heard my mother gesture to me, and talk to The Lord of me thus:"
+        t "Right. Long ago, the Lord came to visit my parents. I heard my mother gesture to me, and talk to the Lord of me thus:"
         thiefmum "Inside all good people there dwells a golden soul, given by you, oh Lord. But as soon as you look, anyone can see this one has nothing but a hollow nest of spiders and rats inside. What trade can I teach such a one as this?"
         #TK: Some kind of text effect for g-d's speech
-        t "The Lord thought on this, and said \"Bring all your children before me.\" To the first child He said:"
-        miw "You shall become a powerful King."
-        t "Then to the second, and third, and so on down the line:"
-        miw "You shall become a Duke."
-        miw "You, a rich Merchant."
-        miw "You, a Tanner. You, a Shoemaker. You, a Butcher. You, a Beggar."
-        t "Then He finally reached me at the end of the line."
-        miw "And you shall be a Thief."
+        t "The Lord thought on this, and said to me thus:"
+        miw "You shall be a Thief. It is the work your wicked hands are made for."
         t "My parents took me to the goblins to learn the art of Thievery as the Lord instructed."
         t "One of the Goblin Queens sat and talked with me for a long time. Then they went to my parents and said:"
         goblinQueen "Your child will be taught well. We will keep them as an apprentice for one year."
@@ -4834,7 +4827,7 @@ label thiefStory:
             t "There's still time. I can sneak away, and get myself arrested. Then I'll be safe in a jail cell for a bit."
             "If you gave them an inspirational speech, turn to page 191.":
                 "You took their hand and squeezed it."
-                pov "Come on. Haven't you escaped the wrath of The Lord and The Law all your life? Haven't you stolen fire and cheated death and escaped the hangman's noose at every turn?"
+                pov "Come on. Haven't you escaped the wrath of the Lord and the Law all your life? Haven't you stolen fire and cheated death and escaped the hangman's noose at every turn?"
                 pov "You've got this. No-one is better at hiding from G-d than you."
                 "The thief held your hand tight."
                 t "Thank you."
@@ -4849,7 +4842,7 @@ label thiefStory:
         "In a few short hours, the train stopped on a rocky stretch of coast, and the thief's mother and father came to meet it."
         if godfather == "White" or godfather == "Red":
             "Midnight was approaching fast. You felt a cold chill come over you. Soon, your godfather would come and take you away."
-        "The goblins lined up you and the thief with 12 goblins on a tree branch, all of you transformed to become king parrots and sparrows and magpies and birds of every type."
+        "The goblins lined up you and the thief with twelve goblins on a tree branch, all of you transformed to become king parrots and sparrows and magpies and birds of every type."
         if godfather == "White":
             "Just at that moment, the clock struck midnight."
             call hideAll from _call_hideAll_60
@@ -4876,7 +4869,7 @@ label thiefStory:
             t "I felt the eyes of G-d upon me. How could He not see all the rot inside me?"
             pov "There is none. There never was."
         else:
-            goblinQueen "Choose your child out of the line, and their life will be yours once more."
+            goblinQueen "Choose your child out of the line, and their life will be yours once more. But fail, and you must leave them with us."
             "The thief's mother stood and stared for a long time, moving down the line slowly."
             call hideAll from _call_hideAll_62
             show godbg at artPos
@@ -6909,7 +6902,7 @@ label toadFinale:
                             "And you gripped him tight."
                             jump deathToadQuestions
                 "If you accepted your fate, turn to page 265.":
-                    pov "Alright. I'm ready"
+                    pov "Alright. I'm ready."
                     m "No-one's ever ready. But there's no time left."
                     call hideAll from _call_hideAll_93
                     show mementobg at artPos
