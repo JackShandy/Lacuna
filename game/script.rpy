@@ -1359,6 +1359,10 @@ label splashscreen2:
     $hes = persistent.hes
     if persistent.povname == "":
         $persistent.povname = "Charlie"
+    elif persistent.povname == "Humbaba" or "humbaba" or "HUMBABA" or "Huwawa" or "huwawa" or "HUWAWA" or "Ḫum-ba-ba" or "hum-ba-ba" or "Ḫu-wa-wa" or "hu-wa-wa":
+        $persistent.povname = "Charlie"
+        $povname = persistent.povname
+        jump humbabaNameSecret
     $povname = persistent.povname
     call screen main_menu
     #show("main_menu")
@@ -6161,8 +6165,6 @@ label thiefDisappears:
     "It was never seen or heard from again."
     jump end
 
-
-
 #=====================THE TOAD'S STORY
 
 # Act 2, Chapter 2B: Journey with the Toad
@@ -6966,7 +6968,6 @@ label witchDisappears:
     call endStamp from _call_endStamp_35
     "It was never seen or heard from again."
     jump end
-
 
 #==========Solo path
 #The Toad's path if the Witch has disappeared
@@ -8985,8 +8986,23 @@ label clearingInvestigate:
         "For a brief moment, you thought you saw a figure reflected in the water. But as soon as you blinked, it was gone."
         jump puddle
 
-
 #========= DISCOVERABLES
+
+#This sequence occurs if you enter your name as "Humbaba" in the name selection
+label humbabaNameSecret:
+    show firelight animated onlayer over_screens zorder 99
+    if persistent.phoneOn and persistent.vanished <=3:
+        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
+        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
+        $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+    scene bg page
+    show nightbg at artPos
+    "test"
+    play sound bookClose2 #pageFlip
+    $ renpy.full_restart()
+
+
 
 #These are the hidden notes that you can find around the place, providing hints leading to the true ending
 
@@ -9952,7 +9968,6 @@ label wish:
                     "I have another option to offer you."
                     "Here. Rest by the fire with me."
                     jump wolfNameEnd
-
 
 ##=============== Nice to have: This is a short part of the ending that changes based on which specific combination of characters are alive
 ##label goodbyeFriends:
