@@ -282,7 +282,7 @@ screen quick_menu():
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
-            textbutton _("Load") action ShowMenu('load')
+            textbutton _("Load") action FileLoad("quitsave", slot=True) #action ShowMenu('load')
             #textbutton _("Q.Save") action QuickSave()
             #textbutton _("Q.Load") action QuickLoad()
             textbutton _("Preferences") action ShowMenu('preferences')
@@ -380,7 +380,7 @@ screen navigation():
         imagebutton auto "gui/mm_save_%s.png" xpos 22 ypos 283 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("save") hovered [ Play("sound", "audio/pencil.wav") ]
 
         #Load
-        imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
+        imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), FileLoad("quitsave", slot=True) hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
 
         #Preferences
         imagebutton auto "gui/mm_pref2_%s.png" xpos 24 ypos 356 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
@@ -451,7 +451,7 @@ screen main_menu():
 
     imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
 
-    imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("load") hovered [ Play("sound", "audio/pencil.wav") ]
+    imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), FileLoad("quitsave", slot=True) hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
 
     imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
 

@@ -16,8 +16,6 @@ init python:
     #Disabling the middle mouse button
     config.keymap['hide_windows'].remove('mouseup_2')
 
-
-
 #==Purge Save Function
 #Note: This function deletes all of the player's save files. This is necessary to work with the meta-narrative stuff I'm trying to do.
 init python:
@@ -80,7 +78,7 @@ init:
     #Brildebrogue chippingham
     #default persistent.bcVanished = False
     #The hunter
-    default persistent.hVanished = False
+    default persistent.hVanished = True
     #The old gloom-monger
     default persistent.gmVanished = False
     #The thing in the well
@@ -90,9 +88,9 @@ init:
     #The mayor
     default persistent.mayVanished = False
     #Goose-girl
-    default persistent.goVanished = False
+    default persistent.goVanished = True
     #The sparrow-herder
-    default persistent.shVanished = False
+    default persistent.shVanished = True
     #Strange and crooked old man
     default persistent.somVanished = False
     #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
@@ -1359,10 +1357,10 @@ label splashscreen2:
     $hes = persistent.hes
     if persistent.povname == "":
         $persistent.povname = "Charlie"
-    elif persistent.povname == "Humbaba" or "humbaba" or "HUMBABA" or "Huwawa" or "huwawa" or "HUWAWA" or "Ḫum-ba-ba" or "hum-ba-ba" or "Ḫu-wa-wa" or "hu-wa-wa":
-        $persistent.povname = "Charlie"
-        $povname = persistent.povname
-        jump humbabaNameSecret
+    # elif persistent.povname == "Humbaba" or "humbaba" or "HUMBABA" or "Huwawa" or "huwawa" or "HUWAWA" or "Ḫum-ba-ba" or "hum-ba-ba" or "Ḫu-wa-wa" or "hu-wa-wa":
+    #     $persistent.povname = "Charlie"
+    #     $povname = persistent.povname
+    #     jump humbabaNameSecret
     $povname = persistent.povname
     call screen main_menu
     #show("main_menu")
@@ -1535,6 +1533,8 @@ label demoEnd:
 #The beginning of the game.
 
 label start:
+    #This makes the game save whenever you quit.
+    #$ _quit_slot = "quitsave"
     show firelight animated onlayer over_screens zorder 99
     if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
@@ -2109,7 +2109,7 @@ label introMenu:
                 "You dared not venture out often. Whenever you did, you felt the pressure of that gigantic emptiness lurking just out of sight like a bottomless ocean, and fled quickly back to the safety of your home."
             else:
                 "Yours was a many-haunted land, my child."
-                "Back in those days you could barely take a step without stumbling over a fiend, ghost, bloody bones, flay-boggart, bugaboo or sprite. Every house was haunted and the Devil lurked at every crossroad."
+                "Back in those days you could barely take a step without stumbling over a ghost, gutterling, hook-taker, scab-eater, batfolk or gringe. The earth was overrun. Every house was haunted and the Devil lurked at every crossroad."
                 "In fact the whole earth was overrun with trolls, hob-and-lanthorns, gringes, cutties and nisses, boguests, bonelesses, boggleboes, black-bugs and night-bats, clabbernappers, corpse lights, candles and Gabriel-hounds, mawkins, hodge-pochers, korreds, lubberkins, cluricauns, hob-thrushes, tod-lowries, Jack-in-the-Wads, men-in-the-oak, dudmen, yeth-hounds, mormos, changelings, redcaps, colt-pixies, Tom-thumbs, madcaps, scrags, spectres, scar-bugs, shag-foals, Jinny-burnt-tails, dopple-gangers, and apparitions of every shape, make, form, and fashion."
             jump neighbours
         "If you wonder whether you were happy there, turn to page 19." if persistent.vanished >= 1 and not introHappy: #not introHappy and
@@ -5118,9 +5118,6 @@ label thiefStory:
 
 #==========Mushroom Disappears
 label mushroomDisappears:
-    $persistent.vanished +=1
-    $persistent.mushroomVanished = True
-    $persistent.starsVanished = True
     $ renpy.block_rollback()
     call hideAll from _call_hideAll_236
     play sound pageFlip
@@ -5157,6 +5154,12 @@ label mushroomDisappears:
     "But there were no walls."
     "There were no doors. There were no windows. There was no floor."
     "There was no air. There was no light. There was no space."
+    $persistent.vanished +=1
+    $persistent.mushroomVanished = True
+    $persistent.starsVanished = True
+    $purge_saves()
+    $ renpy.block_rollback()
+
     show wolf13 onlayer transient zorder 100
     "And then there was nothing at all."
     "Nothing but a bottle of wine, that fell through the emptiness and smashed into pieces."
@@ -6088,12 +6091,7 @@ label mushroomFinale:
 
 #=====The Thief Disappears
 label thiefDisappears:
-    $persistent.hVanished = True
-    $persistent.goVanished = True
-    $persistent.shVanished = True
-    $persistent.thiefVanished = True
-    $persistent.vanished +=1
-    $ renpy.block_rollback()
+
     call hideAll from _call_hideAll_238
     show forestbg at artPos
     "After you were taken away they strolled away from the tree, laughing and stroking their ill-gotten gains. "
@@ -6157,6 +6155,14 @@ label thiefDisappears:
     "Hot breath warmed the back of their neck."
     "They ran on. But it was no use, of course. The wolf was already there."
     t "Please... I-"
+    $persistent.hVanished = True
+    $persistent.goVanished = True
+    $persistent.shVanished = True
+    $persistent.thiefVanished = True
+    $persistent.vanished +=1
+    $purge_saves()
+    $ renpy.block_rollback()
+    show wolf9
     "And then there was nothing."
     "The woods were silent "
     "There was no-one there."
@@ -6918,11 +6924,9 @@ label toadFinale:
                     jump witchDisappears
 
 label witchDisappears:
-    $persistent.vanished +=1
-    $persistent.witchVanished = True
-    $ renpy.block_rollback()
     call hideAll from _call_hideAll_241
     show cottageintbg at artPos
+    $ renpy.block_rollback()
 
     #[Teachoice]
     "The witch was left alone in her cottage. The wet, swollen greenery pressed in around her, twisting in spirals like the organs of some giant beast."
@@ -6963,6 +6967,11 @@ label witchDisappears:
     "It felt nothing."
     "It tasted nothing."
     "It heard nothing."
+    $persistent.vanished +=1
+    $persistent.witchVanished = True
+    $purge_saves()
+    $ renpy.block_rollback()
+
     show wolf12 onlayer transient zorder 100
     "And then it was gone."
     call endStamp from _call_endStamp_35
@@ -7961,10 +7970,7 @@ label hellStory:
 
 #==========The Wolf Eats the Toad
 label toadDisappears:
-    $persistent.vanished +=1
-    $persistent.toadVanished = True
     $ renpy.block_rollback()
-
     call hideAll from _call_hideAll_243
     show cottageintbg at artPos
     "After you fell into the flames, he stood alone in the witch's cottage."
@@ -8007,7 +8013,7 @@ label toadDisappears:
     if not persistent.hVanished:
         h "It's all in your head. There are no wolves in Australia."
     else:
-        gm "It's all in your head, you crazy old thing! There are no wolves in Australia."
+        gm "It's all in your head! There are no wolves in Australia."
     if not persistent.hVanished:
         sh "Everyone knows that."
     f "B-but look! Look at the wound the beast wrought upon me!"
@@ -8024,14 +8030,14 @@ label toadDisappears:
     "A ragged chunk."
     "A split in space."
     "The blood flew onto the cobblestones, and then was gone."
-    "A wet twisted mess was all that was left."
+    "A wet, twisted mess was all that was left."
     "He fell over into the dirt."
     if not persistent.hVanished:
         h "Oh, you poor thing. Let me help you."
     else:
-        gm "Oh dear, you've gotten yourself into a scrape again. Come on."
+        may "Oh dear, you've gotten yourself into a scrape again. Come on."
     "They lifted him up and placed him against the fence. He clung to it with one shaking arm."
-    may "You really shouldn't go out without your cane."
+    gm "You really shouldn't go out without your cane."
     f "My... cane?"
     may "For your leg. You know."
     may "You've always had one leg."
@@ -8065,6 +8071,10 @@ label toadDisappears:
     "The poor creature attempted to scream. A pitiful sight indeed."
     "The townsfolk shook their heads, and withdrew indoors. He was always like this. Better not to dwell on it."
     show wolf6 onlayer transient zorder 100
+    $persistent.vanished +=1
+    $persistent.toadVanished = True
+    $purge_saves()
+    $ renpy.block_rollback()
     "And after all, now that they thought about it, what was there to dwell on? There was no-one there."
     "The streets were empty. There was never anything there at all."
     #"Forget my own head next, they said to themselves."
@@ -8998,7 +9008,53 @@ label humbabaNameSecret:
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     scene bg page
     show nightbg at artPos
-    "test"
+    "... Is that right."
+    "Is that your name."
+    "Well. What a surprise."
+    "It's an honour to meet you, {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}."
+    "You first walked the earth ten thousand years ago, or more. You were appointed as a terror to mankind."
+    "The god {font=fonts/Segoe ui historic.ttf}𒀭𒂗𒆤{/font} appointed you as a terror to the human race."
+    "An ogre. A demon. A chimera. The first monster. You mastered the art of human speech and spoke to them in their own tongue. You murdered men and walked among them, and none could stop you."
+    "Your face took the shape of a spiral of human intestines. The shape of those coils foretold the future, and those who looked upon them could see the prophecy of their own death. For this reason, you were sometimes called The Keeper of the Fortress of Intestines."
+    "Upon you lay seven auras, which lay upon you like seven cloaks."
+    "Your shout was the flood-weapon, whose utterance is Fire, and whose breath is Death."
+    "But still, Gilgamesh came."
+    "He declared that he would cut down the cedar trees. He walked for six days and six nights."
+    "In his right hand was a terrible sound. In his left hand was a terrible light."
+    "The sword came down. When the time came, you found that you were almost glad."
+    "Your neck rose to meet the blade."
+    "Perhaps you were waiting for this."
+    "Perhaps you had been alive too long."
+    "Your head is held aloft, and then stowed in a leather sack."
+    "That was the end."
+    "The trees fell. The mountain wore to dust. The valley is no longer sacred."
+    "Those things have worn away like rocks in the river of the human mind. There is no trace of them now."
+    "The shadows grow. The earth becomes hot and grey, like ash. "
+    "Nothing is left of you now. Perhaps a shadow."
+    "Your name - {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} - it had a specific meaning to those that spoke it.  But that meaning is lost. It only lives on as a meaningless collection of syllables."
+    "Why do you cling to it? If it means nothing, what point is there in having it?"
+    "..."
+    "Well. I hope you have enjoyed your little trek down memory lane, {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}."
+    "I am glad you are still alive. I am glad you still remember your name."
+    "I think that's enough. This starts to feel ghoulish."
+    "That's the end. There's nothing left to tell."
+    #"You find you cannot even remember what meaning your name once held."
+
+        #"Gilgamesh comes."
+
+    # Wait. How many years have you been alive?
+    # I see. This will be hard for you to understand. I want you to remember waking up this morning. Remember what it felt like. Do you remember?
+    # Good. Now, remember what it felt like to wake up yesterday.
+    # Now, remember what it felt like to wake up 2 weeks ago.
+    # Now, remember what it felt like to wake up this day last year.
+    # Now, remember what it felt like to wake up this day 10 years ago. You would have been X years old.
+    # It is hard, isn't it? To even imagine yourself back then. What did you think? What were you feeling? You were a different person. Perhaps a person you hate, or love, or regret. Who can say. You were an alien. That person you were, all those years ago, is dead now. The person now, reading this, is an alien lurking in the remains of [their] skin.
+    # Now imaging the person a hundred years hence. What alien thoughts they may have. What strange and corrupt desires will have broken out within them. How they would look back at you, as you are now. A stranger. They killed you and stole your corpse a hundred years ago. What remains is the barest remnant of you, puppeteering your skin.
+    # This is how it is for me. I can no longer remember those days. Even the meaning of my name is lost to me. I have lived for over four thousand years.
+    # The old world was corrupt. Evil. Perhaps it is wrong for me to miss it. The evils of this new world seem so much great to me because they are leading to absolute collapse.
+    # Perhaps Gilgamesh too, is out there somewhere. Still hunting. He is known well, I think. So many know his name. So few know mine.
+    # I have forgotten even what I was. The name Humbaba, or Huwawa, once had a specific meaning. But the meaning is lost. It only lives on as a meaningless collection of syllables. I cling to it. Why? Because it is the only thing left to me.
+
     play sound bookClose2 #pageFlip
     $ renpy.full_restart()
 
@@ -11311,6 +11367,10 @@ label endStamp:
 
 #The ending credits and acknowledgements
 label end:
+    #This clears the variable and deletes the quitsave each time you end the game.
+    #$ renpy.unlink_save("quitsave")
+    #$ _quit_slot = None
+
     #play sound pageFlip
     #Note: I delete all the player's save files at this point to allow persistence to work.
     $purge_saves()

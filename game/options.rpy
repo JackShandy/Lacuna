@@ -49,6 +49,12 @@ elif persistent.vanished == 3:
 elif persistent.vanished == 4:
     define config.name = _("The Wolf.")
 
+#The game has an autosave feature
+define config.has_autosave = True
+define config.autosave_on_choice = True
+define config.autosave_on_quit = True
+#define config.autosave_frequency = None
+
 
 #else:
     #define config.name = _("TestFailed.") #
