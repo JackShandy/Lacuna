@@ -78,7 +78,7 @@ init:
     #Brildebrogue chippingham
     #default persistent.bcVanished = False
     #The hunter
-    default persistent.hVanished = True
+    default persistent.hVanished = False
     #The old gloom-monger
     default persistent.gmVanished = False
     #The thing in the well
@@ -88,9 +88,9 @@ init:
     #The mayor
     default persistent.mayVanished = False
     #Goose-girl
-    default persistent.goVanished = True
+    default persistent.goVanished = False
     #The sparrow-herder
-    default persistent.shVanished = True
+    default persistent.shVanished = False
     #Strange and crooked old man
     default persistent.somVanished = False
     #The toad's carriage-carriers (bat, rat, cockatoo, crowshrike
@@ -6937,24 +6937,25 @@ label witchDisappears:
     w "I'll make some tea. That always calms me down."
     "But when she went to her tea cabinet, she found she'd forgotten how."
     call musicSilence from _call_musicSilence_34
-    "No knowledge of how to brew tea was left in her mind. A hole was left there, where the information had been. Like a great, red bite taken out of her brain."
-    w "What? I'm sure I knew..."
+    w "What? I'm sure I.."
+    "She thought, and thought, but no knowledge of how to brew tea was left in her mind. There was nothing but a hole where the information had been. Like a great, red bite taken out of her brain."
     w "Oh no. No, no, no."
     "Something was outside."
     "She ran to lock the door. But she didn't know how anymore."
-    "How did locks work? How did one interact with a door? What were these things, and how did they fit together?"
+    "How did locks work? How did one interact with a door? The latch, the key, the handle - what were these things, and how did they fit together?"
     "The knowledge was gone."
-    "The wooden rectangle was an abstract shape with no meaning. Another gaping wound in her mind, still fresh and dripping."
+    "She clawed at it, but it was just a wooden rectangle now, an abstract shape with no meaning. Another gaping wound in her mind, still fresh and dripping."
     w "I - No."
     w "I see the cabinet. I smell the tea. I hear the rustle of the leaves. I taste - I taste -" #[teachoice]
     "She tried to recite one thing she could see. One thing she could smell. One thing she could hear."
     "But it was too late."
     "The wolf was already inside the house."
     "She fell to the floor. She had forgotten how to walk. Perhaps she never knew."
+    "What were these things, at the end of her legs? What strange process animated these lumps of unknown flesh?"
     w "I see the window. I can feel the floor. I can hear... I hear..."
     "She heard nothing."
     call wolfApproaches from _call_wolfApproaches_12
-    "Her ears did not work. Her eyes did not work. She no longer remembered a time when they did."
+    "Her ears did not work. Her eyes did not work. She no longer remembered a time when they did. The visual stimuli meant nothing to her anymore. The sounds were just random static."
     w "You can't do this. I am myself."
     w "I name you, and bind you, beast. By your True Name, I cast you out."
     "But how can you do that, witch?"
