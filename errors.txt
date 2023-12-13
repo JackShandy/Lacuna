@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 857: u'image' is not a keyword argument or valid child for the add statement.
-    add image "images/contents_note.png" 
-             ^
+File "game/script.rpy", line 1375: expected statement.
+    persistent.saveMessage = True
+                           ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Wed Dec 13 18:23:46 2023
+Wed Dec 13 18:44:54 2023

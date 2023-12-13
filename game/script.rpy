@@ -117,6 +117,9 @@ init:
     #Has the book been burned?
     default persistent.bookBurned = False
 
+    #Have you seen the message about saving
+    default persistent.saveMessage = False
+
     #What title did you choose for the book ending?
     default persistent.finaleTitle = "Cobbler"
 
@@ -1364,10 +1367,12 @@ label splashscreen2:
     #     $povname = persistent.povname
     #     jump humbabaNameSecret
     $povname = persistent.povname
-    scene bg page
-    show contents_note
-    ""
-    play sound pageFlip2
+    if persistent.saveMessage == False:
+        scene bg page
+        show contents_note
+        ""
+        play sound pageFlip2
+        $persistent.saveMessage = True
     call screen main_menu
     #show("main_menu")
     #$MainMenu(confirm=False)()
