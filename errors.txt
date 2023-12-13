@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1591: expected statement.
-    Test Menu
+File "game/screens.rpy", line 857: u'image' is not a keyword argument or valid child for the add statement.
+    add image "images/contents_note.png" 
              ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Wed Dec  6 17:34:03 2023
+Wed Dec 13 18:23:46 2023

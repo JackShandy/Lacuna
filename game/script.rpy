@@ -493,6 +493,8 @@ init:
     image coverWolf4 = "cover-wolf-4.png"
     image coverBack = "coverBack.png"
     image backPage = "backPage.png"
+    #Note about saving
+    image contentsNote = "contents_note.png"
 
 
     # #image cover5 = "cover-5.png"
@@ -1362,6 +1364,10 @@ label splashscreen2:
     #     $povname = persistent.povname
     #     jump humbabaNameSecret
     $povname = persistent.povname
+    scene bg page
+    show contents_note
+    ""
+    play sound pageFlip2
     call screen main_menu
     #show("main_menu")
     #$MainMenu(confirm=False)()
@@ -5123,7 +5129,10 @@ label mushroomDisappears:
     play sound pageFlip
     show mushroomcavebg at artPos
 
-    "After you left, the three mushrooms looked around at the chaos of their plundered domain and shrugged."
+    "After you left, the mushroom looked around at the chaos of her plundered domain and shrugged."
+    #Have her go outside to look for you
+    #Then the stars blink out, one by one
+    #She flees into the cavern. Things disappear from the cavern, one by one.
     m "Oh well."
     m2 "Nothing to do about it now."
     "The last of the treasure fell onto the floor."
@@ -5141,11 +5150,15 @@ label mushroomDisappears:
     #"Things start disappearing around her. The treasure disappears. The Walls disappear. She tries to retreat and lock the door, carrying a bottle of wine."
     call hideAll from _call_hideAll_237
     show mushroombasementbg at artPos
+    #Finally she flees into the basement.
+
     "She ran to her hidden chamber and locked the door tight."
     "It was too late, of course."
     call wolfApproaches from _call_wolfApproaches_5
 
     "The wolf was already inside."
+    #Her sisters / selves disappear, one by one.
+    #"She tried to grab the door and escape. But there was no door. There never was. Nothing but smooth, featureless wall."
     m "Get out! Get out!"
     "Get out to where, Mushroom?"
     "This room is the only thing that exists. There is nothing outside. There is nowhere but here."
@@ -6094,7 +6107,7 @@ label thiefDisappears:
 
     call hideAll from _call_hideAll_238
     show forestbg at artPos
-    "After you were taken away they strolled away from the tree, laughing and stroking their ill-gotten gains. "
+    "After you were taken they strolled away from the tree, laughing and clutching their ill-gotten gains. "
     t "Another successful heist."
     h "Hold it right there!"
     "The hunter, the sparrow-herder and the goose-girl leapt from the bushes and surrounded the thief, holding pitchforks and rakes and an old shovel."
@@ -6102,7 +6115,7 @@ label thiefDisappears:
     sh "Yeah! We got you bang to rights, we have."
     "The three of them jeered and prodded the thief with glee."
     t "Ha ha ha! Well, if you think you're going to take me to jail, I'm afraid..."
-    "The Thief trailed off."
+    "The thief trailed off."
     "There was a sound in the woods."
     show wolf14 onlayer transient zorder 100
     "A low, hushed and ragged sound, like a howl in the wind."
@@ -6123,7 +6136,7 @@ label thiefDisappears:
     "The trees rustled, as if with the movement of something colossal."
     sh "Ha! You'd like that, wouldn't you? Just when I've got you cornered."
     sh "No, you're coming with me, chum."
-    "The sparrow-herder grabbed the thief and they stood there."
+    "The sparrow-herder grabbed the thief."
     "The two of them were alone in the clearing."
     "There was no-one else."
     #"There never was."
@@ -6146,14 +6159,14 @@ label thiefDisappears:
     "They looked around. There was no-one there."
     "The trees were silent."
     "No animals lived in this part of the woods. No bird calls troubled its vast, silent depths. The woods were dead."
-    "They ran through the forest, ragged and alone."
+    "The thief ran through the forest, ragged and alone."
     "They searched their memories. Had there ever been a time before this one? Another place?"
     "Had there ever been anyone else in the world but them?"
     "They could remember nothing except this. A single frozen moment of running through the woods in fear, alone."
     "There was nothing else."
     "There had never been anything else."
     "Hot breath warmed the back of their neck."
-    "They ran on. But it was no use, of course. The wolf was already there."
+    "They ran as fast as they could. But it was no use, of course. There was no-where to run to."
     t "Please... I-"
     $persistent.hVanished = True
     $persistent.goVanished = True
@@ -6164,11 +6177,11 @@ label thiefDisappears:
     $ renpy.block_rollback()
     show wolf9
     "And then there was nothing."
-    "The woods were silent "
-    "There was no-one there."
+    "The woods were empty."
+    "There was never anything there at all."
     "Just a ragged midnight cloak, stained red, that floated away in the breeze and was gone forever."
     call endStamp from _call_endStamp_7
-    "It was never seen or heard from again."
+    "It was never seen again."
     jump end
 
 #=====================THE TOAD'S STORY
@@ -11588,7 +11601,7 @@ label credits:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}Cartouche:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}{space=[ti]}10. {b}Note Paper:{/b} 'Old Notepaper Texture.' polkapebble, polkapebble.com.{vspace=[tx]}{space=[ti]}11. {b}Cover Wolf:{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}Cartouche:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}{space=[ti]}10. {b}Note Paper:{/b} 'Old Notepaper Texture.' polkapebble, polkapebble.com.{vspace=[tx]}{space=[ti]}11. {b}Cover Wolf:{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.{vspace=[tx]}{space=[ti]}12. {b}Post-it Note:{/b} 'Note Post-It Reminder' (2013), OpenClipart-Vectors, pixabay.com.", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
 
     show text "{b}FONTS:{/b}":

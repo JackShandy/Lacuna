@@ -854,11 +854,12 @@ screen gilgamesh: #Preparing the imagemap
 
 screen contents():
     #add "/images/contents.png"
-
+    #add "images/contents_note.png" #onlayer 101
 
     default screenvar = False
     imagemap:
-        #ground "contents.png"
+        #ground "contents_note.png"
+        #show image "contents_note.png"
         auto "images/contents_%s.png"
 
         #idle "c_name_idle.png"
@@ -880,6 +881,8 @@ screen contents():
 
         #They / Them pronoun button
         hotspot (338,453,64,38) hovered [ Play("sound", "audio/pencil.wav") ] action [Play("sound", "audio/page-flip.mp3"),Hide("text_input_screen"),SetVariable("persistent.nameSet", "True"),SetVariable("persistent.he", "they"),SetVariable("persistent.He", "They"),SetVariable("persistent.his", "their"),SetVariable("persistent.His", "Their"),SetVariable("persistent.him", "them"),SetVariable("persistent.Him", "Them"),SetVariable("persistent.Hes", "They are"),SetVariable("persistent.hes", "they are"),Jump("splashscreen2")]
+
+        #add "images/contents_note.png"
 
         #if screenvar == True:
         #persistent.nameSet = True:
