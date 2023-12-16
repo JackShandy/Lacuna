@@ -435,11 +435,11 @@ translate None strings:
 
     # renpy/common/00gui.rpy:378
     old "Are you sure you want to quit?"
-    new "Are you sure you want to quit?"
+    new "Are you sure you want to quit?\nYour progress will be saved."
 
     # renpy/common/00gui.rpy:379
     old "Are you sure you want to return to the main menu?\nThis will lose unsaved progress."
-    new "Are you sure you want to return to the main menu?\nThis will lose unsaved progress."
+    new "Are you sure you want to return to the main menu?\nYour progress will be saved."
 
     # renpy/common/00gui.rpy:380
     old "Are you sure you want to end the replay?"
@@ -1236,4 +1236,3 @@ translate None strings:
     # renpy/common/00console.rpy:929
     old "unescape: Disables escaping of unicode symbols in unicode strings and print it as is (default)."
     new "unescape: Disables escaping of unicode symbols in unicode strings and print it as is (default)."
-

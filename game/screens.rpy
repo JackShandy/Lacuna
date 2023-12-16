@@ -380,7 +380,9 @@ screen navigation():
         imagebutton auto "gui/mm_save_%s.png" xpos 22 ypos 283 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("save") hovered [ Play("sound", "audio/pencil.wav") ]
 
         #Load
-        imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), FileLoad("quitsave", slot=True) hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
+        imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), LoadMostRecent() hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
+        #Old
+        #imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), FileLoad("quitsave", slot=True) hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
 
         #Preferences
         imagebutton auto "gui/mm_pref2_%s.png" xpos 24 ypos 356 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
@@ -436,7 +438,19 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
+    if persistent.continueButton:
+        add gui.main_menu_background
+    else:
+        add gui.main_menu_noContinue_background
+
+    if persistent.vanished >=1:
+        add "gui/star1.png"
+    if persistent.vanished >=2:
+        add "gui/star2.png"
+    if persistent.vanished >=3:
+        add "gui/star3.png"
+    if persistent.vanished >=4:
+        add "gui/star4.png"
     #$ renpy.music.play("audio/rain.wav", channel="ambient1", loop=True)
     #$ renpy.music.play("audio/fire.mp3", channel="ambient2", loop=True) #fadein=0.5
     #renpy.sound.play("audio/rain.wav", loop=True)
@@ -449,9 +463,13 @@ screen main_menu():
     ## contents of the main menu are in the navigation screen.
     #use navigation
 
-    imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
+    if persistent.continueButton == False:
+        imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
 
-    imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), FileLoad("quitsave", slot=True) hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
+    if persistent.continueButton == True:
+        imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), LoadMostRecent() hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
+    #Old
+    #imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), FileLoad("quitsave", slot=True) hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
 
     imagebutton auto "gui/mm_preferences_%s.png" xpos 20 ypos 387 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
 

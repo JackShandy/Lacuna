@@ -2,9 +2,30 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1375: expected statement.
-    persistent.saveMessage = True
-                           ^
+File "game/script.rpy", line 1528: invalid syntax
+    persistent.continue = False
+                       ^
+    
+
+File "game/script.rpy", line 1562: invalid syntax
+    persistent.continue = True
+                       ^
+    
+
+File "game/script.rpy", line 10838: invalid syntax
+    persistent.continue = False
+                       ^
+    
+
+File "game/script.rpy", line 11342: invalid syntax
+    persistent.continue = False
+                       ^
+    
+
+File "game/script.rpy", line 11408: invalid syntax
+    persistent.continue = False
+                       ^
+    
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Wed Dec 13 18:44:54 2023
+Sat Dec 16 17:11:33 2023

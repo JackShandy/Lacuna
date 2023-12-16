@@ -90,6 +90,7 @@ define gui.title_text_size = 24
 
 ## The images used for the main and game menus.
 define gui.main_menu_background = "gui/main_menu.png"
+define gui.main_menu_noContinue_background = "gui/main_menu2.png"
 define gui.game_menu_background = "gui/game_menu.png"
 # if persistent.vanished >= 4:
 #     define gui.about_background = "gui/aboutEmpty.png"

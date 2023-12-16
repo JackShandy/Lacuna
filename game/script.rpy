@@ -2,8 +2,8 @@
 #Script File
 
 #=====================CUSTOM FUNCTIONS
-#==Registering channel for ambient noise (Fire, rain)
 init python:
+    #==Registering channel for ambient noise (Fire, rain)
     renpy.music.register_channel("ambient1","sfx",True,tight=True)
     renpy.music.register_channel("ambient2","sfx",True,tight=True)
     #This one is used for the city ambience when you open the door to the wolf
@@ -16,14 +16,23 @@ init python:
     #Disabling the middle mouse button
     config.keymap['hide_windows'].remove('mouseup_2')
 
-#==Purge Save Function
-#Note: This function deletes all of the player's save files. This is necessary to work with the meta-narrative stuff I'm trying to do.
-init python:
+    #==Purge Save Function
+    #Note: This function deletes all of the player's save files. This is necessary to work with the meta-narrative stuff I'm trying to do.
     def purge_saves():
         saves = renpy.list_slots()
         for save in saves:
             renpy.unlink_save(save)
         return
+init +1 python:
+    #==Load most recent save function
+    #Note: This function loads the last save made of any time (autosave, quit save, etc).
+    class LoadMostRecent(Action):
+            def __init__(self):
+                self.slot = renpy.newest_slot()
+            def __call__(self):
+                renpy.load(self.slot)
+            def get_sensitive(self):
+                return self.slot is not None
 
 #==Default player name (persistent)
 init python:
@@ -128,6 +137,9 @@ init:
     default persistent.name2Rand = renpy.random.randint(1,6)
     default persistent.name3Rand = renpy.random.randint(1,6)
     default persistent.name4Rand = renpy.random.randint(1,6)
+
+    #Whether the continue button appears, or the Begin button
+    default persistent.continueButton = False
 
 #=====================BASIC VARIABLES
 #These are the basic variables used throughout the game
@@ -1513,6 +1525,7 @@ label demoEnd:
     #$persistent._clear(progress=True)
     $persistent.nameSet = False
     $purge_saves()
+    $persistent.continueButton = False
     $quick_menu = False
     call hideAll from _call_hideAll_95
     $renpy.music.set_volume(0, delay=5.0, channel=u'ambient1')
@@ -1546,6 +1559,7 @@ label demoEnd:
 label start:
     #This makes the game save whenever you quit.
     #$ _quit_slot = "quitsave"
+    $persistent.continueButton = True
     show firelight animated onlayer over_screens zorder 99
     if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
@@ -1613,7 +1627,7 @@ label start:
                 #$persistent.goblinsVanished = True
                 $persistent.vanished +=1
                 $persistent.thiefVanished = True
-                $purge_saves()
+                #$purge_saves()
                 $ renpy.block_rollback()
                 jump thiefSolo
             "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
@@ -1722,7 +1736,7 @@ label start:
                     if persistent.vanished == 3:
                         $ renpy.block_rollback()
                         $persistent.mumVanished = True
-                        $purge_saves()
+                        #$purge_saves()
                         call musicSilence from _call_musicSilence
                         "But He was talking to Himself."
                         "He looked around, holding the child."
@@ -1776,7 +1790,7 @@ label start:
                         if persistent.vanished == 3:
                             $ renpy.block_rollback()
                             $persistent.mumVanished = True
-                            $purge_saves()
+                            #$purge_saves()
                             call musicSilence from _call_musicSilence_1
                             "But He was talking to Himself."
                             "He looked around, holding the child."
@@ -1831,7 +1845,7 @@ label start:
                         if persistent.vanished == 3:
                             $ renpy.block_rollback()
                             $persistent.mumVanished = True
-                            $purge_saves()
+                            #$purge_saves()
                             call musicSilence from _call_musicSilence_2
                             "But She was talking to Herself."
                             "She looked around, holding the child."
@@ -3943,7 +3957,7 @@ label thief2:
         #$persistent.goblinsVanished = True
         $persistent.vanished +=1
         $persistent.thiefVanished = True
-        $purge_saves()
+        #$purge_saves()
         $ renpy.block_rollback()
         "The night was dark and quiet. You thought you heard something rustling in the bushes, outside your line of sight. A sound, like something moving through the forest."
         "But it must have been the wind."
@@ -5175,7 +5189,7 @@ label mushroomDisappears:
     $persistent.vanished +=1
     $persistent.mushroomVanished = True
     $persistent.starsVanished = True
-    $purge_saves()
+    #$purge_saves()
     $ renpy.block_rollback()
 
     show wolf13 onlayer transient zorder 100
@@ -5682,7 +5696,7 @@ label mushroomSolo:
         $persistent.vanished +=1
         $persistent.mushroomVanished = True
         $persistent.starsVanished = True
-        $purge_saves()
+        #$purge_saves()
         $ renpy.block_rollback()
         show wolf14 onlayer transient zorder 100
         "It was pitch black. No stars or moon brightened that abyss."
@@ -6178,7 +6192,7 @@ label thiefDisappears:
     $persistent.shVanished = True
     $persistent.thiefVanished = True
     $persistent.vanished +=1
-    $purge_saves()
+    #$purge_saves()
     $ renpy.block_rollback()
     show wolf9
     "And then there was nothing."
@@ -6988,7 +7002,7 @@ label witchDisappears:
     "It heard nothing."
     $persistent.vanished +=1
     $persistent.witchVanished = True
-    $purge_saves()
+    #$purge_saves()
     $ renpy.block_rollback()
 
     show wolf12 onlayer transient zorder 100
@@ -7016,7 +7030,7 @@ label toadSolo:
     "The squash rattled and bumped down the road with haste. The toad attempted some witty anecdotes while you pretended to listen."
     $persistent.vanished +=1
     $persistent.toadVanished = True
-    $purge_saves()
+    #$purge_saves()
     $ renpy.block_rollback()
     call hideAll from _call_hideAll_168
     show manorextbg at artPos
@@ -8092,7 +8106,7 @@ label toadDisappears:
     show wolf6 onlayer transient zorder 100
     $persistent.vanished +=1
     $persistent.toadVanished = True
-    $purge_saves()
+    #$purge_saves()
     $ renpy.block_rollback()
     "And after all, now that they thought about it, what was there to dwell on? There was no-one there."
     "The streets were empty. There was never anything there at all."
@@ -8446,7 +8460,7 @@ label witchSoloFinale:
     "Then the door closed, and your body turned around."
     $persistent.vanished +=1
     $persistent.witchVanished = True
-    $purge_saves()
+    #$purge_saves()
     $ renpy.block_rollback()
 
     call hideAll from _call_hideAll_182
@@ -9429,7 +9443,7 @@ label wolf:
                 "If you tapped the phone, turn to page 347." if persistent.phoneOn:
                     #TK: This is a very janky solution to a problem. If you load an earlier save, the old audio will still play (not the new silence).
                     #This will "fix" the problem by deleting all your old saves. Ideally I will eventually fix this.
-                    $purge_saves()
+                    #$purge_saves()
                     #TK: Phone isn't working, must figure out how to fix
                     play sound phoneClick
                     $renpy.music.set_volume(0, channel=u'ambient1')
@@ -9873,7 +9887,7 @@ label wolf:
                     #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
                     $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
                     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
-                    $purge_saves()
+                    #$purge_saves()
                     call musicReturn from _call_musicReturn_26
                     play sound thunder
                     call hideAll from _call_hideAll_209
@@ -9894,7 +9908,7 @@ label wolf:
                     "You have full and total control."
                     jump wish
                 else:
-                    $purge_saves()
+                    #$purge_saves()
                     $ renpy.block_rollback()
                     "No. That is not my name."
                     "I'm sorry. I wish you did know. It would be a better ending."
@@ -10700,7 +10714,7 @@ label wolfEnd:
     show wolf12 onlayer transient zorder 100
     "{vspace=12}{space=9}And then there was rest in the land."
     $persistent.bookEnd = True
-    $purge_saves()
+    #$purge_saves()
     $renpy.quit()
 
 #Ending where you choose to live in the book forever
@@ -10821,6 +10835,7 @@ label newStoryFinale:
     "The road was long, and the forest was dark, but a smile broke out on your face."
     "You were home."
     $purge_saves()
+    $persistent.continueButton = False
     pause (10.0)
     #TK: Include this text saying true ending? or not?
     # show text "{color=#FFFFFF}True Ending.{/color}" with fade:
@@ -11324,6 +11339,7 @@ label burnEnd:
     show black onlayer over_screens zorder 98
     #hide bookBurnMovie with fade
     $purge_saves()
+    $persistent.continueButton = False
     show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" onlayer over_screens zorder 101 with fade:
         xalign 0.5
         yalign 0.5
@@ -11389,7 +11405,7 @@ label end:
     #This clears the variable and deletes the quitsave each time you end the game.
     #$ renpy.unlink_save("quitsave")
     #$ _quit_slot = None
-
+    $persistent.begin = False
     #play sound pageFlip
     #Note: I delete all the player's save files at this point to allow persistence to work.
     $purge_saves()
