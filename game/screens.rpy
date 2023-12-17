@@ -367,38 +367,40 @@ screen navigation():
         else:
             add "gui/bookmark.png"
         if main_menu:
-            add "gui/saveCrossOff.png"
+            #add "gui/saveCrossOff.png"
             imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), Return() hovered [ Play("sound", "audio/pencil.wav") ]
-
-
         else:
             #imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start("splashscreen") hovered [ Play("sound", "audio/pencil.wav") ]
             imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), MainMenu() hovered [ Play("sound", "audio/pencil.wav") ]
         #Main Menu
 
         #Save
-        imagebutton auto "gui/mm_save_%s.png" xpos 22 ypos 283 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("save") hovered [ Play("sound", "audio/pencil.wav") ]
+        #imagebutton auto "gui/mm_save_%s.png" xpos 22 ypos 283 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("save") hovered [ Play("sound", "audio/pencil.wav") ]
 
         #Load
-        imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), LoadMostRecent() hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
+        #imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), LoadMostRecent() hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
         #Old
         #imagebutton auto "gui/mm_save_%s.png" xpos 24 ypos 319 focus_mask True action Play("sound", "audio/page-flip.mp3"), FileLoad("quitsave", slot=True) hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
 
-        #Preferences
-        imagebutton auto "gui/mm_pref2_%s.png" xpos 24 ypos 356 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
+        #Return button
+        imagebutton auto "gui/mm_return_%s.png" xpos 24 ypos 279 focus_mask True action Play("sound", "audio/page-flip.mp3"), Return() hovered [ Play("sound", "audio/pencil.wav") ]
 
-        #About
-        imagebutton auto "gui/mm_about2_%s.png" xpos 22 ypos 389 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
 
-        #Help
-        imagebutton auto "gui/mm_help2_%s.png" xpos 23 ypos 430 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
+        #Preferences #old ypos: 356
+        imagebutton auto "gui/mm_pref2_%s.png" xpos 24 ypos 316 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("preferences") hovered [ Play("sound", "audio/pencil.wav") ]
+
+        #About old ypos: 389
+        imagebutton auto "gui/mm_about2_%s.png" xpos 22 ypos 355 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("about") hovered [ Play("sound", "audio/pencil.wav") ]
+
+        #Help old ypos: 430
+        imagebutton auto "gui/mm_help2_%s.png" xpos 23 ypos 393 focus_mask True action Play("sound", "audio/page-flip.mp3"), ShowMenu("help") hovered [ Play("sound", "audio/pencil.wav") ]
 
 
         #TK: Look at the game on smartphones, figure it out
         if renpy.variant("pc"):
 
-            #Quit
-            imagebutton auto "gui/mm_quit2_%s.png" xpos 24 ypos 466 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
+            #Quit old ypos: 466
+            imagebutton auto "gui/mm_quit2_%s.png" xpos 24 ypos 430 focus_mask True action Play("sound", "audio/page-flip.mp3"), Quit(confirm=not main_menu) hovered [ Play("sound", "audio/pencil.wav") ]
 
             #TK: Remove commented out sections
 
@@ -544,6 +546,8 @@ style main_menu_version:
 ## this screen is intended to be used with one or more children, which are
 ## transcluded (placed) inside it.
 
+#    use game_menu(_("Preferences"), scroll="viewport"):
+#screen game_menu("Preferences", scroll="viewport", yinitial=0.0):
 screen game_menu(title, scroll=None, yinitial=0.0):
 
     style_prefix "game_menu"
@@ -601,10 +605,10 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
     use navigation
     #{color=#000000}{/color}
-    textbutton _("{size=+5}Return{/size}"):
-        style "return_button"
+    #textbutton _("{size=+5}Return{/size}"):
+        #style "return_button"
 
-        action Return()
+        #action Return()
 
     label title
 
@@ -920,147 +924,147 @@ screen contents():
 ## https://www.renpy.org/doc/html/screen_special.html#save https://
 ## www.renpy.org/doc/html/screen_special.html#load
 
-screen save():
-
-    tag menu
-
-    use file_slots(_("Save"))
-
-
-screen load():
-
-    tag menu
-
-    use file_slots(_("Load"))
+# screen save():
+#
+#     tag menu
+#
+#     use file_slots(_("Save"))
 
 
-screen file_slots(title):
-
-    #Background image
-    add "/gui/save_menu.png"
-
-    default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Automatic saves"), quick=_("Quick saves"))
-
-    use game_menu(title):
-
-        fixed:
-
-            ## This ensures the input will get the enter event before any of the
-            ## buttons do.
-            order_reverse True
-
-            ## The page name, which can be edited by clicking on a button.
-            button:
-                style "page_label"
-                #TK: Change? Maybe it shouldn't be possible to edit the page name?
-                key_events True
-                xalign 0.5
-                action page_name_value.Toggle()
-
-                input:
-                    style "page_label_text"
-                    value page_name_value
-
-            ## The grid of file slots.
-            grid gui.file_slot_cols gui.file_slot_rows:
-                #style_prefix "page"
-                style_prefix "slot"
-                xalign 0#0.5
-                xpos 40
-                yalign 0 #0.5
-                ypos 218
-
-                spacing gui.slot_spacing
-
-                for i in range(gui.file_slot_cols * gui.file_slot_rows):
-
-                    $ slot = i + 1
-
-                    button:
-
-                        action [FileAction(slot), Play("sound", "audio/pencil-2.mp3")]
-
-                        has vbox
-
-                        #add FileScreenshot(slot) xalign 0.5
-
-                        text FileTime(slot, format=_("[persistent.povname]"), empty=_("")): #%A,
-                        #text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("")):
-                            style "slot_time_text"
-                            font "fonts/journal.ttf"#gui.choice_button_text_font
-                            ypos 10
-                            xpos 60
-                            size 20
-
-                        text FileTime(slot, format=_("{#file_time}%b %d. %H:%M"), empty=_("")): #%A,
-                        #text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("")):
-                            style "slot_time_text"
-                            xpos 237
-                            ypos -15
-                            font "fonts/journal.ttf"#gui.choice_button_text_font
-                            size 20
-
-                        #text FileSaveName(slot):
-                            #style "slot_name_text"
-
-                        key "save_delete" action FileDelete(slot)
-
-            ## Buttons to access other pages.
-            hbox:
-                style_prefix "page"
-
-                xalign 0.5
-                yalign 1.0
-
-                spacing gui.page_spacing
-
-                textbutton _("<") action FilePagePrevious()
-
-                if config.has_autosave:
-                    textbutton _("{#auto_page}A") action FilePage("auto")
-
-                if config.has_quicksave:
-                    textbutton _("{#quick_page}Q") action FilePage("quick")
-
-                ## range(1, 10) gives the numbers from 1 to 9.
-                for page in range(1, 10):
-                    textbutton "[page]" action FilePage(page)
-
-                textbutton _(">") action FilePageNext()
+# screen load():
+#
+#     tag menu
+#
+#     use file_slots(_("Load"))
 
 
-style page_label is gui_label
-style page_label_text is gui_label_text
-style page_button is gui_button
-style page_button_text is gui_button_text
-
-style slot_button is gui_button
-style slot_button_text is gui_button_text
-style slot_time_text is slot_button_text
-style slot_name_text is slot_button_text
-
-
-
-style page_label:
-    xpadding 24
-    ypadding 2
-
-style page_label_text:
-    text_align 0.5
-    layout "subtitle"
-    hover_color gui.hover_color
-
-style page_button:
-    properties gui.button_properties("page_button")
-
-style page_button_text:
-    properties gui.button_text_properties("page_button")
-
-style slot_button:
-    properties gui.button_properties("slot_button")
-
-style slot_button_text:
-    properties gui.button_text_properties("slot_button")
+# screen file_slots(title):
+#
+#     #Background image
+#     add "/gui/save_menu.png"
+#
+#     default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Automatic saves"), quick=_("Quick saves"))
+#
+#     use game_menu(title):
+#
+#         fixed:
+#
+#             ## This ensures the input will get the enter event before any of the
+#             ## buttons do.
+#             order_reverse True
+#
+#             ## The page name, which can be edited by clicking on a button.
+#             button:
+#                 style "page_label"
+#                 #TK: Change? Maybe it shouldn't be possible to edit the page name?
+#                 key_events True
+#                 xalign 0.5
+#                 action page_name_value.Toggle()
+#
+#                 input:
+#                     style "page_label_text"
+#                     value page_name_value
+#
+#             ## The grid of file slots.
+#             grid gui.file_slot_cols gui.file_slot_rows:
+#                 #style_prefix "page"
+#                 style_prefix "slot"
+#                 xalign 0#0.5
+#                 xpos 40
+#                 yalign 0 #0.5
+#                 ypos 218
+#
+#                 spacing gui.slot_spacing
+#
+#                 for i in range(gui.file_slot_cols * gui.file_slot_rows):
+#
+#                     $ slot = i + 1
+#
+#                     button:
+#
+#                         action [FileAction(slot), Play("sound", "audio/pencil-2.mp3")]
+#
+#                         has vbox
+#
+#                         #add FileScreenshot(slot) xalign 0.5
+#
+#                         text FileTime(slot, format=_("[persistent.povname]"), empty=_("")): #%A,
+#                         #text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("")):
+#                             style "slot_time_text"
+#                             font "fonts/journal.ttf"#gui.choice_button_text_font
+#                             ypos 10
+#                             xpos 60
+#                             size 20
+#
+#                         text FileTime(slot, format=_("{#file_time}%b %d. %H:%M"), empty=_("")): #%A,
+#                         #text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("")):
+#                             style "slot_time_text"
+#                             xpos 237
+#                             ypos -15
+#                             font "fonts/journal.ttf"#gui.choice_button_text_font
+#                             size 20
+#
+#                         #text FileSaveName(slot):
+#                             #style "slot_name_text"
+#
+#                         key "save_delete" action FileDelete(slot)
+#
+#             ## Buttons to access other pages.
+#             hbox:
+#                 style_prefix "page"
+#
+#                 xalign 0.5
+#                 yalign 1.0
+#
+#                 spacing gui.page_spacing
+#
+#                 textbutton _("<") action FilePagePrevious()
+#
+#                 if config.has_autosave:
+#                     textbutton _("{#auto_page}A") action FilePage("auto")
+#
+#                 if config.has_quicksave:
+#                     textbutton _("{#quick_page}Q") action FilePage("quick")
+#
+#                 ## range(1, 10) gives the numbers from 1 to 9.
+#                 for page in range(1, 10):
+#                     textbutton "[page]" action FilePage(page)
+#
+#                 textbutton _(">") action FilePageNext()
+#
+#
+# style page_label is gui_label
+# style page_label_text is gui_label_text
+# style page_button is gui_button
+# style page_button_text is gui_button_text
+#
+# style slot_button is gui_button
+# style slot_button_text is gui_button_text
+# style slot_time_text is slot_button_text
+# style slot_name_text is slot_button_text
+#
+#
+#
+# style page_label:
+#     xpadding 24
+#     ypadding 2
+#
+# style page_label_text:
+#     text_align 0.5
+#     layout "subtitle"
+#     hover_color gui.hover_color
+#
+# style page_button:
+#     properties gui.button_properties("page_button")
+#
+# style page_button_text:
+#     properties gui.button_text_properties("page_button")
+#
+# style slot_button:
+#     properties gui.button_properties("slot_button")
+#
+# style slot_button_text:
+#     properties gui.button_text_properties("slot_button")
 
 
 ## Preferences screen ##########################################################

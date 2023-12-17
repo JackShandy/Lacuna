@@ -15,6 +15,8 @@ init python:
 
     #Disabling the middle mouse button
     config.keymap['hide_windows'].remove('mouseup_2')
+    #Disabling the right mouse button
+    #config.keymap['hide_windows'].remove('mouseup_2')
 
     #==Purge Save Function
     #Note: This function deletes all of the player's save files. This is necessary to work with the meta-narrative stuff I'm trying to do.
@@ -42,6 +44,8 @@ init python:
 #=====================PERSISTENT DATA
 #This data carries over between save files and games, permanently.
 init:
+    #Sets the default game menu screen to be Preferences
+    default _game_menu_screen = "preferences"
 
     #Persistent Player Name
     default persistent.povname = ""

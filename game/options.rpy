@@ -56,6 +56,10 @@ define config.autosave_on_quit = True
 #define config.autosave_frequency = None
 
 
+#works
+#define _game_menu_screen = "save"
+
+
 #else:
     #define config.name = _("TestFailed.") #
 

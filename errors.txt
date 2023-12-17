@@ -2,30 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1528: invalid syntax
-    persistent.continue = False
-                       ^
-    
-
-File "game/script.rpy", line 1562: invalid syntax
-    persistent.continue = True
-                       ^
-    
-
-File "game/script.rpy", line 10838: invalid syntax
-    persistent.continue = False
-                       ^
-    
-
-File "game/script.rpy", line 11342: invalid syntax
-    persistent.continue = False
-                       ^
-    
-
-File "game/script.rpy", line 11408: invalid syntax
-    persistent.continue = False
-                       ^
-    
+File "game/options.rpy", line 59: invalid syntax
+    “preferences”
+     ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Dec 16 17:11:33 2023
+Sun Dec 17 18:24:51 2023
