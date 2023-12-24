@@ -5147,15 +5147,105 @@ label thiefStory:
 
 #==========Mushroom Disappears
 label mushroomDisappears:
+    # call hideAll from _call_hideAll_151
+    # show nightbg at artPos
+    # stop music fadeout 15.0
+    # "You lay down to join her and looked up at the sky above. A great, long sigh slowly eased out of her."
+    # m "Have you ever looked back at your life and tried... tried to calculate the sheer volume of it that you've wasted? The just ungodly amount of time that you've let slip away?"
+    # call hideAll from _call_hideAll_152
+    # show night2bg at artPos
+    # m "Of course I don't mean the time spent having picnics or afternoon naps, or watching the sky. That time isn't wasted."
+    # m "I mean the time spent doing things you don't want to do, for people you don't care about."
+    # call hideAll from _call_hideAll_153
+    # show night3bg at artPos
+    # m "Those long decades spent paying rent, attending meetings, hunched over desks, travelling to work and back, doing all those petty grinding little tasks every day..."
+    # call hideAll from _call_hideAll_154
+    # show night4bg at artPos
+    # m "It's horrifying. How incalculable a waste."
+    # "There was the sound of scratching. It seemed to come from somewhere inside you."
+    # call hideAll from _call_hideAll_155
+    # show night5bg at artPos
+    # m "How many minutes and hours and days and years have vanished into that black yawning pit. It's impossible to even fit the number into my mind. It's nightmarish. The stars in the sky. The grains of sand on the beach... I can't even begin to take it in."
+    # call hideAll from _call_hideAll_156
+    # show night6bg at artPos
+    # m "But every time you think about it, every time that number starts to creep into your mind, you think \"There's still time,\" don't you?"
+    # "The wine in your glasses rippled into complicated, twisting patterns. Like the entrails of beasts, from which omens might be read."
+    # call hideAll from _call_hideAll_157
+    # show night7bg at artPos
+    # m "There's still time to chase that dream, there are still years left to me, I'll make it someday, I can turn this around, it'll all work out in the end! I'll start tomorrow."
+    # call hideAll from _call_hideAll_158
+    # show night8bg at artPos
+    # m "But there are no tomorrows left."
+    # call hideAll from _call_hideAll_159
+    # show night9bg at artPos
+    # "The earth shook beneath you. You almost thought you heard the impact of great footfalls. Almost upon you now."
+    # m "I can't say that anymore. It's done. The hours I spent are all the hours I'll ever have."
+    # call hideAll from _call_hideAll_160
+    # show night10bg at artPos
+    # m "And... all throughout my life, the moments where I did something I really enjoyed were like small gasps of air between years of drowning."
+    # "The night was getting darker and darker."
+    # call hideAll from _call_hideAll_161
+    # show night11bg at artPos
+    # m "I had to plan them and save up for them and spend every day just trying to hold out for the next one. Those tiny, tiny moments where I got to be alive."
+    # call hideAll from _call_hideAll_162
+    # show night12bg at artPos
+    # "Something was very close to you now. You didn't dare look. There was a smell like something rotting. A sound like something coiling in the grass."
+    # m "All I have left now is that number. That percentage of waste."
+    # play audio wolfApproaches
+    # #stop ambient2 fadeout 2.0
+    # #stop ambient1 fadeout 20.0
+    # call hideAll from _call_hideAll_163
+    # show darkforestbg at artPos
+    # call hideAll from _call_hideAll_164
+    # show night13bg at artPos
+    # m "It'll never get any smaller. It's done. It's all done."
+    # "Tears ran down her cheeks. She made no effort to hide them anymore. "
+    # call hideAll from _call_hideAll_165
+    # show night14bg at artPos
+    # m "Hold me, please."
+    # "You tentatively put your arm around her, and she nestled into your shoulder and wept."
+    # "You held her tight as you stared out into the night sky."
+    # $persistent.vanished +=1
+    # $persistent.mushroomVanished = True
+    # $persistent.starsVanished = True
+    # #$purge_saves()
+    # $ renpy.block_rollback()
+    # show wolf14 onlayer transient zorder 100
+    # "It was pitch black. No stars or moon brightened that abyss."
+    # "You reached for the wine bottle, and realised there was none."
+    # "There were no wineglasses. There was no food."
+    # "You felt the touch of moss underneath you. There was no blanket."
+    # "You looked down."
+    # "You were holding nothing at all. Your arms were embracing thin air."
+    # "Why were you here?"
+    # "You must have needed a rest. A night outdoors. "
+    # "All of us need some time to ourselves every now and then, don't we?"
+    # "No harm in that."
+    # "You stood up. Brushed away the moss. Breathed in the cool night air."
+    # "You felt warm, full, and sad, for no reason you could name."
+    # "Finally you began the long walk home in silence, with the dark night sky looming above you."
+    # "There's nothing else left to tell."
+    # "That's the end."
+    # call endStamp from _call_endStamp_42
+    # "Run away with it now, as fast as you can."
+    # jump end
+
+
+
+
+
+
+
     $ renpy.block_rollback()
     call hideAll from _call_hideAll_236
     play sound pageFlip
     show mushroomcavebg at artPos
 
-    "After you left, the mushroom looked around at the chaos of her plundered domain and shrugged."
+    "After you fled with the thief, the mushroom looked around at the chaos of her plundered domain and shrugged."
     #Have her go outside to look for you
     #Then the stars blink out, one by one
     #She flees into the cavern. Things disappear from the cavern, one by one.
+
     m "Oh well."
     m2 "Nothing to do about it now."
     "The last of the treasure fell onto the floor."
@@ -8018,7 +8108,7 @@ label toadDisappears:
     f "I-I had best not outstay my welcome. Prickle! Crawl!"
     call hideAll from _call_hideAll_244
     show darkforestbg at artPos
-    "He rushed outside, dove into the puddle and emerged into the darkness of the forest."
+    "He rushed outside, dove down through the puddle and emerged into the darkness of the forest."
     f "Shudder! Wink! Are you there?"
     "There was no reply. No-one was there."
     "He searched forward and found the remains of his squash carriage. "
@@ -8038,7 +8128,7 @@ label toadDisappears:
     "At last he saw the outskirts of town before him, and thanked G-d in heaven for the blessed sight."
     call hideAll from _call_hideAll_247
     show townextbg at artPos
-    "The people of town were there, cleaning up after the feast."
+    "The people of the village were there, cleaning up after the feast."
     #gmVanished
     #goVanished
     #shVanished
@@ -8112,6 +8202,7 @@ label toadDisappears:
     $persistent.toadVanished = True
     #$purge_saves()
     $ renpy.block_rollback()
+
     "And after all, now that they thought about it, what was there to dwell on? There was no-one there."
     "The streets were empty. There was never anything there at all."
     #"Forget my own head next, they said to themselves."
@@ -11409,7 +11500,7 @@ label end:
     #This clears the variable and deletes the quitsave each time you end the game.
     #$ renpy.unlink_save("quitsave")
     #$ _quit_slot = None
-    $persistent.begin = False
+    $persistent.continueButton = False
     #play sound pageFlip
     #Note: I delete all the player's save files at this point to allow persistence to work.
     $purge_saves()
