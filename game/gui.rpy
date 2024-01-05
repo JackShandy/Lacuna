@@ -52,7 +52,6 @@ define gui.hover_muted_color = u'#eac199'
 define gui.text_color = u'#404040'
 define gui.interface_text_color = u'#404040'
 
-
 ## Fonts and Font Sizes ########################################################
 
 ## The font used for in-game text.
@@ -221,7 +220,8 @@ define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0#0.5
 #define gui.choice_button_text_idle_color = "#cccccc"
 #define gui.choice_button_text_hover_color = "#ffffff"
-#define gui.choice_button_text_insensitive_color = "#444444"
+define gui.choice_button_text_insensitive_color = "#aaaaaa7f"
+#define gui.text_color = u'#aaaaaa7f'
 
 
 ## File Slot Buttons ###########################################################

@@ -1,22 +1,36 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00gamemenu.rpy", line 176, in script
-    jump expression _game_menu_screen
-ScriptError: could not find label 'Preferences'.
+  File "game/options.rpy", line 56, in script
+    define config.autosave_callback = Notify("Autosaved.")
+  File "game/options.rpy", line 56, in script
+    define config.autosave_callback = Notify("Autosaved.")
+  File "renpy/common/000namespaces.rpy", line 9, in set
+    setattr(self.nso, name, value)
+Exception: config.autosave_callback is not a known configuration variable.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00gamemenu.rpy", line 176, in script
-    jump expression _game_menu_screen
-  File "renpy/ast.py", line 1711, in execute
-    rv = renpy.game.script.lookup(target)
-  File "renpy/script.py", line 910, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'Preferences'.
+  File "renpy/bootstrap.py", line 326, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 515, in main
+    renpy.game.context().run(node)
+  File "game/options.rpy", line 56, in script
+    define config.autosave_callback = Notify("Autosaved.")
+  File "game/options.rpy", line 56, in script
+    define config.autosave_callback = Notify("Autosaved.")
+  File "renpy/ast.py", line 2164, in execute
+    self.set()
+  File "renpy/ast.py", line 2179, in set
+    ns.set(self.varname, value)
+  File "renpy/common/000namespaces.rpy", line 9, in set
+    setattr(self.nso, name, value)
+  File "renpy/defaultstore.py", line 106, in __setattr__
+    raise Exception('config.%s is not a known configuration variable.' % (name))
+Exception: config.autosave_callback is not a known configuration variable.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 The Wolf. 1.0
-Sun Dec 17 18:30:45 2023
+Fri Jan  5 17:10:17 2024

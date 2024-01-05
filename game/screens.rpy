@@ -221,9 +221,9 @@ screen choice(items):
 
         vbox:
             for i in items:
-                textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
-
-
+                #textbutton i.caption action i.action activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
+                #Force an autosave and trigger renpy fixed choice each time the player makes a choice (which locks them in to the path they have chosen)
+                textbutton i.caption action [i.action, renpy.force_autosave(), renpy.fix_rollback()] activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
 
 
 

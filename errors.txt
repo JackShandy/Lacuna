@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/options.rpy", line 59: invalid syntax
-    “preferences”
-     ^
+File "game/screens.rpy", line 226: 'call' is not a keyword argument or valid child of the textbutton statement.
+    textbutton i.caption action [i.action, renpy.force_autosave(), renpy.fix_rollback()] call afterChoice activate_sound "audio/page-flip.mp3" hover_sound "audio/pencil.wav"
+                                                                                             ^
 
-Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Dec 17 18:24:51 2023
+Ren'Py Version: Ren'Py 8.1.3.23091805
+Fri Jan  5 18:01:45 2024

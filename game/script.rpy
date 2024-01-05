@@ -1586,6 +1586,7 @@ label start:
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
         show nightbg at artPos
+
         if persistent.bookEnd:
             jump newStoryFinale
         if persistent.vanished == 0:
@@ -1620,41 +1621,52 @@ label start:
             jump allVanishedEnd
 
         #Test Menu
-        menu:
-            "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
-            "Jump to the Thief finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
-                jump thiefFinale
-            "Jump to the Thief path (with the Mushroom disappeared)." if persistent.mushroomVanished and not persistent.thiefVanished:
-                $persistent.hVanished = True
-                $persistent.goVanished = True
-                $persistent.shVanished = True
-                #$persistent.goblinsVanished = True
-                $persistent.vanished +=1
-                $persistent.thiefVanished = True
-                #$purge_saves()
-                $ renpy.block_rollback()
-                jump thiefSolo
-            "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
-                jump toadFinale
-            "Jump to the Toad path (with the Witch disappeared)." if persistent.witchVanished and not persistent.toadVanished:
-                jump toadSolo
-            "Jump to the Witch finale." if not persistent.toadVanished and not persistent.witchVanished:
-                jump witchFinale
-            "Jump to the Witch path (with the Toad disappeared)." if persistent.toadVanished and not persistent.witchVanished:
-                jump witchSolo
-            "Jump to the Mushroom finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
-                jump mushroomFinale
-            "Jump to the Mushroom path (with the Thief disappeared)." if persistent.thiefVanished and not persistent.mushroomVanished:
-                jump mushroomSolo
-
-            "Continue.":
-                "DEV NOTE: Continuing with the normal story."
+        # menu:
+        #     "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
+        #     "Jump to the Thief finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
+        #         #$renpy.fix_rollback()
+        #         jump thiefFinale
+        #     "Jump to the Thief path (with the Mushroom disappeared)." if persistent.mushroomVanished and not persistent.thiefVanished:
+        #         $persistent.hVanished = True
+        #         $persistent.goVanished = True
+        #         $persistent.shVanished = True
+        #         #$persistent.goblinsVanished = True
+        #         $persistent.vanished +=1
+        #         $persistent.thiefVanished = True
+        #         #$purge_saves()
+        #         $ renpy.block_rollback()
+        #         #$renpy.fix_rollback()
+        #         jump thiefSolo
+        #     "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
+        #         #$renpy.fix_rollback()
+        #         jump toadFinale
+        #     "Jump to the Toad path (with the Witch disappeared)." if persistent.witchVanished and not persistent.toadVanished:
+        #         #$renpy.fix_rollback()
+        #         jump toadSolo
+        #     "Jump to the Witch finale." if not persistent.toadVanished and not persistent.witchVanished:
+        #         #$renpy.fix_rollback()
+        #         jump witchFinale
+        #     "Jump to the Witch path (with the Toad disappeared)." if persistent.toadVanished and not persistent.witchVanished:
+        #         #$renpy.fix_rollback()
+        #         jump witchSolo
+        #     "Jump to the Mushroom finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
+        #         #$renpy.fix_rollback()
+        #         jump mushroomFinale
+        #     "Jump to the Mushroom path (with the Thief disappeared)." if persistent.thiefVanished and not persistent.mushroomVanished:
+        #         #$renpy.fix_rollback()
+        #         jump mushroomSolo
+        #
+        #     "Continue.":
+        #         #$renpy.fix_rollback()
+        #         "DEV NOTE: Continuing with the normal story."
 
 
     # "This maybe happened, or maybe did not."
     # "The time is long past, and much is forgot."
     # "Back in the old days, when wishing worked, you lived in a lovely cottage on the edge of a magical forest."
     # "Many strange figures lived in the woods around your house."
+
+
         call hideAll from _call_hideAll
         show forest4bg at artPos
         show scribble2 onlayer transient zorder 100

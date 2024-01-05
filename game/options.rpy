@@ -51,10 +51,20 @@ elif persistent.vanished == 4:
 
 #The game has an autosave feature
 define config.has_autosave = True
-define config.autosave_on_choice = True
+#define config.autosave_on_choice = True
 define config.autosave_on_quit = True
-#define config.autosave_frequency = None
+#define config.autosave_callback = Notify("Autosaved.")
+#define config.autosave_callback = renpy.fix_rollback()
 
+#define config.say_arguments_callback = renpy.fix_rollback()
+#$ renpy.force_autosave()
+#renpy.fix_rollback()
+#define config.autosave_callback = renpy.fix_rollback()#Notify("Autosaved.")
+
+#
+#define config.autosave_frequency = None
+# Disabling the renpy rollback feature entirely
+#define config.rollback_enabled = False
 
 #works
 #define _game_menu_screen = "save"
