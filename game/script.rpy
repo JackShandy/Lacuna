@@ -69,7 +69,7 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 0
+    default persistent.vanished = 1
 
     #Who has disappeared specifically - main cast
     default persistent.toadVanished = False
@@ -1028,7 +1028,10 @@ init:
     define audio.bookClose = "audio/bookClose.mp3"
     define audio.bookClose2 = "audio/bookClose2.mp3"
     define audio.bookClose3 = "audio/bookClose3.mp3"
-
+    define audio.bellTolls = "audio/bell.mp3"
+    define audio.bellTolls2 = "audio/bell2.mp3"
+    define audio.bellTolls3 = "audio/bell3.mp3"
+    define audio.bellTolls4 = "audio/bell4.mp3"
     define audio.whiteNoise = "audio/whiteNoiseEnding.mp3"
     define audio.thunder = "audio/thunder.mp3"
 
@@ -1071,6 +1074,16 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
             persistent.set_volumes = True
 
             _preferences.volumes['music'] *= .50
+
+    if persistent.phoneOn and persistent.vanished <=3:
+        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
+        #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+    elif persistent.bookEnd:
+        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient3", loop=True)
+        #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
+        $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+
 
     if persistent.bookEnd:
         $ config.window_title = _("")
@@ -1143,7 +1156,6 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
     if persistent.bookEnd:
         show coverFinaleA with dissolve
     else:
-        #Shows a random cover each time. 13.32% chance of a variant cover.
         if persistent.vanished != 4:
             show coverBase
         if persistent.witchVanished == False:
@@ -1154,27 +1166,41 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
             show coverThief
         if persistent.mushroomVanished == False:
             show coverMushroom
+        #$ renpy.pause(4, hard=True)
 
-        if persistent.vanished == 1:
-            show coverWolf1
-        elif persistent.vanished == 2:
-            show coverWolf2
-        elif persistent.vanished == 3:
-            show coverWolf3
-        elif persistent.vanished == 4:
-            show coverWolf4
 
+        #TK TEST
+        #hide coverThief with Dissolve(4)
+        #hide coverToad with Dissolve(4)
+        #hide coverMushroom with Dissolve(4)
         #show coverOverlay
         with dissolve
 
-    if persistent.phoneOn and persistent.vanished <=3:
-        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
-        #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
-        $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
-    elif persistent.bookEnd:
-        $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient3", loop=True)
-        #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
-        $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+        if persistent.vanished == 1:
+            play sound bellTolls
+            show coverWolf1
+            hide coverWitch
+        elif persistent.vanished == 2:
+            play sound bellTolls2
+            show coverWolf2
+            hide coverWitch
+        elif persistent.vanished == 3:
+            play sound bellTolls3
+            show coverWolf3
+            hide coverWitch
+        elif persistent.vanished == 4:
+            play sound bellTolls4
+            show coverWolf4
+            hide coverWitch
+
+        with Dissolve (5)
+
+
+
+
+
+
+
     #else:
         #$renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True, relative_volume=0)
         #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
@@ -1577,7 +1603,6 @@ label start:
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
-
         #"[sfw]"
         #scene bg page
         #show hand onlayer transient:

@@ -1,36 +1,34 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/options.rpy", line 56, in script
-    define config.autosave_callback = Notify("Autosaved.")
-  File "game/options.rpy", line 56, in script
-    define config.autosave_callback = Notify("Autosaved.")
-  File "renpy/common/000namespaces.rpy", line 9, in set
-    setattr(self.nso, name, value)
-Exception: config.autosave_callback is not a known configuration variable.
+  File "renpy/common/00start.rpy", line 310, in script call
+    call expression "before_main_menu"
+  File "game/script.rpy", line 1202, in script
+    with Dissolve
+Exception: Expected transition to be a displayable, not a <partial <class 'renpy.display.transition.Dissolve'> () {'old_widget': <renpy.display.layout.Fixed object at 0x00000000063416d0>, 'new_widget': <renpy.display.layout.Fixed object at 0x0000000006341190>}>
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 326, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 515, in main
-    renpy.game.context().run(node)
-  File "game/options.rpy", line 56, in script
-    define config.autosave_callback = Notify("Autosaved.")
-  File "game/options.rpy", line 56, in script
-    define config.autosave_callback = Notify("Autosaved.")
-  File "renpy/ast.py", line 2164, in execute
-    self.set()
-  File "renpy/ast.py", line 2179, in set
-    ns.set(self.varname, value)
-  File "renpy/common/000namespaces.rpy", line 9, in set
-    setattr(self.nso, name, value)
-  File "renpy/defaultstore.py", line 106, in __setattr__
-    raise Exception('config.%s is not a known configuration variable.' % (name))
-Exception: config.autosave_callback is not a known configuration variable.
+  File "renpy/common/00start.rpy", line 310, in script call
+    call expression "before_main_menu"
+  File "game/script.rpy", line 1202, in script
+    with Dissolve
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\ast.py", line 1678, in execute
+    renpy.exports.with_statement(trans, paired=paired)
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\exports.py", line 1758, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\core.py", line 2978, in do_with
+    return self.interact(trans_pause=True,
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\core.py", line 3582, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\core.py", line 3976, in interact_core
+    trans = instantiate_transition(None, old_root, layers_root)
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\core.py", line 3927, in instantiate_transition
+    raise Exception("Expected transition to be a displayable, not a %r" % trans)
+Exception: Expected transition to be a displayable, not a <partial <class 'renpy.display.transition.Dissolve'> () {'old_widget': <renpy.display.layout.Fixed object at 0x00000000063416d0>, 'new_widget': <renpy.display.layout.Fixed object at 0x0000000006341190>}>
 
-Windows-10-10.0.19041
-Ren'Py 7.4.4.1439
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.1.3.23091805
 The Wolf. 1.0
-Fri Jan  5 17:10:17 2024
+Mon Jan  8 18:13:41 2024
