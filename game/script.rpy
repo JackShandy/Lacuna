@@ -25,6 +25,15 @@ init python:
         for save in saves:
             renpy.unlink_save(save)
         return
+
+    #Function to achieve nonlinear fadeout
+    def accelerate(t):
+        return t * t
+    def slowdown(t):
+        return 1 - (1 - t) * (1 - t)
+
+
+
 init +1 python:
     #==Load most recent save function
     #Note: This function loads the last save made of any time (autosave, quit save, etc).
@@ -69,13 +78,17 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 1
+    default persistent.vanished = 0
 
     #Who has disappeared specifically - main cast
     default persistent.toadVanished = False
     default persistent.witchVanished = False
     default persistent.thiefVanished = False
     default persistent.mushroomVanished = False
+
+    #Who was the last to die?
+    #Options: Thief, Toad, Witch, Mushroom, None
+    default persistent.vanishedLast = "None"
 
     # Which side characters have disappeared
     #Your mum
@@ -118,10 +131,6 @@ init:
     #Gets rid of all drawings with boobs / gore
     default persistent.sfw = False
 
-    #If you get the final bad ending, who was the last to die?
-    #Options: Thief, Toad, Witch, Mushroom
-    #TK: Currently not set or used. Delete?
-    default persistent.vanishedLast = "Thief"
 
     #Have you triggered the final ending where the book is born anew?
     #TK: Testing, change back to false
@@ -1158,42 +1167,60 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
     else:
         if persistent.vanished != 4:
             show coverBase
-        if persistent.witchVanished == False:
+        if persistent.witchVanished == False or persistent.vanishedLast== "Witch":
             show coverWitch
-        if persistent.toadVanished == False:
+        if persistent.toadVanished == False or persistent.vanishedLast== "Toad":
             show coverToad
-        if persistent.thiefVanished == False:
+        if persistent.thiefVanished == False or persistent.vanishedLast== "Thief":
             show coverThief
-        if persistent.mushroomVanished == False:
+        if persistent.mushroomVanished == False or persistent.vanishedLast== "Mushroom":
             show coverMushroom
+        if persistent.vanishedLast == "None":
+            if persistent.vanished == 1:
+                show coverWolf1
+            elif persistent.vanished == 2:
+                show coverWolf2
+            elif persistent.vanished == 3:
+                show coverWolf3
+            elif persistent.vanished == 4:
+                show coverWolf4
+        else:
+            if persistent.vanished == 2:
+                show coverWolf1
+            elif persistent.vanished == 3:
+                show coverWolf2
+            elif persistent.vanished == 4:
+                show coverWolf3
+
         #$ renpy.pause(4, hard=True)
+        #TK: Add in an option for persistent.vanishedLast == "All" when everyone disappears at once
 
-
-        #TK TEST
-        #hide coverThief with Dissolve(4)
-        #hide coverToad with Dissolve(4)
-        #hide coverMushroom with Dissolve(4)
-        #show coverOverlay
         with dissolve
+        if persistent.vanishedLast != "None":
+            if persistent.vanished == 1:
+                play sound bellTolls
+                show coverWolf1
+            elif persistent.vanished == 2:
+                play sound bellTolls2
+                show coverWolf2
+            elif persistent.vanished == 3:
+                play sound bellTolls3
+                show coverWolf3
+            elif persistent.vanished == 4:
+                play sound bellTolls4
+                show coverWolf4
+            if persistent.vanishedLast == "Witch":
+                hide coverWitch
+            elif persistent.vanishedLast == "Toad":
+                hide coverToad
+            elif persistent.vanishedLast == "Thief":
+                hide coverThief
+            elif persistent.vanishedLast == "Mushroom":
+                hide coverMushroom
 
-        if persistent.vanished == 1:
-            play sound bellTolls
-            show coverWolf1
-            hide coverWitch
-        elif persistent.vanished == 2:
-            play sound bellTolls2
-            show coverWolf2
-            hide coverWitch
-        elif persistent.vanished == 3:
-            play sound bellTolls3
-            show coverWolf3
-            hide coverWitch
-        elif persistent.vanished == 4:
-            play sound bellTolls4
-            show coverWolf4
-            hide coverWitch
+            with Dissolve (6,time_warp=slowdown)
+            $persistent.vanishedLast = "None"
 
-        with Dissolve (5)
 
 
 
@@ -3998,6 +4025,8 @@ label thief2:
         #$persistent.goblinsVanished = True
         $persistent.vanished +=1
         $persistent.thiefVanished = True
+        $persistent.vanishedLast = "Thief"
+
         #$purge_saves()
         $ renpy.block_rollback()
         "The night was dark and quiet. You thought you heard something rustling in the bushes, outside your line of sight. A sound, like something moving through the forest."
@@ -5319,6 +5348,7 @@ label mushroomDisappears:
     "There was no air. There was no light. There was no space."
     $persistent.vanished +=1
     $persistent.mushroomVanished = True
+    $persistent.vanishedLast = "Mushroom"
     $persistent.starsVanished = True
     #$purge_saves()
     $ renpy.block_rollback()
@@ -5826,6 +5856,7 @@ label mushroomSolo:
         "You held her tight as you stared out into the night sky."
         $persistent.vanished +=1
         $persistent.mushroomVanished = True
+        $persistent.vanishedLast = "Mushroom"
         $persistent.starsVanished = True
         #$purge_saves()
         $ renpy.block_rollback()
@@ -6322,6 +6353,7 @@ label thiefDisappears:
     $persistent.goVanished = True
     $persistent.shVanished = True
     $persistent.thiefVanished = True
+    $persistent.vanishedLast = "Thief"
     $persistent.vanished +=1
     #$purge_saves()
     $ renpy.block_rollback()
@@ -7133,6 +7165,7 @@ label witchDisappears:
     "It heard nothing."
     $persistent.vanished +=1
     $persistent.witchVanished = True
+    $persistent.vanishedLast = "Witch"
     #$purge_saves()
     $ renpy.block_rollback()
 
@@ -7161,6 +7194,7 @@ label toadSolo:
     "The squash rattled and bumped down the road with haste. The toad attempted some witty anecdotes while you pretended to listen."
     $persistent.vanished +=1
     $persistent.toadVanished = True
+    $persistent.vanishedLast = "Toad"
     #$purge_saves()
     $ renpy.block_rollback()
     call hideAll from _call_hideAll_168
@@ -8237,6 +8271,7 @@ label toadDisappears:
     show wolf6 onlayer transient zorder 100
     $persistent.vanished +=1
     $persistent.toadVanished = True
+    $persistent.vanishedLast = "Toad"
     #$purge_saves()
     $ renpy.block_rollback()
 
@@ -8592,6 +8627,8 @@ label witchSoloFinale:
     "Then the door closed, and your body turned around."
     $persistent.vanished +=1
     $persistent.witchVanished = True
+    $persistent.vanishedLast = "Witch"
+
     #$purge_saves()
     $ renpy.block_rollback()
 
@@ -10052,6 +10089,8 @@ label wolf:
                     $persistent.witchVanished = True
                     $persistent.thiefVanished = True
                     $persistent.mushroomVanished = True
+                    $persistent.vanishedLast = "All"
+
                     $persistent.starsVanished = True
                     #TK: Small scene featuring whoever's left who's still alive, they disappear.
                     #The villagers also disappear, everyone goes.
