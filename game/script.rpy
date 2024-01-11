@@ -78,17 +78,17 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 0
+    default persistent.vanished = 1
 
     #Who has disappeared specifically - main cast
-    default persistent.toadVanished = False
+    default persistent.toadVanished = True
     default persistent.witchVanished = False
     default persistent.thiefVanished = False
     default persistent.mushroomVanished = False
 
     #Who was the last to die?
     #Options: Thief, Toad, Witch, Mushroom, None
-    default persistent.vanishedLast = "None"
+    default persistent.vanishedLast = "Toad"
 
     # Which side characters have disappeared
     #Your mum
@@ -1093,7 +1093,8 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
 
-
+    #show screen noInteract
+    #TK Test
     if persistent.bookEnd:
         $ config.window_title = _("")
     elif persistent.vanished == 0:
@@ -1210,23 +1211,21 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
                 play sound bellTolls4
                 show coverWolf4
             if persistent.vanishedLast == "Witch":
+                #$ ui.interact(6.0)
                 hide coverWitch
             elif persistent.vanishedLast == "Toad":
+                #$ ui.interact(6.0)
                 hide coverToad
             elif persistent.vanishedLast == "Thief":
+                #$ ui.interact(6.0)
                 hide coverThief
             elif persistent.vanishedLast == "Mushroom":
+                #$ ui.interact(6.0)
                 hide coverMushroom
 
             with Dissolve (6,time_warp=slowdown)
             $persistent.vanishedLast = "None"
-
-
-
-
-
-
-
+            #hide screen noInteract
 
     #else:
         #$renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True, relative_volume=0)
@@ -1236,6 +1235,7 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
 
 
     #with Pause(5)
+
     ""
     play sound bookClose3 volume 0.45
     #=========================This shows the title of the book

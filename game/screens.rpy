@@ -725,6 +725,14 @@ style about_label_text:
 ## My screens #######################################################
 ##
 ##
+## This screen stops the player from interacting ####
+
+# screen noInteract:
+#     key "mouseup_1" action NullAction()
+#     key "K_RETURN" action NullAction()
+#     key "K_SPACE" action NullAction()
+#     key "K_KP_ENTER" action NullAction()
+#     key "joy_dismiss" action NullAction()
 ## Map ####
 
 screen map: #Preparing the imagemap
