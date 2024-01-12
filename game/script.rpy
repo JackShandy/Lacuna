@@ -78,17 +78,17 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 1
+    default persistent.vanished = 0
 
     #Who has disappeared specifically - main cast
-    default persistent.toadVanished = True
+    default persistent.toadVanished = False
     default persistent.witchVanished = False
     default persistent.thiefVanished = False
     default persistent.mushroomVanished = False
 
     #Who was the last to die?
     #Options: Thief, Toad, Witch, Mushroom, None
-    default persistent.vanishedLast = "Toad"
+    default persistent.vanishedLast = "None"
 
     # Which side characters have disappeared
     #Your mum
@@ -443,6 +443,9 @@ init:
 
     #Showing the photo of Humbaba for the help screen
     define humbabaShowing = True
+
+    #How long it takes to dissolve the cover image
+    $dissolveTime = 0
 
     ###==== Countdown
     #This screen counts down automatically and then jumps to a label once the countdown is finished
@@ -1077,12 +1080,17 @@ init:
 
 #Splashscreen - The front cover of the book that appears before the main menu.
 label before_main_menu: #splashscreen - changed to before_main_menu so it always displays
+
+    #This stops the player from skipping over the dissolve sequence as characters disappear
+    $_dismiss_pause = False
+
     #Default music volume = 50%
     python:
         if not persistent.set_volumes:
             persistent.set_volumes = True
 
             _preferences.volumes['music'] *= .50
+
 
     if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
@@ -1093,8 +1101,6 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
 
-    #show screen noInteract
-    #TK Test
     if persistent.bookEnd:
         $ config.window_title = _("")
     elif persistent.vanished == 0:
@@ -1166,8 +1172,8 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
     if persistent.bookEnd:
         show coverFinaleA with dissolve
     else:
-        if persistent.vanished != 4:
-            show coverBase
+        #if persistent.vanished != 4:
+        show coverBase
         if persistent.witchVanished == False or persistent.vanishedLast== "Witch":
             show coverWitch
         if persistent.toadVanished == False or persistent.vanishedLast== "Toad":
@@ -1197,21 +1203,25 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         #TK: Add in an option for persistent.vanishedLast == "All" when everyone disappears at once
 
         with dissolve
+        #show screen noInteract()
         if persistent.vanishedLast != "None":
             if persistent.vanished == 1:
+                $dissolveTime = 4
                 play sound bellTolls
                 show coverWolf1
             elif persistent.vanished == 2:
+                $dissolveTime = 7
                 play sound bellTolls2
                 show coverWolf2
             elif persistent.vanished == 3:
+                $dissolveTime = 11
                 play sound bellTolls3
                 show coverWolf3
             elif persistent.vanished == 4:
+                $dissolveTime = 15
                 play sound bellTolls4
                 show coverWolf4
             if persistent.vanishedLast == "Witch":
-                #$ ui.interact(6.0)
                 hide coverWitch
             elif persistent.vanishedLast == "Toad":
                 #$ ui.interact(6.0)
@@ -1222,10 +1232,23 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
             elif persistent.vanishedLast == "Mushroom":
                 #$ ui.interact(6.0)
                 hide coverMushroom
+            elif persistent.vanishedLast == "All":
+                if not persistent.toadVanished:
+                    hide coverToad
+                    $persistent.toadVanished = True
+                if not persistent.witchVanished:
+                    hide coverWitch
+                    $persistent.witchVanished = True
+                if not persistent.thiefVanished:
+                    hide coverThief
+                    $persistent.thiefVanished = True
+                if not persistent.mushroomVanished:
+                    hide coverMushroom
+                    $persistent.mushroomVanished = True
 
-            with Dissolve (6,time_warp=slowdown)
+            with Dissolve (dissolveTime,time_warp=slowdown)
+
             $persistent.vanishedLast = "None"
-            #hide screen noInteract
 
     #else:
         #$renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True, relative_volume=0)
@@ -1233,10 +1256,8 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         #$renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0)
         #$renpy.music.play("audio/windAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
 
-
-    #with Pause(5)
-
-    ""
+    $_dismiss_pause = True
+    "{w=5}{nw}"
     play sound bookClose3 volume 0.45
     #=========================This shows the title of the book
     ##===This part generates a unique title for the Book ending, based on who is alive, randomly generating.
@@ -1638,11 +1659,11 @@ label start:
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
         show nightbg at artPos
-
         if persistent.bookEnd:
             jump newStoryFinale
         if persistent.vanished == 0:
             "This maybe happened, or maybe did not."
+
             "The time is long past, and much is forgot."
             "Back in the old days, when wishing worked, your mother lived in a vast forest teeming with strange figures."
             call characterIntros from _call_characterIntros
@@ -1679,15 +1700,6 @@ label start:
         #         #$renpy.fix_rollback()
         #         jump thiefFinale
         #     "Jump to the Thief path (with the Mushroom disappeared)." if persistent.mushroomVanished and not persistent.thiefVanished:
-        #         $persistent.hVanished = True
-        #         $persistent.goVanished = True
-        #         $persistent.shVanished = True
-        #         #$persistent.goblinsVanished = True
-        #         $persistent.vanished +=1
-        #         $persistent.thiefVanished = True
-        #         #$purge_saves()
-        #         $ renpy.block_rollback()
-        #         #$renpy.fix_rollback()
         #         jump thiefSolo
         #     "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
         #         #$renpy.fix_rollback()
@@ -4019,16 +4031,6 @@ label thief2:
         #So that if you quit the game at this point it doesn't break the game with only some people vanished and others not.
         #I also need to purge saves here so that you can't reload into a saved game that doesn't work.
         #TK: Make sure this works and doesn't break anything, also if it's the best option
-        $persistent.hVanished = True
-        $persistent.goVanished = True
-        $persistent.shVanished = True
-        #$persistent.goblinsVanished = True
-        $persistent.vanished +=1
-        $persistent.thiefVanished = True
-        $persistent.vanishedLast = "Thief"
-
-        #$purge_saves()
-        $ renpy.block_rollback()
         "The night was dark and quiet. You thought you heard something rustling in the bushes, outside your line of sight. A sound, like something moving through the forest."
         "But it must have been the wind."
         call musicSilence from _call_musicSilence_21
@@ -5578,6 +5580,16 @@ label thiefSoloConvo2:
     t "I'm sorry we didn't get more time together."
     t "If you get out, tell them..."
     t "Tell those bastards I hated them all."
+    $persistent.hVanished = True
+    $persistent.goVanished = True
+    $persistent.shVanished = True
+    #$persistent.goblinsVanished = True
+    $persistent.vanished +=1
+    $persistent.thiefVanished = True
+    $persistent.vanishedLast = "Thief"
+    #$purge_saves()
+    $ renpy.block_rollback()
+
     "They gave you a sudden shove in the centre of your chest. You fell sprawling from the roof and slammed into the dirt, tumbling down the side of the hill and away from the train."
     "The train hurtled past you in a blaze of smoke and fire, and then was gone."
     call hideAll from _call_hideAll_141
@@ -6935,7 +6947,7 @@ label toadFinale:
                     pov "Godfather! Help me!"
                     jump frogEnding
                 else:
-                    "Godmother! Help me!"
+                    pov "Godmother! Help me!"
                     jump frogEnding
 
     label frogEnding:
@@ -7192,11 +7204,6 @@ label toadSolo:
     rat "We'll get you there in a jiffy, mate."
     crowshrike "Caw!"
     "The squash rattled and bumped down the road with haste. The toad attempted some witty anecdotes while you pretended to listen."
-    $persistent.vanished +=1
-    $persistent.toadVanished = True
-    $persistent.vanishedLast = "Toad"
-    #$purge_saves()
-    $ renpy.block_rollback()
     call hideAll from _call_hideAll_168
     show manorextbg at artPos
     "Finally you arrived at a stately riverside manor."
@@ -7414,6 +7421,12 @@ label toadConstruct:
         show wolf6 onlayer transient zorder 100
         #call wolfApproaches
         call hideAll from _call_hideAll_171
+        $persistent.vanished +=1
+        $persistent.toadVanished = True
+        $persistent.vanishedLast = "Toad"
+        #$purge_saves()
+        $ renpy.block_rollback()
+
         show manorextbg at artPos
         "A slow silence seeped up into the house."
         "As you wiped the tears away, you wondered what you were crying about."
@@ -7579,7 +7592,7 @@ label witch2:
                 "She rustled through her notes."
                 w "Where is it... Where is it..."
                 w "Aha!"
-                "She darted under the table and came out with a sticky note saying {b}{i}\"FESTIVAL!!!!!!\"{/b}{/i} underlined three times."
+                "She darted under the table and came out with a sticky note saying {b}{i}\"FESTIVAL!!!!!!\"{/i}{/b} underlined three times."
                 w "It must have fallen out. Oh my God, I'm so sorry. It's just-"
                 "She waved helplessly at the blue smoke leaking out of her hat and pooling under the cottage roof."
                 w "It all leaks out. I can't keep it in."
@@ -8474,7 +8487,7 @@ label witchExperiments:
                 yalign 0.65#0.743
                 xalign 0.5
             menu:
-                w "How do you prove something {i}used{/} to exist, if that thing now {i}does not exist, and never did?{/i}"
+                w "How do you prove something {i}used{/i} to exist, if that thing now {i}does not exist, and never did?{/i}"
                 "If you suggested making notes, turn to page 238.":
                     w "That's the scary part. Even my notes no longer mention the fork ever existing."
                     w "Somehow even they have been re-written by the new, forkless reality."
@@ -10085,13 +10098,14 @@ label wolf:
                     "I'm afraid we are at the end of things now."
                     "You've forced my hand."
                     $persistent.vanished = 4
-                    $persistent.toadVanished = True
-                    $persistent.witchVanished = True
-                    $persistent.thiefVanished = True
-                    $persistent.mushroomVanished = True
+                    #$persistent.toadVanished = True
+                    #$persistent.witchVanished = True
+                    #$persistent.thiefVanished = True
+                    #$persistent.mushroomVanished = True
                     $persistent.vanishedLast = "All"
 
                     $persistent.starsVanished = True
+                    $ renpy.block_rollback()
                     #TK: Small scene featuring whoever's left who's still alive, they disappear.
                     #The villagers also disappear, everyone goes.
                     "You wandered deep into the forest for many days, holding my severed head in that leather bag."

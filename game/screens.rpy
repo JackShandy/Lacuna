@@ -727,12 +727,17 @@ style about_label_text:
 ##
 ## This screen stops the player from interacting ####
 
-# screen noInteract:
-#     key "mouseup_1" action NullAction()
-#     key "K_RETURN" action NullAction()
-#     key "K_SPACE" action NullAction()
-#     key "K_KP_ENTER" action NullAction()
-#     key "joy_dismiss" action NullAction()
+screen noInteract():
+
+    #key "mouseup_1" action NullAction()
+    #key "K_RETURN" action NullAction()
+    #key "K_SPACE" action NullAction()
+    #key "K_KP_ENTER" action NullAction()
+    #key "joy_dismiss" action NullAction()
+    key "dismiss" action NullAction()
+
+    #add "images/contents_note.png"
+    #textbutton "Cont..." action Return()
 ## Map ####
 
 screen map: #Preparing the imagemap
