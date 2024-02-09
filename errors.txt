@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1092: invalid syntax
-    key "dismiss" action NullAction()
-         ^
+File "game/screens.rpy", line 707: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a " at the end of the first line.)
+                    text "{alpha=0.9}{size=-4}JACK MCNAMEE is a writer and game designer. {b}{color=#f00}H{/b}{/color}is other works incl{b}{color=#f00}u{/b}{/color}de the {b}{color=#f00}m{/b}{/color}egagames God Emperor and We Are Not Alone. He lives {b}{color=#f00}b{/b}{/color}ehind {b}{color=#f00}a{/b}{/color} keyboard in {b}{color=#f00}B{/b}{/color}risbane, {b}{color=#f00}A{/b}{/color}ustralia. He hears me in the pipes now. It's too late for him. For more information on Jack McNamee, please visit {a=https:/www.ashtowngames.com/}www.ashtowngames.com{/a}.\nA note on the translation: This story survives mostly by chance. A single copy of the original manuscript (since lost) was recovered from a fire in the eighteenth century and then transcribed, translated and adapted. The work almost defeated me. Many parts of the original manuscript are gone forever. The broken lines throughout indicate lacunae in the text."{/size}{/alpha}"  #
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Fri Jan 12 12:18:41 2024
+Sat Feb  3 13:32:10 2024

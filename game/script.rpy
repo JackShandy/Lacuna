@@ -10,6 +10,14 @@ init python:
     renpy.music.register_channel("ambient3","sfx",True,tight=True)
     renpy.music.register_channel("ambient4","sfx",True,tight=True)
 
+    #Channels for music (in order to transition smoothly between multiple tracks)
+    renpy.music.register_channel("music","music",True,tight=True)
+    renpy.music.register_channel("music2","music",True,tight=True)
+    renpy.music.register_channel("music3","music",True,tight=True)
+    renpy.music.register_channel("music4","music",True,tight=True)
+    renpy.music.register_channel("music5","music",True,tight=True)
+    renpy.music.register_channel("music6","music",True,tight=True)
+
     #This is all the wolf's talking
     renpy.music.register_channel("wolf","sfx",True,tight=True)
 
@@ -1048,7 +1056,10 @@ init:
     define audio.thunder = "audio/thunder.mp3"
 
     ##Music
-    define music.gameland = "audio/Gameland.mp3"
+    define music.gameland = "audio/gameland.mp3"
+    define music.hunted1 = "audio/hunted1.mp3"
+    define music.huntedLong1 = "audio/huntedLong1.mp3"
+    define music.huntedLong2 = "audio/huntedLong2.mp3"
 
     #Sounds for the wolf scene
     define audio.doorKnock = "audio/doorKnock.mp3"
@@ -1659,6 +1670,119 @@ label start:
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
         show nightbg at artPos
+        #TK TEST
+        # "Testing Hunted."
+        # #$renpy.music.play("audio/hunted1.mp3", channel="music", loop=True)
+        #
+        # #"Testing short loop of hunted1."
+        # $renpy.music.play("audio/hunted0.mp3", channel="music", loop=True)
+        # $renpy.music.play("audio/hunted1.mp3", channel="music2", loop=True)
+        # $renpy.music.play("audio/hunted2.mp3", channel="music3", loop=True)
+        # $renpy.music.play("audio/hunted3.mp3", channel="music4", loop=True)
+        # $renpy.music.play("audio/hunted4.mp3", channel="music5", loop=True)
+        # $renpy.music.play("audio/hunted5.mp3", channel="music6", loop=True)
+        #
+        # $renpy.music.set_volume(0.0, channel=u'music2')
+        # $renpy.music.set_volume(0.0, channel=u'music3')
+        # $renpy.music.set_volume(0.0, channel=u'music4')
+        # $renpy.music.set_volume(0.0, channel=u'music5')
+        # $renpy.music.set_volume(0.0, channel=u'music6')
+        #
+        # "Testing loop of Hunted0."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
+        # "Transitioning to Hunted1."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music3')
+        # "Transitioning to Hunted2."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music4')
+        # "Transitioning to Hunted3."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music4')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music5')
+        # "Transitioning to Hunted4."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music5')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music6')
+        # "Transitioning to Hunted5."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music6')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music5')
+        # "Transitioning back to Hunted4."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music5')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music4')
+        # "Transitioning back to Hunted3."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music4')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music3')
+        # "Transitioning back to Hunted2."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
+        # "Transitioning back to Hunted1."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music')
+        # "Transitioning back to Hunted0."
+        #
+        # $renpy.music.play("audio/mysteriousHappenings0.mp3", channel="music", loop=True)
+        # $renpy.music.play("audio/mysteriousHappenings1.mp3", channel="music2", loop=True)
+        # $renpy.music.play("audio/mysteriousHappenings2.mp3", channel="music3", loop=True)
+        # $renpy.music.play("audio/mysteriousHappenings3.mp3", channel="music4", loop=True)
+        #
+        # $renpy.music.set_volume(0.0, channel=u'music2')
+        # $renpy.music.set_volume(0.0, channel=u'music3')
+        # $renpy.music.set_volume(0.0, channel=u'music4')
+        # $renpy.music.set_volume(0.0, channel=u'music5')
+        # $renpy.music.set_volume(0.0, channel=u'music6')
+        #
+        # "Testing loop of mysteriousHappenings0."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
+        # "Transitioning to mysteriousHappenings1."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music3')
+        # "Transitioning to mysteriousHappenings2."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music4')
+        # "Transitioning to mysteriousHappenings3."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music4')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music5')
+        # "Transitioning back to mysteriousHappenings2."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
+        # "Transitioning back to mysteriousHappenings1."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music')
+        # "Transitioning back to mysteriousHappenings1."
+        #
+        #
+        #
+        #
+        #
+        # "Ladykiller example tracks"
+        # $renpy.music.play("audio/LkiabChillinAmbientLoop.ogg", channel="music", loop=True)
+        # $renpy.music.play("audio/LkiabChillinFilteredLoop.ogg", channel="music2", loop=True)
+        # $renpy.music.play("audio/LkiabChillinNormalLoop.ogg", channel="music3", loop=True)
+        # $renpy.music.play("audio/LkiabChillinWilesLoop.ogg", channel="music4", loop=True)
+        # $renpy.music.set_volume(0.0, channel=u'music2')
+        # $renpy.music.set_volume(0.0, channel=u'music3')
+        # $renpy.music.set_volume(0.0, channel=u'music4')
+        # "Testing Ladykiller - Chillin - Ambient."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
+        # "Transitioning to Ladykiller - Chillin - Filtered."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music3')
+        # "Transitioning to Ladykiller - Chillin - Normal."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music4')
+        # "Transitioning to Ladykiller - Chillin - Wiles."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music4')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music3')
+        # "Transitioning back to Ladykiller - Chillin - Normal."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
+        # "Transitioning back to Ladykiller - Chillin - Filtered."
+        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
+        # $renpy.music.set_volume(1, delay=1.0, channel=u'music')
+        # "Transitioning back to Ladykiller - Chillin - Ambient."
+
         if persistent.bookEnd:
             jump newStoryFinale
         if persistent.vanished == 0:
@@ -2212,6 +2336,16 @@ label introMenu:
                 "Yours was a vast and silent land."
                 "At times you could walk for days without seeing another soul."
                 "You dared not venture out often. Whenever you did, you felt the pressure of that gigantic emptiness lurking just out of sight like a bottomless ocean, and fled quickly back to the safety of your home."
+            elif persistent.vanished == 2:
+                "The outside world was quiet. The land lay still."
+                "But inside your body, your bones roiled and your flesh threatened riot."
+                "At times even your own hands turned against you and scuttled out into the night to cause terrible mischief while you slept, so that you would wake to find strange signs and marks and bites upon them and jewelled rings on each crooked finger."
+                "Your skull was haunted by restless ghosts that cradled your brain and forced terrible thoughts into your mind at all hours; the bones in your spine became infested with sprites (which made your back crack in twisted and painful ways all through your long life) the blood in your veins was, of course, only a red water nixie that pulsed throughout your body, constantly seeking escape, and even your soul itself was simply a small shard of G-d, caught inside you and vibrating wildly. Not a single scrap of your own body, mind or soul was actually your own."
+                "There was no \"You\". Just a collection of monsters, writhing in borrowed skin."
+            elif persistent.vanished == 1:
+                "Your world was overrun. It festered. It swarmed."
+                "Every tree and lantern and street-corner was teeming with gutterlings, bat-folk, scab-eaters, rounds, lurks, sworlk, nathorn-hobs, lantern-lings, curselings, grimmel-dobbies, fold-overs, whisper kings, hook-takers, the cannibal wind howling 'cross the plains, ghost water pooling luminescent in underground caverns. Every house was haunted and every knife was drawn against the dark."
+                "Yet still, there were strange hollow places where nothing lived. No sound escaped the stillness of that lacuna. If anything walked there, it walked alone."
             else:
                 "Yours was a many-haunted land, my child."
                 "Back in those days you could barely take a step without stumbling over a ghost, gutterling, hook-taker, scab-eater, batfolk or gringe. The earth was overrun. Every house was haunted and the Devil lurked at every crossroad."
