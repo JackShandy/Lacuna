@@ -8,7 +8,10 @@ init python:
     renpy.music.register_channel("ambient2","sfx",True,tight=True)
     #This one is used for the city ambience when you open the door to the wolf
     renpy.music.register_channel("ambient3","sfx",True,tight=True)
-    renpy.music.register_channel("ambient4","sfx",True,tight=True)
+
+    #This one is used for music stings
+    renpy.music.register_channel("sting","music",loop=False)
+
 
     #Channels for music (in order to transition smoothly between multiple tracks)
     renpy.music.register_channel("music","music",True,tight=True)
@@ -1055,9 +1058,18 @@ init:
     define audio.whiteNoise = "audio/whiteNoiseEnding.mp3"
     define audio.thunder = "audio/thunder.mp3"
 
+    define audio.lacuna1 = "audio/lacuna1.wav"
+    define audio.lacuna2 = "audio/lacuna2.wav"
+    define audio.lacuna3 = "audio/lacuna3.wav"
+    define audio.lacuna4 = "audio/lacuna4.wav"
+    define audio.lacuna5 = "audio/lacuna5.wav"
+    define audio.lacuna6 = "audio/lacuna6.wav"
+
     ##Music
     define music.gameland = "audio/gameland.mp3"
-    define music.hunted1 = "audio/hunted1.mp3"
+    #define music.hunted1 = "audio/hunted1.mp3"
+    define music.adventure1= "audio/adventure1.mp3"
+
     define music.huntedLong1 = "audio/huntedLong1.mp3"
     define music.huntedLong2 = "audio/huntedLong2.mp3"
 
@@ -1486,13 +1498,13 @@ label after_load:
         play sound pageFlip
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
-        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
+        #$renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     elif persistent.bookEnd:
         play sound pageFlip
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
-        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
+        #$renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     else:
         play sound pageFlip
@@ -1653,7 +1665,7 @@ label start:
     if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
-        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
+        #$renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     # else:
     #     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True, relative_volume=0)
@@ -1670,118 +1682,74 @@ label start:
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
         show nightbg at artPos
-        #TK TEST
-        # "Testing Hunted."
-        # #$renpy.music.play("audio/hunted1.mp3", channel="music", loop=True)
+
+        # "test"
+        # play music "audio/adventure1.wav"
+        # "test adventure"
+        # #TK TEST
+        # "Testing Music."
+        # #play music "<loop 6.333>song.opus"
+        # queue sound lacuna1
+        # "Testing Lacuna Sting 1."
+        # queue sound lacuna2
+        # "Testing Lacuna Sting 2. Note: I'm using Queue, so Sting 2 will play after Sting 1 is complete (to avoid interruptions)."
+        # queue sound lacuna3
+        # "Testing Lacuna Sting 3."
+        # queue sound lacuna4
+        # "Testing Lacuna Sting 4."
+        # queue sound lacuna5
+        # "Testing Lacuna Sting 5."
+        # queue sound lacuna6
+        # "Testing Lacuna Sting 6."
         #
-        # #"Testing short loop of hunted1."
-        # $renpy.music.play("audio/hunted0.mp3", channel="music", loop=True)
-        # $renpy.music.play("audio/hunted1.mp3", channel="music2", loop=True)
-        # $renpy.music.play("audio/hunted2.mp3", channel="music3", loop=True)
-        # $renpy.music.play("audio/hunted3.mp3", channel="music4", loop=True)
-        # $renpy.music.play("audio/hunted4.mp3", channel="music5", loop=True)
-        # $renpy.music.play("audio/hunted5.mp3", channel="music6", loop=True)
+        # $renpy.music.play("<loop 11.995>audio/mysteriousHappenings1.wav", channel="music")
+        # #queue music "mysteriousHappenings1.wav" loop
+        # "Testing intro of Mysterious Happenings into the main loop."
+        # #11.995
         #
-        # $renpy.music.set_volume(0.0, channel=u'music2')
-        # $renpy.music.set_volume(0.0, channel=u'music3')
-        # $renpy.music.set_volume(0.0, channel=u'music4')
-        # $renpy.music.set_volume(0.0, channel=u'music5')
-        # $renpy.music.set_volume(0.0, channel=u'music6')
+        # # $renpy.music.play("audio/mysteriousHappenings1.wav", channel="music", loop=True)
+        # # "Testing loop of Mysterious Happenings."
+        # stop music fadeout 6
+        # play music [ "<sync music>audio/mysteriousHappenings2.wav", "<from 11.995>audio/mysteriousHappenings2.wav" ] fadein 1
+        # "Testing transition to Mysterious Happenings 2."
+        # stop music fadeout 6
+        # play music [ "<sync music>audio/mysteriousHappenings3.wav", "<from 11.995>audio/mysteriousHappenings3.wav" ] fadein 1
+        # "Testing transition to Mysterious Happenings 3."
+        # stop music fadeout 6
+        # play music [ "<sync music>audio/mysteriousHappenings1.wav", "<from 11.995>audio/mysteriousHappenings1.wav" ] fadein 1
+        # "Testing transition to Mysterious Happenings 1."
+        # stop music #fadeout 6
+        # "Stopping music."
         #
-        # "Testing loop of Hunted0."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
-        # "Transitioning to Hunted1."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music3')
-        # "Transitioning to Hunted2."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music4')
-        # "Transitioning to Hunted3."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music4')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music5')
-        # "Transitioning to Hunted4."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music5')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music6')
-        # "Transitioning to Hunted5."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music6')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music5')
-        # "Transitioning back to Hunted4."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music5')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music4')
-        # "Transitioning back to Hunted3."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music4')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music3')
-        # "Transitioning back to Hunted2."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
-        # "Transitioning back to Hunted1."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music')
-        # "Transitioning back to Hunted0."
+        # play music [ "<sync music>audio/hunted1.wav", "audio/hunted1.wav" ]
+        # "Testing Hunted 1."
+        # stop music fadeout 6
+        # play music2 [ "<sync music>audio/hunted2.wav", "audio/hunted2.wav" ] fadein 1
+        # "Testing transition to Hunted 2."
+        # stop music2 fadeout 6
+        # play music3 [ "<sync music2>audio/hunted3.wav", "audio/hunted3.wav" ] fadein 1
+        # "Testing transition to Hunted 3."
+        # stop music3 fadeout 6
+        # play music4 [ "<sync music3>audio/hunted4.wav", "audio/hunted4.wav" ] fadein 1
+        # "Testing transition to Hunted 4."
+        # stop music4 fadeout 6
+        # play music5 [ "<sync music4>audio/hunted5.wav", "audio/hunted5.wav" ] fadein 1
+        # "Testing transition to Hunted 5."
+        # stop ambient2 fadeout 6.0
+        # stop ambient1 fadeout 6.0
         #
-        # $renpy.music.play("audio/mysteriousHappenings0.mp3", channel="music", loop=True)
-        # $renpy.music.play("audio/mysteriousHappenings1.mp3", channel="music2", loop=True)
-        # $renpy.music.play("audio/mysteriousHappenings2.mp3", channel="music3", loop=True)
-        # $renpy.music.play("audio/mysteriousHappenings3.mp3", channel="music4", loop=True)
-        #
-        # $renpy.music.set_volume(0.0, channel=u'music2')
-        # $renpy.music.set_volume(0.0, channel=u'music3')
-        # $renpy.music.set_volume(0.0, channel=u'music4')
-        # $renpy.music.set_volume(0.0, channel=u'music5')
-        # $renpy.music.set_volume(0.0, channel=u'music6')
-        #
-        # "Testing loop of mysteriousHappenings0."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
-        # "Transitioning to mysteriousHappenings1."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music3')
-        # "Transitioning to mysteriousHappenings2."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music4')
-        # "Transitioning to mysteriousHappenings3."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music4')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music5')
-        # "Transitioning back to mysteriousHappenings2."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
-        # "Transitioning back to mysteriousHappenings1."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music')
-        # "Transitioning back to mysteriousHappenings1."
+        # stop music5 fadeout 6
+        # play music6 [ "<sync music5>audio/hunted6.wav", "audio/hunted6.wav" ] volume 2.0 fadein 1
+        # "Testing transition to Hunted 6."
+        # stop music6 fadeout 6
+        # play music [ "<sync music6>audio/hunted1.wav", "audio/hunted1.wav" ] fadein 1
+        # "Testing transition to Hunted 1."
         #
         #
         #
         #
-        #
-        # "Ladykiller example tracks"
-        # $renpy.music.play("audio/LkiabChillinAmbientLoop.ogg", channel="music", loop=True)
-        # $renpy.music.play("audio/LkiabChillinFilteredLoop.ogg", channel="music2", loop=True)
-        # $renpy.music.play("audio/LkiabChillinNormalLoop.ogg", channel="music3", loop=True)
-        # $renpy.music.play("audio/LkiabChillinWilesLoop.ogg", channel="music4", loop=True)
-        # $renpy.music.set_volume(0.0, channel=u'music2')
-        # $renpy.music.set_volume(0.0, channel=u'music3')
-        # $renpy.music.set_volume(0.0, channel=u'music4')
-        # "Testing Ladykiller - Chillin - Ambient."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
-        # "Transitioning to Ladykiller - Chillin - Filtered."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music3')
-        # "Transitioning to Ladykiller - Chillin - Normal."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music4')
-        # "Transitioning to Ladykiller - Chillin - Wiles."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music4')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music3')
-        # "Transitioning back to Ladykiller - Chillin - Normal."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music3')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music2')
-        # "Transitioning back to Ladykiller - Chillin - Filtered."
-        # $renpy.music.set_volume(0.0, delay=6.0, channel=u'music2')
-        # $renpy.music.set_volume(1, delay=1.0, channel=u'music')
-        # "Transitioning back to Ladykiller - Chillin - Ambient."
+        # stop music #fadeout 6
+        # "Stopping music."
 
         if persistent.bookEnd:
             jump newStoryFinale
@@ -1818,35 +1786,35 @@ label start:
             jump allVanishedEnd
 
         #Test Menu
-        # menu:
-        #     "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
-        #     "Jump to the Thief finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
-        #         #$renpy.fix_rollback()
-        #         jump thiefFinale
-        #     "Jump to the Thief path (with the Mushroom disappeared)." if persistent.mushroomVanished and not persistent.thiefVanished:
-        #         jump thiefSolo
-        #     "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
-        #         #$renpy.fix_rollback()
-        #         jump toadFinale
-        #     "Jump to the Toad path (with the Witch disappeared)." if persistent.witchVanished and not persistent.toadVanished:
-        #         #$renpy.fix_rollback()
-        #         jump toadSolo
-        #     "Jump to the Witch finale." if not persistent.toadVanished and not persistent.witchVanished:
-        #         #$renpy.fix_rollback()
-        #         jump witchFinale
-        #     "Jump to the Witch path (with the Toad disappeared)." if persistent.toadVanished and not persistent.witchVanished:
-        #         #$renpy.fix_rollback()
-        #         jump witchSolo
-        #     "Jump to the Mushroom finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
-        #         #$renpy.fix_rollback()
-        #         jump mushroomFinale
-        #     "Jump to the Mushroom path (with the Thief disappeared)." if persistent.thiefVanished and not persistent.mushroomVanished:
-        #         #$renpy.fix_rollback()
-        #         jump mushroomSolo
-        #
-        #     "Continue.":
-        #         #$renpy.fix_rollback()
-        #         "DEV NOTE: Continuing with the normal story."
+        menu:
+            "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
+            "Jump to the Thief finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
+                #$renpy.fix_rollback()
+                jump thiefFinale
+            "Jump to the Thief path (with the Mushroom disappeared)." if persistent.mushroomVanished and not persistent.thiefVanished:
+                jump thiefSolo
+            "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
+                #$renpy.fix_rollback()
+                jump toadFinale
+            "Jump to the Toad path (with the Witch disappeared)." if persistent.witchVanished and not persistent.toadVanished:
+                #$renpy.fix_rollback()
+                jump toadSolo
+            "Jump to the Witch finale." if not persistent.toadVanished and not persistent.witchVanished:
+                #$renpy.fix_rollback()
+                jump witchFinale
+            "Jump to the Witch path (with the Toad disappeared)." if persistent.toadVanished and not persistent.witchVanished:
+                #$renpy.fix_rollback()
+                jump witchSolo
+            "Jump to the Mushroom finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
+                #$renpy.fix_rollback()
+                jump mushroomFinale
+            "Jump to the Mushroom path (with the Thief disappeared)." if persistent.thiefVanished and not persistent.mushroomVanished:
+                #$renpy.fix_rollback()
+                jump mushroomSolo
+
+            "Continue.":
+                #$renpy.fix_rollback()
+                "DEV NOTE: Continuing with the normal story."
 
 
     # "This maybe happened, or maybe did not."
@@ -3228,6 +3196,7 @@ label introMenu:
                             jump woodsInvestigate
 
     label villageExplore1:
+        #play music adventure1
         show hand onlayer transient:
             yalign 0.728#0.743
             xalign 0.5
@@ -3721,6 +3690,7 @@ label banquet:
                                         f "It would be the brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
                                         "He flexed his arms for you. A tiny bump of muscle rose up."
                                         f "Let us be off at once!"
+                                        stop music fadeout 3.0
                                         jump toad1
                                     "If you politely declined (for now, at least), turn to page 102.":
                                         f "I understand. The witch's fear quails even the most courageous heart."
@@ -3754,6 +3724,7 @@ label banquet:
                                     f "It would be the brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
                                     "He flexed his arms for you. A tiny bump of muscle rose up."
                                     f "Let us be off at once!"
+                                    stop music fadeout 3.0
                                     jump toadSolo
                                 "If you politely declined (for now, at least), turn to page 102.":
                                     f "You're missing out, I'm telling you!"
@@ -3817,6 +3788,7 @@ label banquet:
                     jump town
                 else:
                     "You turned and walked out into the darkness of the woods. No-one stopped you."
+                    stop music fadeout 3.0
                     jump toadWitchInvestigate
             "If you returned to the village square, return to page 50.":
                 "You turned and walked back to the centre of the village."
@@ -3931,6 +3903,7 @@ label town:
                         "Otherwise, if {b}your things have been stolen{/b}, turn to page 365.":
                             "You would have liked to make a wish. But you had no coins on you."
                         "Otherwise, if {b}you have ventured into the Smoke World and rescued the stolen Skin-Mask from King Famine{b}, turn to page 742.":
+                            stop music fadeout 3.0
                             well "Thank G-d you have it. Quickly! Come in!"
                             call hideAll from _call_hideAll_20
                             show wellbg at artPos
@@ -4042,6 +4015,7 @@ label town:
                     jump banquet
                 else:
                     "You turned and walked out into the darkness of the woods. No-one stopped you."
+                    stop music fadeout 3.0
                     jump thiefMushroomInvestigate
             "If you returned to the middle of the village, turn to page 50.":
                 "You turned and walked back."
@@ -4119,6 +4093,7 @@ label town:
                 "And so you, the Goose-Girl, the Sparrow-Herder and the Hunter all leapt on the cart and rattled away down the road, leaving the old Gloom-monger behind."
                 gm "You're all doomed! Doooooooomed!"
                 h "Don't worry. He says that every time we go anywhere."
+                stop music fadeout 3.0
                 jump thief2
             "If you made your excuses and left, turn to page 51.":
                 sh "No worries. Have a good one!"
@@ -8322,6 +8297,7 @@ label toadDisappears:
     "Bromeliads sprouted from the floorboards. The dense, hot spiral of greenery pressed in around him like the organs of a great beast."
     f "Well. This is another fine mess."
     "He picked up his top hat."
+    play music [ "<sync music>audio/hunted1.wav", "audio/hunted1.wav" ] fadein 3
     "There was a sound outside. Almost like a howl. He shivered."
     f "I-I had best not outstay my welcome. Prickle! Crawl!"
     call hideAll from _call_hideAll_244
@@ -8332,11 +8308,13 @@ label toadDisappears:
     "He searched forward and found the remains of his squash carriage. "
     "It had been torn in twain. Jagged claw marks rent the sides."
     f "Oh no. No, no, no."
-    call musicSilence from _call_musicSilence_35
+    #call musicSilence from _call_musicSilence_35
     "Something stirred in the forest around him. In the space between the trees. "
     call hideAll from _call_hideAll_245
     show forest5bg at artPos
     "He ran as fast as he could, helter-skelter, tumbling down hills, coat ripped, pants torn."
+    stop music fadeout 6
+    play music2 [ "<sync music>audio/hunted2.wav", "audio/hunted2.wav" ] fadein 1
     "Something fastened around his ankle."
     f "Agh!"
     "A terrible agony shot through him in an instant, and then was gone."
@@ -8369,6 +8347,8 @@ label toadDisappears:
     else:
         gm "You've always had that wound. Don't you remember?"
     may "You were born that way."
+    stop music2 fadeout 6
+    play music3 [ "<sync music2>audio/hunted3.wav", "audio/hunted3.wav" ] fadein 1
     f "I-"
     "His leg disappeared."
     f "Argckkhh!"
@@ -8393,6 +8373,8 @@ label toadDisappears:
     "How on earth had he forgotten his walking stick?"
     "Forget his own head next, I expect."
     f "I'm terribly sorry, I don't know what came over me. I'll-"
+    stop music3 fadeout 6
+    play music4 [ "<sync music3>audio/hunted4.wav", "audio/hunted4.wav" ] fadein 1
     "His arm was gone. The stump of a shoulder."
     "Exposed bone. Matted meat."
     "He cried out in terrible pain, and fell into the dirt once more."
@@ -8403,9 +8385,13 @@ label toadDisappears:
         gm "Too right. We'd best be off."
     f "No - please!"
     call wolfApproaches from _call_wolfApproaches_16
+    stop music4 fadeout 6
+    play music5 [ "<sync music4>audio/hunted5.wav", "audio/hunted5.wav" ] fadein 1
     "They ambled off into the night, making pleasant small talk as they headed down the road."
     "The toad tried to pull himself along in the dirt. He had no legs to walk with. Just a single, shaking arm."
     f "Help me... G-d, help me…"
+    stop music5 fadeout 6
+    play music6 [ "<sync music5>audio/hunted6.wav", "audio/hunted6.wav" ] volume 2.0 fadein 1
     "It has been tough, hasn't it, Toad? Surviving all these years, with just one arm."
     "Just a single, broken hand to drag yourself along with."
     "But you did it. What an inspiration."
@@ -8804,6 +8790,20 @@ label witchSoloFinale:
 #=====================INVESTIGATION SCENES
 #These scenes allow the player to investigate when characters have disappeared
 
+    # play sound lacuna1
+    # "Testing Lacuna Sting 1."
+    # queue sound lacuna2
+    # "Testing Lacuna Sting 2. Note: I'm using Queue, so Sting 2 will play after Sting 1 is complete (to avoid interruptions)."
+    # queue sound lacuna3
+    # "Testing Lacuna Sting 3."
+    # queue sound lacuna4
+    # "Testing Lacuna Sting 4."
+    # queue sound lacuna5
+    # "Testing Lacuna Sting 5."
+    # queue sound lacuna6
+    # "Testing Lacuna Sting 6."
+
+
 #Deep in the woods, when the toad or witch have disappeared.
 label toadWitchInvestigate:
     call hideAll from _call_hideAll_183
@@ -8828,6 +8828,7 @@ label toadWitchInvestigate:
             jump witchSolo
         "If you wandered through the woods, go to page 124." if not wanderedNightGod:
             "You walked through the woods for long hours. Eventually, you came to a clearing. You looked up."
+            queue sting lacuna4
             call hideAll from _call_hideAll_184
             show nightgodbg at artPos
             "The Firmament was gazing down upon you."
@@ -8883,6 +8884,7 @@ label thiefMushroomInvestigate:
             "You found nothing and no-one. There was nothing there. Nothing but a cold silence that slowly followed you from behind the trees."
             hide news onlayer screens
             "..."
+            queue sting lacuna5
             show hand onlayer transient:
                 yalign 0.665#0.743
                 xalign 0.5
@@ -8921,6 +8923,7 @@ label toadInvestigate:
         "If you entered the hole, turn to page 207.":
             "You crouched down and slithered into the hole. Mud covered you."
             "It was wet, and cramped, and crawling with small worms and roaches. "
+
             "A cold silence lay coiled in the hollow like thick fog."
             "Why did you come here?"
             label toadInvestigateMenu:
@@ -8930,6 +8933,7 @@ label toadInvestigate:
                 menu:
                     "You had best return to your home and the people who love you."
                     "If you searched the nearby area, turn to page 208.":
+                        queue sting lacuna1
                         label essay2Showing:
                             $renpy.show_screen("essay2", _layer="screens", tag="note", _zorder=101)
                             "You uncovered a pantry with a single, mouldy piece of bread, and a pit sunk into the muck of the wall with the remains of an old fire."
@@ -8940,6 +8944,7 @@ label toadInvestigate:
                         "You crawled through a tunnel in the back which lead down into the mud."
                         "At the end of the tunnel was a small room with a bed and a closet."
                         "Inside the closet were two threadbare costumes. A witch and a unicorn."
+                        queue sting lacuna2
                         label toadDiaryShowing:
                             $renpy.show_screen("tDiary", _layer="screens", tag="map", _zorder=101)
                             "Nothing beside remained."
@@ -9069,6 +9074,7 @@ label witchInvestigate:
                 "When you opened your eyes, you were standing right way up again."
                 "The puddle you had jumped into was now a floor, like a silver mirror."
                 "The world all around you shone white."
+                queue sting lacuna1
                 "At the centre of the puddle was a cottage in the middle of a garden."
                 jump witchCottageInvestigate
     label witchCottageInvestigate:
@@ -9088,6 +9094,7 @@ label witchInvestigate:
                 jump witchCottageInvestigate
             "If you explored the attic, turn to page 209." if inCottage:
                 "You climbed up in the crawl-space."
+                queue sting lacuna3
                 label essay4Showing:
                     $renpy.show_screen("essay4", _layer="screens", tag="note", _zorder=101)
                     "It was covered in dust. A small bed nestled in the corner, with a half-full teacup beside it."
@@ -9124,6 +9131,7 @@ label mushroomInvestigate:
     menu:
         "It was lying open."
         "If you entered the door, turn to page 131.":
+            queue sting lacuna5
             "The door creaked slowly open."
             jump mushroomInvestigateMenu
         "If you turned around and left (the act of a wise individual), turn to page 157.":
@@ -9152,6 +9160,7 @@ label mushroomInvestigate:
                 show mushroomcaveunderbg at artPos
                 "Under the tree was an ancient underground river."
                 "The mud held old crocodile footprints, long dried. There was no sign of anything living."
+                queue sting lacuna2
                 pov "I had best head back to the village, if I know what is good for me."
                 "You turned and climbed back up the stairs."
                 jump mushroomInvestigateMenu
@@ -9182,7 +9191,7 @@ label thiefInvestigate:
         "If you entered the train, go to page 120.":
             call hideAll from _call_hideAll_198
             show enginebg at artPos
-
+            queue sting lacuna1
             "You hoisted yourself up into the train carriage."
             "The main room was some kind of bar or gambling hall that now lay silent."
             "The moonlight gleamed on empty bottles and glasses. The wind whistled through open windows."
@@ -9216,6 +9225,7 @@ label thiefInvestigate:
                     "If you investigated the other carriages, turn to page 250.":
                         "You walked through the empty compartments."
                         "Slowly rotting mattresses on the beds. Empty suitcases with no luggage. A ragged, midnight-blue cloak."
+                        queue sting lacuna4
                         label noteShowing:
                             $renpy.show_screen("note1", _layer="screens", tag="map", _zorder=101)
                             "Nothing beside remained."
@@ -9240,7 +9250,7 @@ label woodsInvestigate:
     show spiral1 onlayer transient zorder 100
     "It had never been sounded by the sons of men. No wisdom reaches such depths."
     show spiral7 onlayer transient zorder 100
-
+    queue sting lacuna3
     label gilgameshShowing:
         $renpy.show_screen("gilgamesh", _layer="screens", tag="map", _zorder=101)
         "The waters burned like a torch. The light of them fell upon your face."
@@ -9300,6 +9310,7 @@ label clearingInvestigate:
     show darknessbg at artPos
     call musicSilence from _call_musicSilence_26
     "You wandered through the trees until you found a dark clearing."
+    queue sting lacuna6
     "A gap in the forest. A lacuna."
     "Nothing stirred. The only sound was the crunch of your feet upon the scattered grass."
     "In the center of the clearing was an old stone. An archaic monument or shrine, weathered almost to dust. Remembered by no-one."
@@ -9353,7 +9364,7 @@ label humbabaNameSecret:
     if persistent.phoneOn and persistent.vanished <=3:
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
-        $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
+        #$renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     scene bg page
     show nightbg at artPos
@@ -9565,6 +9576,7 @@ label wolf:
     show emptybg at artPos
     "The trees slowly thinned. You walked out of the woods and down a bitumen path."
     "You wandered down an empty street."
+    queue sting lacuna1
     "A cold wind was blowing. The cold started to sink into your bones."
     "The only light was from an empty Hungry Jack's on the side of the road. The sign shone into the night."
     "An apartment block was nearby."
@@ -9627,6 +9639,7 @@ label wolf:
                 "But you already knew the combination."
                 play sound lockSuccess
                 "The lock came undone with a click."
+                queue sting lacuna6
                 $doorLock = True
                 jump doorLock
             "If you opened the door, turn to page 301." if doorLock:
@@ -9635,7 +9648,7 @@ label wolf:
                     "This choice leads to The End. You will never be able to return to the world you once knew."
                     "Ever."
                     "There is not much time left. But still, you should only open this door once you are certain you know the truth."
-                    "Once you know everything you need to know."
+                    #"Once you know everything you need to know."
                     show hand onlayer transient:
                         yalign 0.675#0.743
                         xalign 0.5
@@ -9681,7 +9694,7 @@ label wolf:
                             $houseLockOut = True
                             jump village
                 play sound doorOpen
-                $renpy.music.play("audio/windAmbience.mp3", relative_volume=0.2, fadein=1.5, channel="ambient3", loop=True)
+                $renpy.music.play("audio/windAmbience.mp3", relative_volume=1.5, fadein=1.5, channel="ambient3", loop=True)
                 "The door swung slowly open."
                 jump wolfHouse
                 # "You noticed a combination lock on the handle."
@@ -9745,7 +9758,7 @@ label wolf:
                     jump wolfFigure
 
                 "If you looked at the phone, turn to page 398.":
-                    "The screen said \"Relaxing Dark Cottagegore Reading Music With Cosy Rain Ambience | 10 hours\"."
+                    "The screen said \"Relaxing Dark Ambience For Lonely Ghosts (Only) 10 hours\"." #Cottagegore Reading Music With
                     if persistent.phoneOn:
                         "It was playing some soft music on loop, with the sounds of rain and a crackling fireplace."
                     else:
@@ -9761,6 +9774,7 @@ label wolf:
                     #This will "fix" the problem by deleting all your old saves. Ideally I will eventually fix this.
                     #$purge_saves()
                     #TK: Phone isn't working, must figure out how to fix
+                    $ renpy.block_rollback()
                     play sound phoneClick
                     $renpy.music.set_volume(0, channel=u'ambient1')
                     $renpy.music.set_volume(0, channel=u'ambient2')
@@ -9769,6 +9783,7 @@ label wolf:
                     "The phone fell silent."
                     jump wolfHouseExplore
                 "If you tapped the phone, turn to page 347." if not persistent.phoneOn:
+                    $ renpy.block_rollback()
                     play sound phoneClick
                     $renpy.music.set_volume(1.0, channel=u'ambient1')
                     $renpy.music.set_volume(1.0, channel=u'ambient2')
@@ -10201,7 +10216,7 @@ label wolf:
                     $persistent.phoneOn = True
                     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
                     #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
-                    $renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
+                    #$renpy.music.play("audio/cottagegore.mp3", fadein=0.5, channel="music", loop=True)
                     $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
                     #$purge_saves()
                     call musicReturn from _call_musicReturn_26
@@ -11736,6 +11751,12 @@ label end:
     call hideAll from _call_hideAll_249
     show backPage
     ""
+    stop music
+    stop music2
+    stop music3
+    stop music4
+    stop music5
+    stop music6
     play sound bookClose
     call hideAll from _call_hideAll_250
     show coverBack
