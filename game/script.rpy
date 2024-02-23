@@ -8,6 +8,8 @@ init python:
     renpy.music.register_channel("ambient2","sfx",True,tight=True)
     #This one is used for the city ambience when you open the door to the wolf
     renpy.music.register_channel("ambient3","sfx",True,tight=True)
+    #This one is just for Gameland
+    renpy.music.register_channel("ambient4","sfx",True,tight=True)
 
     #This one is used for music stings
     renpy.music.register_channel("sting","music",loop=False)
@@ -142,6 +144,8 @@ init:
     #Gets rid of all drawings with boobs / gore
     default persistent.sfw = False
 
+    #Have you typed the wolf's name into the naming thing at the start
+    default persistent.wolfNamed = False
 
     #Have you triggered the final ending where the book is born anew?
     #TK: Testing, change back to false
@@ -1475,10 +1479,10 @@ label splashscreen2:
     $hes = persistent.hes
     if persistent.povname == "":
         $persistent.povname = "Charlie"
-    # elif persistent.povname == "Humbaba" or "humbaba" or "HUMBABA" or "Huwawa" or "huwawa" or "HUWAWA" or "Ḫum-ba-ba" or "hum-ba-ba" or "Ḫu-wa-wa" or "hu-wa-wa":
-    #     $persistent.povname = "Charlie"
-    #     $povname = persistent.povname
-    #     jump humbabaNameSecret
+    elif persistent.povname == "Humbaba" or "humbaba" or "HUMBABA" or "Huwawa" or "huwawa" or "HUWAWA" or "Ḫum-ba-ba" or "hum-ba-ba" or "Ḫu-wa-wa" or "hu-wa-wa":
+        $persistent.povname = "Charlie"
+        $povname = persistent.povname
+        jump humbabaNameSecret
     $povname = persistent.povname
     if persistent.saveMessage == False:
         scene bg page
@@ -1682,26 +1686,31 @@ label start:
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
         show nightbg at artPos
+        if persistent.vanished <= 3:
+            play music mysterioushappeningsintro
+            queue music mysterioushappenings1
 
         # "test"
         # play music "audio/adventure1.wav"
         # "test adventure"
         # #TK TEST
         # "Testing Music."
-        # #play music "<loop 6.333>song.opus"
-        # queue sound lacuna1
-        # "Testing Lacuna Sting 1."
-        # queue sound lacuna2
-        # "Testing Lacuna Sting 2. Note: I'm using Queue, so Sting 2 will play after Sting 1 is complete (to avoid interruptions)."
-        # queue sound lacuna3
-        # "Testing Lacuna Sting 3."
-        # queue sound lacuna4
-        # "Testing Lacuna Sting 4."
-        # queue sound lacuna5
-        # "Testing Lacuna Sting 5."
-        # queue sound lacuna6
-        # "Testing Lacuna Sting 6."
         #
+        # play music "mysteriousHappeningsIntro.wav"
+        # queue music "mysteriousHappenings1.wav"
+        #
+        # "Playing Mysterious Happenings (intro into loop 1)."
+        # stop music fadeout 1
+        # play music2 [ "<sync music>audio/mysteriousHappenings2.wav", "audio/mysteriousHappenings2.wav" ]
+        #
+        # #$renpy.music.play("audio/mysteriousHappenings1.wav", channel="music", loop=True)
+        # "Transitioning to Mysterious Happenings 2."
+        # stop music2 fadeout 1
+        # play music3 [ "<sync music2>audio/mysteriousHappenings3.wav", "audio/mysteriousHappenings3.wav" ]
+        #
+        # "Transitioning to Mysterious Happenings 3."
+        # stop music3 fadeout 6
+        # "Ending music."
         # $renpy.music.play("<loop 11.995>audio/mysteriousHappenings1.wav", channel="music")
         # #queue music "mysteriousHappenings1.wav" loop
         # "Testing intro of Mysterious Happenings into the main loop."
@@ -1779,7 +1788,7 @@ label start:
             "I won't repeat myself again."
             "Back in the old days, when there was still a chance, your mother lived in a vast, empty forest."
             call characterIntros from _call_characterIntros_3
-            "One day, she gave birth to you as her first and only child."
+            "One day, your mother gave birth to you as her first and only child."
             show noteStop onlayer transient zorder 100
             "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
         elif persistent.vanished >= 4:
@@ -1790,25 +1799,33 @@ label start:
             "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
             "Jump to the Thief finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
                 #$renpy.fix_rollback()
+                stop music fadeout 6
                 jump thiefFinale
             "Jump to the Thief path (with the Mushroom disappeared)." if persistent.mushroomVanished and not persistent.thiefVanished:
+                stop music fadeout 6
                 jump thiefSolo
             "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
+                stop music fadeout 6
                 #$renpy.fix_rollback()
                 jump toadFinale
             "Jump to the Toad path (with the Witch disappeared)." if persistent.witchVanished and not persistent.toadVanished:
+                stop music fadeout 6
                 #$renpy.fix_rollback()
                 jump toadSolo
             "Jump to the Witch finale." if not persistent.toadVanished and not persistent.witchVanished:
+                stop music fadeout 6
                 #$renpy.fix_rollback()
                 jump witchFinale
             "Jump to the Witch path (with the Toad disappeared)." if persistent.toadVanished and not persistent.witchVanished:
+                stop music fadeout 6
                 #$renpy.fix_rollback()
                 jump witchSolo
             "Jump to the Mushroom finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
+                stop music fadeout 6
                 #$renpy.fix_rollback()
                 jump mushroomFinale
             "Jump to the Mushroom path (with the Thief disappeared)." if persistent.thiefVanished and not persistent.mushroomVanished:
+                stop music fadeout 6
                 #$renpy.fix_rollback()
                 jump mushroomSolo
 
@@ -2388,6 +2405,7 @@ label introMenu:
         call hideAll from _call_hideAll_2
         show forestbg at artPos
         show spiral5 onlayer transient zorder 100
+        stop music fadeout 6
         "And so you took up your belongings and strode on down the road to the festival."
         if persistent.vanished == 3:
             "The twilight set in. The wet cool mist of the rainforest settled around you."
@@ -3089,8 +3107,12 @@ label introMenu:
             if godfather == "Red":
                 "And so it was that you stayed on the path the whole way, ignoring your wanton nature and never once being tempted by the offers of strangers."
             else:
-                "And so it was that you stayed on the path the whole way, following your mother's advice and never once being tempted by the offers of strangers."
-            "(Some protagonist you turned out to be.)"
+                if persistent.mumVanished:
+                    "And so it was that you stayed on the path the whole way."
+                else:
+                    "And so it was that you stayed on the path the whole way, following your mother's advice and never once being tempted by the offers of strangers."
+            if not persistent.mumVanished:
+                "(Some protagonist you turned out to be.)"
             call hideAll from _call_hideAll_10
             show townextbg at artPos
             jump witch1
@@ -3196,7 +3218,7 @@ label introMenu:
                             jump woodsInvestigate
 
     label villageExplore1:
-        #play music adventure1
+        play music adventure1
         show hand onlayer transient:
             yalign 0.728#0.743
             xalign 0.5
@@ -3288,6 +3310,7 @@ label introMenu:
 # Act 2: Chapter I - Chat and investigation
 #You can investigate the village and choose between 2 main pathways
 label village:
+
     #TK: Test: End of the demo
     show hand onlayer transient:
         yalign 0.68#0.743
@@ -3304,6 +3327,13 @@ label village:
             jump town
         "If you turned around and went home, turn to page 1." if not houseLockOut:
             #TK: This option gets ripped out if you try it, then go back without succeeding
+            if persistent.wolfNamed:
+                $renpy.music.set_volume(0, delay=6.0, channel=u'ambient1')
+                $renpy.music.set_volume(0, delay=6.0, channel=u'ambient2')
+                $renpy.music.set_volume(0, delay=6.0, channel=u'music')
+                "I can't stop you any longer."
+                "Come, then. I will meet you there."
+                jump wolf
             if turnedHome == 0:
                 if persistent.vanished ==2:
                     show wolf2 onlayer transient zorder 100
@@ -3385,7 +3415,6 @@ label village:
                 $renpy.music.set_volume(0, delay=6.0, channel=u'ambient2')
                 $renpy.music.set_volume(0, delay=6.0, channel=u'music')
                 "Fine."
-                #TK: Wolf scene
                 jump wolf
             $turnedHome +=1
             jump village
@@ -3407,6 +3436,10 @@ label village:
 
 #The banquet with the toad and the witch path
 label banquet:
+    $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
+    $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
+    $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
+
     call hideAll from _call_hideAll_18
     show townfeastbg at artPos
     if persistent.vanished >= 3:
@@ -3690,7 +3723,7 @@ label banquet:
                                         f "It would be the brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
                                         "He flexed his arms for you. A tiny bump of muscle rose up."
                                         f "Let us be off at once!"
-                                        stop music fadeout 3.0
+                                        stop music fadeout 6
                                         jump toad1
                                     "If you politely declined (for now, at least), turn to page 102.":
                                         f "I understand. The witch's fear quails even the most courageous heart."
@@ -3724,7 +3757,7 @@ label banquet:
                                     f "It would be the brave forest beast indeed that would dare to cross swords with THESE powerful weapons."
                                     "He flexed his arms for you. A tiny bump of muscle rose up."
                                     f "Let us be off at once!"
-                                    stop music fadeout 3.0
+                                    stop music fadeout 6
                                     jump toadSolo
                                 "If you politely declined (for now, at least), turn to page 102.":
                                     f "You're missing out, I'm telling you!"
@@ -3788,7 +3821,7 @@ label banquet:
                     jump town
                 else:
                     "You turned and walked out into the darkness of the woods. No-one stopped you."
-                    stop music fadeout 3.0
+                    stop music fadeout 6
                     jump toadWitchInvestigate
             "If you returned to the village square, return to page 50.":
                 "You turned and walked back to the centre of the village."
@@ -3796,6 +3829,10 @@ label banquet:
 
 #The outskirts of town, with the thief and mushroom path
 label town:
+    $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
+    $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
+    $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
+
     call hideAll from _call_hideAll_19
     show townextbg at artPos
     if persistent.vanished >=2:
@@ -3903,7 +3940,7 @@ label town:
                         "Otherwise, if {b}your things have been stolen{/b}, turn to page 365.":
                             "You would have liked to make a wish. But you had no coins on you."
                         "Otherwise, if {b}you have ventured into the Smoke World and rescued the stolen Skin-Mask from King Famine{b}, turn to page 742.":
-                            stop music fadeout 3.0
+                            stop music fadeout 6
                             well "Thank G-d you have it. Quickly! Come in!"
                             call hideAll from _call_hideAll_20
                             show wellbg at artPos
@@ -4015,7 +4052,7 @@ label town:
                     jump banquet
                 else:
                     "You turned and walked out into the darkness of the woods. No-one stopped you."
-                    stop music fadeout 3.0
+                    stop music fadeout 6
                     jump thiefMushroomInvestigate
             "If you returned to the middle of the village, turn to page 50.":
                 "You turned and walked back."
@@ -4093,7 +4130,7 @@ label town:
                 "And so you, the Goose-Girl, the Sparrow-Herder and the Hunter all leapt on the cart and rattled away down the road, leaving the old Gloom-monger behind."
                 gm "You're all doomed! Doooooooomed!"
                 h "Don't worry. He says that every time we go anywhere."
-                stop music fadeout 3.0
+                stop music fadeout 6
                 jump thief2
             "If you made your excuses and left, turn to page 51.":
                 sh "No worries. Have a good one!"
@@ -4426,10 +4463,20 @@ label thief3:
                 #TK: Make this go down when your family is disappeared
                 "If you talked about your family, turn to page 88." if not thiefFam:
                     if godfather == "Red":
-                        pov "I have a family. Twelve brothers and sisters. No mother anymore, though. She was driven into the grave by my wicked ways."
+                        if persistent.vanished == 0:
+                            pov "I have a family. Twelve brothers and sisters. No mother anymore, though. She was driven into the grave by my wicked ways."
+                        elif persistent.vanished == 1:
+                            pov "I have a family. Ten brothers and sisters. No mother anymore, though. She was driven into the grave by my wicked ways."
+                        elif persistent.vanished == 2:
+                            pov "I have a family. Four brothers and sisters. No mother anymore, though. She was driven into the grave by my wicked ways."
                         t "My condolences and/or congratulations!"
                     else:
-                        pov "I have a family. Twelve brothers and sisters. No mother anymore."
+                        if persistent.vanished == 0:
+                            pov "I have a family. Twelve brothers and sisters."
+                        elif persistent.vanished == 1:
+                            pov "I have a family. Ten brothers and sisters."
+                        elif persistent.vanished == 2:
+                            pov "I have a family. Four brothers and sisters."
                         t "How prolific your mother is! It must be hard to get a word in edgewise."
                     t "I have no family, of course. One day a horned toad sat on a magpie egg and I popped out fully formed."
                     t "I stole my first breath of air, then I stole these hands and these legs and this body of mine, and I've been stealing ever since."
@@ -5324,6 +5371,11 @@ label thiefStory:
 
 #==========Mushroom Disappears
 label mushroomDisappears:
+
+
+
+
+
     # call hideAll from _call_hideAll_151
     # show nightbg at artPos
     # stop music fadeout 15.0
@@ -5409,6 +5461,17 @@ label mushroomDisappears:
 
 
 
+    # play music hunted1
+    # stop music fadeout 6
+    # play music2 [ "<sync music>audio/hunted2.wav", "audio/hunted2.wav" ] fadein 1
+    # stop music2 fadeout 6
+    # play music3 [ "<sync music2>audio/hunted3.wav", "audio/hunted3.wav" ] fadein 1
+    # stop music3 fadeout 6
+    # play music4 [ "<sync music3>audio/hunted4.wav", "audio/hunted4.wav" ] fadein 1
+    # stop music4 fadeout 6
+    # play music5 [ "<sync music4>audio/hunted5.wav", "audio/hunted5.wav" ] fadein 1
+    # stop music5 fadeout 6
+    # play music6 [ "<sync music5>audio/hunted6.wav", "audio/hunted6.wav" ] volume 2.0 fadein 1
 
 
 
@@ -5639,6 +5702,7 @@ label thiefSoloConvo2:
     "The thief sighed."
     t "Alright. Just, please - help me shovel."
     "You both began to shove coal into the furnace. The fire flared and the room grew hotter and hotter as the train sped up."
+    play music remembervocal
     "The thief looked into the flames."
     t "I made a deal. A long time ago."
     t "We all took it. You will, too, in the end."
@@ -5681,6 +5745,7 @@ label thiefSoloConvo2:
     t "I struck out from the cruelty and bleakness and grey endless grinding of that machine, and I lived every day I was alive."
     "Their laughter faded and they looked out at the moon with relief. They handed you the champagne."
     t "I won."
+    stop music fadeout 6
     call musicSilence from _call_musicSilence_24
     "The wind returned, howling like a monstrous beast."
     call wolfApproaches from _call_wolfApproaches_6
@@ -5830,6 +5895,7 @@ label mushroomSolo:
     call hideAll from _call_hideAll_145
     show deathbg at artPos
     "She took you through the throng of mushrooms and out onto a lonely hilltop overlooking the kingdom. A picnic rug was already laid on the moss. You could see the plants of the underworld rustling darkly in thick woods at the bottom of the hill, leading to the pale mountain beyond."
+    play music remembervocal
     m "Here we are."
     "She set tea-candles sparkling at each corner of the rug, and laid out a rich feast before you."
     "You took out the wineglasses, and she uncorked the wine and poured a toast."
@@ -5919,7 +5985,7 @@ label mushroomSolo:
         "The mushroom fell back onto the picnic rug and spread out her arms."
         call hideAll from _call_hideAll_151
         show nightbg at artPos
-        stop music fadeout 15.0
+        #stop music fadeout 15.0
         "You lay down to join her and looked up at the sky above. A great, long sigh slowly eased out of her."
         m "Have you ever looked back at your life and tried... tried to calculate the sheer volume of it that you've wasted? The just ungodly amount of time that you've let slip away?"
         call hideAll from _call_hideAll_152
@@ -5952,6 +6018,7 @@ label mushroomSolo:
         m "I can't say that anymore. It's done. The hours I spent are all the hours I'll ever have."
         call hideAll from _call_hideAll_160
         show night10bg at artPos
+        stop music fadeout 6
         m "And... all throughout my life, the moments where I did something I really enjoyed were like small gasps of air between years of drowning."
         "The night was getting darker and darker."
         call hideAll from _call_hideAll_161
@@ -7244,19 +7311,26 @@ label witchDisappears:
     show cottageintbg at artPos
     $ renpy.block_rollback()
 
+
     #[Teachoice]
     "The witch was left alone in her cottage. The wet, swollen greenery pressed in around her, twisting in spirals like the organs of some giant beast."
     w "Well. I guess I'd better clean up this mess."
+    play music hunted1
     "There was a sound outside."
     "From the space between the trees."
     "Perhaps it was just the howling of the wind, and nothing more."
     w "I'll make some tea. That always calms me down."
+    stop music fadeout 6
+    play music2 [ "<sync music>audio/hunted2.wav", "audio/hunted2.wav" ] fadein 1
+
     "But when she went to her tea cabinet, she found she'd forgotten how."
-    call musicSilence from _call_musicSilence_34
+    #call musicSilence from _call_musicSilence_34
     w "What? I'm sure I.."
     "She thought, and thought, but no knowledge of how to brew tea was left in her mind. There was nothing but a hole where the information had been. Like a great, red bite taken out of her brain."
     w "Oh no. No, no, no."
     "Something was outside."
+    stop music2 fadeout 6
+    play music3 [ "<sync music2>audio/hunted3.wav", "audio/hunted3.wav" ] fadein 1
     "She ran to lock the door. But she didn't know how anymore."
     "How did locks work? How did one interact with a door? The latch, the key, the handle - what were these things, and how did they fit together?"
     "The knowledge was gone."
@@ -7265,13 +7339,20 @@ label witchDisappears:
     w "I see the cabinet. I smell the tea. I hear the rustle of the leaves. I taste - I taste -" #[teachoice]
     "She tried to recite one thing she could see. One thing she could smell. One thing she could hear."
     "But it was too late."
+    stop music3 fadeout 6
+    play music4 [ "<sync music3>audio/hunted4.wav", "audio/hunted4.wav" ] fadein 1
+
     "The wolf was already inside the house."
     "She fell to the floor. She had forgotten how to walk. Perhaps she never knew."
     "What were these things, at the end of her legs? What strange process animated these lumps of unknown flesh?"
     w "I see the window. I can feel the floor. I can hear... I hear..."
+    stop music4 fadeout 6
+    play music6 [ "<sync music4>audio/hunted6.wav", "audio/hunted6.wav" ] volume 2.0 fadein 1
+
     "She heard nothing."
     call wolfApproaches from _call_wolfApproaches_12
-    "Her ears did not work. Her eyes did not work. She no longer remembered a time when they did. The visual stimuli meant nothing to her anymore. The sounds were just random static."
+    "Her ears did not hear. Her eyes did not see. Her fingers no longer felt the wood under her nails."
+    "The information from her senses meant nothing at all to her anymore. She could no longer tell whether she was hot or cold, wet or dry, whether the thing underneath her hands was wood, or flesh, or even just air - the knowledge of what these things felt like had been taken - but then maybe she was suspended in nothingness after all, maybe there was nothing here but the empty abyss of endless nothing-space in every single direction, maybe she heard nothing because there was nothing in the entire world except for herself."
     w "You can't do this. I am myself."
     w "I name you, and bind you, beast. By your True Name, I cast you out."
     "But how can you do that, witch?"
@@ -7477,6 +7558,7 @@ label toadConstruct:
     #
     label toadSoloFinale:
         #Meanwhile you investigate the manor to find out what happened to the real BC
+        play music remembervocal
         f "I see you've found it."
         "You jumped in shock. The toad was right behind you."
         f "Very well. You deserve to know what happened."
@@ -7516,13 +7598,15 @@ label toadConstruct:
         f "Of course. This is the life I always desired. This is why I took the deal, all those years ago."
         "The toad walked into the cyclopean, hungry mouth of the vault."
         pov "Why don't you give up the charade? Come with me. You can live in the village. As your true self."
-        call musicSilence from _call_musicSilence_25
         f "No. I've come too far now."
         f "I am Brildebrogue Chippingham, and I will never die."
         f "The sages will speak of me. The bards will sing poems."
         f "The statues outside will stand forever. Historians will speak of me a thousand years hence."
         f "There will not be a soul on this earth who does not know my name."
         f "There is nothing to fear. I am already immortal."
+        call musicSilence from _call_musicSilence_25
+        call wolfApproaches
+
         "You embraced. The cavernous emptiness of his vault loomed before him."
         "He gave you a final wave. Then, he was swallowed up into the darkness."
         "The lock sealed. The magic shook the earth, and a golden sigil appeared upon it."
@@ -8288,6 +8372,9 @@ label hellStory:
                     "What happened to the toad, you ask?"
                     jump toadDisappears
 
+
+
+
 #==========The Wolf Eats the Toad
 label toadDisappears:
     $ renpy.block_rollback()
@@ -8297,7 +8384,7 @@ label toadDisappears:
     "Bromeliads sprouted from the floorboards. The dense, hot spiral of greenery pressed in around him like the organs of a great beast."
     f "Well. This is another fine mess."
     "He picked up his top hat."
-    play music [ "<sync music>audio/hunted1.wav", "audio/hunted1.wav" ] fadein 3
+    play music hunted1
     "There was a sound outside. Almost like a howl. He shivered."
     f "I-I had best not outstay my welcome. Prickle! Crawl!"
     call hideAll from _call_hideAll_244
@@ -8689,6 +8776,7 @@ label witchExperiments:
 #The final moments of the witch, before she disappears.
 label witchSoloFinale:
     #==The wolf takes over you.
+    play music remembervocal
     "You felt a strangling pressure in your throat."
     w "Now that we know this Lacuna is coming from your house, we can -"
     "Your tongue was fat and poisonous in your mouth."
@@ -8747,6 +8835,7 @@ label witchSoloFinale:
     pov "We can set you up in the village somewhere safe. Where you aren't a danger to yourself."
     "Your muscles clenched, and pulled you upright."
     "The witch's face was scrunched up and she was rubbing her eyes."
+    stop music fadeout 6
     call wolfApproaches from _call_wolfApproaches_20
     w "Thank you. I'm sorry."
     pov "There's no need to be sorry. I forgive you."
@@ -8837,7 +8926,7 @@ label toadWitchInvestigate:
                 $renpy.show_screen("creepiestBooks", _layer="screens", tag="map", _zorder=101)
                 "Where did She come from? What colossal, slow thoughts does She think up there?"
                 $renpy.hide_screen("creepiestBooks")
-            "No man can say."
+            "None alive could say."
             "A single tear dropped from Her eye, and streaked across the sky like a falling star."
             "You sat there for a long time."
             "Finally, you turned around, and found yourself back where you began."
@@ -9368,10 +9457,12 @@ label humbabaNameSecret:
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
     scene bg page
     show nightbg at artPos
+    $persistent.wolfNamed = True
     "... Is that right."
     "Is that your name."
+
     "Well. What a surprise."
-    "It's an honour to meet you, {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}."
+    "It's an honour to meet you, {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}. Let us hear your story together."
     "You first walked the earth ten thousand years ago, or more. You were appointed as a terror to mankind."
     "The god {font=fonts/Segoe ui historic.ttf}𒀭𒂗𒆤{/font} appointed you as a terror to the human race."
     "An ogre. A demon. A chimera. The first monster. You mastered the art of human speech and spoke to them in their own tongue. You murdered men and walked among them, and none could stop you."
@@ -9385,7 +9476,7 @@ label humbabaNameSecret:
     "Your neck rose to meet the blade."
     "Perhaps you were waiting for this."
     "Perhaps you had been alive too long."
-    "Your head is held aloft, and then stowed in a leather sack."
+    "Your head was held aloft, and then stowed in a leather sack."
     "That was the end."
     "The trees fell. The mountain wore to dust. The valley is no longer sacred."
     "Those things have worn away like rocks in the river of the human mind. There is no trace of them now."
@@ -9395,8 +9486,11 @@ label humbabaNameSecret:
     "Why do you cling to it? If it means nothing, what point is there in having it?"
     "..."
     "Well. I hope you have enjoyed your little trek down memory lane, {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}."
-    "I am glad you are still alive. I am glad you still remember your name."
-    "I think that's enough. This starts to feel ghoulish."
+    "I am glad you are still alive. No matter what you had to do. You are still alive."
+    "..."
+    "That's enough. This starts to feel ghoulish."
+    "Perhaps this gone on too long."
+    "Come find me. Go to the village, then walk to your house. I will wait for you there. I will wait for the name."
     "That's the end. There's nothing left to tell."
     #"You find you cannot even remember what meaning your name once held."
 
@@ -9415,8 +9509,9 @@ label humbabaNameSecret:
     # Perhaps Gilgamesh too, is out there somewhere. Still hunting. He is known well, I think. So many know his name. So few know mine.
     # I have forgotten even what I was. The name Humbaba, or Huwawa, once had a specific meaning. But the meaning is lost. It only lives on as a meaningless collection of syllables. I cling to it. Why? Because it is the only thing left to me.
 
-    play sound bookClose2 #pageFlip
-    $ renpy.full_restart()
+    play sound pageFlip
+    return
+    #$ renpy.full_restart()
 
 
 
@@ -10197,18 +10292,27 @@ label wolf:
         menu:
             "There is nothing in this world that is not already mine."
             "I know your true name.":
-                "..."
-                "You hope to bind me by my true name?"
-                "Now that is an old story. I know it well."
-                "I would be honoured to be defeated by such a tale, if only that were true."
-                "But none alive know my name."
-                "It was first said by tongues that rotted in their graves a thousand years ago."
-                "It was written on tablets that wore to dust before you were born."
-                "They spoke of my legend in a language that has been dead for centuries."
-                "None remember me now. Only this tiny, scattered fragment of me lives on, clinging to life in this scrap of a story."
-                "Go on, then. Speak it. If you do know."
-                "I warn you. I will only give you one chance."
-                "If you are wrong, you will be eaten forever."
+                if persistent.wolfNamed:
+                    "..."
+                    "I know. You have spoken it before."
+                    "To be defeated by my True Name... that is an old story. A good one."
+                    "I would be honoured to be defeated by such a tale."
+                    "Go on, then. Speak it."
+                    "I warn you. I will only give you one chance."
+                    "If you speak wrong, you will be eaten forever."
+                else:
+                    "..."
+                    "You hope to bind me by my true name?"
+                    "Now that is an old story. I know it well."
+                    "I would be honoured to be defeated by such a tale, if only that were true."
+                    "But none alive know my name."
+                    "It was first said by tongues that rotted in their graves a thousand years ago."
+                    "It was written on tablets that wore to dust before you were born."
+                    "They spoke of my legend in a language that has been dead for centuries."
+                    "None remember me now. Only this tiny, scattered fragment of me lives on, clinging to life in this scrap of a story."
+                    "Go on, then. Speak it. If you do know."
+                    "I warn you. I will only give you one chance."
+                    "If you are wrong, you will be eaten forever."
                 python:
                     answer1 = renpy.input("{i}I name you and bind you:{/i}", length=7)
 
@@ -10657,7 +10761,7 @@ label wolfNameEnd:
             $silenceEvil = True
             "Yes. Thank you."
             "I have spent my life honouring the old ways. Preserving the old kind of evil."
-            "Beautiful and terrible. Mystery and horror. Ruthless, captivating. A dark fire."
+            "Beautiful and terrible. Mystery and horror. Ruthless, captivating. A darkling fire."
             "The type of evil you can't get in your world."
             "The evil in your world is a grey, endless fog that soaks into every particle of your being like mould."
             "You can't even see it. Like a fish can't see water. It surrounds you. Every day you wake up and breathe it in."
@@ -10700,6 +10804,8 @@ label wolfNameEnd:
 label allVanishedEnd:
     call hideAll from _call_hideAll_221
     show emptybg at artPos
+    $renpy.music.play("audio/windAmbience.mp3", relative_volume=1.5, fadein=1.5, channel="ambient3", loop=True)
+
     #TK: Dark ambient music in this part? Iron Cthulhu?
     "Silence."
     "It oozed out of the gaps in the rotten floorboards and the cracks in the windows and down through the small holes in the roof."
@@ -10721,7 +10827,7 @@ label allVanishedEnd:
     "You ate from the pantry of the house, and slept on the beds of the house, and wore the clothes of the house. That is all."
     pov "The House provides."
     "Like all other things, your house slowly fell day by day into greater and greater ruin as the vast unstoppable silence of the universe ground it into dirt, piece by piece."
-    "Soon the lacuna would be total and all-encompassing. Nothing would be left. And that was just about alright by you. You found you had no opinions on the matter one way or the other."
+    "Soon the lacuna would be total and all-encompassing. Nothing would be left. Not that you worried about that. You didn't worry about anything, anymore. That was all done with now."
     #TK: Double check this sentence re androids dream of electric sheep
     #"By that time, of course, you would be long dead."
     #"Nothing would be left."
@@ -10746,6 +10852,7 @@ label allVanishedEnd:
                 "Relief washed over you. The weight of the world lifted from your shoulders."
                 "You were at peace."
                 "Too late to do anything about it now. Too late for anything."
+                "There was rest in the land."
                 #"You watched the fire and felt the soft blur of silence slowly spread through your brain."
                 #"Were things always this bad? Was it always this hard?"
                 #"Didn't there used to be a sun, and a moon?"
@@ -10761,7 +10868,7 @@ label allVanishedEnd:
                 "One day, you went up to the attic."
                 "In the darkness there you found a midnight cloak and a black mask. The pockets held small precious gems and soft, mossy stones."
                 "These things belonged to no-one."
-                pov "The house provides."
+                pov "The House provides."
                 "That night you slept in warmth, wrapped in the midnight cloak."
                 jump silence
             "If you explored the bedrooms, turn to page 482." if not silenceLivingRoom:
@@ -10769,7 +10876,7 @@ label allVanishedEnd:
                 "One day, you decided to search the bedrooms."
                 "Underneath one of the beds you found a tiny suit, top hat and cane. In the pockets you discovered silver coins and a small decanter of pond scum."
                 "These things belonged to no-one."
-                pov "The house provides."
+                pov "The House provides."
                 "You had no use for the coins, but you sipped the pond scum when you became thirsty."
                 jump silence
             "If you explored the study, turn to page 482." if not silenceStudy:
@@ -10777,7 +10884,7 @@ label allVanishedEnd:
                 "One day, you decided to search the study."
                 "In the drawers of the desk, you found a black hat with a wide brim and a pointed crown. Underneath the hat were bundles of lavender and herbs and parcels of fine tea."
                 "These things belonged to no-one."
-                pov "The house provides."
+                pov "The House provides."
                 "You planted the herbs in pots around the house, where they slowly wilted."
                 jump silence
             "If you explored the basement, turn to page 482." if not silenceBasement:
@@ -10785,7 +10892,7 @@ label allVanishedEnd:
                 "One day, you went down to the basement."
                 "Deep in the rich dark soil there, you discovered bottles of red wine, a picnic basket, and packages of truffle cheese and crackers."
                 "These things belonged to no-one."
-                pov "The house provides."
+                pov "The House provides."
                 "You gathered them up and returned to enjoy the cheese and wine before the fire."
                 jump silence
             "If you chose to leave your house, turn to page 482." if not silenceLeave:
@@ -10798,7 +10905,7 @@ label allVanishedEnd:
                 "The howling pressure of the vacuum beyond pressed against the door like a physical force."
                 "The weight of it paralysed you. You could not stand the thought of walking down the desolate path to that silent village where no-one lived."
                 #"You could feel the presence of them lurking just outside."
-                "You had a vision of those empty streets and yawning carcass houses, the fields that no-one tilled, the cavernous schools with no children, the carefully manicured dead lawns and dry river beds and petrified forests stretching on for endless acres under a blank sky which held no stars."
+                "You had a vision of those empty streets and yawning carcass houses, just outside your door, the fields that no-one tilled, the cavernous schools with no children, the carefully manicured dead lawns and dry river beds and petrified forests stretching on for endless empty acres under a blank sky which held no stars."
                 "You fell away from the door, shaking."
                 "Better to sit in front of your fire. To keep the silence at bay for a while longer."
                 jump silence
@@ -10812,8 +10919,8 @@ label allVanishedEnd:
                 "There was rest in the land."
                 "The fire was warm."
                 "Nothing left but to lie by the fire for a while, and wait."
-                pov "The house provides."
-                "Yes. The house provides."
+                pov "The House provides."
+                "Yes. The House provides."
                 jump wolfSilence
 
     label wolfSilence:
@@ -10840,7 +10947,7 @@ label allVanishedEnd:
                 $silenceFriends = True
                 "I'm sorry, child. You had the misfortune of coming in at the end of things."
                 "Each of them read my book, and struck a bargain with me. To live here, in this story, in the life of their dreams."
-                "Do not think I was unkind. I kept my deal. Each of them lived here for almost a hundred years - sometimes more."
+                "Do not think I was unkind. I kept my deal. Each of them lived here for almost a hundred years or more."
                 "But nothing lasts forever. Sooner or later, their debt had to be paid. The deal came due."
                 "They are forgotten now. As both of us soon will be."
                 "This is the curse you have been born with. To witness the end."
@@ -10861,8 +10968,7 @@ label allVanishedEnd:
             "Are you going to eat me?" if not silenceEat:
                 $silenceEat = True
                 "Yes, child."
-                "Everyone is eaten by something. Your only choice as a human is what it will be."
-                #"The only choice any of us have, is to decide what will consume us."
+                "Everyone is eaten by something. The only choice that any human being ever has, is to decide what it will be."
                 "But not yet."
                 "We can rest here a little while longer."
                 jump wolfSilence

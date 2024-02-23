@@ -1,45 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 3200, in script
-    menu:
-OSError: Couldn't find file 'audio/adventure1.wav'.
+  File "game/script.rpy", line 9929, in script
+    $renpy.music.play("audio/Gameland.mp3", channel="ambient4", loop=True)
+  File "game/script.rpy", line 9929, in <module>
+    $renpy.music.play("audio/Gameland.mp3", channel="ambient4", loop=True)
+Exception: Audio channel 'ambient4' is unknown.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 3200, in script
-    menu:
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\ast.py", line 1922, in execute
-    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\exports.py", line 1106, in menu
-    rv = renpy.store.menu(new_items)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\exports.py", line 1345, in display_menu
-    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\core.py", line 3582, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\core.py", line 4102, in interact_core
-    renpy.audio.audio.interact()
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\audio\audio.py", line 1271, in interact
-    periodic()
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\audio\audio.py", line 1224, in periodic
-    raise_(exc[0], exc[1], exc[2])
-  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/site-packages/future/utils/__init__.py", line 444, in raise_
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\audio\audio.py", line 1202, in periodic_thread_main
-    periodic_pass()
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\audio\audio.py", line 1144, in periodic_pass
-    c.periodic()
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\audio\audio.py", line 534, in periodic
-    topf = load(filename)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\audio\audio.py", line 72, in load
-    rv = renpy.loader.load(fn, directory="audio")
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\loader.py", line 833, in load
-    raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'audio/adventure1.wav'.
+  File "game/script.rpy", line 9929, in script
+    $renpy.music.play("audio/Gameland.mp3", channel="ambient4", loop=True)
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 9929, in <module>
+    $renpy.music.play("audio/Gameland.mp3", channel="ambient4", loop=True)
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\audio\music.py", line 103, in play
+    c = get_channel(channel)
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\audio\audio.py", line 947, in get_channel
+    raise Exception("Audio channel %r is unknown." % name)
+Exception: Audio channel 'ambient4' is unknown.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.1.3.23091805
 The Wolf. 1.0
-Mon Feb 12 17:23:02 2024
+Fri Feb 23 14:51:06 2024
