@@ -1678,6 +1678,7 @@ label start:
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
+
         #"[sfw]"
         #scene bg page
         #show hand onlayer transient:
@@ -1689,6 +1690,8 @@ label start:
         if persistent.vanished <= 3:
             play music mysterioushappeningsintro
             queue music mysterioushappenings1
+
+
         # "test"
         # play music "audio/adventure1.wav"
         # "test adventure"
@@ -10338,7 +10341,7 @@ label wolf:
                 python:
                     answer1 = renpy.input("{i}I name you and bind you:{/i}", length=7)
 
-                if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa" or answer1 == "HUWAWA" or answer1 == "Ḫum-ba-ba" or answer1 == "hum-ba-ba" or answer1 == "Ḫu-wa-wa" or answer1 == "hu-wa-wa":
+                if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "hubaba" or answer1 == "Hubaba" or answer1 == "Humama" or answer1 == "humama" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa" or answer1 == "HUWAWA" or answer1 == "Ḫum-ba-ba" or answer1 == "hum-ba-ba" or answer1 == "Ḫu-wa-wa" or answer1 == "hu-wa-wa":
                     $persistent.phoneOn = True
                     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
                     #$renpy.music.play("audio/Gymnopedies.mp3", fadein=0.5, channel="music", loop=True)
