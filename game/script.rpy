@@ -1479,10 +1479,10 @@ label splashscreen2:
     $hes = persistent.hes
     if persistent.povname == "":
         $persistent.povname = "Charlie"
-    elif persistent.povname == "Humbaba" or "humbaba" or "HUMBABA" or "Huwawa" or "huwawa" or "HUWAWA" or "Ḫum-ba-ba" or "hum-ba-ba" or "Ḫu-wa-wa" or "hu-wa-wa":
-        $persistent.povname = "Charlie"
-        $povname = persistent.povname
-        jump humbabaNameSecret
+    #elif persistent.povname == "Humbaba" or "humbaba" or "HUMBABA" or "Huwawa" or "huwawa" or "HUWAWA" or "Ḫum-ba-ba" or "hum-ba-ba" or "Ḫu-wa-wa" or "hu-wa-wa":
+        #$persistent.povname = "Charlie"
+        #$povname = persistent.povname
+        #jump humbabaNameSecret
     $povname = persistent.povname
     if persistent.saveMessage == False:
         scene bg page
@@ -1689,7 +1689,6 @@ label start:
         if persistent.vanished <= 3:
             play music mysterioushappeningsintro
             queue music mysterioushappenings1
-
         # "test"
         # play music "audio/adventure1.wav"
         # "test adventure"
@@ -9817,14 +9816,18 @@ label wolf:
                 jump village
 
     label wolfHouse:
-        #Add in a combination lock on the door. You have to find the combination.
-        #Combination is... your birthday, a disappeared person's birthday, the current date (have to look on save files to find it), the date the book was published,
-        #The date the wolf was created, the date X person disappeared, a name? Like your name, someone else's name, someone's true name, the wolf's true name.
-        #Your address, a placeholder like 1234, maybe the default for the lock?
-
-        "The room was full of dust and decay. It looked like nothing had moved here for a long time."
-        #"The fireplace was lit."
-        "In front of the fireplace was a figure in a decrepit old chair."
+        if persistent.vanished == 0:
+            "The flat was small, but cosy and warm."
+            "By the fireplace was a figure in a soft, red armchair."
+        elif persistent.vanished == 1:
+            "The flat was grey with dust that lay thick on every surface."
+            "By the fireplace was a figure in a cracked red armchair."
+        elif persistent.vanished == 2:
+            "The flat stank of decay."
+            "By the fireplace was a shrunken figure in a decrepit armchair."
+        elif persistent.vanished == 3:
+            "The room was black with rot. Small things skittered in the corners."
+            "By the fireplace was an frail, crooked figure in the crumbling remains of an armchair."
         play sound footstepsInsideApproach
         "You walked closer."
         label wolfHouseExplore:
@@ -9833,27 +9836,46 @@ label wolf:
                 yalign 0.7#0.743
                 xalign 0.5
             menu:
-                "A phone was open on the desk. "
+                "A phone was plugged in and open on the desk. "
                 #More exploration stuff in the room
                 "If you examined the figure, turn to page 399.":
                     if He == "They":
                         "[He] were reading a book."
                     else:
                         "[He] was reading a book."
-                    "In the dim light, you couldn't quite make out [his] face."
-                    "[He] did not look up."
-                    "[He] looked thin and gaunt. [His] hair was lank. It looked like [he] had been sitting there for a long, long time. [His] hands gripped the book tightly. [His] knuckles were white."
+                    if persistent.vanished == 0:
+                        "In the dim light, you couldn't quite make out [his] face."
+                        "[He] looked ill. Sweat soaked [his] chest and the back of the chair, as if [he]'d been sitting there for days."
+                        "[He] gripped the book tightly. [His] knuckles were white."
+                    elif persistent.vanished == 1:
+                        "In the dim light, you couldn't quite make out [his] face."
+                        "A thick layer of dust covered everything in the room, even [his] shoulders and body, as if [he] hadn't moved for months."
+                        "[His] hair was long and lank. [He] gripped the book tightly. [His] knuckles were white."
+                    elif persistent.vanished == 2:
+                        if he == "they":
+                            "In the dim light, you couldn't quite make out [his] face, but you could see [he] were old."
+                        else:
+                            "In the dim light, you couldn't quite make out [his] face, but you could see [he] was old."
+                        "Spots of mould covered in the room, even [his] shoulders and body, as if [he] hadn't moved for years. The last rotted remains of [his] clothes still clung to [him]."
+                        "[His] hair was long and grey. [His] wizened hands gripped the book tightly. [His] knuckles were white."
+                    elif persistent.vanished == 3:
+                        if he == "they":
+                            "In the dim light, you couldn't quite make out [his] face, but you could see [he] were ancient."
+                        else:
+                            "In the dim light, you couldn't quite make out [his] face, but you could see [he] was ancient."
+                        "Black mould spread across the walls and floor and even through [his] very body, and you saw dark spots of it creeping up across [his] shrunken chest and tender filaments of moss wrapping around [his] thighs where they sank into the wet ripeness of the chair, as if [he] hadn't moved in decades."
+                        "[His] remaining hair was white and lank. [His] festering hands gripped the book tightly. [His] fingernails were long and gnarled."
                     play sound pageFlip
                     "[He] turned the page."
                     play sound pageFlip2
                     "[He] turned the page again."
-                    "There was a figure behind [him], but you could not see it clearly."
+                    "There was a shape behind [him], but you could not see it clearly."
                     "It coiled around [him] like dark smoke."
                     "You heard soft whispers in your head. Your hand began to shake."
                     jump wolfFigure
 
                 "If you looked at the phone, turn to page 398.":
-                    "The screen said \"Relaxing Dark Ambience For Lonely Ghosts (Only) 10 hours\"." #Cottagegore Reading Music With
+                    "The screen said \"[povname]'s iPhone.\" Underneath it said: \"Relaxing Dark Ambience For Lonely Ghosts (Only) 10 Hours\"." #Cottagegore Reading Music With
                     if persistent.phoneOn:
                         "It was playing some soft music on loop, with the sounds of rain and a crackling fireplace."
                     else:
@@ -9895,13 +9917,13 @@ label wolf:
             yalign 0.7#0.743
             xalign 0.5
         menu:
-            "[His] eyes looked red and sore. They were locked on the book. [He] didn't seem to blink."
+            "The dark shape twisted around [him]. [He] didn't move at all. [His] eyes were locked on the book."
             "If you took the poker from the fireplace, turn to page 349." if not firepoker:
                 play sound firePoker volume 0.5
-                "You picked up the fire poker. The iron felt strong and heavy in your hands."
+                "You reached over and picked up the fire poker. The iron felt strong and heavy in your hands."
                 $firepoker = True
                 jump wolfFigure
-            "If you struck the dark figure with the poker, turn to page 349." if firepoker:
+            "If you struck the dark shape with the poker, turn to page 349." if firepoker:
                 call musicSilence from _call_musicSilence_27
                 "You steadied your shaking hands and raised the poker high."
                 #pause 9.0
@@ -10746,7 +10768,7 @@ label wolfNameEnd:
             "You sat there together for a long time, listening to the soft sounds of the rainforest."
             "When you were ready, you embraced. You walked back to the fireplace, and the wolf."
             jump wolfNameEnd
-        "I am done resting." if not silenceRest:
+        "I am ready to end this." if not silenceRest:
             $silenceRest = True
             "Very well."
             "I will make you my offer."
@@ -11276,17 +11298,17 @@ label newStoryFinale:
     "You were home."
     $purge_saves()
     $persistent.continueButton = False
-    pause (10.0)
+    #pause (10.0)
     #TK: Include this text saying true ending? or not?
     # show text "{color=#FFFFFF}True Ending.{/color}" with fade:
     #     xalign 0.5
     #     yalign 0.5
     # ""
-
+    scene black with fade
     show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" with fade:
         xalign 0.5
         yalign 0.5
-    ""
+    "."
     show text "{color=#FFFFFF}Thank you so much for playing.{/color}" with fade:
         xalign 0.5
         yalign 0.5
@@ -11300,7 +11322,7 @@ label newStoryFinale:
     $renpy.music.set_volume(0, delay=5.0, channel=u'ambient2')
     $renpy.music.set_volume(0, delay=5.0, channel=u'music')
     #hide text with fade
-    scene black with fade
+    #scene black with fade
     pause (5.0)
     $renpy.quit()
 
@@ -11691,6 +11713,33 @@ label bookBurnedFinale:
                 "If you returned to the village square, go back to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
+    #Moment when you can go talk to the wolf.
+    "I have nothing left to tell you, child."
+    "My voice is spent."
+    #How long do we have left?
+    "How long does a building stand before it falls?
+    How long does a contract last? How long will brothers
+    share the inheritance before they quarrel?
+    How long does hatred, for that matter, last?
+
+    Time after time the river has risen and flooded.
+    The insect leaves the cocoon to live but a minute.
+
+    How long is the eye able to look at the sun?
+    From the very beginning nothing at all has lasted."
+    #Goodbye.
+    "Goodbye, child."
+    "The dream was marvellous but the terror was great.
+    We must treasure the dream whatever the terror.
+    For the dream has shown that misery comes at last to the healthy man, the end of his life is sorrow.
+
+    The river rises, flows over its banks
+    and carries us all away, like mayflies
+    floating downstream: they stare at the sun,
+    then all at once there is nothing."
+
+
+
     label homeBurning:
         call hideAll from _call_hideAll_125
         show forest5bg at artPos
@@ -11759,7 +11808,7 @@ label bookBurnedFinale:
             $mumBurning = True
             mum "Come in. I have the kettle on."
             "You rushed in to hug her, and she ushered you inside to join her for tea."
-            mum "We never got a chance to talk much, did we? In the narrative, I mean."
+            mum "We never got a chance to talk much, did we? Only one scene together."
             mum "I don't even really know what you're like."
             mum "Well, I wanted to say..."
             mum "Whatever else happens and whoever you are, whoever you may become..."
