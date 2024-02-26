@@ -1,30 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 9929, in script
-    $renpy.music.play("audio/Gameland.mp3", channel="ambient4", loop=True)
-  File "game/script.rpy", line 9929, in <module>
-    $renpy.music.play("audio/Gameland.mp3", channel="ambient4", loop=True)
-Exception: Audio channel 'ambient4' is unknown.
+  File "game/script.rpy", line 3871, in script
+    if gilgameshPathFollowed or if tarpDone:
+SyntaxError: invalid syntax (game/script.rpy, line 3871)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 9929, in script
-    $renpy.music.play("audio/Gameland.mp3", channel="ambient4", loop=True)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\ast.py", line 1138, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\python.py", line 1122, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script.rpy", line 9929, in <module>
-    $renpy.music.play("audio/Gameland.mp3", channel="ambient4", loop=True)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\audio\music.py", line 103, in play
-    c = get_channel(channel)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\audio\audio.py", line 947, in get_channel
-    raise Exception("Audio channel %r is unknown." % name)
-Exception: Audio channel 'ambient4' is unknown.
+  File "game/script.rpy", line 3871, in script
+    if gilgameshPathFollowed or if tarpDone:
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\ast.py", line 2133, in execute
+    if renpy.python.py_eval(condition):
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\python.py", line 1151, in py_eval
+    code = py_compile(code, 'eval')
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\python.py", line 1088, in py_compile
+    raise e
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\python.py", line 1034, in py_compile
+    raise orig_e
+  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\python.py", line 1027, in py_compile
+    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
+SyntaxError: invalid syntax (game/script.rpy, line 3871)
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.1.3.23091805
 The Wolf. 1.0
-Fri Feb 23 14:51:06 2024
+Mon Feb 26 17:55:07 2024

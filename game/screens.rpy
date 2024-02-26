@@ -869,6 +869,22 @@ screen gilgamesh: #Preparing the imagemap
 
         hotspot (0, 0, 600, 810) clicked Jump("gilgameshOpens") hovered [ Play ("sound", audio.pageFlip3)]
 
+## Secret Gilgamesh Path ####
+
+screen gilPath: #Preparing the imagemap
+    imagemap:
+        idle "gilgameshPathClosed.png"
+        hover "gilgameshPathClosedHover.png"
+
+        hotspot (0, 0, 600, 900) clicked Jump("gilgameshPathOpens") hovered [ Play ("sound", audio.pageFlip3)]
+
+screen gilPathOpen: #Preparing the imagemap
+    imagemap:
+        idle "gilgameshPathOpen.png"
+        hover "gilgameshPathOpenHover.png"
+
+        hotspot (0, 0, 600, 900) clicked Jump("gilgameshStory") hovered [ Play ("audio", audio.pencil)]
+
 
 ## Contents page ####
 

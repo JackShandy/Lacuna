@@ -117,7 +117,7 @@ init:
     #Brildebrogue chippingham
     #default persistent.bcVanished = False
     #The hunter
-    default persistent.hVanished = False
+    default persistent.hVanished = True
     #The old gloom-monger
     default persistent.gmVanished = False
     #The thing in the well
@@ -461,6 +461,10 @@ init:
 
     #How long it takes to dissolve the cover image
     $dissolveTime = 0
+
+    #Have you ventured down the secret gilgamesh path (Only appears at the last moment when 3 people have disappeared)
+    $gilgameshPathFollowed = False
+
 
     ###==== Countdown
     #This screen counts down automatically and then jumps to a label once the countdown is finished
@@ -1687,10 +1691,13 @@ label start:
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
         show nightbg at artPos
+
+        jump village
+
+
         if persistent.vanished <= 3:
             play music mysterioushappeningsintro
             queue music mysterioushappenings1
-
 
         # "test"
         # play music "audio/adventure1.wav"
@@ -3129,7 +3136,7 @@ label introMenu:
         #TK: add choices here
         show scribble4 onlayer transient zorder 100
 
-        if persistent.witchVanished == True:
+        if persistent.witchVanished == True or persistent.hVanished == True:
             call musicSilence from _call_musicSilence_16
             show wolf11 onlayer transient zorder 100
             "As you walked up to the village, you saw nothing."
@@ -3327,6 +3334,8 @@ label village:
         "If you investigated the edge of town, turn to page 70.":
             call musicReturn from _call_musicReturn_17
             jump town
+        # #"If you sought out Gilgamesh, son of the goddess Ninsun, fifth king of Uruk after the flood, famous as a great builder and as a judge of the dead, turn to page 695." if not houseLockOut:
+
         "If you turned around and went home, turn to page 1." if not houseLockOut:
             #TK: This option gets ripped out if you try it, then go back without succeeding
             if persistent.wolfNamed:
@@ -3358,29 +3367,13 @@ label village:
                 "All your friends are here. Adventure awaits! Why not stay?"
                 "There's nothing back there you want. Trust me."
             if turnedHome == 3:
-                $turnedHome +=1
-                $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
-                $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
-                $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
-                h "There you are! We've been looking all over for you!"
-                h "Come on, let's get back to the feast."
-                if persistent.vanished >=3:
-                    $renpy.music.set_volume(0.7, delay=3.0, channel=u'ambient1')
-                    $renpy.music.set_volume(0.7, delay=3.0, channel=u'ambient2')
-                    $renpy.music.set_volume(0.7, delay=3.0, channel=u'music')
-                    show wolf4 onlayer transient zorder 100
-                    h "We... we need you to, uh..."
-                    "They looked around. Their eyes were bleary."
-                    h "I'm sorry, I - I don't remember why I came here."
-                    h "I don't think you should go down that road. There's something..."
-                    h "Something twisting in the darkness there... like the coiling of entrails..."
-                    "They looked down."
-                    h "My hands... they haven't been working properly. They don't do what I tell them to do anymore."
-                    h "I don't know who is telling them what to do now."
-                    h "I'm sorry. I think I need to rest."
-                    "Without a word, they turned and walked back to the village."
-                    jump village
-                else:
+                if not persistent.hVanished:
+                    $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
+                    $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
+                    $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
+                    $turnedHome +=1
+                    h "There you are! We've been looking all over for you!"
+                    h "Come on, let's get back to the feast."
                     if not persistent.thiefVanished and not persistent.mushroomVanished:
                         h "We need your help to help track down that dastardly Master Thief!"
                         h "Here, I'll help you find your way back."
@@ -3391,6 +3384,24 @@ label village:
                         h "Here, I'll help you find your way back."
                         "They took hold of your arm with a surprisingly strong grip and escorted you back into the village."
                         jump banquet
+                    else:
+                        $renpy.music.set_volume(0.7, delay=3.0, channel=u'ambient1')
+                        $renpy.music.set_volume(0.7, delay=3.0, channel=u'ambient2')
+                        $renpy.music.set_volume(0.7, delay=3.0, channel=u'music')
+                        show wolf4 onlayer transient zorder 100
+                        h "We... we need you to, uh..."
+                        "They looked around. Their eyes were bleary."
+                        h "I'm sorry, I - I don't remember why I came here."
+                        h "I don't think you should go down that road. There's something..."
+                        h "Something twisting in the darkness there... like the coiling of entrails..."
+                        "They looked down."
+                        h "My hands... they haven't been working properly. They don't do what I tell them to do anymore."
+                        h "I don't know who is telling them what to do now."
+                        h "I'm sorry. I think I need to rest."
+                        "Without a word, they turned and walked back to the village."
+                        jump village
+                else:
+                    $turnedHome =5
             if turnedHome == 4:
                 $renpy.music.set_volume(0.6, delay=3.0, channel=u'ambient1')
                 $renpy.music.set_volume(0.6, delay=3.0, channel=u'ambient2')
@@ -3630,7 +3641,10 @@ label banquet:
                 $pigChat +=1
                 jump banquetMenu
             "If you talked to the Toad, turn to page 87." if not toadStole2 and not persistent.toadVanished:
-                if toadStole and not persistent.witchVanished:
+                if gilgameshPathFollowed:
+                    f "There you are! Lost track of you for a moment there, ha ha."
+                    f "Now, where were we?"
+                elif toadStole and not persistent.witchVanished:
                     f "You!"
                     f "Hellion! Knave! You'll see justice for your crimes, or my name isn't Brildebrogue Chippingham!"
                     "You quickly hid under the tablecloth until the toad became distracted by a passing prawn platter and gave you time to slip away."
@@ -3852,11 +3866,15 @@ label town:
             xalign 0.5
         menu:
             "Fruit bats chirped and swirled overhead."
-            "If you investigated the tarp, turn to page 79." if not persistent.thiefVanished and not tarpDone:
+            "If you investigated the tarp, turn to page 79." if not persistent.thiefVanished:
                 show scribble5 onlayer transient zorder 100
-                pov "What is this?"
-                h "Shhh! Keep your voice down. This is all part of our plan to catch that dastardly Master Thief."
-                gm "We're sure to fail. This whole plan is doomed."
+                if gilgameshPathFollowed or tarpDone:
+                    h "There you are! We lost track of you for a bit there."
+                    h "Are you going to help us with this or not?"
+                else:
+                    pov "What is this?"
+                    h "Shhh! Keep your voice down. This is all part of our plan to catch that dastardly Master Thief."
+                    gm "We're sure to fail. This whole plan is doomed."
                 jump villagersConvo
             "If you talked to the Goose-girl, turn to page 97." if goosemongerChat <= 6 and not persistent.goVanished:
                 if goosemongerChat == 0:
@@ -4130,8 +4148,15 @@ label town:
                 $tarpDone = True
                 h "Excellent! Let's be off at once."
                 "And so you, the Goose-Girl, the Sparrow-Herder and the Hunter all leapt on the cart and rattled away down the road, leaving the old Gloom-monger behind."
-                gm "You're all doomed! Doooooooomed!"
-                h "Don't worry. He says that every time we go anywhere."
+                if persistent.vanished >= 3 and not gilgameshPathFollowed:
+                    $renpy.show_screen("gilPath", _layer="screens", tag="map", _zorder=101)
+                    gm "You're all doomed! Doooooooomed!"
+                    $renpy.hide_screen("gilPath")
+                else:
+                    gm "You're all doomed! Doooooooomed!"
+
+                label gilPathShowingThief:
+                    h "Don't worry. He says that every time we go anywhere."
                 stop music fadeout 6
                 jump thief2
             "If you made your excuses and left, turn to page 51.":
@@ -4170,7 +4195,7 @@ label thief2:
     "Then the four of you ducked behind a bush to watch the chest."
     "The geese wandered around the house, honking softly."
     sh "Now we wait."
-    go "The thief will never get past us now."
+    go "The thief will never get passed us now."
     if not persistent.mushroomVanished:
         echidna "I couldn't agree more, friends. This cunning and charismatic \"Master Thief\" character stands no chance against us."
     h "Don't get cocky."
@@ -5870,8 +5895,14 @@ label mushroomSolo:
     "You walked through the woods."
     call hideAll from _call_hideAll_142
     show stranglerfigbg at artPos
-    "Soon you came upon an ancient strangler fig. You cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
-    "The words already lurked in your mind."
+    if persistent.vanished >= 3 and not gilgameshPathFollowed:
+        $renpy.show_screen("gilPath", _layer="screens", tag="map", _zorder=101)
+        "Soon you came upon an ancient strangler fig. You cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
+        $renpy.hide_screen("gilPath")
+    else:
+        "Soon you came upon an ancient strangler fig. You cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
+    label gilPathShowingMushroom:
+        "The words already lurked in your mind."
     pov "Gorge, guzzle, gulp and grab; never shall this wound scab."
     "With this, the door opened before you, and you vanished inside immediately."
     call hideAll from _call_hideAll_143
@@ -7386,8 +7417,14 @@ label toadSolo:
     #TD: Test
     show townfeastbg at artPos
     "The toad leapt up from the table and clicked his fingers."
-    f "Prickle! Crawl! Shudder and Clink! Don't tarry or stall, get us there in a wink!"
-    "His great squash carriage rattled out of the bushes and pulled up right next to the banquet table."
+    if persistent.vanished >= 3 and not gilgameshPathFollowed:
+        $renpy.show_screen("gilPath", _layer="screens", tag="map", _zorder=101)
+        f "Prickle! Crawl! Shudder and Clink! Don't tarry or stall, get us there in a wink!"
+        $renpy.hide_screen("gilPath")
+    else:
+        f "Prickle! Crawl! Shudder and Clink! Don't tarry or stall, get us there in a wink!"
+    label gilPathShowingToad:
+        "His great squash carriage rattled out of the bushes and pulled up right next to the banquet table."
     f "If you get us there before sundown, there's a tenner in it for you!"
     "He tossed a bag of shiny coins to the crow-shrike, the rat, the bat and the old black cockatoo."
     bat "Cheers, boss."
@@ -8514,11 +8551,16 @@ label witchSolo:
     show forestbg at artPos
     "You walked through the woods."
     "Somehow, you already knew the way to the witch's cottage."
-    "Had you ever been this way before? You couldn't recall."
-    #Creepy stuff happens and you get spooky vibes
-    call hideAll from _call_hideAll_173
-    show darkforestbg at artPos
-    "The trail took you through a dense swamp of crooked mangroves."
+    if persistent.vanished >= 3 and not gilgameshPathFollowed:
+        $renpy.show_screen("gilPath", _layer="screens", tag="map", _zorder=101)
+        "Had you ever been this way before? You couldn't recall."
+        $renpy.hide_screen("gilPath")
+    else:
+        "Had you ever been this way before? You couldn't recall."
+    label gilPathShowingWitch:
+        call hideAll from _call_hideAll_173
+        show darkforestbg at artPos
+        "The trail took you through a dense swamp of crooked mangroves."
     "Soon, you began to see a glimmer of silver light in the darkness."
     show monster3 onlayer transient zorder 100
     "You heard an echo, from the space between the trees. Almost like a howl."
@@ -9645,6 +9687,46 @@ label creepiestOpens:
     play sound pageFlip
     jump creepiestShowing
 
+
+
+label gilgameshPathOpens:
+    play sound pageFlip2
+    hide gilgameshPathClosed onlayer screens
+    $renpy.hide_screen("gilPath")
+    $renpy.show_screen("gilPathOpen")
+    if persistent.thiefVanished == False:
+        gm "You're all doomed! Doooooooomed!"
+        $renpy.hide_screen("gilPathOpen")
+        #play sound pageFlip
+        jump gilPathShowingThief
+    if persistent.witchVanished == False:
+        "Had you ever been this way before? You couldn't recall."
+        $renpy.hide_screen("gilPathOpen")
+        #play sound pageFlip
+        jump gilPathShowingWitch
+    if persistent.toadVanished == False:
+        f "Prickle! Crawl! Shudder and Clink! Don't tarry or stall, get us there in a wink!"
+        $renpy.hide_screen("gilPathOpen")
+        #play sound pageFlip
+        jump gilPathShowingToad
+    if persistent.mushroomVanished == False:
+        "Soon you came upon an ancient strangler fig. You cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
+        $renpy.hide_screen("gilPathOpen")
+        #play sound pageFlip
+        jump gilPathShowingMushroom
+
+    #jump gilgameshShowing
+
+label gilgameshStory:
+    play sound pageFlip
+    $renpy.hide_screen("gilPathOpen")
+    $gilgameshPathFollowed = True
+    "Test: This is the side adventure where you meet gilgamesh."
+    #Gilgamesh kneels over Enkidu's grave. He mourns the loss.
+    #he tells you the wolf's name and tells you that you have to find it.
+    
+    jump village
+
 #=====================THE WOLF'S STORY
 #Leaving the village to investigate your house
 #This can be done at any time and can trigger the wolf ending if you know the wolf's true name
@@ -9967,6 +10049,7 @@ label wolf:
             "Your four friends all stood beside you, shivering with fear."
         #$renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
         "Before you, you saw the tracks of your enemy."
+        stop music
         $renpy.music.play("audio/Gameland.mp3", channel="ambient4", loop=True)
         "The Wolf."
         if persistent.toadVanished == False:
@@ -10340,7 +10423,7 @@ label wolf:
                     "If you are wrong, you will be eaten forever."
                 python:
                     answer1 = renpy.input("{i}I name you and bind you:{/i}", length=7)
-
+                #TK: Test and add more
                 if answer1 == "Humbaba" or answer1 == "humbaba" or answer1 == "hubaba" or answer1 == "Hubaba" or answer1 == "Humama" or answer1 == "humama" or answer1 == "HUMBABA" or answer1 == "Huwawa" or answer1 == "huwawa" or answer1 == "HUWAWA" or answer1 == "Ḫum-ba-ba" or answer1 == "hum-ba-ba" or answer1 == "Ḫu-wa-wa" or answer1 == "hu-wa-wa":
                     $persistent.phoneOn = True
                     $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
@@ -11679,7 +11762,8 @@ label bookBurnedFinale:
                 "If you chatted to the young goose-girl, turn to page 389." if not persistent.goVanished and not goBurning:
                     "The goose-girl was herding the geese into the paddock. The hunter sat on the paddock fence, swinging their legs."
                     go "Hard to believe this will be the last time. I don't even know how long I've been in here."
-                    h "It must have been at least a decade for me."
+                    if not persistent.hVanished:
+                        h "It must have been at least a decade for me."
                     pov "Do you have any regrets?"
                     go "Just one."
                     go "I wish I could have seen those caverns, deep beneath the earth. The first goose-girl."
