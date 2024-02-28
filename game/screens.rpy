@@ -869,6 +869,27 @@ screen gilgamesh: #Preparing the imagemap
 
         hotspot (0, 0, 600, 810) clicked Jump("gilgameshOpens") hovered [ Play ("sound", audio.pageFlip3)]
 
+screen gilgameshText:
+    zorder 101
+    #vbox:
+    #    xalign 0.5
+    #    ypos 335
+    frame:
+        #background Frame("creepiestOpen2.png", 5, 5,)
+        has hbox:
+            spacing 5
+            box_wrap True
+            xpos 280
+            ypos 750
+            xalign 0.5
+            yalign 0.5
+            xsize 530
+            ysize 300
+            transform:
+                rotate 2.0
+                text gilText size 16 font "fonts/segoesc.ttf" color "#45413c" textalign 0.1 #alpha "0.6"
+                alpha 0.7
+
 ## Secret Gilgamesh Path ####
 
 screen gilPath: #Preparing the imagemap

@@ -91,12 +91,12 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 0
+    default persistent.vanished = 3
 
     #Who has disappeared specifically - main cast
-    default persistent.toadVanished = False
-    default persistent.witchVanished = False
-    default persistent.thiefVanished = False
+    default persistent.toadVanished = True
+    default persistent.witchVanished = True
+    default persistent.thiefVanished = True
     default persistent.mushroomVanished = False
 
     #Who was the last to die?
@@ -212,7 +212,7 @@ init:
 
     #Act 1, Chapter 2: The road to the village
     #How many pitiful Noooo's have you shouted
-    define pitiful = 1
+    define pitiful = 0
     #Did you keep the pig?
     define pig = False
     #The Pig's story in the witch chapter
@@ -458,6 +458,19 @@ init:
 
     #Showing the photo of Humbaba for the help screen
     define humbabaShowing = True
+
+    #The conversation with Gilgamesh
+    define gilWho = False
+    define gilWalls = False
+    define gilStone = False
+    define gilEnkidu = False
+    define gilNext = False
+    define gilDeath = False
+    define gilHumbaba = False
+    define gilDo = False
+    define gilCome = False
+
+
 
     #How long it takes to dissolve the cover image
     $dissolveTime = 0
@@ -980,6 +993,11 @@ init:
     image p2Name="Names/p2.png"
     image p3Name="Names/p3.png"
     image wivesName="Names/wives.png"
+    image gilName = "Names/gilgamesh.png"
+
+
+
+
     ##====Frippery
     image sword="sword.png"
     image hand= "gui/hand.png"
@@ -1048,6 +1066,11 @@ init:
     define p2 = Character ("{image=p2Name}{alt}The Second Pig:{/alt}")
     define p3 = Character ("{image=p3Name}{alt}The Third Pig:{/alt}")
     define wives = Character ("{image=wivesName}{alt}The Wives:{/alt}")
+    #Gilgamesh (Speaks in cuneiform)
+    define gil = Character ("{image=gilName}{alt}Gilgamesh:{/alt}",what_font="EasyCuneiform.ttf")
+    #The narrator in the gilgamesh section (speaks in cuneiform)
+    define gBlank = Character ("",what_font="EasyCuneiform.ttf")
+
 
 #=====================AUDIO
 ###Defining all Audio
@@ -1692,7 +1715,9 @@ label start:
         scene bg page
         show nightbg at artPos
 
-        jump village
+
+        #jump village
+        #jump gilgameshStory
 
 
         if persistent.vanished <= 3:
@@ -4024,7 +4049,7 @@ label town:
                                     "..."
                                     "Well. That's enough of that."
                                     "Let's get back to the story."
-                                    play sound pageflip
+                                    play sound pageFlip
                                     jump town
                                 "If you defied your fate, turn to page 723.":
                                     "You crawled forward, step by step."
@@ -4056,7 +4081,7 @@ label town:
                                     "Well. That's enough of that."
                                     "Let's get back to the story."
                                     $persistent.wellVanished = True
-                                    play sound pageflip
+                                    play sound pageFlip
                                     jump town
                                     #jump end
                         "Otherwise, you may make a wish. Turn to page 367.":
@@ -9717,14 +9742,263 @@ label gilgameshPathOpens:
 
     #jump gilgameshShowing
 
+
 label gilgameshStory:
     play sound pageFlip
     $renpy.hide_screen("gilPathOpen")
+    call hideAll
     $gilgameshPathFollowed = True
-    "Test: This is the side adventure where you meet gilgamesh."
+    #EasyCuneiform
+    #define gui.text_font = "EasyCuneiform.ttf"
+    show winterbg at artPos
+
+    #{font=fonts/EasyCuneiform.ttf}
+    queue sting lacuna1
+    show spiral6
+    ""
+    hide spiral6
+    #"Test: This is the side adventure where you meet gilgamesh."
+    $gilText = "Cuneiform?? Maybe Sumerian. \"As you approach, you see Gilgamesh before you. This was the man to whom all things were known; this was the king who knew the countries of the world. He was wise, he saw the abyss and knew secret things, he brought us a tale of the days before the flood.\""
+    show screen gilgameshText
+    gBlank "As you approach, you see {font=fonts/Segoe ui historic.ttf}𒀭𒄑𒉋𒂵𒎌{/font} before you. This was the man to whom all things were known; this was the king who knew the countries of the world. "
+    $gilText = "Now, witness / behold! He stands weeping at the foot of a great stone that seems to scrape the heavens"
+
+    gBlank "Now, witness! He stands weeping at the foot of a great stone that seems to scrape the heavens."
+    label gilgameshConvo:
+        $gilText="\n\n\n\nWhat brings you, young one?"
+        show hand onlayer transient:
+            yalign 0.71#0.743
+            xalign 0.5
+        menu:
+            gil "What brings you, child?"
+            "If you asked him who he was, turn to page X." if not gilWho:
+                $gilText = "I am Gilgamesh. Two thirds they made me god, and one third man."
+                gil "I am {font=fonts/Segoe ui historic.ttf}𒀭𒄑𒉋𒂵𒎌{/font}. Two thirds they made me god, and one third man."
+                $gilText = "In Uruk I built walls, a great rampart, and the temple of blessed Eanna for the god of the firmament Anu, and for Ishtar the goddess of love. Look at the walls today. Go, see them, walk along them, I say. See how the ramparts gleam like copper in the sun. No king has built their like again."
+                gil "In Uruk I built walls, a great rampart, and the temple of blessed Eanna for the god of the firmament Anu, and for Ishtar the goddess of love. Look at the walls today."
+                $gilWho=True
+                jump gilgameshConvo
+            "If you told him that the walls of Uruk fell long ago, turn to page X." if gilWho and not gilWalls:
+                queue sting lacuna2
+                $gilText = "Lacuna in the text"
+                "------"
+                $gilText = "I see. Then this tale is all that remains."
+                gil "I see. Then this tale is all that remains."
+                $gilText = "All that is left of me is this last fragment, lurking in this tale. ...A haunting (spirit)..., A memory of (?)."
+                gil "All that is left of me is this last fragment, lurking in this tale. A haunting spirit. A memory of a memory. "
+                $gilText = "Just as stories are passed down from father to son, so a fragment of me has passed down through the ages and survived here. Soon, I will be forgotten, just as all men are forgotten."
+                gil "Stories are passed down, from father to son, and so a fragment of me has survived here. But soon, I will be forgotten, as all men are forgotten."
+                $gilWalls = True
+                jump gilgameshConvo
+            "If you asked him about the stone, turn to page X." if not gilStone:
+                $gilText = "This is a monument to my beloved. Enkidu."
+                gil "This is a monument to my friend. {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font}."
+                $gilStone = True
+                jump gilgameshConvo
+            "If you ask him about Enkidu, turn to page X." if gilStone and not gilEnkidu:
+                $gilText = "He was a wild man. His body was rough, he had long hair like a woman's; it waved like the hair of Nisaba, the goddess of corn."
+                gil "He was a wild man. His body was rough, he had long hair like a woman's; it waved like the hair of Nisaba, the goddess of corn."
+                $gilText ="When I ran riot, Aruru, the goddess of creation, created him to stand against me."
+                gil "When I ran riot, Aruru, the goddess of creation, created him to stand against me."
+
+                $gilText = "She said 'Let us create his equal; let it be as like him as his own reflection, his second self; stormy heart for stormy heart. Let them contend together and leave Uruk in quiet.'"
+                gil "She said 'Let us create his equal; let it be as like him as his own reflection, his second self; stormy heart for stormy heart. Let them contend together and leave Uruk in quiet.'"
+                $gilText = "When we met, we grappled. We shattered the doorposts and the walls shook, we snorted like bulls locked together. I bent my knee with my foot planted on the ground and with a turn Enkidu was thrown. "
+                gil "When we met, we grappled. We shattered the doorposts and the walls shook, we snorted like bulls locked together."
+                $gilText = "Then immediately my fury died. Enkidu looked at me and said, ‘There is not another like you in the world.'"
+                gil "Then immediately my fury died. {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} looked at me and said, ‘There is not another like you in the world.'"
+
+                $gilText = "'Ninsun, who is as strong as a wild ox in the byre, she was the mother who bore you, and now you are raised above all men, and Enlil has given you the kingship, for your strength surpasses the strength of men.’"
+                gil "Ninsun, who is as strong as a wild ox in the byre, she was the mother who bore you, and now you are raised above all men, and Enlil has given you the kingship.’"
+                $gilText = "So we embraced each other and our friendship was sealed."
+                gil "So we embraced each other and our friendship was sealed."
+
+                $gilText = "I was a god and a man.\nEnkidu was an animal and a man.\nTogether, we became human. "
+                gil "I was a god and a man. {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} was an animal and a man. Together, we became human. "
+                $gilEnkidu = True
+                jump gilgameshConvo
+            "If you asked him what happened next, turn to page X." if gilEnkidu and not gilNext:
+                $gilText = "One day, I turned to Enkidu and said 'I have not established my name stamped on bricks as my destiny decreed; therefore let us go to the country where the cedar is felled.'"
+                gil "One day, I turned to {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} and said 'I have not established my name stamped on bricks as my destiny decreed; therefore I will go to the country where the cedar is felled."
+                show humbabaFront at artPos onlayer screens zorder 100
+
+                $gilText =  "In the cedar forest was a guardian named Humbaba. In order to keep the cedar safe, the gods assigned him as a terror to the human race. "
+                gil "In the cedar forest was a guardian named {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}. In order to keep the cedar safe, the gods assigned him as a terror to the human race. "
+                hide humbabaFront at artPos onlayer screens
+                $gilText =  "So I said with pride 'I, Gilgamesh, go to see that creature of whom such things are spoken, the rumour of whose name fills the world. I will conquer him in his cedar wood and show the strength of the sons of Uruk. All the world shall know of it.'"
+                gil "So I said with pride 'I, {font=fonts/Segoe ui historic.ttf}𒀭𒄑𒉋𒂵𒎌{/font}, go to see that creature of whom such things are spoken, the rumour of whose name fills the world. I will conquer him in his cedar wood."
+
+                $gilText =  "Enkidu said to me 'Gilgamesh. You are young. Your courage carries you too far.'"
+                gil "{font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} said to me '{font=fonts/Segoe ui historic.ttf}𒀭𒄑𒉋𒂵𒎌{/font}. You are young. Your courage carries you too far.'"
+
+                $gilText ="'Humbaba is not like men who die. Before a man can approach within even sixty times six yards, Humbaba has already reached his house among the cedars.'"
+                gil "'{font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} is not like men who die. Before a man can approach within even sixty times six yards, {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} has already reached his house among the cedars.'"
+
+                $gilText ="'When he looks at someone, it is the look of death. A lion eating a corpse: he never wipes away the blood.'"
+                gil "'When he looks at someone, it is the look of death. A lion eating a corpse: he never wipes away the blood.'"
+
+                $gilText =  "When I heard this, I laughed. 'Shall I say that I am afraid of Humbaba? That I will sit at home for all the rest of my days?'"
+                gil "When I heard this, I laughed. 'Shall I say that I am afraid of {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}? That I will sit at home for all the rest of my days?'"
+                queue sting lacuna3
+                $gilText =  "We are not gods. We cannot ascend to heaven."
+                gil "We are not gods. We cannot ascend to heaven."
+                $gilText =   "No, we are mortal men. Our days are few in number, and whatever we achieve is a puff of wind."
+                gil "No, we are mortal men. Our days are few in number, and whatever we achieve is a puff of wind."
+                $gilText =   "Why be afraid then, since sooner or later death must come?"
+                gil "Why be afraid then, since sooner or later death must come?"
+                $gilText =   "I will cut down the tree. I will kill Humbaba. I will make a lasting name for myself. I will stamp my fame on men's minds forever."
+                gil "I will cut down the tree. I will kill {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}. I will make a lasting name for myself. I will stamp my fame on men's minds forever."
+
+                $gilNext = True
+                jump gilgameshConvo
+            "If you asked him about Humbaba, turn to page X." if gilNext and not gilHumbaba:
+                $gilText =   "After many days and nights, we came upon him in the depths of the forest."
+                gil "After many days and nights, we came upon him in the depths of the forest."
+                queue sting lacuna3
+                $gilText =   "His face was a spiral, like the entrails of man and beast, from which omens may be read. Around him were arrayed seven (Terrors? Auras?), which lay upon him like seven cloaks."
+                gil "His face was a spiral, like the entrails of man and beast, from which omens may be read. Around him were his seven terrors, which lay upon him like seven cloaks."
+                $gilText =   "Enkidu quailed in fear. But I said, 'Look, Enkidu, immolation and sacrifice are not yet for us.'"
+                gil "{font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} quailed in fear. But I said, 'Look, {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font}, immolation and sacrifice are not yet for us.'"
+                $gilText =   "'The boat of the dead shall not go down, nor the three-ply cloth be cut for our shrouding. Not yet will our people be desolate, nor the pyre be lit in our house and our dwelling burnt on the fire.'"
+                gil "'The boat of the dead shall not go down, nor the three-ply cloth be cut for our shrouding. Not yet will our people be desolate, nor the pyre be lit in our house and our dwelling burnt.'"
+                $gilText =   "'Put your hand in mine, and we shall see what hands like ours can do.'"
+                gil "'Put your hand in mine, and we shall see what hands like ours can do.'"
+                $gilText =   "He took the axe in his hand, I drew the sword from my belt, and I struck Humbaba with a thrust of the sword to the neck."
+                gil "He took the axe in his hand, I drew the sword from my belt, and I struck {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} with a thrust of the sword to the neck."
+                $gilText =   "Enkidu my comrade struck the second blow. At the third blow, we struck together and Humbaba fell."
+                gil "{font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} my comrade struck the second blow. At the third blow, {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} fell."
+                $gilText =   " For as far as two leagues the cedars shivered when Enkidu felled the watcher of the forest, he at whose voice Hermon and Lebanon used to tremble."
+                gil "For as far as two leagues the cedars shivered when {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} felled the watcher of the forest, he at whose voice Hermon and Lebanon used to tremble."
+                $gilText =   "I held his head aloft. Now the mountains were moved and all the hills, for the guardian of the forest was killed. The seven splendours of Humbaba were extinguished."
+                gil "Now the mountains were moved and all the hills, for the guardian of the forest was killed. The seven splendours of {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} were extinguished."
+                $gilHumbaba = True
+                jump gilgameshConvo
+            "If you asked him how Enkidu died, turn to page X." if gilNext and not gilDeath:
+                $gilText =    "The gods cursed us for our hubris. Anu said to Enlil, 'Because they have killed Humbaba who guarded the Cedar Mountain, one of the two must die.'"
+                gil "The gods cursed us for our hubris. Anu said to Enlil, 'Because they have killed {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} who guarded the Cedar Mountain, one of the two must die.'"
+                $gilText =    "And so Enkidu fell and lay stricken with sickness. "
+                gil " And so {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} fell and lay stricken with sickness. "
+                $gilText =    "One whole day he lay on his bed and his suffering grew stronger. "
+                gil "One whole day he lay on his bed and his suffering grew stronger. "
+                $gilText =    "A second day he lay on his bed, and I watched over him, but the sickness grew stronger."
+                gil "A second day he lay on his bed, and I watched over him, but the sickness grew stronger."
+                $gilText =    "A third day he lay on his bed, his tears ran down in streams, and the sickness grew stronger."
+                gil "A third day he lay on his bed, his tears ran down in streams."
+
+                $gilText =    "He called out to me, 'It was I who cut down the cedar, I who levelled the forest, I who slew Humbaba, and now see what has become of me.'"
+                gil "He called out to me, 'It was I who cut down the cedar, I who levelled the forest, I who slew {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} and now see what has become of me.'"
+
+                $gilText =    "'Listen, my friend,' (he said to me) 'this is the dream I dreamed last night.'"
+                gil "'Listen, my friend,' (he said to me) 'this is the dream I dreamed last night."
+
+                $gilText =    "\n\n(???)...the sombre-faced man-bird; he had directed on me his purpose. His face was a vampire face, his foot was a lion's foot, his hand was an eagle's talon.'"
+                gil "The heavens roared, and earth rumbled back an answer; between them stood I before an awful being, the sombre-faced man-bird; he had directed on me his purpose. His was a vampire face, his foot was a lion's foot, his hand was an eagle's talon."
+
+                $gilText =    "'He fell on me and his claws were in my hair, he held me fast and I smothered; then he transformed me so that my arms became wings covered with feathers.'"
+                gil "He fell on me and his claws were in my hair, he held me fast and I smothered; then he transformed me so that my arms became wings covered with feathers."
+                queue sting lacuna6
+                $gilText = "'He turned his stare towards me, and he led me away to the palace of Irkalla, the Queen of Darkness, to the house from which none who enters ever returns, down the road from which there is no coming back.'"
+                gil "He turned his stare towards me, and he led me away to the palace of Irkalla, the Queen of Darkness, to the house from which none who enters ever returns, down the road from which there is no coming back."
+
+                $gilText =    "With the first light of dawn I touched his heart but it did not beat, nor did he lift his eyes again."
+                gil "With the first light of dawn I touched his heart but it did not beat, nor did he lift his eyes again."
+
+                $gilText =    "So I laid a veil, as one veils the bride, over my beloved. I began to rage like a lion, like a lioness robbed of her whelps."
+                gil "So I laid a veil, as one veils the bride, over my beloved. I began to rage like a lion, like a lioness robbed of her whelps."
+
+                $gilText =    "This way and that I paced round the bed, I tore out my hair and strewed it around. I dragged off my splendid robes and flung them down as though they were abominations."
+                gil "This way and that I paced round the bed, I tore out my hair and strewed it around. I dragged off my splendid robes and flung them down as though they were abominations."
+
+                $gilText =    "For six days I would not let him be buried, thinking, ‘If my grief is violent enough, perhaps he will come back to life again.’ "
+                gil "For six days I would not let him be buried, thinking, ‘If my grief is violent enough, perhaps he will come back to life again.’ "
+
+                $gilText =    "For six days and seven nights I mourned him, until the worm fastened upon him."
+                gil "For six days and seven nights I mourned him, until the worm fastened upon him."
+
+                $gilText =    "Then I was frightened, I was terrified by death, and I set out to roam the wilderness."
+                gil "Then I was frightened, I was terrified by death, and I set out to roam the wilderness."
+
+                $gilText =    "I cannot bear to what happened to my friend-\nI cannot bear what happened to Enkidu-\nso I roam the wilderness in my grief."
+                gil "I cannot bear to what happened to my friend-I cannot bear what happened to {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font}- so I roam the wilderness in my grief."
+
+                $gilText =    "How can my mind have any rest?\nMy beloved friend has turned into clay-\nmy beloved Enkidu has turned into clay."
+                gil "How can my mind have any rest? My beloved friend has turned into clay- my beloved {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} has turned into clay."
+
+                $gilText =    "And won’t I too lie down in the dirt\nlike him, and never rise again?"
+                gil "And won’t I too lie down in the dirt like him, and never rise again?"
+
+                $gilDeath = True
+                jump gilgameshConvo
+            "If you asked him what you should do, turn to page X." if gilNext and not gilDo:
+                $gilText = "Attend. The battle is not over."
+                gil "Attend. The battle is not over."
+                $gilText = "The last remnants of Humbaba still lurk in this tale, just as I do. He feasts on other lives to prolong his own. We are eaten forever."
+                gil "The last remnants of {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} still lurk in this tale, just as I do. He feasts on other lives to prolong his own. We are eaten forever."
+                queue sting lacuna5
+                $gilText = "You must travel an unknown road and fight a strange battle. Confront him in your house, where he lurks."
+                gil "You must travel an unknown road and fight a strange battle. Confront him in your house, where he lurks."
+                $gilText = "He will be cunning. But you will be brave. From the day you go until you return, until you destroy the evil which Shamash abhors, I will pray for you."
+                gil "He will be cunning. But you will be brave. From the day you go until you return, until you destroy the evil which Shamash abhors, I will pray for you."
+                $gilText = "If your heart is fearful, throw away fear."
+                gil "If your heart is fearful, throw away fear."
+                $gilText = "If there is terror in it, throw away terror."
+                gil "If there is terror in it, throw away terror."
+                $gilText = "Take your axe in your hand and attack. He who leaves the fight unfinished is not at peace."
+                gil "Take your axe in your hand and attack. He who leaves the fight unfinished is not at peace."
+                $gilDo = True
+                jump gilgameshConvo
+            "If you asked him to come with you, turn to page X." if gilDo and not gilCome:
+                $gilText =   "No. Where you go, I cannot follow."
+                gil "No. Where you go, I cannot follow."
+                $gilText =   "I have some small sway here, hidden away in this last piece of the tale. But the rest of it belongs to him. I can do nothing now."
+                gil "I have some small sway here, hidden away in this last piece of the tale. But the rest of it belongs to him. I can do nothing now."
+                $gilText =   "I will take you back to your home. The rest is your story to tell."
+                gil "I will take you back to your home. The rest is your story to tell."
+
+                $gilCome = True
+                jump gilgameshConvo
+            "If you said goodbye, turn to page X." if gilDo:
+                $gilText =  "Goodbye, small one."
+                gil "Goodbye, small one."
+                $gilText =  ""
+                pov "I'm sorry about Enkidu."
+                $gilText =  "The terror was great, but the dream was marvellous; we must treasure the dream whatever the terror."
+                gil "The terror was great, but the dream was marvellous; we must treasure the dream whatever the terror."
+                queue sting lacuna4
+                $gilText =   "Yes, the gods took Enkidu’s life.\nBut man’s life is short, at any moment\nit can be snapped, like a reed in a canebrake."
+                gil "Yes, the gods took {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font}'s life. But man’s life is short, at any momentit can be snapped, like a reed in a canebrake."
+                $gilText =   "The handsome young man, the lovely young woman -\nin their prime, death comes and drags them away."
+                gil "The handsome young man, the lovely young woman - in their prime, death comes and drags them away."
+                $gilText =   "Though no one has seen death’s face or heard\ndeath’s voice, suddenly, savagely, death\ndestroys us all, old or young."
+                gil "Though no one has seen death’s face or heard death’s voice, suddenly, savagely, death destroys us all, old or young."
+                #gil "And yet we build houses, make contracts, brothers divide their inheritance, conflicts occur- as though this human life lasted forever."
+                $gilText =  "The river rises, flows over its banks\nand carries us all away, like mayflies\nfloating downstream: they stare at the sun,\nthen all at once there is nothing."
+                gil "The river rises, flows over its banks and carries us all away, like mayflies floating downstream: they stare at the sun, then all at once there is nothing."
+                hide screen gilgameshText
+                call hideAll
+                play sound pageFlip
+                show towncrossroadsbg at artPos
+                "…"
+                "You've returned."
+                "I don't understand. Where did you go? Who were you talking to?"
+                "I called, and you did not answer. I could not see you."
+                "…"
+                "No matter. You are back in my arms now, child. I will not release you again. "
+
+                jump village
+
     #Gilgamesh kneels over Enkidu's grave. He mourns the loss.
     #he tells you the wolf's name and tells you that you have to find it.
-    
+    #Note: Humbaba's name
+    #{font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}
+    #Note: Gilgamesh's Name
+    #{font=fonts/Segoe ui historic.ttf}𒀭𒄑𒉋𒂵𒎌{/font}
+    #Note: Enkidu's Name
+    #{font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font}
+
+    #define gui.text_font = "fonts/Book Antiqua.ttf"
+    "test"
+
     jump village
 
 #=====================THE WOLF'S STORY
@@ -10080,6 +10354,8 @@ label wolf:
             menu:
                 w "You are still young. But I tell you, you will never again return to the home of the mother that bore you."
                 "I must go on.":
+                    pov "Immolation and sacrifice are not yet for me."
+                    pov "The boat of the dead shall not go down, nor the three-ply cloth be cut for my shrouding. Not yet will my people be desolate, nor the pyre be lit in my house and my dwelling burnt on the fire."
                     w "Very well. Then take my draught."
                     "Unto you she delivered a gleaming-drink, which you sipped greedily. Fire spread through your blood, and the secret ways became known to you."
                     pov "Thank you, my friend. I will not forget you."
@@ -10177,12 +10453,19 @@ label wolf:
                     $lookUp +=1
                     jump lookUp
                 "Look further." if lookUp ==2:
+                    "You saw the house whose people sit in darkness. Dust is their food and clay their meat."
+                    "You saw the kings of the earth, their crowns put away for ever."
+                    "You saw the high priests and acolytes, priests of the incantation and of ecstasy, and there was Etana, that king of Dish whom the eagle carried to heaven in the days of old, and there was Samuqan, god of cattle, and there was Ereshkigal the Queen of the Underworld; and Befit-Sheri squatted in front of her, she who is recorder of the gods and keeps the book of death."
+                    "She raised her head and saw you."
+                    $lookUp +=1
+                    jump lookUp
+                "Look further." if lookUp ==3:
                     "You saw the trees of the forest."
                     "You saw the lights of your family home."
                     "You saw the Trash Queens slowly shifting in the secret landfill rivers, the ghosts and gutterlings creeping through decaying megamalls as cabals of Market Researchers hunted for prey through subterranean parking lots underneath the great sweeping wasteland of pavement and alleyways and apartment buildings and highways stretching out to the horizon."
                     $lookUp +=1
                     jump lookUp
-                "Look further." if lookUp ==3:
+                "Look further." if lookUp ==4:
                     "You saw the Ash Giants."
                     "When you lit that first fire in the dark, they saw you, and they started walking."
                     "They're almost here now."
@@ -11466,6 +11749,19 @@ label bookBurnedFinale:
                 jump homeBurning
 
 
+    # Gilgamesh Scene:
+    #     "Humans are born, they live, then they die, this is the order that the gods have decreed."
+    #     "But until the end comes, enjoy your life, spend it in happiness, not despair."
+    #     "Savour your food, make each of your days a delight, bathe and anoint yourself, wear bright clothes that are sparkling clean, let music and dancing fill your house, love the child who holds you by the hand, and give your lover pleasure in your embrace."
+    #     "That is the best way for a man to live."
+
+    # Humbaba Scene:
+        #  The river rises, flows over its banks
+        # and carries us all away, like mayflies
+        # floating downstream; they stare at the sun,
+        # then all at once there is nothing.”
+
+
     label banquetBurning:
 
         call hideAll from _call_hideAll_123
@@ -12175,9 +12471,11 @@ label credits:
     $ renpy.pause ()
     hide tornPage2 onlayer screens zorder 101
     hide tornPage2bg onlayer screens zorder 99
-
+    hide text
     $ ui.text("{space=[ti]}18. {b}[scCredits]:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}19. {b}[dgCredits]:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}20. {b}[bcCredits]:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}21. {b}[batCredits]:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}22. {b}[ratCredits]:{/b} 'The Wiviparous Quadrupeds of North Amerfica' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}23. {b}[CoCredits]:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}24. {b}[somCredits]:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}25. {b}[goblins1Credits]:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}{space=[ti]}26. {b}[pig1Credits]:{/b} 'Dictionnaire Universel D'Histoire Naturelle' (1845), Charles Dessalines D'orbigny.{vspace=[tx]}{space=[ti]}27. {b}[pig2Credits]:{/b} 'Dead Pig' (1796), Jean Bernard.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
-
+    $ renpy.pause ()
+    $ ui.text("{space=[ti]}28. {b}Gilgamesh:{/b} 'Gilgamesh, the Sumerian King of Uruk' (2015), Mary Evans Picture Library.", xpos=50, ypos=150, xmaximum=520)
+    hide text
     $ renpy.pause ()
     show text "{b}BACKGROUNDS:{/b}":
         xalign 0.5
@@ -12188,23 +12486,27 @@ label credits:
     hide text
     $ ui.text("{space=[ti]}9. {b}Forest:{/b} 'Interior of a forest' (1880 - 1890), Paul Cézanne.{vspace=[tx]}{space=[ti]}10. {b}Forest 2:{/b} 'Palms and Ferns, a Scene in the Botanic Garden, Queensland' (early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}11. {b}Forest 4 and Forest 5:{/b} 'Papier Peint Panoramique' (1861), Joseph Fuchs.{vspace=[tx]}{space=[ti]}12. {b}Future:{/b} 'Over London by Rail' (1872), Gustave Doré.{vspace=[tx]}{space=[ti]}13. {b}[goblins3Credits]:{/b} Fruit and Vegetable Market with a Young Fruit Seller' (1650–1660), Jan van Kessel.{vspace=[tx]}{space=[ti]}14. {b}[goblins4Credits]:{/b} 'The Goblin Market' (1914), Hilda Hechle.{vspace=[tx]}{space=[ti]}15. {b}[godCredits], descending:{/b} 'Vision of the Empyrean' (1867), Gustave Dore.{vspace=[tx]}{space=[ti]}16. {b}Hell:{/b} 'The Destruction of Pompeii and Herculaneum' (1822), John Martin.{vspace=[tx]}{space=[ti]}17. {b}Hell Cottage:{/b} 'Interior of a Highland Cottage' (1840), John Glass.{vspace=[tx]}{space=[ti]}18. {b}Manor Exterior:{/b} 'Puss-in-Boots' (1913), Maxfield Parrish.{vspace=[tx]}{space=[ti]}19. {b}Memento:{/b} 'Memento Mori' (1916), Julie de Graag.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
-    hide text
+
     $ ui.text("{space=[ti]}20. {b}Mountains:{/b} 'Winter Landscape in Moonlight' (1919), Ernst Ludwig Kirchner.{vspace=[tx]}{space=[ti]}21. {b}[mBasement2Credits]:{/b} 'It Is a Skull, Crowned with Roses. It Dominates a Woman’s Pearly–White Torso' (1888), Jean Bernard.{vspace=[tx]}{space=[ti]}22. {b}[mCaveCredits]:{/b} 'Expulsion. Moon and Firelight' (1828), Thomas Cole.{vspace=[tx]}{space=[ti]}23. {b}[mCave2Credits]:{/b} 'A Cavern, Evening' (1774), Joseph Wright.{vspace=[tx]}{space=[ti]}24. {b}[mGarCredits]:{/b} 'Emperor Humayun with his brothers' (1540), Dust Muhammad.{vspace=[tx]}{space=[ti]}25. {b}[mPaCredits]:{/b} 'Old French Fairytales' (1920), Virginia Frances Sterrett.{vspace=[tx]}{space=[ti]}26. {b}Night:{/b} 'So the man gave him a pair of snow shoes', East of the Sun and West of the Moon (1914), Kay Neilsen.{vspace=[tx]}{space=[ti]}27. {b}Night G-d:{/b} 'Eye Vintage Art Drawing' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}28. {b}River:{/b} 'Rushing Water' (1901), John Singer Sargent.{vspace=[tx]}{space=[ti]}29. {b}Ruins:{/b} 'Vintage Art Scenic View Card' (Early 20th Century), RT&S publishers, UK.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
-    hide text
+
     ####
     $ ui.text("{space=[ti]}30. {b}Sabbath:{/b} 'Witches' Sabbath' (1510), Hans Baldung (called Hans Baldung Grien).{vspace=[tx]}{space=[ti]}31. {b}Strangler Fig:{/b} 'Poison Tree Strangled by a Fig, Queensland' (Early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}32. {b}Sun:{/b} 'A Wheatfield, with Cypresses' (1889), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}33. {b}Town 3:{/b} 'Our Camp on the Bunya Mountains, Queensland' (Early 1880s), Marianne North.{vspace=[tx]}{space=[ti]}34. {b}Town - Crossroads:{/b} 'St. Hansbål ved Jølstervatnet (St. John's Eve bonfire at Jølstravatn)' (1909), Nikolai Astrup.{vspace=[tx]}{space=[ti]}35. {b}Town Exterior:{/b} 'Small Grain Poles' (1904), Nikolai Astrup.{vspace=[tx]}{space=[ti]}36. {b}Town - Feast:{/b} 'St. John’s Fire' (1912), Nikolai Astrup.{vspace=[tx]}{space=[ti]}37. {b}Train:{/b} 'The Train' (1910), Louise Thuiller.{vspace=[tx]}{space=[ti]}38. {b}Train - Full:{/b} 'Take Me by The Flying Scotsman' (1932), Thomson, A R.{vspace=[tx]}{space=[ti]}39. {b}Tree - Night:{/b} 'Night in the Forest' (1859), William Louis Sonntag.{vspace=[tx]}{space=[ti]}40. {b}Well:{/b} Image taken from page 192 of 'Celebrated American Caverns, especially Mammoth, Wyandot, and at Luray, etc' (1882), Hovey, Horace Carter.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
-    hide text
+
     $ ui.text("{space=[ti]}41. {b}Winter:{/b} 'Snow-covered field with a harrow (after Millet)' (1890), Vincent Van Gogh.{vspace=[tx]}{space=[ti]}42. {b}[devil2Credits]:{/b} 'Triptych of Earthly Vanity and Divine Salvation' (1485), Hans Memling.{vspace=[tx]}{space=[ti]}43. {b}Dark Forest:{/b} 'Twilight in the Tropics' (1874), Frederic Edwin Church.{vspace=[tx]}{space=[ti]}44. {b}Contents Page and Various Illustrations:{/b} 'Fairy tales from Hans Christian Andersen' (1899), Andersen, H. C. , Robinson, T. H., ill; Robinson, Charles, ill; Robinson, W. Heath, ill.{vspace=[tx]}{space=[ti]}45. {b}Engine Room:{/b} 'Victorian vintage engraving of workers in an iron foundry, France' (1875), istockphoto.{vspace=[tx]}{space=[ti]}46. {b}[bc2Credits]:{/b} 'What she sees there' (1868), Winslow Homer.{vspace=[tx]}{space=[ti]}47. {b}Film Poster:{/b} 'Original Swedish poster for Häxan' (1922), AB Svensk Filmindustri.{vspace=[tx]}{space=[ti]}48. {b}Poster Wolf:{/b} 'the Were-wolf Of Anarchy' (1893), Mary Evans Picture Library.{vspace=[tx]}{space=[ti]}49. {b}Spiral:{/b} 'An engraving depicting an Edible or Vine snail' (1900's), World History Archive.{vspace=[tx]}{space=[ti]}50. {b}Old Paper:{/b} 'Old Paper Texture Background.' daboost, freepik.com.{vspace=[tx]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
-    hide text
+
 
     show text "{b}FRIPPERIES:{/b}":
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}Cartouche:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}{space=[ti]}10. {b}Note Paper:{/b} 'Old Notepaper Texture.' polkapebble, polkapebble.com.{vspace=[tx]}{space=[ti]}11. {b}Cover Wolf:{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.{vspace=[tx]}{space=[ti]}12. {b}Post-it Note:{/b} 'Note Post-It Reminder' (2013), OpenClipart-Vectors, pixabay.com.", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}Cartouche:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}{space=[ti]}10. {b}Note Paper:{/b} 'Old Notepaper Texture.' polkapebble, polkapebble.com.{vspace=[tx]}{space=[ti]}11. {b}Cover Wolf:{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=190, xmaximum=520)
+    $ renpy.pause ()
+    hide text
+    $ ui.text("{space=[ti]}12. {b}Post-it Note:{/b} 'Note Post-It Reminder' (2013), OpenClipart-Vectors, pixabay.com.", xpos=50, ypos=190, xmaximum=520)
+
     $ renpy.pause ()
 
     show text "{b}FONTS:{/b}":
@@ -12221,7 +12523,7 @@ label credits:
     $ renpy.pause ()
     hide text
 
-    $ ui.text("{space=[ti]}14. {b}Gymnopedies:{/b} 'Gymnopedie 1, 2 and 3, Erik Satie, performed by Kevin MacLeod, incompetech.com, licensed under Creative Commons: By Attribution 3.0 License http://creativecommons.org/licenses/by/3.0/.{vspace=[tx]}{space=[ti]}16. {b}Book Closing:{/b} 'Closing A Book', Pixabay, pixabay.com.{vspace=[tx]}{space=[ti]}17. {b}The Final Battle:{/b} 'Gameland'. This music piece kindly created for the author by an enigmatic individual who wished to remain uncredited.", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}14. {b}Gymnopedies:{/b} 'Gymnopedie 1, 2 and 3, Erik Satie, performed by Kevin MacLeod, incompetech.com, licensed under Creative Commons: By Attribution 3.0 License http://creativecommons.org/licenses/by/3.0/.{vspace=[tx]}{space=[ti]}16. {b}Book Closing:{/b} 'Closing A Book', Pixabay, pixabay.com.{vspace=[tx]}{space=[ti]}18. {b}Various Pieces:{/b} 'Lacuna, Mysterious Happenings, Hunted, Adventure Calls, and Remember'. Music created by Tully Grimley.{vspace=[tx]}{space=[ti]}17. {b}The Final Battle:{/b} 'Gameland'. This music piece kindly created for the author by an enigmatic individual who wished to remain uncredited.", xpos=50, ypos=150, xmaximum=520)
 
     #Gymnopedie No. 3 Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 3.0 License http://creativecommons.org/licenses/by/3.0/
 
