@@ -888,7 +888,7 @@ screen gilgameshText:
             transform:
                 rotate 2.0
                 text gilText size 16 font "fonts/segoesc.ttf" color "#45413c" textalign 0.1 #alpha "0.6"
-                alpha 0.7
+                alpha 0.9
 
 ## Secret Gilgamesh Path ####
 

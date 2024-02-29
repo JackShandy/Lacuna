@@ -470,6 +470,9 @@ init:
     define gilDo = False
     define gilCome = False
 
+    #Are you in a secret scene that you reach by putting in a name in the name screen?
+    define nameSecret = False
+
 
 
     #How long it takes to dissolve the cover image
@@ -994,8 +997,8 @@ init:
     image p3Name="Names/p3.png"
     image wivesName="Names/wives.png"
     image gilName = "Names/gilgamesh.png"
-
-
+    image gName = "Names/gutterlings.png"
+    image gkName = "Names/gutterking.png"
 
 
     ##====Frippery
@@ -1070,7 +1073,10 @@ init:
     define gil = Character ("{image=gilName}{alt}Gilgamesh:{/alt}",what_font="EasyCuneiform.ttf")
     #The narrator in the gilgamesh section (speaks in cuneiform)
     define gBlank = Character ("",what_font="EasyCuneiform.ttf")
-
+    #The guttelrings
+    define g = Character ("{image=gName}{alt}The Gutterlings:{/alt}")
+    #The gutter King
+    define gk = Character ("{image=gkName}{alt}The Gutter King:{/alt}")
 
 #=====================AUDIO
 ###Defining all Audio
@@ -1506,13 +1512,19 @@ label splashscreen2:
     $hes = persistent.hes
     if persistent.povname == "":
         $persistent.povname = "Charlie"
-    #elif persistent.povname == "Humbaba" or "humbaba" or "HUMBABA" or "Huwawa" or "huwawa" or "HUWAWA" or "Ḫum-ba-ba" or "hum-ba-ba" or "Ḫu-wa-wa" or "hu-wa-wa":
-        #$persistent.povname = "Charlie"
-        #$povname = persistent.povname
-        #jump humbabaNameSecret
+    elif persistent.povname == "Humbaba" or persistent.povname == "humbaba" or persistent.povname =="HUMBABA" or persistent.povname =="Huwawa" or persistent.povname =="huwawa" or persistent.povname =="HUWAWA" or persistent.povname =="Ḫum-ba-ba" or persistent.povname =="hum-ba-ba" or persistent.povname =="Ḫu-wa-wa" or persistent.povname =="hu-wa-wa" or persistent.povname =="𒄷𒌝𒁀𒁀" or persistent.povname =="𒄷𒉿𒉿":
+        $persistent.povname = "Charlie"
+        $povname = persistent.povname
+        jump humbabaNameSecret
+    elif persistent.povname == "Gilgamesh" or persistent.povname == "gilgamesh" or persistent.povname == "Gilgameš" or persistent.povname == "gilgameš" or persistent.povname == "Bilgames" or persistent.povname == "bilgames" or persistent.povname == "Pabilgames" or persistent.povname == "pabilgames"or persistent.povname == "𒀭𒄑𒂆𒈦" or persistent.povname == "𒀭𒄑𒉋𒂵𒎌"or persistent.povname == "enkidu" or persistent.povname == "Enkidu" or persistent.povname == "𒂗𒆠𒄭": #
+        $persistent.povname = "Charlie"
+        $povname = persistent.povname
+        $nameSecret = True
+        jump gilgameshStory
     $povname = persistent.povname
     if persistent.saveMessage == False:
         scene bg page
+        show text "\"The river rises, flows over its banks\n and carries us all away, like mayflies\nfloating downstream; they stare at the sun,\nthen all at once there is nothing.\”\n-The Epic of Gilgamesh (Stephen Mitchell Translation)."
         show contents_note
         ""
         play sound pageFlip2
@@ -1714,6 +1726,7 @@ label start:
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
         show nightbg at artPos
+        #jump gilgameshStory
 
 
         #jump village
@@ -3252,7 +3265,17 @@ label introMenu:
                             jump woodsInvestigate
 
     label villageExplore1:
-        play music adventure1
+        if persistent.vanished >= 3:
+            $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient1')
+            $renpy.music.set_volume(0.9, delay=3.0, channel=u'ambient2')
+            $renpy.music.set_volume(0.9, delay=3.0, channel=u'music')
+            "The village was empty."
+            "The decorations were all set. The great bonfire. The chairs and stacked tables, laden with plates. Streamers lay over the road."
+            "But no-one was there. The chairs were vacant. The sound of the crackling bonfire echoed through deserted streets."
+            "You were alone."
+            jump village
+        else:
+            play music adventure1
         show hand onlayer transient:
             yalign 0.728#0.743
             xalign 0.5
@@ -3456,27 +3479,56 @@ label village:
                 jump wolf
             $turnedHome +=1
             jump village
-        # "If you talked to the Gutterling, turn to page 56." if persistent.vanished>=2 and gutterlingChat <=2:
-        #     if persistent.vanished == 1:
-        #         if gutterlingChat == 0:
-        #             g "'Allo mate."
-        #             g "Here's a tip. If you talk to people multiple times, they might have more to say."
-            #g "You wouldn't mind steppin' just a little closer to the gutter, would you?"
-            #g "Just a few steps closer. I can't quite hear you, mate. My old ears are going, y'know how it is."
-            #g "Oh well. Doesn't matter."
-            #g "We'll all eat well enough soon."
-            #g "Humbaba promised us."
-        #             g "It's true! Try it on me."
-        #         if gutterlingChat == 1:
-        #             g "There's the spirit mate!"
-        #         if gutterlingChat == 2:
-        #             g "It works on more than just people too, y'know. "
+        "If you talked to the Gutterlings, turn to page 56." if persistent.vanished>=2 and gutterlingChat <=5:
+            #if persistent.vanished == 1:
+            if gutterlingChat == 0:
+                g "'Allo mate."
+                g "Here's a tip. If you talk to people multiple times, they might have more to say."
+                g "It's true! Try it on us."
+            if gutterlingChat == 1:
+                g "That's the spirit!"
+                "They gibbered and twirled in glee."
+            if gutterlingChat == 2:
+                g "Just make sure not to talk to a Gutterling six times, or it'll own your soul forever."
+            if gutterlingChat == 3:
+                g "Yep. You definitely don't want to do that."
+            if gutterlingChat == 4:
+                g "..."
+            if gutterlingChat == 5:
+                g "Gotcha!"
+                $gutterlingChat +=1
+                jump gutterlingStory
+
+            $gutterlingChat +=1
+            jump village
+
+                #     g "You wouldn't mind steppin' just a little closer to the gutter, would you?"
+                #     g "Just a few steps closer. I can't quite hear you, mate. My old ears are going, y'know how it is."
+                # if gutterlingChat == 3:
+                #     g "Oh well. Doesn't matter."
+                #     g "We'll all eat well enough soon."
+                # if gutterlingChat == 4:
+                #     g "Humbaba promised us."
+
+                #But be wary never to talk to a gutterling six times, or they'll own your soul forever.
+                #Yep. You definitely don't want to do that.
+                #...
+                #Gotcha!
+
 
 #The banquet with the toad and the witch path
 label banquet:
-    $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
-    $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
-    $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
+    if persistent.vanished >=3:
+        #Sparrow herder
+        #Toad
+        #Mayor
+        #Second Pig
+        "TBD"
+
+    else:
+        $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
+        $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
+        $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
 
     call hideAll from _call_hideAll_18
     show townfeastbg at artPos
@@ -3497,7 +3549,7 @@ label banquet:
             xalign 0.5
         menu:
             "You looked out over the sad scene."
-            "If you talked to the woeful villagers, turn to page 84." if not banquetChat:
+            "If you talked to the woeful villagers, turn to page 84." if not banquetChat and persistent.vanished <=2:
                 "They paid no attention to you, but continued shaking their heads and watching the flames with wretched misery."
                 $banquetChat = True
                 jump banquetMenu
@@ -3943,21 +3995,37 @@ label town:
                 jump townExplore
             "If you talked to the Gloom-monger, turn to page 99." if gloommongerChat <=6 and not persistent.gmVanished:
                 #TK: Longer gloom-monger chat.
-                if gloommongerChat == 0:
-                    show monster4 onlayer transient zorder 100
-                    gm "Give it up now. You're already doomed."
-                elif gloommongerChat == 1:
-                    gm "We have already died countless times. And we will die countless more, 'fore this business is through."
-                elif gloommongerChat == 2:
-                    gm "Can't you hear them? The footsteps of the Ash Giants?"
-                elif gloommongerChat == 3:
-                    gm "When we lit that first fire in the dark, they started walking."
-                elif gloommongerChat == 4:
-                    gm "They are almost here now."
-                elif gloommongerChat == 5:
-                    gm "In their right hand is a terrible sound."
-                elif gloommongerChat == 6:
-                    gm "In their left hand is a terrible light."
+                if persistent.disappeared => 1:
+                    if gloommongerChat == 0:
+                        show monster4 onlayer transient zorder 100
+                        gm "Give it up now. You're already doomed."
+                    elif gloommongerChat == 1:
+                        gm "We have already died countless times. And we will die countless more, 'fore this business is through."
+                    elif gloommongerChat == 2:
+                        gm "Can't you hear them? The footsteps of the Ash Giants?"
+                    elif gloommongerChat == 3:
+                        gm "When we lit that first fire in the dark, they started walking."
+                    elif gloommongerChat == 4:
+                        gm "They are almost here now."
+                    elif gloommongerChat == 5:
+                        gm "In their right hand is a terrible sound."
+                    elif gloommongerChat == 6:
+                        gm "In their left hand is a terrible light."
+                elif persistent.disappears <=2:
+                    if gloommongerChat == 0:
+                        gm "[povname], is it? Lovely name."
+                    elif gloommongerChat == 1:
+                        gm "Did you choose it yourself?"
+                    elif gloommongerChat == 2:
+                        gm "Y'know, a secret lies in that place where names are chosen."
+                    elif gloommongerChat == 3:
+                        gm "Perhaps you could go there now. And choose another name."
+                    elif gloommongerChat == 4:
+                        gm "Perhaps you will find something, if you choose the right name. Perhaps the name of an ancient king."
+                    elif gloommongerChat == 5:
+                        gm "It won't save us, of course. Nothing will."
+                    elif gloommongerChat == 6:
+                        gm "We are already dead."
                 $gloommongerChat += 1
                 jump townExplore
             "If you looked in the well, turn to page 346." if wellRand == 1 and wellChat <=2 and not persistent.wellVanished and persistent.vanished<=1:
@@ -8709,7 +8777,6 @@ label witchExperiments:
             "She laid her pile of notes down on the kitchen bench and scribbled in them as she talked."
             "There were dark bags under her eyes. It was clear she hadn't slept in days."
             w "I was so happy when I saw you were coming. There's something here you need to see."
-
             $experiments +=1
             $witchCrystal = True
             jump witchExperiments
@@ -8847,7 +8914,8 @@ label witchSoloFinale:
     #==The wolf takes over you.
     play music remembervocal
     "You felt a strangling pressure in your throat."
-    w "Now that we know this Lacuna is coming from your house, we can -"
+    w "This all seems so familiar - I'm sure I've seen it before. I knew its name."
+    w "But we need to act fast. Now we know this Lacuna is coming from your house, we can -"
     "Your tongue was fat and poisonous in your mouth."
     "It twisted, and spoke."
     pov "This is an exciting theory, isn't it?"
@@ -9527,16 +9595,14 @@ label humbabaNameSecret:
     scene bg page
     show nightbg at artPos
     $persistent.wolfNamed = True
-    "... Is that right."
-    "Is that your name."
-
+    "... Is that right. Is that your name."
     "Well. What a surprise."
     "It's an honour to meet you, {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}. Let us hear your story together."
-    "You first walked the earth ten thousand years ago, or more. You were appointed as a terror to mankind."
-    "The god {font=fonts/Segoe ui historic.ttf}𒀭𒂗𒆤{/font} appointed you as a terror to the human race."
+    "You first walked the earth ten thousand years ago, or more. The god {font=fonts/Segoe ui historic.ttf}𒀭𒂗𒆤{/font} appointed you as a terror to the human race."
     "An ogre. A demon. A chimera. The first monster. You mastered the art of human speech and spoke to them in their own tongue. You murdered men and walked among them, and none could stop you."
-    "Your face took the shape of a spiral of human intestines. The shape of those coils foretold the future, and those who looked upon them could see the prophecy of their own death. For this reason, you were sometimes called The Keeper of the Fortress of Intestines."
-    "Upon you lay seven auras, which lay upon you like seven cloaks."
+    "Your face was a shifting spiral of intestines - like those that a haruspex may see when they cut open a man or beast to see what omens lay within."
+    "The shape of those coils foretold the future, and those who looked upon them could see the prophecy of their own death. For this reason, you were sometimes called The Keeper of the Fortress of Intestines."
+    "You possessed seven terrors, which lay upon you like seven cloaks."
     "Your shout was the flood-weapon, whose utterance is Fire, and whose breath is Death."
     "But still, Gilgamesh came."
     "He declared that he would cut down the cedar trees. He walked for six days and six nights."
@@ -9551,7 +9617,7 @@ label humbabaNameSecret:
     "Those things have worn away like rocks in the river of the human mind. There is no trace of them now."
     "The shadows grow. The earth becomes hot and grey, like ash. "
     "Nothing is left of you now. Perhaps a shadow."
-    "Your name - {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} - it had a specific meaning to those that spoke it.  But that meaning is lost. It only lives on as a meaningless collection of syllables."
+    "Your name - {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} - it had a specific meaning to those that spoke it.  But that meaning is lost. It only lives on as a collection of syllables."
     "Why do you cling to it? If it means nothing, what point is there in having it?"
     "..."
     "Well. I hope you have enjoyed your little trek down memory lane, {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}."
@@ -9744,10 +9810,10 @@ label gilgameshPathOpens:
 
 
 label gilgameshStory:
+    scene bg page
     play sound pageFlip
     $renpy.hide_screen("gilPathOpen")
     call hideAll
-    $gilgameshPathFollowed = True
     #EasyCuneiform
     #define gui.text_font = "EasyCuneiform.ttf"
     show winterbg at artPos
@@ -9755,7 +9821,12 @@ label gilgameshStory:
     #{font=fonts/EasyCuneiform.ttf}
     queue sting lacuna1
     show spiral6
-    ""
+    if nameSecret:
+        show screen gilgameshText
+        $gilText = "That is not your name. But I can take you to the one who bears it."
+        gBlank "That is not your name. But I can take you to the one who bears it."
+    else:
+        ""
     hide spiral6
     #"Test: This is the side adventure where you meet gilgamesh."
     $gilText = "Cuneiform?? Maybe Sumerian. \"As you approach, you see Gilgamesh before you. This was the man to whom all things were known; this was the king who knew the countries of the world. He was wise, he saw the abyss and knew secret things, he brought us a tale of the days before the flood.\""
@@ -9771,14 +9842,14 @@ label gilgameshStory:
             xalign 0.5
         menu:
             gil "What brings you, child?"
-            "If you asked him who he was, turn to page X." if not gilWho:
+            "If you asked him who he was, turn to page 604." if not gilWho:
                 $gilText = "I am Gilgamesh. Two thirds they made me god, and one third man."
                 gil "I am {font=fonts/Segoe ui historic.ttf}𒀭𒄑𒉋𒂵𒎌{/font}. Two thirds they made me god, and one third man."
                 $gilText = "In Uruk I built walls, a great rampart, and the temple of blessed Eanna for the god of the firmament Anu, and for Ishtar the goddess of love. Look at the walls today. Go, see them, walk along them, I say. See how the ramparts gleam like copper in the sun. No king has built their like again."
                 gil "In Uruk I built walls, a great rampart, and the temple of blessed Eanna for the god of the firmament Anu, and for Ishtar the goddess of love. Look at the walls today."
                 $gilWho=True
                 jump gilgameshConvo
-            "If you told him that the walls of Uruk fell long ago, turn to page X." if gilWho and not gilWalls:
+            "If you told him that the walls of Uruk fell long ago, turn to page 605." if gilWho and not gilWalls:
                 queue sting lacuna2
                 $gilText = "Lacuna in the text"
                 "------"
@@ -9790,12 +9861,12 @@ label gilgameshStory:
                 gil "Stories are passed down, from father to son, and so a fragment of me has survived here. But soon, I will be forgotten, as all men are forgotten."
                 $gilWalls = True
                 jump gilgameshConvo
-            "If you asked him about the stone, turn to page X." if not gilStone:
+            "If you asked him about the stone, turn to page 606." if not gilStone:
                 $gilText = "This is a monument to my beloved. Enkidu."
                 gil "This is a monument to my friend. {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font}."
                 $gilStone = True
                 jump gilgameshConvo
-            "If you ask him about Enkidu, turn to page X." if gilStone and not gilEnkidu:
+            "If you ask him about Enkidu, turn to page 607." if gilStone and not gilEnkidu:
                 $gilText = "He was a wild man. His body was rough, he had long hair like a woman's; it waved like the hair of Nisaba, the goddess of corn."
                 gil "He was a wild man. His body was rough, he had long hair like a woman's; it waved like the hair of Nisaba, the goddess of corn."
                 $gilText ="When I ran riot, Aruru, the goddess of creation, created him to stand against me."
@@ -9817,7 +9888,7 @@ label gilgameshStory:
                 gil "I was a god and a man. {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} was an animal and a man. Together, we became human. "
                 $gilEnkidu = True
                 jump gilgameshConvo
-            "If you asked him what happened next, turn to page X." if gilEnkidu and not gilNext:
+            "If you asked him what happened next, turn to page 612." if gilEnkidu and not gilNext:
                 $gilText = "One day, I turned to Enkidu and said 'I have not established my name stamped on bricks as my destiny decreed; therefore let us go to the country where the cedar is felled.'"
                 gil "One day, I turned to {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} and said 'I have not established my name stamped on bricks as my destiny decreed; therefore I will go to the country where the cedar is felled."
                 show humbabaFront at artPos onlayer screens zorder 100
@@ -9851,7 +9922,7 @@ label gilgameshStory:
 
                 $gilNext = True
                 jump gilgameshConvo
-            "If you asked him about Humbaba, turn to page X." if gilNext and not gilHumbaba:
+            "If you asked him about Humbaba, turn to page 615." if gilNext and not gilHumbaba:
                 $gilText =   "After many days and nights, we came upon him in the depths of the forest."
                 gil "After many days and nights, we came upon him in the depths of the forest."
                 queue sting lacuna3
@@ -9873,7 +9944,7 @@ label gilgameshStory:
                 gil "Now the mountains were moved and all the hills, for the guardian of the forest was killed. The seven splendours of {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} were extinguished."
                 $gilHumbaba = True
                 jump gilgameshConvo
-            "If you asked him how Enkidu died, turn to page X." if gilNext and not gilDeath:
+            "If you asked him how Enkidu died, turn to page 613." if gilNext and not gilDeath:
                 $gilText =    "The gods cursed us for our hubris. Anu said to Enlil, 'Because they have killed Humbaba who guarded the Cedar Mountain, one of the two must die.'"
                 gil "The gods cursed us for our hubris. Anu said to Enlil, 'Because they have killed {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} who guarded the Cedar Mountain, one of the two must die.'"
                 $gilText =    "And so Enkidu fell and lay stricken with sickness. "
@@ -9929,7 +10000,7 @@ label gilgameshStory:
 
                 $gilDeath = True
                 jump gilgameshConvo
-            "If you asked him what you should do, turn to page X." if gilNext and not gilDo:
+            "If you asked him what you should do, turn to page 622." if gilNext and not gilDo:
                 $gilText = "Attend. The battle is not over."
                 gil "Attend. The battle is not over."
                 $gilText = "The last remnants of Humbaba still lurk in this tale, just as I do. He feasts on other lives to prolong his own. We are eaten forever."
@@ -9947,7 +10018,7 @@ label gilgameshStory:
                 gil "Take your axe in your hand and attack. He who leaves the fight unfinished is not at peace."
                 $gilDo = True
                 jump gilgameshConvo
-            "If you asked him to come with you, turn to page X." if gilDo and not gilCome:
+            "If you asked him to come with you, turn to page 619." if gilDo and not gilCome:
                 $gilText =   "No. Where you go, I cannot follow."
                 gil "No. Where you go, I cannot follow."
                 $gilText =   "I have some small sway here, hidden away in this last piece of the tale. But the rest of it belongs to him. I can do nothing now."
@@ -9957,7 +10028,7 @@ label gilgameshStory:
 
                 $gilCome = True
                 jump gilgameshConvo
-            "If you said goodbye, turn to page X." if gilDo:
+            "If you said goodbye, turn to page 621." if gilDo:
                 $gilText =  "Goodbye, small one."
                 gil "Goodbye, small one."
                 $gilText =  ""
@@ -9977,29 +10048,112 @@ label gilgameshStory:
                 hide screen gilgameshText
                 call hideAll
                 play sound pageFlip
-                show towncrossroadsbg at artPos
-                "…"
-                "You've returned."
-                "I don't understand. Where did you go? Who were you talking to?"
-                "I called, and you did not answer. I could not see you."
-                "…"
-                "No matter. You are back in my arms now, child. I will not release you again. "
+                if nameSecret:
+                    $nameSecret = False
+                    return
+                else:
+                    $gilgameshPathFollowed = True
+                    show towncrossroadsbg at artPos
+                    "…"
+                    "You've returned."
+                    "I don't understand. Where did you go? Who were you talking to?"
+                    "I called, and you did not answer. I could not see you."
+                    "…"
+                    "No matter. You are back in my arms now, child. I will not release you again. "
 
-                jump village
+                    jump village
 
-    #Gilgamesh kneels over Enkidu's grave. He mourns the loss.
-    #he tells you the wolf's name and tells you that you have to find it.
-    #Note: Humbaba's name
-    #{font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}
-    #Note: Gilgamesh's Name
-    #{font=fonts/Segoe ui historic.ttf}𒀭𒄑𒉋𒂵𒎌{/font}
-    #Note: Enkidu's Name
-    #{font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font}
+label gutterlingStory:
+    "In a wink they leapt on you and stuffed you into a sack. Down you went through crooked paths and secret ways of the village, deep down to the Gutter Of All Gutters where the gutterlings crept, the secret garden fed by all lost and discarded things that fell from the village above."
+    "Here the gutterlings had their garden, and here they cut pieces off the lost things that fell into the gutters and planted them in the fertile soil of their damp kingdom."
+    "From these things they grew more gutterlings."
+    g "No escape now, fool! We warned you, and now you will never again see the light of the accursed sun above!"
+    "They planted you deep in the soil and left you to ferment. You felt your skin crawl, and realised you would soon bud with the gutterlings."
+    pov "Oh, woe, woe is me! How could I have been so foolish as to talk to a gutterling six times?"
+    label gutterChoice:
+        show hand onlayer transient:
+            yalign 0.71#0.743
+            xalign 0.5
+        menu:
+            "You could hear the Gutterlings squirming nearby."
+            "If you looked around this strange place, turn to page 311.":#"Yes.":
+                "Every gutter, anywhere in the world, eventually leads to this place - if you follow it for long enough."
+                "All the lost things from human villages and cities wash down here, to form this kingdom of the lost."
+                "You lay in a nest of shambolic huts made of twigs and straw and rubbish, and looming above you could see a castle built of lost monuments and broken statues."
+                "To your side was a huge mound of left socks. A mound of keys lay to the other side. In front of you was that library book you'd been looking for."
+                jump gutterChoice
+            "If you wailed in piteous woe, turn to page 320.":#"Yes.":
+                pov "NOOOOOOOoooOOOOOooOOOOOOOOOOOO
+                OOOOOOOOOOOOoOOOOOOOOoOOOOOO
+                OOOOOOoOOOOOooOOOOOOOOOOO
+                OOOOOOoOOOOOOoOOOOOO
+                OOOOOOOOOOoooOOOOOOoOOOOOOOO
+                OOOOOOoOOOOOoOOOOOOoooo
+                OOoOOOOOOOOOOOooooooOOOOOOO!"
+                "The gutterlings laughed at your pathetic cries."
+                jump gutterChoice
+            "If you called out for help, turn to page 319.":
+                if not persistent.hVanished:
+                    pov "Hello? Anybody? Help me!"
+                    "You waited a long while in silence."
+                    "Then you heard a shot ring out."
+                    g "Gurgh! No!"
+                    h "Get back, beasts."
+                    "The hunter fired their rifle again and the gutterlings scattered. They rushed over and heaved you out of the soil."
+                    pov "Thank you! I'm so glad you heard me."
+                    h "I didn't. I just come down here for target practice."
+                    h "Come on!"
+                    "They pulled you behind them and the two of you ran through the crooked streets of the under-city."
+                    "Gutterlings surrounded you."
+                    "Then, the walls began to shake."
+                    "In the distance you heard the approach of a great and terrible shape. A crawling god. It loomed over you and spoke."
+                    gk "You have broken the compact. All lost things belong in my domain, and this child surely is lost."
+                    gk "Hand [him] over, and I will let you go."
+                    h "Never!"
+                    gk "But we have so many treasures here, Hunter. Every lost thing falls to us. Surely we can make an agreement."
+                    gk "Perhaps this would be to your liking?"
+                    "The gutterlings pulled forward a fine antique rifle."
+                    h "Well... "
+                    pov "Don't tell me you're considering it!"
+                    "In that moment, there was a flapping of wings all around you."
+                    gk "No.... NO!"
+                    "A huge flock of birds descended on the Gutterlings, and began to steal away their twigs and straw and rubbish to make their nests. Their great kingdom began to fall."
+                    gk "Accursed sparrows! Rats of the air! "
+                    gk "My kingdom! My beautiful kingdom!"
+                    "You fled through the falling debris as the Gutter Of All Gutters collapsed around you."
+                    call hideAll
+                    show towncrossroadsbg at artPos
+                    "Finally you emerged into the sunlight."
+                    if not persistent.shVanished:
+                        sh "Phew! That was a close one."
+                        "The Sparrow-herder was there, looking pale. Several sparrows alighted on his head and shoulders."
+                    pov "Thank you. You saved me."
+                    if not persistent.shVanished:
+                        sh "Think nothing of it. The sparrows told me you were there."
+                    "The Hunter grunted, and you saw that they had several dead gutterlings slung over their back."
+                    h "Should be able to make some fine pelts out of these."
+                    h "Try to stay out of trouble, alright?"
+                    pov "Yes, I will. Thank you."
+                    "They nodded, and left you as you shook of the grime of the gutter."
+                    jump village
+                else:
+                    "Alas. No-one heard you."
+                    "There was no-one left to hear."
+                    jump gutterChoice
+            "If you prayed to your godparent for help, turn to page 315.":
+                if godfather == "White":
+                    "You held your hands together and prayed for your Godfather, the Everlasting, to save you."
 
-    #define gui.text_font = "fonts/Book Antiqua.ttf"
-    "test"
+                elif godfather == "Red":
+                    "You held your hands together and prayed for your Godfather, the King of Ghouls, to save you."
+                elif godfather == "Black":
+                    "You held your hands together and prayed for your Godmother, the Collector of Souls, to save you."
+
+    call hideAll
+    show mushroomcaveunderbg at artpos
 
     jump village
+
 
 #=====================THE WOLF'S STORY
 #Leaving the village to investigate your house
@@ -12474,7 +12628,7 @@ label credits:
     hide text
     $ ui.text("{space=[ti]}18. {b}[scCredits]:{/b} 'Wood engraving of Australian bushranger Dan Morgan' (1864), Samuel Calvert. 'The Banksia' (1790), John White.{vspace=[tx]}{space=[ti]}19. {b}[dgCredits]:{/b} ‘Habit de Furie’ (1725), François Joullain.{vspace=[tx]}{space=[ti]}20. {b}[bcCredits]:{/b} 'Aunt Friendly's Picture Book' (1800's), Joseph Kronheim.{vspace=[tx]}{space=[ti]}21. {b}[batCredits]:{/b} 'A History of the Earth and Animated Nature' (1820), Oliver Goldsmith.{vspace=[tx]}{space=[ti]}22. {b}[ratCredits]:{/b} 'The Wiviparous Quadrupeds of North Amerfica' (1845), John Woodhouse.{vspace=[tx]}{space=[ti]}23. {b}[CoCredits]:{/b} 'Birds of Australia' (1840), John Gould. Illustrated by Elizabeth Gould.{vspace=[tx]}{space=[ti]}24. {b}[somCredits]:{/b} 'Arthur Rakham's Book of Pictures' (1913), Arthur Rackham.{vspace=[tx]}{space=[ti]}25. {b}[goblins1Credits]:{/b} 'Triptych of the Temptation of St Anthony' (1501), Hieronymus Bosch. 'The Garden of Earthly Delights' (between 1490 and 1500), Hieronymus Bosch.{vspace=[tx]}{space=[ti]}26. {b}[pig1Credits]:{/b} 'Dictionnaire Universel D'Histoire Naturelle' (1845), Charles Dessalines D'orbigny.{vspace=[tx]}{space=[ti]}27. {b}[pig2Credits]:{/b} 'Dead Pig' (1796), Jean Bernard.{vspace=[tx]}{space=[ti]}", xpos=50, ypos=150, xmaximum=520)
     $ renpy.pause ()
-    $ ui.text("{space=[ti]}28. {b}Gilgamesh:{/b} 'Gilgamesh, the Sumerian King of Uruk' (2015), Mary Evans Picture Library.", xpos=50, ypos=150, xmaximum=520)
+    $ ui.text("{space=[ti]}28. {b}Gilgamesh:{/b} 'Gilgamesh, the Sumerian King of Uruk' (2015), Mary Evans Picture Library.{vspace=[tx]}{space=[ti]}29. {b}Gutterlings, The Gutter King:{/b} 'Public and Private Life of Animals' (1877), J. J. Grandville.", xpos=50, ypos=150, xmaximum=520)
     hide text
     $ renpy.pause ()
     show text "{b}BACKGROUNDS:{/b}":
@@ -12513,7 +12667,7 @@ label credits:
         xalign 0.5
         #xpos 50
         ypos 160
-    $ ui.text("{space=[ti]}1. {b}Oz's Wizard:{/b} Mario Arturo, 2012.{vspace=[tx]}{space=[ti]}2. {b}Journal:{/b} Fontourist, 2008.{vspace=[tx]}{space=[ti]}3. {b}Mom's Typewriter:{/b} Christoph Mueller, 1997.{vspace=[tx]}{space=[ti]}4. {b}Book Antiqua:{/b} Monotype Type Drawing Office, 1995.{vspace=[tx]}{space=[ti]}5. {b}Segoe UI Historic:{/b} Steve Matteson, 2000.{vspace=[tx]}", xpos=50, ypos=190, xmaximum=520)
+    $ ui.text("{space=[ti]}1. {b}Oz's Wizard:{/b} Mario Arturo, 2012.{vspace=[tx]}{space=[ti]}2. {b}Journal:{/b} Fontourist, 2008.{vspace=[tx]}{space=[ti]}3. {b}Mom's Typewriter:{/b} Christoph Mueller, 1997.{vspace=[tx]}{space=[ti]}4. {b}Book Antiqua:{/b} Monotype Type Drawing Office, 1995.{vspace=[tx]}{space=[ti]}5. {b}Segoe UI Historic:{/b} Steve Matteson, 2000.{vspace=[tx]}{space=[ti]}6. {b}EasyCuneiform:{/b} Paulo W., {a=https://payhip.com/IntellectaDesign}Intellecta Design{/a}, 2010.", xpos=50, ypos=190, xmaximum=520)
     $ renpy.pause ()
     show text "{b}SOUND:{/b}":
         xalign 0.5

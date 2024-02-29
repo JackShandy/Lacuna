@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 12490: is not terminated with a newline. (Check strings and parenthesis.)
-(Perhaps you left out a " at the end of the first line.)
-        $ ui.text("{space=[ti]}1. {b}Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}Cartouche:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}{space=[ti]}10. {b}Note Paper:{/b} 'Old Notepaper Texture.' polkapebble, polkapebble.com.{vspace=[tx]}{space=[ti]}11. {b}Cover Wolf:{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.{vspace=[tx]}{space=[ti]}, xpos=50, ypos=190, xmaximum=520)
+File "game/script.rpy", line 1513: reached end of line when expecting ':'.
+    elif persistent.povname == "Gilgamesh" or persistent.povname == "Gilgameš" or persistent.povname == "Bilgames" or persistent.povname == "Pabilgames" 
+                                                                                                                                                         ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Wed Feb 28 16:46:19 2024
+Thu Feb 29 12:46:35 2024

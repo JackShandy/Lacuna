@@ -1,96 +1,18 @@
-Wed Feb 28 16:42:02 2024
+Thu Feb 29 15:34:35 2024
 Windows-10-10.0.19045
 Ren'Py 8.1.3.23091805
  
 
 Bootstrap to the start of init.init. took 0.03s
 Early init. took 0.00s
-Loader init. took 0.09s
-Loading error handling. took 0.04s
-Loading script. took 0.27s
+Loader init. took 0.18s
+Loading error handling. took 0.06s
+Loading script. took 1.63s
 Loading save slot metadata. took 0.03s
 Loading persistent. took 0.00s
-Running init code. took 0.06s
+Running init code. took 0.07s
 Loading analysis data. took 0.01s
-Analyze and compile ATL. took 0.01s
-Reloading save slot metadata. took 0.02s
-Index archives took 0.00s
-Dump and make backups. took 0.05s
-Cleaning cache. took 0.00s
-Making clean stores. took 0.00s
-Initial gc. took 0.02s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object. took 0.26s
-Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.00s
-Load screen analysis took 0.02s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.05s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
-Running _start took 0.00s
-Performance test:
-Interface start. took 0.07s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 536.99'
-Display Info: None
-Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
-Maximum texture size: 4096x4096
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.02s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
-Resetting cache.
-Bootstrap to the start of init.init. took 257.00s
-Early init. took 0.00s
-Loader init. took 0.09s
-Loading error handling. took 0.04s
-Loading script. took 0.31s
-Loading save slot metadata. took 0.02s
-Loading persistent. took 0.00s
-
-File "game/script.rpy", line 12490: is not terminated with a newline. (Check strings and parenthesis.)
-(Perhaps you left out a " at the end of the first line.)
-        $ ui.text("{space=[ti]}1. {b}Cover:{/b} 'The Forest Lovers' (1898), M. Hewlett.{vspace=[tx]}{space=[ti]}2. {b}Page:{/b} 'White watercolor paper texture' (2020), Olga Thelavart.{vspace=[tx]}{space=[ti]}3. {b}Hand:{/b} 'Devises heroïques' (1551), Claude Paradin.{vspace=[tx]}{space=[ti]}4. {b}Cartouche:{/b} 'Design for ornamental cartouche' (Date Unknown), Quentin Pierre Chedel.{vspace=[tx]}{space=[ti]}5. {b}Devil:{/b} 'Taylors Physicke has purged the Divel...' (1641), Voluntas Ambulatoria.{vspace=[tx]}{space=[ti]}6. {b}Torn Pages:{/b} 'Torn Up Paper Curved Pieces Texture' (2020), David Maier.{vspace=[tx]}{space=[ti]}7. {b}Eye:{/b} 'Vintage Eye Art' (2021), StarGladeVintage, Pixabay.{vspace=[tx]}{space=[ti]}8. {b}Burned edges:{/b} 'Burned Paper' (2009), Brant Wilson, bittbox.com.{vspace=[tx]}{space=[ti]}9. {b}Burning:{/b} 'Green paper burns, revealing burnt edges, smoke and turns into ashes.' alekleks, stock.adobe.com.{vspace=[tx]}{space=[ti]}10. {b}Note Paper:{/b} 'Old Notepaper Texture.' polkapebble, polkapebble.com.{vspace=[tx]}{space=[ti]}11. {b}Cover Wolf:{/b} 'Early Natural History Print' (Date Unknown), Karen Watson.{vspace=[tx]}{space=[ti]}, xpos=50, ypos=190, xmaximum=520)
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start. took 0.35s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 536.99'
-Display Info: None
-Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init. took 281.48s
-Early init. took 0.00s
-Loader init. took 0.10s
-Loading error handling. took 0.04s
-Loading script. took 1.54s
-Loading save slot metadata. took 0.02s
-Loading persistent. took 0.00s
-Running init code. took 0.04s
-Loading analysis data. took 0.01s
-Analyze and compile ATL. took 0.01s
+Analyze and compile ATL. took 0.02s
 Reloading save slot metadata. took 0.02s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
@@ -107,13 +29,13 @@ Init translation took 0.04s
 Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.01s
-Save screen analysis took 0.01s
-Prepare screens took 0.05s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
 Save pyanalysis. took 0.01s
-Save bytecode. took 0.03s
+Save bytecode. took 0.04s
 Running _start took 0.00s
 Performance test:
-Interface start. took 0.04s
+Interface start. took 0.08s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -123,14 +45,58 @@ Vendor: "b'NVIDIA Corporation'"
 Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
 Version: b'4.6.0 NVIDIA 536.99'
 Display Info: None
-Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init. took 331.18s
+Bootstrap to the start of init.init. took 62.05s
 Early init. took 0.00s
 Loader init. took 0.09s
-Loading error handling. took 0.03s
-Loading script. took 1.40s
+Loading error handling. took 0.05s
+Loading script. took 0.27s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+Running init code. took 0.06s
+Loading analysis data. took 0.04s
+Analyze and compile ATL. took 0.01s
+Reloading save slot metadata. took 0.03s
+Index archives took 0.00s
+Dump and make backups. took 0.07s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.12s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object. took 0.37s
+Cleaning stores took 0.00s
+Init translation took 0.07s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.05s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 536.99'
+Display Info: None
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 173.95s
+Early init. took 0.00s
+Loader init. took 0.09s
+Loading error handling. took 0.05s
+Loading script. took 0.29s
 Loading save slot metadata. took 0.02s
 Loading persistent. took 0.00s
 Running init code. took 0.04s
@@ -138,8 +104,140 @@ Loading analysis data. took 0.01s
 Analyze and compile ATL. took 0.01s
 Reloading save slot metadata. took 0.02s
 Index archives took 0.00s
-Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
 Dump and make backups. took 0.05s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object. took 0.25s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.05s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 536.99'
+Display Info: None
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 267.34s
+Early init. took 0.00s
+Loader init. took 0.10s
+Loading error handling. took 0.05s
+Loading script. took 0.27s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+Running init code. took 0.04s
+Loading analysis data. took 0.01s
+Analyze and compile ATL. took 0.01s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.05s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object. took 0.25s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.05s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 536.99'
+Display Info: None
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 283.98s
+Early init. took 0.00s
+Loader init. took 0.09s
+Loading error handling. took 0.05s
+Loading script. took 0.28s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+Running init code. took 0.04s
+Loading analysis data. took 0.01s
+Analyze and compile ATL. took 0.01s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.05s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object. took 0.25s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.05s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 536.99'
+Display Info: None
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 358.15s
+Early init. took 0.00s
+Loader init. took 0.09s
+Loading error handling. took 0.05s
+Loading script. took 1.62s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+Running init code. took 0.04s
+Loading analysis data. took 0.01s
+Analyze and compile ATL. took 0.02s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
+Dump and make backups. took 0.06s
 Cleaning cache. took 0.00s
 Making clean stores. took 0.00s
 Initial gc. took 0.06s
@@ -153,57 +251,12 @@ Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.01s
 Save screen analysis took 0.02s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.02s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start. took 0.04s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 536.99'
-Display Info: None
-Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init. took 349.93s
-Early init. took 0.00s
-Loader init. took 0.09s
-Loading error handling. took 0.02s
-Loading script. took 1.33s
-Loading save slot metadata. took 0.02s
-Loading persistent. took 0.00s
-Running init code. took 0.04s
-Loading analysis data. took 0.01s
-Analyze and compile ATL. took 0.01s
-Reloading save slot metadata. took 0.02s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
-Dump and make backups. took 0.06s
-Cleaning cache. took 0.00s
-Making clean stores. took 0.00s
-Initial gc. took 0.06s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object. took 0.25s
-Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.01s
 Prepare screens took 0.05s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.02s
+Save pyanalysis. took 0.01s
+Save bytecode. took 0.03s
 Running _start took 0.00s
 Performance test:
-Interface start. took 0.04s
+Interface start. took 0.05s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -213,14 +266,14 @@ Vendor: "b'NVIDIA Corporation'"
 Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
 Version: b'4.6.0 NVIDIA 536.99'
 Display Info: None
-Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init. took 390.56s
+Bootstrap to the start of init.init. took 364.73s
 Early init. took 0.00s
 Loader init. took 0.10s
-Loading error handling. took 0.02s
-Loading script. took 1.43s
+Loading error handling. took 0.03s
+Loading script. took 1.57s
 Loading save slot metadata. took 0.02s
 Loading persistent. took 0.00s
 Running init code. took 0.04s
@@ -244,7 +297,7 @@ Load screen analysis took 0.00s
 Analyze screens took 0.01s
 Save screen analysis took 0.02s
 Prepare screens took 0.05s
-Save pyanalysis. took 0.01s
+Save pyanalysis. took 0.00s
 Save bytecode. took 0.02s
 Running _start took 0.00s
 Performance test:
@@ -258,64 +311,19 @@ Vendor: "b'NVIDIA Corporation'"
 Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
 Version: b'4.6.0 NVIDIA 536.99'
 Display Info: None
-Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init. took 393.88s
+Bootstrap to the start of init.init. took 405.02s
 Early init. took 0.00s
 Loader init. took 0.09s
 Loading error handling. took 0.02s
-Loading script. took 1.35s
-Loading save slot metadata. took 0.02s
-Loading persistent. took 0.00s
-Running init code. took 0.05s
-Loading analysis data. took 0.02s
-Analyze and compile ATL. took 0.01s
-Reloading save slot metadata. took 0.02s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
-Dump and make backups. took 0.06s
-Cleaning cache. took 0.00s
-Making clean stores. took 0.00s
-Initial gc. took 0.06s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object. took 0.25s
-Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.05s
-Save pyanalysis. took 0.01s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start. took 0.04s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 536.99'
-Display Info: None
-Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init. took 431.27s
-Early init. took 0.00s
-Loader init. took 0.09s
-Loading error handling. took 0.02s
-Loading script. took 1.46s
+Loading script. took 1.48s
 Loading save slot metadata. took 0.02s
 Loading persistent. took 0.00s
 Running init code. took 0.04s
 Loading analysis data. took 0.01s
-Analyze and compile ATL. took 0.01s
+Analyze and compile ATL. took 0.02s
 Reloading save slot metadata. took 0.02s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
@@ -326,71 +334,19 @@ Initial gc. took 0.06s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object. took 0.25s
+Creating interface object. took 0.26s
 Cleaning stores took 0.00s
-Init translation took 0.04s
+Init translation took 0.05s
 Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.01s
 Save screen analysis took 0.02s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start. took 0.04s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 536.99'
-Display Info: None
-Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
-Maximum texture size: 4096x4096
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.03s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
-Resetting cache.
-Bootstrap to the start of init.init. took 487.22s
-Early init. took 0.00s
-Loader init. took 0.09s
-Loading error handling. took 0.02s
-Loading script. took 1.46s
-Loading save slot metadata. took 0.02s
-Loading persistent. took 0.00s
-Running init code. took 0.05s
-Loading analysis data. took 0.01s
-Analyze and compile ATL. took 0.01s
-Reloading save slot metadata. took 0.03s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\jackm\\AppData\\Roaming/RenPy/backups\\Lacuna':
-Dump and make backups. took 0.07s
-Cleaning cache. took 0.00s
-Making clean stores. took 0.00s
-Initial gc. took 0.07s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object. took 0.24s
-Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.05s
+Prepare screens took 0.07s
 Save pyanalysis. took 0.01s
-Save bytecode. took 0.02s
+Save bytecode. took 0.03s
 Running _start took 0.00s
 Performance test:
-Interface start. took 0.04s
+Interface start. took 0.05s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -400,12 +356,5 @@ Vendor: "b'NVIDIA Corporation'"
 Renderer: b'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
 Version: b'4.6.0 NVIDIA 536.99'
 Display Info: None
-Screen sizes: virtual=(600, 850) physical=(690, 977) drawable=(690, 977)
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
 Maximum texture size: 4096x4096
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.02s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
