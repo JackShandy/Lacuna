@@ -1,5 +1,6 @@
-﻿# THE THIEF, THE WITCH, THE TOAD & THE MUSHROOM
+# THE THIEF, THE WITCH, THE TOAD & THE MUSHROOM
 #Script File
+
 
 #=====================CUSTOM FUNCTIONS
 init python:
@@ -44,6 +45,8 @@ init python:
         return t * t
     def slowdown(t):
         return 1 - (1 - t) * (1 - t)
+
+
 
 
 
@@ -94,10 +97,10 @@ init:
     default persistent.vanished = 3
 
     #Who has disappeared specifically - main cast
-    default persistent.toadVanished = True
+    default persistent.toadVanished = False
     default persistent.witchVanished = True
     default persistent.thiefVanished = True
-    default persistent.mushroomVanished = False
+    default persistent.mushroomVanished = True
 
     #Who was the last to die?
     #Options: Thief, Toad, Witch, Mushroom, None
@@ -522,6 +525,16 @@ init:
     define scraggsBurning = False
     define wellBurning = False
 
+
+#============== Steam variables
+init:
+    #Defining steam app id
+    define config.steam_appid = 2233770
+
+    #Steam achievements
+    $achievement.register("THE_END")
+
+
 #=====================IMAGES
 #Defining all images
 init:
@@ -881,7 +894,9 @@ init:
 
 
     image townfeastbg = "Backgrounds/town-feast.png"
+    image townfeastbggone = "Backgrounds/town-feast-vanished.png"
     image towncrossroadsbg = "Backgrounds/town-cross.png"
+    image towncrossroadsbggone = "Backgrounds/town-cross-vanished.png"
     image townextbg = "Backgrounds/town-ext.png"
     image town3bg = ConditionSwitch(
         "persistent.starsVanished == False", "Backgrounds/town3.png",
@@ -1631,6 +1646,12 @@ label hideAll:
     hide townextbg
     hide town3bg
 
+    hide townfeastbggone
+    hide towncrossroadsbggone
+    #hide townextbg
+    #hide town3bg
+
+
     hide mushroomcavebg
     hide mushroomcaveunderbg
     hide mushroombasementbg
@@ -1841,44 +1862,44 @@ label start:
         elif persistent.vanished >= 4:
             jump allVanishedEnd
 
-        #Test Menu
-        menu:
-            "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
-            "Jump to the Thief finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
-                #$renpy.fix_rollback()
-                stop music fadeout 6
-                jump thiefFinale
-            "Jump to the Thief path (with the Mushroom disappeared)." if persistent.mushroomVanished and not persistent.thiefVanished:
-                stop music fadeout 6
-                jump thiefSolo
-            "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
-                stop music fadeout 6
-                #$renpy.fix_rollback()
-                jump toadFinale
-            "Jump to the Toad path (with the Witch disappeared)." if persistent.witchVanished and not persistent.toadVanished:
-                stop music fadeout 6
-                #$renpy.fix_rollback()
-                jump toadSolo
-            "Jump to the Witch finale." if not persistent.toadVanished and not persistent.witchVanished:
-                stop music fadeout 6
-                #$renpy.fix_rollback()
-                jump witchFinale
-            "Jump to the Witch path (with the Toad disappeared)." if persistent.toadVanished and not persistent.witchVanished:
-                stop music fadeout 6
-                #$renpy.fix_rollback()
-                jump witchSolo
-            "Jump to the Mushroom finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
-                stop music fadeout 6
-                #$renpy.fix_rollback()
-                jump mushroomFinale
-            "Jump to the Mushroom path (with the Thief disappeared)." if persistent.thiefVanished and not persistent.mushroomVanished:
-                stop music fadeout 6
-                #$renpy.fix_rollback()
-                jump mushroomSolo
-
-            "Continue.":
-                #$renpy.fix_rollback()
-                "DEV NOTE: Continuing with the normal story."
+        # #Test Menu
+        # menu:
+        #     "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
+        #     "Jump to the Thief finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
+        #         #$renpy.fix_rollback()
+        #         stop music fadeout 6
+        #         jump thiefFinale
+        #     "Jump to the Thief path (with the Mushroom disappeared)." if persistent.mushroomVanished and not persistent.thiefVanished:
+        #         stop music fadeout 6
+        #         jump thiefSolo
+        #     "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
+        #         stop music fadeout 6
+        #         #$renpy.fix_rollback()
+        #         jump toadFinale
+        #     "Jump to the Toad path (with the Witch disappeared)." if persistent.witchVanished and not persistent.toadVanished:
+        #         stop music fadeout 6
+        #         #$renpy.fix_rollback()
+        #         jump toadSolo
+        #     "Jump to the Witch finale." if not persistent.toadVanished and not persistent.witchVanished:
+        #         stop music fadeout 6
+        #         #$renpy.fix_rollback()
+        #         jump witchFinale
+        #     "Jump to the Witch path (with the Toad disappeared)." if persistent.toadVanished and not persistent.witchVanished:
+        #         stop music fadeout 6
+        #         #$renpy.fix_rollback()
+        #         jump witchSolo
+        #     "Jump to the Mushroom finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
+        #         stop music fadeout 6
+        #         #$renpy.fix_rollback()
+        #         jump mushroomFinale
+        #     "Jump to the Mushroom path (with the Thief disappeared)." if persistent.thiefVanished and not persistent.mushroomVanished:
+        #         stop music fadeout 6
+        #         #$renpy.fix_rollback()
+        #         jump mushroomSolo
+        #
+        #     "Continue.":
+        #         #$renpy.fix_rollback()
+        #         "DEV NOTE: Continuing with the normal story."
 
 
     # "This maybe happened, or maybe did not."
@@ -2926,6 +2947,10 @@ label introMenu:
                 "His words came slowly. He seemed to be having difficulty speaking."
                 pov "You're supposed to say, \"Where are you headed, fellow traveller?\""
                 "The figure nodded gratefully."
+                show hand onlayer transient:
+                    yalign 0.63#0.743
+                    xalign 0.5
+
             else:
 
                 eg "Hold!"
@@ -3368,12 +3393,14 @@ label introMenu:
 #You can investigate the village and choose between 2 main pathways
 label village:
 
-    #TK: Test: End of the demo
     show hand onlayer transient:
         yalign 0.68#0.743
         xalign 0.5
     call hideAll from _call_hideAll_17
-    show towncrossroadsbg at artPos
+    if persistent.vanished >= 3:
+        show towncrossroadsbggone at artPos
+    else:
+        show towncrossroadsbg at artPos
     menu:
         "You stood in the middle of the village."
         "If you investigated the banquet, turn to page 64.":
@@ -3382,8 +3409,6 @@ label village:
         "If you investigated the edge of town, turn to page 70.":
             call musicReturn from _call_musicReturn_17
             jump town
-        # #"If you sought out Gilgamesh, son of the goddess Ninsun, fifth king of Uruk after the flood, famous as a great builder and as a judge of the dead, turn to page 695." if not houseLockOut:
-
         "If you turned around and went home, turn to page 1." if not houseLockOut:
             #TK: This option gets ripped out if you try it, then go back without succeeding
             if persistent.wolfNamed:
@@ -3518,31 +3543,44 @@ label village:
 
 #The banquet with the toad and the witch path
 label banquet:
+    #TK
+    call hideAll from _call_hideAll_18
     if persistent.vanished >=3:
+        call hideAll
+        show townfeastbggone at artPos
+        show noteHome onlayer transient zorder 100
+
+        "You walked down to the river. Picnic blankets lay empty before the dark waters."
+        if persistent.toadVanished == False:
+            show wolf3 onlayer transient zorder 100
+            "The Toad stood alone, looking into the flames. For a moment you thought you saw people around him - but they were just shadows. The food lay uneaten."
+        else:
+            "For a moment, you thought you saw people around the fire. But they were just shadows. The food lay uneaten."
+        if not persistent.shVanished:
+            "A splash broke the stillness. You looked around to see the Sparrow Herder and the Mayor on the shore, skipping rocks over the water."
+        else:
+            "The Mayor sat on the shore, looking out over the water."
         #Sparrow herder
         #Toad
         #Mayor
         #Second Pig
-        "TBD"
+        #"TBD"
 
     else:
         $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient1')
         $renpy.music.set_volume(1.0, delay=2.0, channel=u'ambient2')
         $renpy.music.set_volume(1.0, delay=2.0, channel=u'music')
 
-    call hideAll from _call_hideAll_18
-    show townfeastbg at artPos
-    if persistent.vanished >= 3:
-        show noteHome onlayer transient zorder 100
-    else:
+
+        show townfeastbg at artPos
         show scribble1 onlayer transient zorder 100
-    "You walked down to the river, where the banquet was laid out before a bonfire. Some folks were gripping each other tight and crying out at the misfortune that had befallen their town. Others simply sat in glum silence."
-    #Wolf: Toad disappeared
-    if persistent.toadVanished == True:
-        show wolf3 onlayer transient zorder 100
-        "No-one sat at the banquet. The food lay uneaten."
-    else:
-        "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
+        "You walked down to the river, where the banquet was laid out before a bonfire. Some folks were gripping each other tight and crying out at the misfortune that had befallen their town. Others simply sat in glum silence."
+        #Wolf: Toad disappeared
+        if persistent.toadVanished == True:
+            show wolf3 onlayer transient zorder 100
+            "No-one sat at the banquet. The food lay uneaten."
+        else:
+            "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
     label banquetMenu:
         show hand onlayer transient:
             yalign 0.625#0.743
@@ -3718,6 +3756,43 @@ label banquet:
                 $pigChat +=1
                 jump banquetMenu
             "If you talked to the Toad, turn to page 87." if not toadStole2 and not persistent.toadVanished:
+                if persistent.vanished == 3:
+                    if not toadLong:
+                        f "Well. I suppose this is it."
+                        "The fire reflected in his eyes. They seemed glassy and vacant."
+                        f "It's been so long now."
+                        f "But still. Not long enough."
+                        "He shook his head."
+                        f "Enough of this melancholy! We should spend these last moments in my manor. It's the finest in the world."
+                        f "And definitely mine, my own, no doubt about that. Always has been!"
+                        f "I'm planning quite the gala. You should join me."
+                        "He hesitated."
+                        f "That is... if you've done everything you need to, you know. Said your goodbyes."
+                        
+                        $toadLong = True
+                        show hand onlayer transient:
+                            yalign 0.7#0.743
+                            xalign 0.5
+                    else:
+                        f "Have you made your decision? There isn't much time left."
+                    
+                        show hand onlayer transient:
+                            yalign 0.7#0.743
+                            xalign 0.5
+                    menu:
+                        f "I think this may be our last party."
+                        "If you accepted, and set off to the toad's manor, turn to page 105.":
+                            f "Sensational! Stay close to me, and you won\'t have a thing to fear."
+                            f "Let us be off at once!"
+                            stop music fadeout 6
+                            jump toadSolo
+                        "If you politely declined (for now, at least), turn to page 102.":
+                            f "You're missing out, I'm telling you!"
+                            f "You... really should come. I'd like to spend it with you."
+                            #$toadDecline = True
+                            jump banquetMenu
+
+
                 if gilgameshPathFollowed:
                     f "There you are! Lost track of you for a moment there, ha ha."
                     f "Now, where were we?"
@@ -3995,7 +4070,7 @@ label town:
                 jump townExplore
             "If you talked to the Gloom-monger, turn to page 99." if gloommongerChat <=6 and not persistent.gmVanished:
                 #TK: Longer gloom-monger chat.
-                if persistent.disappeared => 1:
+                if persistent.vanished <= 1:
                     if gloommongerChat == 0:
                         show monster4 onlayer transient zorder 100
                         gm "Give it up now. You're already doomed."
@@ -4011,7 +4086,7 @@ label town:
                         gm "In their right hand is a terrible sound."
                     elif gloommongerChat == 6:
                         gm "In their left hand is a terrible light."
-                elif persistent.disappears <=2:
+                elif persistent.vanished >=2:
                     if gloommongerChat == 0:
                         gm "[povname], is it? Lovely name."
                     elif gloommongerChat == 1:
@@ -4021,7 +4096,7 @@ label town:
                     elif gloommongerChat == 3:
                         gm "Perhaps you could go there now. And choose another name."
                     elif gloommongerChat == 4:
-                        gm "Perhaps you will find something, if you choose the right name. Perhaps the name of an ancient king."
+                        gm "Perhaps you will find something, if you choose the right name. Perhaps the name of an ancient king. Who can say?"
                     elif gloommongerChat == 5:
                         gm "It won't save us, of course. Nothing will."
                     elif gloommongerChat == 6:
@@ -7737,7 +7812,7 @@ label toadConstruct:
         f "There will not be a soul on this earth who does not know my name."
         f "There is nothing to fear. I am already immortal."
         call musicSilence from _call_musicSilence_25
-        call wolfApproaches
+        call wolfApproaches from _call_wolfApproaches_1
 
         "You embraced. The cavernous emptiness of his vault loomed before him."
         "He gave you a final wave. Then, he was swallowed up into the darkness."
@@ -9813,7 +9888,7 @@ label gilgameshStory:
     scene bg page
     play sound pageFlip
     $renpy.hide_screen("gilPathOpen")
-    call hideAll
+    call hideAll from _call_hideAll_251
     #EasyCuneiform
     #define gui.text_font = "EasyCuneiform.ttf"
     show winterbg at artPos
@@ -10046,7 +10121,7 @@ label gilgameshStory:
                 $gilText =  "The river rises, flows over its banks\nand carries us all away, like mayflies\nfloating downstream: they stare at the sun,\nthen all at once there is nothing."
                 gil "The river rises, flows over its banks and carries us all away, like mayflies floating downstream: they stare at the sun, then all at once there is nothing."
                 hide screen gilgameshText
-                call hideAll
+                call hideAll from _call_hideAll_252
                 play sound pageFlip
                 if nameSecret:
                     $nameSecret = False
@@ -10121,7 +10196,7 @@ label gutterlingStory:
                     gk "Accursed sparrows! Rats of the air! "
                     gk "My kingdom! My beautiful kingdom!"
                     "You fled through the falling debris as the Gutter Of All Gutters collapsed around you."
-                    call hideAll
+                    call hideAll from _call_hideAll_253
                     show towncrossroadsbg at artPos
                     "Finally you emerged into the sunlight."
                     if not persistent.shVanished:
@@ -10143,13 +10218,18 @@ label gutterlingStory:
             "If you prayed to your godparent for help, turn to page 315.":
                 if godfather == "White":
                     "You held your hands together and prayed for your Godfather, the Everlasting, to save you."
-
+                    "In a blaze of light, you were rescued from the pit and returned to village."
+                    jump village
                 elif godfather == "Red":
                     "You held your hands together and prayed for your Godfather, the King of Ghouls, to save you."
+                    "In a blaze of hellfire, you were rescued from the pit and returned to village."
+                    jump village
                 elif godfather == "Black":
                     "You held your hands together and prayed for your Godmother, the Collector of Souls, to save you."
+                    "In a flash of darkness, you were rescued from the pit and returned to village."
+                    jump village
 
-    call hideAll
+    call hideAll from _call_hideAll_254
     show mushroomcaveunderbg at artpos
 
     jump village
@@ -11831,6 +11911,7 @@ label newStoryFinale:
     show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" with fade:
         xalign 0.5
         yalign 0.5
+    $achievement.grant("THE_END")
     "."
     show text "{color=#FFFFFF}Thank you so much for playing.{/color}" with fade:
         xalign 0.5
@@ -12369,6 +12450,7 @@ label burnEnd:
     show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" onlayer over_screens zorder 101 with fade:
         xalign 0.5
         yalign 0.5
+    $achievement.grant("THE_END")
     ""
     show text "{color=#FFFFFF}Thank you so much for playing.{/color}" onlayer over_screens zorder 101 with fade:
         xalign 0.5

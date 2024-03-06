@@ -1,60 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 57, in __call__
-    renpy.load(self.slot)
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "game/script.rpy", line 4032, in script
+    if persistent.disappeared => 1:
+SyntaxError: invalid syntax (game/script.rpy, line 4032)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
-    python hide:
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\ast.py", line 1138, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\python.py", line 1122, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
-    python hide:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
-    ui.interact()
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\core.py", line 3582, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\core.py", line 4543, in interact_core
-    rv = root_widget.event(ev, x, y, 0)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\layout.py", line 1179, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\layout.py", line 1179, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\layout.py", line 1179, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\screen.py", line 770, in event
-    rv = self.child.event(ev, x, y, st)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\layout.py", line 1179, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\behavior.py", line 1142, in event
-    return handle_click(self.clicked)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\behavior.py", line 1075, in handle_click
-    rv = run(action)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\behavior.py", line 372, in run
-    new_rv = run(i, *args, **kwargs)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\display\behavior.py", line 379, in run
-    return action(*args, **kwargs)
-  File "game/script.rpy", line 57, in __call__
-    renpy.load(self.slot)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\loadsave.py", line 816, in load
-    log.unfreeze(roots, label="_after_load")
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\rollback.py", line 1105, in unfreeze
-    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\rollback.py", line 905, in rollback
-    self.load_failed()
-  File "D:\The Thief, the Witch, the Toad and the Mushroom\renpy-7.4.0-sdk\renpy\rollback.py", line 823, in load_failed
-    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "game/script.rpy", line 4032, in script
+    if persistent.disappeared => 1:
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 1842, in execute
+    if renpy.python.py_eval(condition):
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1207, in py_eval
+    code = py_compile(code, 'eval')
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1144, in py_compile
+    raise e
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1081, in py_compile
+    raise orig_e
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1073, in py_compile
+    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
+SyntaxError: invalid syntax (game/script.rpy, line 4032)
 
 Windows-10-10.0.19045 AMD64
-Ren'Py 8.1.3.23091805
+Ren'Py 8.2.0.24012702
 The Wolf. 1.0
-Thu Feb 29 10:45:25 2024
+Wed Mar  6 17:31:19 2024

@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1513: reached end of line when expecting ':'.
-    elif persistent.povname == "Gilgamesh" or persistent.povname == "Gilgameš" or persistent.povname == "Bilgames" or persistent.povname == "Pabilgames" 
-                                                                                                                                                         ^
+File "game/script.rpy", line 2950: show statement expects a non-empty block.
+    show hand onlayer transient:
+                                ^
 
-Ren'Py Version: Ren'Py 8.1.3.23091805
-Thu Feb 29 12:46:35 2024
+File "game/script.rpy", line 2951: expected statement.
+    yalign 0.63
+            ^
+
+File "game/script.rpy", line 2952: expected statement.
+    xalign 0.5
+            ^
+
+Ren'Py Version: Ren'Py 8.2.0.24012702
+Wed Mar  6 17:47:01 2024
