@@ -2,17 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2950: show statement expects a non-empty block.
-    show hand onlayer transient:
-                                ^
+File "game/script.rpy", line 479: invalid syntax
+    = False
+     ^
 
-File "game/script.rpy", line 2951: expected statement.
-    yalign 0.63
-            ^
-
-File "game/script.rpy", line 2952: expected statement.
-    xalign 0.5
-            ^
+File "game/script.rpy", line 480: invalid syntax
+    = False
+     ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Wed Mar  6 17:47:01 2024
+Thu Mar  7 15:32:02 2024

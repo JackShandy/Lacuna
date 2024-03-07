@@ -1,28 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 4032, in script
-    if persistent.disappeared => 1:
-SyntaxError: invalid syntax (game/script.rpy, line 4032)
+  File "game/script.rpy", line 2745, in script
+    my "Sorry, uh - Ho! Young Traveller!"
+Exception: Sayer 'my' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 4032, in script
-    if persistent.disappeared => 1:
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 1842, in execute
-    if renpy.python.py_eval(condition):
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1207, in py_eval
-    code = py_compile(code, 'eval')
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1144, in py_compile
-    raise e
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1081, in py_compile
-    raise orig_e
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1073, in py_compile
-    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
-SyntaxError: invalid syntax (game/script.rpy, line 4032)
+  File "game/script.rpy", line 2745, in script
+    my "Sorry, uh - Ho! Young Traveller!"
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 2557, in execute
+    Say.execute(self)
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 575, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 464, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'my' is not defined.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.0.24012702
 The Wolf. 1.0
-Wed Mar  6 17:31:19 2024
+Thu Mar  7 16:10:15 2024

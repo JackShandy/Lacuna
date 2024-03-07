@@ -94,13 +94,13 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 3
+    default persistent.vanished = 0
 
     #Who has disappeared specifically - main cast
     default persistent.toadVanished = False
-    default persistent.witchVanished = True
-    default persistent.thiefVanished = True
-    default persistent.mushroomVanished = True
+    default persistent.witchVanished = False
+    default persistent.thiefVanished = False
+    default persistent.mushroomVanished = False
 
     #Who was the last to die?
     #Options: Thief, Toad, Witch, Mushroom, None
@@ -120,7 +120,7 @@ init:
     #Brildebrogue chippingham
     #default persistent.bcVanished = False
     #The hunter
-    default persistent.hVanished = True
+    default persistent.hVanished = False
     #The old gloom-monger
     default persistent.gmVanished = False
     #The thing in the well
@@ -476,7 +476,9 @@ init:
     #Are you in a secret scene that you reach by putting in a name in the name screen?
     define nameSecret = False
 
-
+    define gutterPlace = False
+    define gutterWail = False
+    define gutterHelp = False
 
     #How long it takes to dissolve the cover image
     $dissolveTime = 0
@@ -1738,6 +1740,7 @@ label start:
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
+        
 
         #"[sfw]"
         #scene bg page
@@ -1747,13 +1750,6 @@ label start:
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
         show nightbg at artPos
-        #jump gilgameshStory
-
-
-        #jump village
-        #jump gilgameshStory
-
-
         if persistent.vanished <= 3:
             play music mysterioushappeningsintro
             queue music mysterioushappenings1
@@ -1832,24 +1828,25 @@ label start:
             jump newStoryFinale
         if persistent.vanished == 0:
             "This maybe happened, or maybe did not."
+            #$achievement.grant("THE_END")
 
             "The time is long past, and much is forgot."
             "Back in the old days, when wishing worked, your mother lived in a vast forest teeming with strange figures."
             call characterIntros from _call_characterIntros
             "She had little time to spend wondering about these odd folks, for she had twelve children and had to work night and day just to feed them."
-            "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+            "When you were born as the thirteenth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
         elif persistent.vanished == 1:
             "Neither here nor there, but long ago..."
             "Back in the old days, when the gods were real, your mother lived in a vast and mysterious rainforest full of strange figures."
             call characterIntros from _call_characterIntros_1
             "She had little time to spend wondering about these odd folks, for she had ten children and had to work night and day just to feed them."
-            "When you were born as the eleventh, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+            "When you were born as the eleventh, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
         elif persistent.vanished == 2:
             "Once there was, and once there wasn't."
             "In the long-distant days of yore, when haystacks winnowed sieves, when genies played jereed in the old bathhouse, fleas were barbers, camels were town criers, I softly rocked my baby grandmother to sleep in her creaking cradle, in an exotic land, far, far away, there was a woman who lived in a vast rainforest full of strange, empty spaces."
             call characterIntros from _call_characterIntros_2
             "She had little time to think about these things, for she had four children and had to work day and night just to feed them."
-            "When you were born to her as the fifth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+            "When you were born to her as the fifth, she had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
             show noteFood onlayer transient zorder 100
         elif persistent.vanished == 3:
             "Listen closely."
@@ -1858,7 +1855,7 @@ label start:
             call characterIntros from _call_characterIntros_3
             "One day, your mother gave birth to you as her first and only child."
             show noteStop onlayer transient zorder 100
-            "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your godfather."
+            "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
         elif persistent.vanished >= 4:
             jump allVanishedEnd
 
@@ -1896,7 +1893,7 @@ label start:
         #         stop music fadeout 6
         #         #$renpy.fix_rollback()
         #         jump mushroomSolo
-        #
+        
         #     "Continue.":
         #         #$renpy.fix_rollback()
         #         "DEV NOTE: Continuing with the normal story."
@@ -1917,7 +1914,7 @@ label start:
         "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
         if persistent.vanished ==1:
             show noteSilence onlayer transient zorder 100
-        miw "Poor woman. Let me be the godfather."
+        miw "Poor woman. Let me be the Godfather."
         miw "I shall hold this child, and make sure [hes] happy on this Earth for the rest of [his] days."
         jump firstMan
 
@@ -2535,7 +2532,7 @@ label introMenu:
                                 "In the stillness you heard muffled noises coming from a small black door, deep in the recesses of the cavern."
                                 "And the distant echo of some soft sound."
                                 "It almost sounded like scratching. In the walls of the chamber."
-                                "All at once you remembered the festival, and your godparent, and the promise you made to your mother. This was no time to be dallying about exploring caverns! You had to find a way to escape your fate before midnight."
+                                "All at once you remembered the festival, and your Godparent, and the promise you made to your mother. This was no time to be dallying about exploring caverns! You had to find a way to escape your fate before midnight."
                                 "Run along now, child."
                                 call hideAll from _call_hideAll_97
                                 show forest4bg at artPos
@@ -2693,7 +2690,7 @@ label introMenu:
                                                 "You took up your bag and set off down the road once more."
                                                 jump thief1
                                             else:
-                                                m "I'm afraid I don't know if I can help. I know a little about pale-faced Death, but I've never met your godfather."
+                                                m "I'm afraid I don't know if I can help. I know a little about pale-faced Death, but I've never met your Godfather."
                                                 "A large grandfather clock in the corner suddenly chimed, and she looked up with a start."
                                                 m "Oh dear. Time marches on, even for me."
                                                 m "I'm sorry to be so rude but I'd better be off. Come back after the festival, and I may be able to help."
@@ -2738,7 +2735,10 @@ label introMenu:
             call musicReturn from _call_musicReturn_11
             "As you were walking down the road thusly, you came upon an old beggar-woman."
             "Her eyes were blind, and her back was crooked in 5 directions at once, and her hair floated all around her head like twisting grey fog, and she hobbled about with only the aid of an old cane to help her along."
-            mys "Ho, young traveller."
+            if persistent.vanished == 3:
+                mys "... "
+                mys "Sorry, uh - Ho! Young Traveller!"
+            #mys "Ho, young traveller."
             show hand onlayer transient:
                 yalign 0.695#0.743
                 xalign 0.5
@@ -2847,7 +2847,7 @@ label introMenu:
                         if godfather == "Red":
                             "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Oh my Lord and Master, the Father of Lies, how could you forsake me? I, who have outdone all others in wickedness, and served you faithfully in evil for all these long years?\""
                             "After a long time you drew yourself up from the ground and spoke to the trees."
-                            pov "Hear me now, Thief. My godfather is the Devil, and my blood runs with nothing but spite, and I will not rest until the Prince of Darkness fastens His hands around your ankles and drags you straight down to Hell where you belong."
+                            pov "Hear me now, Thief. My Godfather is the Devil, and my blood runs with nothing but spite, and I will not rest until the Prince of Darkness fastens His hands around your ankles and drags you straight down to Hell where you belong."
                         if godfather == "Black":
                             "And so you set about wailing and beating the ground and tearing at your paper clothes, crying out saying \"Lady Death, take me now!\""
                             "After a long time you drew yourself up from the ground and spoke to the trees."
@@ -3055,7 +3055,7 @@ label introMenu:
                             f "So, what brings you travelling this way?"
                             "If you told the toad about your Godparent, turn to page 67.":
                                 if godfather == "White":
-                                    pov "I'm searching for a way to escape my godfather, the King of Kings."
+                                    pov "I'm searching for a way to escape my Godfather, the King of Kings."
                                     pov "He will be here to take me away at midnight, and I have no wish to leave."
                                     f "A sticky situation indeed!"
                                     f "I have talked with the Lord many times, of course."
@@ -3066,7 +3066,7 @@ label introMenu:
                                     hide tornPage1bg onlayer screens
                                     f "Perhaps I could put in a good word for you with Him later. Pond scum?"
                                 if godfather == "Red":
-                                    pov "I'm searching for a way to escape my godfather, Old Scratch."
+                                    pov "I'm searching for a way to escape my Godfather, Old Scratch."
                                     pov "He will be here to take me away at midnight, and I have no wish to leave."
                                     f "A sticky situation indeed!"
                                     f "I know the Black One well myself, in fact."
@@ -3202,10 +3202,8 @@ label introMenu:
         if persistent.witchVanished == True or persistent.hVanished == True:
             call musicSilence from _call_musicSilence_16
             show wolf11 onlayer transient zorder 100
-            "As you walked up to the village, you saw nothing."
-            "There was no-one standing guard on the village outskirts."
+            "As you walked up to the village, no-one greeted you."
             "The woods were silent."
-            "No-one greeted you."
             "You slowly walked out of the woods and into the village streets."
             call musicReturn from _call_musicReturn_14
             jump villageExplore1
@@ -3296,8 +3294,7 @@ label introMenu:
             $renpy.music.set_volume(0.9, delay=3.0, channel=u'music')
             "The village was empty."
             "The decorations were all set. The great bonfire. The chairs and stacked tables, laden with plates. Streamers lay over the road."
-            "But no-one was there. The chairs were vacant. The sound of the crackling bonfire echoed through deserted streets."
-            "You were alone."
+            "But the chairs were all vacant. The piles of food lay undisturbed on the tables - not even flies ventured near. The sound of the crackling bonfire echoed through deserted streets."
             jump village
         else:
             play music adventure1
@@ -3546,7 +3543,7 @@ label banquet:
     #TK
     call hideAll from _call_hideAll_18
     if persistent.vanished >=3:
-        call hideAll
+        call hideAll from _call_hideAll_255
         show townfeastbggone at artPos
         show noteHome onlayer transient zorder 100
 
@@ -3951,7 +3948,7 @@ label banquet:
                                 else:
                                     f "Perhaps the witch will know something about it. You should join me in hunting her down!"
                             elif godfather == "White":
-                                pov "I need a way to escape my godfather, the Lord. Can you help me?"
+                                pov "I need a way to escape my Godfather, the Lord. Can you help me?"
                                 f "Possibly, possibly."
                                 if persistent.witchVanished:
                                     call musicSilence from _call_musicSilence_19
@@ -3964,7 +3961,7 @@ label banquet:
                                 else:
                                     f "Perhaps the witch will know something about it. You should join me in hunting her down!"
                             elif godfather == "Red":
-                                pov "I need a way to escape my godfather, the Devil. Can you help me?"
+                                pov "I need a way to escape my Godfather, the Devil. Can you help me?"
                                 if persistent.witchVanished:
                                     call musicSilence from _call_musicSilence_20
                                     f "I may know someone who can assist with that. Her name is..."
@@ -4008,9 +4005,13 @@ label town:
     if persistent.thiefVanished:
         "You walked out to the edge of town."
     else:
-        "You walked out to the edge of town, where villagers ran to and fro, searching for the Master Thief."
-        if not tarpDone:
-            "Some of them were strapping down a tarp."
+        if persistent.vanished ==3:
+            "You walked out to the edge of town. Some lone villagers still stood there, looking out into the woods."
+            "There was a sound from the depths of that forest. The howling of the wind."
+        else:
+            "You walked out to the edge of town, where villagers ran to and fro, searching for the Master Thief."
+            if not tarpDone:
+                "Some of them were strapping down a tarp."
     #TK: Add another character who randomly appears and disappears - moon-head?
     label townExplore:
         show hand onlayer transient:
@@ -4022,11 +4023,18 @@ label town:
                 show scribble5 onlayer transient zorder 100
                 if gilgameshPathFollowed or tarpDone:
                     h "There you are! We lost track of you for a bit there."
-                    h "Are you going to help us with this or not?"
+                    h "Are you going to help us with this?"
                 else:
                     pov "What is this?"
-                    h "Shhh! Keep your voice down. This is all part of our plan to catch that dastardly Master Thief."
-                    gm "We're sure to fail. This whole plan is doomed."
+                    if persistent.vanished ==3:
+                        "For a moment they didn't seem to hear you. Then they turned, as if in a dream."
+                        h "We're going to catch the thief."
+                        sh "Yes. The thief."
+                        "They were drinking wine straight from a bottle which they passed around between them."
+                        $tarpDone = True
+                    else:
+                        h "Shhh! Keep your voice down. This is all part of our plan to catch that dastardly Master Thief."
+                        gm "We're sure to fail. This whole plan is doomed."
                 jump villagersConvo
             "If you talked to the Goose-girl, turn to page 97." if goosemongerChat <= 6 and not persistent.goVanished:
                 if goosemongerChat == 0:
@@ -4251,7 +4259,30 @@ label town:
             xalign 0.5
         menu:
             go "Care to join us?"
-            "If you asked how they planned to catch the thief, turn to page 66." if not villagersPlan:
+            "If you asked them about the thief, turn to page 66." if not villagersPlan and persistent.vanished ==3:
+                h "This is it. The last thing left to do."
+                sh "We had a good run."
+                go "I just wish there was more time."
+                sh "Will you come with us?"
+                $villagersPlan = True
+                jump villagersConvo
+            "If you went off with them to catch the Master Thief, turn to page 124." if villagersPlan and persistent.vanished ==3:
+                h "Let's do it. One last time."
+                "They raised the bottle in a toast."
+                go "May you all find the True Ending."
+                "Everyone took a swig."
+                sh "I-I'm glad I'll be with all of you."
+                go "Me too."
+                h "Couldn't have asked for a better hunting party!"
+                "You, the Goose-Girl, the Sparrow-Herder and the Hunter all climbed into the cart and held hands as it rattled away down the road, leaving the old Gloom-monger behind."
+                $renpy.show_screen("gilPath", _layer="screens", tag="map", _zorder=101)
+                gm "You're all doomed! Doooooooomed!"
+                $renpy.hide_screen("gilPath")
+                sh "..."
+                stop music fadeout 6
+                jump thief2
+
+            "If you asked how they planned to catch the thief, turn to page 66." if not villagersPlan and persistent.vanished !=3:
                 h "With this!"
                 "The Hunter flexed their muscles and pulled back the tarp to reveal an ornate chest full of lustrous pebbles and stones."
                 go "We'll take this out to my house, and nail it to the veranda. Everyone knows that the Master Thief can't resist anything that's nailed down."
@@ -4260,7 +4291,7 @@ label town:
                 h "Thanks, friend. Your confidence means a lot."
                 $villagersPlan = True
                 jump villagersConvo
-            "If you asked why they planned to catch the thief, turn to page 68." if not villagersCatch:
+            "If you asked why they planned to catch the thief, turn to page 68." if not villagersCatch and persistent.vanished !=3:
                 h "They stole my courage!"
                 gm "They stole my wisdom!"
                 go "They stole my heart."
@@ -4270,9 +4301,9 @@ label town:
                 go "Hot, sweaty anarchy."
                 $villagersCatch = True
                 jump villagersConvo
-            "If you asked them about your Godparent, turn to page 77." if not villagersEscape:
+            "If you asked them about your Godparent, turn to page 77." if not villagersEscape and persistent.vanished !=3:
                 if godfather== "White":
-                    pov "I need a way to escape my godfather, the Lord. Do any of you know how I can do that?"
+                    pov "I need a way to escape my Godfather, the Lord. Do any of you know how I can do that?"
                     gm "Hmph. I advise you to give up immediately."
                     if persistent.thiefVanished:
                         go "I'm sorry. I know of no-one who can help you with that plight."
@@ -4282,7 +4313,7 @@ label town:
                         go "Well, it is said that the Master Thief has hidden from the Lord all their life. If anyone would know, they would."
                         h "Once we track the thief down, you could question them!"
                 elif godfather == "Red":
-                    pov "I need a way to escape my godfather, the Devil. Do any of you know how I can do that?"
+                    pov "I need a way to escape my Godfather, the Devil. Do any of you know how I can do that?"
                     gm "Hmph. I advise you to give up immediately."
                     if persistent.witchVanished:
                         go "I'm sorry. I know of no-one who can help you with that plight."
@@ -4303,7 +4334,7 @@ label town:
                         sh "I heard that dastardly Master Thief was planning to steal from 'er this very night! We'd better get the trap laid before they 'ave a chance."
                 $villagersEscape = True
                 jump villagersConvo
-            "If you asked them about the witch, turn to page 79." if villagersCatch and not villagersWitch and not persistent.witchVanished:
+            "If you asked them about the witch, turn to page 79." if villagersCatch and not villagersWitch and not persistent.witchVanished and persistent.vanished !=3:
                 pov "Are you going to do anything about the witch's curse?"
                 go "And risk the wrath of the witch? Not on your life."
                 gm "I heard that she has fingers as long and fat as carpet snakes, and once you fall into her clutches, you'll never see daylight again."
@@ -4312,23 +4343,21 @@ label town:
                 h "This is why the most beautiful trees are always thunderstruck."
                 $villagersWitch = True
                 jump villagersConvo
-            "If you accepted their offer, and went off to catch the Master Thief, turn to page 124." if villagersPlan or villagersCatch:
+            "If you accepted their offer, and went off to catch the Master Thief, turn to page 124." if persistent.vanished !=3 and villagersPlan or villagersCatch:
                 $tarpDone = True
                 h "Excellent! Let's be off at once."
                 "And so you, the Goose-Girl, the Sparrow-Herder and the Hunter all leapt on the cart and rattled away down the road, leaving the old Gloom-monger behind."
-                if persistent.vanished >= 3 and not gilgameshPathFollowed:
-                    $renpy.show_screen("gilPath", _layer="screens", tag="map", _zorder=101)
-                    gm "You're all doomed! Doooooooomed!"
-                    $renpy.hide_screen("gilPath")
-                else:
-                    gm "You're all doomed! Doooooooomed!"
+                gm "You're all doomed! Doooooooomed!"
 
                 label gilPathShowingThief:
                     h "Don't worry. He says that every time we go anywhere."
                 stop music fadeout 6
                 jump thief2
             "If you made your excuses and left, turn to page 51.":
-                sh "No worries. Have a good one!"
+                if persistent.vanished == 3:
+                    sh "Yes. Say your goodbyes."
+                else:
+                    sh "No worries. Have a good one!"
                 jump townExplore
 
 #=====================THE THIEF'S STORY
@@ -4372,16 +4401,20 @@ label thief2:
         #So that if you quit the game at this point it doesn't break the game with only some people vanished and others not.
         #I also need to purge saves here so that you can't reload into a saved game that doesn't work.
         #TK: Make sure this works and doesn't break anything, also if it's the best option
+
+            
+        stop music fadeout 6
         "The night was dark and quiet. You thought you heard something rustling in the bushes, outside your line of sight. A sound, like something moving through the forest."
         "But it must have been the wind."
-        call musicSilence from _call_musicSilence_21
+        #call musicSilence from _call_musicSilence_21
+        play music hunted1
         show wolf1 onlayer transient zorder 100
         "The three of you lay there for a long time, watching the chest."
         $ renpy.block_rollback()
         go "Wait just one moment."
         go "Was there... someone else here?"
         pov "I don't think so."
-        call musicReturn from _call_musicReturn_22
+        #call musicReturn from _call_musicReturn_22
         sh "Just us three. You, me and [povname]."
         go "For some reason I thought..."
         "The goose-girl looked around."
@@ -4404,7 +4437,9 @@ label thief2:
         "The area around the house was still, and empty."
         "The clouds slowly passed over the moon. Their shape was ragged and spiralling, like twisting entrails."
         sh "I think we'd better check the traps. Make sure they're working."
-        call musicSilence from _call_musicSilence_22
+        #call musicSilence from _call_musicSilence_22
+        stop music fadeout 6
+        play music2 [ "<sync music>audio/hunted2.wav", "audio/hunted2.wav" ] fadein 1
         $ renpy.block_rollback()
         show wolf12 onlayer transient zorder 100
         "The two of you slowly crawled up to the chest."
@@ -4412,7 +4447,7 @@ label thief2:
         pov "You're right. We should have thought of that."
         "You looked around, but no-one was there except the two of you."
         "It was always just the two of you."
-        call musicReturn from _call_musicReturn_23
+        #call musicReturn from _call_musicReturn_23
         "The Sparrow Herder looked over the traps."
         sh "Yep, they're all still there."
         #"You looked up at the cottage."
@@ -4425,7 +4460,10 @@ label thief2:
         "You saw some stray goosefeathers lying in the dirt. Nothing beside remained."
         sh "I-I think this might have been a mistake."
         sh "Let's head back to the village. Come on."
-        call musicSilence from _call_musicSilence_23
+        stop music2 fadeout 6
+        play music3 [ "<sync music2>audio/hunted3.wav", "audio/hunted3.wav" ] fadein 1
+
+        #call musicSilence from _call_musicSilence_23
         "The trees shivered in the wind. In the distance, you heard a noise."
         "Almost like howling."
         $ renpy.block_rollback()
@@ -4438,7 +4476,9 @@ label thief2:
         "No-one stood beside you. The clouds were over the moon. The wind bit into you with cold certainty."
         "You felt something grab your hand."
         t "Run."
-        call musicReturn from _call_musicReturn_24
+        stop music3 fadeout 6
+        play music4 [ "<sync music3>audio/hunted4.wav", "audio/hunted4.wav" ] fadein 1
+        #call musicReturn from _call_musicReturn_24
         "The thief wrenched your arm and ran with you, away from the abandoned cottage and into the forest."
         if pig:
             "Your pig ran after you but was soon lost to sight in the darkness."
@@ -4458,6 +4498,7 @@ label thief2:
         "A train crashed through the bush, twisting and bending in impossible ways to fit between the trees."
         "It was swarming with wild and chaotic shapes of all manner of monsters, and you could see a team of things holding onto the front and laying tracks in front of the train as fast as they could as it swerved through the forest."
         t "Grab on!"
+        stop music4 fadeout 6
         "The thief pushed you up to grab onto the side of the carriage, then you reached down and pulled them up beside you."
         "The train whistled with full force, gathering speed until it burst out of the trees and into a wide open field."
         jump thiefSolo
@@ -5293,7 +5334,7 @@ label thiefStory:
         show darkforestbg at artPos
         "In a few short hours, the train stopped on a rocky stretch of coast, and the thief's mother and father came to meet it."
         if godfather == "White" or godfather == "Red":
-            "Midnight was approaching fast. You felt a cold chill come over you. Soon, your godfather would come and take you away."
+            "Midnight was approaching fast. You felt a cold chill come over you. Soon, your Godfather would come and take you away."
         "The goblins lined up you and the thief with twelve goblins on a tree branch, all of you transformed to become king parrots and sparrows and magpies and birds of every type."
         if godfather == "White":
             "Just at that moment, the clock struck midnight."
@@ -5341,7 +5382,7 @@ label thiefStory:
             t "I felt the eyes of G-d upon me. How could He not see the rot inside me?"
             pov "There's none there. There never was."
             if godfather == "Red":
-                "Just then in a puff of smoke, the Devil appeared! Your godfather had come for you at last."
+                "Just then in a puff of smoke, the Devil appeared! Your Godfather had come for you at last."
                 mir "Well done, my crooked little friends! Always good to see The Man Upstairs outsmarted yet again."
                 label devilNever:
                     show hand onlayer transient:
@@ -5568,9 +5609,6 @@ label thiefStory:
 label mushroomDisappears:
 
 
-
-
-
     # call hideAll from _call_hideAll_151
     # show nightbg at artPos
     # stop music fadeout 15.0
@@ -5654,7 +5692,7 @@ label mushroomDisappears:
     # "Run away with it now, as fast as you can."
     # jump end
 
-
+    #night2bg to night14bg
 
     # play music hunted1
     # stop music fadeout 6
@@ -5674,41 +5712,85 @@ label mushroomDisappears:
     $ renpy.block_rollback()
     call hideAll from _call_hideAll_236
     play sound pageFlip
-    show mushroomcavebg at artPos
+    show nightbg at artPos
 
-    "After you fled with the thief, the mushroom looked around at the chaos of her plundered domain and shrugged."
+    "After you fled, the mushroom was left standing outside her tree. She looked out at the vanishing smoke of the goblin train in the distance and sighed."
+    call hideAll from _call_hideAll_256
+    show night2bg at artPos
+    "A giant hole had been torn in the strangler fig, and the untold riches of her domain were leaking out all over the place."
     #Have her go outside to look for you
     #Then the stars blink out, one by one
     #She flees into the cavern. Things disappear from the cavern, one by one.
-
+    call hideAll from _call_hideAll_257
+    show night3bg at artPos
     m "Oh well."
+    call hideAll from _call_hideAll_258
+    show night4bg at artPos
     m2 "Nothing to do about it now."
-    "The last of the treasure fell onto the floor."
+    call hideAll from _call_hideAll_259
+    show night5bg at artPos
     m3 "Perhaps a drink?"
-    "She pulled out a bottle of wine and uncorked it."
-    "As she did so, there was a sound from outside. Like the howling of the wind."
-    m4 "Oh no. No."
-    call musicSilence from _call_musicSilence_32
-    "She looked around. There was no treasure. The floor was bare."
-    "It always had been."
+    call hideAll from _call_hideAll_260
+    show night6bg at artPos
+    "She pulled a bottle of wine from one of the scattered treasure-piles that had fallen out in the commotion, and popped the cork."
+    call hideAll from _call_hideAll_261
+    show night7bg at artPos
+    m2 "Wonderful idea, darling."
+    call hideAll from _call_hideAll_262
+    show night8bg at artPos
+    m2 "We can always start the cleanup tomorrow."
+    call hideAll from _call_hideAll_263
+    show night9bg at artPos
+    play music hunted1
+    m "Sisters... does the sky seem darker than normal to you?"
+    call hideAll from _call_hideAll_264
+    show night10bg at artPos
+    m3 "Hmmm?"
+    call hideAll from _call_hideAll_265
+    show night11bg at artPos
+    "They looked out into the night."
+    call hideAll from _call_hideAll_266
+    show night12bg at artPos
+    "There was a sound from the trees. Like the howling of the wind."
+    call hideAll from _call_hideAll_267
+    show night13bg at artPos
+    m3 "Oh no. No."
+    call hideAll from _call_hideAll_268
+    show mushroomcavebg at artPos
+    stop music fadeout 6
+    play music2 [ "<sync music>audio/hunted2.wav", "audio/hunted2.wav" ] fadein 1
+    "She rushed back inside and slammed the door behind her."
+    m2 "Courage. We knew this day would come."
+    m3 "I just didn't realise it would be so soon!"
     m "We'll have to run. Come on-"
+    stop music2 fadeout 6
+    play music3 [ "<sync music2>audio/hunted3.wav", "audio/hunted3.wav" ] fadein 1
     "But as she looked around for her sisters, she realised she was alone."
     "There was only one mushroom there. Standing alone, in the centre of an empty room."
     "There had never been anything more."
+    "The treasure was gone. The floorboards were bare."
+    "Through the hole in the tree, she could see the night sky. There were no stars."
     #"Things start disappearing around her. The treasure disappears. The Walls disappear. She tries to retreat and lock the door, carrying a bottle of wine."
     call hideAll from _call_hideAll_237
     show mushroombasementbg at artPos
     #Finally she flees into the basement.
-
-    "She ran to her hidden chamber and locked the door tight."
+    stop music3 fadeout 6
+    play music5 [ "<sync music3>audio/hunted5.wav", "audio/hunted5.wav" ] fadein 1
+    "She grabbed the bottle of wine, ran to her hidden chamber and locked the door tight."
     "It was too late, of course."
     call wolfApproaches from _call_wolfApproaches_5
 
     "The wolf was already inside."
     #Her sisters / selves disappear, one by one.
-    #"She tried to grab the door and escape. But there was no door. There never was. Nothing but smooth, featureless wall."
-    m "Get out! Get out!"
-    "Get out to where, Mushroom?"
+    "She turned to grab the door and escape."
+    "But there was no door. There never was. Nothing but smooth, featureless wall."
+    "She turned, and held the bottle up like a club."
+    m "Get out, beast. It's not time yet. Get out."
+    stop music5 fadeout 6
+    play music6 [ "<sync music5>audio/hunted6.wav", "audio/hunted6.wav" ] fadein 1
+
+    "Get out, Mushroom?"
+    "But how?"
     "This room is the only thing that exists. There is nothing outside. There is nowhere but here."
     "That's the way it's always been."
     "She screamed and clawed at the walls."
@@ -6423,7 +6505,7 @@ label mushroomFinale:
         show mushroomgardensbg at artPos
         "You walked out into the lush expanse of the underground kingdom. Rich moss and lichens flowered from every surface. "
         if godfather != "Black":
-            m "Don't worry. I know about your godfather. He cannot reach us here."
+            m "Don't worry. I know about your Godfather. He cannot reach us here."
 
         label mushroomExplore:
             call hideAll from _call_hideAll_32
@@ -6534,9 +6616,9 @@ label mushroomFinale:
                                     "Your mother came down to the kingdom of death for the occasion, and all the plants and lichens and moss and toadstools of the forest were in attendance."
                                     "The occasion was full of joy. I laughed as I raised a toast, and the beer ran down my chin but did not go into my mouth."
                             if godfather == "White":
-                                "Long did your godfather the Almighty search for you, but never could he find you, hidden as you were in that undiscovered country."
+                                "Long did your Godfather the Almighty search for you, but never could he find you, hidden as you were in that undiscovered country."
                             elif godfather == "Red":
-                                "Long did your godfather the Devil search for you, but never could he find you, hidden as you were in that undiscovered country."
+                                "Long did your Godfather the Devil search for you, but never could he find you, hidden as you were in that undiscovered country."
                             elif godfather == "Black":
                                 "And so the promise came to pass, and you took your place with the woman clad all in black, just as she promised your mother all those years ago."
                             call endStamp from _call_endStamp_2
@@ -6675,6 +6757,23 @@ label mushroomFinale:
 #=====The Thief Disappears
 label thiefDisappears:
 
+    # play music hunted1
+
+    # stop music fadeout 6
+    # play music2 [ "<sync music>audio/hunted2.wav", "audio/hunted2.wav" ] fadein 1
+
+    # stop music2 fadeout 6
+    # play music3 [ "<sync music2>audio/hunted3.wav", "audio/hunted3.wav" ] fadein 1
+
+    # stop music3 fadeout 6
+    # play music4 [ "<sync music3>audio/hunted4.wav", "audio/hunted4.wav" ] fadein 1
+
+    # stop music4 fadeout 6
+    # play music5 [ "<sync music4>audio/hunted5.wav", "audio/hunted5.wav" ] fadein 1
+
+    # stop music5 fadeout 6
+    # play music6 [ "<sync music5>audio/hunted6.wav", "audio/hunted6.wav" ] volume 2.0 fadein 1
+
     call hideAll from _call_hideAll_238
     show forestbg at artPos
     "After you were taken they strolled away from the tree, laughing and clutching their ill-gotten gains. "
@@ -6685,6 +6784,7 @@ label thiefDisappears:
     sh "Yeah! We got you bang to rights, we have."
     "The three of them jeered and prodded the thief with glee."
     t "Ha ha ha! Well, if you think you're going to take me to jail, I'm afraid..."
+    play music hunted1
     "The thief trailed off."
     "There was a sound in the woods."
     show wolf14 onlayer transient zorder 100
@@ -6693,8 +6793,10 @@ label thiefDisappears:
     t "Was that... the wolf?"
     h "Don't try to distract us, you wretched cur. There are no wolves in Australia."
     sh "Yeah! We won't be turned away that easily!"
+    stop music fadeout 6
+    play music2 [ "<sync music>audio/hunted2.wav", "audio/hunted2.wav" ] fadein 1
     "The two of them jabbed at the thief."
-    call musicSilence from _call_musicSilence_33
+    #call musicSilence from _call_musicSilence_33
     "It was always just the two of them. The Hunter and the Sparrow-herder, cornering the thief."
     "No-one else was there."
     h "Come on, let's grab them."
@@ -6702,6 +6804,8 @@ label thiefDisappears:
     "There was a dark red stain on the ground. In the dirt where a third person would have stood."
     "But of course, no such person had ever been there."
     t "Something's wrong. I think we need to run."
+    stop music2 fadeout 6
+    play music3 [ "<sync music2>audio/hunted3.wav", "audio/hunted3.wav" ] fadein 1
     show wolf12 onlayer transient zorder 100
     "The trees rustled, as if with the movement of something colossal."
     sh "Ha! You'd like that, wouldn't you? Just when I've got you cornered."
@@ -6719,6 +6823,9 @@ label thiefDisappears:
     "It was echoing and empty."
     "No-one lived there but geese. No-one ever had."
     t "Help! Someone help us!"
+    stop music3 fadeout 6
+    play music6 [ "<sync music3>audio/hunted6.wav", "audio/hunted6.wav" ] volume 2.0 fadein 1
+
     "Who are you calling out to, Thief?"
     "You're alone. You always have been."
     call wolfApproaches from _call_wolfApproaches
@@ -6746,7 +6853,7 @@ label thiefDisappears:
     $persistent.vanished +=1
     #$purge_saves()
     $ renpy.block_rollback()
-    show wolf9
+    show wolf9 onlayer transient zorder 100
     "And then there was nothing."
     "The woods were empty."
     "There was never anything there at all."
@@ -7351,7 +7458,7 @@ label toadFinale:
             "The Devil Himself exploded out of the floor in a flash of brimstone and soot."
             if pig:
                 "The pig hid behind you, shivering."
-            "As soon as he saw your godfather, Brildebrogue went white as ash."
+            "As soon as he saw your Godfather, Brildebrogue went white as ash."
             bc "Lucifer. My contract isn't up yet. You told me I still had six years!"
             mir "That may be so."
             mir "But I never keep a bargain, and no-one messes with my grandchild and lives!"
@@ -7955,13 +8062,13 @@ label witch2:
 
             "If you asked about your Godparent, turn to page 262." if not witchGodfather:
                 if godfather == "White":
-                    pov "I'm hoping you can help me with a problem. My godfather is the Lord, and He has sworn to take me away at midnight tonight."
+                    pov "I'm hoping you can help me with a problem. My Godfather is the Lord, and He has sworn to take me away at midnight tonight."
                     w "That's wild."
                     w "I mean, I'm a witch, yeah, but I'm not exactly all powerful over here, I'm not sure what you want me to do about that?"
                     w "But yeah nah, maybe I could help you out. Let me take a look through my books, I'll see what I can come up with."
                     "And she began rifling through the stack of books lying randomly around the floor."
                 if godfather == "Red":
-                    pov "I'm hoping you can help me with a problem. My godfather is the Devil, and He has sworn to take me away at midnight tonight."
+                    pov "I'm hoping you can help me with a problem. My Godfather is the Devil, and He has sworn to take me away at midnight tonight."
                     w "Oh no!"
                     w "Well, I..."
                     w "To be honest I do know a bit about your red friend, I have had some uh, {i}dealings{/i} with Him, I guess you could say. It wasn't my choice though, I don't want you to think I'm one of those wild women of the woods who dance around naked and worship the Devil and all that kind of thing, know what I mean? I admire them but I tried it once or twice and it gets really chilly, not recommended."
@@ -8223,7 +8330,7 @@ label hellStory:
             mir "Could it truly be my old nemesis returned at last?"
         "With this he picked up the whole house and began to turn it over looking for the flesh he smelled."
         if godfather == "Red":
-            "You shook to see your godfather before your eyes at last."
+            "You shook to see your Godfather before your eyes at last."
         if pig:
             "The pig shivered beside you at the sight of his old rival."
         dg "Hush, you young fool. You're always smelling human beings."
@@ -8250,7 +8357,7 @@ label hellStory:
                 $dgAsked += 1
                 $escapeGodfather = True
                 call devilAnswers from _call_devilAnswers_1
-                dg "I dreamed that a desperate mother once pledged her child to you, as the godfather - and that you are bound to grab [him] up at midnight tonight. Can [he] evade you, do you think?"
+                dg "I dreamed that a desperate mother once pledged her child to you, as the Godfather - and that you are bound to grab [him] up at midnight tonight. Can [he] evade you, do you think?"
                 mir "Not on your life! None can escape the Devil!"
                 "He chuckled to himself gleefully."
                 show hand onlayer transient:
@@ -8265,7 +8372,7 @@ label hellStory:
                 $dgAsked += 1
                 call devilAnswers from _call_devilAnswers_2
                 $escapeGodfather = True
-                dg "I dreamed that a desperate young mother once pledged her child to God, as the godfather - and that their child was bound to be taken by Him on [his] eighteenth birthday. Can [he] ever escape, do you think?"
+                dg "I dreamed that a desperate young mother once pledged her child to God, as the Godfather - and that their child was bound to be taken by Him on [his] eighteenth birthday. Can [he] ever escape, do you think?"
                 mir "Ha! That's easy."
                 if he == "they":
                     mir "The Lord is blind to the desperate. All [he] have to do is take on the disguise of an old leper, and G-d will walk right by."
@@ -8420,7 +8527,7 @@ label hellStory:
                     "What happened to the toad, you ask?"
                     jump toadDisappears
         elif godfather == "White":
-            w "Quick! Your godfather will be here any minute."
+            w "Quick! Your Godfather will be here any minute."
             "You both leapt into action. You disguised yourselves as beggars and lepers and threw lumps of mud all over the half-ruined cottage so that it looked like an abandoned hovel."
             "Soon, the clock struck midnight, and you felt the light of G-d upon you."
             "It seared into your flesh as you huddled together on the floor, feeling His gaze searching for you as His heavy footfalls shook the house."
@@ -8578,6 +8685,7 @@ label hellStory:
                     "Oh?"
                     "What happened to the toad, you ask?"
                     jump toadDisappears
+    
 
 
 
@@ -8711,7 +8819,7 @@ label toadDisappears:
     "They were never seen again."
     jump end
 
-#==========Solo path
+#==========Witch Solo path
 #The witch's path if the toad has disappeared
 label witchSolo:
     #You walk through the woods towards the witch's house.
@@ -8820,7 +8928,7 @@ label witchSolo:
 
         #Play up the witch's paranoia and the fact that she hasn't slept
 
-#The witch's 3 experiments
+#==========The witch's 3 experiments
 label witchExperiments:
     if experiments == 1:
         "You heard something in the walls. Like clawing."
@@ -8984,7 +9092,7 @@ label witchExperiments:
             $witchExperiment3 = True
             jump witchExperiments
 
-#The final moments of the witch, before she disappears.
+#==========The final moments of the witch, before she disappears.
 label witchSoloFinale:
     #==The wolf takes over you.
     play music remembervocal
@@ -9114,9 +9222,6 @@ label toadWitchInvestigate:
     show hand onlayer transient:
         yalign 0.676#0.743
         xalign 0.5
-    #You can investigate the toad or witch (if they have vanished)
-    #TK: add more text here describing different places
-    #Space between the trees?
     menu:
         "Silence lurked behind the trees."
         "If you discovered a muddy cave on the riverside, go to page 120." if persistent.toadVanished:
@@ -9126,7 +9231,19 @@ label toadWitchInvestigate:
             #Investigation scene in Witch's abandoned home
             jump witchInvestigate
         "If you went searching for the witch, go to page 121." if not persistent.witchVanished:
-            jump witchSolo
+            if persistent.vanished == 3:
+                "The hairs at the back of your neck prickled."
+                show hand onlayer transient:
+                    yalign 0.676#0.743
+                    xalign 0.5
+                menu:
+                    "You had a sense of finality. Like the wolf's jaws closing around you."
+                    "If you continued on, go to page 121.":
+                        jump witchSolo
+                    "If you turned back, go back to page 84.":
+                        jump toadWitchInvestigate
+            else:
+                jump witchSolo
         "If you wandered through the woods, go to page 124." if not wanderedNightGod:
             "You walked through the woods for long hours. Eventually, you came to a clearing. You looked up."
             queue sting lacuna4
@@ -9168,7 +9285,19 @@ label thiefMushroomInvestigate:
             "You walked until you discovered a giant old tree."
             jump mushroomInvestigate
         "If you went searching for the mushroom, go to page 121." if not persistent.mushroomVanished:
-            jump mushroomSolo
+            if persistent.vanished == 3:
+                "The hairs at the back of your neck prickled."
+                show hand onlayer transient:
+                    yalign 0.676#0.743
+                    xalign 0.5
+                menu:
+                    "You had a sense of finality. Like the wolf's jaws closing around you."
+                    "If you continued on, go to page 121.":
+                        jump mushroomSolo
+                    "If you turned back, go back to page 84.":
+                        jump thiefMushroomInvestigate
+            else:
+                jump mushroomSolo
         "If you discovered a rusting wreck, go to page 122." if persistent.thiefVanished:
             #Investigation scene in thief's abandoned train
             call hideAll from _call_hideAll_186
@@ -9723,8 +9852,6 @@ label humbabaNameSecret:
     return
     #$ renpy.full_restart()
 
-
-
 #These are the hidden notes that you can find around the place, providing hints leading to the true ending
 
 #This is the note you can discover when investigating the thiefs disappearance in the abandoned goblin train
@@ -9853,8 +9980,6 @@ label creepiestOpens:
     play sound pageFlip
     jump creepiestShowing
 
-
-
 label gilgameshPathOpens:
     play sound pageFlip2
     hide gilgameshPathClosed onlayer screens
@@ -9882,7 +10007,6 @@ label gilgameshPathOpens:
         jump gilPathShowingMushroom
 
     #jump gilgameshShowing
-
 
 label gilgameshStory:
     scene bg page
@@ -10139,25 +10263,26 @@ label gilgameshStory:
                     jump village
 
 label gutterlingStory:
-    "In a wink they leapt on you and stuffed you into a sack. Down you went through crooked paths and secret ways of the village, deep down to the Gutter Of All Gutters where the gutterlings crept, the secret garden fed by all lost and discarded things that fell from the village above."
-    "Here the gutterlings had their garden, and here they cut pieces off the lost things that fell into the gutters and planted them in the fertile soil of their damp kingdom."
-    "From these things they grew more gutterlings."
+    call hideAll from _call_hideAll_269
+    show mushroomcaveunderbg at artPos
+    "In a wink they leapt out and stuffed you into a sack. Down you went through the crooked drainpipes and secret channels of the village, deep down to the Gutter Of All Gutters where the gutterlings grew their secret garden, fed by all the lost and discarded things from the world of mankind above."
+    "Here the gutterlings stole away those lost things, planting them in the fertile soil of their damp kingdom and nourishing them with drainwater from the world above."
+    "Every full moon they would cut small pieces from them, and from those cuttings they grew more gutterlings."
     g "No escape now, fool! We warned you, and now you will never again see the light of the accursed sun above!"
-    "They planted you deep in the soil and left you to ferment. You felt your skin crawl, and realised you would soon bud with the gutterlings."
-    pov "Oh, woe, woe is me! How could I have been so foolish as to talk to a gutterling six times?"
+    "They planted you in the soil and left you to ferment. Your skin crawled, and you realised you would soon bud with the gutterlings."
     label gutterChoice:
         show hand onlayer transient:
-            yalign 0.71#0.743
+            yalign 0.65#0.743
             xalign 0.5
         menu:
             "You could hear the Gutterlings squirming nearby."
-            "If you looked around this strange place, turn to page 311.":#"Yes.":
-                "Every gutter, anywhere in the world, eventually leads to this place - if you follow it for long enough."
-                "All the lost things from human villages and cities wash down here, to form this kingdom of the lost."
-                "You lay in a nest of shambolic huts made of twigs and straw and rubbish, and looming above you could see a castle built of lost monuments and broken statues."
+            "If you looked around this strange place, turn to page 311." if not gutterPlace:
+                "All the lost things from human villages and cities washed down here, to form this kingdom of the lost."
+                "Around you was a nest of shambolic huts made of twigs and straw and rubbish, and looming above you could see a castle built of lost monuments and broken statues."
                 "To your side was a huge mound of left socks. A mound of keys lay to the other side. In front of you was that library book you'd been looking for."
+                $gutterPlace = True
                 jump gutterChoice
-            "If you wailed in piteous woe, turn to page 320.":#"Yes.":
+            "If you wailed in piteous woe, turn to page 320." if not gutterWail:
                 pov "NOOOOOOOoooOOOOOooOOOOOOOOOOOO
                 OOOOOOOOOOOOoOOOOOOOOoOOOOOO
                 OOOOOOoOOOOOooOOOOOOOOOOO
@@ -10165,9 +10290,11 @@ label gutterlingStory:
                 OOOOOOOOOOoooOOOOOOoOOOOOOOO
                 OOOOOOoOOOOOoOOOOOOoooo
                 OOoOOOOOOOOOOOooooooOOOOOOO!"
+                pov "Oh, woe is me! How could I have been so foolish as to talk to a gutterling six times?"
                 "The gutterlings laughed at your pathetic cries."
+                $gutterWail = True
                 jump gutterChoice
-            "If you called out for help, turn to page 319.":
+            "If you called out for help, turn to page 319." if not gutterHelp:
                 if not persistent.hVanished:
                     pov "Hello? Anybody? Help me!"
                     "You waited a long while in silence."
@@ -10178,18 +10305,16 @@ label gutterlingStory:
                     pov "Thank you! I'm so glad you heard me."
                     h "I didn't. I just come down here for target practice."
                     h "Come on!"
-                    "They pulled you behind them and the two of you ran through the crooked streets of the under-city."
-                    "Gutterlings surrounded you."
+                    "They pulled you behind them and the two of you ran through the crooked streets of the under-city, dodging gutterlings left and right."
                     "Then, the walls began to shake."
-                    "In the distance you heard the approach of a great and terrible shape. A crawling god. It loomed over you and spoke."
+                    "In the distance you heard the approach of a great and terrible shape. A crawling god, formed of lost dreams planted in this dark soil centuries ago and fed every full moon. It loomed over you and spoke."
                     gk "You have broken the compact. All lost things belong in my domain, and this child surely is lost."
                     gk "Hand [him] over, and I will let you go."
                     h "Never!"
                     gk "But we have so many treasures here, Hunter. Every lost thing falls to us. Surely we can make an agreement."
                     gk "Perhaps this would be to your liking?"
                     "The gutterlings pulled forward a fine antique rifle."
-                    h "Well... "
-                    pov "Don't tell me you're considering it!"
+                    h "Oh. Well... "
                     "In that moment, there was a flapping of wings all around you."
                     gk "No.... NO!"
                     "A huge flock of birds descended on the Gutterlings, and began to steal away their twigs and straw and rubbish to make their nests. Their great kingdom began to fall."
@@ -10214,19 +10339,65 @@ label gutterlingStory:
                 else:
                     "Alas. No-one heard you."
                     "There was no-one left to hear."
+                    $gutterHelp = True
                     jump gutterChoice
-            "If you prayed to your godparent for help, turn to page 315.":
+            "If you prayed to your Godparent for help, turn to page 315.":
                 if godfather == "White":
                     "You held your hands together and prayed for your Godfather, the Everlasting, to save you."
-                    "In a blaze of light, you were rescued from the pit and returned to village."
+                    "You waited a long while in silence."
+                    "Then a flash of light washed over you, and in an instant you were free of the soil."
+                    g "[Hes] escaping! Get [him]!"
+                    "You ran helter-skelter through the drowned streets of the under-city, dodging the budding gutterlings left and right."
+                    "In the distance you heard the approach of a great and terrible shape. A crawling god formed from the lost dreams, planted in this dark soil centuries ago and fed every full moon. It loomed over you and spoke."
+                    gk "You have broken the compact, Lord. All lost things belong in my domain, and this child surely is lost."
+                    "A great voice boomed out."
+                    miw "It is you who has forgotten. Who gave you that body? Who granted you your domain?"
+                    miw "Do not overstep yourself, wretch. Everything under heaven belongs to me."
+                    "The Gutter King shrank back, grovelling from the bright light, and you took the moment to flee from the pit and back up to the village above."
+                    call hideAll from _call_hideAll_270
+                    show towncrossroadsbg at artPos
+                    miw "Do not forget this, child. Your soul belongs to me. I will come for you soon."
+                    "In a blink, the light was gone."
                     jump village
                 elif godfather == "Red":
                     "You held your hands together and prayed for your Godfather, the King of Ghouls, to save you."
-                    "In a blaze of hellfire, you were rescued from the pit and returned to village."
+                    "You waited a long while in silence."
+                    "Then a burst of hellfire exploded before you, and in an instant you were free of the soil."
+                    g "[Hes] escaping! Get [him]!"
+                    "You ran helter-skelter through the drowned streets of the under-city, dodging the budding gutterlings left and right."
+                    "In the distance you heard the approach of a great and terrible shape. A crawling god formed of lost dreams, planted in this dark soil centuries ago and fed every full moon. It loomed over you and spoke."
+                    gk "You have broken the compact, Devil. All lost things belong in my domain, and this child surely is lost."
+                    "A cackle erupted from deep within the earth."
+                    mir "Have your forgotten who owns the underworld, wretched one? You exist here because I allow it."
+                    mir "Do not overstep yourself. Everything under the earth belongs to me."
+                    "A horde of imps erupted from the pits and swarmed around the Gutter King, poking and jeering."
+                    "The Gutter King shrank back, and you took the moment to flee from the pit and back up to the village above."
+                    call hideAll from _call_hideAll_271
+                    show towncrossroadsbg at artPos
+                    mir "Don't forget this, child. I'll come for you soon, and then we'll see what's what!"
+                    "In a blink, the fire was gone."
                     jump village
                 elif godfather == "Black":
                     "You held your hands together and prayed for your Godmother, the Collector of Souls, to save you."
-                    "In a flash of darkness, you were rescued from the pit and returned to village."
+                    "You waited a long while in silence."
+                    "Then pitch black darkness fell all through the pit, and as the Gutterlings gibbered in confusion you broke free of the soil."
+                    g "[Hes] escaping! Get [him]!"
+                    "You ran helter-skelter through the drowned streets of the under-city, dodging the budding gutterlings left and right."
+                    "In the distance you heard the approach of a great and terrible shape. A crawling god formed of lost dreams, planted in this dark soil centuries ago and fed every full moon. It loomed over you and spoke."
+                    gk "You have broken the compact, Lady Death. All lost things belong in my domain, and this child surely is lost."
+                    "The fingers of deep mushrooms began to erupt from under the soil."
+                    wib "You are the one who forgets yourself, Gutter King."
+                    wib "Where do you think these lost things of yours go, once they fall out of your kingdom?"
+                    wib "They come to me. Just as all things must, in the end."
+                    "The Gutter King howled as the mushrooms closed over him and began to drag him down into the dark earth."
+                    call hideAll from _call_hideAll_272
+                    show towncrossroadsbg at artPos
+                    "You took your chance, and in a moment you had fled from the pit and back up to the village above."
+                    pov "Thank you for saving me, Godmother!"
+                    miw "It was not your time."
+                    miw "That will come soon."
+                    "In a blink, She was gone."
+                    jump village
                     jump village
 
     call hideAll from _call_hideAll_254
@@ -10489,6 +10660,7 @@ label wolf:
                     $renpy.music.set_volume(0, channel=u'ambient1')
                     $renpy.music.set_volume(0, channel=u'ambient2')
                     $renpy.music.set_volume(0, channel=u'music')
+                    $renpy.music.set_volume(0, channel=u'sting')
                     $persistent.phoneOn = False
                     "The phone fell silent."
                     jump wolfHouseExplore
@@ -10498,6 +10670,7 @@ label wolf:
                     $renpy.music.set_volume(1.0, channel=u'ambient1')
                     $renpy.music.set_volume(1.0, channel=u'ambient2')
                     $renpy.music.set_volume(1.0, channel=u'music')
+                    $renpy.music.set_volume(1.0, channel=u'sting')
                     $persistent.phoneOn = True
                     "The soft sounds filled the apartment once more."
                     jump wolfHouseExplore
@@ -12447,10 +12620,10 @@ label burnEnd:
     #hide bookBurnMovie with fade
     $purge_saves()
     $persistent.continueButton = False
+    $achievement.grant("THE_END")
     show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" onlayer over_screens zorder 101 with fade:
         xalign 0.5
         yalign 0.5
-    $achievement.grant("THE_END")
     ""
     show text "{color=#FFFFFF}Thank you so much for playing.{/color}" onlayer over_screens zorder 101 with fade:
         xalign 0.5
