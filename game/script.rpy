@@ -212,6 +212,8 @@ init:
     define fullScreenMenu = False
     define halfScreenMenu = False
     define wolfMenu = False
+    #Alters main menu to prevent returning to menu during burning sequence
+    define burnMenu = False
 
     #Act 1, Chapter 2: The road to the village
     #How many pitiful Noooo's have you shouted
@@ -1127,6 +1129,9 @@ init:
     define music.huntedLong1 = "audio/huntedLong1.mp3"
     define music.huntedLong2 = "audio/huntedLong2.mp3"
 
+    define music.rememberVocalFull = "audio/rememberCleanVocalFull.wav"
+    define music.rememberVocalDistFull = "audio/rememberDistVocalFull.wav"
+
     #Sounds for the wolf scene
     define audio.doorKnock = "audio/doorKnock.mp3"
     define audio.doorOpen = "audio/doorOpen.mp3"
@@ -1219,6 +1224,8 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
 
 
     if persistent.bookBurned:
+        $renpy.music.play("audio/rememberDistInstFull.wav", channel="music", fadein=5.0, relative_volume=0.5, loop=False)
+        
         if persistent.vanished != 4:
             show coverBase
         if persistent.witchVanished == False:
@@ -1750,6 +1757,10 @@ label start:
         #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
         show nightbg at artPos
+
+
+        #jump bookBurnedFinale
+
         if persistent.vanished <= 3:
             play music mysterioushappeningsintro
             queue music mysterioushappenings1
@@ -3095,7 +3106,7 @@ label introMenu:
                                 f "Why just the other day I travelled to the living city of Brilochiorp, built on a turtle's back, where your dreams cast shadows and your thoughts chase after you in the mid-afternoon sun. I was there to discuss matters with the queen of the dream thieves, you see, a rascally beggar who had been running about the city filching this dream and that right out of the heads of the poor citizens, so that they dreamed nothing and had no ideas and the city's art and culture stagnated to nothing! Well, we can't have this sort of thing going on, Brilebrogue, I said to myself, and so I paid the blighter a visit and gave her a stern talking-to, and no mistake. She renounced his ways in an instant and placed all the dreams back exactly where he found them, promising to reform her ways and be a better woman. Another successful adventure, all told."
                                 hide tornPage3 onlayer screens
                                 hide tornPage3bg onlayer screens
-                                f "But I'm sure your little festival will be quite quaint, too. Pond scum?"
+                                f "But I'm sure your little festival will be quaint, too. Pond scum?"
                             "If you said nothing, turn to page 74.":
                                 f "No bother, then, keep your secrets to yourself."
                                 show tornPage3 onlayer screens zorder 101
@@ -11870,6 +11881,7 @@ label wolfEnd:
     $halfScreenMenu = False
     $wolfMenu = False
     $fullScreenMenu = True
+    $burnMenu = True
     call hideAll from _call_hideAll_120
     show text "What role would you like to play?":
         xalign 0.5
@@ -12105,7 +12117,7 @@ label newStoryFinale:
 
 label burnBegins:
     show screen countdown
-    $ time = 60         #Note: 8 = Roughly 2 minutes
+    $ time = 58         #Note: 8 = Roughly 2 minutes #60
     $ timer_jump = 'burnEnd'
     show bookBurnMovie at fullPos onlayer over_screens zorder 98
     return
@@ -12115,6 +12127,7 @@ label bookBurnedFinale:
     $halfScreenMenu = False
     $wolfMenu = True
     $fullScreenMenu = False
+    $burnMenu = True
     "Time to finish things."
     "Just hold the book over the fire."
     #pause 0.2 with hpunch
@@ -12122,17 +12135,20 @@ label bookBurnedFinale:
     play sound fireLit
     call hideAll from _call_hideAll_222
     show nightbg at artPos with flash
+
+    #play music rememberVocalFull
     "Good. It's done."
     "The flames have started to catch. Won't be long now."
     "I'll take you back to the village."
     "You won't have much time left. You should choose who you want to spend it with."
+    $renpy.music.play("audio/rememberCleanVocalFull.wav", channel="music", fadein=5.0, loop=False)
 
     play sound pageFlip
     #Disables the quick menu
-    $ quick_menu = False
+    #$ quick_menu = False
 
     #Disables the escape key, so you can't access the main menu at this point
-    $ _game_menu_screen = None
+    #$ _game_menu_screen = None
     $ config.rollback_enabled = False
     show screen countdownCall
     $ time = 30         #Note: 8 = Roughly 2 minutes
@@ -12155,7 +12171,33 @@ label bookBurnedFinale:
                 jump townBurning
             "If you walked back home, turn to page 1." if not mumBurning:
                 jump homeBurning
-
+            # "If you walked into the space between the trees, turn to page 43." if not finalWolfTalk:
+            #     call hideall
+            #     show forest4bg at artPos
+            #     "You wandered into the forest. The night was cool."
+            #     "Where are you going, child? Time grows short."
+            #     show hand onlayer transient:
+            #         yalign 0.7#0.743
+            #         xalign 0.5
+            #     menu:
+            #         "You should spend this moment with the ones you love."
+            #         "I wanted to talk to you.":
+            #             "To me? I'm the one you want to spend time with?"
+            #             "I don't know what to say. Thank you. But I have nothing left to tell."
+                        
+            #             show hand onlayer transient:
+            #                 yalign 0.7#0.743
+            #                 xalign 0.5
+            #             menu:
+            #                 "My tale is done. My voice is spent."
+            #                 "How much time do we have left?":
+            #                     "How long does a building stand before it falls?\nHow long does a contract last? How long will brothers\nshare the inheritance before they quarrel?\nHow long does hatred, for that matter, last?"
+            #                     "Time after time the river has risen and flooded.\nThe insect leaves the cocoon to live but a minute.\nFrom the very beginning nothing at all has lasted."
+            #                     "The river rises, flows over its banks\nand carries us all away, like mayflies\nfloating downstream: they stare at the sun,\nthen all at once there is nothing."
+            #                     "Goodbye, child."
+            #                     "I'm glad I met you."
+            #                     "Go on. Spend this moment in music and laughter. These woods are no place for you."
+            #                     jump village
 
     # Gilgamesh Scene:
     #     "Humans are born, they live, then they die, this is the order that the gods have decreed."
@@ -12168,7 +12210,6 @@ label bookBurnedFinale:
         # and carries us all away, like mayflies
         # floating downstream; they stare at the sun,
         # then all at once there is nothing.”
-
 
     label banquetBurning:
 
@@ -12504,31 +12545,6 @@ label bookBurnedFinale:
                 "If you returned to the village square, go back to page 50.":
                     "You turned and walked back to the centre of the village."
                     jump villageBurning
-    #Moment when you can go talk to the wolf.
-    "I have nothing left to tell you, child."
-    "My voice is spent."
-    #How long do we have left?
-    "How long does a building stand before it falls?
-    How long does a contract last? How long will brothers
-    share the inheritance before they quarrel?
-    How long does hatred, for that matter, last?
-
-    Time after time the river has risen and flooded.
-    The insect leaves the cocoon to live but a minute.
-
-    How long is the eye able to look at the sun?
-    From the very beginning nothing at all has lasted."
-    #Goodbye.
-    "Goodbye, child."
-    "The dream was marvellous but the terror was great.
-    We must treasure the dream whatever the terror.
-    For the dream has shown that misery comes at last to the healthy man, the end of his life is sorrow.
-
-    The river rises, flows over its banks
-    and carries us all away, like mayflies
-    floating downstream: they stare at the sun,
-    then all at once there is nothing."
-
 
 
     label homeBurning:
@@ -12621,6 +12637,11 @@ label burnEnd:
     $purge_saves()
     $persistent.continueButton = False
     $achievement.grant("THE_END")
+    #stop music fadeout 6
+    #play music2 [ "<sync music>audio/rememberDistVocalFull.wav"] fadein 1
+
+    $config.quit_action = Quit(confirm=False)
+
     show text "{color=#FFFFFF}A game by Jack McNamee.{/color}" onlayer over_screens zorder 101 with fade:
         xalign 0.5
         yalign 0.5

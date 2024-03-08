@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 479: invalid syntax
-    = False
-     ^
-
-File "game/script.rpy", line 480: invalid syntax
-    = False
-     ^
+File "game/script.rpy", line 12142: positional argument follows keyword argument
+    renpy.music.play("audio/rememberCleanVocalFull.wav", channel="music", fadein 3.0, loop=False)
+                                                                                  ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Thu Mar  7 15:32:02 2024
+Fri Mar  8 18:37:20 2024

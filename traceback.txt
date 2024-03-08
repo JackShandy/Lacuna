@@ -1,24 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 2745, in script
-    my "Sorry, uh - Ho! Young Traveller!"
-Exception: Sayer 'my' is not defined.
+  File "renpy/common/00start.rpy", line 314, in script call
+    call expression "before_main_menu"
+  File "game/script.rpy", line 1227, in script
+    $renpy.music.play("audio/rememberDistVocalFull.wav", channel="music", fadein=5.0, volume=0.5, loop=False)
+  File "game/script.rpy", line 1227, in <module>
+    $renpy.music.play("audio/rememberDistVocalFull.wav", channel="music", fadein=5.0, volume=0.5, loop=False)
+TypeError: play() got an unexpected keyword argument 'volume'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 2745, in script
-    my "Sorry, uh - Ho! Young Traveller!"
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 2557, in execute
-    Say.execute(self)
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 575, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 464, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'my' is not defined.
+  File "renpy/common/00start.rpy", line 314, in script call
+    call expression "before_main_menu"
+  File "game/script.rpy", line 1227, in script
+    $renpy.music.play("audio/rememberDistVocalFull.wav", channel="music", fadein=5.0, volume=0.5, loop=False)
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 823, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1178, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 1227, in <module>
+    $renpy.music.play("audio/rememberDistVocalFull.wav", channel="music", fadein=5.0, volume=0.5, loop=False)
+TypeError: play() got an unexpected keyword argument 'volume'
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.0.24012702
 The Wolf. 1.0
-Thu Mar  7 16:10:15 2024
+Fri Mar  8 18:43:41 2024

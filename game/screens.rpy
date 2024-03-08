@@ -364,12 +364,15 @@ screen navigation():
             add "gui/bookmark-s.png"
         else:
             add "gui/bookmark.png"
+
+
         if main_menu:
             #add "gui/saveCrossOff.png"
             imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), Return() hovered [ Play("sound", "audio/pencil.wav") ]
         else:
             #imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start("splashscreen") hovered [ Play("sound", "audio/pencil.wav") ]
-            imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), MainMenu() hovered [ Play("sound", "audio/pencil.wav") ]
+            if burnMenu == False:
+                imagebutton auto "gui/mm_menu_%s.png" xpos 25 ypos 241 focus_mask True action Play("sound", "audio/page-flip.mp3"), MainMenu() hovered [ Play("sound", "audio/pencil.wav") ]
         #Main Menu
 
         #Save

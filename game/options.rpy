@@ -201,6 +201,8 @@ default preferences.text_cps = 0
 
 default preferences.afm_time = 15
 
+## Stopping audio when you alt-tab
+#default preferences.audio_when_unfocused = False
 
 ## Save directory ##############################################################
 ##
