@@ -1,30 +1,47 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 314, in script call
-    call expression "before_main_menu"
-  File "game/script.rpy", line 1227, in script
-    $renpy.music.play("audio/rememberDistVocalFull.wav", channel="music", fadein=5.0, volume=0.5, loop=False)
-  File "game/script.rpy", line 1227, in <module>
-    $renpy.music.play("audio/rememberDistVocalFull.wav", channel="music", fadein=5.0, volume=0.5, loop=False)
-TypeError: play() got an unexpected keyword argument 'volume'
+  File "game/script.rpy", line 1854, in script
+    play music4 mysterioushappeningsdist1
+  File "game/script.rpy", line 1854, in script
+    play music4 mysterioushappeningsdist1
+  File "game/script.rpy", line 1854, in <module>
+    play music4 mysterioushappeningsdist1
+Exception: Audio channel 'music1' is unknown.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 314, in script call
-    call expression "before_main_menu"
-  File "game/script.rpy", line 1227, in script
-    $renpy.music.play("audio/rememberDistVocalFull.wav", channel="music", fadein=5.0, volume=0.5, loop=False)
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 823, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1178, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script.rpy", line 1227, in <module>
-    $renpy.music.play("audio/rememberDistVocalFull.wav", channel="music", fadein=5.0, volume=0.5, loop=False)
-TypeError: play() got an unexpected keyword argument 'volume'
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\bootstrap.py", line 359, in bootstrap
+    renpy.main.main()
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\main.py", line 635, in main
+    run(restart)
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\main.py", line 145, in run
+    renpy.execution.run_context(True)
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\execution.py", line 955, in run_context
+    context.run()
+  File "game/script.rpy", line 1854, in script
+    play music4 mysterioushappeningsdist1
+  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
+  File "game/script.rpy", line 1854, in script
+    play music4 mysterioushappeningsdist1
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 1842, in execute
+    if renpy.python.py_eval(condition):
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1209, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1202, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 1854, in <module>
+    play music4 mysterioushappeningsdist1
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\audio\music.py", line 442, in is_playing
+    return (get_playing(channel=channel) is not None)
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\audio\music.py", line 425, in get_playing
+    c = renpy.audio.audio.get_channel(channel)
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\audio\audio.py", line 928, in get_channel
+    raise Exception("Audio channel %r is unknown." % name)
+Exception: Audio channel 'music1' is unknown.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.0.24012702
 The Wolf. 1.0
-Fri Mar  8 18:43:41 2024
+Sat Mar  9 21:10:02 2024

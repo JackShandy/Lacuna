@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 12142: positional argument follows keyword argument
-    renpy.music.play("audio/rememberCleanVocalFull.wav", channel="music", fadein 3.0, loop=False)
-                                                                                  ^
+File "game/script.rpy", line 6041: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    $renpy.music.play("audio/rememberCleanInstFull.wav", channel='music', loop=True, relative_volume=7.0)
+    ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Fri Mar  8 18:37:20 2024
+Sat Mar  9 16:12:04 2024
