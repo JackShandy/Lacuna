@@ -728,6 +728,15 @@ style about_label_text:
 ## My screens #######################################################
 ##
 ##
+## Reset the game ####
+screen on_key_screen():
+    zorder 9999
+    key "0" action Jump("resetGame")
+
+
+
+
+
 ## Map ####
 
 screen map: #Preparing the imagemap

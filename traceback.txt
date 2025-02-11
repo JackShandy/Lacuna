@@ -1,47 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1854, in script
-    play music4 mysterioushappeningsdist1
-  File "game/script.rpy", line 1854, in script
-    play music4 mysterioushappeningsdist1
-  File "game/script.rpy", line 1854, in <module>
-    play music4 mysterioushappeningsdist1
-Exception: Audio channel 'music1' is unknown.
+  File "game/script.rpy", line 1602, in script
+    return
+Exception: Could not find return label ('game/script.rpy', 1739244311, 12).
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\bootstrap.py", line 359, in bootstrap
-    renpy.main.main()
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\main.py", line 635, in main
-    run(restart)
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\main.py", line 145, in run
-    renpy.execution.run_context(True)
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\execution.py", line 955, in run_context
-    context.run()
-  File "game/script.rpy", line 1854, in script
-    play music4 mysterioushappeningsdist1
-  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
-  File "game/script.rpy", line 1854, in script
-    play music4 mysterioushappeningsdist1
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 1842, in execute
-    if renpy.python.py_eval(condition):
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1209, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\python.py", line 1202, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 1854, in <module>
-    play music4 mysterioushappeningsdist1
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\audio\music.py", line 442, in is_playing
-    return (get_playing(channel=channel) is not None)
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\audio\music.py", line 425, in get_playing
-    c = renpy.audio.audio.get_channel(channel)
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\audio\audio.py", line 928, in get_channel
-    raise Exception("Audio channel %r is unknown." % name)
-Exception: Audio channel 'music1' is unknown.
+  File "game/script.rpy", line 1602, in script
+    return
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 1495, in execute
+    next_node(renpy.game.context().lookup_return(pop=True))
+  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\execution.py", line 741, in lookup_return
+    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
+Exception: Could not find return label ('game/script.rpy', 1739244311, 12).
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.0.24012702
 The Wolf. 1.0
-Sat Mar  9 21:10:02 2024
+Tue Feb 11 13:29:54 2025

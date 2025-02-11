@@ -47,7 +47,7 @@ init python:
     def slowdown(t):
         return 1 - (1 - t) * (1 - t)
 
-
+    
 
 
 
@@ -70,6 +70,7 @@ init python:
 #=====================PERSISTENT DATA
 #This data carries over between save files and games, permanently.
 init:
+    
     #Sets the default game menu screen to be Preferences
     default _game_menu_screen = "preferences"
 
@@ -95,13 +96,13 @@ init:
     #===========Persistent Disappearances
 
     #How many of the 4 main characters have disappeared
-    default persistent.vanished = 2
+    default persistent.vanished = 0
 
     #Who has disappeared specifically - main cast
     default persistent.thiefVanished = False
-    default persistent.witchVanished = True
+    default persistent.witchVanished = False
     default persistent.toadVanished = False
-    default persistent.mushroomVanished = True
+    default persistent.mushroomVanished = False
 
     #Who was the last to die?
     #Options: Thief, Toad, Witch, Mushroom, None
@@ -1183,9 +1184,10 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient3", loop=True)
         #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
+        show screen on_key_screen
     
-
     if persistent.bookEnd:
+        show screen on_key_screen
         $ renpy.music.play("audio/rememberDistVocalFull.wav", channel="music", loop=False)
         $ config.window_title = _("")
     elif persistent.vanished == 0:
@@ -1227,6 +1229,7 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
 
 
     if persistent.bookBurned:
+        show screen on_key_screen
         $renpy.music.play("audio/rememberDistInstFull.wav", channel="music", fadein=5.0, relative_volume=0.5, loop=False)
         
         if persistent.vanished != 4:
@@ -1564,6 +1567,9 @@ label splashscreen2:
 
 #Setting up the firelight and music whenever the game loads
 label after_load:
+    #this screen allows players to delete all their saves by pressing a secret key
+    
+
     if persistent.phoneOn and persistent.vanished <=3:
         play sound pageFlip
         $renpy.music.play("audio/rain.wav", fadein=0.5, channel="ambient1", loop=True)
@@ -1588,18 +1594,21 @@ label musicSilence:
     #$renpy.music.set_volume(0, delay=3.0, channel=u'ambient1')
     #$renpy.music.set_volume(0, delay=3.0, channel=u'ambient2')
     $renpy.music.set_volume(0, delay=10.0, channel=u'music')
+    $renpy.music.set_volume(0, delay=10.0, channel=u'music1')
     $renpy.music.set_volume(0, delay=10.0, channel=u'music2')
     $renpy.music.set_volume(0, delay=10.0, channel=u'music3')
     $renpy.music.set_volume(0, delay=10.0, channel=u'music4')
     $renpy.music.set_volume(0, delay=10.0, channel=u'music5')
     $renpy.music.set_volume(0, delay=10.0, channel=u'music6')
+    
     return
 
 label musicReturn:
     #After a hint of the wolf's presence
     #$renpy.music.set_volume(1.0, delay=4.0, channel=u'ambient1')
     #$renpy.music.set_volume(1.0, delay=4.0, channel=u'ambient2')
-    $renpy.music.set_volume(1.0, delay=5.0, channel=u'music')
+    $renpy.music.set_volume(1.0, delay=10.0, channel=u'music')
+    $renpy.music.set_volume(1.0, delay=10.0, channel=u'music1')
     $renpy.music.set_volume(1.0, delay=10.0, channel=u'music2')
     $renpy.music.set_volume(1.0, delay=10.0, channel=u'music3')
     $renpy.music.set_volume(1.0, delay=10.0, channel=u'music4')
@@ -1744,6 +1753,7 @@ label demoEnd:
 #The beginning of the game.
 
 label start:
+    #show screen on_key_screen
     #This makes the game save whenever you quit.
     #$ _quit_slot = "quitsave"
     $persistent.continueButton = True
@@ -1759,7 +1769,6 @@ label start:
 
     label chapter1:
         
-
         #"[sfw]"
         #scene bg page
         #show hand onlayer transient:
@@ -12230,6 +12239,7 @@ label wolfEnd:
 
 #Ending where you choose to live in the book forever
 label newStoryFinale:
+    #show screen on_key_screen
     play sound pageFlip
     #The game goes into the beginning of the story right away (no load / start game):
     if persistent.povname == "alex" or persistent.povname =="Alex" or persistent.povname =="Alexandra" or persistent.povname =="alexandra" or persistent.povname =="Alexander" or persistent.povname =="alexander" or persistent.povname =="Alexis" or persistent.povname =="alexis":
@@ -12903,7 +12913,6 @@ label bookBurnedFinale:
 
 #If you restart the game after burning the book, you just see a charred scrap. The book has been destroyed.
 label burnEnd:
-    #TK: Revise and finish this ending
     $quick_menu = False
     show black onlayer over_screens zorder 98
     #hide bookBurnMovie with fade
@@ -13259,3 +13268,37 @@ label credits:
 
     play sound bookClose2 #pageFlip
     $ renpy.full_restart()
+
+label resetGame:
+    scene black with fade
+    # stop music fadeout 4.0
+    # stop music1 fadeout 4.0
+    # stop music2 fadeout 4.0
+    # stop music3 fadeout 4.0
+    # stop music4 fadeout 4.0
+    # stop music5 fadeout 4.0
+    # stop music6 fadeout 4.0
+    # stop ambient2 fadeout 4.0
+    # stop ambient1 fadeout 4.0
+    call musicSilence
+    "{color=#ffffff}You have come to a dark place.{/color}"
+    "{color=#ffffff}A gap in the manuscript.{/color}"
+    "{color=#ffffff}Here, you can wipe everything away, and start again from the beginning.{/color}"
+    "{color=#ffffff}Like it never happened at all.{/color}"
+    "{color=#ffffff}Are you sure you want to do this?{/color}"
+    #show hand onlayer transient:
+        #yalign 0.711#0.743
+        #xalign 0.5
+    menu:
+        "{color=#ffffff}You know it will never be like the first time.{/color}"
+        "{color=#ffffff}Yes. I'm sure.{/color}":
+            "{color=#ffffff}Very well.{/color}"
+            "{color=#ffffff}Goodbye, for now.{/color}"
+            $persistent._clear()
+            $ renpy.full_restart()
+
+        "{color=#ffffff}No. I want to remain here.{/color}":
+            "{color=#ffffff}Very well.{/color}"
+            "{color=#ffffff}Stay here a little longer.{/color}"
+            call musicReturn
+            $ renpy.full_restart()
