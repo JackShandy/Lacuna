@@ -47,7 +47,7 @@ init python:
     def slowdown(t):
         return 1 - (1 - t) * (1 - t)
 
-    
+
 
 
 
@@ -70,7 +70,7 @@ init python:
 #=====================PERSISTENT DATA
 #This data carries over between save files and games, permanently.
 init:
-    
+
     #Sets the default game menu screen to be Preferences
     default _game_menu_screen = "preferences"
 
@@ -1185,7 +1185,7 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
         #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
         $renpy.music.play("audio/fire.mp3", fadein=0.5, channel="ambient2", loop=True, relative_volume=0.5)
         show screen on_key_screen
-    
+
     if persistent.bookEnd:
         show screen on_key_screen
         $ renpy.music.play("audio/rememberDistVocalFull.wav", channel="music", loop=False)
@@ -1231,7 +1231,7 @@ label before_main_menu: #splashscreen - changed to before_main_menu so it always
     if persistent.bookBurned:
         show screen on_key_screen
         $renpy.music.play("audio/rememberDistInstFull.wav", channel="music", fadein=5.0, relative_volume=0.5, loop=False)
-        
+
         if persistent.vanished != 4:
             show coverBase
         if persistent.witchVanished == False:
@@ -1568,7 +1568,7 @@ label splashscreen2:
 #Setting up the firelight and music whenever the game loads
 label after_load:
     #this screen allows players to delete all their saves by pressing a secret key
-    
+
 
     if persistent.phoneOn and persistent.vanished <=3:
         play sound pageFlip
@@ -1600,7 +1600,7 @@ label musicSilence:
     $renpy.music.set_volume(0, delay=10.0, channel=u'music4')
     $renpy.music.set_volume(0, delay=10.0, channel=u'music5')
     $renpy.music.set_volume(0, delay=10.0, channel=u'music6')
-    
+
     return
 
 label musicReturn:
@@ -1768,7 +1768,7 @@ label start:
     #$ renpy.music.play("audio/wildlife.wav", fadein=0.5, channel="ambient1", loop=True)
 
     label chapter1:
-        
+
         #"[sfw]"
         #scene bg page
         #show hand onlayer transient:
@@ -1927,7 +1927,7 @@ label start:
         #         stop music fadeout 6
         #         #$renpy.fix_rollback()
         #         jump mushroomSolo
-        
+
         #     "Continue.":
         #         #$renpy.fix_rollback()
         #         "DEV NOTE: Continuing with the normal story."
@@ -1942,7 +1942,7 @@ label start:
         call hideAll from _call_hideAll
         show forest4bg at artPos
         show scribble2 onlayer transient zorder 100
-        if (renpy.music.is_playing(channel='music1')): 
+        if (renpy.music.is_playing(channel='music1')):
             stop music1 fadeout 6.0
             play music3 [ "<sync music1>audio/mysteriousHappenings5.wav", "audio/mysteriousHappenings5.wav" ] fadein 1.0
 
@@ -1965,41 +1965,41 @@ label start:
         else:
             show emptybg at artPos
             #call musicSilence from _call_musicSilence_28
-            if (renpy.music.is_playing(channel='music1')): 
-                stop music1 
+            if (renpy.music.is_playing(channel='music1')):
+                stop music1
                 play music2 [ "<sync music1>audio/mysteriousHappeningsDist1.wav", "audio/mysteriousHappeningsDist1.wav" ]
-            elif (renpy.music.is_playing(channel='music4')): 
+            elif (renpy.music.is_playing(channel='music4')):
                 stop music4
                 play music3 [ "<sync music4>audio/mysteriousHappeningsDist2.wav", "audio/mysteriousHappeningsDist2.wav" ]
             show wolf9 onlayer transient zorder 100
             "To the north, there was nothing and no-one."
             if persistent.witchVanished == False:
-                if (renpy.music.is_playing(channel='music2')): 
-                    stop music2 
+                if (renpy.music.is_playing(channel='music2')):
+                    stop music2
                     play music1 [ "<sync music2>audio/mysteriousHappenings1.wav", "audio/mysteriousHappenings1.wav" ]
-                elif (renpy.music.is_playing(channel='music3')): 
+                elif (renpy.music.is_playing(channel='music3')):
                     stop music3
                     play music4 [ "<sync music3>audio/mysteriousHappeningsDist2.wav", "audio/mysteriousHappeningsDist2.wav" ]
-    
+
         call hideAll from _call_hideAll_232
         if persistent.witchVanished == False:
             show darkforestbg at artPos
             "To the west, a cackling witch."
         else:
             show emptybg at artPos
-            if (renpy.music.is_playing(channel='music1')): 
-                stop music1 
+            if (renpy.music.is_playing(channel='music1')):
+                stop music1
                 play music2 [ "<sync music1>audio/mysteriousHappeningsDist1.wav", "audio/mysteriousHappeningsDist1.wav" ]
-            elif (renpy.music.is_playing(channel='music4')): 
+            elif (renpy.music.is_playing(channel='music4')):
                 stop music4
                 play music3 [ "<sync music4>audio/mysteriousHappeningsDist2.wav", "audio/mysteriousHappeningsDist2.wav" ]
             show wolf10 onlayer transient zorder 100
             "To the west, there was nothing and no-one."
             if persistent.toadVanished == False:
-                if (renpy.music.is_playing(channel='music2')): 
-                    stop music2 
+                if (renpy.music.is_playing(channel='music2')):
+                    stop music2
                     play music1 [ "<sync music2>audio/mysteriousHappenings1.wav", "audio/mysteriousHappenings1.wav" ]
-                elif (renpy.music.is_playing(channel='music3')): 
+                elif (renpy.music.is_playing(channel='music3')):
                     stop music3
                     play music4 [ "<sync music3>audio/mysteriousHappeningsDist2.wav", "audio/mysteriousHappeningsDist2.wav" ]
 
@@ -2010,19 +2010,19 @@ label start:
             "To the east, a haughty toad."
         else:
             show emptybg at artPos
-            if (renpy.music.is_playing(channel='music1')): 
-                stop music1 
+            if (renpy.music.is_playing(channel='music1')):
+                stop music1
                 play music2 [ "<sync music1>audio/mysteriousHappeningsDist1.wav", "audio/mysteriousHappeningsDist1.wav" ]
-            elif (renpy.music.is_playing(channel='music4')): 
+            elif (renpy.music.is_playing(channel='music4')):
                 stop music4
                 play music3 [ "<sync music4>audio/mysteriousHappeningsDist2.wav", "audio/mysteriousHappeningsDist2.wav" ]
             show wolf5 onlayer transient zorder 100
             "To the east, there was nothing and no-one."
             if persistent.mushroomVanished == False:
-                if (renpy.music.is_playing(channel='music2')): 
-                    stop music2 
+                if (renpy.music.is_playing(channel='music2')):
+                    stop music2
                     play music1 [ "<sync music2>audio/mysteriousHappenings1.wav", "audio/mysteriousHappenings1.wav" ]
-                elif (renpy.music.is_playing(channel='music3')): 
+                elif (renpy.music.is_playing(channel='music3')):
                     stop music3
                     play music4 [ "<sync music3>audio/mysteriousHappeningsDist2.wav", "audio/mysteriousHappeningsDist2.wav" ]
 
@@ -2033,19 +2033,19 @@ label start:
             "To the south, a wise mushroom."
         else:
             show emptybg at artPos
-            if (renpy.music.is_playing(channel='music1')): 
-                stop music1 
+            if (renpy.music.is_playing(channel='music1')):
+                stop music1
                 play music2 [ "<sync music1>audio/mysteriousHappeningsDist1.wav", "audio/mysteriousHappeningsDist1.wav" ]
-            elif (renpy.music.is_playing(channel='music4')): 
+            elif (renpy.music.is_playing(channel='music4')):
                 stop music4
                 play music3 [ "<sync music4>audio/mysteriousHappeningsDist2.wav", "audio/mysteriousHappeningsDist2.wav" ]
             #call musicSilence from _call_musicSilence_31
             show wolf1 onlayer transient zorder 100
             "To the south, there was nothing and no-one."
-            if (renpy.music.is_playing(channel='music2')): 
-                stop music2 
+            if (renpy.music.is_playing(channel='music2')):
+                stop music2
                 play music1 [ "<sync music2>audio/mysteriousHappenings1.wav", "audio/mysteriousHappenings1.wav" ]
-            elif (renpy.music.is_playing(channel='music3')): 
+            elif (renpy.music.is_playing(channel='music3')):
                 stop music3
                 play music4 [ "<sync music3>audio/mysteriousHappeningsDist1.wav", "audio/mysteriousHappeningsDist1.wav" ]
 
@@ -2359,14 +2359,14 @@ label neighbours:
             hide map1 onlayer screens
             $renpy.hide_screen(tag="map")
             if persistent.thiefVanished == True:
-                if (renpy.music.is_playing(channel='music')): 
+                if (renpy.music.is_playing(channel='music')):
                     stop music
                     play music2 [ "<sync music>audio/mysteriousHappeningsDist1.wav", "audio/mysteriousHappeningsDist1.wav" ]
                 show wolf9 onlayer transient zorder 100
                 "To the north, there was nothing and no-one."
                 jump neighbours
             else:
-                if (renpy.music.is_playing(channel='music2')): 
+                if (renpy.music.is_playing(channel='music2')):
                     stop music2
                     play music [ "<sync music2>audio/mysteriousHappenings1.wav", "audio/mysteriousHappenings1.wav" ]
                 "Do not ask lightly of the northern forest, my child."
@@ -2383,14 +2383,14 @@ label neighbours:
             hide map1 onlayer screens
             $renpy.hide_screen(tag="map")
             if persistent.toadVanished == True:
-                if (renpy.music.is_playing(channel='music')): 
+                if (renpy.music.is_playing(channel='music')):
                     stop music
                     play music2 [ "<sync music>audio/mysteriousHappeningsDist1.wav", "audio/mysteriousHappeningsDist1.wav" ]
                 show wolf8 onlayer transient zorder 100
                 "To the east, there was nothing and no-one."
                 jump neighbours
             else:
-                if (renpy.music.is_playing(channel='music2')): 
+                if (renpy.music.is_playing(channel='music2')):
                     stop music2
                     play music [ "<sync music2>audio/mysteriousHappenings1.wav", "audio/mysteriousHappenings1.wav" ]
                 "To the east, the river flowed down to the coast. The mangrove trees swayed in the summer heat, and the air thrummed with chanting in honour of the insect god, Karnopticon."
@@ -2406,7 +2406,7 @@ label neighbours:
             $renpy.hide_screen(tag="map")
             #Flowing river to the south, Amazonian, fungi and silver-white - The Mushroom
             if persistent.mushroomVanished == True:
-                if (renpy.music.is_playing(channel='music')): 
+                if (renpy.music.is_playing(channel='music')):
                     stop music
                     play music2 [ "<sync music>audio/mysteriousHappeningsDist1.wav", "audio/mysteriousHappeningsDist1.wav" ]
                 show wolf10 onlayer transient zorder 100
@@ -2414,7 +2414,7 @@ label neighbours:
                 jump neighbours
             else:
                 show mushroom onlayer transient zorder 100
-                if (renpy.music.is_playing(channel='music2')): 
+                if (renpy.music.is_playing(channel='music2')):
                     stop music2
                     play music [ "<sync music2>audio/mysteriousHappenings1.wav", "audio/mysteriousHappenings1.wav" ]
                 "Ah! In fact, the south river and the forest around it was watched over by a wise mushroom ambassador, who had owned these lands since before anyone could remember."
@@ -2434,7 +2434,7 @@ label neighbours:
             $renpy.hide_screen(tag="map")
             #Mountains to the West, home to devils and witch's sabbaths - Thornton Peak- The Witch
             if persistent.witchVanished == True:
-                if (renpy.music.is_playing(channel='music')): 
+                if (renpy.music.is_playing(channel='music')):
                     stop music
                     play music2 [ "<sync music>audio/mysteriousHappeningsDist1.wav", "audio/mysteriousHappeningsDist1.wav" ]
                 show wolf11 onlayer transient zorder 100
@@ -2442,7 +2442,7 @@ label neighbours:
                 jump neighbours
             else:
                 show witch onlayer transient zorder 100
-                if (renpy.music.is_playing(channel='music2')): 
+                if (renpy.music.is_playing(channel='music2')):
                     stop music2
                     play music [ "<sync music2>audio/mysteriousHappenings1.wav", "audio/mysteriousHappenings1.wav" ]
                 "None dared venture to the western mountains, for all the lands around it were said to be home to a terrible witch."
@@ -2464,7 +2464,7 @@ label introMenu:
         $introMenuSentence = "You woke every morning to silence."
         call musicSilence from _call_musicSilence_11
     else:
-        if (renpy.music.is_playing(channel='music2')): 
+        if (renpy.music.is_playing(channel='music2')):
             stop music2
             play music [ "<sync music2>audio/mysteriousHappenings1.wav", "audio/mysteriousHappenings1.wav" ]
         $introMenuSentence = "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets."
@@ -3858,14 +3858,14 @@ label banquet:
                         f "I'm planning quite the gala. You should join me."
                         "He hesitated."
                         f "That is... if you've done everything you need to, you know. Said your goodbyes."
-                        
+
                         $toadLong = True
                         show hand onlayer transient:
                             yalign 0.7#0.743
                             xalign 0.5
                     else:
                         f "Have you made your decision? There isn't much time left."
-                    
+
                         show hand onlayer transient:
                             yalign 0.7#0.743
                             xalign 0.5
@@ -4495,7 +4495,7 @@ label thief2:
         #I also need to purge saves here so that you can't reload into a saved game that doesn't work.
         #TK: Make sure this works and doesn't break anything, also if it's the best option
 
-            
+
         stop music fadeout 6
         "The night was dark and quiet. You thought you heard something rustling in the bushes, outside your line of sight. A sound, like something moving through the forest."
         "But it must have been the wind."
@@ -7846,7 +7846,7 @@ label toadSolo:
             yalign 0.62#0.743
             xalign 0.5
         menu:
-            "Something scratched against the walls outside." 
+            "Something scratched against the walls outside."
             "If you explored the first tower, turn to page 256." if not firstTower:
                 "Deep underneath the first tower was a bottomless vault full of riches."
                 "Inside the vault was a cornucopia of luscious fruit, fat flies, even gardens and lakes that produced enough food to last for years - perhaps centuries."
@@ -8801,7 +8801,7 @@ label hellStory:
                     "Oh?"
                     "What happened to the toad, you ask?"
                     jump toadDisappears
-    
+
 
 
 
@@ -9291,7 +9291,7 @@ label witchSoloFinale:
     pov "You have to trust me. You're not well. These things you're seeing... they aren't there."
     "The witch spoke in a very small voice."
     #    $renpy.music.set_volume(0.6, delay=10.0, channel=u'music4')
-    #    
+    #
 
     w "..."
     w "Okay."
@@ -9635,7 +9635,7 @@ label witchInvestigate:
             xalign 0.5
         menu:
             "The sight was strangely familiar."
-            
+
             "If you looked into the puddle carefully, turn to page 236." if not puddleLook:
                 "You crawled to the edge and looked down into the puddle."
                 "The surface of the water was flat and still."
@@ -12467,7 +12467,7 @@ label bookBurnedFinale:
             #         "I wanted to talk to you.":
             #             "To me? I'm the one you want to spend time with?"
             #             "I don't know what to say. Thank you. But I have nothing left to tell."
-                        
+
             #             show hand onlayer transient:
             #                 yalign 0.7#0.743
             #                 xalign 0.5
@@ -13280,7 +13280,7 @@ label resetGame:
     # stop music6 fadeout 4.0
     # stop ambient2 fadeout 4.0
     # stop ambient1 fadeout 4.0
-    call musicSilence
+    call musicSilence from _call_musicSilence
     "{color=#ffffff}You have come to a dark place.{/color}"
     "{color=#ffffff}A gap in the manuscript.{/color}"
     "{color=#ffffff}Here, you can wipe everything away, and start again from the beginning.{/color}"
@@ -13295,10 +13295,10 @@ label resetGame:
             "{color=#ffffff}Very well.{/color}"
             "{color=#ffffff}Goodbye, for now.{/color}"
             $persistent._clear()
-            $ renpy.full_restart()
+            $renpy.quit()
 
         "{color=#ffffff}No. I want to remain here.{/color}":
             "{color=#ffffff}Very well.{/color}"
             "{color=#ffffff}Stay here a little longer.{/color}"
-            call musicReturn
+            call musicReturn from _call_musicReturn
             $ renpy.full_restart()
