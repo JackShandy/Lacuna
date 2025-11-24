@@ -731,8 +731,7 @@ style about_label_text:
 ## Reset the game ####
 screen on_key_screen():
     zorder 9999
-    key "0" action Jump("resetGame")
-
+    key ["0", "o", "O"] action Jump("resetGame")
 
 
 
@@ -1159,6 +1158,10 @@ screen preferences():
                     textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
 
+                vbox:
+                    label _("Language")
+                    textbutton "English" action Language(None)
+                    textbutton "Spanish" action Language("Spanish")
 
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
@@ -1203,7 +1206,6 @@ screen preferences():
                             #bar value Preference("self voicing volume drop")
 
 
-
                     if config.has_voice:
                         label _("Voice Volume")
 
@@ -1232,6 +1234,7 @@ screen preferences():
                     #textbutton _("Off") action call screen contents
                     #SetVariable("persistent.sfw", False)
                     #call screen contents
+
 
 
 style pref_label is gui_label

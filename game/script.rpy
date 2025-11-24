@@ -1769,88 +1769,8 @@ label start:
 
     label chapter1:
 
-        #"[sfw]"
-        #scene bg page
-        #show hand onlayer transient:
-            #yalign 0.6#0.743
-            #xalign 0.5
-        #show text "CHAPTER ONE{vspace=10}{size=-5}THE THREE GODPARENTS{/size}" at truecenter
         scene bg page
         show nightbg at artPos
-
-
-        #jump village
-
-        #TK: Investigate synchro_start
-        # "test"
-        # play music "audio/adventure1.wav"
-        # "test adventure"
-        # #TK TEST
-        # "Testing Music."
-        #
-        # play music "mysteriousHappeningsIntro.wav"
-        # queue music "mysteriousHappenings1.wav"
-        #
-        # "Playing Mysterious Happenings (intro into loop 1)."
-        # stop music fadeout 1
-        # play music2 [ "<sync music>audio/mysteriousHappenings2.wav", "audio/mysteriousHappenings2.wav" ]
-        #
-        # #$renpy.music.play("audio/mysteriousHappenings1.wav", channel="music", loop=True)
-        # "Transitioning to Mysterious Happenings 2."
-        # stop music2 fadeout 1
-        # play music3 [ "<sync music2>audio/mysteriousHappenings3.wav", "audio/mysteriousHappenings3.wav" ]
-        #
-        # "Transitioning to Mysterious Happenings 3."
-        # stop music3 fadeout 6
-        # "Ending music."
-        # $renpy.music.play("<loop 11.995>audio/mysteriousHappenings1.wav", channel="music")
-        # #queue music "mysteriousHappenings1.wav" loop
-        # "Testing intro of Mysterious Happenings into the main loop."
-        # #11.995
-        #
-        # # $renpy.music.play("audio/mysteriousHappenings1.wav", channel="music", loop=True)
-        # # "Testing loop of Mysterious Happenings."
-        # stop music fadeout 6
-        # play music [ "<sync music>audio/mysteriousHappenings2.wav", "<from 11.995>audio/mysteriousHappenings2.wav" ] fadein 1
-        # "Testing transition to Mysterious Happenings 2."
-        # stop music fadeout 6
-        # play music [ "<sync music>audio/mysteriousHappenings3.wav", "<from 11.995>audio/mysteriousHappenings3.wav" ] fadein 1
-        # "Testing transition to Mysterious Happenings 3."
-        # stop music fadeout 6
-        # play music [ "<sync music>audio/mysteriousHappenings1.wav", "<from 11.995>audio/mysteriousHappenings1.wav" ] fadein 1
-        # "Testing transition to Mysterious Happenings 1."
-        # stop music #fadeout 6
-        # "Stopping music."
-        #
-        # play music [ "<sync music>audio/hunted1.wav", "audio/hunted1.wav" ]
-        # "Testing Hunted 1."
-        # stop music fadeout 6
-        # play music2 [ "<sync music>audio/hunted2.wav", "audio/hunted2.wav" ] fadein 1
-        # "Testing transition to Hunted 2."
-        # stop music2 fadeout 6
-        # play music3 [ "<sync music2>audio/hunted3.wav", "audio/hunted3.wav" ] fadein 1
-        # "Testing transition to Hunted 3."
-        # stop music3 fadeout 6
-        # play music4 [ "<sync music3>audio/hunted4.wav", "audio/hunted4.wav" ] fadein 1
-        # "Testing transition to Hunted 4."
-        # stop music4 fadeout 6
-        # play music5 [ "<sync music4>audio/hunted5.wav", "audio/hunted5.wav" ] fadein 1
-        # "Testing transition to Hunted 5."
-        # stop ambient2 fadeout 6.0
-        # stop ambient1 fadeout 6.0
-        #
-        # stop music5 fadeout 6
-        # play music6 [ "<sync music5>audio/hunted6.wav", "audio/hunted6.wav" ] volume 2.0 fadein 1
-        # "Testing transition to Hunted 6."
-        # stop music6 fadeout 6
-        # play music [ "<sync music6>audio/hunted1.wav", "audio/hunted1.wav" ] fadein 1
-        # "Testing transition to Hunted 1."
-        #
-        #
-        #
-        #
-        # stop music #fadeout 6
-        # "Stopping music."
 
         if persistent.bookEnd:
             jump newStoryFinale
@@ -1892,52 +1812,6 @@ label start:
             "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
         elif persistent.vanished >= 4:
             jump allVanishedEnd
-
-        # #Test Menu
-        # menu:
-        #     "DEV NOTE: This is a testing menu to allow you to jump to various endings quickly and see the disappearance scenes."
-        #     "Jump to the Thief finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
-        #         #$renpy.fix_rollback()
-        #         stop music fadeout 6
-        #         jump thiefFinale
-        #     "Jump to the Thief path (with the Mushroom disappeared)." if persistent.mushroomVanished and not persistent.thiefVanished:
-        #         stop music fadeout 6
-        #         jump thiefSolo
-        #     "Jump to the Toad finale." if not persistent.toadVanished and not persistent.witchVanished:
-        #         stop music fadeout 6
-        #         #$renpy.fix_rollback()
-        #         jump toadFinale
-        #     "Jump to the Toad path (with the Witch disappeared)." if persistent.witchVanished and not persistent.toadVanished:
-        #         stop music fadeout 6
-        #         #$renpy.fix_rollback()
-        #         jump toadSolo
-        #     "Jump to the Witch finale." if not persistent.toadVanished and not persistent.witchVanished:
-        #         stop music fadeout 6
-        #         #$renpy.fix_rollback()
-        #         jump witchFinale
-        #     "Jump to the Witch path (with the Toad disappeared)." if persistent.toadVanished and not persistent.witchVanished:
-        #         stop music fadeout 6
-        #         #$renpy.fix_rollback()
-        #         jump witchSolo
-        #     "Jump to the Mushroom finale." if not persistent.thiefVanished and not persistent.mushroomVanished:
-        #         stop music fadeout 6
-        #         #$renpy.fix_rollback()
-        #         jump mushroomFinale
-        #     "Jump to the Mushroom path (with the Thief disappeared)." if persistent.thiefVanished and not persistent.mushroomVanished:
-        #         stop music fadeout 6
-        #         #$renpy.fix_rollback()
-        #         jump mushroomSolo
-
-        #     "Continue.":
-        #         #$renpy.fix_rollback()
-        #         "DEV NOTE: Continuing with the normal story."
-
-
-    # "This maybe happened, or maybe did not."
-    # "The time is long past, and much is forgot."
-    # "Back in the old days, when wishing worked, you lived in a lovely cottage on the edge of a magical forest."
-    # "Many strange figures lived in the woods around your house."
-
 
         call hideAll from _call_hideAll
         show forest4bg at artPos

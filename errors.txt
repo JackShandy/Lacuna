@@ -2,8 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 13297: is not terminated with a newline. (Check strings and parenthesis.)
-                ${color=
+File "game/screens.rpy", line 734: 'Jump' is not a keyword argument or valid child of the key statement.
+    key ["0", "o", "O"] Jump("resetGame")
+                            ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Tue Feb 11 13:39:30 2025
+Sun Feb 23 12:12:41 2025
