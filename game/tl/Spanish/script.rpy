@@ -1427,6 +1427,8 @@ translate Spanish mushroomIntro_ce9f1473:
     # "It almost sounded like scratching. In the walls of the chamber."
     ""
 
+##=== If you choose to leave immediately:
+
 # game/script.rpy:2502
 translate Spanish mushroomIntro_95c44ec9:
 
@@ -1444,6 +1446,8 @@ translate Spanish mushroomIntro_1afcff0a:
 
     # "You left the cavern at once and continued on towards the festival."
     ""
+
+##=== If you explore:
 
 # game/script.rpy:2509
 translate Spanish mushroomIntro_7702fa80_1:
@@ -1469,6 +1473,8 @@ translate Spanish mushroomIntro_cf83b469_1:
     # "The glimmering magenta incense smoke rolled across the room and coated it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
     ""
 
+##== The intent of this scene is that the Mushroom is mistaking you for The Thief. She thinks that all humans share one mind and are basically one collective entity. That's why she says "What are you doing back again?" - the thief was here earlier.
+
 # game/script.rpy:2513
 translate Spanish mushroomIntro_419bb525:
 
@@ -1486,6 +1492,8 @@ translate Spanish mushroomIntro_cf9fb1aa:
 
     # m "I'm sure I remember telling you quite clearly never to darken my door again."
     m ""
+
+##== This is her talking to herself. The mushroom has multiple selves that are all connected by the mycelial network underground, making them basically one being. That's why she thinks all humans are the same one being.
 
 # game/script.rpy:2516
 translate Spanish mushroomIntro_a0f58d2c:
@@ -1528,6 +1536,9 @@ translate Spanish mushroomWater_7067279c:
 
     # m "{i}Water?{/i} Really?"
     m ""
+
+##== This joke is a bit high-concept but basically the mushroom has kind of a snooty art critic style of persona (before she entered the book she was a bohemian actress in france in the 1920's). 
+##== The joke is that she's critiquing you as if you were a work of art and finding you quite derivative and stale. You're not exactly pushing the medium forward.
 
 # game/script.rpy:2529
 translate Spanish mushroomWater_30247836:
@@ -1601,6 +1612,8 @@ translate Spanish mushroomWater_10cf689e:
     # m "Be right back."
     m ""
 
+##== If you ask about "The other you"
+
 # game/script.rpy:2547
 translate Spanish mushroomWater_390a2527:
 
@@ -1612,6 +1625,8 @@ translate Spanish mushroomWater_ce46a653:
 
     # m "Darling, you're confused, you're babbling, you're all over the place, please, you're a mess. More so than usual, even."
     m ""
+
+##== The thief was here a moment ago.
 
 # game/script.rpy:2552
 translate Spanish mushroomWater_2227cc3d:
@@ -1630,6 +1645,8 @@ translate Spanish mushroomWater_ce7b6a91:
 
     # m "Can I get you anything? Decaying plant matter? It's all the rage back home."
     m ""
+
+##== If you ask about her riches:
 
 # game/script.rpy:2559
 translate Spanish mushroomWater_8959758e:
@@ -1655,6 +1672,8 @@ translate Spanish mushroomWater_7d06819b:
     # m "I told you. All the wealth of the world falls to us in the end."
     m ""
 
+##== If you apologise:
+
 # game/script.rpy:2566
 translate Spanish mushroomWater_71dac625:
 
@@ -1666,6 +1685,8 @@ translate Spanish mushroomWater_b5ae6c40:
 
     # m "But no, don't worry about it, it's fine, really, completely fine."
     m ""
+
+##== If you enter the basement:
 
 # game/script.rpy:2577
 translate Spanish basement_ffc866a4:
