@@ -199,6 +199,10 @@ translate Spanish chapter1_8fcb249a:
 ## https://sites.pitt.edu/~dash/grimm044.html
 
 ##============= First Godparent: G-d
+##============= CHARACTER BRIEF: The Man In White (G-d)
+##== Meant to feel mysterious, strange and terrible. The Wolf fears and respects Him as a symbol of all that opposes him.
+##== Deliberately a bit anachronistic - mentions of the gun and the suit - to feel out of time. He is basically the personification of the Prosperity Gospel. https://en.wikipedia.org/wiki/Prosperity_theology
+
 ## Note that G-d is censored because it refers to the deity - Godparent is not censored because it doesn't refer to Him.
 ## Some parts of the text are a little strange like this - it's meant to feel like an imperfect translation of an earlier work.
 
@@ -353,6 +357,10 @@ translate Spanish godYes_a969500b:
     miw ""
 
 ##============= Second Godparent: The Devil
+##============= CHARACTER BRIEF: The Devil
+##== Key inspiration: https://en.wikipedia.org/wiki/The_Devil_with_the_Three_Golden_Hairs and https://en.wikipedia.org/wiki/Gambling_Hansel
+##== The Devil was inspired by these folk tales which portray Him as a mischevious trickster figure who tries to prank or swindle people. Rather than an omnipotent force of evil, he's more like an imp or a sprite.
+##== He is wicked but in a minor way, and easily overcome or tricked himself by ordinary humans. He also has a grandmother, which raises a lot of questions which remain unanswered.
 
 # game/script.rpy:1983
 translate Spanish secondMan1_49cdd6d7:
@@ -484,6 +492,10 @@ translate Spanish devilYes_ec056025:
     mir ""
 
 ##============= Third Godparent: Death
+##============= CHARACTER BRIEF: Death
+##== Key inspiration: Godfather Death https://sites.pitt.edu/~dash/grimm044.html
+##== Death is soft, mysterious and unknown. She is not unkind - she looks favourably on humanity. But She is inevitable. It is Her duty to take each living soul, and she cannot be stopped in that duty.
+##== She has no real wants or needs except to fulfil that duty. Her and G-d have an interesting backstory - She tried to take him, they fought, and She was cast down. That's why G-d is immortal.
 
 ## "A handsome woman" is not a turn of phrase we would normally use these days - it's deliberately archaic.
 ## It indicates a woman with a striking, dignified and commanding presence
