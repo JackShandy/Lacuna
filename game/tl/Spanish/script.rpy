@@ -4091,52 +4091,45 @@ translate Spanish village_7952c538:
     # g "Gotcha!"
     g ""
 
+##======= Location: The Banquet by the river. Many variations of this based on how many people have disappeared.
 # game/script.rpy:3517
 translate Spanish banquet_7d24dfc9:
 
     # "You walked down to the river. Picnic blankets lay empty before the dark waters."
     ""
 
+##== Variation: Toad is the last alive
 # game/script.rpy:3520
 translate Spanish banquet_0b0ba838:
 
     # "The Toad stood alone, looking into the flames. For a moment you thought you saw people around him - but they were just shadows. The food lay uneaten."
     ""
 
+##== Variation: No-one alive
 # game/script.rpy:3522
 translate Spanish banquet_175bdfd0:
 
     # "For a moment, you thought you saw people around the fire. But they were just shadows. The food lay uneaten."
     ""
 
+##== Variation: Mayor and Sparrow Herder Alive
 # game/script.rpy:3524
 translate Spanish banquet_fdf52ff5:
 
     # "A splash broke the stillness. You looked around to see the Sparrow Herder and the Mayor on the shore, skipping rocks over the water."
     ""
 
+##== Variation: Only the Mayor Alive
 # game/script.rpy:3526
 translate Spanish banquet_85ff937f:
 
     # "The Mayor sat on the shore, looking out over the water."
     ""
-
+##== Variation: Normal. Everyone alive.
 # game/script.rpy:3541
 translate Spanish banquet_6450f7f0:
 
     # "You walked down to the river, where the banquet was laid out before a bonfire. Some folks were gripping each other tight and crying out at the misfortune that had befallen their town. Others simply sat in glum silence."
-    ""
-
-# game/script.rpy:3545
-translate Spanish banquet_85cec0f1:
-
-    # "No-one sat at the banquet. The food lay uneaten."
-    ""
-
-# game/script.rpy:3547
-translate Spanish banquet_f2b8330d:
-
-    # "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
     ""
 
 # game/script.rpy:3555
@@ -4145,6 +4138,25 @@ translate Spanish banquetMenu_f2ee5d9a:
     # "They paid no attention to you, but continued shaking their heads and watching the flames with wretched misery."
     ""
 
+##== Variation: The toad vanished.
+# game/script.rpy:3545
+translate Spanish banquet_85cec0f1:
+
+    # "No-one sat at the banquet. The food lay uneaten."
+    ""
+
+##== Variation: The toad is alive.
+# game/script.rpy:3547
+translate Spanish banquet_f2b8330d:
+
+    # "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
+    ""
+
+##======= Character: The Sparrow-Herder. 
+##== A minor character. The sparrow-herder tells you random rumours, which all end with "How do I know this? The sparrows told me."
+##== Has a cockney kind of accent, removing the h's. The effect is to make him sound kind of like a street urchin, lower-class, urban. 
+
+##== Rumour 1: The Ruins
 # game/script.rpy:3563
 translate Spanish banquetMenu_dc3f1084:
 
@@ -4211,6 +4223,7 @@ translate Spanish banquetMenu_a5fd1eac:
     # sh "How do I know all this? The sparrows told me."
     sh ""
 
+##== Rumour 2: The Mushrooms
 # game/script.rpy:3581
 translate Spanish banquetMenu_dc3f1084_1:
 
@@ -4259,6 +4272,7 @@ translate Spanish banquetMenu_a5fd1eac_1:
     # sh "How do I know all this? The sparrows told me."
     sh ""
 
+##== Rumour 3: The Gutterlings
 # game/script.rpy:3595
 translate Spanish banquetMenu_dc3f1084_2:
 
@@ -4331,12 +4345,19 @@ translate Spanish banquetMenu_a5fd1eac_2:
     # sh "How do I know all this? The sparrows told me."
     sh ""
 
+##======= Character: The Mayor. 
+##== A minor character. Accent: Plummy, english, upper class.
+##== Has random rumours that add minor flavour.
+
+##== Rumour 1: Moon-head
+##== If the witch isn't alive:
 # game/script.rpy:3617
 translate Spanish banquetMenu_07d863fc:
 
     # may "If you're going out, chum, be wary! They say Moon-Head walks these roads tonight."
     may ""
 
+##== If the witch is alive:
 # game/script.rpy:3619
 translate Spanish banquetMenu_6533974c:
 
@@ -4385,6 +4406,14 @@ translate Spanish essay1Showing_338343eb:
     # may "Sometimes I still hear her laughter on moonless nights."
     may ""
 
+##==== Character: The Second Pig
+##== There is a random chance this character appears. 
+##== The first pig is the pig you can find from the thief. The second is here. The third is the pig being eaten at the banquet. Collectively they reference The Three Little Pigs.
+##== The pigs have an unexpectedly formal and grandiose tone. Think like the final villain in a JRPG. 
+##== These characters are a bit inspired by this album: https://worthikids.bandcamp.com/album/duloc
+
+##== Variation 1: If you have the first pig with you.
+##== Pig 2 believes in the wolf. The other pig believes he is a deluded, mad fool. There are no wolves in australia. 
 # game/script.rpy:3665
 translate Spanish essay1Showing_54514a97:
 
@@ -4394,7 +4423,7 @@ translate Spanish essay1Showing_54514a97:
 # game/script.rpy:3666
 translate Spanish essay1Showing_94c4ecbe:
 
-    # "Your pig turned rose up on its hind legs."
+    # "Your pig turned and rose up on its hind legs."
     ""
 
 # game/script.rpy:3667
@@ -4535,6 +4564,7 @@ translate Spanish essay1Showing_99428a2b:
     # p1 "There is nothing for us here."
     p1 ""
 
+##== Variation 2: If you don't have the pig with you.
 # game/script.rpy:3701
 translate Spanish essay1Showing_065b84f9:
 
@@ -4583,6 +4613,8 @@ translate Spanish essay1Showing_3d8b8b8e:
     # p2 "Perhaps you've already met them. You just haven't realised yet."
     p2 ""
 
+##==================== Conversation with The Toad. 
+##== Variation 1: When the toad is the last character left alive.
 # game/script.rpy:3725
 translate Spanish essay1Showing_28b6da59:
 
@@ -4655,6 +4687,7 @@ translate Spanish essay1Showing_e74d0a09:
     # f "I think this may be our last party." nointeract
     f "" nointeract
 
+##== If you say yes.
 # game/script.rpy:3749
 translate Spanish essay1Showing_57b178cd:
 
@@ -4667,6 +4700,7 @@ translate Spanish essay1Showing_a00a78ae:
     # f "Let us be off at once!"
     f ""
 
+##== If you say no.
 # game/script.rpy:3754
 translate Spanish essay1Showing_4010e427:
 
@@ -4691,6 +4725,7 @@ translate Spanish essay1Showing_af5dde90:
     # f "Now, where were we?"
     f ""
 
+##== If you stole the pig's item when you first met him.
 # game/script.rpy:3764
 translate Spanish essay1Showing_854d3a27:
 
@@ -4715,6 +4750,7 @@ translate Spanish essay1Showing_3762cf5f:
     # "Best avoid him for now."
     ""
 
+##== If you stole the pig's item and the mushroom + thief are both dead
 # game/script.rpy:3771
 translate Spanish essay1Showing_51a6b7b8:
 
@@ -4733,6 +4769,7 @@ translate Spanish essay1Showing_02506f40:
     # f "Don't worry about that little issue of the emerald brooch you made off with. I have so much money now, you see, I'll hardly miss it. Consider it a gift! A memento of our new friendship, hoho!"
     f ""
 
+##== Normal variation - talking to the Toad for the first time - if you didn't accept his offer of a lift.
 # game/script.rpy:3776
 translate Spanish essay1Showing_c7795e0b:
 
@@ -4751,6 +4788,7 @@ translate Spanish essay1Showing_f319b0e9:
     # f "Do not be alarmed! I have already forgiven your poor manners in refusing my generous offer on the road."
     f ""
 
+##== If you did accept his offer of a lift.
 # game/script.rpy:3780
 translate Spanish essay1Showing_5ff48ecc:
 
@@ -4775,6 +4813,7 @@ translate Spanish essay1Showing_896a058a:
     # f "Please, take a seat beside me! I would count myself proud to sit among such distinguished company as yours."
     f ""
 
+##== If you leave and then come back to speak to the toad again.
 # game/script.rpy:3785
 translate Spanish essay1Showing_05556692:
 
@@ -4817,6 +4856,7 @@ translate Spanish toadConvo2_13f54d33:
     # "He awkwardly tilted the wineglass towards him and drank deeply, almost falling in."
     ""
 
+##== Another moment when the text is too long and cuts off as the page is torn.
 # game/script.rpy:3801
 translate Spanish toadConvo2_16ecfb5d:
 
@@ -29711,6 +29751,7 @@ translate Spanish resetGame_8caa7a1b:
 ##======= Let me know if that would be useful.
 translate Spanish strings:
 
+##=== The different title variations (changes as the characters disappear). 
     # game/script.rpy:1194
     old "The Thief, the Toad, the Witch & the Mushroom."
     new ""
