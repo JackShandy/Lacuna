@@ -3355,6 +3355,10 @@ translate Spanish witch1_88701591:
     ""
 
 ##== Otherwise:
+##============================ CHARACTER BRIEF: The Hunter
+##=== A minor character. Non-binary, like the thief.
+##=== Mostly left pretty blank, an aristocratic english hunter type who hunts food for the village, image shows them with a 1800s/1900s style gun. They are sceptical and don't believe in the wolf.
+##== It's never mentioned in the game but they do have some darker stuff going on where they have a secret underground zoo in layers underneath their house, where they breed strange and unusual game to hunt. But that never made it into the game.
 # game/script.rpy:3179
 translate Spanish witch1_4e4ee8c3:
 
@@ -4033,7 +4037,7 @@ translate Spanish village_4bd430f5:
     # "Fine."
     ""
 
-##==== Character: The Gutterlings (Appear when some characters have already disappeared)
+##==== CHARACTER BRIEF: The Gutterlings (Appear when some characters have already disappeared)
 ##== Weird little monsters who lurk in the gutters around town. They have a broad, rural Australian accent and an affable tone of speech. 
 # game/script.rpy:3474
 translate Spanish village_bf29c358:
@@ -4152,7 +4156,7 @@ translate Spanish banquet_f2b8330d:
     # "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
     ""
 
-##======= Character: The Sparrow-Herder. 
+##======= CHARACTER BRIEF: The Sparrow-Herder. 
 ##== A minor character. The sparrow-herder tells you random rumours, which all end with "How do I know this? The sparrows told me."
 ##== Has a cockney kind of accent, removing the h's. The effect is to make him sound kind of like a street urchin, lower-class, urban. 
 
@@ -4345,7 +4349,7 @@ translate Spanish banquetMenu_a5fd1eac_2:
     # sh "How do I know all this? The sparrows told me."
     sh ""
 
-##======= Character: The Mayor. 
+##======= CHARACTER BRIEF: The Mayor. 
 ##== A minor character. Accent: Plummy, english, upper class.
 ##== Has random rumours that add minor flavour.
 
@@ -4406,7 +4410,7 @@ translate Spanish essay1Showing_338343eb:
     # may "Sometimes I still hear her laughter on moonless nights."
     may ""
 
-##==== Character: The Second Pig
+##==== CHARACTER BRIEF: The Second Pig
 ##== There is a random chance this character appears. 
 ##== The first pig is the pig you can find from the thief. The second is here. The third is the pig being eaten at the banquet. Collectively they reference The Three Little Pigs.
 ##== The pigs have an unexpectedly formal and grandiose tone. Think like the final villain in a JRPG. 
@@ -4613,7 +4617,7 @@ translate Spanish essay1Showing_3d8b8b8e:
     # p2 "Perhaps you've already met them. You just haven't realised yet."
     p2 ""
 
-##==================== Conversation with The Toad. 
+##==================== MAJOR CONVERSATION: Conversation with The Toad. 
 ##== Variation 1: When the toad is the last character left alive.
 # game/script.rpy:3725
 translate Spanish essay1Showing_28b6da59:
@@ -5289,6 +5293,7 @@ translate Spanish toadWitchJoin_2600851c:
     # f "Return soon! You can't possibly leave without sampling some of this fine green mango salad over here, absolutely sensational!"
     f ""
 
+##== If you try to leave and go into the woods to find information, but the Sparrow-herder is still alive - he tries to stop you.
 # game/script.rpy:3949
 translate Spanish toadWitchJoin_5815467e:
 
@@ -5307,6 +5312,7 @@ translate Spanish toadWitchJoin_839a362d:
     # sh "Come on then, let's get back to the village."
     sh ""
 
+##== If you try that and he's not alive, no-one stops you.
 # game/script.rpy:3955
 translate Spanish toadWitchJoin_81bebdcc:
 
