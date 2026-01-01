@@ -3663,7 +3663,7 @@ label banquet:
                 if pig:
                     if pigChat == 0:
                         p2 "Oh. It's you."
-                        "Your pig turned rose up on its hind legs."
+                        "Your pig turned and rose up on its hind legs."
                         p1 "Montgomery."
                         p2 "Gregory."
                     if pigChat == 1:
@@ -10461,8 +10461,8 @@ label gutterlingStory:
                     show towncrossroadsbg at artPos
                     "You took your chance, and in a moment you had fled from the pit and back up to the village above."
                     pov "Thank you for saving me, Godmother!"
-                    miw "It was not your time."
-                    miw "That will come soon."
+                    wib "It was not your time."
+                    wib "That will come soon."
                     "In a blink, She was gone."
                     jump village
                     jump village

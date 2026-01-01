@@ -1,22 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1602, in script
-    return
-Exception: Could not find return label ('game/script.rpy', 1739244311, 12).
+  File "game/tl/Spanish/script.rpy", line 29929, in script
+    old "If you went off with them to catch the Master Thief, turn to page 124."
+Exception: A translation for "If you went off with them to catch the Master Thief, turn to page 124." already exists at game/tl/Spanish/script.rpy:97.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1602, in script
-    return
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\ast.py", line 1495, in execute
-    next_node(renpy.game.context().lookup_return(pop=True))
-  File "D:\ThiefWitchToadMushroom\renpy-8.2.0-sdk\renpy\execution.py", line 741, in lookup_return
-    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
-Exception: Could not find return label ('game/script.rpy', 1739244311, 12).
+  File "game/tl/Spanish/script.rpy", line 29929, in script
+    old "If you went off with them to catch the Master Thief, turn to page 124."
+  File "D:\Renpy\renpy-8.2.0-sdk\renpy\ast.py", line 2630, in execute
+    renpy.translation.add_string_translation(self.language, self.old, self.new, newloc)
+  File "D:\Renpy\renpy-8.2.0-sdk\renpy\translation\__init__.py", line 556, in add_string_translation
+    stl.add(old, new, newloc)
+  File "D:\Renpy\renpy-8.2.0-sdk\renpy\translation\__init__.py", line 496, in add
+    raise Exception("A translation for \"{}\" already exists at {}:{}.".format(
+Exception: A translation for "If you went off with them to catch the Master Thief, turn to page 124." already exists at game/tl/Spanish/script.rpy:97.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.0.24012702
 The Wolf. 1.0
-Tue Feb 11 13:29:54 2025
+Thu Jan  1 12:19:24 2026
