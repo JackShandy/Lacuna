@@ -181,7 +181,9 @@ translate Spanish chapter1_68fbbfc2:
 
     # "Back in the old days, when there was still a chance, your mother lived in a vast, empty forest."
     ""
-
+##============= CHARACTER BRIEF: Your Mum
+##== Deliberately a shallow, blank character. Your protagonist is a self-insert character in this story, and your Mum is essentially a self-insert of your mum in real life. She is deliberately kept vague for that reason.
+##== She has a moment to reflect on this at the very end of the story, if you talk to her as the book is burning. She reflects that despite everything, she has no real idea who you are at all.
 # game/script.rpy:1810
 translate Spanish chapter1_34777223:
 
@@ -199,6 +201,10 @@ translate Spanish chapter1_8fcb249a:
 ## https://sites.pitt.edu/~dash/grimm044.html
 
 ##============= First Godparent: G-d
+##============= CHARACTER BRIEF: The Man In White (G-d)
+##== Meant to feel mysterious, strange and terrible. The Wolf fears and respects Him as a symbol of all that opposes him.
+##== Deliberately a bit anachronistic - mentions of the gun and the suit - to feel out of time. He is basically the personification of the Prosperity Gospel. https://en.wikipedia.org/wiki/Prosperity_theology
+
 ## Note that G-d is censored because it refers to the deity - Godparent is not censored because it doesn't refer to Him.
 ## Some parts of the text are a little strange like this - it's meant to feel like an imperfect translation of an earlier work.
 
@@ -252,6 +258,11 @@ translate Spanish firstMan_7384aeb5:
 
     # miw "I will ask only one thing: [He] must work hard, and earn every dollar, and obey me above all else." nointeract
     miw "" nointeract
+
+translate Spanish strings:
+    # game/script.rpy:1934
+    old "If she said yes, turn to page 13."
+    new ""
 
 # game/script.rpy:1940
 translate Spanish godYes_48d5fef0:
@@ -327,6 +338,10 @@ translate Spanish godYes_3162b7ae:
     ""
 
 ## If you do not accept G-d as your godparent:
+translate Spanish strings:
+    # game/script.rpy:1934
+    old "If she said no, turn to page 14."
+    new ""
 
 # game/script.rpy:1973
 translate Spanish godYes_ef733c9e:
@@ -346,6 +361,11 @@ translate Spanish godYes_d9184f7f:
     # "Then she turned away from Him and ran into the forest."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:1934
+    old "If she asked the mysterious figure who He was, turn to page 11."
+    new ""
+
 # game/script.rpy:1978
 translate Spanish godYes_a969500b:
 
@@ -353,6 +373,10 @@ translate Spanish godYes_a969500b:
     miw ""
 
 ##============= Second Godparent: The Devil
+##============= CHARACTER BRIEF: The Devil
+##== Key inspiration: https://en.wikipedia.org/wiki/The_Devil_with_the_Three_Golden_Hairs and https://en.wikipedia.org/wiki/Gambling_Hansel
+##== The Devil was inspired by these folk tales which portray Him as a mischevious trickster figure who tries to prank or swindle people. Rather than an omnipotent force of evil, he's more like an imp or a sprite.
+##== He is wicked but in a minor way, and easily overcome or tricked himself by ordinary humans. He also has a grandmother, which raises a lot of questions which remain unanswered.
 
 # game/script.rpy:1983
 translate Spanish secondMan1_49cdd6d7:
@@ -390,6 +414,10 @@ translate Spanish secondMan2_2507629f:
     # mir "I only have one condition: [He] must promise to obey no master, and scorn the rule of law, and do as [he] wilt every day of [his] life." nointeract
     mir "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:1992
+    old "If she said yes, turn to page 21."
+    new ""
 ##== If you say yes:
 # game/script.rpy:1995
 translate Spanish secondMan2_5aebfe7f:
@@ -464,6 +492,12 @@ translate Spanish devilYes_6e1fabdb:
     # "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
     ""
 ##== If you refuse:
+translate Spanish strings:
+
+    # game/script.rpy:1992
+    old "If she said no, turn to page 16."
+    new ""
+
 # game/script.rpy:2028
 translate Spanish devilYes_7b1aab3f:
 
@@ -477,6 +511,12 @@ translate Spanish devilYes_2977bb76:
     ""
 
 ##== If you ask who He is:
+translate Spanish strings:
+
+    # game/script.rpy:1992
+    old "If she asked the mysterious figure who He was, turn to page 18."
+    new ""
+
 # game/script.rpy:2032
 translate Spanish devilYes_ec056025:
 
@@ -484,6 +524,10 @@ translate Spanish devilYes_ec056025:
     mir ""
 
 ##============= Third Godparent: Death
+##============= CHARACTER BRIEF: Death
+##== Key inspiration: Godfather Death https://sites.pitt.edu/~dash/grimm044.html
+##== Death is soft, mysterious and unknown. She is not unkind - she looks favourably on humanity. But She is inevitable. It is Her duty to take each living soul, and she cannot be stopped in that duty.
+##== She has no real wants or needs except to fulfil that duty. Her and G-d have an interesting backstory - She tried to take him, they fought, and She was cast down. That's why G-d is immortal.
 
 ## "A handsome woman" is not a turn of phrase we would normally use these days - it's deliberately archaic.
 ## It indicates a woman with a striking, dignified and commanding presence
@@ -526,6 +570,11 @@ translate Spanish thirdMan2_4fb461a1:
     wib "" nointeract
 
 ##== If you say yes:
+translate Spanish strings:
+    # game/script.rpy:2047
+    old "If she said yes, turn to page 17."
+    new ""
+
 # game/script.rpy:2050
 translate Spanish thirdMan2_6b7d28b9:
 
@@ -606,6 +655,12 @@ translate Spanish deathYes_21b890d4:
     # "But She was already leaving. She crawled into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:2047
+    old "If she said no, turn to page 25."
+    new ""
+
 # game/script.rpy:2084
 translate Spanish deathYes_18f1893d:
 
@@ -627,11 +682,31 @@ translate Spanish deathYes_da16cdc7:
     wib ""
 
 ##== You must make a final choice between G-d, Death or The Devil
+translate Spanish strings:
+
+    # game/script.rpy:2090
+    old "Your mother looked around the dark forest in panic."
+    new ""
+
+    # game/script.rpy:2090
+    old "If she chose Death, turn to page 7."
+    new ""
+
+    # game/script.rpy:2090
+    old "If she chose the Lord, turn to page 5."
+    new ""
+
 # game/script.rpy:2093
 translate Spanish deathYes_bf0470a0:
 
     # "In desperation, she renounced her foolish pride and sought the protection of the Most High Himself."
     ""
+
+translate Spanish strings:
+
+    # game/script.rpy:2090
+    old "If she chose the Devil, turn to page 6."
+    new ""
 
 # game/script.rpy:2096
 translate Spanish deathYes_2b04424f:
@@ -646,6 +721,12 @@ translate Spanish deathYes_5ad076f1:
     mum ""
 
 ##== If you ask who she is:
+translate Spanish strings:
+
+    # game/script.rpy:2047
+    old "If she asked the mysterious figure who She was, turn to page 18."
+    new ""
+
 # game/script.rpy:2119
 translate Spanish deathYes_14578651:
 
@@ -865,6 +946,16 @@ translate Spanish neighbours_7189d0ed:
     # "To the north, there was nothing and no-one."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:2228
+    old "The lands around your house were strange."
+    new ""
+
+    # game/script.rpy:2228
+    old "To learn about the lands to the north, turn to page 10."
+    new ""
+
 # game/script.rpy:2246
 translate Spanish neighbours_26f3d796:
 
@@ -901,6 +992,12 @@ translate Spanish neighbours_26777d35:
     # "Or so it was said."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:2228
+    old "To learn about the lands to the east, turn to page 15."
+    new ""
+
 # game/script.rpy:2264
 translate Spanish neighbours_ab0d41a8:
 
@@ -931,6 +1028,12 @@ translate Spanish neighbours_26777d35_1:
     # "Or so it was said."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:2228
+    old "To learn about the lands to the south, turn to page 20."
+    new ""
+
 # game/script.rpy:2287
 translate Spanish neighbours_57906e1f:
 
@@ -955,6 +1058,7 @@ translate Spanish neighbours_f5a121f2:
     # "She allowed your family to live on the river and use her lands, under one condition."
     ""
 
+##== This line is from "The Porter and the Three Ladies of Baghdad" from 1001 nights - a small reference. 
 # game/script.rpy:2297
 translate Spanish neighbours_3250871e:
 
@@ -978,6 +1082,12 @@ translate Spanish neighbours_26777d35_2:
 
     # "Or so it was said."
     ""
+
+translate Spanish strings:
+
+    # game/script.rpy:2228
+    old "To learn about the lands to the west, turn to page 26."
+    new ""
 
 # game/script.rpy:2315
 translate Spanish neighbours_e8954f26:
@@ -1009,6 +1119,24 @@ translate Spanish neighbours_26777d35_3:
     # "Or so it was said."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:2228
+    old "To continue, return to page 9."
+    new ""
+
+    ##== This is slightly different based on how many people have disappeared.
+    # game/script.rpy:2349
+    if persistent.vanished >= 3:
+        old "[introMenuSentence]"
+        ##== Translate this
+        new "You woke every morning to silence."
+    else:
+        old "[introMenuSentence]"
+        ##== Translate this
+        new "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets."
+
+##== If almost everyone has disappeared
 # game/script.rpy:2353
 translate Spanish introMenu_3ac479fb:
 
@@ -1057,6 +1185,7 @@ translate Spanish introMenu_a6a3cacd:
     # "There was no \"You\". Just a collection of monsters, writhing in borrowed skin."
     ""
 
+##== If lots of people have disappeared
 # game/script.rpy:2363
 translate Spanish introMenu_4931fe8a:
 
@@ -1075,6 +1204,7 @@ translate Spanish introMenu_55c1420d:
     # "Yet still, there were strange hollow places where nothing lived. No sound escaped the stillness of that lacuna. If anything walked there, it walked alone."
     ""
 
+##== Otherwise, if no-one has disappeared
 # game/script.rpy:2367
 translate Spanish introMenu_7c576d42:
 
@@ -1274,6 +1404,14 @@ translate Spanish introMenu_80bd3e95:
     # mum "Go! But be careful of strangers, and do not leave the path."
     mum ""
 
+##== The first mention of "The Space Between The Trees" which is an important phrase that recurrs throughout the text. 
+##== There are a few recurring phrases like this - it's important that the same wording be used for this each time. 
+##== Repeating the phrase gives it an ominous tone and builds up a kind of totemic power - makes it feel like a phrase of occult significance.
+##== "The space between the trees" is repeatedly said to be the place where the wolf dwells. It means absence or nothingness. The wolf is kind of a nothing-being that lives in negative space. 
+##== The people it eats disappear into nothingness as if they never existed. 
+##== "LACUNA" is another phrase the text often uses: It means a blank spot, gap, or the missing text in a manuscript. This concept symbolises the Wolf and its victims. 
+##== The Wolf has been forgotten, removed from the manuscript, and it does the same to the people it eats.
+
 # game/script.rpy:2433
 translate Spanish introMenu_87ba52cf:
 
@@ -1322,10 +1460,14 @@ translate Spanish mushroomIntro_83ead349:
     # "A small turtle saw you coming and fled into the water with a splash."
     ""
 
-##====================================================== Chapter 1, part 2: The Four Characters
+##====================================================== Chapter 2: The Four Characters
 ## On the road to the festival, you are introduced to the major characters.
 ## If they have disappeared, you hear nothing and see no-one. Otherwise, you get a short scene with each character.
 # game/script.rpy:2457
+
+##========= Part A: The Mushroom
+##============= CHARACTER BRIEF: The Mushroom
+##== See the document.
 translate Spanish mushroomIntro_9034bb1d:
 
     # "In the depths of the woods, you heard nothing."
@@ -1427,6 +1569,8 @@ translate Spanish mushroomIntro_ce9f1473:
     # "It almost sounded like scratching. In the walls of the chamber."
     ""
 
+##=== If you choose to leave immediately:
+
 # game/script.rpy:2502
 translate Spanish mushroomIntro_95c44ec9:
 
@@ -1444,6 +1588,8 @@ translate Spanish mushroomIntro_1afcff0a:
 
     # "You left the cavern at once and continued on towards the festival."
     ""
+
+##=== If you explore:
 
 # game/script.rpy:2509
 translate Spanish mushroomIntro_7702fa80_1:
@@ -1469,6 +1615,8 @@ translate Spanish mushroomIntro_cf83b469_1:
     # "The glimmering magenta incense smoke rolled across the room and coated it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
     ""
 
+##== The intent of this scene is that the Mushroom is mistaking you for The Thief. She thinks that all humans share one mind and are basically one collective entity. That's why she says "What are you doing back again?" - the thief was here earlier.
+
 # game/script.rpy:2513
 translate Spanish mushroomIntro_419bb525:
 
@@ -1486,6 +1634,8 @@ translate Spanish mushroomIntro_cf9fb1aa:
 
     # m "I'm sure I remember telling you quite clearly never to darken my door again."
     m ""
+
+##== This is her talking to herself. The mushroom has multiple selves that are all connected by the mycelial network underground, making them basically one being. That's why she thinks all humans are the same one being.
 
 # game/script.rpy:2516
 translate Spanish mushroomIntro_a0f58d2c:
@@ -1528,6 +1678,9 @@ translate Spanish mushroomWater_7067279c:
 
     # m "{i}Water?{/i} Really?"
     m ""
+
+##== This joke is a bit high-concept but basically the mushroom has kind of a snooty art critic style of persona (before she entered the book she was a bohemian actress in france in the 1920's). 
+##== The joke is that she's critiquing you as if you were a work of art and finding you quite derivative and stale. You're not exactly pushing the medium forward.
 
 # game/script.rpy:2529
 translate Spanish mushroomWater_30247836:
@@ -1601,6 +1754,8 @@ translate Spanish mushroomWater_10cf689e:
     # m "Be right back."
     m ""
 
+##== If you ask about "The other you"
+
 # game/script.rpy:2547
 translate Spanish mushroomWater_390a2527:
 
@@ -1612,6 +1767,8 @@ translate Spanish mushroomWater_ce46a653:
 
     # m "Darling, you're confused, you're babbling, you're all over the place, please, you're a mess. More so than usual, even."
     m ""
+
+##== The thief was here a moment ago.
 
 # game/script.rpy:2552
 translate Spanish mushroomWater_2227cc3d:
@@ -1630,6 +1787,8 @@ translate Spanish mushroomWater_ce7b6a91:
 
     # m "Can I get you anything? Decaying plant matter? It's all the rage back home."
     m ""
+
+##== If you ask about her riches:
 
 # game/script.rpy:2559
 translate Spanish mushroomWater_8959758e:
@@ -1655,6 +1814,8 @@ translate Spanish mushroomWater_7d06819b:
     # m "I told you. All the wealth of the world falls to us in the end."
     m ""
 
+##== If you apologise:
+
 # game/script.rpy:2566
 translate Spanish mushroomWater_71dac625:
 
@@ -1666,6 +1827,8 @@ translate Spanish mushroomWater_b5ae6c40:
 
     # m "But no, don't worry about it, it's fine, really, completely fine."
     m ""
+
+##== If you enter the basement:
 
 # game/script.rpy:2577
 translate Spanish basement_ffc866a4:
@@ -1781,18 +1944,22 @@ translate Spanish basement_370a3c58:
     # pov "I'm on my way to the festival, and there will be people there from all over this cryptic earth. Surely one of them will have a story you haven't heard before."
     pov ""
 
+##== This sentence changes based on your godparent.
+##== God:
 # game/script.rpy:2611
 translate Spanish basement_fcb480ef:
 
     # pov "I'm seeking a way to escape being taken by my Godfather, the old man in heaven. Surely the story of my adventure will be unique enough for you."
     pov ""
 
+##== The Devil:
 # game/script.rpy:2613
 translate Spanish basement_f29c40bc:
 
     # pov "I'm seeking a way to escape my Godfather, Lucifer. Surely the story of my adventure will be unique enough for you."
     pov ""
 
+##== Death:
 # game/script.rpy:2615
 translate Spanish basement_2a858eeb:
 
@@ -1804,7 +1971,6 @@ translate Spanish basement_e09dccbc:
 
     # "The Mushroom grew quiet as she thought over your proposal, and you prayed to the Most High (May He watch over us always) to deliver you from this terrible situation."
     ""
-
 # game/script.rpy:2617
 translate Spanish basement_2ce3b864:
 
@@ -1853,12 +2019,15 @@ translate Spanish basement_5c20ec0d:
     # "Thus you went on your way to the festival, fretting and worrying all the while."
     ""
 
+##== This sentence changes based on your godparent's gender.
+##== Godmother:
 # game/script.rpy:2629
 translate Spanish basement_4b916869:
 
     # "Now you had two burdens: To escape the grip of your Godmother, and to find a story that could satisfy the disdainful Mushroom."
     ""
 
+##== Godfather:
 # game/script.rpy:2631
 translate Spanish basement_6ed50217:
 
@@ -1871,11 +2040,13 @@ translate Spanish basement_a207d478:
     # "\"Never again,\" you cried to yourself, \"Will I ask of what concerns me not!\""
     ""
 
+##== If you choose not to go into the basement
 # game/script.rpy:2635
 translate Spanish basement_690236e5:
 
     # "In an unlikely turn of events, you sat there and waited patiently, paying no mind to the mysterious door."
     ""
+
 
 # game/script.rpy:2636
 translate Spanish basement_d2698305:
@@ -2056,7 +2227,9 @@ translate Spanish basement_ca84aec7:
 
     # "You ignored the mushroom and walked deeper and deeper into the woods."
     ""
+##========= The Thief
 
+##== If The Thief has disappeared
 # game/script.rpy:2693
 translate Spanish thief1_9034bb1d:
 
@@ -2081,6 +2254,7 @@ translate Spanish thief1_7e507a6d:
     # "You continued on down the empty road."
     ""
 
+##== If The Thief has not disappeared
 # game/script.rpy:2703
 translate Spanish thief1_f6b59914:
 
@@ -2201,18 +2375,21 @@ translate Spanish thiefChase_47d80c91:
     # "Finally, you caught up to the figure in a forest clearing, and grabbed it tight."
     ""
 
+##== If your godparent is G-d
 # game/script.rpy:2747
 translate Spanish thiefChase_356b629d:
 
     # pov "Now you will face your just punishment, sure as the heavens declare the glory of G-d."
     pov ""
 
+##== If your godparent is The Devil
 # game/script.rpy:2749
 translate Spanish thiefChase_813c68fd:
 
     # pov "You wretched fool. You should never have tried to out-do me in wickedness."
     pov ""
 
+##== If your godparent is Death
 # game/script.rpy:2751
 translate Spanish thiefChase_797a2ca6:
 
@@ -2237,6 +2414,7 @@ translate Spanish thiefChase_17edb508:
     # "The Master Thief was gone."
     ""
 
+##== If you take the pig with you
 # game/script.rpy:2762
 translate Spanish thiefchase2_440c8f6d:
 
@@ -2249,6 +2427,7 @@ translate Spanish thiefchase2_12026d86:
     # "From that day on he would always be your loyal friend and ally, and the two of you would get through more scrapes and misadventures than I have time to relate tonight.{vspace=100}{i}In your notes, write down that you {b}have a pig.{/b}{/i}"
     ""
 
+##== If you release the pig
 # game/script.rpy:2769
 translate Spanish thiefchase2_c15c84f8:
 
@@ -2279,6 +2458,8 @@ translate Spanish thiefchase2_9e3abd82:
     # "But that is a story for another day."
     ""
 
+##== If you cry out in woe
+##== Small joke, the length of the "Nooooos" increases each time you decide to cry out in lamentation.
 # game/script.rpy:2775
 translate Spanish thiefchase2_2d9b8a18:
 
@@ -2327,6 +2508,8 @@ translate Spanish thiefchase2_ff346c7e:
     # "As you trudged back to the road you discovered that all of your coins had been stolen and replaced with I.O.U.'s, the bread was now nothing but crumbs, and the meat had been turned into a live possum with a note on it saying \"Ham\". It bit you and fled into the trees.{vspace=100}{i}In your notes, write down that {b}Your things have been stolen.{/b}{/i}"
     ""
 
+##==== Changes based on Godparent.
+##== God
 # game/script.rpy:2811
 translate Spanish thiefchase2_caea87a1:
 
@@ -2345,6 +2528,7 @@ translate Spanish thiefchase2_12ed16ed:
     # pov "Hear me now, Thief. With the Lord as my witness, I will not rest until you see justice."
     pov ""
 
+##== The Devil
 # game/script.rpy:2815
 translate Spanish thiefchase2_e9784ac8:
 
@@ -2363,6 +2547,7 @@ translate Spanish thiefchase2_81b67639:
     # pov "Hear me now, Thief. My Godfather is the Devil, and my blood runs with nothing but spite, and I will not rest until the Prince of Darkness fastens His hands around your ankles and drags you straight down to Hell where you belong."
     pov ""
 
+##== Death
 # game/script.rpy:2819
 translate Spanish thiefchase2_70fd2fee:
 
@@ -2423,6 +2608,7 @@ translate Spanish thiefRefuse_b50671cf:
     # "They had long, long legs and thin dextrous fingers that twisted in arcane motions around them."
     ""
 
+##== This sentence only appears if multiple characters have disappeared.
 # game/script.rpy:2836
 translate Spanish thiefRefuse_a71e913d:
 
@@ -2441,6 +2627,7 @@ translate Spanish thiefRefuse_22822b2b:
     # t "You may have outwitted me this time, but I'll get you yet!"
     t ""
 
+##== These 3 sentences only appear if multiple characters have disappeared.
 # game/script.rpy:2842
 translate Spanish thiefRefuse_4bb520e4:
 
@@ -2459,6 +2646,7 @@ translate Spanish thiefRefuse_7da90713:
     # "They laughed a high, feverish laugh and ran into the forest and out of sight."
     ""
 
+##== Otherwise, you get these sentences.
 # game/script.rpy:2846
 translate Spanish thiefRefuse_db84122e:
 
@@ -2507,6 +2695,9 @@ translate Spanish thiefRefuse_69fac1df:
     # "Without a word, you left the old woman behind and walked deeper and deeper into the woods."
     ""
 
+##========= The Toad
+
+##== If The Toad has disappeared and you have the pig
 # game/script.rpy:2887
 translate Spanish toadIntro_79970f8f:
 
@@ -2531,6 +2722,7 @@ translate Spanish toadIntro_7e507a6d:
     # "You continued on down the empty road."
     ""
 
+##== If The Toad has disappeared and you don't have the pig
 # game/script.rpy:2892
 translate Spanish toadIntro_04a19fcb:
 
@@ -2555,12 +2747,14 @@ translate Spanish toadIntro_7e507a6d_1:
     # "You continued on down the empty road."
     ""
 
+##== If The Toad has not disappeared and you have the pig
 # game/script.rpy:2903
 translate Spanish toadIntro_1e1aa327:
 
     # "As you walked down the road with the pig trotting beside you, you heard the thunder of hooves, and turned to see four horses pulling a magnificent golden carriage."
     ""
 
+##== If The Toad has not disappeared and you don't have the pig
 # game/script.rpy:2905
 translate Spanish toadIntro_e0ce4024:
 
@@ -2585,6 +2779,7 @@ translate Spanish toadIntro_94e39276:
     # eg "Hold!"
     eg ""
 
+##== If The Toad is one of the last characters left
 # game/script.rpy:2910
 translate Spanish toadIntro_11262a1a:
 
@@ -2627,6 +2822,7 @@ translate Spanish toadIntro_e67ff23c:
     # "The figure nodded gratefully."
     ""
 
+##== Otherwise:
 # game/script.rpy:2923
 translate Spanish toadIntro_94e39276_1:
 
@@ -2657,12 +2853,14 @@ translate Spanish toadIntro_1a810ef5:
     # eg "Where are you headed, fellow traveller?" nointeract
     eg "" nointeract
 
+##== You get an option to say where you're going. If you say the festival:
 # game/script.rpy:2935
 translate Spanish toadIntro_6c010a79:
 
     # eg "Why, that's exactly where I'm going!"
     eg ""
 
+##== If you say anything else: 
 # game/script.rpy:2937
 translate Spanish toadIntro_4834a92c:
 
@@ -2699,6 +2897,7 @@ translate Spanish toadIntro_13222d06_2:
     # eg "I am heading to the village festival. You should join me."
     eg ""
 
+##== If you don't answer
 # game/script.rpy:2946
 translate Spanish toadIntro_9e03b6dc:
 
@@ -2843,6 +3042,7 @@ translate Spanish toadAccept_7f9effd9:
     # f "But you, I believe, have sufficient grace to withstand the urge."
     f ""
 
+##== If your godparent is the devil you get the option to steal the toad's stuff and run.
 # game/script.rpy:3005
 translate Spanish toadAccept_66ec01e8:
 
@@ -2885,12 +3085,14 @@ translate Spanish toadAccept_d2f0a20f:
     # "You hid it in your pocket and went on your way."
     ""
 
+##== If you don't:
 # game/script.rpy:3022
 translate Spanish toadAccept_c23a69f3:
 
     # f "So, what brings you travelling this way?" nointeract
     f "" nointeract
 
+##== If your godparent is God:
 # game/script.rpy:3025
 translate Spanish toadAccept_347c3768:
 
@@ -2915,6 +3117,7 @@ translate Spanish toadAccept_7187d9d6:
     # f "I have talked with the Lord many times, of course."
     f ""
 
+##== The Toad has multiple sections like this where he deliberately rambles on so long it can't fit on the page, as a small joke. The page is ripped off so you can't see everything he says in the game.
 # game/script.rpy:3031
 translate Spanish toadAccept_5e6e6a15:
 
@@ -2927,6 +3130,7 @@ translate Spanish toadAccept_9e3b5ea3:
     # f "Perhaps I could put in a good word for you with Him later. Pond scum?"
     f ""
 
+##== If your godparent is The Devil:
 # game/script.rpy:3036
 translate Spanish toadAccept_b557a69b:
 
@@ -2963,6 +3167,7 @@ translate Spanish toadAccept_9e3b5ea3_1:
     # f "Perhaps I could put in a good word for you with Him later. Pond scum?"
     f ""
 
+##== If your godparent is Death:
 # game/script.rpy:3047
 translate Spanish toadAccept_6d9609b5:
 
@@ -2999,6 +3204,7 @@ translate Spanish toadAccept_fab63400:
     # f "Perhaps I could put in a good word for you with Her later. Pond scum?"
     f ""
 
+##==If you say you're just travelling:
 # game/script.rpy:3058
 translate Spanish toadAccept_f9d88084:
 
@@ -3023,6 +3229,7 @@ translate Spanish toadAccept_e1ee0dc4:
     # f "But I'm sure your little festival will be quaint, too. Pond scum?"
     f ""
 
+##== If you don't say anything:
 # game/script.rpy:3067
 translate Spanish toadAccept_4c0244fe:
 
@@ -3041,6 +3248,7 @@ translate Spanish toadAccept_169ce0cf:
     # f "Pond scum?"
     f ""
 
+##== If you accept the pond scum:
 # game/script.rpy:3081
 translate Spanish toadAccept_be114223:
 
@@ -3059,6 +3267,7 @@ translate Spanish toadAccept_9f03c73c:
     # "As you sipped it you felt a cool emerald chill pass through your whole body."
     ""
 
+##== If you don't:
 # game/script.rpy:3086
 translate Spanish toadAccept_737752ff:
 
@@ -3107,12 +3316,14 @@ translate Spanish toadAccept_54335f34:
     # f "Thank you for the wonderful company, and I wish you the best of luck with the festival!"
     f ""
 
+##== If you refuse the ride (and you'd interacted with the mushroom and thief:
 # game/script.rpy:3099
 translate Spanish toadAccept_24393ce9:
 
     # "Your experiences with the Mushroom and Thief had instilled a wise caution within you, and you could not accept the gentleman's offer."
     ""
 
+##== If your godparent is The Devil:
 # game/script.rpy:3102
 translate Spanish toadRefused_ba23b8af:
 
@@ -3143,12 +3354,14 @@ translate Spanish toadRefused_1ea0b8e7:
     # "The curtains parted and inside you saw a small, ugly cane toad, squatting in muck. The graceful arm that beckoned you from behind the curtain was nothing but a wooden prop in his webbed hand. He tossed it to the ground with disgust."
     ""
 
+##== If your godparent is the devil and you drove your mother to her death:
 # game/script.rpy:3111
 translate Spanish toadRefused_14e0a76a:
 
     # f "Why, if your mother was alive I would give her a good piece of my mind about the way she raised you. If she were in her right mind she would have reminded you to mind your betters, and had you the presence of mind to mindfully bring to mind an open mind, you wouldn't dismiss my offer with such peace of mind! I tell you, when I was a tadpole we treated our elders with respect, a good deal more respect than this, and we knew a thing or two about a thing or two, let me tell you, but we never let that go to our heads and despite my vast experience and knowledge even at that young and naive age, I still knew how to give the basic respect that a toad about town deserved, let alone the respect due to a toad with such a fine and noble name as the Burpengary Chippinghams!"
     f ""
 
+#== If not:
 # game/script.rpy:3113
 translate Spanish toadRefused_3ff13375:
 
@@ -3179,6 +3392,7 @@ translate Spanish toadRefused_9f211dc9:
     # "(A wise habit. The Lord knows this world is full of cheats and liars.)"
     ""
 
+##== If the toad is one of the last characters left you get the option to just wander into the woods instead of talking to him.
 # game/script.rpy:3125
 translate Spanish toadRefused_8ebe88c3:
 
@@ -3197,6 +3411,8 @@ translate Spanish toadRefused_775ef8e2:
     # "Without a word, you left him behind and walked deeper and deeper into the woods."
     ""
 
+##== If you decided to just stay on the path and ignore all 3 characters:
+##== And your godparent is the devil:
 # game/script.rpy:3147
 translate Spanish chapter6_028e752d:
 
@@ -3233,6 +3449,9 @@ translate Spanish chapter6_68ac747c:
     # "The rich dark blanket of night was softly rolling over the town, and cooking fires lit up all across the hills, one by one."
     ""
 
+##========= The Witch
+
+##== If The Witch and Hunter have disappeared:
 # game/script.rpy:3172
 translate Spanish witch1_9f9af49a:
 
@@ -3251,6 +3470,11 @@ translate Spanish witch1_88701591:
     # "You slowly walked out of the woods and into the village streets."
     ""
 
+##== Otherwise:
+##============================ CHARACTER BRIEF: The Hunter
+##=== A minor character. Non-binary, like the thief.
+##=== Mostly left pretty blank, an aristocratic english hunter type who hunts food for the village, image shows them with a 1800s/1900s style gun. They are sceptical and don't believe in the wolf.
+##== It's never mentioned in the game but they do have some darker stuff going on where they have a secret underground zoo in layers underneath their house, where they breed strange and unusual game to hunt. But that never made it into the game.
 # game/script.rpy:3179
 translate Spanish witch1_4e4ee8c3:
 
@@ -3269,6 +3493,7 @@ translate Spanish witch1_50c03e9b:
     # h "Be careful tonight. They say there's witches abroad." nointeract
     h "" nointeract
 
+##== If you say there's no such thing as witches:
 # game/script.rpy:3187
 translate Spanish witch1_ad67b5e3:
 
@@ -3419,6 +3644,7 @@ translate Spanish witch1_113faad3:
     # "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
     ""
 
+##== If you don't say there's no such thing as witches:
 # game/script.rpy:3229
 translate Spanish witch1_3fd8495c:
 
@@ -3443,6 +3669,7 @@ translate Spanish witch1_113faad3_1:
     # "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
     ""
 
+##== If the witch is one of the last characters left, you get the option to just turn and walk into the woods instead of interacting:
 # game/script.rpy:3238
 translate Spanish witch1_60352da5:
 
@@ -3478,6 +3705,9 @@ translate Spanish witch1_cf88c148:
 
     # "Without a word, you left the hunter behind and walked deeper and deeper into the woods."
     ""
+##====================================================== Chapter 3: The Village
+
+##== If the villagers have disappeared, the village is empty:
 
 # game/script.rpy:3262
 translate Spanish villageExplore1_b403ebab:
@@ -3497,6 +3727,7 @@ translate Spanish villageExplore1_a6974270:
     # "But the chairs were all vacant. The piles of food lay undisturbed on the tables - not even flies ventured near. The sound of the crackling bonfire echoed through deserted streets."
     ""
 
+##== Otherwise:
 # game/script.rpy:3277
 translate Spanish villageExplore1_57b49f26:
 
@@ -3539,6 +3770,7 @@ translate Spanish villageExplore1_f9fe81e9:
     # "You took your place at the table. All the villagers were there."
     ""
 
+##== Each of these characters may or may not be there.
 # game/script.rpy:3290
 translate Spanish villageExplore1_0fe08cc2:
 
@@ -3713,6 +3945,9 @@ translate Spanish villageExplore1_0acc07c1:
     # gm "Told you."
     gm ""
 
+##==== This section happens when you attempt to leave the village and go back home (where the wolf is). The narrator (the wolf) attempts to stop you.
+
+##== If all but one character has disappeared:
 # game/script.rpy:3382
 translate Spanish village_bdcaa247:
 
@@ -3725,6 +3960,7 @@ translate Spanish village_7a22e6e2:
     # "Come, then. I will meet you there."
     ""
 
+##== Otherwise: You get this sequence, which changes each time you attempt to leave.
 # game/script.rpy:3394
 translate Spanish village_658c148f:
 
@@ -3749,6 +3985,7 @@ translate Spanish village_8c3f09f1:
     # "There's nothing back there you want. Trust me."
     ""
 
+##== If The Hunter is still alive, they try to stop you.
 # game/script.rpy:3412
 translate Spanish village_0373a59f:
 
@@ -3761,6 +3998,7 @@ translate Spanish village_4c04f7c5:
     # h "Come on, let's get back to the feast."
     h ""
 
+##== If The Thief is still alive:
 # game/script.rpy:3415
 translate Spanish village_c04b42bb:
 
@@ -3779,6 +4017,7 @@ translate Spanish village_56ef4e6e:
     # "The hunter took hold of your arm with a surprisingly strong grip and escorted you back into the village."
     ""
 
+##== If not, and the Witch is still alive:
 # game/script.rpy:3420
 translate Spanish village_5b1a54d0:
 
@@ -3797,6 +4036,7 @@ translate Spanish village_825e06fa:
     # "They took hold of your arm with a surprisingly strong grip and escorted you back into the village."
     ""
 
+##== If neither the Thief nor the Witch are alive.
 # game/script.rpy:3429
 translate Spanish village_d5073011:
 
@@ -3857,6 +4097,7 @@ translate Spanish village_5e9f9fdf:
     # "Without a word, they turned and walked back to the village."
     ""
 
+##== More discouragement from the narrator.
 # game/script.rpy:3446
 translate Spanish village_77c17197:
 
@@ -3905,12 +4146,15 @@ translate Spanish village_327418f8:
     # "Go back to the fire. Where it's safe."
     ""
 
+#== If you keep trying it, the wolf eventually gives up and lets you through.
 # game/script.rpy:3467
 translate Spanish village_4bd430f5:
 
     # "Fine."
     ""
 
+##==== CHARACTER BRIEF: The Gutterlings (Appear when some characters have already disappeared)
+##== Weird little monsters who lurk in the gutters around town. They have a broad, rural Australian accent and an affable tone of speech. 
 # game/script.rpy:3474
 translate Spanish village_bf29c358:
 
@@ -3959,58 +4203,53 @@ translate Spanish village_4b340443:
     # g "..."
     g ""
 
+##== If you talk to them six times it takes you to a small story where you escape from their lair. 
+##== See section: gutterlingStory
 # game/script.rpy:3487
 translate Spanish village_7952c538:
 
     # g "Gotcha!"
     g ""
 
+##======= Location: The Banquet by the river. Many variations of this based on how many people have disappeared.
 # game/script.rpy:3517
 translate Spanish banquet_7d24dfc9:
 
     # "You walked down to the river. Picnic blankets lay empty before the dark waters."
     ""
 
+##== Variation: Toad is the last alive
 # game/script.rpy:3520
 translate Spanish banquet_0b0ba838:
 
     # "The Toad stood alone, looking into the flames. For a moment you thought you saw people around him - but they were just shadows. The food lay uneaten."
     ""
 
+##== Variation: No-one alive
 # game/script.rpy:3522
 translate Spanish banquet_175bdfd0:
 
     # "For a moment, you thought you saw people around the fire. But they were just shadows. The food lay uneaten."
     ""
 
+##== Variation: Mayor and Sparrow Herder Alive
 # game/script.rpy:3524
 translate Spanish banquet_fdf52ff5:
 
     # "A splash broke the stillness. You looked around to see the Sparrow Herder and the Mayor on the shore, skipping rocks over the water."
     ""
 
+##== Variation: Only the Mayor Alive
 # game/script.rpy:3526
 translate Spanish banquet_85ff937f:
 
     # "The Mayor sat on the shore, looking out over the water."
     ""
-
+##== Variation: Normal. Everyone alive.
 # game/script.rpy:3541
 translate Spanish banquet_6450f7f0:
 
     # "You walked down to the river, where the banquet was laid out before a bonfire. Some folks were gripping each other tight and crying out at the misfortune that had befallen their town. Others simply sat in glum silence."
-    ""
-
-# game/script.rpy:3545
-translate Spanish banquet_85cec0f1:
-
-    # "No-one sat at the banquet. The food lay uneaten."
-    ""
-
-# game/script.rpy:3547
-translate Spanish banquet_f2b8330d:
-
-    # "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
     ""
 
 # game/script.rpy:3555
@@ -4019,6 +4258,25 @@ translate Spanish banquetMenu_f2ee5d9a:
     # "They paid no attention to you, but continued shaking their heads and watching the flames with wretched misery."
     ""
 
+##== Variation: The toad vanished.
+# game/script.rpy:3545
+translate Spanish banquet_85cec0f1:
+
+    # "No-one sat at the banquet. The food lay uneaten."
+    ""
+
+##== Variation: The toad is alive.
+# game/script.rpy:3547
+translate Spanish banquet_f2b8330d:
+
+    # "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
+    ""
+
+##======= CHARACTER BRIEF: The Sparrow-Herder. 
+##== A minor character. The sparrow-herder tells you random rumours, which all end with "How do I know this? The sparrows told me."
+##== Has a cockney kind of accent, removing the h's. The effect is to make him sound kind of like a street urchin, lower-class, urban. 
+
+##== Rumour 1: The Ruins
 # game/script.rpy:3563
 translate Spanish banquetMenu_dc3f1084:
 
@@ -4085,6 +4343,7 @@ translate Spanish banquetMenu_a5fd1eac:
     # sh "How do I know all this? The sparrows told me."
     sh ""
 
+##== Rumour 2: The Mushrooms
 # game/script.rpy:3581
 translate Spanish banquetMenu_dc3f1084_1:
 
@@ -4133,6 +4392,7 @@ translate Spanish banquetMenu_a5fd1eac_1:
     # sh "How do I know all this? The sparrows told me."
     sh ""
 
+##== Rumour 3: The Gutterlings
 # game/script.rpy:3595
 translate Spanish banquetMenu_dc3f1084_2:
 
@@ -4205,12 +4465,19 @@ translate Spanish banquetMenu_a5fd1eac_2:
     # sh "How do I know all this? The sparrows told me."
     sh ""
 
+##======= CHARACTER BRIEF: The Mayor. 
+##== A minor character. Accent: Plummy, english, upper class.
+##== Has random rumours that add minor flavour.
+
+##== Rumour 1: Moon-head
+##== If the witch isn't alive:
 # game/script.rpy:3617
 translate Spanish banquetMenu_07d863fc:
 
     # may "If you're going out, chum, be wary! They say Moon-Head walks these roads tonight."
     may ""
 
+##== If the witch is alive:
 # game/script.rpy:3619
 translate Spanish banquetMenu_6533974c:
 
@@ -4259,6 +4526,14 @@ translate Spanish essay1Showing_338343eb:
     # may "Sometimes I still hear her laughter on moonless nights."
     may ""
 
+##==== CHARACTER BRIEF: The Second Pig
+##== There is a random chance this character appears. 
+##== The first pig is the pig you can find from the thief. The second is here. The third is the pig being eaten at the banquet. Collectively they reference The Three Little Pigs.
+##== The pigs have an unexpectedly formal and grandiose tone. Think like the final villain in a JRPG. 
+##== These characters are a bit inspired by this album: https://worthikids.bandcamp.com/album/duloc
+
+##== Variation 1: If you have the first pig with you.
+##== Pig 2 believes in the wolf. The other pig believes he is a deluded, mad fool. There are no wolves in australia. 
 # game/script.rpy:3665
 translate Spanish essay1Showing_54514a97:
 
@@ -4268,7 +4543,7 @@ translate Spanish essay1Showing_54514a97:
 # game/script.rpy:3666
 translate Spanish essay1Showing_94c4ecbe:
 
-    # "Your pig turned rose up on its hind legs."
+    # "Your pig turned and rose up on its hind legs."
     ""
 
 # game/script.rpy:3667
@@ -4409,6 +4684,7 @@ translate Spanish essay1Showing_99428a2b:
     # p1 "There is nothing for us here."
     p1 ""
 
+##== Variation 2: If you don't have the pig with you.
 # game/script.rpy:3701
 translate Spanish essay1Showing_065b84f9:
 
@@ -4457,6 +4733,8 @@ translate Spanish essay1Showing_3d8b8b8e:
     # p2 "Perhaps you've already met them. You just haven't realised yet."
     p2 ""
 
+##==================== MAJOR CONVERSATION: Conversation with The Toad. 
+##== Variation 1: When the toad is the last character left alive.
 # game/script.rpy:3725
 translate Spanish essay1Showing_28b6da59:
 
@@ -4529,6 +4807,7 @@ translate Spanish essay1Showing_e74d0a09:
     # f "I think this may be our last party." nointeract
     f "" nointeract
 
+##== If you say yes.
 # game/script.rpy:3749
 translate Spanish essay1Showing_57b178cd:
 
@@ -4541,6 +4820,7 @@ translate Spanish essay1Showing_a00a78ae:
     # f "Let us be off at once!"
     f ""
 
+##== If you say no.
 # game/script.rpy:3754
 translate Spanish essay1Showing_4010e427:
 
@@ -4565,6 +4845,7 @@ translate Spanish essay1Showing_af5dde90:
     # f "Now, where were we?"
     f ""
 
+##== If you stole the pig's item when you first met him.
 # game/script.rpy:3764
 translate Spanish essay1Showing_854d3a27:
 
@@ -4589,6 +4870,7 @@ translate Spanish essay1Showing_3762cf5f:
     # "Best avoid him for now."
     ""
 
+##== If you stole the pig's item and the mushroom + thief are both dead
 # game/script.rpy:3771
 translate Spanish essay1Showing_51a6b7b8:
 
@@ -4607,6 +4889,7 @@ translate Spanish essay1Showing_02506f40:
     # f "Don't worry about that little issue of the emerald brooch you made off with. I have so much money now, you see, I'll hardly miss it. Consider it a gift! A memento of our new friendship, hoho!"
     f ""
 
+##== Normal variation - talking to the Toad for the first time - if you didn't accept his offer of a lift.
 # game/script.rpy:3776
 translate Spanish essay1Showing_c7795e0b:
 
@@ -4625,6 +4908,7 @@ translate Spanish essay1Showing_f319b0e9:
     # f "Do not be alarmed! I have already forgiven your poor manners in refusing my generous offer on the road."
     f ""
 
+##== If you did accept his offer of a lift.
 # game/script.rpy:3780
 translate Spanish essay1Showing_5ff48ecc:
 
@@ -4649,6 +4933,7 @@ translate Spanish essay1Showing_896a058a:
     # f "Please, take a seat beside me! I would count myself proud to sit among such distinguished company as yours."
     f ""
 
+##== If you leave and then come back to speak to the toad again.
 # game/script.rpy:3785
 translate Spanish essay1Showing_05556692:
 
@@ -4691,6 +4976,7 @@ translate Spanish toadConvo2_13f54d33:
     # "He awkwardly tilted the wineglass towards him and drank deeply, almost falling in."
     ""
 
+##== Another moment when the text is too long and cuts off as the page is torn.
 # game/script.rpy:3801
 translate Spanish toadConvo2_16ecfb5d:
 
@@ -5123,6 +5409,7 @@ translate Spanish toadWitchJoin_2600851c:
     # f "Return soon! You can't possibly leave without sampling some of this fine green mango salad over here, absolutely sensational!"
     f ""
 
+##== If you try to leave and go into the woods to find information, but the Sparrow-herder is still alive - he tries to stop you.
 # game/script.rpy:3949
 translate Spanish toadWitchJoin_5815467e:
 
@@ -5141,6 +5428,7 @@ translate Spanish toadWitchJoin_839a362d:
     # sh "Come on then, let's get back to the village."
     sh ""
 
+##== If you try that and he's not alive, no-one stops you.
 # game/script.rpy:3955
 translate Spanish toadWitchJoin_81bebdcc:
 
@@ -22901,6 +23189,8 @@ translate Spanish gilgameshConvo_b4d0e23a:
     # "No matter. You are back in my arms now, child. I will not release you again. "
     ""
 
+##========================= INTERLUDE A: gutterlingStory
+##== This short story occurs if you are kidnapped by the gutterlings in the village
 # game/script.rpy:10335
 translate Spanish gutterlingStory_8f28a6cc:
 
@@ -22979,6 +23269,7 @@ translate Spanish gutterChoice_085a7300:
     # "You waited a long while in silence."
     ""
 
+##== If The Hunter is alive:
 # game/script.rpy:10368
 translate Spanish gutterChoice_e9a44b55:
 
@@ -23039,6 +23330,8 @@ translate Spanish gutterChoice_cd8cdf30:
     # "In the distance you heard the approach of a great and terrible shape. A crawling god, formed of lost dreams planted in this dark soil centuries ago and fed every full moon. It loomed over you and spoke."
     ""
 
+##==== Character: The Gutter King, lord of all gutterlings.
+##== Owns all lost things. A giant and terrible creature.
 # game/script.rpy:10378
 translate Spanish gutterChoice_c94f7495:
 
@@ -23093,6 +23386,7 @@ translate Spanish gutterChoice_15b64b87:
     # gk "No.... NO!"
     gk ""
 
+##== If The Sparrow-Herder is alive.
 # game/script.rpy:10387
 translate Spanish gutterChoice_814d92a9:
 
@@ -23177,6 +23471,7 @@ translate Spanish gutterChoice_b78f3d5a:
     # "They nodded, and left you as you shook of the grime of the gutter."
     ""
 
+##== If those NPC's are dead:
 # game/script.rpy:10407
 translate Spanish gutterChoice_1b8f96c8:
 
@@ -23189,6 +23484,7 @@ translate Spanish gutterChoice_32b9daa1:
     # "There was no-one left to hear."
     ""
 
+##== If your Godparent is G-d:
 # game/script.rpy:10413
 translate Spanish gutterChoice_c015e6c0:
 
@@ -23267,6 +23563,7 @@ translate Spanish gutterChoice_3ef7e845:
     # "In a blink, the light was gone."
     ""
 
+##== If your Godparent is The Devil:
 # game/script.rpy:10430
 translate Spanish gutterChoice_4d2621d4:
 
@@ -23351,6 +23648,7 @@ translate Spanish gutterChoice_92e602a0:
     # "In a blink, the fire was gone."
     ""
 
+##== If your Godparent is Death:
 # game/script.rpy:10448
 translate Spanish gutterChoice_d3dc4f2f:
 
@@ -23453,6 +23751,13 @@ translate Spanish gutterChoice_bb54685f:
     # "In a blink, She was gone."
     ""
 
+##===== End of gutterlingstory
+
+##=================================== INTERLUDE B: THE WOLF
+##== This is what happens if you leave the village to go home.
+##== This initiates your final confrontation with The Wolf.
+##== As you travel back home, you leave the fairytale world and begin to enter the real world (Where you are trapped, reading the book). 
+
 # game/script.rpy:10484
 translate Spanish wolf_8d496167:
 
@@ -23477,6 +23782,7 @@ translate Spanish wolf_0ce901fb:
     # "You passed the crooked old water-dragons. The old turtle eyed you from the water."
     ""
 
+##== You begin to enter the real, modern world. You hear modern sirens.
 # game/script.rpy:10499
 translate Spanish wolf_b689c6eb:
 
@@ -23501,6 +23807,7 @@ translate Spanish wolf_8632219e:
     # "A cold wind was blowing. The cold started to sink into your bones."
     ""
 
+##== Hungry Jack's is an Australian fast food chain - the local replacement of Burger King.
 # game/script.rpy:10506
 translate Spanish wolf_761e23aa:
 
@@ -23525,12 +23832,42 @@ translate Spanish wolf_402b0219:
     # "You walked up to the unit. You knew which one it was."
     ""
 
+##== If you explore around the apartment
+##== This is meant to feel like a modern, grimy place where you (the player reading the book) live. 
+##== The fireplace in the apartment is perhaps a little out of place in that setting but it's there both to give the cosy feeling that you're reading a book by the fire, and for the dramatic finale where you throw the book into the fire.
+# game/script.rpy:10641
+translate Spanish doorLock_c6c0f047:
+
+    # "You walked around the apartment block."
+    ""
+
+# game/script.rpy:10642
+translate Spanish doorLock_abce9afa:
+
+    # "There was no sign of another way in."
+    ""
+
+##== If you turn around and leave.
+# game/script.rpy:10645
+translate Spanish doorLock_31e16f99:
+
+    # "You walked away down the road and through the woods."
+    ""
+
+# game/script.rpy:10646
+translate Spanish doorLock_d6612612:
+
+    # "After a long journey, you arrived back at the village."
+    ""
+
+##== If you look in the window.
 # game/script.rpy:10545
 translate Spanish doorLock_4a8ae637:
 
     # "The room inside was dark except for a small fireplace with a chair facing it."
     ""
 
+##== The figure here is you - the person reading the book, trapped in your apartment and unable to look away from the page. 
 # game/script.rpy:10547
 translate Spanish doorLock_ed81ac5c:
 
@@ -23573,71 +23910,7 @@ translate Spanish doorLock_37b1a4af:
     # "The lock came undone with a click."
     ""
 
-# game/script.rpy:10572
-translate Spanish doorLock_8721c336:
-
-    # "Child. The hour grows late."
-    ""
-
-# game/script.rpy:10573
-translate Spanish doorLock_ef1c65fd:
-
-    # "This choice leads to The End. You will never be able to return to the world you once knew."
-    ""
-
-# game/script.rpy:10574
-translate Spanish doorLock_97652bf7:
-
-    # "Ever."
-    ""
-
-# game/script.rpy:10575
-translate Spanish doorLock_facced3b:
-
-    # "There is not much time left. But still, you should only open this door once you are certain you know the truth."
-    ""
-
-# game/script.rpy:10583
-translate Spanish doorLock_84649feb:
-
-    # "Very well."
-    ""
-
-# game/script.rpy:10585
-translate Spanish doorLock_e7df51d9:
-
-    # "Then you are not ready."
-    ""
-
-# game/script.rpy:10586
-translate Spanish doorLock_4246b7c8:
-
-    # "There is not much time. If you plan to return, return soon."
-    ""
-
-# game/script.rpy:10587
-translate Spanish doorLock_0dd5c8b8:
-
-    # "You blinked, and found yourself back in the village."
-    ""
-
-# game/script.rpy:10590
-translate Spanish doorLock_84649feb_1:
-
-    # "Very well."
-    ""
-
-# game/script.rpy:10591
-translate Spanish doorLock_4246b7c8_1:
-
-    # "There is not much time. If you plan to return, return soon."
-    ""
-
-# game/script.rpy:10592
-translate Spanish doorLock_0dd5c8b8_1:
-
-    # "You blinked, and found yourself back in the village."
-    ""
+##== We give you a final warning before triggering the end of the game.
 
 # game/script.rpy:10595
 translate Spanish doorLock_2f5506d7:
@@ -23669,6 +23942,76 @@ translate Spanish doorLock_f019026a:
     # "Once you know everything you need to know."
     ""
 
+##== The same warning text - but if multiple people have already died, we mention that there isn't much time left.
+# game/script.rpy:10572
+translate Spanish doorLock_8721c336:
+
+    # "Child. The hour grows late."
+    ""
+
+# game/script.rpy:10573
+translate Spanish doorLock_ef1c65fd:
+
+    # "This choice leads to The End. You will never be able to return to the world you once knew."
+    ""
+
+# game/script.rpy:10574
+translate Spanish doorLock_97652bf7:
+
+    # "Ever."
+    ""
+
+# game/script.rpy:10575
+translate Spanish doorLock_facced3b:
+
+    # "There is not much time left. But still, you should only open this door once you are certain you know the truth."
+    ""
+
+##== If you say "I'm not sure" we count that as a No - you have to be certain.
+# game/script.rpy:10583
+translate Spanish doorLock_84649feb:
+
+    # "Very well."
+    ""
+
+# game/script.rpy:10585
+translate Spanish doorLock_e7df51d9:
+
+    # "Then you are not ready."
+    ""
+
+# game/script.rpy:10586
+translate Spanish doorLock_4246b7c8:
+
+    # "There is not much time. If you plan to return, return soon."
+    ""
+
+# game/script.rpy:10587
+translate Spanish doorLock_0dd5c8b8:
+
+    # "You blinked, and found yourself back in the village."
+    ""
+
+##== If you say "I'm not sure" - this is the variant that plays if multiple people have vanished.
+# game/script.rpy:10590
+translate Spanish doorLock_84649feb_1:
+
+    # "Very well."
+    ""
+
+# game/script.rpy:10591
+translate Spanish doorLock_4246b7c8_1:
+
+    # "There is not much time. If you plan to return, return soon."
+    ""
+
+# game/script.rpy:10592
+translate Spanish doorLock_0dd5c8b8_1:
+
+    # "You blinked, and found yourself back in the village."
+    ""
+
+##== If you say "I'm not sure" and no-one has disappeared yet - we lock you out of this. You have to come back in a future playthrough.
 # game/script.rpy:10606
 translate Spanish doorLock_84649feb_2:
 
@@ -23693,6 +24036,7 @@ translate Spanish doorLock_0dd5c8b8_2:
     # "You blinked, and found yourself back in the village."
     ""
 
+##== If you say "No" and no-one has disappeared yet.
 # game/script.rpy:10616
 translate Spanish doorLock_84649feb_3:
 
@@ -23711,34 +24055,11 @@ translate Spanish doorLock_0dd5c8b8_3:
     # "You blinked, and found yourself back in the village."
     ""
 
+##== If you say "Yes" and enter the flat.
 # game/script.rpy:10623
 translate Spanish doorLock_95b71484:
 
     # "The door swung slowly open."
-    ""
-
-# game/script.rpy:10641
-translate Spanish doorLock_c6c0f047:
-
-    # "You walked around the apartment block."
-    ""
-
-# game/script.rpy:10642
-translate Spanish doorLock_abce9afa:
-
-    # "There was no sign of another way in."
-    ""
-
-# game/script.rpy:10645
-translate Spanish doorLock_31e16f99:
-
-    # "You walked away down the road and through the woods."
-    ""
-
-# game/script.rpy:10646
-translate Spanish doorLock_d6612612:
-
-    # "After a long journey, you arrived back at the village."
     ""
 
 # game/script.rpy:10651
@@ -23747,12 +24068,17 @@ translate Spanish wolfHouse_464b9518:
     # "The flat was small, but cosy and warm."
     ""
 
+##== This description changes based on how quickly you got here. If you get here in your first playthrough of the game, it's normal. 
+##== In later playthroughs the flat is described as more and more dusty and decayed. More time has passed as you read the book.
+
+##== First playthrough
 # game/script.rpy:10652
 translate Spanish wolfHouse_9be4e710:
 
     # "By the fireplace was a figure in a soft, red armchair."
     ""
 
+##== Second playthrough
 # game/script.rpy:10654
 translate Spanish wolfHouse_e729d2a7:
 
@@ -23765,6 +24091,7 @@ translate Spanish wolfHouse_77bd7ba2:
     # "By the fireplace was a figure in a cracked red armchair."
     ""
 
+##== Third Playthrough
 # game/script.rpy:10657
 translate Spanish wolfHouse_1e08df29:
 
@@ -23777,6 +24104,7 @@ translate Spanish wolfHouse_8f500767:
     # "By the fireplace was a shrunken figure in a decrepit armchair."
     ""
 
+##== Fourth Playthrough
 # game/script.rpy:10660
 translate Spanish wolfHouse_a60711fc:
 
@@ -23795,24 +24123,28 @@ translate Spanish wolfHouse_6ef3e7ec:
     # "You walked closer."
     ""
 
+##== If your pronouns are They/Them:
 # game/script.rpy:10674
 translate Spanish wolfHouseExplore_930a0cbf:
 
     # "[He] were reading a book."
     ""
 
+##== If your pronouns are She/Her or He/Him:
 # game/script.rpy:10676
 translate Spanish wolfHouseExplore_7f69f752:
 
     # "[He] was reading a book."
     ""
 
+##== More variations based on how much time has passed. You are described as older and older in later playthroughs.
 # game/script.rpy:10678
 translate Spanish wolfHouseExplore_cb9da553:
 
     # "In the dim light, you couldn't quite make out [his] face."
     ""
 
+##== First Playthrough:
 # game/script.rpy:10679
 translate Spanish wolfHouseExplore_d9a27901:
 
@@ -23831,6 +24163,7 @@ translate Spanish wolfHouseExplore_cb9da553_1:
     # "In the dim light, you couldn't quite make out [his] face."
     ""
 
+##== Second Playthrough:
 # game/script.rpy:10683
 translate Spanish wolfHouseExplore_38f4ab04:
 
@@ -23843,18 +24176,21 @@ translate Spanish wolfHouseExplore_9e6eeb82:
     # "[His] hair was long and lank. [He] gripped the book tightly. [His] knuckles were white."
     ""
 
+##== If your pronouns are they/them:
 # game/script.rpy:10687
 translate Spanish wolfHouseExplore_be3677f2:
 
     # "In the dim light, you couldn't quite make out [his] face, but you could see [he] were old."
     ""
 
+##== If your pronouns are He/Him or She/Her:
 # game/script.rpy:10689
 translate Spanish wolfHouseExplore_e1ef9670:
 
     # "In the dim light, you couldn't quite make out [his] face, but you could see [he] was old."
     ""
 
+##== Third Playthrough:
 # game/script.rpy:10690
 translate Spanish wolfHouseExplore_76751903:
 
@@ -23867,12 +24203,15 @@ translate Spanish wolfHouseExplore_1e378b69:
     # "[His] hair was long and grey. [His] wizened hands gripped the book tightly. [His] knuckles were white."
     ""
 
+##== Fourth Playthrough:
+##== If your pronouns are They/Them:
 # game/script.rpy:10694
 translate Spanish wolfHouseExplore_34aceeab:
 
     # "In the dim light, you couldn't quite make out [his] face, but you could see [he] were ancient."
     ""
 
+##== If your pronouns are She/Her or He/Him:
 # game/script.rpy:10696
 translate Spanish wolfHouseExplore_67d8e57e:
 
@@ -23903,6 +24242,7 @@ translate Spanish wolfHouseExplore_ad8017aa:
     # "[He] turned the page again."
     ""
 
+##== The shape behind you is The Wolf. It appears as a shadow which slowly coils around you as you read the book.
 # game/script.rpy:10703
 translate Spanish wolfHouseExplore_85ec2533:
 
@@ -23921,6 +24261,7 @@ translate Spanish wolfHouseExplore_f31da735:
     # "You heard soft whispers in your head. Your hand began to shake."
     ""
 
+##== If you explore the flat and investigate the phone on the nearby table.
 # game/script.rpy:10709
 translate Spanish wolfHouseExplore_f98fd633:
 
@@ -23933,6 +24274,7 @@ translate Spanish wolfHouseExplore_d4bb4949:
     # "It was playing some soft music on loop, with the sounds of rain and a crackling fireplace."
     ""
 
+##== You can pause or unpause the phone. If you pause it the game's wildlife ambience stops. This effect is persistent across the whole game.
 # game/script.rpy:10713
 translate Spanish wolfHouseExplore_2cc90788:
 
@@ -23945,23 +24287,39 @@ translate Spanish wolfHouseExplore_e3c35de2:
     # "The phone fell silent."
     ""
 
+##== If you turn it back on:
 # game/script.rpy:10742
 translate Spanish wolfHouseExplore_aca1c0ac:
 
     # "The soft sounds filled the apartment once more."
     ""
 
+##== If you pick up the fire poker:
+##== Note that the poker is made of Cold Iron which is folklorically dangerous to fae spirits and creatures. This is why it could potentially harm The Wolf.
 # game/script.rpy:10756
 translate Spanish wolfFigure_6693abc8:
 
     # "You reached over and picked up the fire poker. The iron felt strong and heavy in your hands."
     ""
 
+##== If you look away from the figure in the chair.
+# game/script.rpy:10770
+translate Spanish wolfFigure_1397cb46:
+
+    # "You turned away."
+    ""
+
+##== If you take the poker and use it to strike the coiling figure (the wolf):
 # game/script.rpy:10761
 translate Spanish wolfFigure_337c0d85:
 
     # "You steadied your shaking hands and raised the poker high."
     ""
+
+##== During this line, the game pauses and you hear the audio of the wolf whispering "No. If we're going to do this, we're going to do it the right way." This is wolfNo.mp3 in the game files.
+##== This means - the wolf is not going to allow itself to be killed in this grimy modern setting by being hit over the head with a fire poker.
+##== If it is to die, it must be in a suitably mythic setting.
+##== Note that we'll need to record some actual audio for this - let me know if you or someone you know would be up for recording it. 
 
 # game/script.rpy:10763
 translate Spanish wolfFigure_86f06ff0:
@@ -23969,11 +24327,11 @@ translate Spanish wolfFigure_86f06ff0:
     # "The poker smashed down, and then - " with Pause(9.0)
     "" with Pause(9.0)
 
-# game/script.rpy:10770
-translate Spanish wolfFigure_1397cb46:
-
-    # "You turned away."
-    ""
+##== From here you are whisked away to another location to confront and kill the wolf in a final battle.
+##== This is heavily inspired by BEOWULF- specifically the mere and the confrontation with Grendel's Mother. The language is very much taken from Beowulf and has a unique mythic tone to it, slightly different to the rest of the text.
+##== Part of that tone is heavy use of compound words: battle-blood, oaken war-shield, gleaming-drink. This is a feature of Old English and Old Norse-Icelandic called Kenning. https://en.wikipedia.org/wiki/Kenning
+##== This is an elevated moment and so that mythic tone is important. The characters and setting have twisted to embody archetypes, more than people. 
+##== They do not seem quite themselves, instead seeming like they are playing out parts from an old story.
 
 # game/script.rpy:10778
 translate Spanish wolfDestroy_e558cd3a:
@@ -23981,6 +24339,7 @@ translate Spanish wolfDestroy_e558cd3a:
     # "The darkness of night was about you, and the dense forest, and the wild wind."
     ""
 
+##== If The Thief is the last one alive:
 # game/script.rpy:10781
 translate Spanish wolfDestroy_8b88be96:
 
@@ -23993,6 +24352,7 @@ translate Spanish wolfDestroy_5c20d362:
     # "They were the last of your companions left alive."
     ""
 
+##== If The Witch is the last one alive
 # game/script.rpy:10784
 translate Spanish wolfDestroy_b98aaa29:
 
@@ -24005,6 +24365,7 @@ translate Spanish wolfDestroy_fcc3eacc:
     # "She was the last of your companions left alive."
     ""
 
+##== If The Toad is the last one alive
 # game/script.rpy:10787
 translate Spanish wolfDestroy_ef040ec2:
 
@@ -24017,10 +24378,11 @@ translate Spanish wolfDestroy_99c4ad91:
     # "He was the last of your companions left alive."
     ""
 
+##== If The Mushroom is the last one alive
 # game/script.rpy:10790
 translate Spanish wolfDestroy_a284f5ff:
 
-    # "The mushroom stood beside you, shivering with fear."
+    # "The Mushroom stood beside you, shivering with fear."
     ""
 
 # game/script.rpy:10791
@@ -24029,18 +24391,21 @@ translate Spanish wolfDestroy_fcc3eacc_1:
     # "She was the last of your companions left alive."
     ""
 
+##== If there are 2 people left alive:
 # game/script.rpy:10793
 translate Spanish wolfDestroy_d240a352:
 
     # "Your two surviving friends stood beside you, shivering with fear."
     ""
 
+##== If there are 3 people left alive:
 # game/script.rpy:10795
 translate Spanish wolfDestroy_6e98f4ed:
 
     # "Your three surviving friends stood beside you, shivering with fear."
     ""
 
+##== If all 4 people are alive:
 # game/script.rpy:10797
 translate Spanish wolfDestroy_e66a71db:
 
@@ -24065,6 +24430,7 @@ translate Spanish wolfDestroy_36c1c8fe:
     # f "Master, please. Let us go back to the village."
     f ""
 
+##== This section quotes from The Epic of Gilgamesh, referring to Humbaba.
 # game/script.rpy:10805
 translate Spanish wolfDestroy_df0fb17b:
 
@@ -24083,6 +24449,7 @@ translate Spanish wolfDestroy_eedf7666:
     # f "No man has seen his like and lived." nointeract
     f "" nointeract
 
+##== You must say "I must go on."
 # game/script.rpy:10813
 translate Spanish wolfDestroy_aee0aead:
 
@@ -24125,6 +24492,7 @@ translate Spanish wolfDestroy_a32fb7ff:
     # w "Master, I beg of you. Go no further."
     w ""
 
+##== Another quote from The Epic of Gilgamesh, referring to Humbaba.
 # game/script.rpy:10823
 translate Spanish wolfDestroy_2c927ccf:
 
@@ -24185,6 +24553,7 @@ translate Spanish wolfDestroy_0e1660fb:
     # t "Master, what do you hope to gain out of this?"
     t ""
 
+##== This section from The Bible, referring to Leviathan. https://www.biblegateway.com/passage/?search=Job%2041&version=NIV
 # game/script.rpy:10841
 translate Spanish wolfDestroy_5517f9d7:
 
@@ -24203,6 +24572,7 @@ translate Spanish wolfDestroy_68d87ad8:
     # t "Nothing on earth is his equal. He is king over all that are proud." nointeract
     t "" nointeract
 
+##== You must say "I must go on."
 # game/script.rpy:10849
 translate Spanish wolfDestroy_799fdb3b:
 
@@ -24221,6 +24591,7 @@ translate Spanish wolfDestroy_77696b79_2:
     # pov "Thank you, my friend. I will not forget you."
     pov ""
 
+##== This part from Beowulf, where the lake is called a Mere.
 # game/script.rpy:10854
 translate Spanish wolfDestroy_59af19ea:
 
@@ -24263,6 +24634,7 @@ translate Spanish wolfDestroy_15ec2855:
     # m "There is nothing for us here." nointeract
     m "" nointeract
 
+##== Quote from The Epic of Gilgamesh.
 # game/script.rpy:10868
 translate Spanish wolfDestroy_71850d00:
 
@@ -24293,6 +24665,7 @@ translate Spanish wolfDestroy_64fc3f11:
     # "You stood in silence. The trees whispered."
     ""
 
+##== Another reference to The Space Between The Trees.
 # game/script.rpy:10874
 translate Spanish wolfDestroy_05354d0c:
 
@@ -24305,6 +24678,7 @@ translate Spanish wolfDestroy_c255193b:
     # "Here at last, at the end of time. The source of all that fear and pain."
     ""
 
+##== Reference to Humbaba's appearance - was said to have a face like a coil of entrails.
 # game/script.rpy:10876
 translate Spanish wolfDestroy_5144ab20:
 
@@ -24449,6 +24823,8 @@ translate Spanish wolfDestroy_cf48ad40:
     # "As you fell you could feel the blind abyss all around you. Strange and terrible figures flickered at the edge of your awareness."
     ""
 
+##== If you look out into the abyss:
+##== This is a scene where you can look further and further to get a vision, extending far past what you should normally be able to see.
 # game/script.rpy:10922
 translate Spanish lookUp_e6331e3d:
 
@@ -24479,6 +24855,8 @@ translate Spanish lookUp_5bbf9c7f:
     # "The spawn of Tiamat. The court of the Wolf."
     ""
 
+##== If you look further:
+##== References to The Epic of Gilgamesh.
 # game/script.rpy:10930
 translate Spanish lookUp_9a0135b1:
 
@@ -24503,6 +24881,8 @@ translate Spanish lookUp_6183bdaa:
     # "She raised her head and saw you."
     ""
 
+##== If you look further:
+##== You see a vision of the modern world.
 # game/script.rpy:10937
 translate Spanish lookUp_1d19abb3:
 
@@ -24521,6 +24901,8 @@ translate Spanish lookUp_df6b2ac2:
     # "You saw the Trash Queens slowly shifting in the secret landfill rivers, the ghosts and gutterlings creeping through decaying megamalls as cabals of Market Researchers hunted for prey through subterranean parking lots underneath the great sweeping wasteland of pavement and alleyways and apartment buildings and highways stretching out to the horizon."
     ""
 
+##== If you look further:
+##== You see the Ash Giants. These are deliberately left mysterious and unexplained but are essentially a metaphor for the atomic bomb and the end of humankind. 
 # game/script.rpy:10943
 translate Spanish lookUp_6e7d22e6:
 
@@ -24545,6 +24927,7 @@ translate Spanish lookUp_b0e7682a:
     # "In their right hand is a terrible sound, and in their left hand is a terrible light."
     ""
 
+##== If you look away:
 # game/script.rpy:10950
 translate Spanish lookUp_2bd6c6b5:
 
@@ -24611,12 +24994,14 @@ translate Spanish lookUp_8df86add:
     # "I twitched one final time, and then went still forever."
     ""
 
+##== If only 1 character is left alive - "Companion"
 # game/script.rpy:10979
 translate Spanish lookUp_84eac59c:
 
     # "On the shore of the lake, your companion had lost hope."
     ""
 
+##== If 2+ characters are alive - "Companions" plural
 # game/script.rpy:10981
 translate Spanish lookUp_96b33a7e:
 
@@ -24629,6 +25014,7 @@ translate Spanish lookUp_0c061fbf:
     # "The waters were red with blood. There was no sign of life."
     ""
 
+##== If one specific companion is the only one alive:
 # game/script.rpy:10985
 translate Spanish lookUp_8370e065:
 
@@ -24653,6 +25039,7 @@ translate Spanish lookUp_c1f7f4f2:
     # "The mushroom stared at the water for long hours with sickness in her heart, wishing to see you again."
     ""
 
+##== Otherwise if 2+ companions are alive:
 # game/script.rpy:10993
 translate Spanish lookUp_a7da0acf:
 
@@ -24731,12 +25118,14 @@ translate Spanish lookUp_99d5c050:
     # "And so you lived in peace and prosperity for the rest of your days."
     ""
 
+##== The image of "THE END" shows under the text.
 # game/script.rpy:11019
 translate Spanish lookUp_0ae9bcd0:
 
     # ""
     ""
 
+##== You say "but that isn't the end, is it?
 # game/script.rpy:11024
 translate Spanish lookUp_a20cefa7:
 
@@ -24791,6 +25180,7 @@ translate Spanish lookUp_e9868ced:
     # pov "I want you to let me go. Let everyone go."
     pov ""
 
+##== If you're playing this scene before anyone has disappeared - removes reference to people having disappeared.
 # game/script.rpy:11040
 translate Spanish lookUp_deee30e8_1:
 
@@ -24845,6 +25235,7 @@ translate Spanish lookUp_c3a74f1e:
     # "These friends of yours. I own them, now. They gave themselves over to me."
     ""
 
+##== The wolf speaks through each character in turn. If a certain character isn't alive, the line swaps to a difference character who is alive.
 # game/script.rpy:11056
 translate Spanish lookUp_8bc2c81f:
 
@@ -24959,6 +25350,12 @@ translate Spanish lookUp_db04a46a:
     # mum "I am the beginning and the end."
     mum ""
 
+##== Quote from Leviathan https://www.biblegateway.com/passage/?search=Job%2041&version=NIV
+##== In this text, G-d talks about the biblical creature Leviathan and how strong and powerful it is - how no man on earth could hope to stand against it. Leviathan is likely a reference to a whale.
+##== G-d then says - if you have no hope of overcoming Leviathan, how could you possibly overcome me? How can anyone stand against me? Who can dare to ask me for anything?
+##== So in this passage the Wolf is directly comparing itself to G-d and saying that it's all-powerful.
+##== As the narrator, it has complete control over everything that happens in the story. So there is no possible way to overcome it - everything in the world belongs to it.
+
 # game/script.rpy:11131
 translate Spanish lookUp_2a0aedb0:
 
@@ -24971,6 +25368,9 @@ translate Spanish lookUp_e548804c:
     # pov "Everything under heaven belongs to me."
     pov ""
 
+##== You are shown a full row of dialogue choices which are all "I Understand". This emphasises your powerlessness.
+##== The Wolf decides what dialogue choices you are shown, so there is no possible way to take any action without its consent.
+##== The Wolf replies "Good" to every choice.
 # game/script.rpy:11142
 translate Spanish lookUp_c5fa6fdf:
 
@@ -25019,12 +25419,18 @@ translate Spanish lookUp_4904a900:
     # "Now you know how foolish you have been. What can you offer me? What can you hold against me?"
     ""
 
+##== You say - "I know your true name."
+##== This is a classic element of fairytales and folklore: If you know something's True Name, you have power over it.
+##== The Wolf is naturally weak to that idea because Fairytales and Folklore are its bread and butter, this is the world it exists in. So, you're really speaking its language here - this is the perfect way for it to be defeated.
+##== The Wolf is also weak to this concept because it feels it has been forgotten. No-one remembers its true name. 
+##== Ultimately, by saying its True Name, it consents to being truly defeated. It feels you have proven yourself in a folkloric sense, and it is glad that at least one person still remembers its real name. It's happy to die now, knowing that.
 # game/script.rpy:11161
 translate Spanish lookUp_a20cefa7_1:
 
     # "..."
     ""
 
+##== If you have already mentioned Humbaba (by typing it in as your name in character creation).
 # game/script.rpy:11162
 translate Spanish lookUp_6d2361b3:
 
@@ -25133,6 +25539,7 @@ translate Spanish lookUp_5724c4e8:
     # "If you are wrong, you will be eaten forever."
     ""
 
+##== If you get the name right:
 # game/script.rpy:11196
 translate Spanish lookUp_76c5b11c:
 
@@ -25151,6 +25558,7 @@ translate Spanish lookUp_18d63664:
     # "That's impossible. It was buried a thousand years ago. None can stand against-"
     ""
 
+##== You gain full control over the narrative.
 # game/script.rpy:11199
 translate Spanish lookUp_69ad623b:
 
@@ -25211,6 +25619,7 @@ translate Spanish lookUp_ffbf449e:
     # "You have full and total control."
     ""
 
+##== If you get the name wrong:
 # game/script.rpy:11213
 translate Spanish lookUp_205e8c81:
 
@@ -25271,12 +25680,15 @@ translate Spanish lookUp_94c36c06:
     # "Your friends searched for you. But as they did, they were lost."
     ""
 
+##== After this line you're kicked out and everyone is eaten.
 # game/script.rpy:11235
 translate Spanish lookUp_d7cb4b40:
 
     # "None of them were never seen or heard from again."
     ""
 
+##== If you got the name right, you get to decide what happens next.
+##== Riches:
 # game/script.rpy:11272
 translate Spanish wish_e447ff8a:
 
@@ -25294,7 +25706,7 @@ translate Spanish wish_0202fe28:
 
     # "Even the King of Kings cries out with envy to witness your splendour."
     ""
-
+##== Love:
 # game/script.rpy:11280
 translate Spanish wish_c47a3722:
 
@@ -25307,6 +25719,7 @@ translate Spanish wish_7068113f:
     # "You are always loved, by everyone you meet."
     ""
 
+##== Power:
 # game/script.rpy:11287
 translate Spanish wish_47d1eaf4:
 
@@ -25325,6 +25738,7 @@ translate Spanish wish_ada1e477:
     # "You rule over the lost souls of humanity as a kind and benevolent god."
     ""
 
+##== Solving Humanity's problems:
 # game/script.rpy:11295
 translate Spanish wish_5d282284:
 
@@ -25349,6 +25763,7 @@ translate Spanish wish_22749f0c:
     # "Everyone has enough to eat. Everyone is free of fear. Human suffering is finally at an end."
     ""
 
+##== Revenge against your enemies:
 # game/script.rpy:11304
 translate Spanish wish_a2509359:
 
@@ -25361,6 +25776,7 @@ translate Spanish wish_ad4c91d9:
     # "None dare ever wrong you or speak against you again."
     ""
 
+##== Help for your friends / loved ones:
 # game/script.rpy:11311
 translate Spanish wish_1d8d21d3:
 
@@ -25379,6 +25795,7 @@ translate Spanish wish_367f9b8d:
     # "They live with you in peace and love for the rest of their days."
     ""
 
+##== Happiness:
 # game/script.rpy:11319
 translate Spanish wish_64c7ce34:
 
@@ -25397,6 +25814,7 @@ translate Spanish wish_a161d977:
     # "You live in happiness for the rest of your days."
     ""
 
+##== Eternal life:
 # game/script.rpy:11327
 translate Spanish wish_ed2a71d7:
 
@@ -25415,6 +25833,7 @@ translate Spanish wish_935d4a23:
     # "You remain strong, young, healthy and beautiful for the rest of time."
     ""
 
+##== Returning the friends who have been eaten by The Wolf:
 # game/script.rpy:11335
 translate Spanish wish_c57c7845:
 
@@ -25439,6 +25858,7 @@ translate Spanish wish_7c34a3b8:
     # "It has already started."
     ""
 
+##== Escaping the book:
 # game/script.rpy:11343
 translate Spanish wish_678c6a8c:
 
@@ -25457,6 +25877,7 @@ translate Spanish wish_1fd24c52:
     # "You will go free. Everyone else in my story will be gone forever."
     ""
 
+##== If you say you will burn it:
 # game/script.rpy:11353
 translate Spanish wish_142a7165:
 
@@ -25481,6 +25902,7 @@ translate Spanish wish_e098d357:
     # "But please. Rest by the fire with me for a little while longer. We can talk."
     ""
 
+##== If you say you won't burn it:
 # game/script.rpy:11359
 translate Spanish wish_c5fa6fdf:
 
@@ -26231,6 +26653,7 @@ translate Spanish wolfNameEnd_d8de1b8c:
     # w "I could really use some tea."
     w ""
 
+##== You just have to say something and it is echoed by the narrator, making it reality.
 # game/script.rpy:11597
 translate Spanish wolfNameEnd_45cdc50f:
 
@@ -26530,6 +26953,13 @@ translate Spanish wolfNameEnd_29390382:
 
     # "Very well. I see you've made your choice."
     ""
+##== ---> From here it goes to the Book Burning Ending
+
+
+##================================================================ INTERLUDE C: SILENCE
+##======== This is the ending you get if everyone disappears.
+##======== It is heavily inspired by sections of "Do androids dream of electric sheep?" by Philip K. Dick. 
+##======== You can read it here on page 20. https://www.scribd.com/document/743001508/Phillip-K-Dick-Do-Androids-Dream-of-Electric-Sheep
 
 # game/script.rpy:11675
 translate Spanish allVanishedEnd_16b8cb94:
@@ -27473,6 +27903,7 @@ translate Spanish wolfEnd_8bee7580:
     # "The book sat on the shelf, and waited."
     ""
 
+##== The screen slowly fades out while a ringing noise intensifies. The same sentence repeats over and over.
 # game/script.rpy:12000
 translate Spanish wolfEnd_91a476a5:
 
@@ -27521,6 +27952,13 @@ translate Spanish wolfEnd_781a7ffc:
     # "{vspace=12}{space=9}And then there was rest in the land."
     ""
 
+##================================================================ INTERLUDE D: A NEW BEGINNING
+##============= This is what happens if you decide to stay in the book with the wolf. 
+##============= A new person gets the book out of the library and begins reading it.
+##============= You have become a character in the book.
+
+##== The new person's name is Alex - unless your name was already Alex, in which case we make the new person Georgia.
+##== Feel free to change these names.
 # game/script.rpy:12120
 translate Spanish newStoryFinale_0025125b:
 
@@ -27556,6 +27994,8 @@ translate Spanish newStoryFinale_728be654:
 
     # "Many strange figures lived in the woods around your house."
     ""
+
+##== We describe the characters that are left alive. If they are not alive, they are replaced by a randomly generated set of fairytale characters.
 
 # game/script.rpy:12128
 translate Spanish newStoryFinale_e03bea16:
@@ -27761,6 +28201,7 @@ translate Spanish newStoryFinale_714cac91:
     # "To the west, travellers whispered that a miraculous bushel of Snake Leaves could be found, with the power to revive the dead."
     ""
 
+##== Finally, this is the character you chose to be. It should match your chosen pronouns.
 # game/script.rpy:12198
 translate Spanish newStoryFinale_e13a65b7:
 
@@ -27845,12 +28286,14 @@ translate Spanish newStoryFinale_85574688:
     # "Despite [his] strange nature, folks said they sometimes heard this [persistent.finaleTitle] whistling a merry tune late into the night."
     ""
 
+##== If your pronouns are they/them:
 # game/script.rpy:12225
 translate Spanish newStoryFinale_e63137b2:
 
     # "Were they happy?"
     ""
 
+##== If your pronouns are he/him or she/her:
 # game/script.rpy:12227
 translate Spanish newStoryFinale_ec4841fe:
 
@@ -27863,12 +28306,14 @@ translate Spanish newStoryFinale_ce2b7d43:
     # "Well, who can say. I like to think so."
     ""
 
+##== If the character was The Crow:
 # game/script.rpy:12230
 translate Spanish newStoryFinale_c98cf720:
 
     # "One day, the endless cawing grew too much for you to bear. You packed your belongings into a knapsack, and walked into the forest."
     ""
 
+##== Otherwise:
 # game/script.rpy:12232
 translate Spanish newStoryFinale_c46a9c11:
 
@@ -27911,6 +28356,8 @@ translate Spanish newStoryFinale_de51ddd6:
     # "The road was long, and the forest was dark, but a smile broke out on your face."
     ""
 
+##== The screen fades to black and you get the final ending text. 
+
 # game/script.rpy:12243
 translate Spanish newStoryFinale_76b19292:
 
@@ -27934,6 +28381,12 @@ translate Spanish newStoryFinale_0ae9bcd0_1:
 
     # ""
     ""
+
+##================================================================ INTERLUDE E: THE BOOK BURNING
+##====== This is the ending where you commit to burning the book.
+##====== You get a limited amount of time to explore as the book slowly burns. The song "Remember" plays. When the book has burned completely, it goes dark and shows you the final ending text.
+##====== You can talk to any of the characters who haven't vanished so far in the narrative.
+##====== For major characters who have vanished, you can go see a small memorial of them.
 
 # game/script.rpy:12288
 translate Spanish bookBurnedFinale_9609eddf:
@@ -27977,10 +28430,11 @@ translate Spanish banquetBurning_807393da:
     # "The banquet was laid out down by the river. Everyone sat along thick tables piled with every type of food, drinking and waving their arms and talking with their mouths full."
     ""
 
+##== The Toad.
 # game/script.rpy:12387
 translate Spanish banquetBurningMenu_8acd82b7:
 
-    # "The toad was almost submerged in a giant margarita glass, flicking his tongue out to grab every prawn and strawberry and piece of roast beef he could get."
+    # "The Toad was almost submerged in a giant margarita glass, flicking his tongue out to grab every prawn and strawberry and piece of roast beef he could get."
     ""
 
 # game/script.rpy:12388
@@ -28034,7 +28488,7 @@ translate Spanish toadBurning_aeca39bd:
 # game/script.rpy:12409
 translate Spanish toadBurning_1c4af8c7:
 
-    # "You talked for hours, going over trivialities like old friends as you sampled the feast. As dessert arrived, the toad grew somber."
+    # "You talked for hours, going over trivialities like old friends as you sampled the feast. As dessert arrived, the Toad grew somber."
     ""
 
 # game/script.rpy:12410
@@ -28073,6 +28527,7 @@ translate Spanish toadBurning_943e2d3b:
     # "He slowly smiled, and leaned over to rest on your arm. The two of you watched the bat, the rat and the black cockatoo play cards in the light of the fire."
     ""
 
+##== The Bat, the Rat, The Crowshrike and the Black Cockatoo:
 # game/script.rpy:12418
 translate Spanish toadBurning_aab6585e:
 
@@ -28121,6 +28576,7 @@ translate Spanish toadBurning_210b9dfe:
     # cockatoo "Don't push it, mate."
     cockatoo ""
 
+##== If the toad has vanished:
 # game/script.rpy:12432
 translate Spanish toadBurning_cdf9fe12:
 
@@ -28151,6 +28607,7 @@ translate Spanish toadBurning_52812d0f:
     # "You buried the suit, hat and cane beneath the slab. You had no name to place upon it. But for some reason, it felt right."
     ""
 
+##== The Mushroom
 # game/script.rpy:12440
 translate Spanish toadBurning_33550dcd:
 
@@ -28223,6 +28680,7 @@ translate Spanish mushroomBurning_3e746710:
     # "The mushroom led you and the rest of the town in a deafening rendition of \"La Vi en Rose\" that rang out into the night, drowning out the sounds of the fire."
     ""
 
+##== Scraggs McKenzie
 # game/script.rpy:12463
 translate Spanish mushroomBurning_adf9bf35:
 
@@ -28289,6 +28747,7 @@ translate Spanish mushroomBurning_b4193783:
     # "You and the rest of the town applauded."
     ""
 
+##== The Strange and Crooked Old Man. This character is from a section of the Mushroom's story where you fall asleep for a hundred years and awake in a modern world.
 # game/script.rpy:12478
 translate Spanish mushroomBurning_3471089a:
 
@@ -28319,6 +28778,7 @@ translate Spanish mushroomBurning_ca7215c1:
     # "He cackled in his sinister way as you slowly slid away from him."
     ""
 
+##== If The Mushroom has vanished.
 # game/script.rpy:12491
 translate Spanish mushroomBurning_839f4e3d:
 
@@ -28343,6 +28803,7 @@ translate Spanish mushroomBurning_f7d9995b:
     # "You had no name to dedicate the toast to. But for some reason, it felt right."
     ""
 
+##== The Mayor.
 # game/script.rpy:12499
 translate Spanish mushroomBurning_4ed6c864:
 
@@ -28361,6 +28822,7 @@ translate Spanish mushroomBurning_229a2432:
     # may "I have heard his song at last. Just like my mother and my sister before me."
     may ""
 
+##== This is a reference to a small line that you may notice if you talk to the mayor in the village multiple times.
 # game/script.rpy:12502
 translate Spanish mushroomBurning_e4aac1a8:
 
@@ -28391,6 +28853,7 @@ translate Spanish mushroomBurning_40962bf1:
     # "The clouds covered the moon for but an instant. When the light shone again, he was gone."
     ""
 
+##== The 3 pigs
 # game/script.rpy:12510
 translate Spanish mushroomBurning_f94c3070:
 
@@ -28439,6 +28902,7 @@ translate Spanish mushroomBurning_4545e17f:
     # "The pigs looked out at the horizon as the slow line of fire crept inward."
     ""
 
+##== Obviously a reference to The 3 Little Pigs.
 # game/script.rpy:12518
 translate Spanish mushroomBurning_68eaddfb:
 
@@ -28457,12 +28921,14 @@ translate Spanish mushroomBurning_a6ca0db5:
     # p1 "Yes."
     p1 ""
 
+##== Small joke, House is coloured blue as a reference to House of Leaves. In the book, the word House is always coloured blue.
 # game/script.rpy:12521
 translate Spanish mushroomBurning_e44421b5:
 
     # p1 "Next time, brothers. I promise I will grant you that perfect, everlasting {color=#0000ffff}House{/color}."
     p1 ""
 
+##== The Thing in the Well
 # game/script.rpy:12525
 translate Spanish mushroomBurning_41fad60e:
 
@@ -28553,6 +29019,7 @@ translate Spanish trainBurning_218f0c30:
     # "They were right. No harm in it now. There was nothing left to lose."
     ""
 
+##== The Goblin Queen
 # game/script.rpy:12572
 translate Spanish trainBurning_134895e8:
 
@@ -28577,6 +29044,7 @@ translate Spanish trainBurning_270865fb:
     # goblinQueen "Just say the word, and you will be transformed." nointeract
     goblinQueen "" nointeract
 
+##== If you say yes:
 # game/script.rpy:12581
 translate Spanish trainBurning_4ad969e2:
 
@@ -28589,12 +29057,14 @@ translate Spanish trainBurning_b12e2193:
     # "They waved their hands. In a moment you felt your skin ripple and change, and you were transformed into exactly the shape you wished."
     ""
 
+##== If you say No:
 # game/script.rpy:12585
 translate Spanish trainBurning_a6cae2d8:
 
     # goblinQueen "A pity. You would have looked fantastic as a cassowary, dear."
     goblinQueen ""
 
+##== The Thief
 # game/script.rpy:12590
 translate Spanish trainBurning_d29adbea:
 
@@ -28673,6 +29143,7 @@ translate Spanish trainBurning_c8890695:
     # "As the train passed a corner, you leapt off it and tumbled onto the earth."
     ""
 
+##== If The Thief has vanished:
 # game/script.rpy:12612
 translate Spanish trainBurning_d60910a8:
 
@@ -28697,6 +29168,7 @@ translate Spanish trainBurning_c27a8e1d:
     # "You stole them away in a wink, and kept them hidden in a secret pocket. For some reason, that felt right."
     ""
 
+##== The Witch
 # game/script.rpy:12621
 translate Spanish trainBurning_d6a7a70f:
 
@@ -28751,6 +29223,7 @@ translate Spanish witchBurningMenu_13288f7e:
     # w "I'm very glad I had the time to know you. You made the right decision."
     w ""
 
+##== The Devil's Sooty Grandmother
 # game/script.rpy:12640
 translate Spanish witchBurningMenu_60c4152f:
 
@@ -28787,6 +29260,7 @@ translate Spanish witchBurningMenu_098945b6:
     # dg "Take care of yourself, when you're out there in the other world. Make sure to eat! You're skin and bones, child."
     dg ""
 
+##== If The Witch has vanished:
 # game/script.rpy:12651
 translate Spanish witchBurningMenu_3a75786d:
 
@@ -28810,7 +29284,7 @@ translate Spanish witchBurningMenu_b1078abf:
 
     # "You buried the hat beneath an old oak, and planted the lavender and herbs all around the mound."
     ""
-
+##== The Gloom-Monger
 # game/script.rpy:12658
 translate Spanish witchBurningMenu_d6eb4405:
 
@@ -28835,6 +29309,7 @@ translate Spanish witchBurningMenu_d2766bd9:
     # "Would that we can all achieve our dreams, as he has."
     ""
 
+##== The Goose-girl
 # game/script.rpy:12665
 translate Spanish witchBurningMenu_3a66c8eb:
 
@@ -28865,6 +29340,7 @@ translate Spanish witchBurningMenu_f94d8f02:
     # go "Just one."
     go ""
 
+##== Reference to some things the goose-girl says if you talk to her multiple times in the village.
 # game/script.rpy:12671
 translate Spanish witchBurningMenu_4dc3725b:
 
@@ -28949,6 +29425,7 @@ translate Spanish witchBurningMenu_73430aca:
     # "Soon, they were out of sight and gone forever."
     ""
 
+##== The Sparrow Herder
 # game/script.rpy:12690
 translate Spanish witchBurningMenu_de78ae5f:
 
@@ -29003,6 +29480,7 @@ translate Spanish witchBurningMenu_c3dc9d8f:
     # sh "How do I know all this?"
     sh ""
 
+##== Repetition of a phrase the sparrow-herder says in the village.
 # game/script.rpy:12699
 translate Spanish witchBurningMenu_f96e966b:
 
@@ -29015,6 +29493,7 @@ translate Spanish witchBurningMenu_3eede05a:
     # "You turned and walked back to the centre of the village."
     ""
 
+##== If you walk home:
 # game/script.rpy:12710
 translate Spanish homeBurning_eef5a0aa:
 
@@ -29027,6 +29506,7 @@ translate Spanish homeBurning_b6b43367:
     # "The wet cool mist of the rainforest settled around you."
     ""
 
+##== G-d
 # game/script.rpy:12714
 translate Spanish homeBurning_ee8a63f1:
 
@@ -29087,6 +29567,7 @@ translate Spanish homeBurning_cca8289a:
     # "You hurried on into the woods."
     ""
 
+##== The Devil
 # game/script.rpy:12733
 translate Spanish homeBurning_849ab59c:
 
@@ -29123,6 +29604,7 @@ translate Spanish homeBurning_cca8289a_1:
     # "You hurried on into the woods."
     ""
 
+##== Death
 # game/script.rpy:12749
 translate Spanish homeBurning_fcd546ee:
 
@@ -29213,6 +29695,7 @@ translate Spanish homeBurning_c7aa5c77:
     # "She was waiting for you on the front steps."
     ""
 
+##== Your mother
 # game/script.rpy:12773
 translate Spanish homeBurning_4325c51e:
 
@@ -29291,6 +29774,8 @@ translate Spanish homeBurning_ad1b2f3e:
     # "You hugged your family for the last time, and set out back to the village to finish the rest of your goodbyes."
     ""
 
+##== The End
+##== These are left blank to display the end text
 # game/script.rpy:12804
 translate Spanish burnEnd_0ae9bcd0:
 
@@ -29327,6 +29812,9 @@ translate Spanish end_0ae9bcd0_2:
     # ""
     ""
 
+##============================================================= INTERLUDE E: RESET
+##================ This section allows you to reset the book back to the start and whipe the slate clean
+##================ This wasn't originally allowed - originally your choices were 100% permanent - but I added it after seeing lots of fan feedback about it.
 # game/script.rpy:13158
 translate Spanish resetGame_e0648967:
 
@@ -29380,9 +29868,12 @@ translate Spanish resetGame_8caa7a1b:
 
     # "{color=#ffffff}Stay here a little longer.{/color}"
     ""
-
+##============================================================= INTERLUDE F: THE DIALOGUE CHOICES
+##======= This is a giant list of all dialogue choices in the game. Unfortunately they're all stacked here so it may be difficult to follow. I can separate them back out to the parts of the story where they actually appear.
+##======= Let me know if that would be useful.
 translate Spanish strings:
 
+##=== The different title variations (changes as the characters disappear). 
     # game/script.rpy:1194
     old "The Thief, the Toad, the Witch & the Mushroom."
     new ""
