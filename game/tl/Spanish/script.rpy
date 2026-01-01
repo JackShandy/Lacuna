@@ -26,6 +26,8 @@
 
 #The credits have a bunch more variables but we can worry about those later.
 
+# Each character's lines have their letter in from - eg, miw for Man In White. See the game\images\Names folder to see what all the names look like and which character is which.
+# Lines with no letter in front are spoken by the narrator (the wolf).
 
 
 ##====================================================== Ignore all this.
@@ -4587,6 +4589,11 @@ translate Spanish banquet_f2b8330d:
 ##== A minor character. The sparrow-herder tells you random rumours, which all end with "How do I know this? The sparrows told me."
 ##== Has a cockney kind of accent, removing the h's. The effect is to make him sound kind of like a street urchin, lower-class, urban.
 
+translate Spanish strings:
+    # game/script.rpy:3552
+    old "If you talked to the Sparrow-Herder, turn to page 85."
+    new ""
+
 ##== Rumour 1: The Ruins
 # game/script.rpy:3563
 translate Spanish banquetMenu_dc3f1084:
@@ -4777,8 +4784,13 @@ translate Spanish banquetMenu_a5fd1eac_2:
     sh ""
 
 ##======= CHARACTER BRIEF: The Mayor.
-##== A minor character. Accent: Plummy, english, upper class.
+##== A minor character. Accent: Plummy, english, mildly upper class.
 ##== Has random rumours that add minor flavour.
+
+translate Spanish strings:
+    # game/script.rpy:3552
+    old "If you talked to the Mayor, turn to page 82."
+    new ""
 
 ##== Rumour 1: Moon-head
 ##== If the witch isn't alive:
@@ -4842,6 +4854,10 @@ translate Spanish essay1Showing_338343eb:
 ##== The first pig is the pig you can find from the thief. The second is here. The third is the pig being eaten at the banquet. Collectively they reference The Three Little Pigs.
 ##== The pigs have an unexpectedly formal and grandiose tone. Think like the final villain in a JRPG.
 ##== These characters are a bit inspired by this album: https://worthikids.bandcamp.com/album/duloc
+translate Spanish strings:
+    # game/script.rpy:3552
+    old "If you talked to the Second Pig, turn to page 266."
+    new ""
 
 ##== Variation 1: If you have the first pig with you.
 ##== Pig 2 believes in the wolf. The other pig believes he is a deluded, mad fool. There are no wolves in australia.
@@ -5047,6 +5063,11 @@ translate Spanish essay1Showing_3d8b8b8e:
 ##==================== MAJOR CONVERSATION: Conversation with The Toad.
 ##== Variation 1: When the toad is the last character left alive.
 # game/script.rpy:3725
+translate Spanish strings:
+    # game/script.rpy:3552
+    old "If you talked to the Toad, turn to page 87."
+    new ""
+
 translate Spanish essay1Showing_28b6da59:
 
     # f "Well. I suppose this is it."
@@ -5263,6 +5284,11 @@ translate Spanish toadConvo2_2bd9cffb:
     # f "Try the mango, it's marvellous." nointeract
     f "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:3792
+    old "If you asked about the feast, turn to page 89."
+    new ""
+
 # game/script.rpy:3795
 translate Spanish toadConvo2_1674fb3e:
 
@@ -5300,6 +5326,11 @@ translate Spanish toadConvo2_b4623681:
     # f "There was egg on my face, I can tell you!"
     f ""
 
+translate Spanish strings:
+    # game/script.rpy:3792
+    old "If you asked about his plans, turn to page 90."
+    new ""
+
 # game/script.rpy:3809
 translate Spanish toadConvo2_844f930e:
 
@@ -5318,6 +5349,7 @@ translate Spanish toadConvo2_0cf8834a:
     # f "I came to this village to..."
     f ""
 
+##== If the witch has disappeared, he doesn't know why he's come
 # game/script.rpy:3814
 translate Spanish toadConvo2_313093af:
 
@@ -5360,6 +5392,7 @@ translate Spanish toadConvo2_bf4b9792:
     # f "It's nothing compared to the feasts at my manor, of course."
     f ""
 
+##== Otherwise, he's here to find the witch
 # game/script.rpy:3825
 translate Spanish toadConvo2_844f930e_1:
 
@@ -5420,6 +5453,15 @@ translate Spanish toadConvo2_1b614f7f:
     # f "{i}Transformed{/i}, you know. Keep that under your hat, very hush hush, you understand."
     f ""
 
+translate Spanish strings:
+    # game/script.rpy:3792
+    old "If you asked for more information about the witch, turn to page 93."
+    new ""
+
+    # game/script.rpy:3792
+    old "If you asked about the witch again, turn to page 93."
+    new ""
+
 # game/script.rpy:3841
 translate Spanish toadConvo2_d9b2e509:
 
@@ -5456,6 +5498,11 @@ translate Spanish toadWitchJoin_0565b1be:
     # f "I need to lift this curse of mine, and surely she could help you out with... I don't know, whatever problem you have." nointeract
     f "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:3746
+    old "If you accepted, and set off to the toad's manor, turn to page 105."
+    new ""
+
 # game/script.rpy:3854
 translate Spanish toadWitchJoin_57b178cd:
 
@@ -5480,6 +5527,11 @@ translate Spanish toadWitchJoin_a00a78ae:
     # f "Let us be off at once!"
     f ""
 
+translate Spanish strings:
+    # game/script.rpy:3746
+    old "If you politely declined (for now, at least), turn to page 102."
+    new ""
+
 # game/script.rpy:3861
 translate Spanish toadWitchJoin_2a3c997e:
 
@@ -5492,11 +5544,17 @@ translate Spanish toadWitchJoin_4215a4db:
     # f "Not mine, of course! If you change your mind, I'll be here."
     f ""
 
+##== If you return later:
 # game/script.rpy:3866
 translate Spanish toadWitchJoin_b75b353a:
 
     # f "Ah, have you changed your mind?"
     f ""
+
+translate Spanish strings:
+    # game/script.rpy:3792
+    old "If you asked him about the thief, turn to page 78."
+    new ""
 
 # game/script.rpy:3870
 translate Spanish toadWitchJoin_16599b0c:
@@ -5534,6 +5592,11 @@ translate Spanish toadWitchJoin_aa3e4fb5:
     # f "Why do they do it? Why, to make a nest, of course. All the better to lure their suitor, THE DEVIL!"
     f ""
 
+translate Spanish strings:
+    # game/script.rpy:3792
+    old "If you asked him about the manor, turn to page 78."
+    new ""
+
 # game/script.rpy:3879
 translate Spanish toadWitchJoin_6f8bd758:
 
@@ -5557,6 +5620,11 @@ translate Spanish toadWitchJoin_4dd11137:
 
     # f "You'll get a taste of the real high life." nointeract
     f "" nointeract
+
+translate Spanish strings:
+    # game/script.rpy:3851
+    old "If you accepted, and set off to the witch's Cottage with the toad, turn to page 105."
+    new ""
 
 # game/script.rpy:3888
 translate Spanish toadWitchJoin_57b178cd_1:
@@ -5582,6 +5650,7 @@ translate Spanish toadWitchJoin_a00a78ae_1:
     # f "Let us be off at once!"
     f ""
 
+##== If you decline
 # game/script.rpy:3895
 translate Spanish toadWitchJoin_4010e427:
 
@@ -5594,6 +5663,12 @@ translate Spanish toadWitchJoin_b134ef60:
     # f "You really should come."
     f ""
 
+translate Spanish strings:
+    # game/script.rpy:3792
+    old "If you asked about your Godparent, turn to page 85."
+    new ""
+
+##== if your godparent is death
 # game/script.rpy:3904
 translate Spanish toadWitchJoin_ab602d7b:
 
@@ -5612,6 +5687,7 @@ translate Spanish toadWitchJoin_4c5fae68:
     # f "I may know someone who can assist with that. Her name is..."
     f ""
 
+##== If the witch has disappeared, he doesn't remember her
 # game/script.rpy:3911
 translate Spanish toadWitchJoin_9f0a5f58:
 
@@ -5630,12 +5706,14 @@ translate Spanish toadWitchJoin_2a445028:
     # f "Never mind, I must have been mistaken. More ham?"
     f ""
 
+##== Otherwise he suggests the witch
 # game/script.rpy:3916
 translate Spanish toadWitchJoin_15362349:
 
     # f "Perhaps the witch will know something about it. You should join me in hunting her down!"
     f ""
 
+##== If your godparent is G-d
 # game/script.rpy:3918
 translate Spanish toadWitchJoin_a1b9dcc7:
 
@@ -5678,6 +5756,7 @@ translate Spanish toadWitchJoin_15362349_1:
     # f "Perhaps the witch will know something about it. You should join me in hunting her down!"
     f ""
 
+##== If your godparent is The Devil
 # game/script.rpy:3931
 translate Spanish toadWitchJoin_07850475:
 
@@ -5713,6 +5792,10 @@ translate Spanish toadWitchJoin_4e83bb5e:
 
     # f "I'm sure the witch would know something about that. Rumour is that she dances with the Devil on cold, moonless nights! You should join me in hunting her down."
     f ""
+translate Spanish strings:
+    # game/script.rpy:3792
+    old "If you made your excuses and left, turn to page 83."
+    new ""
 
 # game/script.rpy:3945
 translate Spanish toadWitchJoin_2600851c:
@@ -5721,6 +5804,11 @@ translate Spanish toadWitchJoin_2600851c:
     f ""
 
 ##== If you try to leave and go into the woods to find information, but the Sparrow-herder is still alive - he tries to stop you.
+translate Spanish strings:
+    # game/script.rpy:3552
+    old "If you wandered into the woods, turn to page 84."
+    new ""
+
 # game/script.rpy:3949
 translate Spanish toadWitchJoin_5815467e:
 
@@ -5745,6 +5833,11 @@ translate Spanish toadWitchJoin_81bebdcc:
 
     # "You turned and walked out into the darkness of the woods. No-one stopped you."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:3552
+    old "If you returned to the village square, return to page 50."
+    new ""
 
 # game/script.rpy:3959
 translate Spanish toadWitchJoin_3eede05a:
@@ -5782,6 +5875,7 @@ translate Spanish town_cc2b9976:
     # "Some of them were strapping down a tarp."
     ""
 
+##== If you left and returned
 # game/script.rpy:3992
 translate Spanish townExplore_5bc57ca6:
 
@@ -5800,6 +5894,7 @@ translate Spanish townExplore_7f135446:
     # pov "What is this?"
     pov ""
 
+##== If people have disappeared 
 # game/script.rpy:3997
 translate Spanish townExplore_a37d5b78:
 
@@ -5818,6 +5913,7 @@ translate Spanish townExplore_9525e32c:
     # sh "Yes. The thief."
     sh ""
 
+##== Otherwise:
 # game/script.rpy:4000
 translate Spanish townExplore_1012b4f5:
 
@@ -5836,6 +5932,18 @@ translate Spanish townExplore_2d5ce13c:
     # gm "We're sure to fail. This whole plan is doomed."
     gm ""
 
+translate Spanish strings:
+
+    # game/script.rpy:3987
+    old "Fruit bats chirped and swirled overhead."
+    new ""
+
+    # game/script.rpy:3987
+    old "If you talked to the Goose-girl, turn to page 97."
+    new ""
+
+##=== CHARACTER BRIEF: THE GOOSE-GIRL
+##== Minor character. Has some random goose-related rumours. Wishes she was born as a goose.
 # game/script.rpy:4008
 translate Spanish townExplore_88477f12:
 
@@ -5902,6 +6010,11 @@ translate Spanish townExplore_7e4143bb:
     # go "Their beauty was not made for us."
     go ""
 
+translate Spanish strings:
+    # game/script.rpy:3987
+    old "If you talked to the Hunter, turn to page 98."
+    new ""
+
 # game/script.rpy:4038
 translate Spanish townExplore_0a9fc8fd:
 
@@ -5920,6 +6033,16 @@ translate Spanish townExplore_0941f38f:
     # h "Howling? No. You must be imagining it."
     h ""
 
+##===== CHARACTER BRIEF: The Gloom-monger
+##== Minor character, a wild old man who prophesies doom at every turn. 
+##== Basically the horror-movie archetype of an old man who always says "You're doomed, doooomed!"
+##== Has some random rumours.
+translate Spanish strings:
+    # game/script.rpy:3987
+    old "If you talked to the Gloom-monger, turn to page 99."
+    new ""
+
+##== Rumour 1:
 # game/script.rpy:4051
 translate Spanish townExplore_9e82df8b:
 
@@ -5962,6 +6085,8 @@ translate Spanish townExplore_4380066d:
     # gm "In their left hand is a terrible light."
     gm ""
 
+##== Rumour 2:
+##== This hints at the fact that if you go back and write "Gilgamesh" as your name, you get a secret scene.
 # game/script.rpy:4066
 translate Spanish townExplore_dcde863f:
 
@@ -6004,6 +6129,14 @@ translate Spanish townExplore_42a49367:
     # gm "We are already dead."
     gm ""
 
+##====== CHARACTER BRIEF: THE THING IN THE WELL
+##== Has a random chance of appearing. Secret. Leads to the secret well ending.
+#== Deliberately a surprisingly low-key and down to earth character, has an urban australian accent. 
+translate Spanish strings:
+    # game/script.rpy:3987
+    old "If you looked in the well, turn to page 346."
+    new ""
+
 # game/script.rpy:4083
 translate Spanish townExplore_f96a9169:
 
@@ -6016,17 +6149,36 @@ translate Spanish townExplore_a84f4519:
     # well "Got any smokes?" nointeract
     well "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:4098
+    old "You peered into the well's depths."
+    new ""
+
+    # game/script.rpy:4088
+    old "If you found some cigarettes for the thing, turn to page 367."
+    new ""
+
 # game/script.rpy:4091
 translate Spanish townExplore_8725e3f9:
 
     # well "Cheers."
     well ""
 
+translate Spanish strings:
+    # game/script.rpy:4088
+    old "If you refused, turn to page 368."
+    new ""
+
 # game/script.rpy:4093
 translate Spanish townExplore_a63db0fe:
 
     # well "No worries."
     well ""
+
+translate Spanish strings:
+    # game/script.rpy:4098
+    old "If your notes say {b}you have an Emerald Brooch{/b}, turn to page 630."
+    new ""
 
 # game/script.rpy:4101
 translate Spanish townExplore_88f03a47:
@@ -6040,11 +6192,24 @@ translate Spanish townExplore_bd2d5a1e:
     # well "Thanks for the Brooch. I can't help you, though."
     well ""
 
+translate Spanish strings:
+    # game/script.rpy:4098
+    old "Otherwise, if {b}your things have been stolen{/b}, turn to page 365."
+    new ""
+
 # game/script.rpy:4104
 translate Spanish townExplore_e5774fe7:
 
     # "You would have liked to make a wish. But you had no coins on you."
     ""
+
+##== This is impossible to actually achieve. 
+##== It's a joke that represents that thing you can do in Choose your Own Adventure Books, where you can cheat by putting your thumb in the pages or choosing any option even if you don't actually meet the requirements.
+##== Secret Well Ending. All of this is deliberately surreal - it's meant to feel like you've thumbed through the book and stumbled on a secret ending you shouldn't have access too, out of context.
+translate Spanish strings:
+    # game/script.rpy:4098
+    old "Otherwise, if {b}you have ventured into the Smoke World and rescued the stolen Skin-Mask from King Famine{b}, turn to page 742."
+    new ""
 
 # game/script.rpy:4107
 translate Spanish townExplore_bb3b0ce1:
@@ -6208,6 +6373,7 @@ translate Spanish townExplore_cb54ad72:
     # "The wind fell silent. The cave was quiet."
     ""
 
+##== See the game\images\Names folder to see what sm looks like, The Skin Mask.
 # game/script.rpy:4136
 translate Spanish townExplore_f50146d0:
 
@@ -6304,6 +6470,11 @@ translate Spanish townExplore_e8295cb3:
     # sm "Put me on." nointeract
     sm "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:4154
+    old "If you accepted your fate, turn to page 722."
+    new ""
+
 # game/script.rpy:4157
 translate Spanish townExplore_103aae4c:
 
@@ -6363,6 +6534,11 @@ translate Spanish townExplore_2b493b75:
 
     # "Let's get back to the story."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:4154
+    old "If you defied your fate, turn to page 723."
+    new ""
 
 # game/script.rpy:4173
 translate Spanish townExplore_38f35098:
@@ -6508,6 +6684,8 @@ translate Spanish townExplore_94b9410d:
     # "And if you are not dead, you are still alive."
     ""
 
+##== The wolf wraps things up and takes you back to the main story.
+
 # game/script.rpy:4198
 translate Spanish townExplore_a20cefa7_1:
 
@@ -6526,11 +6704,22 @@ translate Spanish townExplore_2b493b75_1:
     # "Let's get back to the story."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:4098
+    old "Otherwise, you may make a wish. Turn to page 367."
+    new ""
+
 # game/script.rpy:4206
 translate Spanish townExplore_7c15e74b:
 
     # "You toss a coin in the well, and wish for a way out of your terrible predicament."
     ""
+
+##== Wandering into the woods to investigate the wolf.
+translate Spanish strings:
+    # game/script.rpy:3987
+    old "If you wandered into the woods, turn to page 157."
+    new ""
 
 # game/script.rpy:4211
 translate Spanish townExplore_196ad6c8:
@@ -6556,17 +6745,30 @@ translate Spanish townExplore_81bebdcc:
     # "You turned and walked out into the darkness of the woods. No-one stopped you."
     ""
 
+    # game/script.rpy:3987
+    old "If you returned to the middle of the village, turn to page 50."
+    new ""
+
+translate Spanish strings:
 # game/script.rpy:4221
 translate Spanish townExplore_42eb007a:
 
     # "You turned and walked back."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:3987
+    old "If you investigated the tarp, turn to page 79."
+    new ""
+
 # game/script.rpy:4228
 translate Spanish villagersConvo_2d104460:
 
     # go "Care to join us?" nointeract
     go "" nointeract
+
+##== If 3 major characters have disappeared
 
 # game/script.rpy:4230
 translate Spanish villagersConvo_9ff073a8:
@@ -6591,6 +6793,11 @@ translate Spanish villagersConvo_fc0d3f4a:
 
     # sh "Will you come with us?"
     sh ""
+
+translate Spanish strings:
+    # game/script.rpy:4227
+    old "If you accepted their offer, and went off to catch the Master Thief, turn to page 124."
+    new ""
 
 # game/script.rpy:4237
 translate Spanish villagersConvo_16d48e14:
@@ -6652,6 +6859,15 @@ translate Spanish villagersConvo_d081345e:
     # sh "..."
     sh ""
 
+translate Spanish strings:
+    # game/script.rpy:4227
+    old "If you asked them about the thief, turn to page 66."
+    new ""
+
+    # game/script.rpy:4227
+    old "If you asked how they planned to catch the thief, turn to page 66."
+    new ""
+
 # game/script.rpy:4253
 translate Spanish villagersConvo_d961a00e:
 
@@ -6687,6 +6903,11 @@ translate Spanish villagersConvo_2fddb453:
 
     # h "Thanks, friend. Your confidence means a lot."
     h ""
+
+translate Spanish strings:
+    # game/script.rpy:4227
+    old "If you asked why they planned to catch the thief, turn to page 68."
+    new ""
 
 # game/script.rpy:4262
 translate Spanish villagersConvo_6b2823a9:
@@ -6724,6 +6945,12 @@ translate Spanish villagersConvo_7ac747a2:
     # go "Hot, sweaty anarchy."
     go ""
 
+translate Spanish strings:
+    # game/script.rpy:4227
+    old "If you asked them about your Godparent, turn to page 77."
+    new ""
+
+##== Godparent = The Lord
 # game/script.rpy:4273
 translate Spanish villagersConvo_df1abba9:
 
@@ -6736,6 +6963,7 @@ translate Spanish villagersConvo_cc8bc8a1:
     # gm "Hmph. I advise you to give up immediately."
     gm ""
 
+##== If The Thief is dead
 # game/script.rpy:4276
 translate Spanish villagersConvo_a56e4561:
 
@@ -6754,6 +6982,7 @@ translate Spanish villagersConvo_41cda512:
     # sh "No, never mind. You're right. There is no-one."
     sh ""
 
+##== Otherwise
 # game/script.rpy:4280
 translate Spanish villagersConvo_9bab4f21:
 
@@ -6766,6 +6995,7 @@ translate Spanish villagersConvo_3ef89d87:
     # h "Once we track the thief down, you could question them!"
     h ""
 
+##== Godparent = The Devil
 # game/script.rpy:4283
 translate Spanish villagersConvo_1faf85bb:
 
@@ -6778,6 +7008,7 @@ translate Spanish villagersConvo_cc8bc8a1_1:
     # gm "Hmph. I advise you to give up immediately."
     gm ""
 
+##== If the Witch is dead
 # game/script.rpy:4286
 translate Spanish villagersConvo_a56e4561_1:
 
@@ -6796,6 +7027,7 @@ translate Spanish villagersConvo_41cda512_1:
     # sh "No, never mind. You're right. There is no-one."
     sh ""
 
+##== Otherwise
 # game/script.rpy:4290
 translate Spanish villagersConvo_46e3dff2:
 
@@ -6820,6 +7052,7 @@ translate Spanish villagersConvo_cc8bc8a1_2:
     # gm "Hmph. I advise you to give up immediately."
     gm ""
 
+##== If The Mushroom is dead
 # game/script.rpy:4296
 translate Spanish villagersConvo_a56e4561_2:
 
@@ -6838,6 +7071,7 @@ translate Spanish villagersConvo_41cda512_2:
     # sh "No, never mind. You're right. There is no-one."
     sh ""
 
+##== Otherwise
 # game/script.rpy:4300
 translate Spanish villagersConvo_e4b1494a:
 
@@ -6850,6 +7084,10 @@ translate Spanish villagersConvo_92c0fc3a:
     # sh "I heard that dastardly Master Thief was planning to steal from 'er this very night! We'd better get the trap laid before they 'ave a chance."
     sh ""
 
+translate Spanish strings:
+   # game/script.rpy:4227
+    old "If you asked them about the witch, turn to page 79."
+    new ""
 # game/script.rpy:4305
 translate Spanish villagersConvo_a88bc5f9:
 
@@ -6886,6 +7124,11 @@ translate Spanish villagersConvo_9e319710:
     # h "This is why the most beautiful trees are always thunderstruck."
     h ""
 
+translate Spanish strings:
+    # game/script.rpy:4227
+    old "If you went off with them to catch the Master Thief, turn to page 124."
+    new ""
+
 # game/script.rpy:4315
 translate Spanish villagersConvo_58fcbd5f:
 
@@ -6916,12 +7159,23 @@ translate Spanish gilPathShowingThief_b2af5366:
     # sh "Yes. Say your goodbyes."
     sh ""
 
+translate Spanish strings:
+    # game/script.rpy:4227
+    old "If you made your excuses and left, turn to page 51."
+    new ""
+
 # game/script.rpy:4327
 translate Spanish gilPathShowingThief_9b5ecb82:
 
     # sh "No worries. Have a good one!"
     sh ""
 
+##=========================================================== CHAPTER 4A: The Thief
+##=== You set out to capture the thief. You end up going with the thief to steal from the mushroom. 
+##== You can end up siding with either the Thief or The Mushroom, and seeing that character's ending.
+##== The character you don't side with disappears.
+
+###=====BOOKMARK
 # game/script.rpy:4337
 translate Spanish thief2_ffc38e37:
 
@@ -30247,426 +30501,6 @@ translate Spanish strings:
 
     # game/script.rpy:1227
     old "The Wolf."
-    new ""
-
-    # game/script.rpy:2349
-    old "If you want to know about your neighbours and the lands around your house, turn to page 10."
-    new ""
-
-    # game/script.rpy:2349
-    old "If you wonder whether you were happy there, turn to page 19."
-    new ""
-
-    # game/script.rpy:2349
-    old "To continue the story, turn to page 34."
-    new ""
-
-    # game/script.rpy:2469
-    old "In her left hand she held a small lantern, and in her right hand she held a crooked knife stained green."
-    new ""
-
-    # game/script.rpy:2469
-    old "If you followed her, turn to page 25."
-    new ""
-
-    # game/script.rpy:2469
-    old "If you ignored her and followed the path like an honest Christian, turn to page 42."
-    new ""
-
-    # game/script.rpy:2469
-    old "If you turned and walked into the space between the trees, turn to page 40."
-    new ""
-
-    # game/script.rpy:2485
-    old "With this, the door opened before her, and she vanished inside immediately."
-    new ""
-
-    # game/script.rpy:2485
-    old "If you entered the door, turn to page 26."
-    new ""
-
-    # game/script.rpy:2485
-    old "If you went back to the path, turn to page 28."
-    new ""
-
-    # game/script.rpy:2524
-    old "If you asked for some water, turn to page 33."
-    new ""
-
-    # game/script.rpy:2524
-    old "If you asked about \"The you with the mask\", turn to page 31."
-    new ""
-
-    # game/script.rpy:2524
-    old "If you told the mushroom you've never been here before, turn to page 29."
-    new ""
-
-    # game/script.rpy:2524
-    old "If you enquired about the untold riches of her domain (with the gleam of avarice in your heart) turn to page 30."
-    new ""
-
-    # game/script.rpy:2524
-    old "If you apologised for intruding and swore to make amends, turn to page 35."
-    new ""
-
-    # game/script.rpy:2574
-    old "She left the room, trusting your kindness and good nature."
-    new ""
-
-    # game/script.rpy:2574
-    old "If you immediately disobeyed the mushroom and opened the basement door (in accordance with your wicked nature) turn to page 52."
-    new ""
-
-    # game/script.rpy:2574
-    old "If you sat patiently and waited for your tea, turn to page 86."
-    new ""
-
-    # game/script.rpy:2605
-    old "If you told her about the festival, turn to page 4."
-    new ""
-
-    # game/script.rpy:2605
-    old "If you told her about your Godparent, turn to page 62."
-    new ""
-
-    # game/script.rpy:2712
-    old "If you helped the old woman, turn to page 73."
-    new ""
-
-    # game/script.rpy:2712
-    old "If you refused to aid her, turn to page 44."
-    new ""
-
-    # game/script.rpy:2741
-    old "Despair gripped you."
-    new ""
-
-    # game/script.rpy:2741
-    old "If you chased after them anyway, turn to page 37."
-    new ""
-
-    # game/script.rpy:2741
-    old "If you shouted \"Noooooooooooo!\" pitifully, turn to page 45."
-    new ""
-
-    # game/script.rpy:2741
-    old "If you shouted \"Noooooooooooo!\" again, even more pitifully, turn to page 46."
-    new ""
-
-    # game/script.rpy:2741
-    old "If you shouted \"Noooooooooooo!\" again, as pitifully as one can shout, turn to page 47."
-    new ""
-
-    # game/script.rpy:2741
-    old "If you let them go, turn to page 27."
-    new ""
-
-    # game/script.rpy:2759
-    old "Seeing your misfortune, the pig oinked at you sorrowfully and nuzzled you for comfort."
-    new ""
-
-    # game/script.rpy:2759
-    old "If you kept the pig, turn to page 53."
-    new ""
-
-    # game/script.rpy:2759
-    old "If you let the pig run free and wild, as nature intended, turn to page 8."
-    new ""
-
-    # game/script.rpy:2759
-    old "If you shouted \"Noooooooooooo!\" more pitifully than ever before, turn to page 48."
-    new ""
-
-    # game/script.rpy:2864
-    old "If you continued to walk into the woods, turn to page 41."
-    new ""
-
-    # game/script.rpy:2932
-    old "If you told him about the festival, turn to page 12."
-    new ""
-
-    # game/script.rpy:2932
-    old "If you said \"The Glass Mountains\", turn to page 61."
-    new ""
-
-    # game/script.rpy:2932
-    old "If you said \"The road of Pins and the road of Needles\", turn to page 61."
-    new ""
-
-    # game/script.rpy:2932
-    old "If you said \"The space between the trees\", turn to page 61."
-    new ""
-
-    # game/script.rpy:2932
-    old "If you said nothing, turn to page 57."
-    new ""
-
-    # game/script.rpy:2956
-    old "If you accepted the lift, turn to page 54."
-    new ""
-
-    # game/script.rpy:2956
-    old "If you refused the lift, turn to page 55."
-    new ""
-
-    # game/script.rpy:2991
-    old "If you asked the gentleman his name, turn to page 58."
-    new ""
-
-    # game/script.rpy:2991
-    old "If you flattered the toad, turn to page 63."
-    new ""
-
-    # game/script.rpy:2991
-    old "If your notes say that {b}You are the Devil's Godchild{/b}, turn to page 65."
-    new ""
-
-    # game/script.rpy:3021
-    old "If you told the toad about your Godparent, turn to page 67."
-    new ""
-
-    # game/script.rpy:3021
-    old "If you remained vague about your true plans, turn to page 71."
-    new ""
-
-    # game/script.rpy:3021
-    old "If you said nothing, turn to page 74."
-    new ""
-
-    # game/script.rpy:3077
-    old "He offered a decanter of pondwater to you."
-    new ""
-
-    # game/script.rpy:3077
-    old "If you accepted (as any kind and generous guest would), turn to page 75."
-    new ""
-
-    # game/script.rpy:3077
-    old "If you refused (the action of a witless and ungrateful churl), turn to page 76."
-    new ""
-
-    # game/script.rpy:3131
-    old "If you continued walking deeper into the woods, turn to page 41."
-    new ""
-
-    # game/script.rpy:3184
-    old "If you said there's no such thing as witches, turn to page 38."
-    new ""
-
-    # game/script.rpy:3184
-    old "If you trembled in terrible fear, turn to page 39."
-    new ""
-
-    # game/script.rpy:3244
-    old "If you entered the village, turn to page 39."
-    new ""
-
-    # game/script.rpy:3271
-    old "The town was overflowing with people bustling about and preparing for the festival, pulling up chairs and laying stacked tables around the enormous bonfire in the centre of town."
-    new ""
-
-    # game/script.rpy:3271
-    old "If you looked at the food, turn to page 36."
-    new ""
-
-    # game/script.rpy:3271
-    old "If you sat down with the rest of the guests without delay, turn to page 37."
-    new ""
-
-    # game/script.rpy:3368
-    old "You stood in the middle of the village."
-    new ""
-
-    # game/script.rpy:3368
-    old "If you investigated the banquet, turn to page 64."
-    new ""
-
-    # game/script.rpy:3368
-    old "If you investigated the edge of town, turn to page 70."
-    new ""
-
-    # game/script.rpy:3368
-    old "If you turned around and went home, turn to page 1."
-    new ""
-
-    # game/script.rpy:3368
-    old "If you talked to the Gutterlings, turn to page 56."
-    new ""
-
-    # game/script.rpy:3552
-    old "You looked out over the sad scene."
-    new ""
-
-    # game/script.rpy:3552
-    old "If you talked to the woeful villagers, turn to page 84."
-    new ""
-
-    # game/script.rpy:3552
-    old "If you talked to the Sparrow-Herder, turn to page 85."
-    new ""
-
-    # game/script.rpy:3552
-    old "If you talked to the Mayor, turn to page 82."
-    new ""
-
-    # game/script.rpy:3552
-    old "If you talked to the Second Pig, turn to page 266."
-    new ""
-
-    # game/script.rpy:3552
-    old "If you talked to the Toad, turn to page 87."
-    new ""
-
-    # game/script.rpy:3552
-    old "If you wandered into the woods, turn to page 84."
-    new ""
-
-    # game/script.rpy:3552
-    old "If you returned to the village square, return to page 50."
-    new ""
-
-    # game/script.rpy:3746
-    old "If you accepted, and set off to the toad's manor, turn to page 105."
-    new ""
-
-    # game/script.rpy:3746
-    old "If you politely declined (for now, at least), turn to page 102."
-    new ""
-
-    # game/script.rpy:3792
-    old "If you asked about the feast, turn to page 89."
-    new ""
-
-    # game/script.rpy:3792
-    old "If you asked about his plans, turn to page 90."
-    new ""
-
-    # game/script.rpy:3792
-    old "If you asked for more information about the witch, turn to page 93."
-    new ""
-
-    # game/script.rpy:3792
-    old "If you asked about the witch again, turn to page 93."
-    new ""
-
-    # game/script.rpy:3792
-    old "If you asked him about the thief, turn to page 78."
-    new ""
-
-    # game/script.rpy:3792
-    old "If you asked him about the manor, turn to page 78."
-    new ""
-
-    # game/script.rpy:3792
-    old "If you asked about your Godparent, turn to page 85."
-    new ""
-
-    # game/script.rpy:3792
-    old "If you made your excuses and left, turn to page 83."
-    new ""
-
-    # game/script.rpy:3851
-    old "If you accepted, and set off to the witch's Cottage with the toad, turn to page 105."
-    new ""
-
-    # game/script.rpy:3987
-    old "Fruit bats chirped and swirled overhead."
-    new ""
-
-    # game/script.rpy:3987
-    old "If you investigated the tarp, turn to page 79."
-    new ""
-
-    # game/script.rpy:3987
-    old "If you talked to the Goose-girl, turn to page 97."
-    new ""
-
-    # game/script.rpy:3987
-    old "If you talked to the Hunter, turn to page 98."
-    new ""
-
-    # game/script.rpy:3987
-    old "If you talked to the Gloom-monger, turn to page 99."
-    new ""
-
-    # game/script.rpy:3987
-    old "If you looked in the well, turn to page 346."
-    new ""
-
-    # game/script.rpy:3987
-    old "If you wandered into the woods, turn to page 157."
-    new ""
-
-    # game/script.rpy:3987
-    old "If you returned to the middle of the village, turn to page 50."
-    new ""
-
-    # game/script.rpy:4088
-    old "If you found some cigarettes for the thing, turn to page 367."
-    new ""
-
-    # game/script.rpy:4088
-    old "If you refused, turn to page 368."
-    new ""
-
-    # game/script.rpy:4098
-    old "You peered into the well's depths."
-    new ""
-
-    # game/script.rpy:4098
-    old "If your notes say {b}you have an Emerald Brooch{/b}, turn to page 630."
-    new ""
-
-    # game/script.rpy:4098
-    old "Otherwise, if {b}your things have been stolen{/b}, turn to page 365."
-    new ""
-
-    # game/script.rpy:4098
-    old "Otherwise, if {b}you have ventured into the Smoke World and rescued the stolen Skin-Mask from King Famine{b}, turn to page 742."
-    new ""
-
-    # game/script.rpy:4098
-    old "Otherwise, you may make a wish. Turn to page 367."
-    new ""
-
-    # game/script.rpy:4154
-    old "If you accepted your fate, turn to page 722."
-    new ""
-
-    # game/script.rpy:4154
-    old "If you defied your fate, turn to page 723."
-    new ""
-
-    # game/script.rpy:4227
-    old "If you asked them about the thief, turn to page 66."
-    new ""
-
-    # game/script.rpy:4227
-    old "If you went off with them to catch the Master Thief, turn to page 124."
-    new ""
-
-    # game/script.rpy:4227
-    old "If you asked how they planned to catch the thief, turn to page 66."
-    new ""
-
-    # game/script.rpy:4227
-    old "If you asked why they planned to catch the thief, turn to page 68."
-    new ""
-
-    # game/script.rpy:4227
-    old "If you asked them about your Godparent, turn to page 77."
-    new ""
-
-    # game/script.rpy:4227
-    old "If you asked them about the witch, turn to page 79."
-    new ""
-
-    # game/script.rpy:4227
-    old "If you accepted their offer, and went off to catch the Master Thief, turn to page 124."
-    new ""
-
-    # game/script.rpy:4227
-    old "If you made your excuses and left, turn to page 51."
     new ""
 
     # game/script.rpy:4347
