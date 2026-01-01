@@ -884,7 +884,10 @@ translate Spanish chapter2_ad3787e6:
 ##========= The Map
 ## In this section, you are shown a map of the lands around your house and can get some early information on the four major characters.
 ## As characters disappear, the map erases itself and becomes empty. When someone has disappeared, the description changes to "There was nothing and no-one."
-
+translate Spanish strings:
+    # game/script.rpy:2349
+    old "If you want to know about your neighbours and the lands around your house, turn to page 10."
+    new ""
 
 # game/script.rpy:2205
 translate Spanish mapOpens_8ffab238:
@@ -1216,6 +1219,11 @@ translate Spanish introMenu_11f95f46:
     # "In fact the whole earth was overrun with trolls, hob-and-lanthorns, gringes, cutties and nisses, boguests, bonelesses, boggleboes, black-bugs and night-bats, clabbernappers, corpse lights, candles and Gabriel-hounds, mawkins, hodge-pochers, korreds, lubberkins, cluricauns, hob-thrushes, tod-lowries, Jack-in-the-Wads, men-in-the-oak, dudmen, yeth-hounds, mormos, changelings, redcaps, colt-pixies, Tom-thumbs, madcaps, scrags, spectres, scar-bugs, shag-foals, Jinny-burnt-tails, dopple-gangers, and apparitions of every shape, make, form, and fashion."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:2349
+    old "If you wonder whether you were happy there, turn to page 19."
+    new ""
+
 # game/script.rpy:2375
 translate Spanish introMenu_0d7d6864:
 
@@ -1228,6 +1236,7 @@ translate Spanish introMenu_48440043:
     # "Well, it was a happy house."
     ""
 
+##== If 1 person has disappeared
 # game/script.rpy:2378
 translate Spanish introMenu_b2dea097:
 
@@ -1257,6 +1266,8 @@ translate Spanish introMenu_61b53533:
 
     # "You would avoid the festival and stare deep into the woods all through the night."
     ""
+
+##== If 2 people have disappeared
 
 # game/script.rpy:2386
 translate Spanish introMenu_494f26de:
@@ -1288,6 +1299,7 @@ translate Spanish introMenu_5b7b0f8b:
     # "Not long now."
     ""
 
+##== If 3 people have disappeared
 # game/script.rpy:2396
 translate Spanish introMenu_ab03be07:
 
@@ -1341,6 +1353,12 @@ translate Spanish introMenu_97b69347_1:
 
     # pov "The House provides."
     pov ""
+
+translate Spanish strings:
+
+    # game/script.rpy:2349
+    old "To continue the story, turn to page 34."
+    new ""
 
 # game/script.rpy:2420
 translate Spanish introMenu_b981911d:
@@ -1489,6 +1507,54 @@ translate Spanish mushroomIntro_f8fe74f5:
 
     # "As you walked down the road, you saw the wise mushroom moving through the deep darkness of the trees, her pale spores flowing in a fog behind her."
     ""
+translate Spanish strings:
+
+    # game/script.rpy:2469
+    old "In her left hand she held a small lantern, and in her right hand she held a crooked knife stained green."
+    new ""
+
+##== If you ignore the mushroom and leave 
+translate Spanish strings:
+
+    # game/script.rpy:2469
+    old "If you ignored her and followed the path like an honest Christian, turn to page 42."
+    new ""
+
+# game/script.rpy:2669
+translate Spanish basement_292e2963:
+
+    # "You rushed back to the path, worried at any moment that you might be seen."
+    ""
+
+# game/script.rpy:2670
+translate Spanish basement_28389284:
+
+    # pov "Thank goodness that I know not to ask of what concerns me not! That could have led me to some kind of dangerous and magical adventure!\""
+    pov ""
+
+# game/script.rpy:2671
+translate Spanish basement_d14766b6:
+
+    # "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
+    ""
+
+##== Once some people have disappeared, you get the chance to just walk into the forest where you can get information about the wolf.
+translate Spanish strings:
+
+    # game/script.rpy:2469
+    old "If you turned and walked into the space between the trees, turn to page 40."
+    new ""
+
+# game/script.rpy:2681
+translate Spanish basement_ca84aec7:
+
+    # "You ignored the mushroom and walked deeper and deeper into the woods."
+    ""
+
+translate Spanish strings:
+    # game/script.rpy:2469
+    old "If you followed her, turn to page 25."
+    new ""
 
 # game/script.rpy:2472
 translate Spanish mushroomIntro_16f02ffc:
@@ -1507,6 +1573,27 @@ translate Spanish mushroomIntro_0c9134fa:
 
     # m "Gorge, guzzle, gulp and grab; never shall this wound scab.{vspace=160}{i}In your notes, write down that you {b}know the password.{/b}{/i}"
     m ""
+
+translate Spanish strings:
+
+    # game/script.rpy:2485
+    old "With this, the door opened before her, and she vanished inside immediately."
+    new ""
+
+    # game/script.rpy:2485
+    old "If you went back to the path, turn to page 28."
+    new ""
+
+# game/script.rpy:2677
+translate Spanish basement_0624b08b:
+
+    # "You turned and kept on walking down the path, just as your mother taught you."
+    ""
+translate Spanish strings:
+
+    # game/script.rpy:2485
+    old "If you entered the door, turn to page 26."
+    new ""
 
 # game/script.rpy:2490
 translate Spanish mushroomIntro_c1514f47:
@@ -1660,6 +1747,12 @@ translate Spanish mushroomWater_f97915a4:
     # m "Out with it, then. What do you want?" nointeract
     m "" nointeract
 
+translate Spanish strings:
+
+    # game/script.rpy:2524
+    old "If you asked for some water, turn to page 33."
+    new ""
+
 # game/script.rpy:2527
 translate Spanish mushroomWater_86acea04:
 
@@ -1748,12 +1841,23 @@ translate Spanish mushroomWater_10cf689e:
     m ""
 
 ##== If you ask about "The other you"
+translate Spanish strings:
+
+    # game/script.rpy:2524
+    old "If you asked about \"The you with the mask\", turn to page 31."
+    new ""
 
 # game/script.rpy:2547
 translate Spanish mushroomWater_390a2527:
 
     # m "I'm sorry darling, it's been a long day already. I don't have time to explain your body to you. Again."
     m ""
+
+translate Spanish strings:
+
+    # game/script.rpy:2524
+    old "If you told the mushroom you've never been here before, turn to page 29."
+    new ""
 
 # game/script.rpy:2551
 translate Spanish mushroomWater_ce46a653:
@@ -1782,6 +1886,11 @@ translate Spanish mushroomWater_ce7b6a91:
     m ""
 
 ##== If you ask about her riches:
+translate Spanish strings:
+
+    # game/script.rpy:2524
+    old "If you enquired about the untold riches of her domain (with the gleam of avarice in your heart) turn to page 30."
+    new ""
 
 # game/script.rpy:2559
 translate Spanish mushroomWater_8959758e:
@@ -1808,6 +1917,11 @@ translate Spanish mushroomWater_7d06819b:
     m ""
 
 ##== If you apologise:
+translate Spanish strings:
+
+    # game/script.rpy:2524
+    old "If you apologised for intruding and swore to make amends, turn to page 35."
+    new ""
 
 # game/script.rpy:2566
 translate Spanish mushroomWater_71dac625:
@@ -1822,6 +1936,15 @@ translate Spanish mushroomWater_b5ae6c40:
     m ""
 
 ##== If you enter the basement:
+translate Spanish strings:
+
+    # game/script.rpy:2574
+    old "She left the room, trusting your kindness and good nature."
+    new ""
+
+    # game/script.rpy:2574
+    old "If you immediately disobeyed the mushroom and opened the basement door (in accordance with your wicked nature) turn to page 52."
+    new ""
 
 # game/script.rpy:2577
 translate Spanish basement_ffc866a4:
@@ -1931,11 +2054,21 @@ translate Spanish basement_c362c855:
     # m "What could you possibly tell me that I don't already know?" nointeract
     m "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:2605
+    old "If you told her about the festival, turn to page 4."
+    new ""
+
 # game/script.rpy:2608
 translate Spanish basement_370a3c58:
 
     # pov "I'm on my way to the festival, and there will be people there from all over this cryptic earth. Surely one of them will have a story you haven't heard before."
     pov ""
+
+translate Spanish strings:
+    # game/script.rpy:2605
+    old "If you told her about your Godparent, turn to page 62."
+    new ""
 
 ##== This sentence changes based on your godparent.
 ##== God:
@@ -2034,6 +2167,12 @@ translate Spanish basement_a207d478:
     ""
 
 ##== If you choose not to go into the basement
+translate Spanish strings:
+
+    # game/script.rpy:2574
+    old "If you sat patiently and waited for your tea, turn to page 86."
+    new ""
+
 # game/script.rpy:2635
 translate Spanish basement_690236e5:
 
@@ -2077,6 +2216,7 @@ translate Spanish basement_41491814:
     # m "So, what brings you back here?"
     m ""
 
+
 # game/script.rpy:2643
 translate Spanish basement_9e883e92:
 
@@ -2107,6 +2247,7 @@ translate Spanish basement_99ad019c:
     # m "I must say, you could certainly work on the pacing. And I think the obvious analogy you've drawn for 13th century France and the fragmentation of the Carolingian Empire was a tad heavy-handed. But it's a good start."
     m ""
 
+##== If your godparent is death:
 # game/script.rpy:2651
 translate Spanish basement_28a3b94d:
 
@@ -2149,6 +2290,7 @@ translate Spanish basement_86cea738:
     # "You took up your bag and set off down the road once more."
     ""
 
+##== If your godparent is not death:
 # game/script.rpy:2660
 translate Spanish basement_bba90b8f:
 
@@ -2189,36 +2331,6 @@ translate Spanish basement_2e118bf6_1:
 translate Spanish basement_86cea738_1:
 
     # "You took up your bag and set off down the road once more."
-    ""
-
-# game/script.rpy:2669
-translate Spanish basement_292e2963:
-
-    # "You rushed back to the path, worried at any moment that you might be seen."
-    ""
-
-# game/script.rpy:2670
-translate Spanish basement_28389284:
-
-    # pov "Thank goodness that I know not to ask of what concerns me not! That could have led me to some kind of dangerous and magical adventure!\""
-    pov ""
-
-# game/script.rpy:2671
-translate Spanish basement_d14766b6:
-
-    # "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
-    ""
-
-# game/script.rpy:2677
-translate Spanish basement_0624b08b:
-
-    # "You turned and kept on walking down the path, just as your mother taught you."
-    ""
-
-# game/script.rpy:2681
-translate Spanish basement_ca84aec7:
-
-    # "You ignored the mushroom and walked deeper and deeper into the woods."
     ""
 ##========= The Thief
 
@@ -2277,6 +2389,11 @@ translate Spanish thief1_a568147b:
 
     # mys "Might you lend a hand for a frail old woman? The woods are dark tonight, and I thought I heard howling from the space between the trees." nointeract
     mys "" nointeract
+
+translate Spanish strings:
+    # game/script.rpy:2712
+    old "If you helped the old woman, turn to page 73."
+    new ""
 
 # game/script.rpy:2719
 translate Spanish thiefAccept_54ca720c:
@@ -2355,6 +2472,14 @@ translate Spanish thiefAccept_b88b9611:
 
     # "As soon as you tried to chase them you discovered that your clothes had been stolen off your back and replaced with origami paper replicas. Your belt was now a strip of seaweed, your socks were old moss, and you were wearing someone else's shoes."
     ""
+translate Spanish strings:
+    # game/script.rpy:2741
+    old "Despair gripped you."
+    new ""
+
+    # game/script.rpy:2741
+    old "If you chased after them anyway, turn to page 37."
+    new ""
 
 # game/script.rpy:2744
 translate Spanish thiefChase_fe640abd:
@@ -2407,7 +2532,15 @@ translate Spanish thiefChase_17edb508:
     # "The Master Thief was gone."
     ""
 
-##== If you take the pig with you
+translate Spanish strings:
+    # game/script.rpy:2759
+    old "Seeing your misfortune, the pig oinked at you sorrowfully and nuzzled you for comfort."
+    new ""
+
+    # game/script.rpy:2759
+    old "If you kept the pig, turn to page 53."
+    new ""
+
 # game/script.rpy:2762
 translate Spanish thiefchase2_440c8f6d:
 
@@ -2421,6 +2554,11 @@ translate Spanish thiefchase2_12026d86:
     ""
 
 ##== If you release the pig
+translate Spanish strings:
+    # game/script.rpy:2759
+    old "If you let the pig run free and wild, as nature intended, turn to page 8."
+    new ""
+
 # game/script.rpy:2769
 translate Spanish thiefchase2_c15c84f8:
 
@@ -2453,29 +2591,31 @@ translate Spanish thiefchase2_9e3abd82:
 
 ##== If you cry out in woe
 ##== Small joke, the length of the "Nooooos" increases each time you decide to cry out in lamentation.
-# game/script.rpy:2775
-translate Spanish thiefchase2_2d9b8a18:
 
-    # pov "{b}{i}NOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO!{/b}{/i}"
-    pov ""
-
-# game/script.rpy:2782
-translate Spanish thiefchase2_745f1190:
-
-    # "The birds of the forest took off in great clouds all around you at the pitiful sound."
-    ""
+translate Spanish strings:
+    # game/script.rpy:2741
+    old "If you shouted \"Noooooooooooo!\" pitifully, turn to page 45."
+    new ""
 
 # game/script.rpy:2786
 translate Spanish thiefchase2_e83cff23:
-
     # pov "Noooooooooooo!"
     pov ""
+translate Spanish strings:
+    # game/script.rpy:2741
+    old "If you shouted \"Noooooooooooo!\" again, even more pitifully, turn to page 46."
+    new ""
 
 # game/script.rpy:2790
 translate Spanish thiefchase2_72868860:
 
     # pov "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO!"
     pov ""
+
+translate Spanish strings:
+    # game/script.rpy:2759
+    old "If you shouted \"Noooooooooooo!\" more pitifully than ever before, turn to page 48."
+    new ""
 
 # game/script.rpy:2794
 translate Spanish thiefchase2_e8d9638d:
@@ -2489,6 +2629,31 @@ translate Spanish thiefchase2_3288aa47:
     # "Your cry echoed through the forest."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:2741
+    old "If you shouted \"Noooooooooooo!\" again, as pitifully as one can shout, turn to page 47."
+    new ""
+
+##== Most pitiful Noooo possible
+# game/script.rpy:2775
+translate Spanish thiefchase2_2d9b8a18:
+
+    # pov "{b}{i}NOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO OOOOOOOOOOOOOOOOOOOOOOOOOOOOO!{/b}{/i}"
+    pov ""
+
+# game/script.rpy:2782
+translate Spanish thiefchase2_745f1190:
+
+    # "The birds of the forest took off in great clouds all around you at the pitiful sound."
+    ""
+
+##== If you don't pursue the thief
+translate Spanish strings:
+    # game/script.rpy:2741
+    old "If you let them go, turn to page 27."
+    new ""
+
+##== "Old Gooseberry" is an archaic nickname for The Devil
 # game/script.rpy:2805
 translate Spanish thiefchase2_8264a17a:
 
@@ -2570,6 +2735,11 @@ translate Spanish thiefchase2_14347254:
 
     # "But there was nothing to be done for now, and so you tightened your seaweed around your waist and set off once more for the festival, vowing vengeance upon the Master Thief."
     ""
+##== If you don't help the old woman
+translate Spanish strings:
+    # game/script.rpy:2712
+    old "If you refused to aid her, turn to page 44."
+    new ""
 
 # game/script.rpy:2830
 translate Spanish thiefRefuse_c58b6cf1:
@@ -2670,6 +2840,9 @@ translate Spanish thiefRefuse_d14766b6:
     # "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
     ""
 
+##== If people have already disappeared, you have the option to walk into the woods to get information.
+
+
 # game/script.rpy:2856
 translate Spanish thiefRefuse_a03f294c:
 
@@ -2681,6 +2854,11 @@ translate Spanish thiefRefuse_48039e5e:
 
     # mys "I don't think you want to go that way. These woods grow dark swiftly." nointeract
     mys "" nointeract
+
+translate Spanish strings:
+    # game/script.rpy:2864
+    old "If you continued to walk into the woods, turn to page 41."
+    new ""
 
 # game/script.rpy:2874
 translate Spanish thiefRefuse_69fac1df:
@@ -2847,6 +3025,11 @@ translate Spanish toadIntro_1a810ef5:
     eg "" nointeract
 
 ##== You get an option to say where you're going. If you say the festival:
+translate Spanish strings:
+    # game/script.rpy:2932
+    old "If you told him about the festival, turn to page 12."
+    new ""
+
 # game/script.rpy:2935
 translate Spanish toadIntro_6c010a79:
 
@@ -2854,6 +3037,11 @@ translate Spanish toadIntro_6c010a79:
     eg ""
 
 ##== If you say anything else:
+translate Spanish strings:
+ # game/script.rpy:2932
+    old "If you said \"The Glass Mountains\", turn to page 61."
+    new ""
+
 # game/script.rpy:2937
 translate Spanish toadIntro_4834a92c:
 
@@ -2866,6 +3054,11 @@ translate Spanish toadIntro_13222d06:
     # eg "I am heading to the village festival. You should join me."
     eg ""
 
+translate Spanish strings:
+    # game/script.rpy:2932
+    old "If you said \"The road of Pins and the road of Needles\", turn to page 61."
+    new ""
+
 # game/script.rpy:2940
 translate Spanish toadIntro_4834a92c_1:
 
@@ -2877,6 +3070,11 @@ translate Spanish toadIntro_13222d06_1:
 
     # eg "I am heading to the village festival. You should join me."
     eg ""
+
+translate Spanish strings:
+    # game/script.rpy:2932
+    old "If you said \"The space between the trees\", turn to page 61."
+    new ""
 
 # game/script.rpy:2943
 translate Spanish toadIntro_4834a92c_2:
@@ -2891,6 +3089,11 @@ translate Spanish toadIntro_13222d06_2:
     eg ""
 
 ##== If you don't answer
+translate Spanish strings:
+     # game/script.rpy:2932
+    old "If you said nothing, turn to page 57."
+    new ""
+
 # game/script.rpy:2946
 translate Spanish toadIntro_9e03b6dc:
 
@@ -2920,6 +3123,11 @@ translate Spanish toadIntro_b04f8ab9:
 
     # eg "This is no night to be walking out alone. Haven't you heard there's something in these woods?" nointeract
     eg "" nointeract
+
+translate Spanish strings:
+    # game/script.rpy:2956
+    old "If you accepted the lift, turn to page 54."
+    new ""
 
 # game/script.rpy:2975
 translate Spanish toadAccept_b74b7b8f:
@@ -2987,6 +3195,11 @@ translate Spanish toadAccept_dc7b3bab:
     # f "Well, are you impressed?" nointeract
     f "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:2991
+    old "If you asked the gentleman his name, turn to page 58."
+    new ""
+
 # game/script.rpy:2994
 translate Spanish toadAccept_e357c96d:
 
@@ -2999,6 +3212,10 @@ translate Spanish toadAccept_f183c9ee:
     # f "I am Brildebrogue Chippingham, and I have never failed at anything in my life."
     f ""
 
+translate Spanish strings:
+    # game/script.rpy:2991
+    old "If you flattered the toad, turn to page 63."
+    new ""
 # game/script.rpy:2997
 translate Spanish toadAccept_e1dfa99d:
 
@@ -3036,6 +3253,11 @@ translate Spanish toadAccept_7f9effd9:
     f ""
 
 ##== If your godparent is the devil you get the option to steal the toad's stuff and run.
+translate Spanish strings:
+    # game/script.rpy:2991
+    old "If your notes say that {b}You are the Devil's Godchild{/b}, turn to page 65."
+    new ""
+
 # game/script.rpy:3005
 translate Spanish toadAccept_66ec01e8:
 
@@ -3084,6 +3306,11 @@ translate Spanish toadAccept_c23a69f3:
 
     # f "So, what brings you travelling this way?" nointeract
     f "" nointeract
+
+translate Spanish strings:
+    # game/script.rpy:3021
+    old "If you told the toad about your Godparent, turn to page 67."
+    new ""
 
 ##== If your godparent is God:
 # game/script.rpy:3025
@@ -3198,6 +3425,11 @@ translate Spanish toadAccept_fab63400:
     f ""
 
 ##==If you say you're just travelling:
+translate Spanish strings:
+    # game/script.rpy:3021
+    old "If you remained vague about your true plans, turn to page 71."
+    new ""
+
 # game/script.rpy:3058
 translate Spanish toadAccept_f9d88084:
 
@@ -3223,6 +3455,11 @@ translate Spanish toadAccept_e1ee0dc4:
     f ""
 
 ##== If you don't say anything:
+translate Spanish strings:
+    # game/script.rpy:3021
+    old "If you said nothing, turn to page 74."
+    new ""
+
 # game/script.rpy:3067
 translate Spanish toadAccept_4c0244fe:
 
@@ -3241,7 +3478,15 @@ translate Spanish toadAccept_169ce0cf:
     # f "Pond scum?"
     f ""
 
-##== If you accept the pond scum:
+translate Spanish strings:
+    # game/script.rpy:3077
+    old "He offered a decanter of pondwater to you."
+    new ""
+
+    # game/script.rpy:3077
+    old "If you accepted (as any kind and generous guest would), turn to page 75."
+    new ""
+
 # game/script.rpy:3081
 translate Spanish toadAccept_be114223:
 
@@ -3261,6 +3506,11 @@ translate Spanish toadAccept_9f03c73c:
     ""
 
 ##== If you don't:
+translate Spanish strings:
+    # game/script.rpy:3077
+    old "If you refused (the action of a witless and ungrateful churl), turn to page 76."
+    new ""
+
 # game/script.rpy:3086
 translate Spanish toadAccept_737752ff:
 
@@ -3308,6 +3558,12 @@ translate Spanish toadAccept_54335f34:
 
     # f "Thank you for the wonderful company, and I wish you the best of luck with the festival!"
     f ""
+
+##== Refusing the Toad's lift
+translate Spanish strings:
+    # game/script.rpy:2956
+    old "If you refused the lift, turn to page 55."
+    new ""
 
 ##== If you refuse the ride (and you'd interacted with the mushroom and thief:
 # game/script.rpy:3099
@@ -3398,6 +3654,11 @@ translate Spanish toadRefused_37fda816:
     # eg "You can't just go off alone. These woods aren't safe." nointeract
     eg "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:3131
+    old "If you continued walking deeper into the woods, turn to page 41."
+    new ""
+
 # game/script.rpy:3140
 translate Spanish toadRefused_775ef8e2:
 
@@ -3487,6 +3748,11 @@ translate Spanish witch1_50c03e9b:
     h "" nointeract
 
 ##== If you say there's no such thing as witches:
+translate Spanish strings:
+    # game/script.rpy:3184
+    old "If you said there's no such thing as witches, turn to page 38."
+    new ""
+
 # game/script.rpy:3187
 translate Spanish witch1_ad67b5e3:
 
@@ -3637,6 +3903,12 @@ translate Spanish witch1_113faad3:
     # "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
     ""
 
+##== If you're afraid of witches, you don't get kidnapped
+translate Spanish strings:
+    # game/script.rpy:3184
+    old "If you trembled in terrible fear, turn to page 39."
+    new ""
+
 ##== If you don't say there's no such thing as witches:
 # game/script.rpy:3229
 translate Spanish witch1_3fd8495c:
@@ -3649,6 +3921,11 @@ translate Spanish witch1_e1aae792:
 
     # pov "Thank you for the warning, kind hunter. I'll be careful."
     pov ""
+
+translate Spanish strings:
+    # game/script.rpy:3244
+    old "If you entered the village, turn to page 39."
+    new ""
 
 # game/script.rpy:3231
 translate Spanish witch1_485c3244:
@@ -3693,6 +3970,7 @@ translate Spanish witch1_113faad3_2:
     # "The rich dark blanket of night was softly rolling over the village, and cooking fires lit up all across the hills, one by one."
     ""
 
+##== If you just go deeper into the woods
 # game/script.rpy:3254
 translate Spanish witch1_cf88c148:
 
@@ -3721,6 +3999,15 @@ translate Spanish villageExplore1_a6974270:
     ""
 
 ##== Otherwise:
+translate Spanish strings:
+    # game/script.rpy:3271
+    old "The town was overflowing with people bustling about and preparing for the festival, pulling up chairs and laying stacked tables around the enormous bonfire in the centre of town."
+    new ""
+
+    # game/script.rpy:3271
+    old "If you looked at the food, turn to page 36."
+    new ""
+
 # game/script.rpy:3277
 translate Spanish villageExplore1_57b49f26:
 
@@ -3756,6 +4043,11 @@ translate Spanish villageExplore1_80b0404c:
 
     # "For dessert there were giant lemon meringue pies made from lemons as big as your fist, covered in fresh-whipped meringue from the Baker's parlour."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:3271
+    old "If you sat down with the rest of the guests without delay, turn to page 37."
+    new ""
 
 # game/script.rpy:3288
 translate Spanish villageExplore1_f9fe81e9:
@@ -3937,6 +4229,15 @@ translate Spanish villageExplore1_0acc07c1:
 
     # gm "Told you."
     gm ""
+
+translate Spanish strings:
+    # game/script.rpy:3368
+    old "You stood in the middle of the village."
+    new ""
+
+    # game/script.rpy:3368
+    old "If you turned around and went home, turn to page 1."
+    new ""
 
 ##==== This section happens when you attempt to leave the village and go back home (where the wolf is). The narrator (the wolf) attempts to stop you.
 
@@ -4148,6 +4449,11 @@ translate Spanish village_4bd430f5:
 
 ##==== CHARACTER BRIEF: The Gutterlings (Appear when some characters have already disappeared)
 ##== Weird little monsters who lurk in the gutters around town. They have a broad, rural Australian accent and an affable tone of speech.
+translate Spanish strings:
+    # game/script.rpy:3368
+    old "If you talked to the Gutterlings, turn to page 56."
+    new ""
+
 # game/script.rpy:3474
 translate Spanish village_bf29c358:
 
@@ -4204,7 +4510,14 @@ translate Spanish village_7952c538:
     # g "Gotcha!"
     g ""
 
+
 ##======= Location: The Banquet by the river. Many variations of this based on how many people have disappeared.
+
+translate Spanish strings:
+    # game/script.rpy:3368
+    old "If you investigated the banquet, turn to page 64."
+    new ""
+
 # game/script.rpy:3517
 translate Spanish banquet_7d24dfc9:
 
@@ -4257,6 +4570,11 @@ translate Spanish banquet_85cec0f1:
 
     # "No-one sat at the banquet. The food lay uneaten."
     ""
+
+translate Spanish strings:
+ # game/script.rpy:3552
+    old "You looked out over the sad scene."
+    new ""
 
 ##== Variation: The toad is alive.
 # game/script.rpy:3547
