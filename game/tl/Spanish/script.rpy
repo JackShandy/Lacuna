@@ -259,6 +259,11 @@ translate Spanish firstMan_7384aeb5:
     # miw "I will ask only one thing: [He] must work hard, and earn every dollar, and obey me above all else." nointeract
     miw "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:1934
+    old "If she said yes, turn to page 13."
+    new ""
+
 # game/script.rpy:1940
 translate Spanish godYes_48d5fef0:
 
@@ -333,6 +338,10 @@ translate Spanish godYes_3162b7ae:
     ""
 
 ## If you do not accept G-d as your godparent:
+translate Spanish strings:
+    # game/script.rpy:1934
+    old "If she said no, turn to page 14."
+    new ""
 
 # game/script.rpy:1973
 translate Spanish godYes_ef733c9e:
@@ -351,6 +360,11 @@ translate Spanish godYes_d9184f7f:
 
     # "Then she turned away from Him and ran into the forest."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:1934
+    old "If she asked the mysterious figure who He was, turn to page 11."
+    new ""
 
 # game/script.rpy:1978
 translate Spanish godYes_a969500b:
@@ -400,6 +414,10 @@ translate Spanish secondMan2_2507629f:
     # mir "I only have one condition: [He] must promise to obey no master, and scorn the rule of law, and do as [he] wilt every day of [his] life." nointeract
     mir "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:1992
+    old "If she said yes, turn to page 21."
+    new ""
 ##== If you say yes:
 # game/script.rpy:1995
 translate Spanish secondMan2_5aebfe7f:
@@ -474,6 +492,12 @@ translate Spanish devilYes_6e1fabdb:
     # "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
     ""
 ##== If you refuse:
+translate Spanish strings:
+
+    # game/script.rpy:1992
+    old "If she said no, turn to page 16."
+    new ""
+
 # game/script.rpy:2028
 translate Spanish devilYes_7b1aab3f:
 
@@ -487,6 +511,12 @@ translate Spanish devilYes_2977bb76:
     ""
 
 ##== If you ask who He is:
+translate Spanish strings:
+
+    # game/script.rpy:1992
+    old "If she asked the mysterious figure who He was, turn to page 18."
+    new ""
+
 # game/script.rpy:2032
 translate Spanish devilYes_ec056025:
 
@@ -540,6 +570,11 @@ translate Spanish thirdMan2_4fb461a1:
     wib "" nointeract
 
 ##== If you say yes:
+translate Spanish strings:
+    # game/script.rpy:2047
+    old "If she said yes, turn to page 17."
+    new ""
+
 # game/script.rpy:2050
 translate Spanish thirdMan2_6b7d28b9:
 
@@ -620,6 +655,12 @@ translate Spanish deathYes_21b890d4:
     # "But She was already leaving. She crawled into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:2047
+    old "If she said no, turn to page 25."
+    new ""
+
 # game/script.rpy:2084
 translate Spanish deathYes_18f1893d:
 
@@ -641,11 +682,31 @@ translate Spanish deathYes_da16cdc7:
     wib ""
 
 ##== You must make a final choice between G-d, Death or The Devil
+translate Spanish strings:
+
+    # game/script.rpy:2090
+    old "Your mother looked around the dark forest in panic."
+    new ""
+
+    # game/script.rpy:2090
+    old "If she chose Death, turn to page 7."
+    new ""
+
+    # game/script.rpy:2090
+    old "If she chose the Lord, turn to page 5."
+    new ""
+
 # game/script.rpy:2093
 translate Spanish deathYes_bf0470a0:
 
     # "In desperation, she renounced her foolish pride and sought the protection of the Most High Himself."
     ""
+
+translate Spanish strings:
+
+    # game/script.rpy:2090
+    old "If she chose the Devil, turn to page 6."
+    new ""
 
 # game/script.rpy:2096
 translate Spanish deathYes_2b04424f:
@@ -660,6 +721,12 @@ translate Spanish deathYes_5ad076f1:
     mum ""
 
 ##== If you ask who she is:
+translate Spanish strings:
+
+    # game/script.rpy:2047
+    old "If she asked the mysterious figure who She was, turn to page 18."
+    new ""
+
 # game/script.rpy:2119
 translate Spanish deathYes_14578651:
 
@@ -879,6 +946,16 @@ translate Spanish neighbours_7189d0ed:
     # "To the north, there was nothing and no-one."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:2228
+    old "The lands around your house were strange."
+    new ""
+
+    # game/script.rpy:2228
+    old "To learn about the lands to the north, turn to page 10."
+    new ""
+
 # game/script.rpy:2246
 translate Spanish neighbours_26f3d796:
 
@@ -915,6 +992,12 @@ translate Spanish neighbours_26777d35:
     # "Or so it was said."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:2228
+    old "To learn about the lands to the east, turn to page 15."
+    new ""
+
 # game/script.rpy:2264
 translate Spanish neighbours_ab0d41a8:
 
@@ -945,6 +1028,12 @@ translate Spanish neighbours_26777d35_1:
     # "Or so it was said."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:2228
+    old "To learn about the lands to the south, turn to page 20."
+    new ""
+
 # game/script.rpy:2287
 translate Spanish neighbours_57906e1f:
 
@@ -969,6 +1058,7 @@ translate Spanish neighbours_f5a121f2:
     # "She allowed your family to live on the river and use her lands, under one condition."
     ""
 
+##== This line is from "The Porter and the Three Ladies of Baghdad" from 1001 nights - a small reference. 
 # game/script.rpy:2297
 translate Spanish neighbours_3250871e:
 
@@ -992,6 +1082,12 @@ translate Spanish neighbours_26777d35_2:
 
     # "Or so it was said."
     ""
+
+translate Spanish strings:
+
+    # game/script.rpy:2228
+    old "To learn about the lands to the west, turn to page 26."
+    new ""
 
 # game/script.rpy:2315
 translate Spanish neighbours_e8954f26:
@@ -1023,6 +1119,24 @@ translate Spanish neighbours_26777d35_3:
     # "Or so it was said."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:2228
+    old "To continue, return to page 9."
+    new ""
+
+    ##== This is slightly different based on how many people have disappeared.
+    # game/script.rpy:2349
+    if persistent.vanished >= 3:
+        old "[introMenuSentence]"
+        ##== Translate this
+        new "You woke every morning to silence."
+    else:
+        old "[introMenuSentence]"
+        ##== Translate this
+        new "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets."
+
+##== If almost everyone has disappeared
 # game/script.rpy:2353
 translate Spanish introMenu_3ac479fb:
 
@@ -1071,6 +1185,7 @@ translate Spanish introMenu_a6a3cacd:
     # "There was no \"You\". Just a collection of monsters, writhing in borrowed skin."
     ""
 
+##== If lots of people have disappeared
 # game/script.rpy:2363
 translate Spanish introMenu_4931fe8a:
 
@@ -1089,6 +1204,7 @@ translate Spanish introMenu_55c1420d:
     # "Yet still, there were strange hollow places where nothing lived. No sound escaped the stillness of that lacuna. If anything walked there, it walked alone."
     ""
 
+##== Otherwise, if no-one has disappeared
 # game/script.rpy:2367
 translate Spanish introMenu_7c576d42:
 
