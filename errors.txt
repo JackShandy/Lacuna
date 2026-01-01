@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 734: 'Jump' is not a keyword argument or valid child of the key statement.
-    key ["0", "o", "O"] Jump("resetGame")
-                            ^
+File "game/tl/Spanish/script.rpy", line 1132: unknown statement
+    if persistent.vanished >= 3:
+    ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Sun Feb 23 12:12:41 2025
+Thu Jan  1 12:51:31 2026

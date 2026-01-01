@@ -1058,7 +1058,7 @@ translate Spanish neighbours_f5a121f2:
     # "She allowed your family to live on the river and use her lands, under one condition."
     ""
 
-##== This line is from "The Porter and the Three Ladies of Baghdad" from 1001 nights - a small reference. 
+##== This line is from "The Porter and the Three Ladies of Baghdad" from 1001 nights - a small reference.
 # game/script.rpy:2297
 translate Spanish neighbours_3250871e:
 
@@ -1120,21 +1120,14 @@ translate Spanish neighbours_26777d35_3:
     ""
 
 translate Spanish strings:
-
     # game/script.rpy:2228
     old "To continue, return to page 9."
     new ""
-
-    ##== This is slightly different based on how many people have disappeared.
-    # game/script.rpy:2349
-    if persistent.vanished >= 3:
-        old "[introMenuSentence]"
-        ##== Translate this
-        new "You woke every morning to silence."
-    else:
-        old "[introMenuSentence]"
-        ##== Translate this
-        new "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets."
+##== This is slightly different based on how many people have disappeared.
+if persistent.vanished >= 3:
+    $introMenuSentence== "You woke every morning to silence." #Change this line in quotes to spanish
+else:
+    $introMenuSentence== "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets." #Change this line in quotes to spanish
 
 ##== If almost everyone has disappeared
 # game/script.rpy:2353
@@ -1404,12 +1397,12 @@ translate Spanish introMenu_80bd3e95:
     # mum "Go! But be careful of strangers, and do not leave the path."
     mum ""
 
-##== The first mention of "The Space Between The Trees" which is an important phrase that recurrs throughout the text. 
-##== There are a few recurring phrases like this - it's important that the same wording be used for this each time. 
+##== The first mention of "The Space Between The Trees" which is an important phrase that recurrs throughout the text.
+##== There are a few recurring phrases like this - it's important that the same wording be used for this each time.
 ##== Repeating the phrase gives it an ominous tone and builds up a kind of totemic power - makes it feel like a phrase of occult significance.
-##== "The space between the trees" is repeatedly said to be the place where the wolf dwells. It means absence or nothingness. The wolf is kind of a nothing-being that lives in negative space. 
-##== The people it eats disappear into nothingness as if they never existed. 
-##== "LACUNA" is another phrase the text often uses: It means a blank spot, gap, or the missing text in a manuscript. This concept symbolises the Wolf and its victims. 
+##== "The space between the trees" is repeatedly said to be the place where the wolf dwells. It means absence or nothingness. The wolf is kind of a nothing-being that lives in negative space.
+##== The people it eats disappear into nothingness as if they never existed.
+##== "LACUNA" is another phrase the text often uses: It means a blank spot, gap, or the missing text in a manuscript. This concept symbolises the Wolf and its victims.
 ##== The Wolf has been forgotten, removed from the manuscript, and it does the same to the people it eats.
 
 # game/script.rpy:2433
@@ -1679,7 +1672,7 @@ translate Spanish mushroomWater_7067279c:
     # m "{i}Water?{/i} Really?"
     m ""
 
-##== This joke is a bit high-concept but basically the mushroom has kind of a snooty art critic style of persona (before she entered the book she was a bohemian actress in france in the 1920's). 
+##== This joke is a bit high-concept but basically the mushroom has kind of a snooty art critic style of persona (before she entered the book she was a bohemian actress in france in the 1920's).
 ##== The joke is that she's critiquing you as if you were a work of art and finding you quite derivative and stale. You're not exactly pushing the medium forward.
 
 # game/script.rpy:2529
@@ -2860,7 +2853,7 @@ translate Spanish toadIntro_6c010a79:
     # eg "Why, that's exactly where I'm going!"
     eg ""
 
-##== If you say anything else: 
+##== If you say anything else:
 # game/script.rpy:2937
 translate Spanish toadIntro_4834a92c:
 
@@ -4154,7 +4147,7 @@ translate Spanish village_4bd430f5:
     ""
 
 ##==== CHARACTER BRIEF: The Gutterlings (Appear when some characters have already disappeared)
-##== Weird little monsters who lurk in the gutters around town. They have a broad, rural Australian accent and an affable tone of speech. 
+##== Weird little monsters who lurk in the gutters around town. They have a broad, rural Australian accent and an affable tone of speech.
 # game/script.rpy:3474
 translate Spanish village_bf29c358:
 
@@ -4203,7 +4196,7 @@ translate Spanish village_4b340443:
     # g "..."
     g ""
 
-##== If you talk to them six times it takes you to a small story where you escape from their lair. 
+##== If you talk to them six times it takes you to a small story where you escape from their lair.
 ##== See section: gutterlingStory
 # game/script.rpy:3487
 translate Spanish village_7952c538:
@@ -4272,9 +4265,9 @@ translate Spanish banquet_f2b8330d:
     # "The cane toad from the road was gulping down every morsel of food he could find, cradling a wineglass that was almost as big as he was and darting his tongue out to snatch prawns and hot potatoes from nearby unattended plates."
     ""
 
-##======= CHARACTER BRIEF: The Sparrow-Herder. 
+##======= CHARACTER BRIEF: The Sparrow-Herder.
 ##== A minor character. The sparrow-herder tells you random rumours, which all end with "How do I know this? The sparrows told me."
-##== Has a cockney kind of accent, removing the h's. The effect is to make him sound kind of like a street urchin, lower-class, urban. 
+##== Has a cockney kind of accent, removing the h's. The effect is to make him sound kind of like a street urchin, lower-class, urban.
 
 ##== Rumour 1: The Ruins
 # game/script.rpy:3563
@@ -4465,7 +4458,7 @@ translate Spanish banquetMenu_a5fd1eac_2:
     # sh "How do I know all this? The sparrows told me."
     sh ""
 
-##======= CHARACTER BRIEF: The Mayor. 
+##======= CHARACTER BRIEF: The Mayor.
 ##== A minor character. Accent: Plummy, english, upper class.
 ##== Has random rumours that add minor flavour.
 
@@ -4527,13 +4520,13 @@ translate Spanish essay1Showing_338343eb:
     may ""
 
 ##==== CHARACTER BRIEF: The Second Pig
-##== There is a random chance this character appears. 
+##== There is a random chance this character appears.
 ##== The first pig is the pig you can find from the thief. The second is here. The third is the pig being eaten at the banquet. Collectively they reference The Three Little Pigs.
-##== The pigs have an unexpectedly formal and grandiose tone. Think like the final villain in a JRPG. 
+##== The pigs have an unexpectedly formal and grandiose tone. Think like the final villain in a JRPG.
 ##== These characters are a bit inspired by this album: https://worthikids.bandcamp.com/album/duloc
 
 ##== Variation 1: If you have the first pig with you.
-##== Pig 2 believes in the wolf. The other pig believes he is a deluded, mad fool. There are no wolves in australia. 
+##== Pig 2 believes in the wolf. The other pig believes he is a deluded, mad fool. There are no wolves in australia.
 # game/script.rpy:3665
 translate Spanish essay1Showing_54514a97:
 
@@ -4733,7 +4726,7 @@ translate Spanish essay1Showing_3d8b8b8e:
     # p2 "Perhaps you've already met them. You just haven't realised yet."
     p2 ""
 
-##==================== MAJOR CONVERSATION: Conversation with The Toad. 
+##==================== MAJOR CONVERSATION: Conversation with The Toad.
 ##== Variation 1: When the toad is the last character left alive.
 # game/script.rpy:3725
 translate Spanish essay1Showing_28b6da59:
@@ -23756,7 +23749,7 @@ translate Spanish gutterChoice_bb54685f:
 ##=================================== INTERLUDE B: THE WOLF
 ##== This is what happens if you leave the village to go home.
 ##== This initiates your final confrontation with The Wolf.
-##== As you travel back home, you leave the fairytale world and begin to enter the real world (Where you are trapped, reading the book). 
+##== As you travel back home, you leave the fairytale world and begin to enter the real world (Where you are trapped, reading the book).
 
 # game/script.rpy:10484
 translate Spanish wolf_8d496167:
@@ -23833,7 +23826,7 @@ translate Spanish wolf_402b0219:
     ""
 
 ##== If you explore around the apartment
-##== This is meant to feel like a modern, grimy place where you (the player reading the book) live. 
+##== This is meant to feel like a modern, grimy place where you (the player reading the book) live.
 ##== The fireplace in the apartment is perhaps a little out of place in that setting but it's there both to give the cosy feeling that you're reading a book by the fire, and for the dramatic finale where you throw the book into the fire.
 # game/script.rpy:10641
 translate Spanish doorLock_c6c0f047:
@@ -23867,7 +23860,7 @@ translate Spanish doorLock_4a8ae637:
     # "The room inside was dark except for a small fireplace with a chair facing it."
     ""
 
-##== The figure here is you - the person reading the book, trapped in your apartment and unable to look away from the page. 
+##== The figure here is you - the person reading the book, trapped in your apartment and unable to look away from the page.
 # game/script.rpy:10547
 translate Spanish doorLock_ed81ac5c:
 
@@ -24068,7 +24061,7 @@ translate Spanish wolfHouse_464b9518:
     # "The flat was small, but cosy and warm."
     ""
 
-##== This description changes based on how quickly you got here. If you get here in your first playthrough of the game, it's normal. 
+##== This description changes based on how quickly you got here. If you get here in your first playthrough of the game, it's normal.
 ##== In later playthroughs the flat is described as more and more dusty and decayed. More time has passed as you read the book.
 
 ##== First playthrough
@@ -24319,7 +24312,7 @@ translate Spanish wolfFigure_337c0d85:
 ##== During this line, the game pauses and you hear the audio of the wolf whispering "No. If we're going to do this, we're going to do it the right way." This is wolfNo.mp3 in the game files.
 ##== This means - the wolf is not going to allow itself to be killed in this grimy modern setting by being hit over the head with a fire poker.
 ##== If it is to die, it must be in a suitably mythic setting.
-##== Note that we'll need to record some actual audio for this - let me know if you or someone you know would be up for recording it. 
+##== Note that we'll need to record some actual audio for this - let me know if you or someone you know would be up for recording it.
 
 # game/script.rpy:10763
 translate Spanish wolfFigure_86f06ff0:
@@ -24330,7 +24323,7 @@ translate Spanish wolfFigure_86f06ff0:
 ##== From here you are whisked away to another location to confront and kill the wolf in a final battle.
 ##== This is heavily inspired by BEOWULF- specifically the mere and the confrontation with Grendel's Mother. The language is very much taken from Beowulf and has a unique mythic tone to it, slightly different to the rest of the text.
 ##== Part of that tone is heavy use of compound words: battle-blood, oaken war-shield, gleaming-drink. This is a feature of Old English and Old Norse-Icelandic called Kenning. https://en.wikipedia.org/wiki/Kenning
-##== This is an elevated moment and so that mythic tone is important. The characters and setting have twisted to embody archetypes, more than people. 
+##== This is an elevated moment and so that mythic tone is important. The characters and setting have twisted to embody archetypes, more than people.
 ##== They do not seem quite themselves, instead seeming like they are playing out parts from an old story.
 
 # game/script.rpy:10778
@@ -24902,7 +24895,7 @@ translate Spanish lookUp_df6b2ac2:
     ""
 
 ##== If you look further:
-##== You see the Ash Giants. These are deliberately left mysterious and unexplained but are essentially a metaphor for the atomic bomb and the end of humankind. 
+##== You see the Ash Giants. These are deliberately left mysterious and unexplained but are essentially a metaphor for the atomic bomb and the end of humankind.
 # game/script.rpy:10943
 translate Spanish lookUp_6e7d22e6:
 
@@ -25422,7 +25415,7 @@ translate Spanish lookUp_4904a900:
 ##== You say - "I know your true name."
 ##== This is a classic element of fairytales and folklore: If you know something's True Name, you have power over it.
 ##== The Wolf is naturally weak to that idea because Fairytales and Folklore are its bread and butter, this is the world it exists in. So, you're really speaking its language here - this is the perfect way for it to be defeated.
-##== The Wolf is also weak to this concept because it feels it has been forgotten. No-one remembers its true name. 
+##== The Wolf is also weak to this concept because it feels it has been forgotten. No-one remembers its true name.
 ##== Ultimately, by saying its True Name, it consents to being truly defeated. It feels you have proven yourself in a folkloric sense, and it is glad that at least one person still remembers its real name. It's happy to die now, knowing that.
 # game/script.rpy:11161
 translate Spanish lookUp_a20cefa7_1:
@@ -26958,7 +26951,7 @@ translate Spanish wolfNameEnd_29390382:
 
 ##================================================================ INTERLUDE C: SILENCE
 ##======== This is the ending you get if everyone disappears.
-##======== It is heavily inspired by sections of "Do androids dream of electric sheep?" by Philip K. Dick. 
+##======== It is heavily inspired by sections of "Do androids dream of electric sheep?" by Philip K. Dick.
 ##======== You can read it here on page 20. https://www.scribd.com/document/743001508/Phillip-K-Dick-Do-Androids-Dream-of-Electric-Sheep
 
 # game/script.rpy:11675
@@ -27953,7 +27946,7 @@ translate Spanish wolfEnd_781a7ffc:
     ""
 
 ##================================================================ INTERLUDE D: A NEW BEGINNING
-##============= This is what happens if you decide to stay in the book with the wolf. 
+##============= This is what happens if you decide to stay in the book with the wolf.
 ##============= A new person gets the book out of the library and begins reading it.
 ##============= You have become a character in the book.
 
@@ -28356,7 +28349,7 @@ translate Spanish newStoryFinale_de51ddd6:
     # "The road was long, and the forest was dark, but a smile broke out on your face."
     ""
 
-##== The screen fades to black and you get the final ending text. 
+##== The screen fades to black and you get the final ending text.
 
 # game/script.rpy:12243
 translate Spanish newStoryFinale_76b19292:
@@ -29873,7 +29866,7 @@ translate Spanish resetGame_8caa7a1b:
 ##======= Let me know if that would be useful.
 translate Spanish strings:
 
-##=== The different title variations (changes as the characters disappear). 
+##=== The different title variations (changes as the characters disappear).
     # game/script.rpy:1194
     old "The Thief, the Toad, the Witch & the Mushroom."
     new ""
@@ -29936,86 +29929,6 @@ translate Spanish strings:
 
     # game/script.rpy:1227
     old "The Wolf."
-    new ""
-
-    # game/script.rpy:1934
-    old "If she said yes, turn to page 13."
-    new ""
-
-    # game/script.rpy:1934
-    old "If she said no, turn to page 14."
-    new ""
-
-    # game/script.rpy:1934
-    old "If she asked the mysterious figure who He was, turn to page 11."
-    new ""
-
-    # game/script.rpy:1992
-    old "If she said yes, turn to page 21."
-    new ""
-
-    # game/script.rpy:1992
-    old "If she said no, turn to page 16."
-    new ""
-
-    # game/script.rpy:1992
-    old "If she asked the mysterious figure who He was, turn to page 18."
-    new ""
-
-    # game/script.rpy:2047
-    old "If she said yes, turn to page 17."
-    new ""
-
-    # game/script.rpy:2047
-    old "If she said no, turn to page 25."
-    new ""
-
-    # game/script.rpy:2047
-    old "If she asked the mysterious figure who She was, turn to page 18."
-    new ""
-
-    # game/script.rpy:2090
-    old "Your mother looked around the dark forest in panic."
-    new ""
-
-    # game/script.rpy:2090
-    old "If she chose the Lord, turn to page 5."
-    new ""
-
-    # game/script.rpy:2090
-    old "If she chose the Devil, turn to page 6."
-    new ""
-
-    # game/script.rpy:2090
-    old "If she chose Death, turn to page 7."
-    new ""
-
-    # game/script.rpy:2228
-    old "The lands around your house were strange."
-    new ""
-
-    # game/script.rpy:2228
-    old "To learn about the lands to the north, turn to page 10."
-    new ""
-
-    # game/script.rpy:2228
-    old "To learn about the lands to the east, turn to page 15."
-    new ""
-
-    # game/script.rpy:2228
-    old "To learn about the lands to the south, turn to page 20."
-    new ""
-
-    # game/script.rpy:2228
-    old "To learn about the lands to the west, turn to page 26."
-    new ""
-
-    # game/script.rpy:2228
-    old "To continue, return to page 9."
-    new ""
-
-    # game/script.rpy:2349
-    old "[introMenuSentence]"
     new ""
 
     # game/script.rpy:2349

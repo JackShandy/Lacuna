@@ -1,24 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/tl/Spanish/script.rpy", line 29929, in script
-    old "If you went off with them to catch the Master Thief, turn to page 124."
-Exception: A translation for "If you went off with them to catch the Master Thief, turn to page 124." already exists at game/tl/Spanish/script.rpy:97.
+  File "game/tl/Spanish/script.rpy", line 1137, in script
+    old "[introMenuSentence]"
+Exception: A translation for "[introMenuSentence]" already exists at game/tl/Spanish/script.rpy:1134.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/tl/Spanish/script.rpy", line 29929, in script
-    old "If you went off with them to catch the Master Thief, turn to page 124."
+  File "game/tl/Spanish/script.rpy", line 1137, in script
+    old "[introMenuSentence]"
   File "D:\Renpy\renpy-8.2.0-sdk\renpy\ast.py", line 2630, in execute
     renpy.translation.add_string_translation(self.language, self.old, self.new, newloc)
   File "D:\Renpy\renpy-8.2.0-sdk\renpy\translation\__init__.py", line 556, in add_string_translation
     stl.add(old, new, newloc)
   File "D:\Renpy\renpy-8.2.0-sdk\renpy\translation\__init__.py", line 496, in add
     raise Exception("A translation for \"{}\" already exists at {}:{}.".format(
-Exception: A translation for "If you went off with them to catch the Master Thief, turn to page 124." already exists at game/tl/Spanish/script.rpy:97.
+Exception: A translation for "[introMenuSentence]" already exists at game/tl/Spanish/script.rpy:1134.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.0.24012702
 The Wolf. 1.0
-Thu Jan  1 12:19:24 2026
+Thu Jan  1 12:54:12 2026
