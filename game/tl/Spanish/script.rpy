@@ -1257,6 +1257,8 @@ translate Spanish introMenu_0891572a:
     # "No matter how many people were around you, you felt like something was missing."
     ""
 
+##== The festival happens for no known reason - this implies that the wolf has already been eating characters or concepts before the game begins.
+##== Once, there was a reason for the festival - perhaps someone's birthday or an important event - but that reason has now been lost.
 # game/script.rpy:2381
 translate Spanish introMenu_b535dcee:
 
@@ -1541,6 +1543,7 @@ translate Spanish basement_d14766b6:
     ""
 
 ##== Once some people have disappeared, you get the chance to just walk into the forest where you can get information about the wolf.
+##==---> All of these "Walk into the woods" options go to forest exploration scenes, which are later in the script.
 translate Spanish strings:
 
     # game/script.rpy:2469
@@ -7175,7 +7178,6 @@ translate Spanish gilPathShowingThief_9b5ecb82:
 ##== You can end up siding with either the Thief or The Mushroom, and seeing that character's ending.
 ##== The character you don't side with disappears.
 
-###=====BOOKMARK
 # game/script.rpy:4337
 translate Spanish thief2_ffc38e37:
 
@@ -7188,17 +7190,37 @@ translate Spanish thief2_8d316d9b:
     # "The pig quailed from the goose's wrath behind you."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:4347
+    old "You nailed the chest down to the veranda while the goose-girl kept the geese at bay."
+    new ""
+
+    # game/script.rpy:4347
+    old "If you set bear traps around the chest, turn to page 119."
+    new ""
+
 # game/script.rpy:4350
 translate Spanish thief2_97192bd9:
 
     # "You got some bear traps from the Hunter's cart and placed them all around the chest, disguising them with leaves."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:4347
+    old "If you rigged tripwires to bundles of tin cans around the chest, turn to page 112."
+    new ""
+
 # game/script.rpy:4353
 translate Spanish thief2_0f562d24:
 
     # "You pulled thin tripwires all around the chest, tied to old tin cans. As soon as anyone approached it the tin cans would rattle like crazy, alerting the waiting geese."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:4347
+    old "If you placed a terrible goose inside the chest itself, turn to page 116."
+    new ""
 
 # game/script.rpy:4356
 translate Spanish thief2_020c4f6a:
@@ -7248,6 +7270,12 @@ translate Spanish thief2_50559a79:
     # h "Don't get cocky."
     h ""
 
+##================================== Thief Disappearance Route
+##== This route triggers if the mushroom has already disappeared. The Thief disappears.
+##== The other NPC's are eaten, one by one. You can't notice them being eaten - only their absence. You had 4 companions, then 3, 2, 1, etc.
+##== Once someone is written out, it's as if they never existed. So the NPC's struggle to even comprehend what's happening.
+##== Their brains fill in the blanks of what was happening. Like the False Hydra: https://goblinpunch.blogspot.com/2014/09/false-hydra.html
+
 # game/script.rpy:4374
 translate Spanish thief2_2fc48d1f:
 
@@ -7259,6 +7287,7 @@ translate Spanish thief2_68cceacb:
 
     # "But it must have been the wind."
     ""
+
 
 # game/script.rpy:4379
 translate Spanish thief2_c4c4a7d5:
@@ -7302,6 +7331,7 @@ translate Spanish thief2_dc842cb6:
     # "The goose-girl looked around."
     ""
 
+##== The hunter has been eaten.
 # game/script.rpy:4388
 translate Spanish thief2_941ad0bc:
 
@@ -7386,6 +7416,7 @@ translate Spanish thief2_eef7ef5d:
     # sh "I think we'd better check the traps. Make sure they're working."
     sh ""
 
+##== There are now only 2 of you. The Goose-Girl has been eaten.
 # game/script.rpy:4412
 translate Spanish thief2_3c57c042:
 
@@ -7452,6 +7483,7 @@ translate Spanish thief2_71b5c65a:
     # sh "No idea."
     sh ""
 
+##== It's the goose-girl's cottage. Now that she has been eaten, it's like she never existed at all. So the cottage has always been abandoned.
 # game/script.rpy:4425
 translate Spanish thief2_4b9240c7:
 
@@ -7494,12 +7526,15 @@ translate Spanish thief2_626020ff:
     # "Almost like howling."
     ""
 
+##== The sparrow-herder has been eaten.
+##== If you had the pig with you:
 # game/script.rpy:4439
 translate Spanish thief2_9b6f85ef:
 
     # "You and your pig stood alone in the empty clearing."
     ""
 
+##== Otherwise:
 # game/script.rpy:4441
 translate Spanish thief2_df41aef7:
 
@@ -7613,7 +7648,10 @@ translate Spanish thief2_89dfa693:
 
     # "The train whistled with full force, gathering speed until it burst out of the trees and into a wide open field."
     ""
+##====== -> From here it goes to the Thief Disappearance route. 
 
+##========================= Thief and Mushroom Route
+##== If the mushroom hasn't disappeared, this route triggers instead.
 # game/script.rpy:4475
 translate Spanish thief2_daa06a22:
 
@@ -7680,6 +7718,15 @@ translate Spanish thief2_95855076:
     # "The smell of chocolate wafted from behind you. You turned in slow horror, realisation already dawning."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:4493
+    old "The goose-girl's entire cottage had been replaced with a gigantic gingerbread house."
+    new ""
+
+    # game/script.rpy:4493
+    old "If you all wailed in piteous woe, turn to page 109."
+    new ""
+
 # game/script.rpy:4496
 translate Spanish thiefCake_5880d1fa:
 
@@ -7709,6 +7756,13 @@ translate Spanish thiefCake_9e943dd4:
 
     # "The geese honked with glee and began devouring the gingerbread cottage."
     ""
+
+##== Option A:
+##== If you have the pig.
+translate Spanish strings:
+    # game/script.rpy:4493
+    old "If you asked your pig to find the culprit, turn to page 132."
+    new ""
 
 # game/script.rpy:4530
 translate Spanish thiefCake_39ab5e1f:
@@ -7752,6 +7806,12 @@ translate Spanish thiefCake_014c0169:
     # "The thief fled into the forest, with you and the loyal pig sprinting after."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:4493
+    old "If you took the cake as evidence, turn to page 131."
+    new ""
+
 # game/script.rpy:4539
 translate Spanish thiefCake_e19455f5:
 
@@ -7763,6 +7823,12 @@ translate Spanish thiefCake_4e7d5803:
 
     # "The goose hissed at your foolishness, then continued devouring the chest."
     ""
+
+##== Option C:
+translate Spanish strings:
+     # game/script.rpy:4493
+    old "If you searched for the Master Thief, turn to page 130."
+    new ""
 
 # game/script.rpy:4544
 translate Spanish thiefCake_66acd049:
@@ -7812,6 +7878,14 @@ translate Spanish thiefCake_bd362d8e:
     # "The thief fled into the forest."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:4557
+    old "The others chased after them."
+    new ""
+
+    # game/script.rpy:4557
+    old "If you tried to chase after the thief, turn to page 135."
+    new ""
 # game/script.rpy:4562
 translate Spanish thiefChase2_3ab599a0:
 
@@ -7824,6 +7898,11 @@ translate Spanish thiefChase2_0826f66c:
     # "You slowly closed the distance, until you finally leapt forward and grabbed their cloak."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:4557
+    old "If you tried to go around and cut them off, turn to page 136."
+    new ""
+
 # game/script.rpy:4567
 translate Spanish thiefChase2_db11b73b:
 
@@ -7835,6 +7914,11 @@ translate Spanish thiefChase2_dd7dd318:
 
     # "You lay in wait behind a bush until you heard their running footsteps. Then you leapt out and grabbed them."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:4557
+    old "If you {b}have a pig{/b}, turn to page 137."
+    new ""
 
 # game/script.rpy:4570
 translate Spanish thiefChase2_e762de05:
@@ -7872,6 +7956,7 @@ translate Spanish thiefChase2_3b7eb834:
     # t "Well done, friend."
     t ""
 
+##== This sentence changes based on how you attempted to catch them
 # game/script.rpy:4580
 translate Spanish thiefChase2_14ef7584:
 
@@ -7926,12 +8011,15 @@ translate Spanish thiefChase2_0a3d73d8:
     # t "You gave me quite the chase. I have an offer you may be interested in."
     t ""
 
+##== Different depending on godparent
+##== Devil:
 # game/script.rpy:4595
 translate Spanish thiefChase2_65575a59:
 
     # t "You see, I've heard of you. They say you run wild over the hills, doing as you please and living in contempt of the law."
     t ""
 
+##== G-d:
 # game/script.rpy:4597
 translate Spanish thiefChase2_5b1a19c0:
 
@@ -7944,6 +8032,7 @@ translate Spanish thiefChase2_45e02a38:
     # t "Why not change that?"
     t ""
 
+##== Death:
 # game/script.rpy:4600
 translate Spanish thiefChase2_f3b0bb7f:
 
@@ -7967,6 +8056,15 @@ translate Spanish thiefChase2_1095a48c:
 
     # t "I'll give you back everything I stole into the bargain. Promise."
     t ""
+
+translate Spanish strings:
+    # game/script.rpy:4609
+    old "They flashed you a charming smile."
+    new ""
+
+    # game/script.rpy:4609
+    old "If you tried to make the thief see the error of their ways, turn to page 142."
+    new ""
 
 # game/script.rpy:4612
 translate Spanish thiefConvo_0ba00012:
@@ -7992,6 +8090,11 @@ translate Spanish thiefConvo_19b77d74:
     # t "But don't worry, the Mushroom cares nothing for money. It'll get much better use in our pockets."
     t ""
 
+translate Spanish strings:
+    # game/script.rpy:4609
+    old "If you accepted, and joined the Master Thief on this daring Mushroom heist, turn to page 143."
+    new ""
+
 # game/script.rpy:4619
 translate Spanish thiefConvo_583c021b:
 
@@ -8004,6 +8107,11 @@ translate Spanish thiefConvo_76eba48f:
     # t "You'd best be careful, though. I'm rotten to the core, and I'm sure to betray you sooner or later."
     t ""
 
+translate Spanish strings:
+    # game/script.rpy:4609
+    old "If you accepted, while secretly planning to betray the Master Thief at a critical moment, turn to page 143."
+    new ""
+
 # game/script.rpy:4623
 translate Spanish thiefConvo_583c021b_1:
 
@@ -8015,6 +8123,11 @@ translate Spanish thiefConvo_76eba48f_1:
 
     # t "You'd best be careful, though. I'm rotten to the core, and I'm sure to betray you sooner or later."
     t ""
+
+translate Spanish strings:
+    # game/script.rpy:4609
+    old "If you refused, and rushed to warn the Mushroom of this impending theft, turn to page 144."
+    new ""
 
 # game/script.rpy:4627
 translate Spanish thiefConvo_a4e14029:
@@ -8033,6 +8146,7 @@ translate Spanish thiefConvo_65319140:
 
     # "Soon you stood knocking at the Mushroom's door, panting for breath and covered in scrapes from the journey."
     ""
+    ##==---> From here this thread jumps to the moment later when you talk to the mushroom.
 
 # game/script.rpy:4639
 translate Spanish thief3_f990fe5f:
@@ -8064,6 +8178,7 @@ translate Spanish thief3_f5b58f86:
     # "You passed a rocky coast."
     ""
 
+##== This bit is inspired by an iconic moment in Hatoful Boyfriend. It's a strange, out of context bit of world building that is never explained.
 # game/script.rpy:4653
 translate Spanish thief3_13793d98:
 
@@ -8088,6 +8203,13 @@ translate Spanish thiefConvo3_ce0066d1:
     # t " " nointeract
     t "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:4665
+    old "If you talked about your family, turn to page 88."
+    new ""
+
+#== Changes based on how many family members are alive (less, the more people have disappeared). 
 # game/script.rpy:4671
 translate Spanish thiefConvo3_5cf110f5:
 
@@ -8148,6 +8270,12 @@ translate Spanish thiefConvo3_ae9218af:
     # t "I stole my first breath of air, then I stole these hands and these legs and this body of mine, and I've been stealing ever since."
     t ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:4665
+    old "If you talked about your new pet pig, turn to page 91."
+    new ""
+
 # game/script.rpy:4692
 translate Spanish thiefConvo3_da1ccc18:
 
@@ -8184,6 +8312,12 @@ translate Spanish thiefConvo3_b5edef6d:
     # "The thief patted the pig's head while it grunted cheerfully."
     ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:4665
+    old "If you talked about your lack of pets, turn to page 92."
+    new ""
+
 # game/script.rpy:4702
 translate Spanish thiefConvo3_bcbea57d:
 
@@ -8201,6 +8335,12 @@ translate Spanish thiefConvo3_bf24011d:
 
     # "They tossed up a hunk of bread, and a kookaburra swooped down and grabbed it out of the air."
     ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:4665
+    old "If you talked about your hobbies, turn to page 94."
+    new ""
 
 # game/script.rpy:4709
 translate Spanish thiefConvo3_7d8786a0:
@@ -8232,6 +8372,15 @@ translate Spanish thiefConvo3_8d8dc989:
     # t "Perhaps I'll try it, if I can find the time."
     t ""
 
+##== Option E:
+translate Spanish strings:
+    # game/script.rpy:4665
+    old "If you talked about your dreams, turn to page 95."
+    new ""
+
+##== This small moment implies that perhaps your character did once have a dad who was already eaten before the game began.
+##== This is why your father is never mentioned, your mother is single.
+
 # game/script.rpy:4717
 translate Spanish thiefConvo3_cead46b7:
 
@@ -8249,6 +8398,12 @@ translate Spanish thiefConvo3_d27c9710:
 
     # t "More of a nightmare, really."
     t ""
+
+##== Option F:
+translate Spanish strings:
+    # game/script.rpy:4665
+    old "If you talked about your nightmares, turn to page 96."
+    new ""
 
 # game/script.rpy:4724
 translate Spanish thiefConvo3_fe528501:
@@ -8304,6 +8459,12 @@ translate Spanish thiefConvo3_a6ce3a56:
     # t "Once I had a nightmare I was chased by clowns."
     t ""
 
+##== Option G:
+translate Spanish strings:
+    # game/script.rpy:4665
+    old "If you talked about what limb you would gnaw off first, turn to page 100."
+    new ""
+
 # game/script.rpy:4739
 translate Spanish thiefConvo3_36d8684b:
 
@@ -8328,6 +8489,11 @@ translate Spanish thiefConvo3_050e26d0:
     # t "This is my money-maker. If I lose it, I'm finished."
     t ""
 
+##== If multiple people have already disappeared, you get the option to just walk into the woods to find information instead of following the story.
+translate Spanish strings:
+    # game/script.rpy:4665
+    old "If you turned and walked into the woods, turn to page 110."
+    new ""
 # game/script.rpy:4746
 translate Spanish thiefConvo3_21796c93:
 
@@ -8340,6 +8506,7 @@ translate Spanish thiefConvo3_03a8da9c:
     # "Their voice faded behind you as you walked away into the darkness."
     ""
 
+##== After choosing a few options, you go to the next part of the story.
 # game/script.rpy:4755
 translate Spanish thiefWatchThis_5e4feaad:
 
@@ -8357,6 +8524,12 @@ translate Spanish thiefWatchThis_75f0dd3f:
 
     # t "Eh? Eh?" nointeract
     t "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:4760
+    old "If you clapped politely, turn to page 103."
+    new ""
 
 # game/script.rpy:4763
 translate Spanish thiefWatchThis_bc1329df:
@@ -8376,6 +8549,12 @@ translate Spanish thiefWatchThis_20323ed0:
     # t "Anyway, enough of my talents for now. We're here!"
     t ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:4760
+    old "If you enquired as to the source of the thief's incredible abilities, turn to page 108"
+    new ""
+
 # game/script.rpy:4767
 translate Spanish thiefWatchThis_e7906db8:
 
@@ -8394,6 +8573,12 @@ translate Spanish thiefWatchThis_20323ed0_1:
     # t "Anyway, enough of my talents for now. We're here!"
     t ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:4760
+    old "If you ignored the thief's displays of acrobatics, turn to page 105."
+    new ""
+
 # game/script.rpy:4771
 translate Spanish thiefWatchThis_bae7293a:
 
@@ -8411,6 +8596,12 @@ translate Spanish thiefWatchThis_4c77d693:
 
     # t "How about that!" nointeract
     t "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:4776
+    old "If you gave a dismissive shrug, turn to page 104."
+    new ""
 
 # game/script.rpy:4780
 translate Spanish thiefWatchThis_7303f100:
@@ -8436,6 +8627,12 @@ translate Spanish thiefWatchThis_43f37e69:
     # t "Alright. Never mind all that, then. We're here!"
     t ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:4776
+    old "If you clapped politely, turn to page 106."
+    new ""
+
 # game/script.rpy:4785
 translate Spanish thiefWatchThis_0a242a58:
 
@@ -8453,6 +8650,12 @@ translate Spanish thiefWatchThis_20323ed0_2:
 
     # t "Anyway, enough of my talents for now. We're here!"
     t ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:4776
+    old "If you gave rapturous applause, turn to page 107."
+    new ""
 
 # game/script.rpy:4789
 translate Spanish thiefWatchThis_9011c378:
@@ -8478,12 +8681,14 @@ translate Spanish thiefWatchThis_20323ed0_3:
     # t "Anyway, enough of my talents for now. We're here!"
     t ""
 
+##== If you have the pig:
 # game/script.rpy:4797
 translate Spanish thiefFig_4c0b22f6:
 
     # "The colossal roots of the Mushroom's strangler fig rose above you. The pig sniffed at them suspiciously."
     ""
 
+##== Otherwise:
 # game/script.rpy:4799
 translate Spanish thiefFig_9791e92d:
 
@@ -8520,6 +8725,7 @@ translate Spanish thiefFig_16a1fab9:
     # t "Or we could try to get in here, through an underground river patrolled by an old crocodile."
     t ""
 
+##== If some people have disappeared:
 # game/script.rpy:4806
 translate Spanish thiefFig_90be0d1c:
 
@@ -8531,6 +8737,12 @@ translate Spanish thiefFig_2fec0988:
 
     # t "So what's the plan, chief?" nointeract
     t "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:4810
+    old "If your notes say that you {b}know the password{/b}, turn to page 131."
+    new ""
 
 # game/script.rpy:4814
 translate Spanish thiefFig_8dea54e8:
@@ -8561,19 +8773,27 @@ translate Spanish thiefFig_9c3cc80d:
 
     # pov "Gorge, guzzle, gulp and grab; never shall this wound scab."
     pov ""
+    ##==--> From here you go into the scene inside the tree
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:4810
+    old "If you climb up and go in from above, turn to page 142."
+    new ""
 # game/script.rpy:4822
 translate Spanish thiefFig_b3ddaea4:
 
     # t "Great idea. We'll draw you into a life of crime yet."
     t ""
 
+##== If you have the pig:
 # game/script.rpy:4826
 translate Spanish thiefFig_7bb3486b:
 
     # "You climbed up through the canopy, holding your pig tight in your arms. Before you knew it, a gaggle of Banksia seeds dropped down all around you. Their many mouths gabbled at you in a crazed frenzy."
     ""
 
+##== Otherwise:
 # game/script.rpy:4828
 translate Spanish thiefFig_9164b8f4:
 
