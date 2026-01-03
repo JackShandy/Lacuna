@@ -9417,7 +9417,7 @@ translate Spanish thiefHeal_c97033eb:
     # "They struggled to their feet, and you both ventured further into the tunnel. Eventually you found a little silver door in the rock."
     ""
 
-##===== BOOKMARK 1
+##===== Inside the Tree
 
 # game/script.rpy:4988
 translate Spanish thiefMushroomCavern_ff93b99b:
@@ -9473,6 +9473,16 @@ translate Spanish thiefMushroomCavern_f15cf35c:
     # t "Come on!"
     t ""
 
+#translate Spanish strings:
+    # game/script.rpy:5001
+    old "You saw a jeweled scimitar stuck into the wood nearby."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:5001
+    old "If you helped the thief with their plunder, turn to page 185."
+    new ""
+
 # game/script.rpy:5005
 translate Spanish thiefMushroomCavern_8063a600:
 
@@ -9502,7 +9512,13 @@ translate Spanish thiefMushroomCavern_711ba31a:
 
     # t "Whoops. Looks like we'd better work fast!"
     t ""
+    ##==--> Jump to Thief Finale
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5001
+    old "If you grabbed the scimitar, betrayed the thief and defended the mushroom's riches, turn to page 186."
+    new ""
 # game/script.rpy:5013
 translate Spanish thiefMushroomCavern_1494e39a:
 
@@ -9544,7 +9560,10 @@ translate Spanish thiefMushroomCavern_a454b8e3:
 
     # "The Master Thief effortlessly riposted your blows with one hand, while the other hand darted around grabbing nearby gems and stuffing them into their cloak."
     ""
+    ##==--> Jump to Mushroom Finale
 
+##================================= CHAPTER 5A: The Thief Finale
+##===== The normal ending of the thief route. You have chosen to side with the thief. Getting this ending means the mushroom will disappear.
 # game/script.rpy:5025
 translate Spanish thiefFinale_c2c70ada:
 
@@ -9599,6 +9618,16 @@ translate Spanish thiefFinale_76f5b016:
     # m3 "Drop the treasure. {vspace=30} {w=0.4} Drop the treasure. {vspace=30} {w=0.8}Drop the treasure. "
     m3 ""
 
+translate Spanish strings:
+    # game/script.rpy:5045
+    old "The mushrooms surrounded you."
+    new ""
+
+##== Option A:
+    # game/script.rpy:5045
+    old "If you tried fighting off the mushrooms, turn to page 189."
+    new ""
+
 # game/script.rpy:5049
 translate Spanish thiefMushroomBattle_63488526:
 
@@ -9635,6 +9664,12 @@ translate Spanish thiefMushroomBattle_b40cf7a5:
     # "Their attacks began to push you and the thief towards the edge of the ragged hole in the floor."
     ""
 
+##== Option B:
+#translate Spanish strings:
+    # game/script.rpy:5045
+    old "If you took the opportunity to steal some spare gems, turn to page 177."
+    new ""
+
 # game/script.rpy:5058
 translate Spanish thiefMushroomBattle_9ef0413b:
 
@@ -9665,6 +9700,12 @@ translate Spanish thiefMushroomBattle_0e590b2d:
     # "Still, you couldn't escape the swarms of fungi."
     ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:5045
+    old "If you ran for your life, turn to page 180"
+    new ""
+
 # game/script.rpy:5066
 translate Spanish thiefMushroomBattle_92257c80:
 
@@ -9677,6 +9718,11 @@ translate Spanish thiefMushroomBattle_c927ab26:
     # m3 "No-one escapes the Lady's embrace. {vspace=30} {w=0.4} Lady's embrace. {vspace=30} {w=0.8}No-one. "
     m3 ""
 
+##== Option C:
+translate Spanish strings:
+     # game/script.rpy:5045
+    old "If you lost all hope, turn to page 187."
+    new ""
 # game/script.rpy:5070
 translate Spanish thiefMushroomBattle_601ad48b:
 
@@ -9761,6 +9807,16 @@ translate Spanish thiefMushroomBattle_dfca1cfc:
     # t "Well! Did you ever doubt me?"
     t ""
 
+##== Bookmark
+    # game/script.rpy:5104
+    #old "The train was bustling with a chaos of forms."
+   # new ""
+##====== CHARACTER BRIEF: The Goblins
+##== Inspired by The Goblin Market by Christina Rossetti.
+##== https://www.poetryfoundation.org/poems/44996/goblin-market
+##== "One had a cat’s face, One whisk’d a tail, One tramp’d at a rat’s pace, One crawl’d like a snail, One like a wombat prowl’d obtuse and furry, One like a ratel tumbled hurry skurry."
+##== Fae creatures that appear in a chaos of forms. Tricksters who can buy and sell anything - dreams, hopes, memories, etc.
+##== They run the goblin train, roaming around the forest to find new things to buy and sell.
 # game/script.rpy:5095
 translate Spanish thiefMushroomBattle_8e71b353:
 
