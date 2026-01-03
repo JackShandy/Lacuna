@@ -8738,7 +8738,7 @@ translate Spanish thiefFig_2fec0988:
     # t "So what's the plan, chief?" nointeract
     t "" nointeract
 
-##== Option A:
+##========= Entering the Tree: Option A - Knowing the password:
 translate Spanish strings:
     # game/script.rpy:4810
     old "If your notes say that you {b}know the password{/b}, turn to page 131."
@@ -8775,11 +8775,12 @@ translate Spanish thiefFig_9c3cc80d:
     pov ""
     ##==--> From here you go into the scene inside the tree
 
-##== Option B:
+##========= Entering the Tree: Option B - The Canopy:
 translate Spanish strings:
     # game/script.rpy:4810
-    old "If you climb up and go in from above, turn to page 142."
+    old "If you climbed up and went in from above, turn to page 142."
     new ""
+
 # game/script.rpy:4822
 translate Spanish thiefFig_b3ddaea4:
 
@@ -8799,6 +8800,16 @@ translate Spanish thiefFig_9164b8f4:
 
     # "You climbed up through the canopy. Before you knew it, a gaggle of Banksia seeds dropped down all around you. Their many mouths gabbled at you with wild abandon."
     ""
+
+##======= CHARACTER BRIEF: SCRAGGS MCKENZIE AND THE BANKSIA BOYS
+##== Inspired by the australian Banksia wildflowers and the Big Bad Banksia Men from May Gibbs, an old australian children's author.
+##== When old, banksia cones look a bit like weird old men with many mouths.
+## https://maygibbs.org/wp-content/uploads/2016/01/2786800280_579a15fb83-1.jpg
+## https://natureloverslog.com/wp-content/uploads/2016/04/backwoods-bob.jpg?w=1920&h=1080&crop=1
+##== Scraggs is also a bushranger which is a classic australian archetype, usually seen as a lovable anti-authoritarian rogue who evades the law, most famous of which is Ned Kelly.
+##== Scraggs kind of seems like he came out of another story where he's a central character, but in this game he's an incredibly minor character and no-one's ever heard of him. 
+##== The joke where he launches into a musical number which isn't described is part of that.
+
 
 # game/script.rpy:4829
 translate Spanish thiefFig_d7e2fd75:
@@ -8824,6 +8835,12 @@ translate Spanish scraggsConvo_f164a725:
     # sc "I bet you weren't expecting to run into me and my boys." nointeract
     sc "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:4836
+    old "If you asked the thief if they'd ever met these people, turn to page 172."
+    new ""
+
 # game/script.rpy:4839
 translate Spanish scraggsConvo_432f7376:
 
@@ -8841,6 +8858,12 @@ translate Spanish scraggsConvo_377ce9b9:
 
     # boys "You know it, Scraggs! {vspace=30} {w=0.4} Yeah! {vspace=30} {w=0.8}No-one messes with us!"
     boys ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:4836
+    old "If you asked who they are, turn to page 173"
+    new ""
 
 # game/script.rpy:4846
 translate Spanish scraggsConvo_fdc74218:
@@ -8872,6 +8895,12 @@ translate Spanish scraggsConvo_4cee7c91:
     # "You and the thief clapped politely."
     ""
 
+#== Option C:
+translate Spanish strings:
+    # game/script.rpy:4836
+    old "If you asked them to let you past, turn to page 174."
+    new ""
+
 # game/script.rpy:4853
 translate Spanish scraggsConvo_f85128ba:
 
@@ -8884,11 +8913,18 @@ translate Spanish scraggsConvo_3da9ca08:
     # sc "Not without answering one of my riddles first."
     sc ""
 
+##== This is the famous Riddle of the Sphinx.
 # game/script.rpy:4859
 translate Spanish scraggsConvo_cdad1ffa:
 
     # sc "What walks on 4 legs in the morning, 2 legs at noon, and 3 legs in the evening?" nointeract
     sc "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:4858
+    old "If you answered \"Time\", turn to page 175."
+    new ""
 
 # game/script.rpy:4861
 translate Spanish scraggsConvo_bc189829:
@@ -8896,11 +8932,23 @@ translate Spanish scraggsConvo_bc189829:
     # sc "Ha Ha Ha! Wrong!"
     sc ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:4858
+    old "If you answered \"Fate\", turn to page 175."
+    new ""
+
 # game/script.rpy:4864
 translate Spanish scraggsConvo_bc189829_1:
 
     # sc "Ha Ha Ha! Wrong!"
     sc ""
+
+##== Option C: 
+translate Spanish strings:
+    # game/script.rpy:4858
+    old "If you answered \"A dog jumping around on its hind legs\", turn to page 175."
+    new ""
 
 # game/script.rpy:4867
 translate Spanish scraggsConvo_bc189829_2:
@@ -8908,12 +8956,19 @@ translate Spanish scraggsConvo_bc189829_2:
     # sc "Ha Ha Ha! Wrong!"
     sc ""
 
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:4858
+    old "If you answered \"Man.\", turn to page 176."
+    new ""
+
 # game/script.rpy:4870
 translate Spanish scraggsConvo_093ee08f:
 
     # sc "That's... that's correct. You may pass."
     sc ""
 
+##== If you got the riddle correct:
 # game/script.rpy:4871
 translate Spanish scraggsConvo_2f031385:
 
@@ -8943,7 +8998,9 @@ translate Spanish scraggsConvo_ed0ff2aa:
 
     # "You pulled it open and peered down inside."
     ""
+    ##==--> Goes to the scene inside the mushroom's tree.
 
+##== If you failed the riddle:
 # game/script.rpy:4878
 translate Spanish scraggsWrong_bac78671:
 
@@ -9010,6 +9067,7 @@ translate Spanish scraggsWrong_43791fbf:
     # "The thief dived into you and pulled you to the floor just as a razor-sharp banksia leaf slashed above you."
     ""
 
+##== If you have the pig:
 # game/script.rpy:4890
 translate Spanish scraggsWrong_d28f5cf4:
 
@@ -9052,6 +9110,16 @@ translate Spanish scraggsWrong_07cb393e:
     # "The pig nuzzled them with a concerned oink."
     ""
 
+translate Spanish strings:
+   # game/script.rpy:4903
+    old "The thief sprung to their feet, then faltered and fell against the wall."
+    new ""
+
+##== Option A:
+    # game/script.rpy:4903
+    old "If you tried to help the thief, turn to page 182."
+    new ""
+
 # game/script.rpy:4906
 translate Spanish scraggsWrong_1c53e5e9:
 
@@ -9075,6 +9143,12 @@ translate Spanish scraggsWrong_d3bf2724:
 
     # t "And then all your work will be for naught." nointeract
     t "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:4912
+    old "If you tried to motivate the thief by telling them you plan to betray them, turn to page 183."
+    new ""
 
 # game/script.rpy:4915
 translate Spanish scraggsWrong_b2cf0058:
@@ -9100,17 +9174,25 @@ translate Spanish scraggsWrong_31753861:
     # "They grabbed your hand and shook it."
     ""
 
+##== If you have the pig (You All)
 # game/script.rpy:4920
 translate Spanish scraggsWrong_e1c8d990:
 
     # "You pulled them up, and you all crept through the tree until you found a rotted red door."
     ""
 
+##== Otherwise (You both)
 # game/script.rpy:4922
 translate Spanish scraggsWrong_5ec1b43e:
 
     # "You pulled them up, and you both crept through the tree until you found a rotted red door."
     ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:4912
+    old "If you tried to push the thief onwards, turn to page 184"
+    new ""
 
 # game/script.rpy:4925
 translate Spanish scraggsWrong_9e88ace4:
@@ -9135,6 +9217,12 @@ translate Spanish scraggsWrong_da0450c0:
 
     # "They struggled to their feet, and you both crept through the tree until you found a rotted red door."
     ""
+
+##========= Entering the Tree: Option C - the Underground River:
+translate Spanish strings:
+    # game/script.rpy:4810
+    old "If you entered through the underground river below, turn to page 173."
+    new ""
 
 # game/script.rpy:4931
 translate Spanish scraggsWrong_b3ddaea4:
@@ -9214,6 +9302,12 @@ translate Spanish thiefHeal_83ed0743:
     # t "N-nothing to worry about." nointeract
     t "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:4951
+    old "If you admonish the thief for their wild actions, turn to page 153."
+    new ""
+
 # game/script.rpy:4956
 translate Spanish thiefHeal_9e0aa9fa:
 
@@ -9231,6 +9325,12 @@ translate Spanish thiefHeal_9d295d6d:
 
     # t "And you'd be better off not saving me next time, for I plan to soon betray you."
     t ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:4951
+    old "If you helped the thief in silence, turn to page 156."
+    new ""
 
 # game/script.rpy:4962
 translate Spanish thiefHeal_1c53e5e9:
@@ -9255,6 +9355,12 @@ translate Spanish thiefHeal_370d13d3:
 
     # t "And then all your work will be for naught!" nointeract
     t "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:4969
+    old "If you told the thief you plan to betray them, turn to page 183."
+    new ""
 
 # game/script.rpy:4972
 translate Spanish thiefHeal_1e4652a7:
@@ -9286,6 +9392,7 @@ translate Spanish thiefHeal_bb9457c4:
     # "You pulled them up, and you both ventured further into the tunnel. Eventually you found a little silver door in the rock."
     ""
 
+##== If you try to push the thief onwards;
 # game/script.rpy:4979
 translate Spanish thiefHeal_9e88ace4:
 
@@ -9309,6 +9416,8 @@ translate Spanish thiefHeal_c97033eb:
 
     # "They struggled to their feet, and you both ventured further into the tunnel. Eventually you found a little silver door in the rock."
     ""
+
+##===== BOOKMARK 1
 
 # game/script.rpy:4988
 translate Spanish thiefMushroomCavern_ff93b99b:
