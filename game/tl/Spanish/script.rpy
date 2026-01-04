@@ -29,6 +29,65 @@
 # Each character's lines have their letter in from - eg, miw for Man In White. See the game\images\Names folder to see what all the names look like and which character is which.
 # Lines with no letter in front are spoken by the narrator (the wolf).
 
+##====================================================== IMPORTANT PHRASES
+##== Some phrases are deliberately repeated many times. These are intended to feel like omens, that slowly build up ominous symbolic power through repetition.
+##== These phrases should generally use the same wording each time, whenever possible.
+
+##== Examples:
+## A single coiling line, like the entrails of men and beasts, from which omens can be read
+## The space between the trees
+## There are no wolves in Australia
+## The House provides
+## There was nothing and no-one
+## It was never seen or heard from again
+
+##====================================================== GENERAL STRUCTURE
+
+##========== Normal routes:
+##== CHAPTER 1: Your mother chooses a godparent. You grow up.
+##== CHAPTER 2: You go to the festival through the forest. You meet each character: Mushroom, Thief, and Toad. If you ignored the other characters, you have the chance to meet the Witch.
+##== CHAPTER 3: The village. You explore the village and can choose which character to investigate.
+##== CHAPTER 4 splits into 2:
+    ##== CHAPTER 4A: The Thief and Mushroom Route. You have the choice to side with the Thief or the Mushroom.
+    ##== CHAPTER 4B: The Toad and Witch Route. You have the choice to side with the Toad or Witch.
+##== CHAPTER 5 splits into 4:
+    ##== CHAPTER 5A: The Thief. You see the thief's ending. The mushroom disappears.
+    ##== CHAPTER 5B: The Mushroom. You see the Mushroom's ending. The thief disappears.
+    ##== CHAPTER 5C: The Toad. You see the toad's ending. The witch disappears.
+    ##== CHAPTER 5D: The Mushroom. You see the witch's ending. The toad disappears.
+##== CHAPTER 6 has the 4 normal disapperances:
+    ##== CHAPTER 6A: The mushroom disappears.
+    ##== CHAPTER 6B: The thief disappears.
+    ##== CHAPTER 6C: The witch disappears.
+    ##== CHAPTER 6D: The toad disappears.
+
+##========== Disappearance routes
+## After a character has disappeared, you can follow the other character to get a unique disappearance scene.
+## These scenes are more in-depth and emotional than the original scene, and represent the character facing their fate.
+##== CHAPTER 4A1: If you follow the Thief when the Mushroom has disappeared. The Thief disappears. The thief's attitude is triumphant.
+##== CHAPTER 4A2: If you go to the Mushroom when the Thief has disappeared. The Mushroom disappears. The mushroom's attitude is acceptance.
+##== CHAPTER 4B1: If you follow the Toad when the Witch has disappeared. The Toad disappears. The toad's attitude is denial.
+##== CHAPTER 4B2: If you go to the Witch when the Toad has disappeared. The Witch disappears. The witch's attitude is investigative.
+
+##========== Final Endings
+## If 4 characters disappear, you are locked into the Silence endgame.
+## If you leave the village, you get a chance to say the Wolf's true name. If you get that correct, you can choose either the Acceptance ending or Burning ending.
+##== SILENCE ENDING: Everyone is gone. You live in the house in silence. The Wolf gives you the deal, and you must accept - leading to the Acceptance ending.
+##== ACCEPTANCE ENDING: You accept the wolf's deal and live in the book.
+##== BURNING ENDING: You refuse the wolf's deal and burn the book.
+
+##========== Interludes
+## As people disappear, you have more and more chances to explore outside the bounds of the story and gather information about The Wolf.
+##== INTERLUDE HUB 1: If the Mushroom or Thief disappear, you can go into the woods here. 
+##== INTERLUDE HUB 1: If the Witch or Toad disappear, you can go into the woods here. 
+
+##== INTERLUDE 1A: The mushroom's house. You can explore it after she's gone.
+##== INTERLUDE 1B: The Goblin Train. You can explore it after the Thief is gone.
+##== INTERLUDE 1C: The Toad's house. You can explore it after he's gone.
+##== INTERLUDE 1D: The Witch's house. You can explore it after she's gone.
+
+##== GILGAMESH INTERLUDE: A secret scene with Gilgamesh. Explains much of the lore.
+
 
 ##====================================================== Ignore all this.
 
@@ -1483,6 +1542,7 @@ translate Spanish mushroomIntro_83ead349:
 ##========= Part A: The Mushroom
 ##============= CHARACTER BRIEF: The Mushroom
 ##== See the document.
+##== The names show which mushroom image is used - see the images\Names file. m, m1, m2, m3, m4 - have different numbers of mushrooms showing. More mushrooms show when she speaks through multiple bodies.
 translate Spanish mushroomIntro_9034bb1d:
 
     # "In the depths of the woods, you heard nothing."
@@ -3609,6 +3669,7 @@ translate Spanish toadRefused_1ea0b8e7:
     ""
 
 ##== If your godparent is the devil and you drove your mother to her death:
+## Burpengary is a suburb in Queensland. It's 
 # game/script.rpy:3111
 translate Spanish toadRefused_14e0a76a:
 
@@ -5529,6 +5590,7 @@ translate Spanish toadWitchJoin_a00a78ae:
 
     # f "Let us be off at once!"
     f ""
+    ##==--> Goes to CHAPTER 4B: The Toad and Witch Route
 
 translate Spanish strings:
     # game/script.rpy:3746
@@ -5652,6 +5714,7 @@ translate Spanish toadWitchJoin_a00a78ae_1:
 
     # f "Let us be off at once!"
     f ""
+    ##==--> Goes to CHAPTER 4B: The Toad and Witch Route
 
 ##== If you decline
 # game/script.rpy:3895
@@ -6814,6 +6877,7 @@ translate Spanish villagersConvo_fa62273a:
     # "They raised the bottle in a toast."
     ""
 
+## A visual novel reference. The True Ending is usually the best possible ending.
 # game/script.rpy:4239
 translate Spanish villagersConvo_d6cfd995:
 
@@ -7272,6 +7336,7 @@ translate Spanish thief2_50559a79:
 
 ##================================== Thief Disappearance Route
 ##== This route triggers if the mushroom has already disappeared. The Thief disappears.
+##== People are eaten.
 ##== The other NPC's are eaten, one by one. You can't notice them being eaten - only their absence. You had 4 companions, then 3, 2, 1, etc.
 ##== Once someone is written out, it's as if they never existed. So the NPC's struggle to even comprehend what's happening.
 ##== Their brains fill in the blanks of what was happening. Like the False Hydra: https://goblinpunch.blogspot.com/2014/09/false-hydra.html
@@ -7648,7 +7713,7 @@ translate Spanish thief2_89dfa693:
 
     # "The train whistled with full force, gathering speed until it burst out of the trees and into a wide open field."
     ""
-##====== -> From here it goes to the Thief Disappearance route. 
+    ##======--> From here it goes to the Thief Disappearance route: CHAPTER 5 - B2
 
 ##========================= Thief and Mushroom Route
 ##== If the mushroom hasn't disappeared, this route triggers instead.
@@ -9562,7 +9627,7 @@ translate Spanish thiefMushroomCavern_a454b8e3:
     ""
     ##==--> Jump to Mushroom Finale
 
-##================================= CHAPTER 5A: The Thief Finale
+##================================= CHAPTER 5 - A1: The Thief Finale
 ##===== The normal ending of the thief route. You have chosen to side with the thief. Getting this ending means the mushroom will disappear.
 # game/script.rpy:5025
 translate Spanish thiefFinale_c2c70ada:
@@ -9807,10 +9872,6 @@ translate Spanish thiefMushroomBattle_dfca1cfc:
     # t "Well! Did you ever doubt me?"
     t ""
 
-##== Bookmark
-    # game/script.rpy:5104
-    #old "The train was bustling with a chaos of forms."
-   # new ""
 ##====== CHARACTER BRIEF: The Goblins
 ##== Inspired by The Goblin Market by Christina Rossetti.
 ##== https://www.poetryfoundation.org/poems/44996/goblin-market
@@ -9847,6 +9908,16 @@ translate Spanish thiefMushroomBattle_042ffcf2:
     # goblin1 "Have a drink with us! Any friend of the thief's is a friend of ours."
     goblin1 ""
 
+translate Spanish strings:
+    # game/script.rpy:5104
+    old "The train was bustling with a chaos of forms."
+    new ""
+
+##== Option A
+    # game/script.rpy:5104
+    old "If you sat down, turn to page 194."
+    new ""
+
 # game/script.rpy:5107
 translate Spanish goblinTrain_332c8036:
 
@@ -9864,12 +9935,23 @@ translate Spanish goblinTrain_cdf8b1e9:
 
     # "Your pig nestled into the chair beside you and began to chat to the nearby goblins in the language of mud."
     ""
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5104
+    old "If you looked outside, turn to page 195."
+    new ""
 
 # game/script.rpy:5118
 translate Spanish goblinTrain_d745715f:
 
     # "A team of goblins hung off the back of the train and picked up the tracks behind it, then climbed around to hand the tracks to the goblins at the front, who laid them in front of the train as it squeezed through the trees of the forest."
     ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:5104
+    old "If you accepted a goblin beverage, turn to page 196."
+    new ""
 
 # game/script.rpy:5124
 translate Spanish goblinTrain_d4e11551:
@@ -9883,6 +9965,7 @@ translate Spanish goblinTrain_634dc700:
     # "Foolishly, you drank deeply of the brews. You guzzled them down until you could drink no more, until your vision was a haze and the brew ran down your mouth and drenched your clothes, and still you thirsted for them."
     ""
 
+##== Classic folkloric thing, if you eat the fae food you are trapped in the fae realm forever.
 # game/script.rpy:5126
 translate Spanish goblinTrain_05c96d8c:
 
@@ -9895,6 +9978,11 @@ translate Spanish goblinTrain_8bb3d117:
     # goblin2 "On the house! Just for tonight."
     goblin2 ""
 
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:5104
+    old "If you went to find the Master Thief, turn to page 197."
+    new ""
 # game/script.rpy:5133
 translate Spanish goblinTrain_e9f6df52:
 
@@ -10002,6 +10090,15 @@ translate Spanish goblinTrain_75fb7cf2:
 
     # "The thief smiled awkwardly. But for some reason, they didn't seem to share in the good mood. The smile quickly slid off their face, and they made an excuse to leave the party."
     ""
+translate Spanish strings:
+    # game/script.rpy:5156
+    old "The celebration raged on through the train carriage."
+    new ""
+
+##== Option A:
+    # game/script.rpy:5156
+    old "If you celebrated with the goblins, turn to page 198."
+    new ""
 
 # game/script.rpy:5160
 translate Spanish goblinTrain2_1c16af2f:
@@ -10020,6 +10117,12 @@ translate Spanish goblinTrain2_14d42ea0:
 
     # "You could see goblins betting on the games with their hopes, dreams and fears as the stakes."
     ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5156
+    old "If you partook of the goblin food, turn to page 199."
+    new ""
 
 # game/script.rpy:5168
 translate Spanish goblinTrain2_79e66d33:
@@ -10044,6 +10147,11 @@ translate Spanish goblinTrain2_16722772:
 
     # "From that day forward all other foods would be ash in your mouth, and you would wither and go grey with the need of them."
     ""
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:5156
+    old "If you went to find the thief, turn to page 167."
+    new ""
 
 # game/script.rpy:5176
 translate Spanish goblinTrain2_02256a12:
@@ -10087,6 +10195,12 @@ translate Spanish thiefConvo2_3460276a:
     # t "Sorry about that." nointeract
     t "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:5188
+    old "If you asked about the train, turn to page 168."
+    new ""
+
 # game/script.rpy:5192
 translate Spanish thiefConvo2_40906c0a:
 
@@ -10104,6 +10218,12 @@ translate Spanish thiefConvo2_0ddca4bd:
 
     # t "It travels wherever there are thoughts and dreams for the goblins to steal. Provides safe passage to desperate souls. Serves the will of the goblin queens. That kind of thing."
     t ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5188
+    old "If you asked them about the ceremony, turn to page 169."
+    new ""
 
 # game/script.rpy:5198
 translate Spanish thiefConvo2_e4d3d0c4:
@@ -10147,6 +10267,12 @@ translate Spanish thiefConvo2_8bb2d7ae:
     # t "Just thought it sounded more impressive than Apprentice Thief."
     t ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:5188
+    old "If you ask them about their apprenticeship, turn to page 163."
+    new ""
+
 # game/script.rpy:5208
 translate Spanish thiefConvo2_7413e413:
 
@@ -10165,11 +10291,23 @@ translate Spanish thiefConvo2_866b02d5:
     # t "I have to thank you. I couldn't have done it without you."
     t ""
 
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:5188
+    old "If you asked them why they aren't celebrating, turn to page 170."
+    new ""
+
 # game/script.rpy:5217
 translate Spanish thiefConvo2_59eb110f:
 
     # t "It's a long story." nointeract
     t "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:5216
+    old "To hear the long version, turn to page 171."
+    new ""
 
 # game/script.rpy:5219
 translate Spanish thiefConvo2_1cb239e3:
@@ -10183,23 +10321,37 @@ translate Spanish thiefConvo2_cd6db0b6:
     # t "Oh, well. No harm in telling you, I suppose."
     t ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5216
+    old "To hear the short version, turn to page 181."
+    new ""
+
 # game/script.rpy:5223
 translate Spanish thiefConvo2_66c24afd:
 
     # pov "Well, you'd better make it quick."
     pov ""
 
+## If you have a male godparent
 # game/script.rpy:5226
 translate Spanish thiefConvo2_34c49fe4:
 
     # pov "Time is moving on, and I need to find a way to escape my Godfather before midnight."
     pov ""
 
+## If your godparent is death
 # game/script.rpy:5228
 translate Spanish thiefConvo2_4924819a:
 
     # pov "Time is moving on, and I need to find a way to escape my Godmother before midnight."
     pov ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:5216
+    old "To hear the incredibly short version, turn to page 188."
+    new ""
 
 # game/script.rpy:5231
 translate Spanish thiefConvo2_ccf99d5b:
@@ -10207,12 +10359,14 @@ translate Spanish thiefConvo2_ccf99d5b:
     # pov "Well, I don't have a lot of time..."
     pov ""
 
+##== Incredibly Short Version
 # game/script.rpy:5232
 translate Spanish thiefConvo2_ce5e37c0:
 
     # t "My parents are terrible. They sent me to the goblins to train as a thief. Now they're coming back to take me away."
     t ""
 
+##== Short Version
 # game/script.rpy:5240
 translate Spanish thiefStory_f8c2e708:
 
@@ -10285,6 +10439,7 @@ translate Spanish thiefStory_18a20df6:
     # t "As soon as they arrive, He will instantly see me for the wretch I am. Then I will be whisked away from here again."
     t ""
 
+##== Long Version
 # game/script.rpy:5255
 translate Spanish thiefStory_ee4133e5:
 
@@ -10447,6 +10602,12 @@ translate Spanish thiefStoryEnd_e578503d:
     # "You took their hand and squeezed it."
     ""
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:5287
+    old "If you gave them an inspirational speech, turn to page 191."
+    new ""
+
 # game/script.rpy:5291
 translate Spanish thiefStoryEnd_a43ee74b:
 
@@ -10470,6 +10631,12 @@ translate Spanish thiefStoryEnd_6c6cafac:
 
     # t "Thank you."
     t ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5287
+    old "If you promised to stay with them no matter what, turn to page 192."
+    new ""
 
 # game/script.rpy:5296
 translate Spanish thiefStoryEnd_e578503d_1:
@@ -10525,6 +10692,7 @@ translate Spanish thiefStoryEnd_6956d34b:
     # "Just at that moment, the clock struck midnight."
     ""
 
+##== If G-d is your godparent, He is present in this scene
 # game/script.rpy:5311
 translate Spanish thiefStoryEnd_5bfeb2de:
 
@@ -10633,6 +10801,7 @@ translate Spanish thiefStoryEnd_259b324a:
     # pov "There is none. There never was."
     pov ""
 
+##== If G-d is not your godparent, the scene is slightly different
 # game/script.rpy:5333
 translate Spanish thiefStoryEnd_8f8f84cd:
 
@@ -10717,6 +10886,7 @@ translate Spanish thiefStoryEnd_f8487fb3:
     # pov "There's none there. There never was."
     pov ""
 
+##== If The Devil is your godparent:
 # game/script.rpy:5353
 translate Spanish thiefStoryEnd_00b01b68:
 
@@ -10735,6 +10905,12 @@ translate Spanish devilNever_4035c42c:
     # mir "Come along now. The Hour of Ghosts is almost up, and I need you to clean out all the boilers of hell!" nointeract
     mir "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:5359
+    old "If you refused, turn to page 200."
+    new ""
+
 # game/script.rpy:5362
 translate Spanish devilNever_d4b2f765:
 
@@ -10746,6 +10922,12 @@ translate Spanish devilNever_bf06733e:
 
     # t "Psst. I think I know a way out of this. Let's go with Him."
     t ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5359
+    old "If you went with the devil, turn to page 201."
+    new ""
 
 # game/script.rpy:5367
 translate Spanish devilNever_7badc3f3:
@@ -10848,7 +11030,11 @@ translate Spanish devilNever_9c494272:
 
     # mir "Now let me go!" nointeract
     mir "" nointeract
-
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:5386
+    old "If you released the Devil to wreak havoc upon the world once more, turn to page 211."
+    new ""
 # game/script.rpy:5389
 translate Spanish devilNever_3cca8ae7:
 
@@ -10866,6 +11052,12 @@ translate Spanish devilNever_d3b23759:
 
     # t "You're free now."
     t ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5386
+    old "If you leave the Devil trapped in the cherry-tree forever, turn to page 224."
+    new ""
 
 # game/script.rpy:5393
 translate Spanish devilNever_191e3f4e:
@@ -10909,6 +11101,16 @@ translate Spanish devilNever_fe4e49ae:
     # "You leapt on the goblin train, and the thief and the goblins danced and celebrated all through the night."
     ""
 
+##== If you tasted the goblin food or drink
+translate Spanish strings:
+    # game/script.rpy:5411
+    old "Alas, having tasted the goblin fruits, you could never return home to your family again."
+    new ""
+
+    # game/script.rpy:5411
+    old "If you married the thief, turn to page 242."
+    new ""
+
 # game/script.rpy:5414
 translate Spanish thiefEnd_80693906:
 
@@ -10950,6 +11152,13 @@ translate Spanish thiefEnd_60dd08ff:
 
     # "And what happened to the mushroom, you ask?"
     ""
+    ##==--> Goes to CHAPTER 6A: Mushroom Disappearance
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5411
+    old "If you remained good friends with the thief, turn to page 246."
+    new ""
 
 # game/script.rpy:5429
 translate Spanish thiefEnd_8751f68b:
@@ -10992,7 +11201,9 @@ translate Spanish thiefEnd_60dd08ff_1:
 
     # "And what happened to the mushroom, you ask?"
     ""
+    ##==--> Goes to CHAPTER 6A: Mushroom Disappearance
 
+##== If you didn't eat the Goblin Foods
 # game/script.rpy:5444
 translate Spanish thiefEnd_1b54ed88:
 
@@ -11004,6 +11215,16 @@ translate Spanish thiefEnd_0c32ee5e:
 
     # "Because you had not yet tasted the goblin fruits, you could still return to your family and the world of humans."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:5449
+    old "What did you decide?"
+    new ""
+
+##== Option A:
+    # game/script.rpy:5449
+    old "If you bade the thief farewell and returned to your family, turn to page 243."
+    new ""
 
 # game/script.rpy:5452
 translate Spanish thiefEnd_20500802:
@@ -11040,6 +11261,13 @@ translate Spanish thiefEnd_ad6a9690:
 
     # "What happened to the mushroom, you ask?"
     ""
+    ##==--> Goes to CHAPTER 6A: Mushroom Disappearance
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5449
+    old "If you stayed on the goblin train and remained good friends with the thief forever after, turn to page 244."
+    new ""
 
 # game/script.rpy:5466
 translate Spanish thiefEnd_8751f68b_1:
@@ -11082,6 +11310,13 @@ translate Spanish thiefEnd_60dd08ff_2:
 
     # "And what happened to the mushroom, you ask?"
     ""
+    ##==--> Goes to CHAPTER 6A: Mushroom Disappearance
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:5449
+    old "If you stayed on the goblin train and married the thief, turn to page 248."
+    new ""
 
 # game/script.rpy:5482
 translate Spanish thiefEnd_80693906_1:
@@ -11130,7 +11365,10 @@ translate Spanish thiefEnd_ad6a9690_1:
 
     # "What happened to the mushroom, you ask?"
     ""
+    ##==--> Goes to CHAPTER 6A: Mushroom Disappearance
 
+##== If Death was your Godmother
+##== This bit based on the Brother's Grimm story, "Death's Messengers"
 # game/script.rpy:5502
 translate Spanish thiefDeath_b4d71b52:
 
@@ -11179,6 +11417,7 @@ translate Spanish thiefDeath_ebd3db2d:
     # "But as you spoke, there was a knock on the door, and the goblins opened it to reveal the wise mushroom from the forest."
     ""
 
+##== If the mushroom cursed you earlier
 # game/script.rpy:5513
 translate Spanish thiefDeath_fe45266e:
 
@@ -11196,6 +11435,12 @@ translate Spanish deathThiefQuestions_71b3ca75:
 
     # m "The mother of mushrooms is waiting for you." nointeract
     m "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:5520
+    old "If you tried to object, turn to page 245."
+    new ""
 
 # game/script.rpy:5523
 translate Spanish deathThiefQuestions_a8ebb631:
@@ -11221,6 +11466,12 @@ translate Spanish deathThiefQuestions_9991443a:
     # m "She has sent all her messengers. Now you must come down to Her kingdom."
     m ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5520
+    old "If you turned to say goodbye, turn to page 255."
+    new ""
+
 # game/script.rpy:5531
 translate Spanish deathThiefQuestions_74a10a00:
 
@@ -11233,6 +11484,7 @@ translate Spanish deathThiefQuestions_29362efd:
     # m "Of course."
     m ""
 
+##== Changes based on whether the Pig is there
 # game/script.rpy:5534
 translate Spanish deathThiefQuestions_c650d488:
 
@@ -11244,6 +11496,16 @@ translate Spanish deathThiefQuestions_eab40698:
 
     # "You turned to the goblins and the thief."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:5540
+    old "They all cried bitter tears, and their tears drifted away as coal smoke."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:5540
+    old "If you told them you loved them, turn to page 276."
+    new ""
 
 # game/script.rpy:5543
 translate Spanish deathThiefQuestions_48057142:
@@ -11287,6 +11549,12 @@ translate Spanish deathThiefQuestions_ad8dc856:
     # "And you gripped them tight."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5540
+    old "If you told them goodbye, turn to page 278."
+    new ""
+
 # game/script.rpy:5554
 translate Spanish deathThiefQuestions_347bbd31:
 
@@ -11329,6 +11597,11 @@ translate Spanish deathThiefQuestions_ad8dc856_1:
     # "And you gripped them tight."
     ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:5520
+    old "If you accepted your fate, turn to page 265."
+    new ""
 # game/script.rpy:5565
 translate Spanish deathThiefQuestions_31f4e52f:
 
@@ -11370,6 +11643,11 @@ translate Spanish deathThiefQuestions_ad6a9690:
 
     # "What happened to the mushroom, you ask?"
     ""
+    ##==--> goes to CHAPTER 6A: Mushroom Disappearance
+
+##=========================== CHAPTER 6A: MUSHROOM DISAPPEARANCE
+##== The Mushroom is eaten by the wolf.
+##== Space is eaten. The space around her shrinks, and shrinks, until nothing exists outside her room. And then nothing exists at all.
 
 # game/script.rpy:5685
 translate Spanish mushroomDisappears_9f109c84:
@@ -11610,7 +11888,12 @@ translate Spanish mushroomDisappears_b65b5631:
 
     # "It was never seen or heard from again."
     ""
+    ##==================--> THE END. Goes to ending scene.
 
+##========================= CHAPTER 5 - B1: The Thief's Final Curtain.
+##=== You get this scene if you take the thief's path when the mushroom has already disappeared. The Thief is eaten by the wolf. 
+##== The Thief attempts to escape the wolf on the Goblin Train for as long as they can - as goblins are eaten, one by one, by the wolf.
+##== The Thief is trying to squeeze as much joy and celebration as they can out of their last moments.
 # game/script.rpy:5788
 translate Spanish thiefSolo_8e71b353:
 
@@ -11695,6 +11978,8 @@ translate Spanish thiefSoloMenu_cdf8b1e9:
     # "Your pig nestled into the chair beside you and began to chat to the nearby goblins in the language of mud."
     ""
 
+##== These lines trigger one by one as you choose different options from the menu. More and more goblins are eaten.
+
 # game/script.rpy:5816
 translate Spanish thiefSoloMenu_9cd18470:
 
@@ -11755,6 +12040,7 @@ translate Spanish thiefSoloMenu_53e314f0:
     # "The thief challenged the largest goblin to a drinking competition and drank them under the table."
     ""
 
+##== If you drink the brew
 # game/script.rpy:5838
 translate Spanish thiefSoloMenu_634dc700:
 
@@ -11766,6 +12052,21 @@ translate Spanish thiefSoloMenu_05c96d8c:
 
     # "From that day on, no other drink would ever be able to quench your thirst, and you would always shiver and feel cold without the wild drunken feeling of warmth the goblin drinks gave you."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:5807
+    old "The train was bustling with forty goblins in a chaos of forms."
+    new ""
+
+    #== This number goes down as more and more goblins disappear from the wolf.
+    # game/script.rpy:5863
+    old "The wild crowd of [goblinNum] goblins laughed and cheered as the train hurtled into the night."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:5807
+    old "If you cornered the thief and asked them why you were brought here, turn to page 202."
+    new ""
 
 # game/script.rpy:5844
 translate Spanish thiefSoloMenu_8b0a6fbf:
@@ -11797,6 +12098,12 @@ translate Spanish thiefSoloMenu_f579cd87:
     # "They laughed wildly. Their face was slick with sweat."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:5863
+    old "If you asked the thief if something was wrong, turn to page 204."
+    new ""
+
 # game/script.rpy:5866
 translate Spanish thiefSoloConvo_95593600:
 
@@ -11820,6 +12127,12 @@ translate Spanish thiefSoloConvo_48f4ee12:
 
     # "They took your hand in a dance that spiralled out of control. The music was deafening. The goblin faces whirled around you until you were breathless."
     ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:5863
+    old "If you told the thief you'd better get home, turn to page 210."
+    new ""
 
 # game/script.rpy:5877
 translate Spanish thiefSoloConvo_f392e4d5:
@@ -11869,6 +12182,11 @@ translate Spanish thiefSoloConvo_b2ae0f06:
     # "Purple, twinkling smoke began to ooze out of it. As you breathed it in, your vision twisted and your limbs began to feel far away."
     ""
 
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:5863
+    old "If you asked if someone was missing, turn to page 212."
+    new ""
 # game/script.rpy:5893
 translate Spanish thiefSoloConvo_7344494d:
 
@@ -12187,6 +12505,7 @@ translate Spanish thiefSoloConvo2_66454648:
     # t "The real world holds nothing for us. All we can do is extract as much joy as we can from each single day."
     t ""
 
+##== The Westward Line is old slang for death 
 # game/script.rpy:5992
 translate Spanish thiefSoloConvo2_451943e6:
 
@@ -12396,7 +12715,12 @@ translate Spanish thiefSoloConvo2_64c0cb6a:
 
     # "Catch it, whoever can, and then you can make a great big cap out of its fur."
     ""
+    ##===== THE END
+    ##=====--> Goes to main menu. The Thief disappears from the front cover.
 
+
+##============================== CHAPTER 4B: The Mushroom Route
+##====== This route triggers if you go report the thief's crimes to the mushroom, instead of doing the heist with the thief. 
 # game/script.rpy:6062
 translate Spanish mushroom1_71b11ae1:
 
@@ -12415,6 +12739,12 @@ translate Spanish mushroom1_5fdfc9ea:
     # "The mushroom ushered you inside, and you both took a seat in the plush red armchairs. You pretended to sip a cup of decaying leaf matter as you told your tale."
     ""
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:6061
+    old "If you told the tale of how you attempted to catch the Master Thief, turn to page 134."
+    new ""
+
 # game/script.rpy:6075
 translate Spanish mushroom1_fcabddfc:
 
@@ -12427,6 +12757,7 @@ translate Spanish mushroom1_0f1646b8:
     # pov "Um... we only just met tonight."
     pov ""
 
+##== "The Other You's" - the mushroom thinks all humans are the same person with one conciousness, just with multiple bodies.
 # game/script.rpy:6077
 translate Spanish mushroom1_7e478744:
 
@@ -12438,6 +12769,12 @@ translate Spanish mushroomTales_365c61a5:
 
     # m "I have to say, darling, your stories are improving. Still a bit flabby in the second act, but I was most intrigued by your subtle commentary on the innate oneness of being." nointeract
     m "" nointeract
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:6082
+    old "If you ask the mushroom to lift the curse, turn to page 140."
+    new ""
 
 # game/script.rpy:6086
 translate Spanish mushroomTales_9e71025b:
@@ -12462,6 +12799,12 @@ translate Spanish mushroomTales_a9106423:
 
     # m "This time."
     m ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:6082
+    old "If you ask the Mushroom about \"the other you's\", turn to page 138."
+    new ""
 
 # game/script.rpy:6093
 translate Spanish mushroomTales_4bd0a45a:
@@ -12529,6 +12872,12 @@ translate Spanish mushroomThiefBattle_3087acec:
     # t "Together we'll spit in the face of the law and destroy the concept of private ownership once and for all." nointeract
     t "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:6110
+    old "If you joined the thief, turn to page 126."
+    new ""
+
 # game/script.rpy:6113
 translate Spanish mushroomThiefBattle_5a4e463d:
 
@@ -12540,6 +12889,12 @@ translate Spanish mushroomThiefBattle_4194f500:
 
     # t "Excellent. Now..."
     t ""
+    ##==--> Leads to CHAPTER 5 - A1: The Thief Finale
+
+##== Option B:
+    # game/script.rpy:6110
+    old "If you refused, and defended the Mushroom's treasure, page 127."
+    new ""
 
 # game/script.rpy:6117
 translate Spanish mushroomThiefBattle_d4b2f765:
@@ -12564,7 +12919,13 @@ translate Spanish mushroomThiefBattle_a454b8e3:
 
     # "The Master Thief effortlessly riposted your blows with one hand, while the other hand darted around grabbing nearby gems and stuffing them into their cloak."
     ""
+    ##==--> Leads to CHAPTER 5 - A2: The Mushroom Finale
 
+
+##================= CHAPTER 5 - B2: The Mushroom's Final Curtain
+##== If the Thief has already disappeared, you can get this ending by going to the Mushroom's house alone.
+##== The Mushroom is eaten by the wolf.
+##== The Mushroom's reaction to being eaten is mostly characterised by "Acceptance." She grieves for what she never got to do as she accepts her death.
 # game/script.rpy:6126
 translate Spanish mushroomSolo_644c2433:
 
@@ -12727,6 +13088,8 @@ translate Spanish gilPathShowingMushroom_9161085a:
     # "She looked away and discretely wiped her eyes."
     ""
 
+##=== These lines trigger one by one as you talk to the mushroom. Things are slowly eaten out of the world.
+##=== The stars slowly disappear from the sky as they are eaten by the wolf. The stars vanish from the background image, and never appear again - even in future playthroughs.
 # game/script.rpy:6172
 translate Spanish mushroomSoloConvo_e529a808:
 
@@ -12750,6 +13113,16 @@ translate Spanish mushroomSoloConvo_2a144bd9:
 
     # "Were there always this many stars in the sky? You found you couldn't recall."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:6193
+    old "You looked out into the night."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:6193
+    old "If you asked her what this was all about, turn to page 361."
+    new ""
 
 # game/script.rpy:6196
 translate Spanish mushroomSoloConvo_92707f21:
@@ -12787,6 +13160,13 @@ translate Spanish mushroomSoloConvo_d47d6c10:
     # "She added an extra slice of cheese, a chilli and garlic olive, a piece of salami and a chunk of marinated artichoke heart onto the cracker, then gently eased the whole concoction into her mouth."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:6193
+    old "If you asked her about her thoughts, turn to page 362."
+    new ""
+
+##== She's asking about, whether she did the right thing when she took the Wolf's deal to stay in the book forever.
 # game/script.rpy:6206
 translate Spanish mushroomSoloConvo_ae77a96b:
 
@@ -12835,6 +13215,12 @@ translate Spanish mushroomSoloConvo_24f40ddb:
     # m "No use worrying about it now, of course. No point."
     m ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:6193
+    old "If tried to convince her to run, turn to page 363."
+    new ""
+
 # game/script.rpy:6218
 translate Spanish mushroomSoloConvo_9286cdf1:
 
@@ -12859,6 +13245,9 @@ translate Spanish mushroomSoloConvo_ba9c2c92:
     # m "There never was an ending other than this. There never was a time other than this. No other place but this one."
     m ""
 
+## A visual novel reference. The True Ending is usually the best possible ending. 
+## However, in this case the True Ending represents, to the Mushroom, the ultimate possible ending. 
+## This is the only way things could have gone. She is accepting her fate and refusing the idea that she could have achieved a better ending by making different choices.
 # game/script.rpy:6223
 translate Spanish mushroomSoloConvo_43a18cec:
 
@@ -12870,6 +13259,12 @@ translate Spanish mushroomSoloConvo_9859d3a7:
 
     # m "I made my decision a long time ago. And soon, I'm sure, you'll need to make yours."
     m ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:6193
+    old "If you asked her what you should do next, turn to page 364."
+    new ""
 
 # game/script.rpy:6229
 translate Spanish mushroomSoloConvo_23e072c7:
@@ -12900,6 +13295,12 @@ translate Spanish mushroomSoloConvo_18887d99:
 
     # m "What happens after that, you'll have to figure out for yourself. Just as we did."
     m ""
+
+##== Option E:
+translate Spanish strings:
+    # game/script.rpy:6193
+    old "If you relaxed and enjoyed the view in silence, turn to page 366."
+    new ""
 
 # game/script.rpy:6238
 translate Spanish mushroomSoloConvo_15b51930:
@@ -13093,6 +13494,7 @@ translate Spanish mushroomSoloFinale_5ef5253d:
     # "It was pitch black. No stars or moon brightened that abyss."
     ""
 
+##== She is eaten.
 # game/script.rpy:6319
 translate Spanish mushroomSoloFinale_a32a1cb0:
 
@@ -13182,7 +13584,12 @@ translate Spanish mushroomSoloFinale_9256611c:
 
     # "Run away with it now, as fast as you can."
     ""
+    ##===== THE END.
+    ##===--> Goes to the title page. The Mushroom disappears.
 
+##===================================== CHAPTER 5 - A2: The Mushroom Finale
+##== This is the normal Mushroom ending. You side with the mushroom, and get an ending with her. 
+##== After this ending, the Thief disappears.
 # game/script.rpy:6365
 translate Spanish mushroomFinale_d1dcc18f:
 
@@ -13387,6 +13794,12 @@ translate Spanish mushroomPrison_40656ef2:
     # m "You will be safe here." nointeract
     m "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:6417
+    old "If you asked where you were, turn to page 145."
+    new ""
+
 # game/script.rpy:6420
 translate Spanish mushroomPrison_d57bd04d:
 
@@ -13411,6 +13824,11 @@ translate Spanish mushroomPrison_820245f8:
     # m "Would you like me to tell you the story again?"
     m ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:6417
+    old "If you listened to the mushroom's tale, turn to page 152."
+    new ""
 # game/script.rpy:6428
 translate Spanish mushroomPrison_02ef99c8:
 
@@ -13512,6 +13930,11 @@ translate Spanish mushroomPrison_e78085f4:
 
     # m "It was a strange occasion indeed on which She walked the earth to become your godmother. I hope it was worth it."
     m ""
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:6417
+    old "If you demanded to return to the surface, turn to page 146."
+    new ""
 
 # game/script.rpy:6448
 translate Spanish mushroomPrison_3cbcec2f:
@@ -13530,6 +13953,12 @@ translate Spanish mushroomPrison_cba96578:
 
     # m "I only wish I could keep all of you in here, until you're well again."
     m ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:6417
+    old "If you enquired as to what the mushroom meant by \"All of yourself\", turn to page 162."
+    new ""
 
 # game/script.rpy:6454
 translate Spanish mushroomPrison_59bf4497:
@@ -13561,6 +13990,7 @@ translate Spanish mushroomPrison_0a2bfd5f:
     # m2 "You build houses and then leave them empty, while you die of cold on the streets."
     m2 ""
 
+##== She kind of sees all human activity as one big piece of performance art.
 # game/script.rpy:6459
 translate Spanish mushroomPrison_7a28d557:
 
@@ -13572,6 +14002,12 @@ translate Spanish mushroomPrison_01a4b7cf:
 
     # m2 "But is it worth the cost?"
     m2 ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:6417
+    old "If you tried to explain that each human being has their own separate sentience and experience of the world, turn to page 154."
+    new ""
 
 # game/script.rpy:6464
 translate Spanish mushroomPrison_28f70d14:
@@ -13609,6 +14045,12 @@ translate Spanish mushroomPrison_96f1bff0:
     # m4 "You can't see the shape of the great Human Being under the dirt."
     m4 ""
 
+##== Option E:
+translate Spanish strings:
+    # game/script.rpy:6417
+    old "If you asked for food, turn to page 149."
+    new ""
+
 # game/script.rpy:6473
 translate Spanish mushroomPrison_fcc16d31:
 
@@ -13626,6 +14068,12 @@ translate Spanish mushroomPrison_74d4ab21:
 
     # m2 "Here."
     m2 ""
+
+##== Option F:
+translate Spanish strings:
+    # game/script.rpy:6417
+    old "If you politely requested to be allowed out of the room, turn to page 147."
+    new ""
 
 # game/script.rpy:6480
 translate Spanish mushroomPrison_595d4c51:
@@ -13663,6 +14111,17 @@ translate Spanish mushroomKingdom_bd92dccb:
     # m "Don't worry. I know about your Godfather. He cannot reach us here."
     m ""
 
+##== Rhyme. Doesn't necessarily have to rhyme in spanish, but should feel a bit poetic.
+translate Spanish strings:
+    # game/script.rpy:6499
+    old "Every type of fungi bustled around you."
+    new ""
+    
+    ##== Option A:
+    # game/script.rpy:6499
+    old "If you explored the moss garden, turn to page 135."
+    new ""
+
 # game/script.rpy:6502
 translate Spanish mushroomExplore_b19530e1:
 
@@ -13698,6 +14157,12 @@ translate Spanish mushroomExplore_780269e4:
 
     # m "A tad garish, isn't it?"
     m ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:6499
+    old "If you feasted in the palace, turn to page 138."
+    new ""
 
 # game/script.rpy:6514
 translate Spanish mushroomExplore_009e027f:
@@ -13735,6 +14200,12 @@ translate Spanish mushroomExplore_6b8fba94:
     # "Never in your whole life had you sat down to such a marvellous feast, and you gorged yourself for days on end until they had to roll you out of the palace."
     ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:6499
+    old "If you explored the root embassy, turn to page 139."
+    new ""
+
 # game/script.rpy:6524
 translate Spanish mushroomExplore_511933da:
 
@@ -13758,6 +14229,12 @@ translate Spanish mushroomExplore_28c3ed94:
 
     # m2 "If we didn't do this, the whole forest would probably fall into all-out war. And then we'd never get The Work done."
     m2 ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:6499
+    old "If you explored the lands in the shadow of the vast, pale mountain, turn to page 146."
+    new ""
 
 # game/script.rpy:6533
 translate Spanish mushroomExplore_ae055f04:
@@ -13825,6 +14302,14 @@ translate Spanish mushroomExplore_4921dae8:
     # "You felt a strange peace in the shadow of the pale lady, and you stayed there with the mushroom for many days, looking out at the splendour of the world."
     ""
 
+##== Option E:
+translate Spanish strings:
+    # game/script.rpy:6499
+    old "If you asked to return home, turn to page 148."
+    new ""
+
+##== This whole sequence is based on the japanese folktale of Urashima Tarō
+##== https://en.wikipedia.org/wiki/Urashima_Tar%C5%8D
 # game/script.rpy:6550
 translate Spanish mushroomExplore_f4088472:
 
@@ -13837,12 +14322,14 @@ translate Spanish mushroomExplore_d33f8fbb:
     # "Such were the wonders of that kingdom that you almost forgot everything, even the home you left behind and your mother and your twelve siblings and your own country."
     ""
 
+##== If your godparent is The Devil (and you were the death of your mother)
 # game/script.rpy:6555
 translate Spanish mushroomExplore_489fea44:
 
     # "Such were the wonders of that kingdom that you almost forgot everything, even the riches you left behind and your ten siblings and your own country."
     ""
 
+##== These are small variations based on how many characters have disappeared.
 # game/script.rpy:6557
 translate Spanish mushroomExplore_4fc4c4bb:
 
@@ -13891,11 +14378,25 @@ translate Spanish mushroomExplore_117eb978:
     # m "Oh darling, no! Do you have to go? Why not stay here with me?" nointeract
     m "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:6573
+    old "If you changed your mind and decided to stay here underground, turn to page 127."
+    new ""
+
 # game/script.rpy:6576
 translate Spanish mushroomExplore_d78f9838:
 
     # "For a long time, you thought over the Mushroom's proposal. Finally, you agreed."
     ""
+translate Spanish strings:
+    # game/script.rpy:6580
+    old "You and the mushroom stayed together for many long and happy years, roaming the ancient underground gardens of that fungal kingdom."
+    new ""
+
+    # game/script.rpy:6580
+    old "If you remained good friends with the mushrooms, turn to page 155."
+    new ""
 
 # game/script.rpy:6584
 translate Spanish mushroomExplore_82400884:
@@ -13915,12 +14416,14 @@ translate Spanish mushroomExplore_d434d304:
     # "You set up a quaint home in that strange country, and soon you were even able to find your poor mother and make amends for your wicked behaviour."
     ""
 
+##== If your mother is dead
 # game/script.rpy:6588
 translate Spanish mushroomExplore_6d527df0:
 
     # "After a long time, your siblings came down to join you there, one by one."
     ""
 
+##== The Wolf revealing itself slightly
 # game/script.rpy:6589
 translate Spanish mushroomExplore_17381254:
 
@@ -13933,6 +14436,7 @@ translate Spanish mushroomExplore_82400884_1:
     # "You and the mushrooms built a close together friendship over many years, laying each moment shared together like the bricks of a house. You came to know their deep fears and most secret shames."
     ""
 
+##== If you have the pig
 # game/script.rpy:6593
 translate Spanish mushroomExplore_85702a75_1:
 
@@ -13945,6 +14449,7 @@ translate Spanish mushroomExplore_3da163e6:
     # "You set up a quaint home in that dark kingdom."
     ""
 
+##== If your mother is alive
 # game/script.rpy:6595
 translate Spanish mushroomExplore_08f85327:
 
@@ -13956,7 +14461,11 @@ translate Spanish mushroomExplore_17381254_1:
 
     # "Even I was there, though you did not see me."
     ""
-
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:6580
+    old "If you married the mushrooms, turn to page 156."
+    new ""
 # game/script.rpy:6598
 translate Spanish mushroomExplore_ae490022:
 
@@ -13974,19 +14483,21 @@ translate Spanish mushroomExplore_a94a38b3:
 
     # "The occasion was full of joy. I laughed as I raised a toast, and the beer ran down my chin but did not go into my mouth."
     ""
-
+##== If your godparent is G-d
 # game/script.rpy:6602
 translate Spanish mushroomExplore_6f7bbb53:
 
     # "Long did your Godfather the Almighty search for you, but never could he find you, hidden as you were in that undiscovered country."
     ""
 
+##== If your godparent is The Devil
 # game/script.rpy:6604
 translate Spanish mushroomExplore_f9f56ff1:
 
     # "Long did your Godfather the Devil search for you, but never could he find you, hidden as you were in that undiscovered country."
     ""
 
+##== If your godparent is Death
 # game/script.rpy:6606
 translate Spanish mushroomExplore_ba2421c7:
 
@@ -14016,6 +14527,13 @@ translate Spanish mushroomExplore_1d169db6:
 
     # "And what happened to the thief, you ask?"
     ""
+    ##==--> Goes to Thief Disappearance
+
+##== Option B: You leave the mushroom and go back to the world above
+translate Spanish strings:
+    # game/script.rpy:6573
+    old "If you held fast to your desire to return to the world above, turn to page 164."
+    new ""
 
 # game/script.rpy:6618
 translate Spanish mushroomExplore_769b7c9a:
@@ -14119,6 +14637,15 @@ translate Spanish mushroomExplore_82cdaefd:
     # "But just as you were about to enter, a strange man came out."
     ""
 
+##====================== CHARACTER BRIEF: THE STRANGE AND CROOKED OLD MAN
+##== This world is 300 years in the future. The strange old man is inspired by the old rhyme:
+    ## There was a crooked man, and he went a crooked mile,
+    ## He found a crooked sixpence against a crooked stile;
+    ## He bought a crooked cat, which caught a crooked mouse,
+    ## And they all liv'd together in a little crooked house.
+##== In this dark future, all must be as crooked as he. The future is implied to be our modern world, but twisted beyond recognition.
+##== We get some more hints about the Ash Giants and general impressions that the modern world is a strange dystopia that is vaguely described.
+
 # game/script.rpy:6641
 translate Spanish mushroomExplore_b2064b63:
 
@@ -14173,6 +14700,8 @@ translate Spanish mushroomExplore_20652048:
     # "The awful feeling came over you that what the old man said was true. Each day you spent in the underground kingdom was as a hundred years on earth."
     ""
 
+##== A deliberate run-on sentence to give the feeling of an endless world of waste and decay.
+##== The vision of the modern world is basically an infinite empty urban landscape, a labyrinth of abandoned concrete structures that goes to the centre of the earth.
 # game/script.rpy:6654
 translate Spanish mushroomExplore_692eeac0:
 
@@ -14185,6 +14714,7 @@ translate Spanish mushroomExplore_7df9eb68:
     # "But try as you might you couldn't find the way back to the kingdom you left."
     ""
 
+##== If G-d is your godparent.
 # game/script.rpy:6659
 translate Spanish mushroomExplore_afe30546:
 
@@ -14203,6 +14733,7 @@ translate Spanish mushroomExplore_cbb1e7f3:
     # miw "Long have I waited. Now, you will come with me."
     miw ""
 
+##== If the Devil is your godparent.
 # game/script.rpy:6664
 translate Spanish mushroomExplore_a6885655:
 
@@ -14221,6 +14752,15 @@ translate Spanish mushroomExplore_eaa11591:
     # mir "Now you see that no matter how long you hide, none can escape the devil's clutches! Come with me, and we will dance together in Hell forever."
     mir ""
 
+translate Spanish strings:
+    # game/script.rpy:6673
+    old "You felt the weight of the mushroom's box in your pocket."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:6673
+    old "If you opened the box, turn to page 178."
+    new ""
 # game/script.rpy:6676
 translate Spanish mushroomBox_c6dcbd09:
 
@@ -14251,6 +14791,7 @@ translate Spanish mushroomBox_4d1fdaba:
     # "You untied the red silk and lifted the lid of the precious box."
     ""
 
+##== The wolf editorialising. 
 # game/script.rpy:6683
 translate Spanish mushroomBox_44b9e94a:
 
@@ -14286,6 +14827,13 @@ translate Spanish mushroomBox_1d169db6:
 
     # "And what happened to the thief, you ask?"
     ""
+    ##==--> Goes to the CHAPTER 6B: Thief Disappearance.
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:6673
+    old "If you refused to open the box, even when all hope was lost, turn to page 179."
+    new ""
 
 # game/script.rpy:6698
 translate Spanish mushroomBox_fb9a55f6:
@@ -14293,6 +14841,7 @@ translate Spanish mushroomBox_fb9a55f6:
     # "You hesitated - but in the end you couldn't bring yourself to break your promise to the mushroom."
     ""
 
+##== If G-d is your godparent:
 # game/script.rpy:6700
 translate Spanish mushroomBox_8bc33d92:
 
@@ -14316,7 +14865,9 @@ translate Spanish mushroomBox_1d169db6_1:
 
     # "And what happened to the thief, you ask?"
     ""
+    ##==--> Goes to CHAPTER 6B: Thief Disappearance
 
+##== If The Devil is your godparent:
 # game/script.rpy:6708
 translate Spanish mushroomBox_fb9a55f6_1:
 
@@ -14346,7 +14897,9 @@ translate Spanish mushroomBox_1d169db6_2:
 
     # "And what happened to the thief, you ask?"
     ""
+    ##==--> Goes to CHAPTER 6B: Thief Disappearance
 
+##== If Death is your Godparent
 # game/script.rpy:6718
 translate Spanish mushroomBox_0d5f3033:
 
@@ -14424,7 +14977,10 @@ translate Spanish mushroomBox_1d169db6_3:
 
     # "And what happened to the thief, you ask?"
     ""
+    ##==--> Goes to CHAPTER 6B: Thief Disappearance.
 
+##=============================== CHAPTER 6B: Thief Disappearance
+##== After completing the mushroom's normal route, the thief disappears.
 # game/script.rpy:6762
 translate Spanish thiefDisappears_259460d3:
 
@@ -14449,6 +15005,7 @@ translate Spanish thiefDisappears_79e85fae:
     # "The hunter, the sparrow-herder and the goose-girl leapt from the bushes and surrounded the thief, holding pitchforks and rakes and an old shovel."
     ""
 
+##== The Hunter, Sparrow-Herder and Goose-Girl are eaten by the wolf, one by one.
 # game/script.rpy:6766
 translate Spanish thiefDisappears_60c658d9:
 
@@ -14760,6 +15317,13 @@ translate Spanish thiefDisappears_472d5772:
 
     # "It was never seen again."
     ""
+    ##===== THE END.
+    ##== Goes to the title page. The thief disappears.
+
+##== BOOKMARK
+##============================== CHAPTER 4B: The Toad and Witch Route
+##== This route triggers if you go to hunt the Witch with The Toad.
+##== You must decide to side with either the Toad or the Witch. Whoever you don't side with disappears.
 
 # game/script.rpy:6852
 translate Spanish toad1_7d198a09:
@@ -30886,526 +31450,6 @@ translate Spanish strings:
 
     # game/script.rpy:1227
     old "The Wolf."
-    new ""
-
-    # game/script.rpy:4347
-    old "You nailed the chest down to the veranda while the goose-girl kept the geese at bay."
-    new ""
-
-    # game/script.rpy:4347
-    old "If you set bear traps around the chest, turn to page 119."
-    new ""
-
-    # game/script.rpy:4347
-    old "If you rigged tripwires to bundles of tin cans around the chest, turn to page 112."
-    new ""
-
-    # game/script.rpy:4347
-    old "If you placed a terrible goose inside the chest itself, turn to page 116."
-    new ""
-
-    # game/script.rpy:4493
-    old "The goose-girl's entire cottage had been replaced with a gigantic gingerbread house."
-    new ""
-
-    # game/script.rpy:4493
-    old "If you all wailed in piteous woe, turn to page 109."
-    new ""
-
-    # game/script.rpy:4493
-    old "If you asked your pig to find the culprit, turn to page 132."
-    new ""
-
-    # game/script.rpy:4493
-    old "If you took the cake as evidence, turn to page 131."
-    new ""
-
-    # game/script.rpy:4493
-    old "If you searched for the Master Thief, turn to page 130."
-    new ""
-
-    # game/script.rpy:4557
-    old "The others chased after them."
-    new ""
-
-    # game/script.rpy:4557
-    old "If you tried to chase after the thief, turn to page 135."
-    new ""
-
-    # game/script.rpy:4557
-    old "If you tried to go around and cut them off, turn to page 136."
-    new ""
-
-    # game/script.rpy:4557
-    old "If you {b}have a pig{/b}, turn to page 137."
-    new ""
-
-    # game/script.rpy:4609
-    old "They flashed you a charming smile."
-    new ""
-
-    # game/script.rpy:4609
-    old "If you tried to make the thief see the error of their ways, turn to page 142."
-    new ""
-
-    # game/script.rpy:4609
-    old "If you accepted, and joined the Master Thief on this daring Mushroom heist, turn to page 143."
-    new ""
-
-    # game/script.rpy:4609
-    old "If you accepted, while secretly planning to betray the Master Thief at a critical moment, turn to page 143."
-    new ""
-
-    # game/script.rpy:4609
-    old "If you refused, and rushed to warn the Mushroom of this impending theft, turn to page 144."
-    new ""
-
-    # game/script.rpy:4665
-    old "If you talked about your family, turn to page 88."
-    new ""
-
-    # game/script.rpy:4665
-    old "If you talked about your new pet pig, turn to page 91."
-    new ""
-
-    # game/script.rpy:4665
-    old "If you talked about your lack of pets, turn to page 92."
-    new ""
-
-    # game/script.rpy:4665
-    old "If you talked about your hobbies, turn to page 94."
-    new ""
-
-    # game/script.rpy:4665
-    old "If you talked about your dreams, turn to page 95."
-    new ""
-
-    # game/script.rpy:4665
-    old "If you talked about your nightmares, turn to page 96."
-    new ""
-
-    # game/script.rpy:4665
-    old "If you talked about what limb you would gnaw off first, turn to page 100."
-    new ""
-
-    # game/script.rpy:4665
-    old "If you turned and walked into the woods, turn to page 110."
-    new ""
-
-    # game/script.rpy:4760
-    old "If you clapped politely, turn to page 103."
-    new ""
-
-    # game/script.rpy:4760
-    old "If you enquired as to the source of the thief's incredible abilities, turn to page 108"
-    new ""
-
-    # game/script.rpy:4760
-    old "If you ignored the thief's displays of acrobatics, turn to page 105."
-    new ""
-
-    # game/script.rpy:4776
-    old "If you gave a dismissive shrug, turn to page 104."
-    new ""
-
-    # game/script.rpy:4776
-    old "If you clapped politely, turn to page 106."
-    new ""
-
-    # game/script.rpy:4776
-    old "If you gave rapturous applause, turn to page 107."
-    new ""
-
-    # game/script.rpy:4810
-    old "If your notes say that you {b}know the password{/b}, turn to page 131."
-    new ""
-
-    # game/script.rpy:4810
-    old "If you climb up and go in from above, turn to page 142."
-    new ""
-
-    # game/script.rpy:4810
-    old "If you entered through the underground river below, turn to page 173."
-    new ""
-
-    # game/script.rpy:4836
-    old "If you asked the thief if they'd ever met these people, turn to page 172."
-    new ""
-
-    # game/script.rpy:4836
-    old "If you asked who they are, turn to page 173"
-    new ""
-
-    # game/script.rpy:4836
-    old "If you asked them to let you past, turn to page 174."
-    new ""
-
-    # game/script.rpy:4858
-    old "If you answered \"Time\", turn to page 175."
-    new ""
-
-    # game/script.rpy:4858
-    old "If you answered \"Fate\", turn to page 175."
-    new ""
-
-    # game/script.rpy:4858
-    old "If you answered \"A dog jumping around on its hind legs\", turn to page 175."
-    new ""
-
-    # game/script.rpy:4858
-    old "If you answered \"Man.\", turn to page 176."
-    new ""
-
-    # game/script.rpy:4903
-    old "The thief sprung to their feet, then faltered and fell against the wall."
-    new ""
-
-    # game/script.rpy:4903
-    old "If you tried to help the thief, turn to page 182."
-    new ""
-
-    # game/script.rpy:4912
-    old "If you tried to motivate the thief by telling them you plan to betray them, turn to page 183."
-    new ""
-
-    # game/script.rpy:4912
-    old "If you tried to push the thief onwards, turn to page 184"
-    new ""
-
-    # game/script.rpy:4951
-    old "If you admonish the thief for their wild actions, turn to page 153."
-    new ""
-
-    # game/script.rpy:4951
-    old "If you helped the thief in silence, turn to page 156."
-    new ""
-
-    # game/script.rpy:4969
-    old "If you told the thief you plan to betray them, turn to page 183."
-    new ""
-
-    # game/script.rpy:5001
-    old "You saw a jeweled scimitar stuck into the wood nearby."
-    new ""
-
-    # game/script.rpy:5001
-    old "If you helped the thief with their plunder, turn to page 185."
-    new ""
-
-    # game/script.rpy:5001
-    old "If you grabbed the scimitar, betrayed the thief and defended the mushroom's riches, turn to page 186."
-    new ""
-
-    # game/script.rpy:5045
-    old "The mushrooms surrounded you."
-    new ""
-
-    # game/script.rpy:5045
-    old "If you tried fighting off the mushrooms, turn to page 189."
-    new ""
-
-    # game/script.rpy:5045
-    old "If you took the opportunity to steal some spare gems, turn to page 177."
-    new ""
-
-    # game/script.rpy:5045
-    old "If you ran for your life, turn to page 180"
-    new ""
-
-    # game/script.rpy:5045
-    old "If you lost all hope, turn to page 187."
-    new ""
-
-    # game/script.rpy:5104
-    old "The train was bustling with a chaos of forms."
-    new ""
-
-    # game/script.rpy:5104
-    old "If you sat down, turn to page 194."
-    new ""
-
-    # game/script.rpy:5104
-    old "If you looked outside, turn to page 195."
-    new ""
-
-    # game/script.rpy:5104
-    old "If you accepted a goblin beverage, turn to page 196."
-    new ""
-
-    # game/script.rpy:5104
-    old "If you went to find the Master Thief, turn to page 197."
-    new ""
-
-    # game/script.rpy:5156
-    old "The celebration raged on through the train carriage."
-    new ""
-
-    # game/script.rpy:5156
-    old "If you celebrated with the goblins, turn to page 198."
-    new ""
-
-    # game/script.rpy:5156
-    old "If you partook of the goblin food, turn to page 199."
-    new ""
-
-    # game/script.rpy:5156
-    old "If you went to find the thief, turn to page 167."
-    new ""
-
-    # game/script.rpy:5188
-    old "If you asked about the train, turn to page 168."
-    new ""
-
-    # game/script.rpy:5188
-    old "If you asked them about the ceremony, turn to page 169."
-    new ""
-
-    # game/script.rpy:5188
-    old "If you ask them about their apprenticeship, turn to page 163."
-    new ""
-
-    # game/script.rpy:5188
-    old "If you asked them why they aren't celebrating, turn to page 170."
-    new ""
-
-    # game/script.rpy:5216
-    old "To hear the long version, turn to page 171."
-    new ""
-
-    # game/script.rpy:5216
-    old "To hear the short version, turn to page 181."
-    new ""
-
-    # game/script.rpy:5216
-    old "To hear the incredibly short version, turn to page 188."
-    new ""
-
-    # game/script.rpy:5287
-    old "If you gave them an inspirational speech, turn to page 191."
-    new ""
-
-    # game/script.rpy:5287
-    old "If you promised to stay with them no matter what, turn to page 192."
-    new ""
-
-    # game/script.rpy:5359
-    old "If you refused, turn to page 200."
-    new ""
-
-    # game/script.rpy:5359
-    old "If you went with the devil, turn to page 201."
-    new ""
-
-    # game/script.rpy:5386
-    old "If you released the Devil to wreak havoc upon the world once more, turn to page 211."
-    new ""
-
-    # game/script.rpy:5386
-    old "If you leave the Devil trapped in the cherry-tree forever, turn to page 224."
-    new ""
-
-    # game/script.rpy:5411
-    old "Alas, having tasted the goblin fruits, you could never return home to your family again."
-    new ""
-
-    # game/script.rpy:5411
-    old "If you married the thief, turn to page 242."
-    new ""
-
-    # game/script.rpy:5411
-    old "If you remained good friends with the thief, turn to page 246."
-    new ""
-
-    # game/script.rpy:5449
-    old "What did you decide?"
-    new ""
-
-    # game/script.rpy:5449
-    old "If you bade the thief farewell and returned to your family, turn to page 243."
-    new ""
-
-    # game/script.rpy:5449
-    old "If you stayed on the goblin train and remained good friends with the thief forever after, turn to page 244."
-    new ""
-
-    # game/script.rpy:5449
-    old "If you stayed on the goblin train and married the thief, turn to page 248."
-    new ""
-
-    # game/script.rpy:5520
-    old "If you tried to object, turn to page 245."
-    new ""
-
-    # game/script.rpy:5520
-    old "If you turned to say goodbye, turn to page 255."
-    new ""
-
-    # game/script.rpy:5520
-    old "If you accepted your fate, turn to page 265."
-    new ""
-
-    # game/script.rpy:5540
-    old "They all cried bitter tears, and their tears drifted away as coal smoke."
-    new ""
-
-    # game/script.rpy:5540
-    old "If you told them you loved them, turn to page 276."
-    new ""
-
-    # game/script.rpy:5540
-    old "If you told them goodbye, turn to page 278."
-    new ""
-
-    # game/script.rpy:5807
-    old "The train was bustling with forty goblins in a chaos of forms."
-    new ""
-
-    # game/script.rpy:5807
-    old "If you cornered the thief and asked them why you were brought here, turn to page 202."
-    new ""
-
-    # game/script.rpy:5863
-    old "The wild crowd of [goblinNum] goblins laughed and cheered as the train hurtled into the night."
-    new ""
-
-    # game/script.rpy:5863
-    old "If you asked the thief if something was wrong, turn to page 204."
-    new ""
-
-    # game/script.rpy:5863
-    old "If you told the thief you'd better get home, turn to page 210."
-    new ""
-
-    # game/script.rpy:5863
-    old "If you asked if someone was missing, turn to page 212."
-    new ""
-
-    # game/script.rpy:6061
-    old "If you told the tale of how you attempted to catch the Master Thief, turn to page 134."
-    new ""
-
-    # game/script.rpy:6082
-    old "If you ask the mushroom to lift the curse, turn to page 140."
-    new ""
-
-    # game/script.rpy:6082
-    old "If you ask the Mushroom about \"the other you's\", turn to page 138."
-    new ""
-
-    # game/script.rpy:6110
-    old "If you joined the thief, turn to page 126."
-    new ""
-
-    # game/script.rpy:6110
-    old "If you refused, and defended the Mushroom's treasure, page 127."
-    new ""
-
-    # game/script.rpy:6193
-    old "You looked out into the night."
-    new ""
-
-    # game/script.rpy:6193
-    old "If you asked her what this was all about, turn to page 361."
-    new ""
-
-    # game/script.rpy:6193
-    old "If you asked her about her thoughts, turn to page 362."
-    new ""
-
-    # game/script.rpy:6193
-    old "If tried to convince her to run, turn to page 363."
-    new ""
-
-    # game/script.rpy:6193
-    old "If you asked her what you should do next, turn to page 364."
-    new ""
-
-    # game/script.rpy:6193
-    old "If you relaxed and enjoyed the view in silence, turn to page 366."
-    new ""
-
-    # game/script.rpy:6417
-    old "If you asked where you were, turn to page 145."
-    new ""
-
-    # game/script.rpy:6417
-    old "If you listened to the mushroom's tale, turn to page 152."
-    new ""
-
-    # game/script.rpy:6417
-    old "If you demanded to return to the surface, turn to page 146."
-    new ""
-
-    # game/script.rpy:6417
-    old "If you enquired as to what the mushroom meant by \"All of yourself\", turn to page 162."
-    new ""
-
-    # game/script.rpy:6417
-    old "If you tried to explain that each human being has their own separate sentience and experience of the world, turn to page 154."
-    new ""
-
-    # game/script.rpy:6417
-    old "If you asked for food, turn to page 149."
-    new ""
-
-    # game/script.rpy:6417
-    old "If you politely requested to be allowed out of the room, turn to page 147."
-    new ""
-
-    # game/script.rpy:6499
-    old "Every type of fungi bustled around you."
-    new ""
-
-    # game/script.rpy:6499
-    old "If you explored the moss garden, turn to page 135."
-    new ""
-
-    # game/script.rpy:6499
-    old "If you feasted in the palace, turn to page 138."
-    new ""
-
-    # game/script.rpy:6499
-    old "If you explored the root embassy, turn to page 139."
-    new ""
-
-    # game/script.rpy:6499
-    old "If you explored the lands in the shadow of the vast, pale mountain, turn to page 146."
-    new ""
-
-    # game/script.rpy:6499
-    old "If you asked to return home, turn to page 148."
-    new ""
-
-    # game/script.rpy:6573
-    old "If you changed your mind and decided to stay here underground, turn to page 127."
-    new ""
-
-    # game/script.rpy:6573
-    old "If you held fast to your desire to return to the world above, turn to page 164."
-    new ""
-
-    # game/script.rpy:6580
-    old "You and the mushroom stayed together for many long and happy years, roaming the ancient underground gardens of that fungal kingdom."
-    new ""
-
-    # game/script.rpy:6580
-    old "If you remained good friends with the mushrooms, turn to page 155."
-    new ""
-
-    # game/script.rpy:6580
-    old "If you married the mushrooms, turn to page 156."
-    new ""
-
-    # game/script.rpy:6673
-    old "You felt the weight of the mushroom's box in your pocket."
-    new ""
-
-    # game/script.rpy:6673
-    old "If you opened the box, turn to page 178."
-    new ""
-
-    # game/script.rpy:6673
-    old "If you refused to open the box, even when all hope was lost, turn to page 179."
     new ""
 
     # game/script.rpy:6879
