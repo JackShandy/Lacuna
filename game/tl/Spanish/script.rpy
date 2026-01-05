@@ -29,6 +29,15 @@
 # Each character's lines have their letter in from - eg, miw for Man In White. See the game\images\Names folder to see what all the names look like and which character is which.
 # Lines with no letter in front are spoken by the narrator (the wolf).
 
+##====================================================== TEXT TAGS
+
+## {b}Words in bold{/b}
+## {i}Words in italics{/i}
+## {w=5}{nw} means wait for 5 seconds, then automatically go to the next line. This is used to make text feel like it's cut off.
+## {vspace=200} means include a space of 200 pixels between words. 
+## In general, you should include these in the same places the english text has them. 
+## But you can see a full list of tags here and use any of them that make sense for spanish: https://www.renpy.org/doc/html/text.html
+
 ##====================================================== IMPORTANT PHRASES
 ##== Some phrases are deliberately repeated many times. These are intended to feel like omens, that slowly build up ominous symbolic power through repetition.
 ##== These phrases should generally use the same wording each time, whenever possible.
@@ -40,6 +49,9 @@
 ## The House provides
 ## There was nothing and no-one
 ## It was never seen or heard from again
+## And then there was rest in the land.
+## Just the howling of the wind, and nothing more 
+    ## (howling is used because wolves also howl, would be good to find a phrase that incorporates that double-meaning in spanish)
 
 ##====================================================== GENERAL STRUCTURE
 
@@ -64,10 +76,10 @@
 ##========== Disappearance routes
 ## After a character has disappeared, you can follow the other character to get a unique disappearance scene.
 ## These scenes are more in-depth and emotional than the original scene, and represent the character facing their fate.
-##== CHAPTER 4A1: If you follow the Thief when the Mushroom has disappeared. The Thief disappears. The thief's attitude is triumphant.
-##== CHAPTER 4A2: If you go to the Mushroom when the Thief has disappeared. The Mushroom disappears. The mushroom's attitude is acceptance.
-##== CHAPTER 4B1: If you follow the Toad when the Witch has disappeared. The Toad disappears. The toad's attitude is denial.
-##== CHAPTER 4B2: If you go to the Witch when the Toad has disappeared. The Witch disappears. The witch's attitude is investigative.
+##== CHAPTER 4A1 - Solo: If you follow the Thief when the Mushroom has disappeared. The Thief disappears. The thief's attitude is triumphant.
+##== CHAPTER 4A2 - Solo: If you go to the Mushroom when the Thief has disappeared. The Mushroom disappears. The mushroom's attitude is acceptance.
+##== CHAPTER 4B1 - Solo: If you follow the Toad when the Witch has disappeared. The Toad disappears. The toad's attitude is denial.
+##== CHAPTER 4B2 - Solo: If you go to the Witch when the Toad has disappeared. The Witch disappears. The witch's attitude is investigative.
 
 ##========== Final Endings
 ## If 4 characters disappear, you are locked into the Silence endgame.
@@ -11647,7 +11659,8 @@ translate Spanish deathThiefQuestions_ad6a9690:
 
 ##=========================== CHAPTER 6A: MUSHROOM DISAPPEARANCE
 ##== The Mushroom is eaten by the wolf.
-##== Space is eaten. The space around her shrinks, and shrinks, until nothing exists outside her room. And then nothing exists at all.
+##== In each disappearance scene, the wolf eats something different. In this scene, space is eaten.
+##== The space around her shrinks, and shrinks, until nothing exists except her room. And then nothing exists at all.
 
 # game/script.rpy:5685
 translate Spanish mushroomDisappears_9f109c84:
@@ -14981,6 +14994,9 @@ translate Spanish mushroomBox_1d169db6_3:
 
 ##=============================== CHAPTER 6B: Thief Disappearance
 ##== After completing the mushroom's normal route, the thief disappears.
+##== In each disappearance scene, the wolf eats something different. 
+##== In this scene the wolf devours other people, until the thief is left alone in the world.
+
 # game/script.rpy:6762
 translate Spanish thiefDisappears_259460d3:
 
@@ -15320,7 +15336,6 @@ translate Spanish thiefDisappears_472d5772:
     ##===== THE END.
     ##== Goes to the title page. The thief disappears.
 
-##== BOOKMARK
 ##============================== CHAPTER 4B: The Toad and Witch Route
 ##== This route triggers if you go to hunt the Witch with The Toad.
 ##== You must decide to side with either the Toad or the Witch. Whoever you don't side with disappears.
@@ -15432,6 +15447,11 @@ translate Spanish toad1_fdceaf7e:
 
     # crowshrike "Sorry about all that. You seem nice enough. Good luck with it." nointeract
     crowshrike "" nointeract
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:6879
+    old "If you asked for a lift, turn to page 231."
+    new ""
 
 # game/script.rpy:6882
 translate Spanish toad1_683fc9ba:
@@ -15456,6 +15476,12 @@ translate Spanish toad1_f1258eae:
 
     # crowshrike "If you live through it, come get a drink with us sometime."
     crowshrike ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:6879
+    old "If you ask where they're headed, turn to page 232."
+    new ""
 
 # game/script.rpy:6887
 translate Spanish toad1_d0a96da9:
@@ -15529,11 +15555,22 @@ translate Spanish toad1_20a97d78:
     # "You walked through the trees together."
     ""
 
+##== The Firmament is an old term for a celestial barrier that separates the heavens from the earth. Here it is anthropomorphised as a deity.
 # game/script.rpy:6903
 translate Spanish toad1_3573de1c:
 
     # "The Firmament looked down at you from Her place up above."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:6909
+    old "You followed the toad through a dense swamp of crooked mangroves."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:6909
+    old "If you asked him about the witch's cottage, turn to page 233."
+    new ""
 
 # game/script.rpy:6912
 translate Spanish toad1_8c4e262a:
@@ -15553,12 +15590,19 @@ translate Spanish toad1_7a829e33:
     # f "When you become an adventurer like me, you just know these things."
     f ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:6909
+    old "If you asked him about the forest, turn to page 234."
+    new ""
+
 # game/script.rpy:6916
 translate Spanish toad1_5313148f:
 
     # pov "Have you been through this part of the forest before?"
     pov ""
 
+##== This part of the forest is actually where the toad lives, but he's too embarrassed to admit it.
 # game/script.rpy:6917
 translate Spanish toad1_dacfc0e3:
 
@@ -15631,6 +15675,16 @@ translate Spanish toad1_9bdd426e:
     # f "I am B-brildebrogue Chippingham. And I..."
     f ""
 
+translate Spanish strings:
+    # game/script.rpy:6933
+    old "He trailed off."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:6933
+    old "If you helped the toad up, turn to page 235."
+    new ""
+
 # game/script.rpy:6937
 translate Spanish toad1_dfecfe3d:
 
@@ -15667,6 +15721,12 @@ translate Spanish toad1_79a2cd79:
     # f "Good, good. I-I'll lead you onward."
     f ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:6933
+    old "If you turned and walked into the woods without another word, turn to page 237."
+    new ""
+
 # game/script.rpy:6944
 translate Spanish toad1_d9f31646:
 
@@ -15697,6 +15757,7 @@ translate Spanish toad1_0a2eced7:
     # "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
     ""
 
+##== Ignore.
 # game/script.rpy:6957
 translate Spanish toad1_0ae9bcd0:
 
@@ -15708,6 +15769,15 @@ translate Spanish toad1_1668d521:
 
     # "For a brief moment, you thought you saw a figure reflected in the water. But as soon as you blinked, it was gone."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:6971
+    old "The toad gasped in terror at the sight."
+    new ""
+    ##== Option A:
+    # game/script.rpy:6971
+    old "If you looked into the puddle carefully, turn to page 236."
+    new ""
 
 # game/script.rpy:6974
 translate Spanish puddle_e7f50077:
@@ -15721,6 +15791,7 @@ translate Spanish puddle_7cd147f0:
     # "The surface of the water was flat and still."
     ""
 
+##== The Witch's cottage can only be seen in the reflection of the water, and can only be reached by diving into the puddle.
 # game/script.rpy:6978
 translate Spanish puddle_307d5c87:
 
@@ -15732,6 +15803,12 @@ translate Spanish puddle_61023088:
 
     # "There was no trace of a cottage in the world above the water."
     ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:6971
+    old "If you dropped a stick in the puddle, turn to page 206."
+    new ""
 
 # game/script.rpy:6985
 translate Spanish puddle_26014a45:
@@ -15756,6 +15833,12 @@ translate Spanish puddle_37e73c24:
 
     # "You looked up. There was no trace of it in the world outside the reflection."
     ""
+
+##== Option C
+translate Spanish strings:
+    # game/script.rpy:6971
+    old "If you jumped into the puddle, turn to page 207."
+    new ""
 
 # game/script.rpy:6993
 translate Spanish puddle_7be3ad39:
@@ -15816,6 +15899,16 @@ translate Spanish puddle_43df4ffe:
 
     # f "You'd... better go on. I'd just slow you down."
     f ""
+
+translate Spanish strings:
+    # game/script.rpy:7012
+    old "He twisted his once-beautiful hat in shaking hands and looked down at the ground."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:7012
+    old "If you encouraged the toad, turn to page 214."
+    new ""
 
 # game/script.rpy:7015
 translate Spanish puddle_952da51c:
@@ -15900,6 +15993,12 @@ translate Spanish puddle_125bfe54:
 
     # "With this, the toad wiped the tears from his eyes, and beamed."
     ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:7012
+    old "If you crushed the toad's feelings, turn to page 220."
+    new ""
 
 # game/script.rpy:7031
 translate Spanish puddle_10365580:
@@ -16008,12 +16107,16 @@ translate Spanish puddle_0f0e93d0:
 
     # f "If you aren't out in ten minutes, I'll come in there to rescue you."
     f ""
-
+    ##===--> Goes to Chapter 4, Part 2: Witch's Cottage
+    
+##===================================== CHAPTER 5C: The Toad's Finale
+##====== This is the toad's normal ending, where you side with him against the witch.
 # game/script.rpy:7058
 translate Spanish toadFinale_40b33880:
 
     # "You leapt to defend the toad, diving and pushing him away from the slashes of the crooked dagger."
     ""
+
 
 # game/script.rpy:7060
 translate Spanish toadFinale_b1334e31:
@@ -16045,6 +16148,8 @@ translate Spanish toadFinale_8d86280c:
     # "The world flipped upside down as you fell through the silver puddle outside, and you found yourself caught up in a torrent of writhing fish and magpies and bats and crocodiles being washed down the rainforest river, all transforming into new animals every second."
     ""
 
+##== Witchetty grub is an australian grub, eaten by Indigenous Australians
+##== Some variations on these sentences based on whether you have the pig or not
 # game/script.rpy:7071
 translate Spanish toadFinale_eb870944:
 
@@ -16135,6 +16240,12 @@ translate Spanish toadExplore1_b41847a0:
     # fq "Well. This is another fine mess I've made." nointeract
     fq "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:7098
+    old "If you explored the nearby area, turn to page 208."
+    new ""
+
 # game/script.rpy:7102
 translate Spanish toadExplore1_72ae018b:
 
@@ -16158,6 +16269,12 @@ translate Spanish toadExplore1_334fdd44:
 
     # fq "This all the food I have, sorry."
     fq ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:7098
+    old "If you explored deeper in, turn to page 209."
+    new ""
 
 # game/script.rpy:7111
 translate Spanish toadExplore1_66ad7496:
@@ -16201,6 +16318,12 @@ translate Spanish toadExplore1_3b531aa4:
     # "But the costumes seemed well cared for."
     ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:7098
+    old "If you asked the toad about this place, turn to page 216."
+    new ""
+
 # game/script.rpy:7122
 translate Spanish toadExplore1_1d05ae48:
 
@@ -16231,6 +16354,12 @@ translate Spanish toadExplore1_7c81c1fd:
     # fq "Yes, I know it might be hard to believe with my noble bearing. But it's all true."
     fq ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:7098
+    old "If you asked about the toad's curse, turn to page 217."
+    new ""
+
 # game/script.rpy:7130
 translate Spanish toadExplore1_9828067a:
 
@@ -16254,6 +16383,12 @@ translate Spanish toadExplore1_1cf9d257:
 
     # fq "I just didn't want to be me anymore."
     fq ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:7098
+    old "If you looked for a way out, turn to page 218."
+    new ""
 
 # game/script.rpy:7137
 translate Spanish toadExplore1_72b71602:
@@ -16333,6 +16468,9 @@ translate Spanish toadExplore1_1e4394fa:
     # fq "...is Brildebrogue Chippingham."
     fq ""
 
+##=================== CHARACTER BRIEF: BRILDEBROGUE CHIPPINGHAM
+##=== Chippingham is a representation of everything the toad wishes he could be. Smarter, more powerful, more successful, etc etc. Perfect in every way.
+##=== Later he is revealed to be a direct reference to Bluebeard. He has the bodies of seven dead wives in his tower, which you discover. He made a deal with the devil for his good looks, fortune and power.
 # game/script.rpy:7151
 translate Spanish toadExplore1_4e3638ea:
 
@@ -16459,6 +16597,12 @@ translate Spanish chippinghamManor_d8ebeb78:
     # blank "" nointeract
     blank "" nointeract
 
+##============= CHAPTER 5C, PART 2: Exploring the Tower
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:7180
+    old "If you explored the first tower, turn to page 256."
+    new ""
 # game/script.rpy:7184
 translate Spanish chippinghamManor_e9afeac9:
 
@@ -16470,6 +16614,12 @@ translate Spanish chippinghamManor_64ec1473:
 
     # "Inside the first tower, the two of you discovered a trio of stately frog wizards, who flushed the last remains of the potions from your systems and restored you to good health."
     ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:7180
+    old "If you explored the second tower, turn to page 257."
+    new ""
 
 # game/script.rpy:7191
 translate Spanish chippinghamManor_589ff435:
@@ -16483,6 +16633,12 @@ translate Spanish chippinghamManor_fef7aa0d:
     # "Inside the second tower, you discovered the finest frog chefs of all the land, who quickly sliced off their own legs and served them to you as the most delicious dish either of you had ever tasted."
     ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:7180
+    old "If you explored the third tower, turn to page 258."
+    new ""
+
 # game/script.rpy:7198
 translate Spanish chippinghamManor_63f09bba:
 
@@ -16494,6 +16650,12 @@ translate Spanish chippinghamManor_b2c4bf60:
 
     # "Inside the third tower, you discovered a stately harem of frog courtesans, who poured rich wines and made witty conversation with you until you were both completely sloshed and dizzy from the refined repartee."
     ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:7180
+    old "If you explored the fourth tower, turn to page 259."
+    new ""
 
 # game/script.rpy:7205
 translate Spanish chippinghamManor_a16cf280:
@@ -16507,11 +16669,23 @@ translate Spanish chippinghamManor_091f6957:
     # f "I spent my whole life looking up at this place. Hard to believe we're actually here."
     f ""
 
+##== Option E: 
+translate Spanish strings:
+    # game/script.rpy:7180
+    old "If you explored the fifth tower, turn to page 260."
+    new ""
+
 # game/script.rpy:7210
 translate Spanish chippinghamManor_e1bb9324:
 
     # "Inside the fifth tower you found a gigantic closet of the finest clothes, rich silks and suits and uniforms of office, all extremely masculine in cut and befitting of a king."
     ""
+
+##== Option F:
+translate Spanish strings:
+    # game/script.rpy:7180
+    old "If you explored the sixth tower, turn to page 262."
+    new ""
 
 # game/script.rpy:7214
 translate Spanish chippinghamManor_e97b2d24:
@@ -16519,11 +16693,34 @@ translate Spanish chippinghamManor_e97b2d24:
     # "Inside the sixth tower you found the Library of Alexandria. A small plaque explained that Brildebrogue had miraculously saved the books from the fires, and they'd been stored here safely for all this time."
     ""
 
+##== Option G:
+translate Spanish strings:
+    # game/script.rpy:7180
+    old "If you explored the seventh tower, turn to page 264."
+    new ""
+
 # game/script.rpy:7217
 translate Spanish chippinghamManor_29315f0d:
 
     # "Inside the seventh and tallest tower you found only a tiny wooden closet."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:7221
+    old "A golden keyhole shone out from the closet door."
+    new ""
+
+        
+    ##== Option A:
+    # game/script.rpy:7221
+    old "If you went back, turn to page 190."
+    new ""
+    ##==--> Goes back to exploring the towers
+
+    ##== Option B:
+    # game/script.rpy:7221
+    old "If you opened the closet, turn to page 275."
+    new ""
 
 # game/script.rpy:7224
 translate Spanish chippinghamManor_eda4e6f0:
@@ -16531,6 +16728,7 @@ translate Spanish chippinghamManor_eda4e6f0:
     # "You inserted the key, and slowly opened the door with a long creak."
     ""
 
+##== This is all inspired by Bluebeard obviously
 # game/script.rpy:7227
 translate Spanish chippinghamManor_ec308319:
 
@@ -16542,6 +16740,13 @@ translate Spanish chippinghamManor_7ba64a1d:
 
     # "The pig squealed in terrible fear."
     ""
+    ##==--> Goes to Part 3 - Brildebrogue discovers you
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:7180
+    old "If you patiently waited for Brildebrogue, turn to page 161."
+    new ""
 
 # game/script.rpy:7234
 translate Spanish chippinghamManor_39e7e935:
@@ -16573,6 +16778,7 @@ translate Spanish brildebrogueCloset_6e53fa71:
     # f "Oh my G-"
     f ""
 
+##========= CHAPTER 5C part 3: Brildebrogue Discovers You
 # game/script.rpy:7248
 translate Spanish brildebrogueCloset_656148d9:
 
@@ -16651,6 +16857,12 @@ translate Spanish brildebrogueCloset_3233e310:
     # bc "Would you be so kind to hand me back my keys, old sport? I have much business to attend to." nointeract
     bc "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:7267
+    old "If you handed back all the keys, turn to page 123."
+    new ""
+
 # game/script.rpy:7270
 translate Spanish brildebrogueCloset_cbfa7023:
 
@@ -16710,6 +16922,13 @@ translate Spanish brildebrogueCloset_d863c63d:
 
     # f "RUN!"
     f ""
+    ##==--> Goes to Brildebrogue Fight Scene
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:7267
+    old "If you pretended you lost the bloody key, turn to page 125."
+    new ""
 
 # game/script.rpy:7282
 translate Spanish brildebrogueCloset_ee0377aa:
@@ -16777,6 +16996,9 @@ translate Spanish brildebrogueCloset_d863c63d_1:
     # f "RUN!"
     f ""
 
+##============= Chapter 5C Part 4: Brildebrogue Fight Scene
+
+##== The game goes through these sentences one by one each time you choose a different tower to run to.
 # game/script.rpy:7298
 translate Spanish brildebrogueFinale_070f7edd:
 
@@ -16855,6 +17077,12 @@ translate Spanish brildebrogueFinale_d8ebeb78:
     # blank "" nointeract
     blank "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:7325
+    old "If you ran to the first tower, turn to page 284."
+    new ""
+
 # game/script.rpy:7331
 translate Spanish brildebrogueFinale_c4abb8a9:
 
@@ -16879,6 +17107,12 @@ translate Spanish brildebrogueFinale_b4eee731:
     # "In a single motion, Brildebrogue swept the toad back and sliced the tower in two. You dragged the toad up and fled as it crumbled around you."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:7325
+    old "If you ran to the second tower, turn to page 285."
+    new ""
+
 # game/script.rpy:7341
 translate Spanish brildebrogueFinale_a432bd8f:
 
@@ -16896,6 +17130,12 @@ translate Spanish brildebrogueFinale_e5bcb50d:
 
     # "He thrust an elbow into the toad's paunch, winding him. Then with his other hand he tore down the tower. You fled as it crumbled around you."
     ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:7325
+    old "If you ran to the third tower, turn to page 286."
+    new ""
 
 # game/script.rpy:7349
 translate Spanish brildebrogueFinale_e50f9922:
@@ -16927,6 +17167,12 @@ translate Spanish brildebrogueFinale_21d2be24:
     # "With a flick of his wrist, Bildebrogue turned the courtesans into a pack of wild squawking galahs which tore down the tower like an oversized pinecone. You fled as it crumbled around you."
     ""
 
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:7325
+    old "If you ran to the fourth tower, turn to page 287."
+    new ""
+
 # game/script.rpy:7361
 translate Spanish brildebrogueFinale_c087b8e8:
 
@@ -16957,6 +17203,13 @@ translate Spanish brildebrogueFinale_701730d1:
     # "Brildebrogue shrugged, puffed up his cheeks, and blew down the tower in a single breath. You fled as it crumbled around you."
     ""
 
+##== Option E:
+translate Spanish strings:
+    # game/script.rpy:7325
+    old "If you ran to the fifth tower, turn to page 288."
+    new ""
+
+##== If the pig is there
 # game/script.rpy:7372
 translate Spanish brildebrogueFinale_73866946:
 
@@ -16992,6 +17245,12 @@ translate Spanish brildebrogueFinale_e84f3703:
 
     # "With one clap of his hands he brought down water rushing in from the seas. You fled through the waves as they brought the tower down around you."
     ""
+
+##== Option F:
+translate Spanish strings:
+    # game/script.rpy:7325
+    old "If you ran to the sixth tower, turn to page 290."
+    new ""
 
 # game/script.rpy:7385
 translate Spanish brildebrogueFinale_3d2b2228:
@@ -17052,6 +17311,13 @@ translate Spanish brildebrogueFinale_444eb3ec:
 
     # "Brildebrogue tossed the book down. With a click of his fingers he brought down lightning from the skies, and the whole tower went up in flames. You both fled through the fire as it burned around you."
     ""
+
+##== Option G:
+##== The seventh tower option is available after you've run through some others
+translate Spanish strings:
+    # game/script.rpy:7325
+    old "If you ran to the seventh and tallest tower, turn to page 292."
+    new ""
 
 # game/script.rpy:7398
 translate Spanish brildebrogueFinale_0eb35433:
@@ -17125,6 +17391,7 @@ translate Spanish brildebrogueFinale_53cf9698:
     # "The toad brought up his sword cane to clash with the scimitar. And at just that moment, you heard the clock strike twelve."
     ""
 
+##== Changes based on godparent.
 # game/script.rpy:7414
 translate Spanish brildebrogueFinale_8a241b6a:
 
@@ -17137,6 +17404,7 @@ translate Spanish brildebrogueFinale_f63aeb85:
     # pov "Godmother! Help me!"
     pov ""
 
+##== Godparent: G-d
 # game/script.rpy:7423
 translate Spanish frogEnding_f310c323:
 
@@ -17221,6 +17489,7 @@ translate Spanish frogEnding_2f7a1bcc:
     # f "Well. That takes care of that."
     f ""
 
+##== Godparent: The Devil
 # game/script.rpy:7440
 translate Spanish frogEnding_270f075e:
 
@@ -17311,6 +17580,7 @@ translate Spanish frogEnding_2f7a1bcc_1:
     # f "Well. That takes care of that."
     f ""
 
+##== Godparent: Death
 # game/script.rpy:7458
 translate Spanish frogEnding_c9b99a70:
 
@@ -17377,6 +17647,16 @@ translate Spanish frogEnding_5f8b4aa5:
     # "Thus, the legend of Iron Hoof was born."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:7478
+    old "After a while, you had rested and mended from your terrible ordeals."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:7478
+    old "If you married the toad, turn to page 298."
+    new ""
+
 # game/script.rpy:7482
 translate Spanish frogEnding_31336933:
 
@@ -17418,6 +17698,13 @@ translate Spanish frogEnding_d84052b1:
 
     # "And what happened to the witch, you ask?"
     ""
+    ##==--> Goes to Chapter 6C: Witch Disappearance
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:7478
+    old "If you stayed good friends with the toad, turn to page 299."
+    new ""
 
 # game/script.rpy:7499
 translate Spanish frogEnding_400d447a:
@@ -17460,6 +17747,13 @@ translate Spanish frogEnding_d84052b1_1:
 
     # "And what happened to the witch, you ask?"
     ""
+    ##==--> Goes to Chapter 6C: Witch Disappearance
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:7478
+    old "If you left the toad to return to your family, turn to page 300."
+    new ""
 
 # game/script.rpy:7517
 translate Spanish frogEnding_df71ef32:
@@ -17508,7 +17802,9 @@ translate Spanish frogEnding_d84052b1_2:
 
     # "And what happened to the witch, you ask?"
     ""
+    ##==--> Goes to Chapter 6C: Witch Disappearance
 
+##== If Death was your Godparent
 # game/script.rpy:7534
 translate Spanish toadDeath_b4d71b52:
 
@@ -17617,6 +17913,12 @@ translate Spanish deathToadQuestions_2c152c83:
     # "You turned to the toad. He was crying, and where his tears fell they turned into gleaming black geckos that skittered away into the corners of the room."
     ""
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:7567
+    old "If you told him you loved him, turn to page 276."
+    new ""
+
 # game/script.rpy:7569
 translate Spanish deathToadQuestions_48057142:
 
@@ -17659,10 +17961,16 @@ translate Spanish deathToadQuestions_61c1899b:
     # "And you gripped him tight."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:7567
+    old "If you simply told him goodbye, turn to page 278."
+    new ""
+
 # game/script.rpy:7578
 translate Spanish deathToadQuestions_f494bf5e:
 
-    # pov "Goodbye, my dear friend. I love you, so much."
+    # pov "Goodbye, my dear friend."
     pov ""
 
 # game/script.rpy:7579
@@ -17742,7 +18050,11 @@ translate Spanish deathToadQuestions_d84052b1:
 
     # "And what happened to the witch, you ask?"
     ""
+    ##==--> Goes to Chapter 6C: Witch Disappearance
 
+##================================== CHAPTER 6C: Witch Disappearance
+##== The Witch is eaten by the wolf.
+##== In each disappearance scene, the wolf eats something different. In this scene the wolf devours her thoughts, memories and understanding of abstract concepts, until there is nothing left.
 # game/script.rpy:7607
 translate Spanish witchDisappears_719dca94:
 
@@ -17875,6 +18187,7 @@ translate Spanish witchDisappears_0293e273:
     # "What were these things, at the end of her legs? What strange process animated these lumps of unknown flesh?"
     ""
 
+##== This is the witch trying to use a grounding technique to reduce anxiety. You name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste.
 # game/script.rpy:7639
 translate Spanish witchDisappears_01063e19:
 
@@ -17905,6 +18218,7 @@ translate Spanish witchDisappears_941113a9:
     # w "You can't do this. I am myself."
     w ""
 
+##== This is a hint that you need the wolf's True Name to stop it.
 # game/script.rpy:7648
 translate Spanish witchDisappears_10d2c032:
 
@@ -17982,7 +18296,14 @@ translate Spanish witchDisappears_b65b5631:
 
     # "It was never seen or heard from again."
     ""
+    ##=== THE END. 
+    ##==--> You return to the title screen. The witch disappears from the cover.
 
+##==========================================CHAPTER 4B1 - Solo Toad Route
+##== If you follow the toad when the witch has already disappeared, you get this route. The toad disappears.
+##== The toad has slain Brildebrogue and taken his place as a rich noble. 
+##== The toad knows the wolf will come for him soon, but is in denial. He believes he can stop his fate by sealing his castle with every protection possible.
+##== This is reminiscent of the story, Death in Samarkand: https://www.mylongvoyage.com/2012/08/30/death-in-samarkand/
 # game/script.rpy:7677
 translate Spanish toadSolo_02b867db:
 
@@ -18696,7 +19017,10 @@ translate Spanish toadSoloFinale_f911c8f8:
 
     # "The rat’s tail is off. That’s the end."
     ""
+    ##== THE END.
+    ##==--> Goes to title screen. The toad disappears from the cover.
 
+##======================== CHAPTER 4B Part 2: The Witch's Cottage
 # game/script.rpy:7951
 translate Spanish witch2_291b83d9:
 
@@ -18744,6 +19068,17 @@ translate Spanish witch2_5d203b06:
 
     # "Out of the attic poked a small head with a giant black hat. It looked at you with shock."
     ""
+
+##========== CHARACTER BRIEF: THE WITCH
+##== See document.
+##== The witch is an indigenous australian university student from the 1970's. She studied the book for a first year uni assignment and ended up taking the deal to live inside it. Her scientific curiosity wouldn't let her stay away. 
+##== She is desperate to know more and comes closer than anyone to finding the truth of the book and the wolf's true name.
+##== However, she is held back by a curse that makes all her thoughts drift out of her head in smoke, impacting her memory severely.
+##== This is not explained but it's intended to basically be a memory disorder or something similar she suffered from to a mild degree in the real world, but the wolf has exacerbated it in order to stop her from learning the truth and escaping the book.
+##== Each of the characters basically plays out the core tragedy of their lives in their story in the book - although it was meant to be an escape, in some ways it ends up being more like an ironic punishment, where their flaws are exaggerated and reflected back at them forever.
+
+##== She is the most recent person to enter the book and so speaks in a more modern way than most of the others.
+##== She uses "yeah nah", which is very Australian, and says things like "That's wild", and "I'm just like..." which are anachronistic. Her speech overall comes off as more modern and young than other characters, kind of an urban Australian millenial sort of tone.
 
 # game/script.rpy:7963
 translate Spanish witch2_5b299973:
@@ -18889,6 +19224,12 @@ translate Spanish witchConvo1_2b04cc09:
     # w "I-I don't think I have any notes on you?" nointeract
     w "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:7994
+    old "If you accepted a tea, turn to page 265."
+    new ""
+
 # game/script.rpy:7997
 translate Spanish witchConvo1_c32c4440:
 
@@ -18943,11 +19284,23 @@ translate Spanish witchConvo1_894a6c25:
     # w "What do you think?" nointeract
     w "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:8010
+    old "If you asked for fancy sour cherry tea, turn to page 235."
+    new ""
+
 # game/script.rpy:8013
 translate Spanish witchConvo1_6ce35f03:
 
     # w "Nice! Coming right up."
     w ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:8010
+    old "If you asked for English breakfast, turn to page 235."
+    new ""
 
 # game/script.rpy:8017
 translate Spanish witchConvo1_6ce35f03_1:
@@ -18955,11 +19308,23 @@ translate Spanish witchConvo1_6ce35f03_1:
     # w "Nice! Coming right up."
     w ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:8010
+    old "If you asked for Australian breakfast, turn to page 235."
+    new ""
+
 # game/script.rpy:8019
 translate Spanish witchConvo1_6ce35f03_2:
 
     # w "Nice! Coming right up."
     w ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:8010
+    old "If you asked for Green tea, turn to page 235."
+    new ""
 
 # game/script.rpy:8027
 translate Spanish witchConvo1_6ce35f03_3:
@@ -18967,11 +19332,23 @@ translate Spanish witchConvo1_6ce35f03_3:
     # w "Nice! Coming right up."
     w ""
 
+##== Option E:
+translate Spanish strings:
+    # game/script.rpy:8010
+    old "If you asked for Lemon and ginger, turn to page 235."
+    new ""
+
 # game/script.rpy:8031
 translate Spanish witchConvo1_6ce35f03_4:
 
     # w "Nice! Coming right up."
     w ""
+
+##== Option F:
+translate Spanish strings:
+    # game/script.rpy:8010
+    old "If you asked for the unknown tea, turn to page 235."
+    new ""
 
 # game/script.rpy:8033
 translate Spanish witchConvo1_6ce35f03_5:
@@ -19003,6 +19380,12 @@ translate Spanish witchConvo1_6341be25:
     # "You nestled down into one of the comfy old chairs by the stove, and she took the other."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:7994
+    old "If you told her you'd never met, turn to page 271."
+    new ""
+
 # game/script.rpy:8041
 translate Spanish witchConvo1_13e97e60:
 
@@ -19014,6 +19397,12 @@ translate Spanish witchConvo1_79b2d3b1:
 
     # w "It gets so awkward when someone just comes up and starts talking to me out of the blue, and I'm just like \"Mmhmm, yep,\" just nodding and trying to read through my notes when they aren't looking to see who they are, and they always think it's so rude but I'm like, hey, who just walked up and started talking to me without giving me time to read my notes first? THAT's what's really rude here."
     w ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:7994
+    old "If you told her you met earlier tonight, turn to page 271."
+    new ""
 
 # game/script.rpy:8046
 translate Spanish witchConvo1_0f4aefb7:
@@ -19039,6 +19428,13 @@ translate Spanish witchConvo1_7dcba6c6:
     # w "I mustn't have written it down. It's nothing to do with you, I'm just... if I don't write it down it goes straight out of my head. I'm sorry."
     w ""
 
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:7994
+    old "If you asked about your Godparent, turn to page 262."
+    new ""
+
+##== If your godparent is G-d:
 # game/script.rpy:8055
 translate Spanish witchConvo1_054b0034:
 
@@ -19069,6 +19465,7 @@ translate Spanish witchConvo1_cb63215d:
     # "And she began rifling through the stack of books lying randomly around the floor."
     ""
 
+##== If your godparent is The Devil:
 # game/script.rpy:8061
 translate Spanish witchConvo1_6d6d2916:
 
@@ -19105,6 +19502,7 @@ translate Spanish witchConvo1_cb63215d_1:
     # "And she began rifling through the stack of books lying randomly around the floor."
     ""
 
+##== If your godparent is Death:
 # game/script.rpy:8068
 translate Spanish witchConvo1_4bc22d46:
 
@@ -19134,6 +19532,12 @@ translate Spanish witchConvo1_cb63215d_2:
 
     # "And she began rifling through the stack of books lying randomly around the floor."
     ""
+
+##== Option E:
+translate Spanish strings:
+    # game/script.rpy:7994
+    old "If you asked her about the festival, turn to page 282."
+    new ""
 
 # game/script.rpy:8077
 translate Spanish witchConvo1_723de72c:
@@ -19224,6 +19628,12 @@ translate Spanish witchConvo1_3af44485:
 
     # w "It all leaks out. I can't keep it in."
     w ""
+
+##== Option F:
+translate Spanish strings:
+    # game/script.rpy:7994
+    old "If you complimented her home, turn to page 263."
+    new ""
 
 # game/script.rpy:8101
 translate Spanish witchConvo1_130b30a7:
@@ -19351,6 +19761,16 @@ translate Spanish witchConvo1_a928e011:
     # "The pig tried to stop the melee but was tossed aside by a rogue bromeliad."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:8132
+    old "Brilliant orchids and bottlebrushes and corpse flowers burst out all around the witch and the toad as they fought their way back and forth through the haze."
+    new ""
+
+    ##== Option A: Locks you into the witch path:
+    # game/script.rpy:8132
+    old "If you helped the witch, turn to page 281."
+    new ""
+
 # game/script.rpy:8141
 translate Spanish witchFinale_0f3b814c:
 
@@ -19369,12 +19789,15 @@ translate Spanish witchFinale_caadac71:
     # "You both went tumbling across the floor and into the fire. When you fell into the fireplace, you fell straight through the flames and down to Hell."
     ""
 
+##========================================= CHAPTER 6D: THE WITCH FINALE
+##====== This is the ending of the normal witch route. At the end, the toad disappears.
 # game/script.rpy:8150
 translate Spanish witchFinale_c3092583:
 
     # "Hell was dark and sooty, and the Devil was not home."
     ""
 
+##== If you have the pig, you learn its backstory
 # game/script.rpy:8152
 translate Spanish witchFinale_a4474ff6:
 
@@ -19411,6 +19834,7 @@ translate Spanish witchFinale_2b244a11:
     # "The witch sighed as you all picked yourself up from the floor, battered and bruised."
     ""
 
+##== Otherwise:
 # game/script.rpy:8160
 translate Spanish witchFinale_6e9659f2:
 
@@ -19434,6 +19858,12 @@ translate Spanish hellStory_cdae7fa8:
 
     # w "The truth is, I have served the Devil all this time, and wrought his wicked works upon the world - though it pleased me none to do so." nointeract
     w "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:8170
+    old "If you asked the witch to tell her tale, turn to page 215."
+    new ""
 
 # game/script.rpy:8175
 translate Spanish hellStory_c217b1d1:
@@ -19501,6 +19931,7 @@ translate Spanish hellStory_426ef410:
     # mir "Poke your fingers in my eyes and I will open wide my jaws. Linen cloth, quills, or paper, my greedy lust devours them all. What am I?"
     mir ""
 
+##== There's a text prompt to allow you to answer the riddle. If you get it right:
 # game/script.rpy:8193
 translate Spanish hellStory_26e00970:
 
@@ -19531,6 +19962,7 @@ translate Spanish riddle2_4aff00a5:
     # mir "You make me, but I hold you in my grasp. I terrify without limit, but disappear before dawn. What am I?"
     mir ""
 
+##== If you get it right:
 # game/script.rpy:8207
 translate Spanish riddle2_aa78c4b6:
 
@@ -19603,6 +20035,7 @@ translate Spanish riddle3_f3a56294:
     # mir "What gets broken when it's not kept?"
     mir ""
 
+##== If you get it right:
 # game/script.rpy:8227
 translate Spanish riddle3_5283e155:
 
@@ -19656,6 +20089,12 @@ translate Spanish riddle3_4b9ff99e:
 
     # "Such is life in Hell."
     ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:8170
+    old "If you asked the pig for his tale, turn to page 219."
+    new ""
 
 # game/script.rpy:8241
 translate Spanish riddle3_e81063ee:
@@ -19794,6 +20233,11 @@ translate Spanish riddle3_c74683eb:
 
     # "Just as the pig predicted, you saw your hair had turned white with shock to hear such a tale. You all shook your heads with sorrow."
     ""
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:8170
+    old "If you continued forth into Hell, turn to page 216."
+    new ""
 
 # game/script.rpy:8266
 translate Spanish riddle3_bf5f7dc9:
@@ -19801,6 +20245,7 @@ translate Spanish riddle3_bf5f7dc9:
     # w "You're right. Sitting around here telling stories won't help us."
     w ""
 
+##== If you get any of the riddles in the witch's story wrong:
 # game/script.rpy:8270
 translate Spanish devilWins_30468ab1:
 
@@ -19885,6 +20330,12 @@ translate Spanish hell_405d34ec:
     # "Hell was a small cave, draughty and full of coal dust."
     ""
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:8289
+    old "If you investigated the cavern wall, turn to page 205."
+    new ""
+
 # game/script.rpy:8293
 translate Spanish hell_ee41c70e:
 
@@ -19897,6 +20348,12 @@ translate Spanish hell_61e0d260:
     # "You quickly retreated for fear of being seen."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:8289
+    old "If you investigated the centre of the cavern, turn to page 206."
+    new ""
+
 # game/script.rpy:8298
 translate Spanish hell_6404445d:
 
@@ -19908,6 +20365,9 @@ translate Spanish hell_0ac1086a:
 
     # "The Devil was not home, but you saw His old grandmother in a rocking chair in the corner. She spotted you both at once."
     ""
+##============= CHARACTER BRIEF: THE DEVIL'S SOOTY GRANDMOTHER
+##== From a few brother's grimm stories, mostly The Devil and the Three Golden Hairs.
+##== A cosy, helpful and comforting figure, very much not what you would expect.
 
 # game/script.rpy:8302
 translate Spanish hell_34743a4f:
@@ -19987,12 +20447,14 @@ translate Spanish hell_40470956:
     # "Soon, the Devil came home, and no sooner did He enter the house than He noticed the air was not pure."
     ""
 
+##== Obviously some tinges of Jack and the Beanstalk here too.
 # game/script.rpy:8317
 translate Spanish hell_472f79be:
 
     # mir "Crinkle, crush, wailing and fleeing. I smell the flesh of a human being."
     mir ""
 
+##== If you have the pig:
 # game/script.rpy:8319
 translate Spanish hell_6f5979ff:
 
@@ -20011,6 +20473,7 @@ translate Spanish hell_b9125b9b:
     # "With this he picked up the whole house and began to turn it over looking for the flesh he smelled."
     ""
 
+##== If the devil is your godparent
 # game/script.rpy:8323
 translate Spanish hell_1552d432:
 
@@ -20047,6 +20510,12 @@ translate Spanish devilGrandmaquestions_b8f974fd:
     # dg "Quickly now, you two. What are your questions?" nointeract
     dg "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:8336
+    old "If you asked how to free the witch, turn to page 240."
+    new ""
+
 # game/script.rpy:8342
 translate Spanish devilGrandmaquestions_39aeb7eb:
 
@@ -20065,6 +20534,13 @@ translate Spanish devilGrandmaquestions_75a2fca3:
     # mir "Underneath this house is a fat old worm that holds her promise to me. If she kills it, she will be free. But that will never happen!"
     mir ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:8336
+    old "If you asked how to free yourself, turn to page 247."
+    new ""
+
+##== If the devil is your godparent
 # game/script.rpy:8350
 translate Spanish devilGrandmaquestions_d021f9c4:
 
@@ -20083,18 +20559,21 @@ translate Spanish devilGrandmaquestions_92cf20a0:
     # "He chuckled to himself gleefully."
     ""
 
+##== If your pronouns are they/them:
 # game/script.rpy:8357
 translate Spanish devilGrandmaquestions_26df6eea:
 
     # mir "Unless of course, [he] look me in the face and recite my second and most secret name, Belthuselah. But that will never happen!{vspace=160}{i}In your notes, write down that you {b}know the Devil's second and most secret name.{/b}{/i}"
     mir ""
 
+##== If your pronouns are she/her or he/him:
 # game/script.rpy:8359
 translate Spanish devilGrandmaquestions_a8c9287f:
 
     # mir "Unless of course, [he] looks me in the face and recites my second and most secret name, Belthuselah. But that will never happen!{vspace=160}{i}In your notes, write down that you {b}know the Devil's second and most secret name.{/b}{/i}"
     mir ""
 
+##== If G-d is your godparent:
 # game/script.rpy:8365
 translate Spanish devilGrandmaquestions_668e5cf8:
 
@@ -20125,6 +20604,7 @@ translate Spanish devilGrandmaquestions_a2955627:
     # mir "But [he]'ll never do that!"
     mir ""
 
+##= If Death is your godparent
 # game/script.rpy:8377
 translate Spanish devilGrandmaquestions_19e18214:
 
@@ -20149,6 +20629,12 @@ translate Spanish devilGrandmaquestions_fb69660b:
     # mir "There is no trick or cheat. When the child receives Death's three messengers, [he] will have to go. And that will be that."
     mir ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:8336
+    old "If you asked how to cure the witch's forgetfulness, turn to page 267."
+    new ""
+
 # game/script.rpy:8386
 translate Spanish devilGrandmaquestions_b74d25d1:
 
@@ -20172,6 +20658,12 @@ translate Spanish devilGrandmaquestions_819fe0d5:
 
     # mir "But she'll never figure THAT out! Ha Ha Ha!"
     mir ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:8336
+    old "If you asked how to become rich, turn to page 279."
+    new ""
 
 # game/script.rpy:8397
 translate Spanish devilGrandmaquestions_8ac0fb32:
@@ -20203,12 +20695,19 @@ translate Spanish devilGrandmaquestions_8181a68b:
     # mir "But they'll all go to their graves never knowing a thing about that."
     mir ""
 
+##== Option E:
+translate Spanish strings:
+    # game/script.rpy:8336
+    old "If you asked why you felt strange and hollow sometimes, turn to page 283."
+    new ""
+
 # game/script.rpy:8412
 translate Spanish devilGrandmaquestions_8b480843:
 
     # dg "I dreamed of a child who looked out at the woods late at night and felt hollow. Why do you think that could be?"
     dg ""
 
+##== The devil is talking about The Wolf here.
 # game/script.rpy:8413
 translate Spanish devilGrandmaquestions_e0c60d38:
 
@@ -20245,6 +20744,9 @@ translate Spanish devilGrandmaquestions_c91b8527:
     # mir "As will I."
     mir ""
 
+##======== The Three Golden Hairs
+##== Each time you ask a question, the Devil's Grandmother yanks a hair out of his head.
+##== Hair 1:
 # game/script.rpy:8425
 translate Spanish devilAnswers_0364c245:
 
@@ -20275,6 +20777,7 @@ translate Spanish devilAnswers_1f6de3e9:
     # mir "What did you dream?"
     mir ""
 
+##== Hair 2:
 # game/script.rpy:8431
 translate Spanish devilAnswers_032b6e82:
 
@@ -20299,6 +20802,7 @@ translate Spanish devilAnswers_9321e615:
     # mir "What did you dream this time?"
     mir ""
 
+##== Hair 3:
 # game/script.rpy:8436
 translate Spanish devilAnswers_b2196db8:
 
@@ -20335,6 +20839,7 @@ translate Spanish devilAnswers_e29dbd66:
     # mir "What was the dream this time?"
     mir ""
 
+##=== After you have asked 1 question:
 # game/script.rpy:8445
 translate Spanish devilSleeps_de9c7092:
 
@@ -20347,6 +20852,7 @@ translate Spanish devilSleeps_20965d3f:
     # dg "Ask your second question, child."
     dg ""
 
+##=== After you have asked 2 questions:
 # game/script.rpy:8449
 translate Spanish devilSleeps_737cdde5:
 
@@ -20359,6 +20865,7 @@ translate Spanish devilSleeps_f24505d9:
     # dg "Ask your final question, child."
     dg ""
 
+##=== After you have asked 3 questions:
 # game/script.rpy:8453
 translate Spanish devilSleeps_f0d13948:
 
@@ -20461,6 +20968,7 @@ translate Spanish witchEnd_194609cb:
     # "Alas, as you tumbled onto the floor of the cottage, you heard the clock strike midnight, and you saw a pair of terrible red boots stamp down in front of you."
     ""
 
+##== If your godparent is The Devil
 # game/script.rpy:8482
 translate Spanish witchEnd_d9f5c530:
 
@@ -20478,6 +20986,12 @@ translate Spanish witchEnd_cb8afa9d:
 
     # mir "I'll keep you in a cave to darn my socks, and brew my grandmother's tea, and bake bread for all the hungry souls of Hell - and there's nothing you can do about it!" nointeract
     mir "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:8487
+    old "Check your notes. If you {b}know the Devil's second and most secret name{/b}, turn to page 294."
+    new ""
 
 # game/script.rpy:8490
 translate Spanish witchEnd_76ff3300:
@@ -20514,6 +21028,12 @@ translate Spanish witchEnd_45ceb2e3:
 
     # "You rolled up your sleeves and slowly put the room to rights, until it was even more clean, warm and homely than it had been before."
     ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:8487
+    old "If you {b}have a pig{/b}, turn to page 295."
+    new ""
 
 # game/script.rpy:8497
 translate Spanish witchEnd_1abe4f84:
@@ -20575,6 +21095,12 @@ translate Spanish witchEnd_45ceb2e3_1:
     # "You rolled up your sleeves and slowly put the room to rights, until it was even more clean, warm and homely than it had been before."
     ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:8487
+    old "Otherwise, turn to page 297."
+    new ""
+
 # game/script.rpy:8510
 translate Spanish witchEnd_7e7bb3f6:
 
@@ -20610,7 +21136,9 @@ translate Spanish witchEnd_79e34931:
 
     # "What happened to the toad, you ask?"
     ""
+    ##===--> Goes to Chapter 6D: Toad Disappearance
 
+##== If G-d is your godparent
 # game/script.rpy:8520
 translate Spanish witchEnd_29a80d9b:
 
@@ -20665,6 +21193,7 @@ translate Spanish witchEnd_45ceb2e3_2:
     # "You rolled up your sleeves and slowly put the room to rights, until it was even more clean, warm and homely than it had been before."
     ""
 
+##== If Death is your godparent
 # game/script.rpy:8530
 translate Spanish witchEnd_02c41607:
 
@@ -20749,6 +21278,7 @@ translate Spanish witchEnd_ceb339ff:
     # "Although she would never be the Girl Who Knew Everything again, she knew enough."
     ""
 
+##== If you didn't free the witch from the devil:
 # game/script.rpy:8552
 translate Spanish witchEnd_b29e448d:
 
@@ -20767,6 +21297,7 @@ translate Spanish witchEnd_6f9f1028:
     # "Still, you spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
     ""
 
+##== If you did free the witch from the devil:
 # game/script.rpy:8556
 translate Spanish witchEnd_83014d11:
 
@@ -20779,6 +21310,7 @@ translate Spanish witchEnd_c0be5128:
     # "You spent many peaceful months staying with her, cultivating her garden, putting her cottage to rights, and helping her rewrite all her old notebooks again."
     ""
 
+##== If you didn't fine a way to help her forgetfulness:
 # game/script.rpy:8561
 translate Spanish witchEnd_30b6682b:
 
@@ -20815,6 +21347,16 @@ translate Spanish witchEnd_f1531e98:
     # "She would never be the Girl Who Knew Everything again, but at least she was free. The Devil haunted her no longer."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:8572
+    old "Finally, you'd done as much as you could to help. She had recovered enough to take care of herself again."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:8572
+    old "If you stayed with the Witch, turn to page 291."
+    new ""
+
 # game/script.rpy:8575
 translate Spanish witchEnd_ad79175a:
 
@@ -20845,6 +21387,7 @@ translate Spanish witchEnd_57a2e6ba:
     # "You lived there in quiet happiness for many years."
     ""
 
+##== If Death is your godparent
 # game/script.rpy:8582
 translate Spanish witchEnd_b4d71b52:
 
@@ -20929,11 +21472,26 @@ translate Spanish deathQuestions_c93d9dba:
     # m "She has sent all Her messengers. Now you must come down to Her kingdom."
     m ""
 
+translate Spanish strings:
+    # game/script.rpy:8597
+    old "If you turned to say goodbye to the witch, turn to page 255."
+    new ""
+
 # game/script.rpy:8608
 translate Spanish deathQuestions_29362efd:
 
     # m "Of course."
     m ""
+
+translate Spanish strings:
+    # game/script.rpy:8612
+    old "You turned to the Witch. She was crying, and where her tears fell they blossomed into twisting purple plants with long thorns."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:8612
+    old "If you told her you loved her, turn to page 276."
+    new ""
 
 # game/script.rpy:8615
 translate Spanish deathQuestions_642a3ff4:
@@ -20971,6 +21529,12 @@ translate Spanish deathQuestions_cb8bfb77:
     # "And you gripped her tight."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:8612
+    old "If you told her you loved her platonically, turn to page 278."
+    new ""
+
 # game/script.rpy:8623
 translate Spanish deathQuestions_f494bf5e:
 
@@ -21006,6 +21570,11 @@ translate Spanish deathQuestions_cb8bfb77_1:
 
     # "And you gripped her tight."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:8597
+    old "If you accepted your fate, turn to page 278."
+    new ""
 
 # game/script.rpy:8631
 translate Spanish deathQuestions_cec7a982:
@@ -21048,6 +21617,7 @@ translate Spanish deathQuestions_79e34931:
 
     # "What happened to the toad, you ask?"
     ""
+    ##==--> Goes to Chapter 6D: Toad disappearance
 
 # game/script.rpy:8645
 translate Spanish deathQuestions_d081b486:
@@ -21072,6 +21642,12 @@ translate Spanish deathQuestions_79e34931_1:
 
     # "What happened to the toad, you ask?"
     ""
+    ##==--> Goes to Chapter 6D: Toad disappearance
+
+translate Spanish strings:
+    # game/script.rpy:8572
+    old "If you returned home, turn to page 261."
+    new ""
 
 # game/script.rpy:8654
 translate Spanish deathQuestions_42e33293:
@@ -21168,6 +21744,13 @@ translate Spanish deathQuestions_79e34931_2:
 
     # "What happened to the toad, you ask?"
     ""
+    ##==--> Goes to Chapter 6D: Toad Disappearance
+
+##============================== CHAPTER 6D: Toad Disappearance
+##== The toad is hunted by the wolf and eaten.
+##== In each starting disappearance scene, the wolf eats different things. In this scene, it eats the toad's limbs one by one.
+##== Whenever the wolf eats something, it's as if it never existed. It is removed out of the narrative.
+##== That's also why the villagers kind of gaslight the toad here as he is eaten.
 
 # game/script.rpy:8688
 translate Spanish toadDisappears_53f05f71:
@@ -21624,6 +22207,15 @@ translate Spanish toadDisappears_829a2d56:
 
     # "They were never seen again."
     ""
+    ##== THE END
+    ##==--> It goes to the title screen. The toad disappears from the cover.
+
+##== Bookmark!!
+##============================ CHAPTER 4B Version 2: The Solo Witch Route
+##=== If you go to the witch after the toad has already disappeared, you get this route.
+##== The witch is hunted by the wolf and devoured.
+##== The witch's attitude to her impending death is a desperate need to figure out what's happening and solve it.
+##== The Wolf slowly eats things one by one in the finale, it takes control of you directly and uses you to gaslight the witch into believing that she has completely succumbed to dementia, basically.
 
 # game/script.rpy:8840
 translate Spanish witchSolo_644c2433:
@@ -31452,190 +32044,7 @@ translate Spanish strings:
     old "The Wolf."
     new ""
 
-    # game/script.rpy:6879
-    old "If you asked for a lift, turn to page 231."
-    new ""
-
-    # game/script.rpy:6879
-    old "If you ask where they're headed, turn to page 232."
-    new ""
-
-    # game/script.rpy:6909
-    old "You followed the toad through a dense swamp of crooked mangroves."
-    new ""
-
-    # game/script.rpy:6909
-    old "If you asked him about the witch's cottage, turn to page 233."
-    new ""
-
-    # game/script.rpy:6909
-    old "If you asked him about the forest, turn to page 234."
-    new ""
-
-    # game/script.rpy:6933
-    old "He trailed off."
-    new ""
-
-    # game/script.rpy:6933
-    old "If you helped the toad up, turn to page 235."
-    new ""
-
-    # game/script.rpy:6933
-    old "If you turned and walked into the woods without another word, turn to page 237."
-    new ""
-
-    # game/script.rpy:6971
-    old "The toad gasped in terror at the sight."
-    new ""
-
-    # game/script.rpy:6971
-    old "If you looked into the puddle carefully, turn to page 236."
-    new ""
-
-    # game/script.rpy:6971
-    old "If you dropped a stick in the puddle, turn to page 206."
-    new ""
-
-    # game/script.rpy:6971
-    old "If you jumped into the puddle, turn to page 207."
-    new ""
-
-    # game/script.rpy:7012
-    old "He twisted his once-beautiful hat in shaking hands and looked down at the ground."
-    new ""
-
-    # game/script.rpy:7012
-    old "If you encouraged the toad, turn to page 214."
-    new ""
-
-    # game/script.rpy:7012
-    old "If you crushed the toad's feelings, turn to page 220."
-    new ""
-
-    # game/script.rpy:7098
-    old "If you explored the nearby area, turn to page 208."
-    new ""
-
-    # game/script.rpy:7098
-    old "If you explored deeper in, turn to page 209."
-    new ""
-
-    # game/script.rpy:7098
-    old "If you asked the toad about this place, turn to page 216."
-    new ""
-
-    # game/script.rpy:7098
-    old "If you asked about the toad's curse, turn to page 217."
-    new ""
-
-    # game/script.rpy:7098
-    old "If you looked for a way out, turn to page 218."
-    new ""
-
-    # game/script.rpy:7180
-    old "If you explored the first tower, turn to page 256."
-    new ""
-
-    # game/script.rpy:7180
-    old "If you explored the second tower, turn to page 257."
-    new ""
-
-    # game/script.rpy:7180
-    old "If you explored the third tower, turn to page 258."
-    new ""
-
-    # game/script.rpy:7180
-    old "If you explored the fourth tower, turn to page 259."
-    new ""
-
-    # game/script.rpy:7180
-    old "If you explored the fifth tower, turn to page 260."
-    new ""
-
-    # game/script.rpy:7180
-    old "If you explored the sixth tower, turn to page 262."
-    new ""
-
-    # game/script.rpy:7180
-    old "If you explored the seventh tower, turn to page 264."
-    new ""
-
-    # game/script.rpy:7180
-    old "If you patiently waited for Brildebrogue, turn to page 161."
-    new ""
-
-    # game/script.rpy:7221
-    old "A golden keyhole shone out from the closet door."
-    new ""
-
-    # game/script.rpy:7221
-    old "If you opened the closet, turn to page 275."
-    new ""
-
-    # game/script.rpy:7221
-    old "If you went back, turn to page 190."
-    new ""
-
-    # game/script.rpy:7267
-    old "If you handed back all the keys, turn to page 123."
-    new ""
-
-    # game/script.rpy:7267
-    old "If you pretended you lost the bloody key, turn to page 125."
-    new ""
-
-    # game/script.rpy:7325
-    old "If you ran to the first tower, turn to page 284."
-    new ""
-
-    # game/script.rpy:7325
-    old "If you ran to the second tower, turn to page 285."
-    new ""
-
-    # game/script.rpy:7325
-    old "If you ran to the third tower, turn to page 286."
-    new ""
-
-    # game/script.rpy:7325
-    old "If you ran to the fourth tower, turn to page 287."
-    new ""
-
-    # game/script.rpy:7325
-    old "If you ran to the fifth tower, turn to page 288."
-    new ""
-
-    # game/script.rpy:7325
-    old "If you ran to the sixth tower, turn to page 290."
-    new ""
-
-    # game/script.rpy:7325
-    old "If you ran to the seventh and tallest tower, turn to page 292."
-    new ""
-
-    # game/script.rpy:7478
-    old "After a while, you had rested and mended from your terrible ordeals."
-    new ""
-
-    # game/script.rpy:7478
-    old "If you married the toad, turn to page 298."
-    new ""
-
-    # game/script.rpy:7478
-    old "If you stayed good friends with the toad, turn to page 299."
-    new ""
-
-    # game/script.rpy:7478
-    old "If you left the toad to return to your family, turn to page 300."
-    new ""
-
-    # game/script.rpy:7567
-    old "If you told him you loved him, turn to page 276."
-    new ""
-
-    # game/script.rpy:7567
-    old "If you simply told him goodbye, turn to page 278."
-    new ""
-
+##========= TOAD ROUTE - TO DO
     # game/script.rpy:7722
     old "Something scratched against the walls outside."
     new ""
@@ -31644,150 +32053,12 @@ translate Spanish strings:
     old "The sounds of the party echoed below you."
     new ""
 
-    # game/script.rpy:7994
-    old "If you accepted a tea, turn to page 265."
-    new ""
-
-    # game/script.rpy:7994
-    old "If you told her you'd never met, turn to page 271."
-    new ""
-
-    # game/script.rpy:7994
-    old "If you told her you met earlier tonight, turn to page 271."
-    new ""
-
-    # game/script.rpy:7994
-    old "If you asked about your Godparent, turn to page 262."
-    new ""
-
-    # game/script.rpy:7994
-    old "If you asked her about the festival, turn to page 282."
-    new ""
-
-    # game/script.rpy:7994
-    old "If you complimented her home, turn to page 263."
-    new ""
-
-    # game/script.rpy:8010
-    old "If you asked for fancy sour cherry tea, turn to page 235."
-    new ""
-
-    # game/script.rpy:8010
-    old "If you asked for English breakfast, turn to page 235."
-    new ""
-
-    # game/script.rpy:8010
-    old "If you asked for Australian breakfast, turn to page 235."
-    new ""
-
-    # game/script.rpy:8010
-    old "If you asked for Green tea, turn to page 235."
-    new ""
-
-    # game/script.rpy:8010
-    old "If you asked for Lemon and ginger, turn to page 235."
-    new ""
-
-    # game/script.rpy:8010
-    old "If you asked for the unknown tea, turn to page 235."
-    new ""
-
-    # game/script.rpy:8132
-    old "Brilliant orchids and bottlebrushes and corpse flowers burst out all around the witch and the toad as they fought their way back and forth through the haze."
-    new ""
-
-    # game/script.rpy:8132
-    old "If you helped the witch, turn to page 281."
-    new ""
-
+##== Find where this goes
     # game/script.rpy:8132
     old "If you helped the toad, turn to page 203."
     new ""
 
-    # game/script.rpy:8170
-    old "If you asked the witch to tell her tale, turn to page 215."
-    new ""
-
-    # game/script.rpy:8170
-    old "If you asked the pig for his tale, turn to page 219."
-    new ""
-
-    # game/script.rpy:8170
-    old "If you continued forth into Hell, turn to page 216."
-    new ""
-
-    # game/script.rpy:8289
-    old "If you investigated the cavern wall, turn to page 205."
-    new ""
-
-    # game/script.rpy:8289
-    old "If you investigated the centre of the cavern, turn to page 206."
-    new ""
-
-    # game/script.rpy:8336
-    old "If you asked how to free the witch, turn to page 240."
-    new ""
-
-    # game/script.rpy:8336
-    old "If you asked how to free yourself, turn to page 247."
-    new ""
-
-    # game/script.rpy:8336
-    old "If you asked how to cure the witch's forgetfulness, turn to page 267."
-    new ""
-
-    # game/script.rpy:8336
-    old "If you asked how to become rich, turn to page 279."
-    new ""
-
-    # game/script.rpy:8336
-    old "If you asked why you felt strange and hollow sometimes, turn to page 283."
-    new ""
-
-    # game/script.rpy:8487
-    old "Check your notes. If you {b}know the Devil's second and most secret name{/b}, turn to page 294."
-    new ""
-
-    # game/script.rpy:8487
-    old "If you {b}have a pig{/b}, turn to page 295."
-    new ""
-
-    # game/script.rpy:8487
-    old "Otherwise, turn to page 297."
-    new ""
-
-    # game/script.rpy:8572
-    old "Finally, you'd done as much as you could to help. She had recovered enough to take care of herself again."
-    new ""
-
-    # game/script.rpy:8572
-    old "If you stayed with the Witch, turn to page 291."
-    new ""
-
-    # game/script.rpy:8572
-    old "If you returned home, turn to page 261."
-    new ""
-
-    # game/script.rpy:8597
-    old "If you turned to say goodbye to the witch, turn to page 255."
-    new ""
-
-    # game/script.rpy:8597
-    old "If you accepted your fate, turn to page 278."
-    new ""
-
-    # game/script.rpy:8612
-    old "You turned to the Witch. She was crying, and where her tears fell they blossomed into twisting purple plants with long thorns."
-    new ""
-
-    # game/script.rpy:8612
-    old "If you told her you loved her, turn to page 276."
-    new ""
-
-    # game/script.rpy:8612
-    old "If you told her you loved her platonically, turn to page 278."
-    new ""
-
+##=== WITCH ROUTE
     # game/script.rpy:8869
     old "The reflection of the cottage rippled in the water."
     new ""
