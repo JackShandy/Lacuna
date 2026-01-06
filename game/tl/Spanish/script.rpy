@@ -114,7 +114,8 @@
     ## 2: The Wolf's True Name is Humbaba.
 ## The game gives you more and more hints about both of these things as it goes on. The more people disappear, the more hints you can find, and the easier it becomes to solve the puzzle.
 ## Much of these hints come from notes in the margins or documents you can find hidden inside the text.
-## It's very important that the puzzle remains solvable in spanish. 
+## It's very important that the puzzle remains solvable in spanish. Feel free to add more hints about both of those 2 points, especially to scenes where one or more characters have disappear.
+## One hint that could be fun to add is having a character spell out "H U M B A B A" in the first letter of each sentence in dialogue, or something similar.
 
 ##====================================================== DOCUMENTS
 ## If you look in the Spanish>Images/GUI folder, you'll see the images that need to be translated.
