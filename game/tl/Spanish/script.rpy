@@ -38,7 +38,7 @@
 ## In general, you should include these in the same places the english text has them. 
 ## But you can see a full list of tags here and use any of them that make sense for spanish: https://www.renpy.org/doc/html/text.html
 
-##====================================================== IMPORTANT PHRASES
+##====================================================== IMPORTANT WORDS AND PHRASES
 ##== Some phrases are deliberately repeated many times. These are intended to feel like omens, that slowly build up ominous symbolic power through repetition.
 ##== These phrases should generally use the same wording each time, whenever possible.
 
@@ -50,6 +50,7 @@
 ## There was nothing and no-one
 ## It was never seen or heard from again
 ## And then there was rest in the land.
+## Lacuna
 ## Just the howling of the wind, and nothing more 
     ## (howling is used because wolves also howl, would be good to find a phrase that incorporates that double-meaning in spanish)
 
@@ -66,7 +67,7 @@
     ##== CHAPTER 5A: The Thief. You see the thief's ending. The mushroom disappears.
     ##== CHAPTER 5B: The Mushroom. You see the Mushroom's ending. The thief disappears.
     ##== CHAPTER 5C: The Toad. You see the toad's ending. The witch disappears.
-    ##== CHAPTER 5D: The Mushroom. You see the witch's ending. The toad disappears.
+    ##== CHAPTER 5D: The witch. You see the witch's ending. The toad disappears.
 ##== CHAPTER 6 has the 4 normal disapperances:
     ##== CHAPTER 6A: The mushroom disappears.
     ##== CHAPTER 6B: The thief disappears.
@@ -84,22 +85,36 @@
 ##========== Final Endings
 ## If 4 characters disappear, you are locked into the Silence endgame.
 ## If you leave the village, you get a chance to say the Wolf's true name. If you get that correct, you can choose either the Acceptance ending or Burning ending.
-##== SILENCE ENDING: Everyone is gone. You live in the house in silence. The Wolf gives you the deal, and you must accept - leading to the Acceptance ending.
-##== ACCEPTANCE ENDING: You accept the wolf's deal and live in the book.
-##== BURNING ENDING: You refuse the wolf's deal and burn the book.
+##== ENDING 1: SILENCE. Everyone is gone. You live in the house in silence. The Wolf gives you the deal, and you must accept - leading to the Acceptance ending.
+##== ENDING 2: ACCEPTANCE. You accept the wolf's deal and live in the book.
+##== ENDING 3: BURNING. You refuse the wolf's deal and burn the book.
 
 ##========== Interludes
 ## As people disappear, you have more and more chances to explore outside the bounds of the story and gather information about The Wolf.
 ##== INTERLUDE HUB 1: If the Mushroom or Thief disappear, you can go into the woods here. 
-##== INTERLUDE HUB 1: If the Witch or Toad disappear, you can go into the woods here. 
+##== INTERLUDE HUB 2: If the Witch or Toad disappear, you can go into the woods here. 
 
-##== INTERLUDE 1A: The mushroom's house. You can explore it after she's gone.
-##== INTERLUDE 1B: The Goblin Train. You can explore it after the Thief is gone.
-##== INTERLUDE 1C: The Toad's house. You can explore it after he's gone.
-##== INTERLUDE 1D: The Witch's house. You can explore it after she's gone.
+##== INTERLUDE A- Mushroom Investigation: The mushroom's house. You can explore it after she's gone.
+##== INTERLUDE B- Thief Investigation: The Goblin Train. You can explore it after the Thief is gone.
+##== INTERLUDE C- Toad Investigation: The Toad's house. You can explore it after he's gone.
+##== INTERLUDE D- Witch Investigation: The Witch's house. You can explore it after she's gone.
 
-##== GILGAMESH INTERLUDE: A secret scene with Gilgamesh. Explains much of the lore.
+##== INTERLUDE E - Gilgamesh : A secret scene with Gilgamesh. Explains much of the lore.
+##== INTERLUDE F - Gutterlings: A hidden scene where you escape from the gutterlings. Minor.
+##== INTERLUDE G - The Well Ending: A hidden scene where you explore the well.
+##== INTERLUDE H - The wolf: Confronting the wolf.
 
+##== INTERLUDE I - Wandering the woods after anyone has disappeared. You get a hint about the wolf's name.
+##== INTERLUDE J - Another scene of wandering the woods after anyone has disappeared. You get a hint about the wolf's name.
+##== INTERLUDE K - Your Name. If you choose "Humbaba" as your name during character creation, you get this unique scene.
+
+##====================================================== THE PUZZLE
+## The player has 2 things they must figure out to solve the core puzzle of the game:
+    ## 1: You can reach the Wolf by choosing "Go Home" from the village over and over.
+    ## 2: The Wolf's True Name is Humbaba.
+## The game gives you more and more hints about both of these things as it goes on. The more people disappear, the more hints you can find, and the easier it becomes to solve the puzzle.
+## Much of these hints come from notes in the margins or documents you can find hidden inside the text.
+## It's very important that the puzzle remains solvable in spanish. 
 
 ##====================================================== Ignore all this.
 
@@ -18436,6 +18451,7 @@ translate Spanish gilPathShowingToad_67940fb0:
     # "And with that the toad flitted out of the room and left you alone to explore the manor."
     ""
 
+##== Explore the first tower:
 # game/script.rpy:7725
 translate Spanish chippinghamManorSolo_c3daddf6:
 
@@ -18454,36 +18470,41 @@ translate Spanish chippinghamManorSolo_9968a23c:
     # "A team of frog engineers were reinforcing the walls to make them totally impenetrable."
     ""
 
+##== Explore the second tower:
 # game/script.rpy:7732
 translate Spanish chippinghamManorSolo_1b6c66ec:
 
     # "Inside the second tower was a trio of stately frog wizards, hard at work placing sigils and wards and runes all across the manor to guard against every possible evil."
     ""
 
+##== Explore the third tower:
 # game/script.rpy:7737
 translate Spanish chippinghamManorSolo_f10177ca:
 
     # "Inside the third tower, you discovered a collection of fine frog bards, composing poems and arias in Brildebrogue's name that moved you to tears just to hear them."
     ""
 
+##== Explore the fourth tower:
 # game/script.rpy:7743
 translate Spanish chippinghamManorSolo_b8329627:
 
     # "The whole fourth tower was taken up by a looming pyramid. Atop it stood a gigantic sculpture of Brildebrogue, vomiting forth emeralds and sapphires and precious gems."
     ""
-
+##== Explore the fifth tower:
 # game/script.rpy:7748
 translate Spanish chippinghamManorSolo_f92503a8:
 
     # "Inside the fifth tower were the greatest frog artists of their age, furiously painting a series of refined portraits of Brildebrogue at rest."
     ""
 
+##== Explore the sixth tower:
 # game/script.rpy:7753
 translate Spanish chippinghamManorSolo_36268e1c:
 
     # "Inside the sixth tower you found the Library of Alexandria. You opened a random volume to discover that it was a biography of Brildebrogue's life (part 6 of 2,987)."
     ""
 
+##== Explore the seventh tower:
 # game/script.rpy:7757
 translate Spanish chippinghamManorSolo_29315f0d:
 
@@ -18519,7 +18540,11 @@ translate Spanish chippinghamManorSolo_046eae35:
 
     # "The eyes were gone. The mouth had rotted away. It was all that remained of Brildebrogue Chippingham."
     ""
+    ##==--> Goes to the finale where the Toad reveals that he killed Brildebrogue.
 
+##=== Each time you explore a tower, you get one of these parts as events progress.
+##== The Toad tries to keep out the wolf with 7 layers of protection. It doesn't work.
+##== Part 1:
 # game/script.rpy:7791
 translate Spanish toadConstruct_45d75de8:
 
@@ -18532,6 +18557,7 @@ translate Spanish toadConstruct_414bdd6d:
     # "Golden locks were placed on every door, and silver bars at every window."
     ""
 
+##== Part 2:
 # game/script.rpy:7795
 translate Spanish toadConstruct_aeae3667:
 
@@ -18550,6 +18576,7 @@ translate Spanish toadConstruct_40b31b11:
     # "The masons carried lumbering wagons of copper and iron."
     ""
 
+##== Part 3:
 # game/script.rpy:7803
 translate Spanish toadConstruct_ee999096:
 
@@ -18586,12 +18613,14 @@ translate Spanish toadConstruct_14d83559:
     # "The labourers increased their speed. A layer of mercury was bound into the walls of the manor."
     ""
 
+##== Part 4:
 # game/script.rpy:7810
 translate Spanish toadConstruct_ad89a823:
 
     # "The party intensified. Scenes of froggish debauchery played out all around you."
     ""
 
+##== Part 5:
 # game/script.rpy:7815
 translate Spanish toadConstruct_08e5fb7b:
 
@@ -18615,7 +18644,7 @@ translate Spanish toadConstruct_a43ca2a4:
 
     # "Underneath the music, you almost thought you could hear something moving underneath the floorboards."
     ""
-
+##== Part 5:
 # game/script.rpy:7825
 translate Spanish toadConstruct_6c93c9aa:
 
@@ -18634,6 +18663,7 @@ translate Spanish toadConstruct_76c82c23:
     # "The band leader leapt into a triumphant saxophone solo."
     ""
 
+##== Part 7:
 # game/script.rpy:7834
 translate Spanish toadConstruct_31c7ce90:
 
@@ -18658,6 +18688,7 @@ translate Spanish toadConstruct_87a62ac4:
     # "They formed a twisting spiral, like a knot of entrails from which omens could be read."
     ""
 
+##===== Once you find Brildebrogues body:
 # game/script.rpy:7856
 translate Spanish toadSoloFinale_34156d80:
 
@@ -19766,11 +19797,18 @@ translate Spanish strings:
     old "Brilliant orchids and bottlebrushes and corpse flowers burst out all around the witch and the toad as they fought their way back and forth through the haze."
     new ""
 
-    ##== Option A: Locks you into the witch path:
     # game/script.rpy:8132
     old "If you helped the witch, turn to page 281."
     new ""
+    ##==--> Goes to CHAPTER 6D: THE WITCH FINALE
 
+    # game/script.rpy:8132
+    old "If you helped the toad, turn to page 203."
+    new ""
+     ##==--> Goes to CHAPTER 6C: THE TOAD FINALE
+
+##========================================= CHAPTER 6D: THE WITCH FINALE
+##====== This is the ending of the normal witch route. At the end, the toad disappears.
 # game/script.rpy:8141
 translate Spanish witchFinale_0f3b814c:
 
@@ -19789,8 +19827,6 @@ translate Spanish witchFinale_caadac71:
     # "You both went tumbling across the floor and into the fire. When you fell into the fireplace, you fell straight through the flames and down to Hell."
     ""
 
-##========================================= CHAPTER 6D: THE WITCH FINALE
-##====== This is the ending of the normal witch route. At the end, the toad disappears.
 # game/script.rpy:8150
 translate Spanish witchFinale_c3092583:
 
@@ -22210,7 +22246,6 @@ translate Spanish toadDisappears_829a2d56:
     ##== THE END
     ##==--> It goes to the title screen. The toad disappears from the cover.
 
-##== Bookmark!!
 ##============================ CHAPTER 4B Version 2: The Solo Witch Route
 ##=== If you go to the witch after the toad has already disappeared, you get this route.
 ##== The witch is hunted by the wolf and devoured.
@@ -22282,6 +22317,11 @@ translate Spanish puddleSolo_e7f50077:
 
     # "You crawled to the edge and looked down into the puddle."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:8869
+    old "The reflection of the cottage rippled in the water."
+    new ""
 
 # game/script.rpy:8875
 translate Spanish puddleSolo_307d5c87:
@@ -22457,12 +22497,17 @@ translate Spanish puddleSolo_adc3c8b7:
     # w "We have two experiments running at the moment."
     w ""
 
+##===== You get the chance to investigate each experiment and ask questions. Each time you do, you get one of these sentences, escalating over time.
+##== The wolf is taking over your body.
+
+##== One:
 # game/script.rpy:8926
 translate Spanish puddleSolo_d1baadd6:
 
     # "You heard something move outside the cottage."
     ""
 
+##== Two:
 # game/script.rpy:8950
 translate Spanish witchExperiments_c8d70a03:
 
@@ -22481,6 +22526,7 @@ translate Spanish witchExperiments_4854b131:
     # "The witch didn't seem to notice."
     ""
 
+##== Three:
 # game/script.rpy:8956
 translate Spanish witchExperiments_a1716ce3:
 
@@ -22499,6 +22545,7 @@ translate Spanish witchExperiments_acdcbd81:
     # "But still, for some reason you couldn't see more than five feet ahead of you."
     ""
 
+##== Four:
 # game/script.rpy:8962
 translate Spanish witchExperiments_1f05e6f0:
 
@@ -22522,7 +22569,7 @@ translate Spanish witchExperiments_e31b0316:
 
     # "You were having difficulty speaking. But you slowly walked forward and kept asking questions."
     ""
-
+##== Five:
 # game/script.rpy:8970
 translate Spanish witchExperiments_433fc246:
 
@@ -22546,12 +22593,24 @@ translate Spanish witchExperiments_3cd40010:
 
     # w "We need to warn people. Your family, especially."
     w ""
+    ##==--> This goes to the ending where you gaslight the wolf.
 
+##== Investigating the experiments
+##== The summary of the experiments is: When the wolf eats something, it is removed from reality. As if it never existed.
+##== However, you can still see evidence that it existed by the other things it leaves behind. EG if the witch is eaten, her hat might be left behind - so you still have a hat that seems to have come from nowhere.
+##== The witch is using this to try to decipher the situation and pinpoint the source of the disappearances - which is the wolf.
+##== She pinpoints it to your house (which is a clue to leave the village and go back to your house to find the wolf).
 # game/script.rpy:8979
 translate Spanish witchExperiments_661baa8e:
 
     # w "What do you want to see?" nointeract
     w "" nointeract
+
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:8978
+    old "If you asked the witch how she knew you were coming, turn to page 236."
+    new ""
 
 # game/script.rpy:8981
 translate Spanish witchExperiments_c84b8e99:
@@ -22582,6 +22641,12 @@ translate Spanish witchExperiments_c0416782:
 
     # w "I was so happy when I saw you were coming. There's something here you need to see."
     w ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:8978
+    old "If you looked at experiment 1, turn to page 236."
+    new ""
 
 # game/script.rpy:8991
 translate Spanish witchExperiments_4ee95f3b:
@@ -22727,11 +22792,18 @@ translate Spanish witchExperiments_875ce893:
     # "You stared down at the starting flag, in the front left corner of the cottage."
     ""
 
+##== The flags are being eaten as you speak.
 # game/script.rpy:9016
 translate Spanish witchExperiments_8404e708:
 
     # "It read \"I-03\". Just like it always did."
     ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:8978
+    old "If you looked at experiment 2, turn to page 236."
+    new ""
 
 # game/script.rpy:9021
 translate Spanish witchExperiments_902ec136:
@@ -22751,6 +22823,9 @@ translate Spanish witchExperiments_9f3e1c54:
     # "You looked outside and saw that it was tied onto dozens of forks stuck into the soil, all over her property."
     ""
 
+##====== Lacuna is an important word. It means a gap or blank space, typically the missing text in a manuscript. 
+##== This concept is used to refer to things that have been eaten by the wolf. 
+##== It'd be good to use a spanish word that has a similar tone of, something missing from a book or piece of writing, and use that consistently wherever "lacuna" appears.
 # game/script.rpy:9024
 translate Spanish witchExperiments_58c9b996:
 
@@ -22799,6 +22874,13 @@ translate Spanish witchExperiments_02c5d8a3:
     # w "How do you prove something {i}used{/i} to exist, if that thing now {i}does not exist, and never did?{/i}" nointeract
     w "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:9038
+    old "If you suggested making notes, turn to page 238."
+    new ""
+
+##== The wolf has limited power to rewrite and erase things, but is sloppy. 
 # game/script.rpy:9041
 translate Spanish witchExperiments_cf966a07:
 
@@ -22817,6 +22899,12 @@ translate Spanish witchExperiments_c516578a:
     # w "No, I've only found one way to detect the change."
     w ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:9038
+    old "If you suggested using magic or consulting magical beings, turn to page 239."
+    new ""
+
 # game/script.rpy:9045
 translate Spanish witchExperiments_cc95a1ba:
 
@@ -22834,6 +22922,12 @@ translate Spanish witchExperiments_c516578a_1:
 
     # w "No, I've only found one way to detect the change."
     w ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:9038
+    old "If you had no idea, turn to page 241."
+    new ""
 
 # game/script.rpy:9049
 translate Spanish witchExperiments_7c57e5e3:
@@ -22937,6 +23031,7 @@ translate Spanish witchExperiments_a3024227:
     # w "Does this anomaly have some kind of limited ability to warp language, specifically?"
     w ""
 
+##== This is basically the answer, the wolf is sloppy when it eats things and often leaves traces behind.
 # game/script.rpy:9067
 translate Spanish witchExperiments_10397690:
 
@@ -22991,6 +23086,12 @@ translate Spanish witchExperiments_bf904c87:
     # w "And it seems to be moving outward."
     w ""
 
+##== Option D (experiment 3)
+translate Spanish strings:
+    # game/script.rpy:8978
+    old "If you looked at experiment 3, turn to page 236."
+    new ""
+
 # game/script.rpy:9080
 translate Spanish witchExperiments_b26797a7:
 
@@ -23027,6 +23128,7 @@ translate Spanish witchExperiments_e5b3eede:
     # "You opened the closet and peered in carefully."
     ""
 
+##== These are the toad's clothes, left after he disappeared. 
 # game/script.rpy:9086
 translate Spanish witchExperiments_188ae484:
 
@@ -23099,6 +23201,7 @@ translate Spanish witchExperiments_adff6eee:
     # w "I remember now. Nothing at all. Just an old toy."
     w ""
 
+##=========== After you have asked enough questions, the wolf takes over you.
 # game/script.rpy:9114
 translate Spanish witchExperiments_d241bdb7:
 
@@ -23213,6 +23316,7 @@ translate Spanish witchSoloFinale_e611144f:
     # "Her voice was unsteady."
     ""
 
+##== The Witch suffered from a (deliberately un-named) memory disorder before she entered the book and the Wolf is using this against her.
 # game/script.rpy:9140
 translate Spanish witchSoloFinale_c328612c:
 
@@ -23513,6 +23617,7 @@ translate Spanish witchSoloFinale_8efd3315:
     # "Then the door closed, and your body turned around."
     ""
 
+##== The Wolf leaves your body and stops taking over you
 # game/script.rpy:9209
 translate Spanish witchSoloFinale_3a2a7ac6:
 
@@ -23531,12 +23636,14 @@ translate Spanish witchSoloFinale_0b730016:
     # "The night was cool and quiet. There was a lovely breeze blowing."
     ""
 
+##== If the stars have vanished during the mushroom disappearance scene
 # game/script.rpy:9213
 translate Spanish witchSoloFinale_54548586:
 
     # "You were in the middle of a large, empty field. The blank sky was above you. The grass crunched under your feet. Nothing beside remained."
     ""
 
+##== Otherwise:
 # game/script.rpy:9215
 translate Spanish witchSoloFinale_330d7041:
 
@@ -23602,6 +23709,12 @@ translate Spanish witchSoloFinale_91f8d401:
 
     # "If not, let it be forgotten."
     ""
+    ##== THE END.
+    ##==--> Goes to the title screen. The Witch disappears from the cover.
+
+##========================= INTERLUDE HUB 2: If the Witch or Toad have disappeared, you can go into the woods to explore.
+##== You get the chance to explore the houses of anyone who has disappeared.
+##== During these sections, notes in the margins and discovered documents hidden in the book give you vital clues about The Wolf's identity.
 
 # game/script.rpy:9251
 translate Spanish toadWitchInvestigate_213d021c:
@@ -23609,11 +23722,54 @@ translate Spanish toadWitchInvestigate_213d021c:
     # "The woods were quiet."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:9255
+    old "Silence lurked behind the trees."
+    new ""
+
 # game/script.rpy:9265
 translate Spanish toadWitchInvestigate_9367ddb6:
 
     # "The hairs at the back of your neck prickled."
     ""
+
+translate Spanish strings:
+    ##== Option A: If the toad has disappeared:
+    # game/script.rpy:9255
+    old "If you discovered a muddy cave on the riverside, go to page 120."
+    new ""
+    ##==--> Goes to INTERLUDE C- TOAD INVESTIGATION
+
+    ##== Option B: If the witch has disappeared:
+    # game/script.rpy:9255
+    old "If you discovered a strange cottage, go to page 121."
+    new ""
+    ##==--> Goes to INTERLUDE D- WITCH INVESTIGATION
+
+    ##====== Option C: If the Witch is alive:
+    # game/script.rpy:9255
+    old "If you went searching for the witch, go to page 121."
+    new ""
+
+    ##== If you choose to witch's route and the witch is the last character alive, it warns you:
+    # game/script.rpy:9269
+    old "You had a sense of finality. Like the wolf's jaws closing around you."
+    new ""
+
+    # game/script.rpy:9269
+    old "If you continued on, go to page 121."
+    new ""
+    ##==--> Goes to CHAPTER 4B Version 2: The Solo Witch Route
+
+    # game/script.rpy:9269
+    old "If you turned back, go back to page 84."
+    new ""
+    ##== Returns to previous menu.
+
+    ##== Option D: 
+    # game/script.rpy:9255
+    old "If you wandered aimlessly, finding nothing, go to page 124."
+    new ""
 
 # game/script.rpy:9278
 translate Spanish toadWitchInvestigate_b089ed30:
@@ -23663,11 +23819,20 @@ translate Spanish creepiestShowing_9f5cb5fd:
     # "Finally, you turned around, and found yourself back where you began."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:9255
+    old "If you returned to the village, go back to page 50."
+    new ""
+
 # game/script.rpy:9298
 translate Spanish creepiestShowing_19b64861:
 
     # "You turned and walked back to the light of the village."
     ""
+    ##==--> Goes back to the village. 
+
+##========================= INTERLUDE HUB 1: If the Thief or Mushroom have disappeared, you can go into the woods to explore.
 
 # game/script.rpy:9306
 translate Spanish thiefMushroomInvestigate_422157ae:
@@ -23675,11 +23840,28 @@ translate Spanish thiefMushroomInvestigate_422157ae:
     # "The grass rustled."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:9311
+    old "The trees pressed close around you."
+    new ""
+
+    ##== Option A: If the Mushroom has disappeared
+    # game/script.rpy:9311
+    old "If you discovered a rotting strangler fig, go to page 120."
+    new ""
+
 # game/script.rpy:9315
 translate Spanish thiefMushroomInvestigate_900b3246:
 
     # "You walked until you discovered a giant old tree."
     ""
+    ##==--> Goes to  INTERLUDE A- MUSHROOM INVESTIGATION
+
+translate Spanish strings:
+    ##== Option B: If the mushroom is alive:
+    # game/script.rpy:9311
+    old "If you went searching for the mushroom, go to page 121."
+    new ""
 
 # game/script.rpy:9319
 translate Spanish thiefMushroomInvestigate_9367ddb6:
@@ -23687,11 +23869,24 @@ translate Spanish thiefMushroomInvestigate_9367ddb6:
     # "The hairs at the back of your neck prickled."
     ""
 
+translate Spanish strings:
+    ##== Option C: If the Thief has disappeared:
+    # game/script.rpy:9311
+    old "If you discovered a rusting wreck, go to page 122."
+    new ""
+
 # game/script.rpy:9335
 translate Spanish thiefMushroomInvestigate_c75c2b81:
 
     # "You walked through the darkness of the woods until you discovered an abandoned old train."
     ""
+    ##==--> Goes to  INTERLUDE B- THIEF INVESTIGATION
+
+translate Spanish strings:
+    ##== Option C: Wandering at random
+    # game/script.rpy:9311
+    old "If you wandered aimlessly, finding nothing, go to page 128."
+    new ""
 
 # game/script.rpy:9341
 translate Spanish thiefMushroomInvestigate_7350adab:
@@ -23704,6 +23899,17 @@ translate Spanish thiefMushroomInvestigate_88206f5f:
 
     # "You found nothing and no-one. There was nothing there. Nothing but a cold silence that slowly followed you from behind the trees."
     ""
+
+##== The wolf addresses you directly, suspicious
+translate Spanish strings:
+    # game/script.rpy:9352
+    old "What are you doing?"
+    new ""
+
+##== Option A:
+    # game/script.rpy:9352
+    old "Searching for someone I once knew."
+    new ""
 
 # game/script.rpy:9347
 translate Spanish thiefMushroomInvestigate_a20cefa7:
@@ -23723,6 +23929,12 @@ translate Spanish thiefMushroomInvestigate_9bdc963c:
     # "There never was."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:9352
+    old "Searching for the place between the trees."
+    new ""
+
 # game/script.rpy:9358
 translate Spanish thiefMushroomInvestigate_bdbe644a:
 
@@ -23735,6 +23947,12 @@ translate Spanish thiefMushroomInvestigate_9bdc963c_1:
     # "There never was."
     ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:9352
+    old "Searching for nothing in particular."
+    new ""
+
 # game/script.rpy:9361
 translate Spanish thiefMushroomInvestigate_6a66bc41:
 
@@ -23746,6 +23964,12 @@ translate Spanish thiefMushroomInvestigate_a164b289:
 
     # "But everything has a limit. You should return to the village. The story is waiting for you."
     ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:9352
+    old "Searching for you."
+    new ""
 
 # game/script.rpy:9364
 translate Spanish thiefMushroomInvestigate_92f1a022:
@@ -23782,13 +24006,31 @@ translate Spanish thiefMushroomInvestigate_4e8b1e81:
 
     # "The lights and warmth welcomed you back."
     ""
+    ##==--> Returns to previous menu.
 
+##======================= INTERLUDE C- TOAD INVESTIGATION 
+##== If the toad has disappeared, you can explore his home to look for clues.
+##== It has 
 # game/script.rpy:9378
 translate Spanish toadInvestigate_6eb6bb95:
 
     # "You walked along the side of the river. The water was still and deep. There was a small, muddy hole on the edge of the riverbank."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:9383
+    old "No reason to tarry here."
+    new ""
+
+    # game/script.rpy:9383
+    old "If you returned to the village, return to page 50."
+    new ""
+    ##==--> Goes back to village
+
+    # game/script.rpy:9383
+    old "If you entered the hole, turn to page 207."
+    new ""
+    
 # game/script.rpy:9386
 translate Spanish toadInvestigate_4e3d5c9e:
 
@@ -23812,6 +24054,15 @@ translate Spanish toadInvestigate_8bdcd044:
 
     # "Why did you come here?"
     ""
+translate Spanish strings:
+    # game/script.rpy:9395
+    old "You had best return to your home and the people who love you."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:9395
+    old "If you searched the nearby area, turn to page 208."
+    new ""
 
 # game/script.rpy:9401
 translate Spanish essay2Showing_b081d176:
@@ -23819,12 +24070,16 @@ translate Spanish essay2Showing_b081d176:
     # "You uncovered a pantry with a single, mouldy piece of bread, and a pit sunk into the muck of the wall with the remains of an old fire."
     ""
 
+## DOCUMENT: essay2.png
+## A fragment of the witch's uni essay that mentions the toad's backstory.
+
 # game/script.rpy:9403
 translate Spanish essay2Showing_8d77c0f7:
 
     # "The silence watched you."
     ""
 
+##== If you explored deeper in:
 # game/script.rpy:9408
 translate Spanish essay2Showing_1a92711c:
 
@@ -23843,11 +24098,19 @@ translate Spanish essay2Showing_0e277305:
     # "Inside the closet were two threadbare costumes. A witch and a unicorn."
     ""
 
+##=== DOCUMENT: You can find diaryOpen.png. This is a fragment of the toad's diary from when he was a kid in germany in the 1800's, before he entered the book.
+##== It gives you the name of the wolf.
+
 # game/script.rpy:9414
 translate Spanish toadDiaryShowing_0302119c:
 
     # "Nothing beside remained."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:9395
+    old "If you turned and left this awful place, turn to page 50."
+    new ""
 
 # game/script.rpy:9420
 translate Spanish toadDiaryShowing_a47a4b2e:
@@ -23867,6 +24130,9 @@ translate Spanish witchInvestigate_ca223214:
     # "You walked through the trees until you began to see a glimmer of silver light in the darkness."
     ""
 
+##======================= INTERLUDE D- WITCH INVESTIGATION 
+##== If the witch has disappeared, you can explore her home.
+
 # game/script.rpy:9503
 translate Spanish witchInvestigate_0780a027:
 
@@ -23878,6 +24144,11 @@ translate Spanish witchInvestigate_0a2eced7:
 
     # "All around you, the woods were dark and empty. But when you looked into the water, you saw the reflection of a shining cottage below."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:9510
+    old "The sight was strangely familiar."
+    new ""
 
 # game/script.rpy:9514
 translate Spanish puddle2_e7f50077:
@@ -23975,6 +24246,16 @@ translate Spanish puddle2_3a06db03:
     # "At the centre of the puddle was a cottage in the middle of a garden."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:9552
+    old "The whole scene was still and silent."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:9552
+    old "If you explored the cottage, turn to page 207."
+    new ""
+
 # game/script.rpy:9557
 translate Spanish witchCottageInvestigate_291b83d9:
 
@@ -24011,6 +24292,12 @@ translate Spanish witchCottageInvestigate_7244cb3c:
     # "In the corner was a small kitchen with a cauldron, and up above was a small attic crawl-space."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:9552
+    old "If you explored the attic, turn to page 209."
+    new ""
+
 # game/script.rpy:9566
 translate Spanish witchCottageInvestigate_ba39c26c:
 
@@ -24022,6 +24309,8 @@ translate Spanish essay4Showing_739acad6:
 
     # "It was covered in dust. A small bed nestled in the corner, with a half-full teacup beside it."
     ""
+##== DOCUMENTS: You can find essay4.png.
+##== This is one of the witch's essays from uni. It gives you the name of the wolf.
 
 # game/script.rpy:9572
 translate Spanish essay4Showing_ecb0a014:
@@ -24035,11 +24324,23 @@ translate Spanish essay4Showing_0302119c:
     # "Nothing beside remained."
     ""
 
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:9552
+    old "If you left the cottage, turn to page 210."
+    new ""
+
 # game/script.rpy:9578
 translate Spanish essay4Showing_f19a9c3b:
 
     # "The door swung open, and you saw the shining silver of the puddle-world again."
     ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:9552
+    old "If you explored the garden, turn to page 208."
+    new ""
 
 # game/script.rpy:9583
 translate Spanish essay4Showing_0789a529:
@@ -24059,6 +24360,12 @@ translate Spanish essay4Showing_65485aad:
     # "It was labelled with the letter A."
     ""
 
+##== Option E:
+translate Spanish strings:
+    # game/script.rpy:9552
+    old "If you left and returned to the woods, turn to page 211."
+    new ""
+
 # game/script.rpy:9589
 translate Spanish essay4Showing_39d7518e:
 
@@ -24070,6 +24377,10 @@ translate Spanish essay4Showing_be212d3b:
 
     # "You soon found yourself back in the woods."
     ""
+    ##==--> Back to the woods.
+
+##======================= INTERLUDE A- MUSHROOM INVESTIGATION 
+##== If the Mushroom has disappeared, you can explore her house for information.
 
 # game/script.rpy:9601
 translate Spanish mushroomInvestigate_51dc864a:
@@ -24082,18 +24393,44 @@ translate Spanish mushroomInvestigate_cbc95999:
 
     # "Under the vines and swamp flowers at the root of the tree lay a small blue door, inlaid with precious moonstone and intricate engravings."
     ""
+translate Spanish strings:
+    # game/script.rpy:9606
+    old "It was lying open."
+    new ""
+
+    #== Option A:
+    # game/script.rpy:9606
+    old "If you entered the door, turn to page 131."
+    new ""
 
 # game/script.rpy:9610
 translate Spanish mushroomInvestigate_a86eb036:
 
     # "The door creaked slowly open."
     ""
+    #==--> Goes to the rest of the investigation scene
+
+translate Spanish strings:
+    # game/script.rpy:9606
+    old "If you turned around and left (the act of a wise individual), turn to page 157."
+    new ""
 
 # game/script.rpy:9614
 translate Spanish mushroomInvestigate_fa0575bd:
 
     # "You walked back through the woods. The door creaked slowly in the wind behind you."
-    ""
+    ""    
+    ##==--> Goes back to the woods.
+
+translate Spanish strings:
+    # game/script.rpy:9623
+    old "Nothing awaited within but silence."
+    new ""
+
+    #== Option A:
+    # game/script.rpy:9623
+    old "If you explored the main hollow, turn to page 131."
+    new ""
 
 # game/script.rpy:9627
 translate Spanish mushroomInvestigateMenu_7d99185e:
@@ -24113,6 +24450,8 @@ translate Spanish essay5Showing_c2549963:
     # "The basement within was dark. Nothing moved."
     ""
 
+##== DOCUMENT: You can find essay5.png. It has some lore and background information about the mushroom.
+
 # game/script.rpy:9633
 translate Spanish essay5Showing_22477547:
 
@@ -24124,6 +24463,12 @@ translate Spanish essay5Showing_5044a29d:
 
     # "You left the basement and returned to the main hollow."
     ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:9623
+    old "If you explored the cavern underground, turn to page 131."
+    new ""
 
 # game/script.rpy:9641
 translate Spanish essay5Showing_f2a6c1ac:
@@ -24137,6 +24482,7 @@ translate Spanish essay5Showing_431c9c5e:
     # "The mud held old crocodile footprints, long dried. There was no sign of anything living."
     ""
 
+##== This is the wolf trying to get you to go back.
 # game/script.rpy:9644
 translate Spanish essay5Showing_0670f4a0:
 
@@ -24148,6 +24494,12 @@ translate Spanish essay5Showing_ed29718f:
 
     # "You turned and climbed back up the stairs."
     ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:9623
+    old "If you explored the upper canopy, turn to page 131."
+    new ""
 
 # game/script.rpy:9653
 translate Spanish essay5Showing_0fb19403:
@@ -24161,6 +24513,9 @@ translate Spanish mushroomPosterShowing_0f005270:
     # "No fruits or flowers grew there. The branches were bare."
     ""
 
+##== DOCUMENT: You can find poster.png.
+##== It tells you that the wolf is under your house, which is a hint to go back there from the village.
+
 # game/script.rpy:9658
 translate Spanish mushroomPosterShowing_4e3899c8:
 
@@ -24172,12 +24527,30 @@ translate Spanish mushroomPosterShowing_fa0575bd:
 
     # "You walked back through the woods. The door creaked slowly in the wind behind you."
     ""
+    ##==--> Back to the woods
 
+##======================= INTERLUDE B- THIEF INVESTIGATION 
+##== If the thief has disappeared, you can explore the abandoned goblin train for information.
 # game/script.rpy:9673
 translate Spanish thiefInvestigate_11439848:
 
     # "The train was wedged between two trees. Grass grew over the wheels. There were no train tracks. No sign how it came to lie here."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:9677
+    old "The iron slowly rusted in the soft rain."
+    new ""
+
+    # game/script.rpy:9677
+    old "If you entered the train, go to page 120."
+    new ""
+    ##==--> Goes to rest of investigation
+
+    # game/script.rpy:9677
+    old "If you left the train, turn back to page 157."
+    new ""
+    ##==--> Goes back to woods.
 
 # game/script.rpy:9684
 translate Spanish thiefInvestigate_47b4c06a:
@@ -24197,17 +24570,35 @@ translate Spanish thiefInvestigate_6dbcca20:
     # "The moonlight gleamed on empty bottles and glasses. The wind whistled through open windows."
     ""
 
+translate Spanish strings:
+
+    # game/script.rpy:9694
+    old "Some of the tables still had the rotten remains of strange fruits. No flies or animals would touch them."
+    new ""
+    ##== Option A:
+    # game/script.rpy:9694
+    old "If you investigated the engine room, turn to page 253."
+    new ""
+
 # game/script.rpy:9701
 translate Spanish essay3Showing_c1af6dfa:
 
     # "This room must have been sweltering, once."
     ""
 
+##== DOCUMENT: You can find essay3.png. It has some lore about the thief.
+
 # game/script.rpy:9703
 translate Spanish essay3Showing_8c6a15ff:
 
     # "Now the gaping maw of the furnace lay cold."
     ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:9694
+    old "If you climbed up on the roof of the train, turn to page 254."
+    new ""
 
 # game/script.rpy:9710
 translate Spanish essay3Showing_0e7f72d8:
@@ -24221,12 +24612,14 @@ translate Spanish essay3Showing_c291f4f9:
     # "There was nothing on the roof. But you sat and looked out at the countryside."
     ""
 
+##== If the stars have vanished:
 # game/script.rpy:9713
 translate Spanish essay3Showing_bea69b9f:
 
     # "You could barely see the dark lake nearby. The immense abyss of the night sky loomed over you."
     ""
 
+##== Otherwise:
 # game/script.rpy:9715
 translate Spanish essay3Showing_f2c10110:
 
@@ -24238,6 +24631,12 @@ translate Spanish essay3Showing_b4421d55:
 
     # "After a long moment, you pulled yourself back into the train."
     ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:9694
+    old "If you investigated the other carriages, turn to page 250."
+    new ""
 
 # game/script.rpy:9721
 translate Spanish essay3Showing_90c7a740:
@@ -24251,11 +24650,19 @@ translate Spanish essay3Showing_a556e196:
     # "Slowly rotting mattresses on the beds. Empty suitcases with no luggage. A ragged, midnight-blue cloak."
     ""
 
+##== DOCUMENT: Note1.png. 
+##== This document is written by the thief. It gives some insight into their backstory and tells you that the wolf can be found under your house.
+
 # game/script.rpy:9726
 translate Spanish noteShowing_0302119c:
 
     # "Nothing beside remained."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:9694
+    old "If you jumped out of the train, turn to page 121."
+    new ""
 
 # game/script.rpy:9732
 translate Spanish noteShowing_3e5ac7fc:
@@ -24269,6 +24676,9 @@ translate Spanish noteShowing_c92d3273:
     # "You turned away and walked back through the woods. The wind whistled through the empty wreck behind you."
     ""
 
+##======================================================= INTERLUDE I - Wandering the woods.
+##== When anyone has disappeared, you can wander into the woods to get this ending. 
+##== It shows you GilgameshNote.png which tells you the name of the wolf.
 # game/script.rpy:9741
 translate Spanish woodsInvestigate_272e10de:
 
@@ -24346,6 +24756,13 @@ translate Spanish gilgameshShowing_3751b8c5:
 
     # "The rich dark blanket of night was softly rolling over the village as you walked in, and cooking fires lit up all across the hills, one by one."
     ""
+    ##==--> Goes back to the village.
+
+##== If you leave the scene voluntarily: 
+translate Spanish strings:
+    # game/script.rpy:9799
+    old "If you walked back to the village, go to page 50."
+    new ""
 
 # game/script.rpy:9801
 translate Spanish gilgameshShowing_13c55d6a:
@@ -24358,7 +24775,11 @@ translate Spanish gilgameshShowing_68ac747c:
 
     # "The rich dark blanket of night was softly rolling over the town, and cooking fires lit up all across the hills, one by one."
     ""
+    ##==--> Goes back to the village.
 
+##============================================ INTERLUDE J: Wood wandering 2
+##== When anyone has disappeared, you can get this scene by wandering into the woods in the middle of dialogue with an NPC. 
+##== DOCUMENT: It shows you essay6 which gives you some lore and backstory, and a hint about the wolf's name.
 # game/script.rpy:9809
 translate Spanish clearingInvestigate_3561d07b:
 
@@ -24443,6 +24864,7 @@ translate Spanish essay6Showing_ef1e9b26:
     # "It wrapped itself around you like an old coat."
     ""
 
+##== If you wandered off during the thief's dialogue:
 # game/script.rpy:9832
 translate Spanish essay6Showing_1ae7adf4:
 
@@ -24460,7 +24882,8 @@ translate Spanish essay6Showing_b1f99978:
 
     # "They took you firmly by your hand and dragged you back to the path."
     ""
-
+    ##==--> Goes to thief/mushroom route.
+##== If you wandered off during the Toad's dialogue:
 # game/script.rpy:9837
 translate Spanish essay6Showing_b0956a73:
 
@@ -24508,7 +24931,10 @@ translate Spanish essay6Showing_1668d521:
 
     # "For a brief moment, you thought you saw a figure reflected in the water. But as soon as you blinked, it was gone."
     ""
+    ##==--> Goes to toad / witch route.
 
+##===================================== INTERLUDE K: Your Name
+##== If you write Humbaba as your name when making your character, you get this special scene.
 # game/script.rpy:9869
 translate Spanish humbabaNameSecret_edb938fd:
 
@@ -24700,6 +25126,11 @@ translate Spanish humbabaNameSecret_6f197336:
 
     # "That's the end. There's nothing left to tell."
     ""
+    ##==--> Goes back to the normal menu.
+
+##========================================= MINOR ELEMENTS
+##== Menus: These are all for various menu things. It's just sentences repeated from various parts of the story for menu reasons. 
+##== Use the exact same translation as you used for the sentence previously. EG "It's quite the sight to see" should match line 4928. 
 
 # game/script.rpy:9930
 translate Spanish note1Opens_0302119c:
@@ -24803,6 +25234,12 @@ translate Spanish gilgameshPathOpens_2c771d95:
     # "Soon you came upon an ancient strangler fig. You cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
     ""
 
+
+##====================================== INTERLUDE E: GILGAMESH
+##== This is a secret scene with gilgamesh. You can find this scene either by putting "Gilgamesh" as your name, or in the story itself once 3 people have disappeared.
+## NOTE: Don't translate this part yet - the translation will act weirdly with the sumerian cuneiform. I need to troubleshoot.
+## This is all obviously taken from The Epic of Gilgamesh. It deals with the themes of forgetting and loss which are central to the story.
+
 # game/script.rpy:10093
 translate Spanish gilgameshStory_5cb4f23c:
 
@@ -24833,6 +25270,12 @@ translate Spanish gilgameshConvo_c0085880:
     # gil "What brings you, child?" nointeract
     gil "" nointeract
 
+##== Option A:
+translate Spanish strings:
+    # game/script.rpy:10109
+    old "If you asked him who he was, turn to page 604."
+    new ""
+
 # game/script.rpy:10113
 translate Spanish gilgameshConvo_a11ffd5c:
 
@@ -24844,6 +25287,12 @@ translate Spanish gilgameshConvo_537ef00c:
 
     # gil "In Uruk I built walls, a great rampart, and the temple of blessed Eanna for the god of the firmament Anu, and for Ishtar the goddess of love. Look at the walls today."
     gil ""
+
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:10109
+    old "If you told him that the walls of Uruk fell long ago, turn to page 605."
+    new ""
 
 # game/script.rpy:10121
 translate Spanish gilgameshConvo_38efc72c:
@@ -24869,11 +25318,23 @@ translate Spanish gilgameshConvo_66750510:
     # gil "Stories are passed down, from father to son, and so a fragment of me has survived here. But soon, I will be forgotten, as all men are forgotten."
     gil ""
 
+## Option C:
+translate Spanish strings:
+    # game/script.rpy:10109
+    old "If you asked him about the stone, turn to page 606."
+    new ""
+
 # game/script.rpy:10132
 translate Spanish gilgameshConvo_386af3dd:
 
     # gil "This is a monument to my friend. {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font}."
     gil ""
+
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:10109
+    old "If you ask him about Enkidu, turn to page 607."
+    new ""
 
 # game/script.rpy:10137
 translate Spanish gilgameshConvo_d519443d:
@@ -24922,6 +25383,12 @@ translate Spanish gilgameshConvo_417b67bf:
 
     # gil "I was a god and a man. {font=fonts/Segoe ui historic.ttf}𒂗𒆠𒄭{/font} was an animal and a man. Together, we became human. "
     gil ""
+
+##== Option E:
+translate Spanish strings:
+    # game/script.rpy:10109
+    old "If you asked him what happened next, turn to page 612."
+    new ""
 
 # game/script.rpy:10159
 translate Spanish gilgameshConvo_b45d87f7:
@@ -24989,6 +25456,12 @@ translate Spanish gilgameshConvo_af204ee2:
     # gil "I will cut down the tree. I will kill {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font}. I will make a lasting name for myself. I will stamp my fame on men's minds forever."
     gil ""
 
+##== Option F:
+translate Spanish strings:
+    # game/script.rpy:10109
+    old "If you asked him about Humbaba, turn to page 615."
+    new ""
+
 # game/script.rpy:10193
 translate Spanish gilgameshConvo_49aa144c:
 
@@ -25042,6 +25515,12 @@ translate Spanish gilgameshConvo_0a2d8712:
 
     # gil "Now the mountains were moved and all the hills, for the guardian of the forest was killed. The seven splendours of {font=fonts/Segoe ui historic.ttf}𒄷𒌝𒁀𒁀{/font} were extinguished."
     gil ""
+
+##== Option G:
+translate Spanish strings:
+    # game/script.rpy:10109
+    old "If you asked him how Enkidu died, turn to page 613."
+    new ""
 
 # game/script.rpy:10215
 translate Spanish gilgameshConvo_be7f95c5:
@@ -25157,6 +25636,12 @@ translate Spanish gilgameshConvo_49b0c794:
     # gil "And won’t I too lie down in the dirt like him, and never rise again?"
     gil ""
 
+##== Option H:
+translate Spanish strings:
+    # game/script.rpy:10109
+    old "If you asked him what you should do, turn to page 622."
+    new ""
+
 # game/script.rpy:10271
 translate Spanish gilgameshConvo_b327034f:
 
@@ -25199,6 +25684,12 @@ translate Spanish gilgameshConvo_a3086fce:
     # gil "Take your axe in your hand and attack. He who leaves the fight unfinished is not at peace."
     gil ""
 
+##== Option I:
+translate Spanish strings:
+    # game/script.rpy:10109
+    old "If you asked him to come with you, turn to page 619."
+    new ""
+
 # game/script.rpy:10289
 translate Spanish gilgameshConvo_d1037aa1:
 
@@ -25216,6 +25707,12 @@ translate Spanish gilgameshConvo_3c54ac93:
 
     # gil "I will take you back to your home. The rest is your story to tell."
     gil ""
+
+##== Option J:
+translate Spanish strings:
+    # game/script.rpy:10109
+    old "If you said goodbye, turn to page 621."
+    new ""
 
 # game/script.rpy:10299
 translate Spanish gilgameshConvo_760668c8:
@@ -25271,6 +25768,7 @@ translate Spanish gilgameshConvo_57257ab4:
     # "You've returned."
     ""
 
+##== The wolf doesn't know what just happened because that part of the story was controlled by gilgamesh.
 # game/script.rpy:10325
 translate Spanish gilgameshConvo_5d908e32:
 
@@ -25294,8 +25792,9 @@ translate Spanish gilgameshConvo_b4d0e23a:
 
     # "No matter. You are back in my arms now, child. I will not release you again. "
     ""
+    ##==--> Back to the normal story.
 
-##========================= INTERLUDE A: gutterlingStory
+##========================= INTERLUDE G: gutterlingStory
 ##== This short story occurs if you are kidnapped by the gutterlings in the village
 # game/script.rpy:10335
 translate Spanish gutterlingStory_8f28a6cc:
@@ -25859,7 +26358,7 @@ translate Spanish gutterChoice_bb54685f:
 
 ##===== End of gutterlingstory
 
-##=================================== INTERLUDE B: THE WOLF
+##=================================== INTERLUDE H: THE WOLF
 ##== This is what happens if you leave the village to go home.
 ##== This initiates your final confrontation with The Wolf.
 ##== As you travel back home, you leave the fairytale world and begin to enter the real world (Where you are trapped, reading the book).
@@ -29062,7 +29561,7 @@ translate Spanish wolfNameEnd_29390382:
 ##== ---> From here it goes to the Book Burning Ending
 
 
-##================================================================ INTERLUDE C: SILENCE
+##================================================================ ENDING 1: SILENCE.
 ##======== This is the ending you get if everyone disappears.
 ##======== It is heavily inspired by sections of "Do androids dream of electric sheep?" by Philip K. Dick.
 ##======== You can read it here on page 20. https://www.scribd.com/document/743001508/Phillip-K-Dick-Do-Androids-Dream-of-Electric-Sheep
@@ -30058,7 +30557,7 @@ translate Spanish wolfEnd_781a7ffc:
     # "{vspace=12}{space=9}And then there was rest in the land."
     ""
 
-##================================================================ INTERLUDE D: A NEW BEGINNING
+##================================================================ ENDING 2: ACCEPTANCE
 ##============= This is what happens if you decide to stay in the book with the wolf.
 ##============= A new person gets the book out of the library and begins reading it.
 ##============= You have become a character in the book.
@@ -30488,7 +30987,7 @@ translate Spanish newStoryFinale_0ae9bcd0_1:
     # ""
     ""
 
-##================================================================ INTERLUDE E: THE BOOK BURNING
+##================================================================ ENDING 3: BURNING.
 ##====== This is the ending where you commit to burning the book.
 ##====== You get a limited amount of time to explore as the book slowly burns. The song "Remember" plays. When the book has burned completely, it goes dark and shows you the final ending text.
 ##====== You can talk to any of the characters who haven't vanished so far in the narrative.
@@ -32044,285 +32543,7 @@ translate Spanish strings:
     old "The Wolf."
     new ""
 
-##========= TOAD ROUTE - TO DO
-    # game/script.rpy:7722
-    old "Something scratched against the walls outside."
-    new ""
-
-    # game/script.rpy:7761
-    old "The sounds of the party echoed below you."
-    new ""
-
-##== Find where this goes
-    # game/script.rpy:8132
-    old "If you helped the toad, turn to page 203."
-    new ""
-
-##=== WITCH ROUTE
-    # game/script.rpy:8869
-    old "The reflection of the cottage rippled in the water."
-    new ""
-
-    # game/script.rpy:8978
-    old "If you asked the witch how she knew you were coming, turn to page 236."
-    new ""
-
-    # game/script.rpy:8978
-    old "If you looked at experiment 1, turn to page 236."
-    new ""
-
-    # game/script.rpy:8978
-    old "If you looked at experiment 2, turn to page 236."
-    new ""
-
-    # game/script.rpy:8978
-    old "If you looked at experiment 3, turn to page 236."
-    new ""
-
-    # game/script.rpy:9038
-    old "If you suggested making notes, turn to page 238."
-    new ""
-
-    # game/script.rpy:9038
-    old "If you suggested using magic or consulting magical beings, turn to page 239."
-    new ""
-
-    # game/script.rpy:9038
-    old "If you had no idea, turn to page 241."
-    new ""
-
-    # game/script.rpy:9255
-    old "Silence lurked behind the trees."
-    new ""
-
-    # game/script.rpy:9255
-    old "If you discovered a muddy cave on the riverside, go to page 120."
-    new ""
-
-    # game/script.rpy:9255
-    old "If you discovered a strange cottage, go to page 121."
-    new ""
-
-    # game/script.rpy:9255
-    old "If you went searching for the witch, go to page 121."
-    new ""
-
-    # game/script.rpy:9255
-    old "If you wandered aimlessly, finding nothing, go to page 124."
-    new ""
-
-    # game/script.rpy:9255
-    old "If you returned to the village, go back to page 50."
-    new ""
-
-    # game/script.rpy:9269
-    old "You had a sense of finality. Like the wolf's jaws closing around you."
-    new ""
-
-    # game/script.rpy:9269
-    old "If you continued on, go to page 121."
-    new ""
-
-    # game/script.rpy:9269
-    old "If you turned back, go back to page 84."
-    new ""
-
-    # game/script.rpy:9311
-    old "The trees pressed close around you."
-    new ""
-
-    # game/script.rpy:9311
-    old "If you discovered a rotting strangler fig, go to page 120."
-    new ""
-
-    # game/script.rpy:9311
-    old "If you went searching for the mushroom, go to page 121."
-    new ""
-
-    # game/script.rpy:9311
-    old "If you discovered a rusting wreck, go to page 122."
-    new ""
-
-    # game/script.rpy:9311
-    old "If you wandered aimlessly, finding nothing, go to page 128."
-    new ""
-
-    # game/script.rpy:9352
-    old "What are you doing?"
-    new ""
-
-    # game/script.rpy:9352
-    old "Searching for someone I once knew."
-    new ""
-
-    # game/script.rpy:9352
-    old "Searching for the place between the trees."
-    new ""
-
-    # game/script.rpy:9352
-    old "Searching for nothing in particular."
-    new ""
-
-    # game/script.rpy:9352
-    old "Searching for you."
-    new ""
-
-    # game/script.rpy:9383
-    old "No reason to tarry here."
-    new ""
-
-    # game/script.rpy:9383
-    old "If you entered the hole, turn to page 207."
-    new ""
-
-    # game/script.rpy:9383
-    old "If you returned to the village, return to page 50."
-    new ""
-
-    # game/script.rpy:9395
-    old "You had best return to your home and the people who love you."
-    new ""
-
-    # game/script.rpy:9395
-    old "If you searched the nearby area, turn to page 208."
-    new ""
-
-    # game/script.rpy:9395
-    old "If you turned and left this awful place, turn to page 50."
-    new ""
-
-    # game/script.rpy:9510
-    old "The sight was strangely familiar."
-    new ""
-
-    # game/script.rpy:9552
-    old "The whole scene was still and silent."
-    new ""
-
-    # game/script.rpy:9552
-    old "If you explored the cottage, turn to page 207."
-    new ""
-
-    # game/script.rpy:9552
-    old "If you explored the attic, turn to page 209."
-    new ""
-
-    # game/script.rpy:9552
-    old "If you left the cottage, turn to page 210."
-    new ""
-
-    # game/script.rpy:9552
-    old "If you explored the garden, turn to page 208."
-    new ""
-
-    # game/script.rpy:9552
-    old "If you left and returned to the woods, turn to page 211."
-    new ""
-
-    # game/script.rpy:9606
-    old "It was lying open."
-    new ""
-
-    # game/script.rpy:9606
-    old "If you entered the door, turn to page 131."
-    new ""
-
-    # game/script.rpy:9606
-    old "If you turned around and left (the act of a wise individual), turn to page 157."
-    new ""
-
-    # game/script.rpy:9623
-    old "Nothing awaited within but silence."
-    new ""
-
-    # game/script.rpy:9623
-    old "If you explored the main hollow, turn to page 131."
-    new ""
-
-    # game/script.rpy:9623
-    old "If you explored the cavern underground, turn to page 131."
-    new ""
-
-    # game/script.rpy:9623
-    old "If you explored the upper canopy, turn to page 131."
-    new ""
-
-    # game/script.rpy:9677
-    old "The iron slowly rusted in the soft rain."
-    new ""
-
-    # game/script.rpy:9677
-    old "If you entered the train, go to page 120."
-    new ""
-
-    # game/script.rpy:9677
-    old "If you left the train, turn back to page 157."
-    new ""
-
-    # game/script.rpy:9694
-    old "Some of the tables still had the rotten remains of strange fruits. No flies or animals would touch them."
-    new ""
-
-    # game/script.rpy:9694
-    old "If you investigated the engine room, turn to page 253."
-    new ""
-
-    # game/script.rpy:9694
-    old "If you climbed up on the roof of the train, turn to page 254."
-    new ""
-
-    # game/script.rpy:9694
-    old "If you investigated the other carriages, turn to page 250."
-    new ""
-
-    # game/script.rpy:9694
-    old "If you jumped out of the train, turn to page 121."
-    new ""
-
-    # game/script.rpy:9799
-    old "If you walked back to the village, go to page 50."
-    new ""
-
-    # game/script.rpy:10109
-    old "If you asked him who he was, turn to page 604."
-    new ""
-
-    # game/script.rpy:10109
-    old "If you told him that the walls of Uruk fell long ago, turn to page 605."
-    new ""
-
-    # game/script.rpy:10109
-    old "If you asked him about the stone, turn to page 606."
-    new ""
-
-    # game/script.rpy:10109
-    old "If you ask him about Enkidu, turn to page 607."
-    new ""
-
-    # game/script.rpy:10109
-    old "If you asked him what happened next, turn to page 612."
-    new ""
-
-    # game/script.rpy:10109
-    old "If you asked him about Humbaba, turn to page 615."
-    new ""
-
-    # game/script.rpy:10109
-    old "If you asked him how Enkidu died, turn to page 613."
-    new ""
-
-    # game/script.rpy:10109
-    old "If you asked him what you should do, turn to page 622."
-    new ""
-
-    # game/script.rpy:10109
-    old "If you asked him to come with you, turn to page 619."
-    new ""
-
-    # game/script.rpy:10109
-    old "If you said goodbye, turn to page 621."
-    new ""
-
+##========= TO COMPLETE - Gutterling Route and onwards.
     # game/script.rpy:10344
     old "You could hear the Gutterlings squirming nearby."
     new ""
