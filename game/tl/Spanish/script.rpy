@@ -116,6 +116,10 @@
 ## Much of these hints come from notes in the margins or documents you can find hidden inside the text.
 ## It's very important that the puzzle remains solvable in spanish. 
 
+##====================================================== DOCUMENTS
+## If you look in the Spanish>Images/GUI folder, you'll see the images that need to be translated.
+## We can leave those for after the text itself is complete.
+
 ##====================================================== Ignore all this.
 
 # game/script.rpy:1256
