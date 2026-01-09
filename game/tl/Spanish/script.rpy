@@ -4607,7 +4607,7 @@ translate Spanish village_7952c538:
 
     # g "Gotcha!"
     g ""
-
+    ##==--> Goes to INTERLUDE G: gutterlingstory
 
 ##======= Location: The Banquet by the river. Many variations of this based on how many people have disappeared.
 
@@ -25831,6 +25831,16 @@ translate Spanish gutterlingStory_ac3975af:
     # "They planted you in the soil and left you to ferment. Your skin crawled, and you realised you would soon bud with the gutterlings."
     ""
 
+translate Spanish strings:
+    # game/script.rpy:10344
+    old "You could hear the Gutterlings squirming nearby."
+    new ""
+
+    ##== Option A:
+    # game/script.rpy:10344
+    old "If you looked around this strange place, turn to page 311."
+    new ""
+
 # game/script.rpy:10347
 translate Spanish gutterChoice_db1ba371:
 
@@ -25849,6 +25859,12 @@ translate Spanish gutterChoice_ba98e015:
     # "To your side was a huge mound of left socks. A mound of keys lay to the other side. In front of you was that library book you'd been looking for."
     ""
 
+##== Option B:
+translate Spanish strings:
+    # game/script.rpy:10344
+    old "If you wailed in piteous woe, turn to page 320."
+    new ""
+
 # game/script.rpy:10353
 translate Spanish gutterChoice_045d9d90:
 
@@ -25866,6 +25882,12 @@ translate Spanish gutterChoice_6362132c:
 
     # "The gutterlings laughed at your pathetic cries."
     ""
+
+##== Option C:
+translate Spanish strings:
+    # game/script.rpy:10344
+    old "If you called out for help, turn to page 319."
+    new ""
 
 # game/script.rpy:10366
 translate Spanish gutterChoice_fe4d187f:
@@ -26094,6 +26116,11 @@ translate Spanish gutterChoice_32b9daa1:
     # "There was no-one left to hear."
     ""
 
+##== Option D:
+translate Spanish strings:
+    # game/script.rpy:10344
+    old "If you prayed to your Godparent for help, turn to page 315."
+    new ""
 ##== If your Godparent is G-d:
 # game/script.rpy:10413
 translate Spanish gutterChoice_c015e6c0:
@@ -26360,9 +26387,11 @@ translate Spanish gutterChoice_bb54685f:
 
     # "In a blink, She was gone."
     ""
+    ##===== End of gutterlingstory
+    ##==--> Goes back to village
 
-##===== End of gutterlingstory
 
+##=== BOOKMARK
 ##=================================== INTERLUDE H: THE WOLF
 ##== This is what happens if you leave the village to go home.
 ##== This initiates your final confrontation with The Wolf.
@@ -32548,7 +32577,7 @@ translate Spanish strings:
     old "The Wolf."
     new ""
 
-##========= TO COMPLETE - Gutterling Route and onwards.
+
     # game/script.rpy:10344
     old "You could hear the Gutterlings squirming nearby."
     new ""
