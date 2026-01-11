@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/tl/Spanish/script.rpy", line 1132: unknown statement
-    if persistent.vanished >= 3:
-    ^
+File "game/tl/Spanish/script.rpy", line 6859: translate strings statement expects a non-empty block.
+    translate Spanish strings:
+                              ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Thu Jan  1 12:51:31 2026
+Sun Jan 11 18:54:14 2026

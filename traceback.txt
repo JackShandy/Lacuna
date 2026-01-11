@@ -1,24 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/tl/Spanish/script.rpy", line 1137, in script
-    old "[introMenuSentence]"
-Exception: A translation for "[introMenuSentence]" already exists at game/tl/Spanish/script.rpy:1134.
+  File "game/tl/Spanish/script.rpy", line 33015, in script
+    old "If you turned back, turn to page 45."
+Exception: A translation for "If you turned back, turn to page 45." already exists at game/tl/Spanish/script.rpy:32945.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/tl/Spanish/script.rpy", line 1137, in script
-    old "[introMenuSentence]"
+  File "game/tl/Spanish/script.rpy", line 33015, in script
+    old "If you turned back, turn to page 45."
   File "D:\Renpy\renpy-8.2.0-sdk\renpy\ast.py", line 2630, in execute
     renpy.translation.add_string_translation(self.language, self.old, self.new, newloc)
   File "D:\Renpy\renpy-8.2.0-sdk\renpy\translation\__init__.py", line 556, in add_string_translation
     stl.add(old, new, newloc)
   File "D:\Renpy\renpy-8.2.0-sdk\renpy\translation\__init__.py", line 496, in add
     raise Exception("A translation for \"{}\" already exists at {}:{}.".format(
-Exception: A translation for "[introMenuSentence]" already exists at game/tl/Spanish/script.rpy:1134.
+Exception: A translation for "If you turned back, turn to page 45." already exists at game/tl/Spanish/script.rpy:32945.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.0.24012702
 The Wolf. 1.0
-Thu Jan  1 12:54:12 2026
+Sun Jan 11 18:55:50 2026

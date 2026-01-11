@@ -34,8 +34,8 @@
 ## {b}Words in bold{/b}
 ## {i}Words in italics{/i}
 ## {w=5}{nw} means wait for 5 seconds, then automatically go to the next line. This is used to make text feel like it's cut off.
-## {vspace=200} means include a space of 200 pixels between words. 
-## In general, you should include these in the same places the english text has them. 
+## {vspace=200} means include a space of 200 pixels between words.
+## In general, you should include these in the same places the english text has them.
 ## But you can see a full list of tags here and use any of them that make sense for spanish: https://www.renpy.org/doc/html/text.html
 
 ##====================================================== IMPORTANT WORDS AND PHRASES
@@ -51,7 +51,7 @@
 ## It was never seen or heard from again
 ## And then there was rest in the land.
 ## Lacuna
-## Just the howling of the wind, and nothing more 
+## Just the howling of the wind, and nothing more
     ## (howling is used because wolves also howl, would be good to find a phrase that incorporates that double-meaning in spanish)
 
 ##====================================================== GENERAL STRUCTURE
@@ -91,8 +91,8 @@
 
 ##========== Interludes
 ## As people disappear, you have more and more chances to explore outside the bounds of the story and gather information about The Wolf.
-##== INTERLUDE HUB 1: If the Mushroom or Thief disappear, you can go into the woods here. 
-##== INTERLUDE HUB 2: If the Witch or Toad disappear, you can go into the woods here. 
+##== INTERLUDE HUB 1: If the Mushroom or Thief disappear, you can go into the woods here.
+##== INTERLUDE HUB 2: If the Witch or Toad disappear, you can go into the woods here.
 
 ##== INTERLUDE A- Mushroom Investigation: The mushroom's house. You can explore it after she's gone.
 ##== INTERLUDE B- Thief Investigation: The Goblin Train. You can explore it after the Thief is gone.
@@ -128,7 +128,7 @@
 ##== rememberDistVocalFull.wav
 
 ##======== Gilgamesh translation
-##== I'll need to figure out a way to do this with variables. 
+##== I'll need to figure out a way to do this with variables.
 
 ##====================================================== Ignore all this.
 
@@ -1618,7 +1618,7 @@ translate Spanish strings:
     old "In her left hand she held a small lantern, and in her right hand she held a crooked knife stained green."
     new ""
 
-##== If you ignore the mushroom and leave 
+##== If you ignore the mushroom and leave
 translate Spanish strings:
 
     # game/script.rpy:2469
@@ -3710,7 +3710,7 @@ translate Spanish toadRefused_1ea0b8e7:
     ""
 
 ##== If your godparent is the devil and you drove your mother to her death:
-## Burpengary is a suburb in Queensland. It's 
+## Burpengary is a suburb in Queensland. It's
 # game/script.rpy:3111
 translate Spanish toadRefused_14e0a76a:
 
@@ -6001,7 +6001,7 @@ translate Spanish townExplore_7f135446:
     # pov "What is this?"
     pov ""
 
-##== If people have disappeared 
+##== If people have disappeared
 # game/script.rpy:3997
 translate Spanish townExplore_a37d5b78:
 
@@ -6141,7 +6141,7 @@ translate Spanish townExplore_0941f38f:
     h ""
 
 ##===== CHARACTER BRIEF: The Gloom-monger
-##== Minor character, a wild old man who prophesies doom at every turn. 
+##== Minor character, a wild old man who prophesies doom at every turn.
 ##== Basically the horror-movie archetype of an old man who always says "You're doomed, doooomed!"
 ##== Has some random rumours.
 translate Spanish strings:
@@ -6238,7 +6238,7 @@ translate Spanish townExplore_42a49367:
 
 ##====== CHARACTER BRIEF: THE THING IN THE WELL
 ##== Has a random chance of appearing. Secret. Leads to the secret well ending.
-#== Deliberately a surprisingly low-key and down to earth character, has an urban australian accent. 
+#== Deliberately a surprisingly low-key and down to earth character, has an urban australian accent.
 translate Spanish strings:
     # game/script.rpy:3987
     old "If you looked in the well, turn to page 346."
@@ -6310,7 +6310,7 @@ translate Spanish townExplore_e5774fe7:
     # "You would have liked to make a wish. But you had no coins on you."
     ""
 
-##== This is impossible to actually achieve. 
+##== This is impossible to actually achieve.
 ##== It's a joke that represents that thing you can do in Choose your Own Adventure Books, where you can cheat by putting your thumb in the pages or choosing any option even if you don't actually meet the requirements.
 ##== Secret Well Ending. All of this is deliberately surreal - it's meant to feel like you've thumbed through the book and stumbled on a secret ending you shouldn't have access too, out of context.
 translate Spanish strings:
@@ -6852,11 +6852,11 @@ translate Spanish townExplore_81bebdcc:
     # "You turned and walked out into the darkness of the woods. No-one stopped you."
     ""
 
+translate Spanish strings:
     # game/script.rpy:3987
     old "If you returned to the middle of the village, turn to page 50."
     new ""
 
-translate Spanish strings:
 # game/script.rpy:4221
 translate Spanish townExplore_42eb007a:
 
@@ -6864,7 +6864,6 @@ translate Spanish townExplore_42eb007a:
     ""
 
 translate Spanish strings:
-
     # game/script.rpy:3987
     old "If you investigated the tarp, turn to page 79."
     new ""
@@ -7279,7 +7278,7 @@ translate Spanish gilPathShowingThief_9b5ecb82:
     sh ""
 
 ##=========================================================== CHAPTER 4A: The Thief
-##=== You set out to capture the thief. You end up going with the thief to steal from the mushroom. 
+##=== You set out to capture the thief. You end up going with the thief to steal from the mushroom.
 ##== You can end up siding with either the Thief or The Mushroom, and seeing that character's ending.
 ##== The character you don't side with disappears.
 
@@ -8315,7 +8314,7 @@ translate Spanish strings:
     old "If you talked about your family, turn to page 88."
     new ""
 
-#== Changes based on how many family members are alive (less, the more people have disappeared). 
+#== Changes based on how many family members are alive (less, the more people have disappeared).
 # game/script.rpy:4671
 translate Spanish thiefConvo3_5cf110f5:
 
@@ -8913,7 +8912,7 @@ translate Spanish thiefFig_9164b8f4:
 ## https://maygibbs.org/wp-content/uploads/2016/01/2786800280_579a15fb83-1.jpg
 ## https://natureloverslog.com/wp-content/uploads/2016/04/backwoods-bob.jpg?w=1920&h=1080&crop=1
 ##== Scraggs is also a bushranger which is a classic australian archetype, usually seen as a lovable anti-authoritarian rogue who evades the law, most famous of which is Ned Kelly.
-##== Scraggs kind of seems like he came out of another story where he's a central character, but in this game he's an incredibly minor character and no-one's ever heard of him. 
+##== Scraggs kind of seems like he came out of another story where he's a central character, but in this game he's an incredibly minor character and no-one's ever heard of him.
 ##== The joke where he launches into a musical number which isn't described is part of that.
 
 
@@ -9050,7 +9049,7 @@ translate Spanish scraggsConvo_bc189829_1:
     # sc "Ha Ha Ha! Wrong!"
     sc ""
 
-##== Option C: 
+##== Option C:
 translate Spanish strings:
     # game/script.rpy:4858
     old "If you answered \"A dog jumping around on its hind legs\", turn to page 175."
@@ -11933,7 +11932,7 @@ translate Spanish mushroomDisappears_b65b5631:
     ##==================--> THE END. Goes to ending scene.
 
 ##========================= CHAPTER 5 - B1: The Thief's Final Curtain.
-##=== You get this scene if you take the thief's path when the mushroom has already disappeared. The Thief is eaten by the wolf. 
+##=== You get this scene if you take the thief's path when the mushroom has already disappeared. The Thief is eaten by the wolf.
 ##== The Thief attempts to escape the wolf on the Goblin Train for as long as they can - as goblins are eaten, one by one, by the wolf.
 ##== The Thief is trying to squeeze as much joy and celebration as they can out of their last moments.
 # game/script.rpy:5788
@@ -12547,7 +12546,7 @@ translate Spanish thiefSoloConvo2_66454648:
     # t "The real world holds nothing for us. All we can do is extract as much joy as we can from each single day."
     t ""
 
-##== The Westward Line is old slang for death 
+##== The Westward Line is old slang for death
 # game/script.rpy:5992
 translate Spanish thiefSoloConvo2_451943e6:
 
@@ -12762,7 +12761,7 @@ translate Spanish thiefSoloConvo2_64c0cb6a:
 
 
 ##============================== CHAPTER 4B: The Mushroom Route
-##====== This route triggers if you go report the thief's crimes to the mushroom, instead of doing the heist with the thief. 
+##====== This route triggers if you go report the thief's crimes to the mushroom, instead of doing the heist with the thief.
 # game/script.rpy:6062
 translate Spanish mushroom1_71b11ae1:
 
@@ -13287,8 +13286,8 @@ translate Spanish mushroomSoloConvo_ba9c2c92:
     # m "There never was an ending other than this. There never was a time other than this. No other place but this one."
     m ""
 
-## A visual novel reference. The True Ending is usually the best possible ending. 
-## However, in this case the True Ending represents, to the Mushroom, the ultimate possible ending. 
+## A visual novel reference. The True Ending is usually the best possible ending.
+## However, in this case the True Ending represents, to the Mushroom, the ultimate possible ending.
 ## This is the only way things could have gone. She is accepting her fate and refusing the idea that she could have achieved a better ending by making different choices.
 # game/script.rpy:6223
 translate Spanish mushroomSoloConvo_43a18cec:
@@ -13630,7 +13629,7 @@ translate Spanish mushroomSoloFinale_9256611c:
     ##===--> Goes to the title page. The Mushroom disappears.
 
 ##===================================== CHAPTER 5 - A2: The Mushroom Finale
-##== This is the normal Mushroom ending. You side with the mushroom, and get an ending with her. 
+##== This is the normal Mushroom ending. You side with the mushroom, and get an ending with her.
 ##== After this ending, the Thief disappears.
 # game/script.rpy:6365
 translate Spanish mushroomFinale_d1dcc18f:
@@ -14158,7 +14157,7 @@ translate Spanish strings:
     # game/script.rpy:6499
     old "Every type of fungi bustled around you."
     new ""
-    
+
     ##== Option A:
     # game/script.rpy:6499
     old "If you explored the moss garden, turn to page 135."
@@ -14833,7 +14832,7 @@ translate Spanish mushroomBox_4d1fdaba:
     # "You untied the red silk and lifted the lid of the precious box."
     ""
 
-##== The wolf editorialising. 
+##== The wolf editorialising.
 # game/script.rpy:6683
 translate Spanish mushroomBox_44b9e94a:
 
@@ -15023,7 +15022,7 @@ translate Spanish mushroomBox_1d169db6_3:
 
 ##=============================== CHAPTER 6B: Thief Disappearance
 ##== After completing the mushroom's normal route, the thief disappears.
-##== In each disappearance scene, the wolf eats something different. 
+##== In each disappearance scene, the wolf eats something different.
 ##== In this scene the wolf devours other people, until the thief is left alone in the world.
 
 # game/script.rpy:6762
@@ -16137,7 +16136,7 @@ translate Spanish puddle_0f0e93d0:
     # f "If you aren't out in ten minutes, I'll come in there to rescue you."
     f ""
     ##===--> Goes to Chapter 4, Part 2: Witch's Cottage
-    
+
 ##===================================== CHAPTER 5C: The Toad's Finale
 ##====== This is the toad's normal ending, where you side with him against the witch.
 # game/script.rpy:7058
@@ -16698,7 +16697,7 @@ translate Spanish chippinghamManor_091f6957:
     # f "I spent my whole life looking up at this place. Hard to believe we're actually here."
     f ""
 
-##== Option E: 
+##== Option E:
 translate Spanish strings:
     # game/script.rpy:7180
     old "If you explored the fifth tower, turn to page 260."
@@ -16739,7 +16738,7 @@ translate Spanish strings:
     old "A golden keyhole shone out from the closet door."
     new ""
 
-        
+
     ##== Option A:
     # game/script.rpy:7221
     old "If you went back, turn to page 190."
@@ -18325,12 +18324,12 @@ translate Spanish witchDisappears_b65b5631:
 
     # "It was never seen or heard from again."
     ""
-    ##=== THE END. 
+    ##=== THE END.
     ##==--> You return to the title screen. The witch disappears from the cover.
 
 ##==========================================CHAPTER 4B1 - Solo Toad Route
 ##== If you follow the toad when the witch has already disappeared, you get this route. The toad disappears.
-##== The toad has slain Brildebrogue and taken his place as a rich noble. 
+##== The toad has slain Brildebrogue and taken his place as a rich noble.
 ##== The toad knows the wolf will come for him soon, but is in denial. He believes he can stop his fate by sealing his castle with every protection possible.
 ##== This is reminiscent of the story, Death in Samarkand: https://www.mylongvoyage.com/2012/08/30/death-in-samarkand/
 # game/script.rpy:7677
@@ -19116,7 +19115,7 @@ translate Spanish witch2_5d203b06:
 
 ##========== CHARACTER BRIEF: THE WITCH
 ##== See document.
-##== The witch is an indigenous australian university student from the 1970's. She studied the book for a first year uni assignment and ended up taking the deal to live inside it. Her scientific curiosity wouldn't let her stay away. 
+##== The witch is an indigenous australian university student from the 1970's. She studied the book for a first year uni assignment and ended up taking the deal to live inside it. Her scientific curiosity wouldn't let her stay away.
 ##== She is desperate to know more and comes closer than anyone to finding the truth of the book and the wolf's true name.
 ##== However, she is held back by a curse that makes all her thoughts drift out of her head in smoke, impacting her memory severely.
 ##== This is not explained but it's intended to basically be a memory disorder or something similar she suffered from to a mild degree in the real world, but the wolf has exacerbated it in order to stop her from learning the truth and escaping the book.
@@ -22837,8 +22836,8 @@ translate Spanish witchExperiments_9f3e1c54:
     # "You looked outside and saw that it was tied onto dozens of forks stuck into the soil, all over her property."
     ""
 
-##====== Lacuna is an important word. It means a gap or blank space, typically the missing text in a manuscript. 
-##== This concept is used to refer to things that have been eaten by the wolf. 
+##====== Lacuna is an important word. It means a gap or blank space, typically the missing text in a manuscript.
+##== This concept is used to refer to things that have been eaten by the wolf.
 ##== It'd be good to use a spanish word that has a similar tone of, something missing from a book or piece of writing, and use that consistently wherever "lacuna" appears.
 # game/script.rpy:9024
 translate Spanish witchExperiments_58c9b996:
@@ -22894,7 +22893,7 @@ translate Spanish strings:
     old "If you suggested making notes, turn to page 238."
     new ""
 
-##== The wolf has limited power to rewrite and erase things, but is sloppy. 
+##== The wolf has limited power to rewrite and erase things, but is sloppy.
 # game/script.rpy:9041
 translate Spanish witchExperiments_cf966a07:
 
@@ -23142,7 +23141,7 @@ translate Spanish witchExperiments_e5b3eede:
     # "You opened the closet and peered in carefully."
     ""
 
-##== These are the toad's clothes, left after he disappeared. 
+##== These are the toad's clothes, left after he disappeared.
 # game/script.rpy:9086
 translate Spanish witchExperiments_188ae484:
 
@@ -23780,7 +23779,7 @@ translate Spanish strings:
     new ""
     ##== Returns to previous menu.
 
-    ##== Option D: 
+    ##== Option D:
     # game/script.rpy:9255
     old "If you wandered aimlessly, finding nothing, go to page 124."
     new ""
@@ -23844,7 +23843,7 @@ translate Spanish creepiestShowing_19b64861:
 
     # "You turned and walked back to the light of the village."
     ""
-    ##==--> Goes back to the village. 
+    ##==--> Goes back to the village.
 
 ##========================= INTERLUDE HUB 1: If the Thief or Mushroom have disappeared, you can go into the woods to explore.
 
@@ -24022,9 +24021,9 @@ translate Spanish thiefMushroomInvestigate_4e8b1e81:
     ""
     ##==--> Returns to previous menu.
 
-##======================= INTERLUDE C- TOAD INVESTIGATION 
+##======================= INTERLUDE C- TOAD INVESTIGATION
 ##== If the toad has disappeared, you can explore his home to look for clues.
-##== It has 
+##== It has
 # game/script.rpy:9378
 translate Spanish toadInvestigate_6eb6bb95:
 
@@ -24044,7 +24043,7 @@ translate Spanish strings:
     # game/script.rpy:9383
     old "If you entered the hole, turn to page 207."
     new ""
-    
+
 # game/script.rpy:9386
 translate Spanish toadInvestigate_4e3d5c9e:
 
@@ -24144,7 +24143,7 @@ translate Spanish witchInvestigate_ca223214:
     # "You walked through the trees until you began to see a glimmer of silver light in the darkness."
     ""
 
-##======================= INTERLUDE D- WITCH INVESTIGATION 
+##======================= INTERLUDE D- WITCH INVESTIGATION
 ##== If the witch has disappeared, you can explore her home.
 
 # game/script.rpy:9503
@@ -24393,7 +24392,7 @@ translate Spanish essay4Showing_be212d3b:
     ""
     ##==--> Back to the woods.
 
-##======================= INTERLUDE A- MUSHROOM INVESTIGATION 
+##======================= INTERLUDE A- MUSHROOM INVESTIGATION
 ##== If the Mushroom has disappeared, you can explore her house for information.
 
 # game/script.rpy:9601
@@ -24433,7 +24432,7 @@ translate Spanish strings:
 translate Spanish mushroomInvestigate_fa0575bd:
 
     # "You walked back through the woods. The door creaked slowly in the wind behind you."
-    ""    
+    ""
     ##==--> Goes back to the woods.
 
 translate Spanish strings:
@@ -24543,7 +24542,7 @@ translate Spanish mushroomPosterShowing_fa0575bd:
     ""
     ##==--> Back to the woods
 
-##======================= INTERLUDE B- THIEF INVESTIGATION 
+##======================= INTERLUDE B- THIEF INVESTIGATION
 ##== If the thief has disappeared, you can explore the abandoned goblin train for information.
 # game/script.rpy:9673
 translate Spanish thiefInvestigate_11439848:
@@ -24664,7 +24663,7 @@ translate Spanish essay3Showing_a556e196:
     # "Slowly rotting mattresses on the beds. Empty suitcases with no luggage. A ragged, midnight-blue cloak."
     ""
 
-##== DOCUMENT: Note1.png. 
+##== DOCUMENT: Note1.png.
 ##== This document is written by the thief. It gives some insight into their backstory and tells you that the wolf can be found under your house.
 
 # game/script.rpy:9726
@@ -24691,7 +24690,7 @@ translate Spanish noteShowing_c92d3273:
     ""
 
 ##======================================================= INTERLUDE I - Wandering the woods.
-##== When anyone has disappeared, you can wander into the woods to get this ending. 
+##== When anyone has disappeared, you can wander into the woods to get this ending.
 ##== It shows you GilgameshNote.png which tells you the name of the wolf.
 # game/script.rpy:9741
 translate Spanish woodsInvestigate_272e10de:
@@ -24772,7 +24771,7 @@ translate Spanish gilgameshShowing_3751b8c5:
     ""
     ##==--> Goes back to the village.
 
-##== If you leave the scene voluntarily: 
+##== If you leave the scene voluntarily:
 translate Spanish strings:
     # game/script.rpy:9799
     old "If you walked back to the village, go to page 50."
@@ -24792,7 +24791,7 @@ translate Spanish gilgameshShowing_68ac747c:
     ##==--> Goes back to the village.
 
 ##============================================ INTERLUDE J: Wood wandering 2
-##== When anyone has disappeared, you can get this scene by wandering into the woods in the middle of dialogue with an NPC. 
+##== When anyone has disappeared, you can get this scene by wandering into the woods in the middle of dialogue with an NPC.
 ##== DOCUMENT: It shows you essay6 which gives you some lore and backstory, and a hint about the wolf's name.
 # game/script.rpy:9809
 translate Spanish clearingInvestigate_3561d07b:
@@ -25143,8 +25142,8 @@ translate Spanish humbabaNameSecret_6f197336:
     ##==--> Goes back to the normal menu.
 
 ##========================================= MINOR ELEMENTS
-##== Menus: These are all for various menu things. It's just sentences repeated from various parts of the story for menu reasons. 
-##== Use the exact same translation as you used for the sentence previously. EG "It's quite the sight to see" should match line 4928. 
+##== Menus: These are all for various menu things. It's just sentences repeated from various parts of the story for menu reasons.
+##== Use the exact same translation as you used for the sentence previously. EG "It's quite the sight to see" should match line 4928.
 
 # game/script.rpy:9930
 translate Spanish note1Opens_0302119c:
@@ -27383,7 +27382,7 @@ translate Spanish wolfDestroy_15ec2855:
     # m "There is nothing for us here." nointeract
     m "" nointeract
 
-##== You must say "I must go on." 
+##== You must say "I must go on."
 
 ##== Quote from The Epic of Gilgamesh.
 # game/script.rpy:10868
@@ -29872,7 +29871,7 @@ translate Spanish wolfNameEnd_a577d893:
     # "Listen. Do not destroy this story lightly."
     ""
 
-##== Quote from epic of gilgamesh, also mentioned by Gilgamesh himself. 
+##== Quote from epic of gilgamesh, also mentioned by Gilgamesh himself.
 # game/script.rpy:11661
 translate Spanish wolfNameEnd_2f9ff93c:
 
@@ -30086,7 +30085,7 @@ translate Spanish silence_6ce28b74:
     # "Too late to do anything about it now. Too late for anything."
     ""
 
-##== Repeated ominous phrase - use the same wording each time. 
+##== Repeated ominous phrase - use the same wording each time.
 # game/script.rpy:11720
 translate Spanish silence_3ec8d061:
 
@@ -30892,7 +30891,7 @@ translate Spanish wolfEnd_2393990a:
    #     yalign 0.22#0.743
     #    xalign 0.5
 
-#=== You get a wide range of roles to choose from. 
+#=== You get a wide range of roles to choose from.
 
 translate Spanish strings:
     # game/script.rpy:11949
@@ -33012,11 +33011,6 @@ translate Spanish homeBurning_a40310fa:
     wib "" nointeract
 
 translate Spanish strings:
-    # game/script.rpy:12760
-    old "If you turned back, turn to page 45."
-    new ""
-    ##==--> Goes back to village
-
     # game/script.rpy:12760
     old "If you continued on, turn to page 400."
     new ""
