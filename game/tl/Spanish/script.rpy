@@ -31540,7 +31540,7 @@ translate Spanish strings:
     old "You stood in the middle of the village square. The smell of smoke was in the air."
     new ""
 
-    ##== Option A:
+    ##== Hub A - The Banquet:
     # game/script.rpy:12323
     old "If you walked to the banquet, turn to page 64."
     new ""
@@ -31550,8 +31550,12 @@ translate Spanish banquetBurning_807393da:
 
     # "The banquet was laid out down by the river. Everyone sat along thick tables piled with every type of food, drinking and waving their arms and talking with their mouths full."
     ""
-##== Option A:
 translate Spanish strings:
+    # game/script.rpy:12382
+    old "You looked out over the scene."
+    new ""
+
+    ##== Sitting with the toad:
     # game/script.rpy:12382
     old "If you sat next to the toad, turn to page 375."
     new ""
@@ -31929,7 +31933,6 @@ translate Spanish mushroomBurning_b4193783:
     # "You and the rest of the town applauded."
     ""
 
-##== BOOKMARK
 ##== The Strange and Crooked Old Man. This character is from a section of the Mushroom's story where you fall asleep for 3 hundred years and awake in a modern world.
 translate Spanish strings:
     ##== Option C:
@@ -31968,6 +31971,11 @@ translate Spanish mushroomBurning_ca7215c1:
     ""
 
 ##== If The Mushroom has vanished.
+translate Spanish strings:
+    # game/script.rpy:12382
+    old "If you searched for an old fig, turn to page 376."
+    new ""
+
 # game/script.rpy:12491
 translate Spanish mushroomBurning_839f4e3d:
 
@@ -31993,6 +32001,11 @@ translate Spanish mushroomBurning_f7d9995b:
     ""
 
 ##== The Mayor.
+translate Spanish strings:
+    # game/script.rpy:12382
+    old "If you talked to the mayor, turn to page 377."
+    new ""
+
 # game/script.rpy:12499
 translate Spanish mushroomBurning_4ed6c864:
 
@@ -32043,6 +32056,11 @@ translate Spanish mushroomBurning_40962bf1:
     ""
 
 ##== The 3 pigs
+translate Spanish strings:
+    # game/script.rpy:12382
+    old "If you talked to the pigs, turn to page 352."
+    new ""
+
 # game/script.rpy:12510
 translate Spanish mushroomBurning_f94c3070:
 
@@ -32118,6 +32136,12 @@ translate Spanish mushroomBurning_e44421b5:
     p1 ""
 
 ##== The Thing in the Well
+##== From the Well Ending - minor moment in the village
+translate Spanish strings:
+    # game/script.rpy:12382
+    old "If you looked down the well, turn to page 351."
+    new ""
+
 # game/script.rpy:12525
 translate Spanish mushroomBurning_41fad60e:
 
@@ -32142,23 +32166,43 @@ translate Spanish mushroomBurning_9eef71b1:
     # well "Cheers. You have a good one, alright? Take care."
     well ""
 
+## Going back
+translate Spanish strings:
+    # game/script.rpy:12548
+    old "If you returned to the village square, go back to page 50."
+    new ""
+
 # game/script.rpy:12532
 translate Spanish mushroomBurning_3eede05a:
 
     # "You turned and walked back to the centre of the village."
     ""
 
+##== Hub B: The Edge of Town
+translate Spanish strings:
+    # game/script.rpy:12323
+    old "If you walked to the edge of town, turn to page 70."
+    new ""
+
+##== If the stars were eaten in the mushroom ending:
 # game/script.rpy:12539
 translate Spanish townBurning_2f3d7dac:
 
     # "You walked out to the edge of town. The blank night sky was beautiful to behold. You heard dancing and laughter on the wind."
     ""
 
+##== Otherwise:
 # game/script.rpy:12541
 translate Spanish townBurning_415ffd33:
 
     # "You walked out to the edge of town. The stars in the night sky were beautiful to behold. You heard dancing and laughter on the wind."
     ""
+
+##== Goblin Train
+translate Spanish strings:
+    # game/script.rpy:12548
+    old "If you went out to the goblin train, go to page 53."
+    new ""
 
 # game/script.rpy:12551
 translate Spanish townBurningMenu_53d0da6d:
@@ -32177,6 +32221,15 @@ translate Spanish townBurningMenu_16600f02:
 
     # "Lush goblin fruits were laid out all across the carriage, and a wild goblin riot was in progress."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:12560
+    old "The goblins cavorted and gambled and ate and drank in a chaos of forms."
+    new ""
+
+    # game/script.rpy:12560
+    old "If you joined the goblins, turn to page 358."
+    new ""
 
 # game/script.rpy:12563
 translate Spanish trainBurning_fb37bc03:
@@ -32209,6 +32262,11 @@ translate Spanish trainBurning_218f0c30:
     ""
 
 ##== The Goblin Queen
+translate Spanish strings:
+    # game/script.rpy:12560
+    old "It you sought out the goblin queen, turn to page 359."
+    new ""
+
 # game/script.rpy:12572
 translate Spanish trainBurning_134895e8:
 
@@ -32234,6 +32292,11 @@ translate Spanish trainBurning_270865fb:
     goblinQueen "" nointeract
 
 ##== If you say yes:
+translate Spanish strings:
+    # game/script.rpy:12578
+    old "If you said yes, and told her what shape you wished for, turn to page 383."
+    new ""
+
 # game/script.rpy:12581
 translate Spanish trainBurning_4ad969e2:
 
@@ -32247,6 +32310,11 @@ translate Spanish trainBurning_b12e2193:
     ""
 
 ##== If you say No:
+translate Spanish strings:
+    # game/script.rpy:12578
+    old "If you said no - you like your shape as it is - turn to page 384."
+    new ""
+
 # game/script.rpy:12585
 translate Spanish trainBurning_a6cae2d8:
 
@@ -32254,6 +32322,11 @@ translate Spanish trainBurning_a6cae2d8:
     goblinQueen ""
 
 ##== The Thief
+translate Spanish strings:
+    # game/script.rpy:12560
+    old "If you climbed up on the roof of the train, searching for the thief, turn to page 387."
+    new ""
+
 # game/script.rpy:12590
 translate Spanish trainBurning_d29adbea:
 
@@ -32284,12 +32357,14 @@ translate Spanish trainBurning_ce8deb95:
     # t "Everything has to come to an end someday. Better to go out on our own terms."
     t ""
 
+##== If the stars disappeared:
 # game/script.rpy:12596
 translate Spanish trainBurning_db334e33:
 
     # "You sat and watched the black night sky as the train chuffed gently beside the river."
     ""
 
+##== Otherwise:
 # game/script.rpy:12598
 translate Spanish trainBurning_8886b1a1:
 
@@ -32326,6 +32401,13 @@ translate Spanish trainBurning_0cecf803:
     # "At last, when the journey was done, you returned to the place where it all began to finish the rest of your goodbyes."
     ""
 
+##== Leaving:
+translate Spanish strings:
+    # game/script.rpy:12560
+    old "If you leapt off the train, return to page 70."
+    new ""
+    ##==--> Goes back to the village hub
+
 # game/script.rpy:12607
 translate Spanish trainBurning_c8890695:
 
@@ -32333,6 +32415,11 @@ translate Spanish trainBurning_c8890695:
     ""
 
 ##== If The Thief has vanished:
+translate Spanish strings:
+    # game/script.rpy:12548
+    old "If you searched for an old wreck, go to page 53."
+    new ""
+
 # game/script.rpy:12612
 translate Spanish trainBurning_d60910a8:
 
@@ -32358,6 +32445,11 @@ translate Spanish trainBurning_c27a8e1d:
     ""
 
 ##== The Witch
+translate Spanish strings:
+    # game/script.rpy:12548
+    old "If you searched for the witch, turn to page 321."
+    new ""
+
 # game/script.rpy:12621
 translate Spanish trainBurning_d6a7a70f:
 
@@ -32369,6 +32461,15 @@ translate Spanish trainBurning_09cbfc09:
 
     # "Belphegor, Lord of Hogs, lounged before the bonfire, partaking of occasional truffles offered to Him by His many worshippers."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:12627
+    old "The chanting was loud and triumphant."
+    new ""
+
+    # game/script.rpy:12627
+    old "If you talked to the witch, turn to page 354."
+    new ""
 
 # game/script.rpy:12630
 translate Spanish witchBurningMenu_cb9a7e01:
@@ -32413,6 +32514,11 @@ translate Spanish witchBurningMenu_13288f7e:
     w ""
 
 ##== The Devil's Sooty Grandmother
+translate Spanish strings:
+    # game/script.rpy:12627
+    old "If you talked to the Devil's sooty grandmother, turn to page 357."
+    new ""
+
 # game/script.rpy:12640
 translate Spanish witchBurningMenu_60c4152f:
 
@@ -32449,7 +32555,18 @@ translate Spanish witchBurningMenu_098945b6:
     # dg "Take care of yourself, when you're out there in the other world. Make sure to eat! You're skin and bones, child."
     dg ""
 
+translate Spanish strings:
+    # game/script.rpy:12627
+    old "If you returned to the edge of town, return to page 70."
+    new ""
+    ##==--> Goes back to village hub.
+
 ##== If The Witch has vanished:
+translate Spanish strings:
+    # game/script.rpy:12548
+    old "If you searched for someone in the woods, turn to page 354."
+    new ""
+
 # game/script.rpy:12651
 translate Spanish witchBurningMenu_3a75786d:
 
@@ -32473,7 +32590,13 @@ translate Spanish witchBurningMenu_b1078abf:
 
     # "You buried the hat beneath an old oak, and planted the lavender and herbs all around the mound."
     ""
+
 ##== The Gloom-Monger
+translate Spanish strings:
+    # game/script.rpy:12548
+    old "If you talked to the old gloom-monger, turn to page 388."
+    new ""
+
 # game/script.rpy:12658
 translate Spanish witchBurningMenu_d6eb4405:
 
@@ -32499,6 +32622,11 @@ translate Spanish witchBurningMenu_d2766bd9:
     ""
 
 ##== The Goose-girl
+translate Spanish strings:
+    # game/script.rpy:12548
+    old "If you chatted to the young goose-girl, turn to page 389."
+    new ""
+
 # game/script.rpy:12665
 translate Spanish witchBurningMenu_3a66c8eb:
 
@@ -32615,6 +32743,11 @@ translate Spanish witchBurningMenu_73430aca:
     ""
 
 ##== The Sparrow Herder
+translate Spanish strings:
+    # game/script.rpy:12548
+    old "If you talked to the sparrow-herder, turn to page 396."
+    new ""
+
 # game/script.rpy:12690
 translate Spanish witchBurningMenu_de78ae5f:
 
@@ -32676,13 +32809,19 @@ translate Spanish witchBurningMenu_f96e966b:
     # sh "The sparrows told me."
     sh ""
 
+##== if you returned to the village
 # game/script.rpy:12703
 translate Spanish witchBurningMenu_3eede05a:
 
     # "You turned and walked back to the centre of the village."
     ""
 
-##== If you walk home:
+##====== If you walk home:
+translate Spanish strings:
+    # game/script.rpy:12323
+    old "If you walked back home, turn to page 1."
+    new ""
+
 # game/script.rpy:12710
 translate Spanish homeBurning_eef5a0aa:
 
@@ -32750,6 +32889,16 @@ translate Spanish homeBurning_307bf1ae:
     # miw "I will rest in Heaven until the last moments." nointeract
     miw "" nointeract
 
+translate Spanish strings:
+    # game/script.rpy:12725
+    old "If you turned back, return to page 45."
+    new ""
+    ##==--> Goes back to village
+
+    # game/script.rpy:12725
+    old "If you continued on, turn to page 386."
+    new ""
+
 # game/script.rpy:12730
 translate Spanish homeBurning_cca8289a:
 
@@ -32786,6 +32935,20 @@ translate Spanish homeBurning_cb9e1cc6:
 
     # "You watched him cackle and cavort."
     ""
+
+translate Spanish strings:
+    # game/script.rpy:12741
+    old "He's harmless, really. Best pay him no mind."
+    new ""
+
+    # game/script.rpy:12760
+    old "If you turned back, turn to page 45."
+    new ""
+    ##==--> Goes back to village
+
+    # game/script.rpy:12741
+    old "If you continued on, turn to page 395."
+    new ""
 
 # game/script.rpy:12746
 translate Spanish homeBurning_cca8289a_1:
@@ -32847,6 +33010,16 @@ translate Spanish homeBurning_a40310fa:
 
     # wib "I will stay here until the end. To take away the others." nointeract
     wib "" nointeract
+
+translate Spanish strings:
+    # game/script.rpy:12760
+    old "If you turned back, turn to page 45."
+    new ""
+    ##==--> Goes back to village
+
+    # game/script.rpy:12760
+    old "If you continued on, turn to page 400."
+    new ""
 
 # game/script.rpy:12765
 translate Spanish homeBurning_cca8289a_2:
@@ -32962,6 +33135,7 @@ translate Spanish homeBurning_ad1b2f3e:
 
     # "You hugged your family for the last time, and set out back to the village to finish the rest of your goodbyes."
     ""
+    ##==--> Goes back to village
 
 ##== The End
 ##== These are left blank to display the end text
@@ -33010,6 +33184,7 @@ translate Spanish resetGame_e0648967:
     # "{color=#ffffff}You have come to a dark place.{/color}"
     ""
 
+##== "Lacuna" = "A gap in the manuscript".
 # game/script.rpy:13159
 translate Spanish resetGame_3ebfa092:
 
@@ -33034,6 +33209,16 @@ translate Spanish resetGame_0fe0f4aa:
     # "{color=#ffffff}Are you sure you want to do this?{/color}"
     ""
 
+translate Spanish strings:
+    # game/script.rpy:13166
+    old "{color=#ffffff}You know it will never be like the first time.{/color}"
+    new ""
+
+    ##== Option A (Resets the game fully, deleting persistent data)
+    # game/script.rpy:13166
+    old "{color=#ffffff}Yes. I'm sure.{/color}"
+    new ""
+
 # game/script.rpy:13169
 translate Spanish resetGame_7e6080f9:
 
@@ -33045,6 +33230,12 @@ translate Spanish resetGame_13f27258:
 
     # "{color=#ffffff}Goodbye, for now.{/color}"
     ""
+    ##==--> Resets the game
+
+translate Spanish strings:
+    # game/script.rpy:13166
+    old "{color=#ffffff}No. I want to remain here.{/color}"
+    new ""
 
 # game/script.rpy:13175
 translate Spanish resetGame_7e6080f9_1:
@@ -33057,12 +33248,12 @@ translate Spanish resetGame_8caa7a1b:
 
     # "{color=#ffffff}Stay here a little longer.{/color}"
     ""
-##============================================================= INTERLUDE F: THE DIALOGUE CHOICES
-##======= This is a giant list of all dialogue choices in the game. Unfortunately they're all stacked here so it may be difficult to follow. I can separate them back out to the parts of the story where they actually appear.
-##======= Let me know if that would be useful.
+    ##==--> Does not reset the game.
+
+##============================================================= INTERLUDE F: THE TITLES
+##=== The different title variations (changes as the characters disappear).
 translate Spanish strings:
 
-##=== The different title variations (changes as the characters disappear).
     # game/script.rpy:1194
     old "The Thief, the Toad, the Witch & the Mushroom."
     new ""
@@ -33125,561 +33316,4 @@ translate Spanish strings:
 
     # game/script.rpy:1227
     old "The Wolf."
-    new ""
-
-
-    # game/script.rpy:10344
-    old "You could hear the Gutterlings squirming nearby."
-    new ""
-
-    # game/script.rpy:10344
-    old "If you looked around this strange place, turn to page 311."
-    new ""
-
-    # game/script.rpy:10344
-    old "If you wailed in piteous woe, turn to page 320."
-    new ""
-
-    # game/script.rpy:10344
-    old "If you called out for help, turn to page 319."
-    new ""
-
-    # game/script.rpy:10344
-    old "If you prayed to your Godparent for help, turn to page 315."
-    new ""
-
-    # game/script.rpy:10542
-    old "A warm light flickered in the window."
-    new ""
-
-    # game/script.rpy:10542
-    old "If you looked in the window, turn to page 289."
-    new ""
-
-    # game/script.rpy:10542
-    old "If you tried the door, turn to page 301."
-    new ""
-
-    # game/script.rpy:10542
-    old "If you opened the door, turn to page 301."
-    new ""
-
-    # game/script.rpy:10542
-    old "If you searched around the apartment, turn to page 293."
-    new ""
-
-    # game/script.rpy:10542
-    old "If you retreated back to the village, return to page 39."
-    new ""
-
-    # game/script.rpy:10580
-    old "Are you sure you want to do this?"
-    new ""
-
-    # game/script.rpy:10580
-    old "Yes. I'm certain."
-    new ""
-
-    # game/script.rpy:10580
-    old "I'm not sure."
-    new ""
-
-    # game/script.rpy:10580
-    old "No. I'm not ready yet."
-    new ""
-
-    # game/script.rpy:10669
-    old "A phone was plugged in and open on the desk. "
-    new ""
-
-    # game/script.rpy:10669
-    old "If you examined the figure, turn to page 399."
-    new ""
-
-    # game/script.rpy:10669
-    old "If you looked at the phone, turn to page 398."
-    new ""
-
-    # game/script.rpy:10717
-    old "The shadows flickered around the corners of the apartment."
-    new ""
-
-    # game/script.rpy:10717
-    old "If you tapped the phone, turn to page 347."
-    new ""
-
-    # game/script.rpy:10717
-    old "If you left it alone, turn to page 345."
-    new ""
-
-    # game/script.rpy:10752
-    old "The dark shape twisted around [him]. [He] didn't move at all. [His] eyes were locked on the book."
-    new ""
-
-    # game/script.rpy:10752
-    old "If you took the poker from the fireplace, turn to page 349."
-    new ""
-
-    # game/script.rpy:10752
-    old "If you struck the dark shape with the poker, turn to page 349."
-    new ""
-
-    # game/script.rpy:10752
-    old "If you looked away from the figure, turn to page 356."
-    new ""
-
-    # game/script.rpy:10810
-    old "I must go on."
-    new ""
-
-    # game/script.rpy:10919
-    old "You could sense a great and terrible revelation there, in those depths beyond human knowledge."
-    new ""
-
-    # game/script.rpy:10919
-    old "Look into the depths."
-    new ""
-
-    # game/script.rpy:10919
-    old "Look further."
-    new ""
-
-    # game/script.rpy:10919
-    old "Look away."
-    new ""
-
-    # game/script.rpy:11022
-    old "But that's not the end of things, is it?"
-    new ""
-
-    # game/script.rpy:11030
-    old "I want you to set everyone free."
-    new ""
-
-    # game/script.rpy:11139
-    old "Do you see now?"
-    new ""
-
-    # game/script.rpy:11139
-    old "I understand."
-    new ""
-
-    # game/script.rpy:11157
-    old "There is nothing in this world that is not already mine."
-    new ""
-
-    # game/script.rpy:11157
-    old "I know your true name."
-    new ""
-
-    # game/script.rpy:11267
-    old "All the riches of the earth are mine."
-    new ""
-
-    # game/script.rpy:11267
-    old "I am blessed with pure and unconditional love."
-    new ""
-
-    # game/script.rpy:11267
-    old "The world bows before me."
-    new ""
-
-    # game/script.rpy:11267
-    old "All the pain and suffering and ills of the world disappear in an instant."
-    new ""
-
-    # game/script.rpy:11267
-    old "My enemies are destroyed."
-    new ""
-
-    # game/script.rpy:11267
-    old "My family and friends gain everything they deserve."
-    new ""
-
-    # game/script.rpy:11267
-    old "I am happy."
-    new ""
-
-    # game/script.rpy:11267
-    old "I am immortal."
-    new ""
-
-    # game/script.rpy:11267
-    old "All my lost friends appear. We are reunited at last."
-    new ""
-
-    # game/script.rpy:11267
-    old "You are destroyed. I am set free from this story."
-    new ""
-
-    # game/script.rpy:11350
-    old "Is that what you want?"
-    new ""
-
-    # game/script.rpy:11350
-    old "Yes."
-    new ""
-
-    # game/script.rpy:11350
-    old "No."
-    new ""
-
-    # game/script.rpy:11421
-    old "We can talk as long as you wish."
-    new ""
-
-    # game/script.rpy:11421
-    old "How did you come to be here?"
-    new ""
-
-    # game/script.rpy:11421
-    old "What happened to my friends? The ones that disappeared."
-    new ""
-
-    # game/script.rpy:11421
-    old "What's really going on here?"
-    new ""
-
-    # game/script.rpy:11421
-    old "Were you planning to eat me?"
-    new ""
-
-    # game/script.rpy:11421
-    old "You must have tricked them."
-    new ""
-
-    # game/script.rpy:11421
-    old "I want to talk to my friends."
-    new ""
-
-    # game/script.rpy:11421
-    old "I am ready to end this."
-    new ""
-
-    # game/script.rpy:11421
-    old "But... you're evil."
-    new ""
-
-    # game/script.rpy:11421
-    old "Will I be alone?"
-    new ""
-
-    # game/script.rpy:11421
-    old "I accept your bargain. I will live here in this story for the rest of my days."
-    new ""
-
-    # game/script.rpy:11421
-    old "No. I won't do it."
-    new ""
-
-    # game/script.rpy:11421
-    old "Then I choose to burn the book."
-    new ""
-
-    # game/script.rpy:11709
-    old "The soft blur of silence slowly spread through your brain."
-    new ""
-
-    # game/script.rpy:11709
-    old "If you chose to watch the fire, turn to page 481."
-    new ""
-
-    # game/script.rpy:11709
-    old "If you explored the attic, turn to page 482."
-    new ""
-
-    # game/script.rpy:11709
-    old "If you explored the bedrooms, turn to page 482."
-    new ""
-
-    # game/script.rpy:11709
-    old "If you explored the study, turn to page 482."
-    new ""
-
-    # game/script.rpy:11709
-    old "If you explored the basement, turn to page 482."
-    new ""
-
-    # game/script.rpy:11709
-    old "If you chose to leave your house, turn to page 482."
-    new ""
-
-    # game/script.rpy:11709
-    old "If you chose to rest and wait, turn to page 483."
-    new ""
-
-    # game/script.rpy:11793
-    old "Who are you?"
-    new ""
-
-    # game/script.rpy:11793
-    old "What happened to my friends?"
-    new ""
-
-    # game/script.rpy:11793
-    old "Are you going to eat me?"
-    new ""
-
-    # game/script.rpy:11793
-    old "I am done resting."
-    new ""
-
-    # game/script.rpy:11793
-    old "I still won't do it."
-    new ""
-
-    # game/script.rpy:11905
-    old "Will you take my bargain, and live in this story for the rest of your days?"
-    new ""
-
-    # game/script.rpy:11905
-    old "I will."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Cobbler, turn to page 465."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Trickster, turn to page 466."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Crow, turn to page 467."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Specter, turn to page 468."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Winter Rose, turn to page 469."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Fool, turn to page 470."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Water Nixie, turn to page 471."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Giant, turn to page 472."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Bushranger, turn to page 473."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Butcher, turn to page 474."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Aristocrat, turn to page 475."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Warrior-Poet, turn to page 476."
-    new ""
-
-    # game/script.rpy:11949
-    old "If you chose The Heirophant, turn to page 477."
-    new ""
-
-    # game/script.rpy:12323
-    old "You stood in the middle of the village square. The smell of smoke was in the air."
-    new ""
-
-    # game/script.rpy:12323
-    old "If you walked to the banquet, turn to page 64."
-    new ""
-
-    # game/script.rpy:12323
-    old "If you walked to the edge of town, turn to page 70."
-    new ""
-
-    # game/script.rpy:12323
-    old "If you walked back home, turn to page 1."
-    new ""
-
-    # game/script.rpy:12382
-    old "You looked out over the scene."
-    new ""
-
-    # game/script.rpy:12382
-    old "If you sat next to the toad, turn to page 375."
-    new ""
-
-    # game/script.rpy:12382
-    old "If you explored the river, turn to page 382."
-    new ""
-
-    # game/script.rpy:12382
-    old "If you sat next to the mushroom, turn to page 397."
-    new ""
-
-    # game/script.rpy:12382
-    old "If you searched for an old fig, turn to page 376."
-    new ""
-
-    # game/script.rpy:12382
-    old "If you talked to the mayor, turn to page 377."
-    new ""
-
-    # game/script.rpy:12382
-    old "If you talked to the pigs, turn to page 352."
-    new ""
-
-    # game/script.rpy:12382
-    old "If you looked down the well, turn to page 351."
-    new ""
-
-    # game/script.rpy:12393
-    old "The crow-shrike, rat, bat and the old black cockatoo were gathered around with their feet on the table, helping themselves to the feast."
-    new ""
-
-    # game/script.rpy:12393
-    old "If you looked at the manor in the distance, turn to page 378."
-    new ""
-
-    # game/script.rpy:12393
-    old "If you talked to the toad, turn to page 390."
-    new ""
-
-    # game/script.rpy:12393
-    old "If you listened to the carriage-carriers, turn to page 381."
-    new ""
-
-    # game/script.rpy:12393
-    old "If you stood up from your seat, return to page 64."
-    new ""
-
-    # game/script.rpy:12445
-    old "They all laughed together at some inside joke."
-    new ""
-
-    # game/script.rpy:12445
-    old "If you talked to the mushroom, turn to page 364."
-    new ""
-
-    # game/script.rpy:12445
-    old "If you talked to Scraggs Mckenzie and the Boys, turn to page 374."
-    new ""
-
-    # game/script.rpy:12445
-    old "If you talked to the strange and crooked old man, turn to page 372."
-    new ""
-
-    # game/script.rpy:12548
-    old "If you went out to the goblin train, go to page 53."
-    new ""
-
-    # game/script.rpy:12548
-    old "If you searched for an old wreck, go to page 53."
-    new ""
-
-    # game/script.rpy:12548
-    old "If you searched for the witch, turn to page 321."
-    new ""
-
-    # game/script.rpy:12548
-    old "If you searched for someone in the woods, turn to page 354."
-    new ""
-
-    # game/script.rpy:12548
-    old "If you talked to the old gloom-monger, turn to page 388."
-    new ""
-
-    # game/script.rpy:12548
-    old "If you chatted to the young goose-girl, turn to page 389."
-    new ""
-
-    # game/script.rpy:12548
-    old "If you talked to the sparrow-herder, turn to page 396."
-    new ""
-
-    # game/script.rpy:12548
-    old "If you returned to the village square, go back to page 50."
-    new ""
-
-    # game/script.rpy:12560
-    old "The goblins cavorted and gambled and ate and drank in a chaos of forms."
-    new ""
-
-    # game/script.rpy:12560
-    old "If you joined the goblins, turn to page 358."
-    new ""
-
-    # game/script.rpy:12560
-    old "It you sought out the goblin queen, turn to page 359."
-    new ""
-
-    # game/script.rpy:12560
-    old "If you climbed up on the roof of the train, searching for the thief, turn to page 387."
-    new ""
-
-    # game/script.rpy:12560
-    old "If you leapt off the train, return to page 70."
-    new ""
-
-    # game/script.rpy:12578
-    old "If you said yes, and told her what shape you wished for, turn to page 383."
-    new ""
-
-    # game/script.rpy:12578
-    old "If you said no - you like your shape as it is - turn to page 384."
-    new ""
-
-    # game/script.rpy:12627
-    old "The chanting was loud and triumphant."
-    new ""
-
-    # game/script.rpy:12627
-    old "If you talked to the witch, turn to page 354."
-    new ""
-
-    # game/script.rpy:12627
-    old "If you talked to the Devil's sooty grandmother, turn to page 357."
-    new ""
-
-    # game/script.rpy:12627
-    old "If you returned to the edge of town, return to page 70."
-    new ""
-
-    # game/script.rpy:12725
-    old "If you turned back, return to page 45."
-    new ""
-
-    # game/script.rpy:12725
-    old "If you continued on, turn to page 386."
-    new ""
-
-    # game/script.rpy:12741
-    old "He's harmless, really. Best pay him no mind."
-    new ""
-
-    # game/script.rpy:12741
-    old "If you continued on, turn to page 395."
-    new ""
-
-    # game/script.rpy:12760
-    old "If you turned back, turn to page 45."
-    new ""
-
-    # game/script.rpy:12760
-    old "If you continued on, turn to page 400."
-    new ""
-
-    # game/script.rpy:13166
-    old "{color=#ffffff}You know it will never be like the first time.{/color}"
-    new ""
-
-    # game/script.rpy:13166
-    old "{color=#ffffff}Yes. I'm sure.{/color}"
-    new ""
-
-    # game/script.rpy:13166
-    old "{color=#ffffff}No. I want to remain here.{/color}"
     new ""
