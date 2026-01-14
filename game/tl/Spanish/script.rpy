@@ -130,6 +130,21 @@
 ##======== Gilgamesh translation
 ##== I'll need to figure out a way to do this with variables.
 
+##======== Documents
+##== The witch's essay: https://docs.google.com/document/d/1qes4EB9oaSnE8D2cvqEkxgSuhzqcBl5PxZzeCmA68j4/edit?usp=sharing
+
+##====================================================== GENERAL TRANSLATION NOTES
+##======== Anachronisms
+##== The text is quite deliberate about how it includes the more modern, anachronistic elements. You can group the text into 3 general time periods:
+##== Ancient. Story moments with Gilgamesh, confronting the wolf at the lake, etc. These take from The Epic of Gilgamesh and Beowulf. They should feel like an ancient saga, quite serious.
+##== Fairytale. Most of the story is written in this style - inspired by Brother's Grimm, Arabian Nights, etc. These parts should feel folkloric.
+##== Modern. Modern references are used sparingly for moments like at your house, and sometimes characters slip into this mode - referencing highways, apartments, etc. It is deliberately a little jarring.
+##===== The characters use anachronisms based on their previous lives, before they entered the book:
+##== The Toad entered in the 1700's and never really uses anachronistic speech.
+##== The Thief entered around the late 1800's.
+##== The Mushroom entered around the 1920's and sometimes references more modern concepts.
+##== The Witch entered in the 1970's. She has the most modern voice.
+
 ##====================================================== Ignore all this.
 
 # game/script.rpy:1256
