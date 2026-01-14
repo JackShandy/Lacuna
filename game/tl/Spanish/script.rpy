@@ -140,10 +140,14 @@
 ##== Fairytale. Most of the story is written in this style - inspired by Brother's Grimm, Arabian Nights, etc. These parts should feel folkloric.
 ##== Modern. Modern references are used sparingly for moments like at your house, and sometimes characters slip into this mode - referencing highways, apartments, etc. It is deliberately a little jarring.
 ##===== The characters use anachronisms based on their previous lives, before they entered the book:
-##== The Toad entered in the 1700's and never really uses anachronistic speech.
+##== The Toad entered in the 1700's when he was a child. He has the most consistently fairytale-y speech.
 ##== The Thief entered around the late 1800's.
 ##== The Mushroom entered around the 1920's and sometimes references more modern concepts.
 ##== The Witch entered in the 1970's. She has the most modern voice.
+##== You (the reader) enter the book in the 2020's. 
+
+##== It's important that this never feels like "Shrek." 
+##== Modern-sounding speech should be used with care and subtlety. Pop culture references or memes should be avoided.
 
 ##====================================================== Ignore all this.
 
