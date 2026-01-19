@@ -1014,77 +1014,77 @@ translate Spanish strings:
 translate Spanish mapOpens_8ffab238:
 
     # "The lands around your house were strange."
-    ""
+    "Las tierras que lindaban con tu casa eran variopintas."
 
 # game/script.rpy:1838
 translate Spanish characterIntros_e2406251:
 
     # "To the north lived a cunning thief."
-    ""
+    "Al norte vive une ladrone sutil."
 
 # game/script.rpy:1849
 translate Spanish characterIntros_7189d0ed:
 
     # "To the north, there was nothing and no-one."
-    ""
+    "Al norte no había nada, ni tampoco nadie."
 
 # game/script.rpy:1861
 translate Spanish characterIntros_ac8ef21c:
 
     # "To the west, a cackling witch."
-    ""
+    "Al oeste, una bruja risueña."
 
 # game/script.rpy:1871
 translate Spanish characterIntros_e8954f26:
 
     # "To the west, there was nothing and no-one."
-    ""
+    "Al oeste no había nada, ni tampoco nadie."
 
 # game/script.rpy:1884
 translate Spanish characterIntros_aa5a585f:
 
     # "To the east, a haughty toad."
-    ""
+    "Al este, un sapo socarrón."
 
 # game/script.rpy:1894
 translate Spanish characterIntros_ab0d41a8:
 
     # "To the east, there was nothing and no-one."
-    ""
+    "Al este no había nada, ni tampoco nadie."
 
 # game/script.rpy:1907
 translate Spanish characterIntros_37cd2d5d:
 
     # "To the south, a wise mushroom."
-    ""
+    "Al sur, una amanita sabia."
 
 # game/script.rpy:1918
 translate Spanish characterIntros_57906e1f:
 
     # "To the south, there was nothing and no-one."
-    ""
+    "Al sur no había nada, ni tampoco nadie."
 
 # game/script.rpy:2240
 translate Spanish neighbours_7189d0ed:
 
     # "To the north, there was nothing and no-one."
-    ""
+    "Al norte no había nada, ni tampoco nadie."
 
 translate Spanish strings:
 
     # game/script.rpy:2228
     old "The lands around your house were strange."
-    new ""
+    new "Las tierras que lindaban con tu casa eran variopintas."
 
     # game/script.rpy:2228
     old "To learn about the lands to the north, turn to page 10."
-    new ""
+    new "Para saber más sobre las tierras al norte, ve a la página 10."
 
 # game/script.rpy:2246
 translate Spanish neighbours_26f3d796:
 
     # "Do not ask lightly of the northern forest, my child."
-    ""
+    "No cometas el error de preguntar en vano por el bosque al norte, criatura."
 
 # game/script.rpy:2247
 translate Spanish neighbours_43364b91:
@@ -1096,7 +1096,7 @@ translate Spanish neighbours_43364b91:
 translate Spanish neighbours_9388ac02:
 
     # "The worst of them all was the Master Thief, a dextrous and sinister figure who was said to have all manner of powers."
-    ""
+    "Peor que todos ellos era le maestre ladrone; personaje diestre y siniestre que contaba en su haber con cualquier don, poder y talento."
 
 # game/script.rpy:2250
 translate Spanish neighbours_b41e88d8:
@@ -1114,175 +1114,175 @@ translate Spanish neighbours_cdac6370:
 translate Spanish neighbours_26777d35:
 
     # "Or so it was said."
-    ""
+    "Al menos, así era lo que se contaba."
 
 translate Spanish strings:
 
     # game/script.rpy:2228
     old "To learn about the lands to the east, turn to page 15."
-    new ""
+    new "Para saber más sobre las tierras al este, ve a la página 15."
 
 # game/script.rpy:2264
 translate Spanish neighbours_ab0d41a8:
 
     # "To the east, there was nothing and no-one."
-    ""
+    "Al este no había nada, ni tampoco nadie."
 
 # game/script.rpy:2270
 translate Spanish neighbours_4873ce8c:
 
     # "To the east, the river flowed down to the coast. The mangrove trees swayed in the summer heat, and the air thrummed with chanting in honour of the insect god, Karnopticon."
-    ""
+    "Al este fluía todo el caudal del río hasta la costa. Los manglares se mecían bajo el calor veraniego y el aire retumbaba con cantares en honor del dios insecto, Karnopticón."
 
 # game/script.rpy:2272
 translate Spanish neighbours_5970f551:
 
     # "On the edge of the swamp was a grand manor, owned by a noble frog lord."
-    ""
+    "Al borde del pantano se alzaba una mansión señorial, perteneciente a un honorable caballero sapo."
 
 # game/script.rpy:2273
 translate Spanish neighbours_7604fdd8:
 
     # "He was rarely seen, but people whispered that he was wiser than Solomon and richer than Midas. Kings and prophets would come from across the land to seek his counsel and gaze with envy upon the glittering spires of his house. To buy even a single gem from amoung the hundreds that adorned the manor would bankrupt any one of them."
-    ""
+    "Se le veía en contadas ocasiones, pero igualmente los rumores sobre su magnánima anfibiedad eran tales como que era más sabio que Salomón y más rico que Midas. Reyes y profetas peregrinaban desde todas partes en busca de su consejo, a la par que admiraban los relucientes capiteles de su hacienda. Una sola gema de entre los centenares que decoraban cada rincón valía más que la fortuna de cualquier visitante."
 
 # game/script.rpy:2274
 translate Spanish neighbours_26777d35_1:
 
     # "Or so it was said."
-    ""
+    "Al menos, así era lo que se contaba."
 
 translate Spanish strings:
 
     # game/script.rpy:2228
     old "To learn about the lands to the south, turn to page 20."
-    new ""
+    new "Para saber más sobre las tierras al sur, ve a la página 20."
 
 # game/script.rpy:2287
 translate Spanish neighbours_57906e1f:
 
     # "To the south, there was nothing and no-one."
-    ""
+    "Al sur no había nada, ni tampoco nadie."
 
 # game/script.rpy:2294
 translate Spanish neighbours_4e97d10c:
 
     # "Ah! In fact, the south river and the forest around it was watched over by a wise mushroom ambassador, who had owned these lands since before anyone could remember."
-    ""
+    "¡Ah! De hecho, el río del sur y el bosque circundante los guardaba una sabia embajadora amanita, dueña de tales tierras desde que el tiempo es tiempo."
 
 # game/script.rpy:2295
 translate Spanish neighbours_63aae58f:
 
     # "On cold clear nights, you could see her walking through the depths of the forest with her white veil and delicate waves of silver spores drifting behind her."
-    ""
+    "En las noches despejadas de brisa fresca aparece en lo hondo del bosque; velo blanco y ráfagas sutiles de esporas plateadas que flotan a su paso."
 
 # game/script.rpy:2296
 translate Spanish neighbours_f5a121f2:
 
     # "She allowed your family to live on the river and use her lands, under one condition."
-    ""
+    "Le había concedido permiso a tu familia para vivir en el río y valerse de sus tierras bajo una condición."
 
 ##== This line is from "The Porter and the Three Ladies of Baghdad" from 1001 nights - a small reference.
 # game/script.rpy:2297
 translate Spanish neighbours_3250871e:
 
     # m "Ask not of what concerns you not, lest you hear what pleases you not."
-    m ""
+    m "No preguntes de lo que no te atañe, salvo que quieras oír algo que te dañe."
 
 # game/script.rpy:2298
 translate Spanish neighbours_76287e37:
 
     # "Your family accepted her wishes, and so you let each other be."
-    ""
+    "Tu familia aceptó su voluntad y cada cual vivía sin medrar en los asuntos ajenos."
 
 # game/script.rpy:2299
 translate Spanish neighbours_0fda2368:
 
     # "She was often away brokering trade agreements and peace treaties and delicate alliances between the many trees and plants and old warring ferns of the forest."
-    ""
+    "Se la veía de tanto en cuanto resolviendo acuerdos de comercio, tratados de paz y alianzas delicadas entre la amalgama de árboles, plantas y los helechos vetustos y belicosos que habitaban el bosque."
 
 # game/script.rpy:2300
 translate Spanish neighbours_26777d35_2:
 
     # "Or so it was said."
-    ""
+    "Al menos, así era lo que se contaba."
 
 translate Spanish strings:
 
     # game/script.rpy:2228
     old "To learn about the lands to the west, turn to page 26."
-    new ""
+    new "Para saber más sobre las tierras al sur, ve a la página 26."
 
 # game/script.rpy:2315
 translate Spanish neighbours_e8954f26:
 
     # "To the west, there was nothing and no-one."
-    ""
+    "Al oeste no había nada, ni tampoco nadie."
 
 # game/script.rpy:2322
 translate Spanish neighbours_f28ab257:
 
     # "None dared venture to the western mountains, for all the lands around it were said to be home to a terrible witch."
-    ""
+    "Nadie se atrevía a adentrarse en las montañas al oeste, pues todas las tierras que lo componían guarecían a una bruja aterradora."
 
 # game/script.rpy:2323
 translate Spanish neighbours_4d72b4c9:
 
     # "Her hut lay deep under a secret lake, and she would emerge on moonless nights when the waters of that lake turned still and silver-green."
-    ""
+    "Su morada yacía en el fondo de un lago oculto. Salía las noches de luna nueva, cuando las aguas del lago estaban calmas como un plato y adoptaban tonos de verde plateado."
 
 # game/script.rpy:2324
 translate Spanish neighbours_2f0a37fb:
 
     # "The witches held their Sabbath on the mountain to the east, and when the sky was clear you could see the peak blaze with fire, and the Destroyer himself would emerge to dance in the firelight."
-    ""
+    "Las brujas albergaban su sabbat en la montaña al este. Cuando el cielo estaba despejado, se veía cómo la cima refulgía con fuego, y el mismísimo Destructor saltaba de él para bailar a la luz de la hoguera."
 
 # game/script.rpy:2325
 translate Spanish neighbours_26777d35_3:
 
     # "Or so it was said."
-    ""
+    "Al menos, así era lo que se contaba."
 
 translate Spanish strings:
     # game/script.rpy:2228
     old "To continue, return to page 9."
-    new ""
+    new "Para continuar, vuelve a la página 9."
 ##== This is slightly different based on how many people have disappeared.
 if persistent.vanished >= 3:
-    $introMenuSentence== "You woke every morning to silence." #Change this line in quotes to spanish
+    $introMenuSentence== «Cada mañana te despertaba el silencio». #Change this line in quotes to spanish
 else:
-    $introMenuSentence== "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets." #Change this line in quotes to spanish
+    $introMenuSentence== «Cada mañana te despertaba el pío pío de los pájaros y cada noche te dormías con el crí crí de los grillos»." #Change this line in quotes to spanish
 
 ##== If almost everyone has disappeared
 # game/script.rpy:2353
 translate Spanish introMenu_3ac479fb:
 
     # "Yours was a vast and silent land."
-    ""
+    "Vivías en unas tierras inmensas y silenciosas."
 
 # game/script.rpy:2354
 translate Spanish introMenu_6b7547c3:
 
     # "At times you could walk for days without seeing another soul."
-    ""
+    "A veces pasaban días y días de paseos constantes sin que te toparas con nadie más."
 
 # game/script.rpy:2355
 translate Spanish introMenu_b871e00c:
 
     # "You dared not venture out often. Whenever you did, you felt the pressure of that gigantic emptiness lurking just out of sight like a bottomless ocean, and fled quickly back to the safety of your home."
-    ""
+    "No te atrevías a viajar muy lejos, pues cada vez que dabas el paso, sentías la presión asfixiante del vacío descomunal que permanecía más allá de lo visible, cual océano sin fondo. Enseguida regresabas a la seguridad que te aportaba tu hogar."
 
 # game/script.rpy:2357
 translate Spanish introMenu_c830f6b6:
 
     # "The outside world was quiet. The land lay still."
-    ""
+    "El mundo exterior era silencio. La tierra era calma."
 
 # game/script.rpy:2358
 translate Spanish introMenu_94d8e2d4:
 
     # "But inside your body, your bones roiled and your flesh threatened riot."
-    ""
+    "Pero en los adentros de tu cuerpo, los huesos se te agitaban y tu carne ardía de frenesí."
 
 # game/script.rpy:2359
 translate Spanish introMenu_f700df26:
@@ -1294,26 +1294,26 @@ translate Spanish introMenu_f700df26:
 translate Spanish introMenu_74d3c3a3:
 
     # "Your skull was haunted by restless ghosts that cradled your brain and forced terrible thoughts into your mind at all hours; the bones in your spine became infested with sprites (which made your back crack in twisted and painful ways all through your long life) the blood in your veins was, of course, only a red water nixie that pulsed throughout your body, constantly seeking escape, and even your soul itself was simply a small shard of G-d, caught inside you and vibrating wildly. Not a single scrap of your own body, mind or soul was actually your own."
-    ""
+    "Tu cráneo era pasto de fantasmas penitentes que te acechaban el cerebro y te imponían pensamientos terribles a todas horas; los huesos de tu columna los plagaron duendes que te contorsionaban la espalda y la retorcían en mil dolores a lo largo de tu duradera vida; la sangre que corría por tus venas no era, claro está, sino ondinas de aguas rojas que fluían a través de tu cuerpo, siempre en busca de la salida; tu propia alma no era más que un fragmento ínfimo de Dios que estaba retenido en tu carne y trepidaba desbocado. No había ni la más mínima parte de tu cuerpo, mente o alma que te perteneciera como tal."
 
 # game/script.rpy:2361
 translate Spanish introMenu_a6a3cacd:
 
     # "There was no \"You\". Just a collection of monsters, writhing in borrowed skin."
-    ""
+    "\«Tú»\ no existías como tal. Eras una aglomeración de monstruos que se retorcían bajo una piel que no era suya."
 
 ##== If lots of people have disappeared
 # game/script.rpy:2363
 translate Spanish introMenu_4931fe8a:
 
     # "Your world was overrun. It festered. It swarmed."
-    ""
+    "Tu mundo estaba infestado. Infectado. Invadido."
 
 # game/script.rpy:2364
 translate Spanish introMenu_04ccbdb7:
 
     # "Every tree and lantern and street-corner was teeming with gutterlings, bat-folk, scab-eaters, rounds, lurks, sworlk, nathorn-hobs, lantern-lings, curselings, grimmel-dobbies, fold-overs, whisper kings, hook-takers, the cannibal wind howling 'cross the plains, ghost water pooling luminescent in underground caverns. Every house was haunted and every knife was drawn against the dark."
-    ""
+    "Cada árbol, farol y esquina de la calle estaba a rebosar de canalétidos, quiroáceos, comecostras, oróndicos, acechantes, suorquídeos, pintipúas, farolinos, maldictores, labragrimos, concaconvexos, susurreales, ganchaferros, del viento caníbal que aúlla tras las llanuras, o de agua espectral que forma charcos luminiscentes en grutas subterráneas. Cada casa estaba encantada y cada cuchillo con el filo virado a las sombras."
 
 # game/script.rpy:2365
 translate Spanish introMenu_55c1420d:
@@ -1326,7 +1326,7 @@ translate Spanish introMenu_55c1420d:
 translate Spanish introMenu_7c576d42:
 
     # "Yours was a many-haunted land, my child."
-    ""
+    "Tu tierra estaba acechada por encantos doquiera, criatura."
 
 # game/script.rpy:2368
 translate Spanish introMenu_f4f03c26:
@@ -1343,26 +1343,26 @@ translate Spanish introMenu_11f95f46:
 translate Spanish strings:
     # game/script.rpy:2349
     old "If you wonder whether you were happy there, turn to page 19."
-    new ""
+    new "Si te preguntas si eras feliz allí, ve a la página 19."
 
 # game/script.rpy:2375
 translate Spanish introMenu_0d7d6864:
 
     # "Well, it was a rich house, and you had everything you could ever want."
-    ""
+    "Bueno, era una casa de abundancia. Cualquier antojo que tuvieras no quedaba sin satisfacer."
 
 # game/script.rpy:2377
 translate Spanish introMenu_48440043:
 
     # "Well, it was a happy house."
-    ""
+    "Bueno, era una casa animada."
 
 ##== If 1 person has disappeared
 # game/script.rpy:2378
 translate Spanish introMenu_b2dea097:
 
     # "The house was always full of chatter from your ten siblings, and you were always cramped for space with all of them around."
-    ""
+    "La casa bullía con la algarabía de tus diez hermanos. Ibais muy justos de espacio cuando os juntabais todos."
 
 # game/script.rpy:2379
 translate Spanish introMenu_be73521b:
@@ -1374,7 +1374,7 @@ translate Spanish introMenu_be73521b:
 translate Spanish introMenu_0891572a:
 
     # "No matter how many people were around you, you felt like something was missing."
-    ""
+    "Porque por mucha gente que te rodeara, sentías que aún faltaba algo."
 
 ##== The festival happens for no known reason - this implies that the wolf has already been eating characters or concepts before the game begins.
 ##== Once, there was a reason for the festival - perhaps someone's birthday or an important event - but that reason has now been lost.
@@ -1382,13 +1382,13 @@ translate Spanish introMenu_0891572a:
 translate Spanish introMenu_b535dcee:
 
     # "Every year, on the day before your birthday, the village would throw a twilight festival for no reason anyone could name. On these nights you always felt strange."
-    ""
+    "Cada año, el día antes de tu cumpleaños, en la aldea se celebraba el festival del crepúsculo por alguna razón que escapaba al conocimiento de sus gentes. En noches así siempre sentías inquietud."
 
 # game/script.rpy:2382
 translate Spanish introMenu_61b53533:
 
     # "You would avoid the festival and stare deep into the woods all through the night."
-    ""
+    "Evitabas asomarte por el festival y pasabas la noche entera con la mirada fija en el bosque."
 
 ##== If 2 people have disappeared
 
@@ -1408,80 +1408,80 @@ translate Spanish introMenu_eddd3111:
 translate Spanish introMenu_270d3ca6:
 
     # "Underneath the old floorboards. Inside the crooked walls."
-    ""
+    "Bajo los tablones agrietados del suelo. Dentro de las paredes desniveladas."
 
 # game/script.rpy:2389
 translate Spanish introMenu_7bfc4222:
 
     # "Waiting for its time to come."
-    ""
+    "Aguarda el momento propicio."
 
 # game/script.rpy:2390
 translate Spanish introMenu_5b7b0f8b:
 
     # "Not long now."
-    ""
+    "Ya falta poco."
 
 ##== If 3 people have disappeared
 # game/script.rpy:2396
 translate Spanish introMenu_ab03be07:
 
     # "You lived a contented life. No-one bothered you. The stoop was full of fresh-cut logs for the fireplace. The house had many beds, so that you never lacked for a place to sleep."
-    ""
+    "Vivías con humildad. Nadie te molestaba. En el pórtico se acumulaban leños recién cortados para la hoguera. En la casa abundaban las camas, para que nunca te faltara dónde descansar."
 
 # game/script.rpy:2397
 translate Spanish introMenu_97b69347:
 
     # pov "The House provides."
-    pov ""
+    pov "La casa provee."
 
 # game/script.rpy:2398
 translate Spanish introMenu_7847b71d:
 
     # "You kept yourself busy and distracted as much as you could. But every day there came that terrible time when you finally had to lie down alone in bed."
-    ""
+    "Te mantenías ocupado y con distracciones todo lo que podías, pero cada día llegaba sin falta la hora temida, en la que debías acostarte en la cama a solas con tus pensamientos."
 
 # game/script.rpy:2399
 translate Spanish introMenu_c06a4f2d:
 
     # "As you lay awake in bed at night, you felt the silence."
-    ""
+    "Mientras yacías despierto en mitad de la noche, sentías el silencio."
 
 # game/script.rpy:2400
 translate Spanish introMenu_6192752c:
 
     # "It lurked behind everything. Like a shadow on the wall of something that you dared not turn around to see."
-    ""
+    "Acechaba detrás de todo cuanto había: era como la sombra que se refleja en una pared cuya fuente no te atreves a averiguar."
 
 # game/script.rpy:2401
 translate Spanish introMenu_7850b3e8:
 
     # "You found yourself leaving the taps going, the fire roaring, keeping the pots and pans rattling just to shut it out. Just so you couldn't hear what lay behind the sound."
-    ""
+    "Pronto te dio por dejar los grifos abiertos, el fuego encendido y con los cazos y las sartenes repiqueteando al viento con tal de llenar el vacío. No querías saber qué se ocultaba detrás de todo ello."
 
 # game/script.rpy:2410
 translate Spanish introMenu_8566e63a:
 
     # "Soon you could stand it no longer. You knew there would be a festival in town tonight (although you could not have said how you knew this)."
-    ""
+    "Hasta que no pudiste soportarlo más. Sabías que se celebraba un festival en la aldea aquella noche (aunque no te explicabas cómo estabas al tanto)."
 
 # game/script.rpy:2411
 translate Spanish introMenu_f78b0dd8:
 
     # "You searched the pantry and found a package wrapped up with a coinpurse, along with some bread and meat."
-    ""
+    "Rebuscaste en la despensa hasta dar con un paquete que contenía un monedero, así como algo de pan y carne."
 
 # game/script.rpy:2412
 translate Spanish introMenu_97b69347_1:
 
     # pov "The House provides."
-    pov ""
+    pov "La casa provee."
 
 translate Spanish strings:
 
     # game/script.rpy:2349
     old "To continue the story, turn to page 34."
-    new ""
+    new "Para continuar con la historia, ve a la página 34."
 
 # game/script.rpy:2420
 translate Spanish introMenu_b981911d:
