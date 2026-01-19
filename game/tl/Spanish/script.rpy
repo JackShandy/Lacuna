@@ -209,25 +209,25 @@ translate Spanish demoEnd_0ae9bcd0_2:
 translate Spanish chapter1_86267af8:
 
     # "This maybe happened, or maybe did not."
-    "TEST: SPANISH MODE: He/Him Pronouns"
+    "Quizá esta se trate de una historia veraz, o tan solo sea un cuento audaz."
 
 # game/script.rpy:1787
 translate Spanish chapter1_24b7f072:
 
     # "The time is long past, and much is forgot."
-    ""
+    "Pues mucho ha llovido desde aquello y poco se conserva ya."
 
 # game/script.rpy:1788
 translate Spanish chapter1_65071726:
 
     # "Back in the old days, when wishing worked, your mother lived in a vast forest teeming with strange figures."
-    ""
+    "En tiempos de Maricastaña, cuando los deseos aún se cumplían, tu madre vivía en un bosque frondoso y repleto de criaturas sorprendentes."
 
 # game/script.rpy:1790
 translate Spanish chapter1_388ccc4c:
 
     # "Yet she had little time to spend wondering about these odd folks, for she had twelve children and had to work night and day just to feed them."
-    ""
+    "Pero no gozaba de tiempo como para preguntarse el por qué de esos seres tan singulares, pues era madre de doce hijos y trabajaba día y noche para ponerles un plato en la mesa."
 
 # game/script.rpy:1791
 translate Spanish chapter1_16ca61e5:
@@ -239,19 +239,19 @@ translate Spanish chapter1_16ca61e5:
 translate Spanish chapter1_970a3da6:
 
     # "Neither here nor there, but long ago..."
-    ""
+    "Quizá esto ocurriera por aquí, o quizá por allá, pero es seguro que hace mucho ya..."
 
 # game/script.rpy:1794
 translate Spanish chapter1_641b60c1:
 
     # "Back in the old days, when the gods were real, your mother lived in a vast and mysterious rainforest full of strange figures."
-    ""
+    "En tiempo del rey Perico, cuando los dioses aún existían, tu madre vivía en un bosque lluvioso, con tantos misterios como criaturas sorprendentes lo habitaban."
 
 # game/script.rpy:1796
 translate Spanish chapter1_87ae7791:
 
     # "Yet she had little time to spend wondering about these odd folks, for she had ten children and had to work night and day just to feed them."
-    ""
+    "Pero no gozaba de tiempo como para preguntarse el por qué de esos seres tan singulares, pues era madre de diez hijos y trabajaba día y noche para ponerles un plato en la mesa."
 
 # game/script.rpy:1797
 translate Spanish chapter1_49ba8f0c:
@@ -264,19 +264,19 @@ translate Spanish chapter1_49ba8f0c:
 translate Spanish chapter1_546ca8a4:
 
     # "Once there was, and once there wasn't."
-    ""
+    "Érase una vez, así como no érase una vez."
 
 # game/script.rpy:1800
 translate Spanish chapter1_5d48c9d3:
 
     # "In the long-distant days of yore, when haystacks winnowed sieves, when genies played jereed in the old bathhouse, fleas were barbers, camels were town criers, I softly rocked my baby grandmother to sleep in her creaking cradle, in an exotic land, far, far away, there was a woman who lived in a vast rainforest full of strange, empty spaces."
-    ""
+    "En unos tiempos muy remotos y pasados ya, cuando los pajares tamizaban los granos, los genios jugaban al jereed en las antiguas casas de baños, las pulgas eran barberos, los camellos eran pregoneros y yo mecía suavemente a mi abuelita para que se durmiera en su mecedora chirriante; en una tierra exótica, muy, muy lejana, vivía una mujer en un bosque lluvioso y extenso repleto de rincones vacíos e inexplicables."
 
 # game/script.rpy:1802
 translate Spanish chapter1_568cb28a:
 
     # "Yet she had little time to think about these things, for she had four children and had to work day and night just to feed them."
-    ""
+    "Pero no gozaba de tiempo como para preguntarse el por qué de todo ello, pues era madre de cuatro hijos y trabajaba día y noche para ponerles un plato en la mesa"
 
 # game/script.rpy:1803
 translate Spanish chapter1_4b7aa14c:
@@ -289,19 +289,19 @@ translate Spanish chapter1_4b7aa14c:
 translate Spanish chapter1_b3459461:
 
     # "Listen closely."
-    ""
+    "Presta mucha atención."
 
 # game/script.rpy:1807
 translate Spanish chapter1_4588e156:
 
     # "I won't repeat myself again."
-    ""
+    "No volveré a repetírtelo."
 
 # game/script.rpy:1808
 translate Spanish chapter1_68fbbfc2:
 
     # "Back in the old days, when there was still a chance, your mother lived in a vast, empty forest."
-    ""
+    "En tiempos muy muy lejanos, cuando aún existía una oportunidad, tu madre vivía en un bosque tan extenso como vacío."
 ##============= CHARACTER BRIEF: Your Mum
 ##== Deliberately a shallow, blank character. Your protagonist is a self-insert character in this story, and your Mum is essentially a self-insert of your mum in real life. She is deliberately kept vague for that reason.
 ##== She has a moment to reflect on this at the very end of the story, if you talk to her as the book is burning. She reflects that despite everything, she has no real idea who you are at all.
@@ -315,7 +315,7 @@ translate Spanish chapter1_34777223:
 translate Spanish chapter1_8fcb249a:
 
     # "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
-    ""
+    "Se quedó en blanco, sin saber qué hacer. Te arropó en sus brazos y se adentró en las tinieblas del bosque, mientras se juraba a sí misma que le pediría al primer hombre que pasara que te adoptara como padrino."
 
 ##====================================================== The Three Godparents
 ## This is taken from the classic Brother's Grimm Tale, Godfather Death. Also inspired by The Three Godfathers.
@@ -333,7 +333,7 @@ translate Spanish chapter1_8fcb249a:
 translate Spanish chapter1_167ac34b:
 
     # "In the darkness of the forest, she may or may not have met a man in white."
-    ""
+    "Entre las tinieblas del bosque, tal vez se encontrase allí con un hombre de blanco."
 
 ##=== This interjection is taken from a technique common to Grimm's stories, where the storyteller often cuts in with their own thoughts, feelings and opinions.
 ## These interjections come from The Wolf, who is telling the story. They are meant to feel a little strange  and offputting.
@@ -343,25 +343,25 @@ translate Spanish chapter1_167ac34b:
 translate Spanish chapter1_45c50df6:
 
     # "(Is anything certain these days?)"
-    ""
+    "(¿Hay alguna certeza hoy día?)."
 
 # game/script.rpy:1825
 translate Spanish chapter1_1feb23ba:
 
     # "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
-    ""
+    "En la mano derecha sostenía una paloma; en la otra mano empuñaba una pistola; en la otra mano mostraba un billete arrugado; en la otra sujetaba un pilar hecho de fuego."
 
 # game/script.rpy:1826
 translate Spanish chapter1_22374aaa:
 
     # "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
-    ""
+    "Iba de punta en blanco. Su rostro relucía hasta tal punto que apartaba cualquier mirada. Además, ya sabía lo que ella iba a pedirle."
 
 # game/script.rpy:1829
 translate Spanish chapter1_7eb2f7e4:
 
     # miw "Poor woman. Let me be the Godfather."
-    miw ""
+    miw "Pobre mujer. Deja que yo sea su padrino."
 
 ##=== Note that these pieces of code are for inserting the player's chosen pronouns: [hes] [Hes] [he] [He] [him] [Him]
 ## Supported pronouns are he/him, she/her, they/them.
@@ -371,37 +371,37 @@ translate Spanish chapter1_7eb2f7e4:
 translate Spanish chapter1_a2752b81:
 
     # miw "I shall hold this child, and make sure [hes] happy on this Earth for the rest of [his] days."
-    miw ""
+    miw "Cuidaré de esta criatura y me aseguraré de que sea feliz en este mundo hasta el fin de sus días."
 
 
 # game/script.rpy:1935
 translate Spanish firstMan_7384aeb5:
 
     # miw "I will ask only one thing: [He] must work hard, and earn every dollar, and obey me above all else." nointeract
-    miw "" nointeract
+    miw "Solo pido algo a cambio: que trabaje con esmero y se gane cada céntimo; y que me obedezca por encima de todas las cosas." nointeract
 
 translate Spanish strings:
     # game/script.rpy:1934
     old "If she said yes, turn to page 13."
-    new ""
+    new "Si contesta «Sí», ve a la página 13."
 
 # game/script.rpy:1940
 translate Spanish godYes_48d5fef0:
 
     # miw "As I have foreseen."
-    miw ""
+    miw "Así estaba escrito."
 
 # game/script.rpy:1941
 translate Spanish godYes_626c47fc:
 
     # "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
-    ""
+    "Se agachó y posó Su magnífica mano sobre ti, tras lo que te trazó Su marca en la mano derecha."
 
 # game/script.rpy:1942
 translate Spanish godYes_22adc8da:
 
     # miw "You will name [him] [povname]."
-    miw ""
+    miw "Se llamará [povname]."
 
 ## This is an awkward one: In order to support they/them pronouns in english we need to have two slightly different versions of the same sentence.
 ## That's why there are two slightly different versions here: "The moment they turn eighteen." vs "The moment he turns eighteen."
@@ -424,25 +424,25 @@ translate Spanish godYes_2144befa:
 translate Spanish godYes_d59ce897:
 
     # "But He was talking to Himself."
-    ""
+    "Pero toda esta conversación ocurrió en solitario."
 
 # game/script.rpy:1956
 translate Spanish godYes_9c80220d:
 
     # "He looked around, holding the child."
-    ""
+    "Pues miró alrededor mientras sostenía a la criatura..."
 
 # game/script.rpy:1957
 translate Spanish godYes_eb4df7fc:
 
     # "There was no-one there."
-    ""
+    "...y nadie más había allí."
 
 # game/script.rpy:1961
 translate Spanish godYes_b45eef13:
 
     # "There never was.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
-    ""
+    "De hecho, nunca hubo nadie allí.{vspace=200}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado del Rey de Reyes.{/b}{/i}"
 ##=== If it isn't the 3rd run, your mother does not disappear.
 ## If you accept G-d as your godparent:
 
@@ -450,48 +450,48 @@ translate Spanish godYes_b45eef13:
 translate Spanish godYes_0ec3798f:
 
     # mum "Just make sure you're there for the christening."
-    mum ""
+    mum "Que no se te ocurra faltar a su bautizo."
 
 # game/script.rpy:1969
 translate Spanish godYes_3162b7ae:
 
     # "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
-    ""
+    "Pero ya se había marchado.{vspace=200}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado del Rey de Reyes.{/b}{/i}"
 
 ## If you do not accept G-d as your godparent:
 translate Spanish strings:
     # game/script.rpy:1934
     old "If she said no, turn to page 14."
-    new ""
+    new "Si contesta «No», ve a la página 14."
 
 # game/script.rpy:1973
 translate Spanish godYes_ef733c9e:
 
     # mum "Then I don't want you as the Godfather. You give to the rich, and take from the poor. You are no Lord of mine."
-    mum ""
+    mum "No serás su padrino; tú, que das a los ricos y arrebatas a los pobres. No te reconozco como Señor mío."
 
 # game/script.rpy:1974
 translate Spanish godYes_54ec4d3b:
 
     # "(She said this foolish thing, with no understanding of how wisely the Lord distributes wealth and poverty.)"
-    ""
+    "(Soltó tal necedad sin ser consciente en lo más mínimo de la sabiduría con la que Él reparte riquezas y pobrezas)."
 
 # game/script.rpy:1975
 translate Spanish godYes_d9184f7f:
 
     # "Then she turned away from Him and ran into the forest."
-    ""
+    "Después, le dio la espalda y se apresuró hacia el bosque."
 
 translate Spanish strings:
     # game/script.rpy:1934
     old "If she asked the mysterious figure who He was, turn to page 11."
-    new ""
+    new "Si le pregunta al desconocido quién es, ve a la página 11."
 
 # game/script.rpy:1978
 translate Spanish godYes_a969500b:
 
     # miw "I am your dear Lord."
-    miw ""
+    miw "Soy tu Señor."
 
 ##============= Second Godparent: The Devil
 ##============= CHARACTER BRIEF: The Devil
@@ -503,66 +503,66 @@ translate Spanish godYes_a969500b:
 translate Spanish secondMan1_49cdd6d7:
 
     # "In the deeper darkness of the forest, she may or may not have met a man all in red."
-    ""
+    "En la hondura profunda del bosque, tal vez se encontrase allí con un hombre vestido por completo de rojo."
 
 # game/script.rpy:1984
 translate Spanish secondMan1_775bd3cf:
 
     # "(How can we be sure of anything but the greatness of G-d?)"
-    ""
+    "(¿Acaso la única certeza no es la grandeza de Dios?)."
 
 # game/script.rpy:1985
 translate Spanish secondMan1_941bd86c:
 
     # "All the jewels of the earth fell from His right hand, and all the pleasures of the world fell from His left, and His other hand held all the wonders of the universe, and His other hand held a fat cigar, and His other hand held a long knife black as coal dust, and His other hand held the most intoxicating spices, such that the King of Kings would cry to taste them, and His other hand held a single dead rose, and His other hand was in his pocket and out of view."
-    ""
+    "De su mano derecha se precipitaban todas las joyas de la tierra; de su izquierda, todos los placeres habidos en el mundo; en la otra sostenía todas las maravillas del universo; en la otra sujetaba un puro generoso; en la otra empuñaba un cuchillo negro como el tizne; en la otra, las especias más embriagadoras, aquellas que el mismísimo Rey de Reyes lloraría con tal de probarlas; en la otra sostenía una sola rosa marchita; y la otra estaba guardada en su bolsillo y fuera de la vista."
 
 # game/script.rpy:1986
 translate Spanish secondMan1_f38751b9:
 
     # mir "Poor woman. Let me be the Godfather."
-    mir ""
+    mir "Pobre mujer. Deja que yo sea su padrino."
 
 # game/script.rpy:1987
 translate Spanish secondMan1_895cb9b6:
 
     # mir "I'll make sure the child needs nothing, and wants everything. [He] shall live in wealth and comfort for all of [his] days, and devour only the richest meats for every meal."
-    mir ""
+    mir "Me aseguraré de que a esta criatura no le falte de nada y lo anhele todo. Vivirá rodeado de fortuna y comodidades por el resto de sus días; solo devorará las carnes más jugosas en cada comida."
 
 # game/script.rpy:1993
 translate Spanish secondMan2_2507629f:
 
     # mir "I only have one condition: [He] must promise to obey no master, and scorn the rule of law, and do as [he] wilt every day of [his] life." nointeract
-    mir "" nointeract
+    mir "Tan solo te planteo una condición, que es la siguiente: no responderá ante nadie: se burlará de cualquier ley y vivirá según sus caprichos cada día de su vida." nointeract
 
 translate Spanish strings:
     # game/script.rpy:1992
     old "If she said yes, turn to page 21."
-    new ""
+    new "Si contesta «Sí», ve a la página 21."
 ##== If you say yes:
 # game/script.rpy:1995
 translate Spanish secondMan2_5aebfe7f:
 
     # mum "Very well. Beggars can't be choosers, I suppose."
-    mum ""
+    mum "Sea, pues. Tampoco es que goces de muchas más opciones."
 
 # game/script.rpy:1996
 translate Spanish secondMan2_fc87549f:
 
     # mir "Excellent!"
-    mir ""
+    mir "¡Fantástico!"
 
 # game/script.rpy:1998
 translate Spanish devilYes_ae567744:
 
     # "He let out a great shrieking cackle and placed His mark upon you."
-    ""
+    "Emitió una carcajada estridente y te posó su marca."
 
 # game/script.rpy:1999
 translate Spanish devilYes_23d4e6d8:
 
     # mir "You will name [him] [povname]."
-    mir ""
+    mir "Se llamará [povname]."
 
 # game/script.rpy:2001
 translate Spanish devilYes_8549c713:
@@ -581,68 +581,68 @@ translate Spanish devilYes_3b27dcaa:
 translate Spanish devilYes_d59ce897:
 
     # "But He was talking to Himself."
-    ""
+    "Pero toda esta conversación ocurrió en solitario."
 
 # game/script.rpy:2011
 translate Spanish devilYes_9c80220d:
 
     # "He looked around, holding the child."
-    ""
+    "Pues miró alrededor mientras sostenía a la criatura..."
 
 # game/script.rpy:2012
 translate Spanish devilYes_eb4df7fc:
 
     # "There was no-one there."
-    ""
+    "...y nadie más había allí."
 
 # game/script.rpy:2016
 translate Spanish devilYes_2cca7200:
 
     # "There never was.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
-    ""
+    "De hecho, nunca hubo nadie allí.{vspace=200}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado del Diablo.{/b}{/i}"
 ##== Otherwise:
 # game/script.rpy:2020
 translate Spanish devilYes_1a953895:
 
     # mum "Just make sure you're there for the christening on Sunday."
-    mum ""
+    mum "Que no se te ocurra faltar a su bautizo el domingo."
 
 # game/script.rpy:2024
 translate Spanish devilYes_6e1fabdb:
 
     # "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
-    ""
+    "Pero ya se había marchado. {vspace=200}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado del Diablo.{/b}{/i}"
 ##== If you refuse:
 translate Spanish strings:
 
     # game/script.rpy:1992
     old "If she said no, turn to page 16."
-    new ""
+    new "Si contesta «No», ve a la página 16."
 
 # game/script.rpy:2028
 translate Spanish devilYes_7b1aab3f:
 
     # mum "Then I don't want you as the Godfather. You lie, and cheat, and lead good people astray."
-    mum ""
+    mum "No serás su padrino; tú, que mientes, corrompes y desvirtúas a la gente noble."
 
 # game/script.rpy:2029
 translate Spanish devilYes_2977bb76:
 
     # "She turned away from him, and raced deeper into the forest."
-    ""
+    "Después, le dio la espalda y se apresuró hacia el bosque."
 
 ##== If you ask who He is:
 translate Spanish strings:
 
     # game/script.rpy:1992
     old "If she asked the mysterious figure who He was, turn to page 18."
-    new ""
+    new "Si le pregunta al desconocido quién es, ve a la página 18."
 
 # game/script.rpy:2032
 translate Spanish devilYes_ec056025:
 
     # mir "Why, I am the Devil Himself."
-    mir ""
+    mir "Soy el Diablo, ni más ni menos."
 
 ##============= Third Godparent: Death
 ##============= CHARACTER BRIEF: Death
@@ -657,80 +657,80 @@ translate Spanish devilYes_ec056025:
 translate Spanish thirdMan1_e22642e2:
 
     # "In the deepest darkness of the forest, she may or may not have met a handsome woman all in black."
-    ""
+    "En la hondura más profunda del bosque, tal vez se encontrase allí con una mujer bella vestida toda de negro."
 
 ## This phrase is from One Thousand and One Nights
 # game/script.rpy:2038
 translate Spanish thirdMan1_1d4a7d85:
 
     # "(What can any of us know for certain, except that the mercies of the Almighty are vaster than the deepest ocean and more numerous than all the pebbles on the land?)"
-    ""
+    "(¿Qué certezas se nos guardan, salvo la de que las bondades del Todopoderoso son más extensas que el océano más profundo, y más abundantes que piedras componen el suelo?)."
 
 # game/script.rpy:2039
 translate Spanish thirdMan1_cdd9b922:
 
     # "Her limbs were broken. She had no hands."
-    ""
+    "Cada una de sus extremidades estaba rota. Carecía de manos."
 
 # game/script.rpy:2040
 translate Spanish thirdMan1_506f4703:
 
     # wib "Poor woman. Let me be the Godmother."
-    wib ""
+    wib "Pobre mujer. Deja que yo sea su madrina."
 
 # game/script.rpy:2041
 translate Spanish thirdMan1_3d60a888:
 
     # wib "The child will have nothing. [He] will need nothing."
-    wib ""
+    wib "La criatura no recibirá nada. Nada le hará falta."
 
 # game/script.rpy:2048
 translate Spanish thirdMan2_4fb461a1:
 
     # wib "[He] need make no promises. I have no demands." nointeract
-    wib "" nointeract
+    wib "No tendrá que cumplir nada, pues nada es lo que le exigiré." nointeract
 
 ##== If you say yes:
 translate Spanish strings:
     # game/script.rpy:2047
     old "If she said yes, turn to page 17."
-    new ""
+    new "Si contesta «Sí», ve a la página 17."
 
 # game/script.rpy:2050
 translate Spanish thirdMan2_6b7d28b9:
 
     # mum "You're just the right one. You take rich and poor without distinction."
-    mum ""
+    mum "Eres a quien he venido a buscar: arrebatas a los ricos y a los pobres por igual."
 
 # game/script.rpy:2051
 translate Spanish thirdMan2_307d657e:
 
     # wib "You did not have a choice."
-    wib ""
+    wib "Nunca tuviste otra elección."
 
 # game/script.rpy:2053
 translate Spanish deathYes_558f8670:
 
     # "In one swoop She bowed down and placed Her mark upon you."
-    ""
+    "Con un ademán súbito, se agachó y grabó en ti su marca."
 
 # game/script.rpy:2054
 translate Spanish deathYes_0c6c5d7e:
 
     # wib "You will name [him] [povname]."
-    wib ""
+    wib "Se llamará [povname]."
 
 # game/script.rpy:2056
 translate Spanish deathYes_81394059:
 
     # wib "The moment [he] turn eighteen, [he] will be mine."
-    wib ""
+    wib "Cuando cumpla los dieciocho, me pertenecerá."
 
 # game/script.rpy:2058
 translate Spanish deathYes_a5f420c0:
 
     # wib "The moment [he] turns eighteen, [he] will be mine."
-    wib ""
+    wib "Cuando cumpla los dieciocho, me pertenecerá."
 
 # game/script.rpy:2059
 translate Spanish deathYes_f7258784:
@@ -743,50 +743,50 @@ translate Spanish deathYes_f7258784:
 translate Spanish deathYes_dc1172e8:
 
     # "But She was talking to Herself."
-    ""
+    "Pero toda esta conversación ocurrió en solitario."
 
 # game/script.rpy:2067
 translate Spanish deathYes_630706ac:
 
     # "She looked around, holding the child."
-    ""
+    "Pues miró alrededor mientras sostenía a la criatura..."
 
 # game/script.rpy:2068
 translate Spanish deathYes_eb4df7fc:
 
     # "There was no-one there."
-    ""
+    "...y nadie más había allí."
 
 # game/script.rpy:2072
 translate Spanish deathYes_00936b23:
 
     # "There never was.{vspace=200}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
-    ""
+    "De hecho, nunca hubo nadie allí.{vspace=200}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado de la Muerte.{/b}{/i}"
 
 ##== Otherwise:
 # game/script.rpy:2076
 translate Spanish deathYes_1a953895:
 
     # mum "Just make sure you're there for the christening on Sunday."
-    mum ""
+    mum "Que no se te ocurra faltar a su bautizo el domingo."
 
 # game/script.rpy:2080
 translate Spanish deathYes_21b890d4:
 
     # "But She was already leaving. She crawled into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
-    ""
+    "Pero ya se estaba marchando. Se arrastró de vuelta a la tierra mientras le colgaban las piernas rotas y alargadas, hasta que no quedó nada de ella. {vspace=160}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado de la Muerte.{/b}{/i}"
 
 translate Spanish strings:
 
     # game/script.rpy:2047
     old "If she said no, turn to page 25."
-    new ""
+    new "Si contesta «No», ve a la página 25."
 
 # game/script.rpy:2084
 translate Spanish deathYes_18f1893d:
 
     # mum "I don't want you as the Godmother. You take men before it is their time."
-    mum ""
+    mum "No serás su madrina; tú, que te llevas a cada cual antes de lo que corresponde."
 
 ##== If you refuse everyone:
 
@@ -794,214 +794,214 @@ translate Spanish deathYes_18f1893d:
 translate Spanish deathYes_b806ecbe:
 
     # wib "There is no-one else left to take [him]."
-    wib ""
+    wib "Nadie más queda para adoptarlo."
 
 # game/script.rpy:2086
 translate Spanish deathYes_da16cdc7:
 
     # wib "You must make your choice."
-    wib ""
+    wib "Debes tomar una decisión."
 
 ##== You must make a final choice between G-d, Death or The Devil
 translate Spanish strings:
 
     # game/script.rpy:2090
     old "Your mother looked around the dark forest in panic."
-    new ""
+    new "Tu madre miró asustada el bosque oscuro a su alrededor."
 
     # game/script.rpy:2090
     old "If she chose Death, turn to page 7."
-    new ""
+    new "Si escoge a la Muerte, ve a la página 7."
 
     # game/script.rpy:2090
     old "If she chose the Lord, turn to page 5."
-    new ""
+    new "Si escoge al Señor, ve a la página 5."
 
 # game/script.rpy:2093
 translate Spanish deathYes_bf0470a0:
 
     # "In desperation, she renounced her foolish pride and sought the protection of the Most High Himself."
-    ""
+    "Con una angustia profunda, apartó a un lado su orgullo necio y rogó la protección del Altísimo."
 
 translate Spanish strings:
 
     # game/script.rpy:2090
     old "If she chose the Devil, turn to page 6."
-    new ""
+    new "Si escoge al Diablo, ve a la página 6."
 
 # game/script.rpy:2096
 translate Spanish deathYes_2b04424f:
 
     # "In desperation, she turned back and sought the protection of the deceiver Himself."
-    ""
+    "Con una angustia profunda, dio media vuelta y rogó la protección del gran embaucador."
 
 # game/script.rpy:2099
 translate Spanish deathYes_5ad076f1:
 
     # mum "I'm sorry for my foolish words. Please, protect my child."
-    mum ""
+    mum "Lamento las tonterías que salieron de mi boca. Te lo ruego: vela por mi bebé."
 
 ##== If you ask who she is:
 translate Spanish strings:
 
     # game/script.rpy:2047
     old "If she asked the mysterious figure who She was, turn to page 18."
-    new ""
+    new "Si le pregunta a la desconocida quién es, ve a la página 18."
 
 # game/script.rpy:2119
 translate Spanish deathYes_14578651:
 
     # mum "I don't know you."
-    mum ""
+    mum "No te conozco."
 
 # game/script.rpy:2120
 translate Spanish deathYes_e14819bb:
 
     # wib "Everyone knows me."
-    wib ""
+    wib "Nadie me desconoce."
 
 # game/script.rpy:2121
 translate Spanish deathYes_c2da8e22:
 
     # "She tilted her head so that the moonlight fell upon it, and your mother saw that it was true. The woman was Lady Death Herself."
-    ""
+    "Ladeó la cabeza y la luz de la luna la bañó: tu madre la reconoció enseguida, pues era la mismísima Muerte."
 ##============= Your childhood
 # game/script.rpy:2132
 translate Spanish chapter2_6044d994:
 
     # "And so you grew up alone in an old cottage on stilts in the forest."
-    ""
+    "Creciste a solas en una cabaña vieja sobre pilotes en mitad del bosque."
 
 ##== Variation 3: Your mother has disappeared.
 # game/script.rpy:2134
 translate Spanish chapter2_b045f94d:
 
     # "There were many miraculous things in the house. The table was set. The larder was fully stocked. You had plenty of food to survive on."
-    ""
+    "Ocurrían un sinfín de milagros por toda la casa: la mesa estaba puesta; la despensa, repleta. No te faltaba comida como para sobrevivir."
 
 # game/script.rpy:2135
 translate Spanish chapter2_e56ce8ae:
 
     # "Where did it come from? You couldn't recall."
-    ""
+    "¿De dónde había salido? No tenías forma de recordarlo."
 
 # game/script.rpy:2136
 translate Spanish chapter2_b98e5bb0:
 
     # "The closets were filled with clothes of all sizes. In the bedroom was a hand-sewn patchwork quilt that fit just right."
-    ""
+    "Cada armario estaba hasta arriba de ropa de todas las tallas. En tu habitación encontraste un edredón tejido a parches que te cubría como a medida."
 
 # game/script.rpy:2137
 translate Spanish chapter2_e9c8165c:
 
     # "How did these things come to pass? You didn't trouble yourself with such thoughts. Whenever you encountered these miracles, you simply said:"
-    ""
+    "¿Cómo había aparecido todo esto? Tampoco le dabas muchas vueltas. Cada vez que te topabas de bruces con un milagro, lo resolvías con estas palabras tan sencillas:"
 
 # game/script.rpy:2138
 translate Spanish chapter2_97b69347:
 
     # pov "The House provides."
-    pov ""
+    pov "La casa provee."
 ##== If your mother has not disappeared:
 ## Godparent: G-d:
 # game/script.rpy:2145
 translate Spanish chapter2_3dffd2f9:
 
     # "And so you grew up as a kind and well-mannered child, and you made your mother proud."
-    ""
+    "Creciste como un niño bondadoso y educado. Tu madre estaba orgullosa de ti."
 
 # game/script.rpy:2146
 translate Spanish chapter2_2f687f84:
 
     # "You went to church every Sunday and worked hard every day of your life, and never did you succumb to the beast within. All the neighbours smiled and said \"That one has the mark of G-d upon [him].\""
-    ""
+    "Acudiste a misa cada domingo sin falta y trabajaste duro cada día. Jamás cediste ante tu bestia interior. Los vecinos sonreían a tu paso y decían: \«Ese muchacho lleva la marca de Dios»\."
 
 # game/script.rpy:2147
 translate Spanish chapter2_1cc42f8f:
 
     # "Your Godfather was as good as His word. He appeared at church for the christening, and blessed you."
-    ""
+    "Tu padrino cumplió con su palabra. Hizo acto de presencia en la iglesia para tu bautizo y te bendijo."
 
 # game/script.rpy:2148
 translate Spanish chapter2_92f79715:
 
     # "You soon found that luck was always in your favour, and everyone took to calling you \"Fortune's Favourite\"."
-    ""
+    "Pronto te diste cuenta de que la suerte te sonreía. La gente te conocía como «\Hijo de la Fortuna\».
 
 ## Godparent: The Devil:
 # game/script.rpy:2150
 translate Spanish chapter2_5baad0da:
 
     # "And so you grew up as a wild and wilful child, and your drove your mother to distraction with your wickedness."
-    ""
+    "Creciste como un niño salvaje y caprichoso, que traía a tu madre de cabeza con mil y una travesuras."
 
 # game/script.rpy:2151
 translate Spanish chapter2_37fd813c:
 
     # "You obeyed no laws and no masters, and you roamed heedlessly across the hills and dales, cackling wildly and throwing mud in your wake, and all the neighbours said \"That one has the Devil's mark upon [him],\" and shut their doors."
-    ""
+    "No respetabas norma alguna, ni tampoco a autoridades; vagabas sin oficio ni beneficio por colinas y valles, a carcajada limpia y lanzando bolas de barro allá por donde pasaras. Los vecinos murmuraban de ti: \«Ese muchacho lleva la marca del Diablo»\, tras lo que cerraban sus puertas a cal y canto."
 
 # game/script.rpy:2153
 translate Spanish chapter2_6e654b5d:
 
     # "This so grieved your mother that she fell down dead."
-    ""
+    "El disgusto era tal para tu madre, que fue lo que la llevó a la tumba."
 
 # game/script.rpy:2155
 translate Spanish chapter2_01ceb1bc:
 
     # "In spite of this, you still did not mend your wicked ways. Your ill deeds were rewarded, for you soon found that you could scarcely trip over a stone without unearthing precious diamonds and gems, and you became rich beyond the dreams of avarice."
-    ""
+    "Pese a todo, ni por esas se te ocurrió recapacitar, y es que cada maldad que se te ocurría no quedaba sin recompensa. Pronto descubriste que un traspiés nunca era un revés, sino que la fortuna te sonreía y las riquezas fueron tantas que sonrojaban a cualquier avaricia."
 
 ## Godparent: Death:
 # game/script.rpy:2157
 translate Spanish chapter2_4c2ac8a5:
 
     # "And so you grew up as a solemn and quiet child, and you made your mother sick with worry with your gloomy ways."
-    ""
+    "Creciste como un niño serio y callado. Tu madre se echaba a llorar porque le preocupaba lo mustio que le habías salido."
 
 # game/script.rpy:2158
 translate Spanish chapter2_a72ded99:
 
     # "You ate very little and said even less, and every night you would stalk quietly through the forest shadows or sit for long hours watching insects crawl in stagnant ponds, and all the neighbours said \"That one has the mark of Death upon [him],\" and shut their doors."
-    ""
+    "Comías muy poco y hablabas aún menos. Cada noche, te ocultabas en silencio entre las tinieblas del bosque o te sentabas horas y horas para ver cómo "
 
 ## Variations based on which run it is (with less and less siblings each time):
 # game/script.rpy:2161
 translate Spanish chapter2_aa63c244:
 
     # "You lived with your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
-    ""
+    "Vivías junto a tus doce hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso."
 
 # game/script.rpy:2163
 translate Spanish chapter2_118fa042:
 
     # "You lived with your ten siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
-    ""
+    "Vivías junto a tus diez hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso."
 
 # game/script.rpy:2165
 translate Spanish chapter2_708424a6:
 
     # "You lived with your four siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
-    ""
+    "Vivías junto a tus cuatro hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso."
 
 # game/script.rpy:2169
 translate Spanish chapter2_1ef7e51d:
 
     # "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest. Each night you would fall fast asleep under the patchwork quilt she knitted for you."
-    ""
+    "Tu madre te quería muchísimo; vivías junto a ella y tus doce hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso. Cada noche te quedabas dormido bajo el edredón a parches que te había tejido."
 
 # game/script.rpy:2171
 translate Spanish chapter2_886aa581:
 
     # "Your mother loved you very much, and you lived with her and your ten siblings in a house on stilts on the banks of a muddy river in a vast rainforest. Each night you would fall fast asleep under the patchwork quilt she knitted for you."
-    ""
+    "Tu madre te quería muchísimo; vivías junto a ella y tus diez hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso. Cada noche te quedabas dormido bajo el edredón a parches que te había tejido."
 
 # game/script.rpy:2173
 translate Spanish chapter2_ad3787e6:
 
     # "Your mother loved you very much, and you lived with her and your four siblings in a house on stilts on the banks of a muddy river in a vast rainforest. Each night you would fall fast asleep under the patchwork quilt she knitted for you."
-    ""
+    "Tu madre te quería muchísimo; vivías junto a ella y tus cuatro hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso. Cada noche te quedabas dormido bajo el edredón a parches que te había tejido."
 ##========= The Map
 ## In this section, you are shown a map of the lands around your house and can get some early information on the four major characters.
 ## As characters disappear, the map erases itself and becomes empty. When someone has disappeared, the description changes to "There was nothing and no-one."
