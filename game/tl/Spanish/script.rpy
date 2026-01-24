@@ -926,7 +926,7 @@ translate Spanish chapter2_1cc42f8f:
 translate Spanish chapter2_92f79715:
 
     # "You soon found that luck was always in your favour, and everyone took to calling you \"Fortune's Favourite\"."
-    "Pronto te diste cuenta de que la suerte te sonreía. La gente te conocía como «\Hijo de la Fortuna\».
+    "Pronto te diste cuenta de que la suerte te sonreía. La gente te conocía como «\Hijo de la Fortuna\»."
 
 ## Godparent: The Devil:
 # game/script.rpy:2150
