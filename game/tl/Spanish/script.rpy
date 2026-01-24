@@ -2289,7 +2289,7 @@ translate Spanish basement_6ed50217:
 translate Spanish basement_a207d478:
 
     # "\"Never again,\" you cried to yourself, \"Will I ask of what concerns me not!\""
-    "\¡Nunca más!\—clamaste— \¡Nunca más indagaré sobre lo que no me atañe!\"
+    "\¡Nunca más!\—clamaste— \¡Nunca más indagaré sobre lo que no me atañe!\""
 
 ##== If you choose not to go into the basement
 translate Spanish strings:
