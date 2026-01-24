@@ -1697,7 +1697,7 @@ translate Spanish mushroomIntro_9ca04211:
 translate Spanish mushroomIntro_0c9134fa:
 
     # m "Gorge, guzzle, gulp and grab; never shall this wound scab.{vspace=160}{i}In your notes, write down that you {b}know the password.{/b}{/i}"
-    m "Emboca, engulle, embucha y empuña; que esta herida jamás conozca costra. {vspace=160}{i}Dejas por escrito en tus notas lo siguiente: {b}sabes cuál es el santo y seña.{/b}{/i}""
+    m "Emboca, engulle, embucha y empuña; que esta herida jamás conozca costra. {vspace=160}{i}Dejas por escrito en tus notas lo siguiente: {b}sabes cuál es el santo y seña.{/b}{/i}"
 
 translate Spanish strings:
 
