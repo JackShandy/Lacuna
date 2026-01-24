@@ -1251,7 +1251,7 @@ translate Spanish strings:
 if persistent.vanished >= 3:
     $introMenuSentence== «Cada mañana te despertaba el silencio». #Change this line in quotes to spanish
 else:
-    $introMenuSentence== «Cada mañana te despertaba el pío pío de los pájaros y cada noche te dormías con el crí crí de los grillos»." #Change this line in quotes to spanish
+    $introMenuSentence== «Cada mañana te despertaba el pío pío de los pájaros y cada noche te dormías con el crí crí de los grillos». #Change this line in quotes to spanish
 
 ##== If almost everyone has disappeared
 # game/script.rpy:2353
