@@ -4578,31 +4578,31 @@ translate Spanish village_4bd430f5:
 translate Spanish strings:
     # game/script.rpy:3368
     old "If you talked to the Gutterlings, turn to page 56."
-    new ""
+    new "Si hablaste con los canalétidos, ve a la página 56."
 
 # game/script.rpy:3474
 translate Spanish village_bf29c358:
 
     # g "'Allo mate."
-    g ""
+    g "Mu güenas."
 
 # game/script.rpy:3475
 translate Spanish village_ede81146:
 
     # g "Here's a tip. If you talk to people multiple times, they might have more to say."
-    g ""
+    g "Un consejillo de nada: habla varias veces con cada cual, y quizá te suelte alguna frase más."
 
 # game/script.rpy:3476
 translate Spanish village_c258f1a7:
 
     # g "It's true! Try it on us."
-    g ""
+    g "¡Palabra de honor! Pruébalo con nosotros."
 
 # game/script.rpy:3478
 translate Spanish village_96af6c4e:
 
     # g "That's the spirit!"
-    g ""
+    g "¡Muy bien, con ese ánimo!"
 
 # game/script.rpy:3479
 translate Spanish village_f01aed0b:
@@ -4614,19 +4614,19 @@ translate Spanish village_f01aed0b:
 translate Spanish village_39a660ae:
 
     # g "Just make sure not to talk to a Gutterling six times, or it'll own your soul forever."
-    g ""
+    g "Ahora bien, nada de hablar seis veces con un canalétido, ¡o se quedará con tu alma y los restos de esta!"
 
 # game/script.rpy:3483
 translate Spanish village_eb073be0:
 
     # g "Yep. You definitely don't want to do that."
-    g ""
+    g "Pues sí. Te aconsejamos con el puño en el pecho que no lo hagas."
 
 # game/script.rpy:3485
 translate Spanish village_4b340443:
 
     # g "..."
-    g ""
+    g "..."
 
 ##== If you talk to them six times it takes you to a small story where you escape from their lair.
 ##== See section: gutterlingStory
@@ -4634,7 +4634,7 @@ translate Spanish village_4b340443:
 translate Spanish village_7952c538:
 
     # g "Gotcha!"
-    g ""
+    g "¡Zacatrasca!"
     ##==--> Goes to INTERLUDE G: gutterlingstory
 
 ##======= Location: The Banquet by the river. Many variations of this based on how many people have disappeared.
