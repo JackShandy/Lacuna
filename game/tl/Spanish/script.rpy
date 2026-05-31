@@ -1963,7 +1963,7 @@ translate Spanish mushroomWater_0ffea2ef:
 translate Spanish mushroomWater_10cf689e:
 
     # m "Be right back."
-    m ""
+    m "Enseguida vuelvo."
 
 ##== If you ask about "The other you"
 translate Spanish strings:
@@ -2117,13 +2117,13 @@ translate Spanish basement_157ce7ca:
 translate Spanish basement_8815f661:
 
     # "The mushroom appeared from the earth before you with a terrible crash."
-    ""
+    "La amanita surgió desde la tierra con un crujido atronador."
 
 # game/script.rpy:2592
 translate Spanish basement_02c39077:
 
     # m "You have asked about what concerns you not, and so you will hear what pleases you not!"
-    m "Has indagado sobre lo que no te atañe, ¡pues bien, ahora oirás lo que te dañe!"
+    m "Has indagado sobre lo que no te atañe; ¡pues bien, ahora oirás lo que te dañe!"
 
 # game/script.rpy:2594
 translate Spanish basement_818a3274:
@@ -2188,7 +2188,7 @@ translate Spanish strings:
 translate Spanish basement_370a3c58:
 
     # pov "I'm on my way to the festival, and there will be people there from all over this cryptic earth. Surely one of them will have a story you haven't heard before."
-    pov "Voy de camino a un festival, en el que se junta gente de todas partes de estas tierras tan enigmáticas. Tal vez alguien de por allí te cuente una historia que desconoces."
+    pov "Voy de camino a un festival, en el que se junta gente de todas partes de estas tierras tan enigmáticas. Tal vez alguien de por allí me cuente una historia que desconoces."
 
 translate Spanish strings:
     # game/script.rpy:2605
@@ -2201,21 +2201,21 @@ translate Spanish strings:
 translate Spanish basement_fcb480ef:
 
     # pov "I'm seeking a way to escape being taken by my Godfather, the old man in heaven. Surely the story of my adventure will be unique enough for you."
-    pov ""
+    pov "Busco la manera de librarme de las garras de mi padrino, el señor de los cielos. ¡Quizá la historia de mis aventuras le resulte lo bastante única!"
 
 ##== The Devil:
 # game/script.rpy:2613
 translate Spanish basement_f29c40bc:
 
     # pov "I'm seeking a way to escape my Godfather, Lucifer. Surely the story of my adventure will be unique enough for you."
-    pov ""
+    pov "Busco la manera de librarme de las garras de mi padrino, Lucifer. ¡Quizá la historia de mis aventuras le resulte lo bastante única!"
 
 ##== Death:
 # game/script.rpy:2615
 translate Spanish basement_2a858eeb:
 
     # pov "I'm seeking a way to escape my Godmother, Annihilation. Surely the story of my adventure will be unique enough for you."
-    pov ""
+    pov "Busco la manera de librarme de las garras de mi madrina, Aniquilación. ¡Quizá la historia de mis aventuras le resulte lo bastante única!"
 
 # game/script.rpy:2616
 translate Spanish basement_e09dccbc:
@@ -2333,7 +2333,7 @@ translate Spanish basement_e4b3252a:
 translate Spanish basement_4c323bc0:
 
     # m "It's rich. It's bold. It's avant-garde. It may not be what you {i}want{/i} right now, but it is what you {i}need{/i}."
-    m ""
+    m "Fragante, impactante y rezuma frescor. Quizá no sea lo que te apetezca ahora mismo, pero te aseguro que es lo que necesitas. "
 
 # game/script.rpy:2641
 translate Spanish basement_41491814:
@@ -2346,19 +2346,19 @@ translate Spanish basement_41491814:
 translate Spanish basement_9e883e92:
 
     # "You told her of the terrible dilemma with your Godfather, our Dear Lord."
-    ""
+    "Le hablaste acerca de la dicotomía a la que te enfrentabas por tu padrino, Nuestro Señor."
 
 # game/script.rpy:2645
 translate Spanish basement_6852de75:
 
     # "You told her of the terrible dilemma with your Godfather, Old Nick."
-    ""
+    "Le hablaste acerca de la dicotomía a la que te enfrentabas por tu padrino, el maligno."
 
 # game/script.rpy:2647
 translate Spanish basement_d4b95377:
 
     # "You told her of the terrible dilemma with your Godmother, who rides a pale horse."
-    ""
+    "Le hablaste acerca de la dicotomía a la que te enfrentabas por tu madrina, jinete de un caballo pálido."
 
 # game/script.rpy:2648
 translate Spanish basement_60c37906:
@@ -2389,7 +2389,7 @@ translate Spanish basement_c866934d:
 translate Spanish basement_4eff28c6:
 
     # m "Oh dear. Time marches on, even for me."
-    m "¡Ay, pardiez! El tiempo no me perdona ni tan siquiera a mí."
+    m "¡Ay, pardiez! El tiempo no perdona, ni tan siquiera a mí."
 
 # game/script.rpy:2654
 translate Spanish basement_03f57286:
@@ -2407,13 +2407,13 @@ translate Spanish basement_7deece90:
 translate Spanish basement_2e118bf6:
 
     # "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
-    ""
+    "Y, antes de que pudieras responder a aquel cierre insólito, se llevó tu vaso y te acompañó a la salida en un tris."
 
 # game/script.rpy:2657
 translate Spanish basement_86cea738:
 
     # "You took up your bag and set off down the road once more."
-    ""
+    "Así, te pusiste la mochila y retomaste el camino."
 
 ##== If your godparent is not death:
 # game/script.rpy:2660
@@ -2426,7 +2426,7 @@ translate Spanish basement_bba90b8f:
 translate Spanish basement_c866934d_1:
 
     # "A large grandfather clock in the corner suddenly chimed, and she looked up with a start."
-    ""
+    "De repente resonó un reloj de antesala que decoraba la esquina, a lo que la amanita lo miró sobresaltada."
 
 # game/script.rpy:2662
 translate Spanish basement_4eff28c6_1:
@@ -2438,25 +2438,25 @@ translate Spanish basement_4eff28c6_1:
 translate Spanish basement_03f57286_1:
 
     # m "I'm sorry to be so rude but I'd better be off. Come back after the festival, and I may be able to help."
-    m ""
+    m "Siento quedar de descortés, pero debo marcharme ya. Regresa tras el festival y quizá pueda ayudarte."
 
 # game/script.rpy:2664
 translate Spanish basement_7deece90_1:
 
     # m "Please take care of yourself, dear. All of yourself."
-    m ""
+    m "Ve con cuidado, corazón. No te descuides."
 
 # game/script.rpy:2665
 translate Spanish basement_2e118bf6_1:
 
     # "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
-    ""
+    "Y, antes de que pudieras responder a aquel cierre insólito, se llevó tu vaso y te acompañó a la salida en un tris."
 
 # game/script.rpy:2666
 translate Spanish basement_86cea738_1:
 
     # "You took up your bag and set off down the road once more."
-    ""
+    "Así, te pusiste la mochila y retomaste el camino."
 ##========= The Thief
 
 ##== If The Thief has disappeared
@@ -2464,32 +2464,32 @@ translate Spanish basement_86cea738_1:
 translate Spanish thief1_9034bb1d:
 
     # "In the depths of the woods, you heard nothing."
-    ""
+    "En la hondura del bosque no oíste nada de nada."
 
 # game/script.rpy:2694
 translate Spanish thief1_5119f10c:
 
     # "You saw no-one."
-    ""
+    "No viste a nadie."
 
 # game/script.rpy:2695
 translate Spanish thief1_1b6ae7d8:
 
     # "You were alone."
-    ""
+    "Estabas a solas."
 
 # game/script.rpy:2696
 translate Spanish thief1_7e507a6d:
 
     # "You continued on down the empty road."
-    ""
+    "Proseguiste por el camino intransitado."
 
 ##== If The Thief has not disappeared
 # game/script.rpy:2703
 translate Spanish thief1_f6b59914:
 
     # "As you were walking down the road thusly, you came upon an old beggar-woman."
-    ""
+    "Conforme recorrías el susodicho sendero, te encontraste con una mendiga de edad avanzada."
 
 # game/script.rpy:2704
 translate Spanish thief1_dde7ec84:
@@ -2501,36 +2501,36 @@ translate Spanish thief1_dde7ec84:
 translate Spanish thief1_47fc6deb:
 
     # mys "... "
-    mys ""
+    mys "..."
 
 # game/script.rpy:2707
 translate Spanish thief1_fb1319c0:
 
     # mys "Sorry, uh - Ho! Young Traveller!"
-    mys ""
+    mys "Perdón, eh... ¡Alto, joven viajante!"
 
 # game/script.rpy:2713
 translate Spanish thief1_a568147b:
 
     # mys "Might you lend a hand for a frail old woman? The woods are dark tonight, and I thought I heard howling from the space between the trees." nointeract
-    mys "" nointeract
+    mys "¿Serías tan buena persona de socorrer a una viejecita deslánguida como yo? Los bosques están cubierto por un manto de sombras, por no hablar del aullido en el hueco entre los árboles." nointeract
 
 translate Spanish strings:
     # game/script.rpy:2712
     old "If you helped the old woman, turn to page 73."
-    new ""
+    new "Si ayudaste a la viejecita, ve a la página 73."
 
 # game/script.rpy:2719
 translate Spanish thiefAccept_54ca720c:
 
     # "You took the old woman's arm to support her weight."
-    ""
+    "Asiste el brazo de la viejecita para que se apoyara en ti."
 
 # game/script.rpy:2720
 translate Spanish thiefAccept_15e8af36:
 
     # mys "FOOOOOL!"
-    mys ""
+    mys "¡¡¡NEEECIOOO!!!"
 
 # game/script.rpy:2721
 translate Spanish thiefAccept_2d215876:
@@ -2542,13 +2542,13 @@ translate Spanish thiefAccept_2d215876:
 translate Spanish thiefAccept_63dc0024:
 
     # "In her stead stood the cunning and terrible form of the Master Thief!"
-    ""
+    "Pues donde antes se hallaba la anciana, ¡ahora se erguía la silueta astuta y aviesa de le maestre ladrone!"
 
 # game/script.rpy:2724
 translate Spanish thiefAccept_a71e913d:
 
     # "Their hands shook under their midnight cloak."
-    ""
+    "Las manos se le agitaban bajo su capa del crepúsculo."
 
 # game/script.rpy:2726
 translate Spanish thiefAccept_2a201133:
@@ -2560,19 +2560,19 @@ translate Spanish thiefAccept_2a201133:
 translate Spanish thiefAccept_dda5ff77:
 
     # t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
-    t ""
+    t "En efecto, ¡era yo! ¡He regresado para robar tu corazón y arrasar con estas tierras!"
 
 # game/script.rpy:2730
 translate Spanish thiefAccept_4bb520e4:
 
     # t "They'll never catch me, no matter how they try. I have placed my head in the wolf's mouth and never felt the sting of its coiling jaws."
-    t ""
+    t "Nadie me atrapará, por mucho empeño que en ello ponga. He posado la cabeza en la boca del lobo ¡y jamás he notado enroscarse en mi carne sus afilados colmillos!"
 
 # game/script.rpy:2731
 translate Spanish thiefAccept_a86ce1da:
 
     # t "I have stolen fire and cheated death. I will live forever. There's nothing you can do to stop me now."
-    t ""
+    t "He robado el fuego y engañado a la muerte. Viviré por siempre. ¡Nada hay que puedas hacer para detenerme!"
 
 # game/script.rpy:2732
 translate Spanish thiefAccept_7da90713:
@@ -2584,7 +2584,7 @@ translate Spanish thiefAccept_7da90713:
 translate Spanish thiefAccept_938ec3b6:
 
     # t "No law shall stand and no magistrate shall ever know peace, for as long as my legs can run!"
-    t ""
+    t "No quedará ley sin vulnerar, ni tampoco juez que logre descansar, ¡mientras mis piernas corran sin cesar!"
 
 # game/script.rpy:2735
 translate Spanish thiefAccept_9a679437:
@@ -2600,11 +2600,11 @@ translate Spanish thiefAccept_b88b9611:
 translate Spanish strings:
     # game/script.rpy:2741
     old "Despair gripped you."
-    new ""
+    new "La desesperación te atenazó."
 
     # game/script.rpy:2741
     old "If you chased after them anyway, turn to page 37."
-    new ""
+    new "Si, pese a todo, decidiste echarte a la carrera, ve a la página 37."
 
 # game/script.rpy:2744
 translate Spanish thiefChase_fe640abd:
@@ -6504,7 +6504,7 @@ translate Spanish townExplore_cb54ad72:
 translate Spanish townExplore_f50146d0:
 
     # sm "You are alone now."
-    sm ""
+    sm "Estás totalmente a solas."
 
 # game/script.rpy:4137
 translate Spanish townExplore_bbbdd90e:
@@ -6516,7 +6516,7 @@ translate Spanish townExplore_bbbdd90e:
 translate Spanish townExplore_8ed307af:
 
     # sm "Your limbs are slowing."
-    sm ""
+    sm "Brazos y piernas comienzan a agotársete."
 
 # game/script.rpy:4139
 translate Spanish townExplore_37fdf235:
