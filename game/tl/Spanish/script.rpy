@@ -5674,7 +5674,7 @@ translate Spanish toadWitchJoin_4215a4db:
 translate Spanish toadWitchJoin_b75b353a:
 
     # f "Ah, have you changed your mind?"
-    f ""
+    f "Ah, ¿has cambiado de opinión?"
 
 translate Spanish strings:
     # game/script.rpy:3792
@@ -10035,7 +10035,7 @@ translate Spanish goblinTrain_05c96d8c:
 translate Spanish goblinTrain_8bb3d117:
 
     # goblin2 "On the house! Just for tonight."
-    goblin2 ""
+    goblin2 "¡Invita la casa! Pero solo por esta noche."
 
 ##== Option D:
 translate Spanish strings:
@@ -12785,188 +12785,188 @@ translate Spanish thiefSoloConvo2_64c0cb6a:
 translate Spanish mushroom1_71b11ae1:
 
     # m "You again? Have you returned with a tale for me?" nointeract
-    m "" nointeract
+    m "¿Otra vez? ¿Has regresado con una historia para mí?" nointeract
 
 # game/script.rpy:6072
 translate Spanish mushroom1_2f540422:
 
     # "The mushroom ushered you and your pig inside, and you both took a seat in the plush red armchairs. Your pig snuffled around, searching for truffles. You pretended to sip a cup of decaying leaf matter as you told your tale."
-    ""
+    "La amanita os guio a tu cerdo y a ti adentro, y os sentasteis en las lujosas butacas rojas. Tu cerdo olisqueó los alrededores, en busca de trufas. Tú, por tu parte, fingiste dar un sorbo de las hojas en descomposición en tu copa mientras narrabas el relato."
 
 # game/script.rpy:6074
 translate Spanish mushroom1_5fdfc9ea:
 
     # "The mushroom ushered you inside, and you both took a seat in the plush red armchairs. You pretended to sip a cup of decaying leaf matter as you told your tale."
-    ""
+    "La amanita te guio adentro, y os sentasteis en las lujosas butacas rojas. Fingiste dar un sorbo de las hojas en descomposición en tu copa mientras narrabas el relato."
 
 ##== Option A:
 translate Spanish strings:
     # game/script.rpy:6061
     old "If you told the tale of how you attempted to catch the Master Thief, turn to page 134."
-    new ""
+    new "Si contaste el relato de cómo intentaste atrapar a le maestre ladrone, ve a la página 134."
 
 # game/script.rpy:6075
 translate Spanish mushroom1_fcabddfc:
 
     # m "Well! Never in all the years I've known you have you ever told me a tale such as this!"
-    m ""
+    m "¡Vaya! En todos los años que te conozco, ¡jamás me hubiera esperado una historia semejante!"
 
 # game/script.rpy:6076
 translate Spanish mushroom1_0f1646b8:
 
     # pov "Um... we only just met tonight."
-    pov ""
+    pov "Pero... si nos hemos conocido esta misma nochne."
 
 ##== "The Other You's" - the mushroom thinks all humans are the same person with one conciousness, just with multiple bodies.
 # game/script.rpy:6077
 translate Spanish mushroom1_7e478744:
 
     # m "You know what I mean. The other you's."
-    m ""
+    m "Tú ya me entiendes; a los otros túes."
 
 # game/script.rpy:6084
 translate Spanish mushroomTales_365c61a5:
 
     # m "I have to say, darling, your stories are improving. Still a bit flabby in the second act, but I was most intrigued by your subtle commentary on the innate oneness of being." nointeract
-    m "" nointeract
+    m "Debo decir, vida mía, que tus historias han ido de menos a más. Aún se te tambalea la narrativa en el segundo acto, pero me ha cautivado por completo ese trasfondo sutil sobre la unidad innata del ser." nointeract
 
 ##== Option B:
 translate Spanish strings:
     # game/script.rpy:6082
     old "If you ask the mushroom to lift the curse, turn to page 140."
-    new ""
+    new "Si le pides a la amanita que disipe la maldición, ve a la página 140."
 
 # game/script.rpy:6086
 translate Spanish mushroomTales_9e71025b:
 
     # m "Well, your tale still could have done with some improvement."
-    m ""
+    m "Debo decir que a tu historia aún le faltan unas cuantas puntadas."
 
 # game/script.rpy:6087
 translate Spanish mushroomTales_eaf8502b:
 
     # m "The plot was rambling, and the characterisation was flimsy at best."
-    m ""
+    m "La trama central hacía aguas, mientras que la caracterización me ha resultado mayormente arqueotípica."
 
 # game/script.rpy:6088
 translate Spanish mushroomTales_fdcd2844:
 
     # m "But I suppose a deal's a deal. I swear I will not curse you with a mushroom's curse."
-    m ""
+    m "Aun así, un trato es un trato. Juro que no te maldeciré con la maldición de las amanitas."
 
 # game/script.rpy:6089
 translate Spanish mushroomTales_a9106423:
 
     # m "This time."
-    m ""
+    m "Al menos, por esta vez."
 
 ##== Option C:
 translate Spanish strings:
     # game/script.rpy:6082
     old "If you ask the Mushroom about \"the other you's\", turn to page 138."
-    new ""
+    new "Si le preguntas a la amanita acerca de los otros túes, ve a la página 138."
 
 # game/script.rpy:6093
 translate Spanish mushroomTales_4bd0a45a:
 
     # m "No need to worry about it, darling. I'm just glad you decided to come clean about your plan to steal our treasure."
-    m ""
+    m "No te devanes los sesos con algo así, corazón. Me alegro de que te hayas sincerado sobre tu plan de robar nuestro tesoro."
 
 # game/script.rpy:6094
 translate Spanish mushroomTales_733cbce4:
 
     # pov "No no... it's the Master Thief who's planning to steal the treasure."
-    pov ""
+    pov "No, no... Si quien quiere robároslo es le maestre ladrone."
 
 # game/script.rpy:6095
 translate Spanish mushroomTales_7ac182c0:
 
     # m "Right, the \"Master Thief\" you. But of course you can just stop yourself from doing it, right?"
-    m ""
+    m "Claro, claro: tú, le maestre ladrone. Aunque sabes que no tienes por qué seguir adelante con ello, ¿no?"
 
 # game/script.rpy:6096
 translate Spanish mushroomTales_b3180f96:
 
     # pov "Uh - I - That's not..."
-    pov ""
+    pov "Eeeh... No, pero..."
 
 # game/script.rpy:6099
 translate Spanish mushroomThiefBattle_d26f90c9:
 
     # "At just that moment, you noticed your cup had disappeared from your hand and been replaced with an old gumboot full of pond scum."
-    ""
+    "En ese preciso instante, te percataste de que la copa había desaparecido de su mano; su lugar lo ocupaba una bota ajada de goma hasta los topes de aguachirle de estanque."
 
 # game/script.rpy:6101
 translate Spanish mushroomThiefBattle_b69669f4:
 
     # "Your pig squealed a warning."
-    ""
+    "Tu cerdo chirrió un aviso."
 
 # game/script.rpy:6103
 translate Spanish mushroomThiefBattle_487b2cc7:
 
     # "You looked around and saw a shadow flit across the wall."
-    ""
+    "Miraste a tu alrededor y viste cómo una sombra se agitaba a lo largo de la pared."
 
 # game/script.rpy:6104
 translate Spanish mushroomThiefBattle_4ecce603:
 
     # "Grabbing a nearby jewelled scimitar, you leapt up from your seat and swung around to clash swords with the Master Thief!"
-    ""
+    "Agarraste una cimitarra joyada que tenías a mano, saltaste de tu asiento ¡y empuñaste tu hoja, que chocó con la de le maestre ladrone!"
 
 # game/script.rpy:6105
 translate Spanish mushroomThiefBattle_61d488a0:
 
     # t "Haha! You're learning."
-    t ""
+    t "¡Ja, ja, ja! Has espabilado, según veo."
 
 # game/script.rpy:6106
 translate Spanish mushroomThiefBattle_6ad908dc:
 
     # t "There's still time, you know. Join me."
-    t ""
+    t "Aún estás a tiempo. Únete a mí."
 
 # game/script.rpy:6111
 translate Spanish mushroomThiefBattle_3087acec:
 
     # t "Together we'll spit in the face of the law and destroy the concept of private ownership once and for all." nointeract
-    t "" nointeract
+    t "Tú y yo escupiremos en toda la cara de la ley y destruiremos el concepto de propiedad privada de una vez por todas." nointeract
 
 ##== Option A:
 translate Spanish strings:
     # game/script.rpy:6110
     old "If you joined the thief, turn to page 126."
-    new ""
+    new "Si te uniste a le ladrone, ve a la página 126."
 
 # game/script.rpy:6113
 translate Spanish mushroomThiefBattle_5a4e463d:
 
     # "You hesitated... and then you dropped your sword."
-    ""
+    "Dudaste... y, luego, soltaste la espada."
 
 # game/script.rpy:6114
 translate Spanish mushroomThiefBattle_4194f500:
 
     # t "Excellent. Now..."
-    t ""
+    t "Magnífico. Ahora..."
     ##==--> Leads to CHAPTER 5 - A1: The Thief Finale
 
 ##== Option B:
     # game/script.rpy:6110
     old "If you refused, and defended the Mushroom's treasure, page 127."
-    new ""
+    new "Si te negaste y defendiste el tesoro de la amanita, ve a la página 127."
 
 # game/script.rpy:6117
 translate Spanish mushroomThiefBattle_d4b2f765:
 
     # pov "Never!"
-    pov ""
+    pov "¡Jamás!"
 
 # game/script.rpy:6118
 translate Spanish mushroomThiefBattle_e08adfb3:
 
     # "You pulled yourself up and fought fiercely across the glittering hills of treasure, gold pieces sliding away with every step."
-    ""
+    "Te mantuviste firme y luchaste con fiereza entre las relucientes montañas de tesoro. Cada paso levantaba un cúmulo de piezas de oro."
 
 # game/script.rpy:6120
 translate Spanish mushroomThiefBattle_90987862:
@@ -12978,7 +12978,7 @@ translate Spanish mushroomThiefBattle_90987862:
 translate Spanish mushroomThiefBattle_a454b8e3:
 
     # "The Master Thief effortlessly riposted your blows with one hand, while the other hand darted around grabbing nearby gems and stuffing them into their cloak."
-    ""
+    "Le maestre ladrone atajó con una mano y sin pestañear cada una de tus estocadas, mientras la otra la aprovechaba para afanarse cualquier gema a su alcance, tesoro que iba a parar a los adentros de su capa."
     ##==--> Leads to CHAPTER 5 - A2: The Mushroom Finale
 
 
@@ -12990,109 +12990,109 @@ translate Spanish mushroomThiefBattle_a454b8e3:
 translate Spanish mushroomSolo_644c2433:
 
     # "You walked through the woods."
-    ""
+    "Recorriste los bosques."
 
 # game/script.rpy:6131
 translate Spanish mushroomSolo_2c771d95:
 
     # "Soon you came upon an ancient strangler fig. You cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
-    ""
+    "Pronto diste a parar a un árbol estrangulador milenario. Cortaste las enredaderas y las flores del pantano para revelar una pequeña puerta azul, decorada con piedras de luna hermosas y grabados detallados."
 
 # game/script.rpy:6134
 translate Spanish mushroomSolo_2c771d95_1:
 
     # "Soon you came upon an ancient strangler fig. You cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
-    ""
+    "Pronto diste a parar a un árbol estrangulador. Cortaste las enredaderas y las flores del pantano para revelar una pequeña puerta azul, decorada con piedras de luna hermosas y grabados detallados."
 
 # game/script.rpy:6136
 translate Spanish gilPathShowingMushroom_9806f9db:
 
     # "The words already lurked in your mind."
-    ""
+    "Las palabras ya plagaban tu mente."
 
 # game/script.rpy:6137
 translate Spanish gilPathShowingMushroom_9c3cc80d:
 
     # pov "Gorge, guzzle, gulp and grab; never shall this wound scab."
-    pov ""
+    pov "Emboca, engulle, embucha y empuña; que esta herida la hostigue una uña."
 
 # game/script.rpy:6138
 translate Spanish gilPathShowingMushroom_f5785ab5:
 
     # "With this, the door opened before you, and you vanished inside immediately."
-    ""
+    "Tras esto, la puerta se abrió frente a ti y te esfumaste enseguida en su interior."
 
 # game/script.rpy:6141
 translate Spanish gilPathShowingMushroom_b93f8c8d:
 
     # "Inside was a boundless cavern, cold as ice despite the heat outside."
-    ""
+    "Al otro lado encontraste una caverna sin límite, gélida como el hielo pese al calor del exterior."
 
 # game/script.rpy:6142
 translate Spanish gilPathShowingMushroom_7cad57c0:
 
     # "The floor of the cavern was piled with rubies and pearls and glinting onyx and solid gold pieces, larger than your fist."
-    ""
+    "El suelo de la caverna estaba repleto de rubíes y perlas y ónices relucientes y piezas sólidas de oro más grandes que tu puño."
 
 # game/script.rpy:6143
 translate Spanish gilPathShowingMushroom_85d6bd17:
 
     # "All across the room you saw lush silks and pillars of precious metals of every type and all manner of riches that would turn the King of Kings green with envy."
-    ""
+    "A lo largo de la estancia viste sedas espléndidas y pilares de metales preciosos de todo tipo y toda clase de fortunas que volverían al Rey de Reyes lívido de envidia."
 
 # game/script.rpy:6144
 translate Spanish gilPathShowingMushroom_cf83b469:
 
     # "The glimmering magenta incense smoke rolled across the room and coated it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
-    ""
+    "El humo destelleante y fucsia del incienso abarcaba la sala y lo cubría todo en una niebla sombría, a la vez que desprendía aroma a las especias y hierbas más increíbles, los olores más cautivadores."
 
 # game/script.rpy:6145
 translate Spanish gilPathShowingMushroom_67b7b86e:
 
     # m "Come. It's time."
-    m ""
+    m "Ven. Ya es la hora."
 
 # game/script.rpy:6146
 translate Spanish gilPathShowingMushroom_61268892:
 
     # "The mushroom startled you. She was holding a picnic basket. Her eyes were red."
-    ""
+    "La amanita te sobresalta. En sus manos sostiene una cesta de picnic. Tiene los ojos enrojecidos."
 
 # game/script.rpy:6147
 translate Spanish gilPathShowingMushroom_ad32521b:
 
     # pov "Time for what?"
-    pov ""
+    pov "¿Hora de qué?"
 
 # game/script.rpy:6148
 translate Spanish gilPathShowingMushroom_7f6a6732:
 
     # m "I think you know, darling. I think you can see where this is going by now."
-    m ""
+    m "Creo que ya lo sabes, vida mía. Creo que ya has intuido de qué trata todo esto."
 
 # game/script.rpy:6149
 translate Spanish gilPathShowingMushroom_a490aca6:
 
     # m "Carry those things for me please, will you?"
-    m ""
+    m "¿Eres tan amable de llevar eso de ahí?"
 
 # game/script.rpy:6150
 translate Spanish gilPathShowingMushroom_67fb587f:
 
     # "You looked down and say bottles of red wine placed by the door. Two wineglasses were next to them. A small, neat pile of napkins."
-    ""
+    "Miras hacia abajo y te encuentras botellas de vino tinto colocadas cerca de la puerta. Al lado de estas, un par de copas. También, una montañita bien montada de servilletas."
 
 # game/script.rpy:6151
 translate Spanish gilPathShowingMushroom_25daf377:
 
     # "Everything had been prepared long ago."
-    ""
+    "Todo lleva dispuesto bastante tiempo."
 
 # game/script.rpy:6152
 translate Spanish gilPathShowingMushroom_766c9ac9:
 
     # "You picked up the supplies. The mushroom linked her arm with yours, and in a blink you were travelling down. Down through the rocks and the pillars of the earth. Down into the last kingdom."
-    ""
+    "Recogiste las provisiones. La amanita aferró su brazo al tuyo y, en un abrir y cerrar de ojos, estabais descendiendo. Bajasteis por las rocas y los pilares de la tierra, hasta el último reino de todos."
 
 # game/script.rpy:6156
 translate Spanish gilPathShowingMushroom_158b3fcb:
@@ -13110,7 +13110,7 @@ translate Spanish gilPathShowingMushroom_e7bbdda7:
 translate Spanish gilPathShowingMushroom_ec7eee55:
 
     # m "Don't worry dear, I've picked out a spot. I've had it picked out for a long time."
-    m ""
+    m "No te preocupes, corazón; he escogido un lugar propicio. Lo tenía en mente desde hace mucho tiempo."
 
 # game/script.rpy:6161
 translate Spanish gilPathShowingMushroom_c56efae3:
@@ -13122,7 +13122,7 @@ translate Spanish gilPathShowingMushroom_c56efae3:
 translate Spanish gilPathShowingMushroom_fc1eaa63:
 
     # m "Here we are."
-    m ""
+    m "Ya hemos llegado."
 
 # game/script.rpy:6164
 translate Spanish gilPathShowingMushroom_fdae852d:
@@ -13134,19 +13134,19 @@ translate Spanish gilPathShowingMushroom_fdae852d:
 translate Spanish gilPathShowingMushroom_7b56d60d:
 
     # "You took out the wineglasses, and she uncorked the wine and poured a toast."
-    ""
+    "Sacaste las copas, mientras ella descorchaba el vino y lo servía para un brindis."
 
 # game/script.rpy:6166
 translate Spanish gilPathShowingMushroom_3ea8341e:
 
     # m "To us."
-    m ""
+    m "Por ti y por mí."
 
 # game/script.rpy:6167
 translate Spanish gilPathShowingMushroom_9161085a:
 
     # "She looked away and discretely wiped her eyes."
-    ""
+    "Apartó la mirada y se secó los ojos con disimulo."
 
 ##=== These lines trigger one by one as you talk to the mushroom. Things are slowly eaten out of the world.
 ##=== The stars slowly disappear from the sky as they are eaten by the wolf. The stars vanish from the background image, and never appear again - even in future playthroughs.
@@ -13172,84 +13172,84 @@ translate Spanish mushroomSoloConvo_adbf0d4e:
 translate Spanish mushroomSoloConvo_2a144bd9:
 
     # "Were there always this many stars in the sky? You found you couldn't recall."
-    ""
+    "¿Desde cuándo el cielo abarca tantísimas estrellas? Te diste cuenta de que no sabías la respuesta."
 
 translate Spanish strings:
     # game/script.rpy:6193
     old "You looked out into the night."
-    new ""
+    new "Tu mirada abarcó la noche."
 
     ##== Option A:
     # game/script.rpy:6193
     old "If you asked her what this was all about, turn to page 361."
-    new ""
+    new "Si le preguntaste qué le ocurre, ve a la página 361."
 
 # game/script.rpy:6196
 translate Spanish mushroomSoloConvo_92707f21:
 
     # m "I know you must be terribly worried. I'm sorry, dear."
-    m ""
+    m "Sé que debo tenerte muy pero que muy preocupado. Lo lamento, corazón."
 
 # game/script.rpy:6197
 translate Spanish mushroomSoloConvo_dfd398ce:
 
     # m "I just wanted to sit, look out at the stars, and enjoy some nice wine and company."
-    m ""
+    m "Tan solo quería sentarme, admirar las estrellas y disfrutar de un buen vino y mejor compañía."
 
 # game/script.rpy:6198
 translate Spanish mushroomSoloConvo_32e75684:
 
     # m "I've thought about this moment so many times. This is how I wanted it to be at the end."
-    m ""
+    m "He pensado largo y tendido sobre este momento en tantas ocasiones. Al final, quería que fuera de este modo."
 
 # game/script.rpy:6199
 translate Spanish mushroomSoloConvo_332b5627:
 
     # "She cut off a small sliver of aged truffle cheese and spread it on a water cracker, then looked at it doubtfully."
-    ""
+    "Cortó un trocito de queso viejo de trufas y lo extendió sobre una galletita, tras lo que lo miró con recelo."
 
 # game/script.rpy:6200
 translate Spanish mushroomSoloConvo_63d71012:
 
     # m "Oh, to hell with it. No harm in it now."
-    m ""
+    m "Bah, ¡qué más da! ¿Qué daño me va a hacer?"
 
 # game/script.rpy:6201
 translate Spanish mushroomSoloConvo_d47d6c10:
 
     # "She added an extra slice of cheese, a chilli and garlic olive, a piece of salami and a chunk of marinated artichoke heart onto the cracker, then gently eased the whole concoction into her mouth."
-    ""
+    "Añadió otra capa de queso, **, una loncha de salami y un trozo de alcachofa marinada a la galleta. Luego, embutió toda la mescolanza poco a poco en su paladar."
 
 ##== Option B:
 translate Spanish strings:
     # game/script.rpy:6193
     old "If you asked her about her thoughts, turn to page 362."
-    new ""
+    new "Si le preguntaste en qué estaba pensando, ve a la página 362."
 
 ##== She's asking about, whether she did the right thing when she took the Wolf's deal to stay in the book forever.
 # game/script.rpy:6206
 translate Spanish mushroomSoloConvo_ae77a96b:
 
     # m "Do you think I did the right thing?"
-    m ""
+    m "¿Crees que he hecho lo correcto?"
 
 # game/script.rpy:6207
 translate Spanish mushroomSoloConvo_761d1544:
 
     # pov "Uh - "
-    pov ""
+    pov "Eh..."
 
 # game/script.rpy:6208
 translate Spanish mushroomSoloConvo_3dcd0f88:
 
     # m "You don't know what I'm talking about. I'm sorry, I'm being quite self-indulgent, aren't I?"
-    m ""
+    m "Claro, no sabes de qué te hablo. Discúlpame, sé que estoy pasándome de caprichosa, ¿a que sí?"
 
 # game/script.rpy:6209
 translate Spanish mushroomSoloConvo_4abdcc18:
 
     # m "Well, you'll have to deal with it. This is my time and I'm going to be as self-indulgent as I damn well please."
-    m ""
+    m "Pues lástima, pero te aguantas. Este momento me pertenece y quiero ser todo lo caprichosa que me dé la real gana."
 
 # game/script.rpy:6210
 translate Spanish mushroomSoloConvo_d4d964c4:
@@ -13261,37 +13261,37 @@ translate Spanish mushroomSoloConvo_d4d964c4:
 translate Spanish mushroomSoloConvo_c97c556e:
 
     # m "It all seemed like the right choice at the time. But now it just feels like cowardice."
-    m ""
+    m "Todo ello me parecía la decisión adecuada en su momento. Ahora, en cambio, no me resulta sino cobardía."
 
 # game/script.rpy:6212
 translate Spanish mushroomSoloConvo_320fe3f6:
 
     # m "All those years I've spent in here. So many things I could have done in those years."
-    m ""
+    m "Todos los años que he pasado aquí. Podría haber hecho tanto en todo ese tiempo."
 
 # game/script.rpy:6213
 translate Spanish mushroomSoloConvo_24f40ddb:
 
     # m "No use worrying about it now, of course. No point."
-    m ""
+    m "Claro que ya no tiene sentido preocuparse por ello. ¿Para qué?"
 
 ##== Option C:
 translate Spanish strings:
     # game/script.rpy:6193
     old "If tried to convince her to run, turn to page 363."
-    new ""
+    new "Si intentaste convencerla para que huyera, ve a la página 363."
 
 # game/script.rpy:6218
 translate Spanish mushroomSoloConvo_9286cdf1:
 
     # pov "Let's get out of here. We need to find somewhere safe."
-    pov ""
+    pov "Vayámonos de aquí. Debemos buscar un lugar seguro."
 
 # game/script.rpy:6219
 translate Spanish mushroomSoloConvo_d9045485:
 
     # m "No, no, no. Darling, I appreciate your enthusiasm, but there's no point."
-    m ""
+    m "No, no, no. Cariño mío, te agradezco ese espíritu decidido, pero ¿para qué?"
 
 # game/script.rpy:6220
 translate Spanish mushroomSoloConvo_37ea91fa:
@@ -13303,7 +13303,7 @@ translate Spanish mushroomSoloConvo_37ea91fa:
 translate Spanish mushroomSoloConvo_ba9c2c92:
 
     # m "There never was an ending other than this. There never was a time other than this. No other place but this one."
-    m ""
+    m "Este era el único final que iba a darse. Este era el único momento para ello. Este lugar y ningún otro."
 
 ## A visual novel reference. The True Ending is usually the best possible ending.
 ## However, in this case the True Ending represents, to the Mushroom, the ultimate possible ending.
@@ -13312,55 +13312,55 @@ translate Spanish mushroomSoloConvo_ba9c2c92:
 translate Spanish mushroomSoloConvo_43a18cec:
 
     # m "This is the True Ending. At least for me."
-    m ""
+    m "Hemos llegado al final auténtico. Al menos, para mí."
 
 # game/script.rpy:6224
 translate Spanish mushroomSoloConvo_9859d3a7:
 
     # m "I made my decision a long time ago. And soon, I'm sure, you'll need to make yours."
-    m ""
+    m "Tomé esta decisión hace mucho tiempo. Estoy convencida de que pronto te tocará a ti también."
 
 ##== Option D:
 translate Spanish strings:
     # game/script.rpy:6193
     old "If you asked her what you should do next, turn to page 364."
-    new ""
+    new "Si le preguntaste sobre lo que deberías hacer, ve a la página 364."
 
 # game/script.rpy:6229
 translate Spanish mushroomSoloConvo_23e072c7:
 
     # m "Do? Well, the next thing to do is the move on to this lovely lemon delicious I've packed us. And pour me another glass, please."
-    m ""
+    m "¿Hacer, dices? Bueno, te propongo que pases a este postre de limón que nos he preparado. Y ya que estás, lléname la copa, gracias."
 
 # game/script.rpy:6230
 translate Spanish mushroomSoloConvo_6a186385:
 
     # pov "I know something's wrong here, but I don't -"
-    pov ""
+    pov "Sé que algo va mal, pero no entiendo qué..."
 
 # game/script.rpy:6231
 translate Spanish mushroomSoloConvo_b9bed351:
 
     # m "Shh. Shh, dear."
-    m ""
+    m "Shhh. Calla, vida mía."
 
 # game/script.rpy:6232
 translate Spanish mushroomSoloConvo_f67a8244:
 
     # m "All we can do now is sit back and finish off the rest of this food. That's it."
-    m ""
+    m "Lo único a nuestro alcance es quedarnos aquí y no dejar ni una miga de toda esta comida. Nada más."
 
 # game/script.rpy:6233
 translate Spanish mushroomSoloConvo_18887d99:
 
     # m "What happens after that, you'll have to figure out for yourself. Just as we did."
-    m ""
+    m "Lo que ocurra en adelante es algo que tendrás que deducir por tu cuenta. Así hicimos el resto."
 
 ##== Option E:
 translate Spanish strings:
     # game/script.rpy:6193
     old "If you relaxed and enjoyed the view in silence, turn to page 366."
-    new ""
+    new "Si te relajaste y disfrutaste de las vistas en silencio, ve a la página 366."
 
 # game/script.rpy:6238
 translate Spanish mushroomSoloConvo_15b51930:
@@ -13378,163 +13378,163 @@ translate Spanish mushroomSoloConvo_7d7b7bc5:
 translate Spanish mushroomSoloConvo_b7486ea3:
 
     # "The mushroom's pale spores began to lift out of her cap and away down the hill in the breeze."
-    ""
+    "Las esporas pálidas de la amanita comenzaron a sobresalir de su sombrero y a dispersarse colina abajo mecidas por la brisa."
 
 # game/script.rpy:6241
 translate Spanish mushroomSoloConvo_28a214fa:
 
     # m "Thank you for spending this time with me, darling."
-    m ""
+    m "Gracias por acompañarme en este momento, corazón."
 
 # game/script.rpy:6242
 translate Spanish mushroomSoloConvo_5d5098cb:
 
     # m "You could have gone anywhere, couldn't you? Stayed with anyone."
-    m ""
+    m "Lo digo porque podrías haber ido a cualquier otra parte, ¿a que sí? Podrías haber acompañado a cualquiera."
 
 # game/script.rpy:6243
 translate Spanish mushroomSoloConvo_ccd772b4:
 
     # m "I would ask you not to forget me. But I know that won't be possible. "
-    m ""
+    m "Debo rogarte que jamás me olvides. Por desgracia, sé que te pido un imposible."
 
 # game/script.rpy:6249
 translate Spanish mushroomSoloFinale_89f9a846:
 
     # "The mushroom fell back onto the picnic rug and spread out her arms."
-    ""
+    "La amanita se tumbó sobre el mantel del picnic y estiró los brazos."
 
 # game/script.rpy:6253
 translate Spanish mushroomSoloFinale_a6477309:
 
     # "You lay down to join her and looked up at the sky above. A great, long sigh slowly eased out of her."
-    ""
+    "Te acuestas para acompañarla y contemplas el cielo que se halla sobre vuestras cabezas. Luego, ella exhala poco a poco un suspiro sonoro y duradero."
 
 # game/script.rpy:6254
 translate Spanish mushroomSoloFinale_ddb2e5d3:
 
     # m "Have you ever looked back at your life and tried... tried to calculate the sheer volume of it that you've wasted? The just ungodly amount of time that you've let slip away?"
-    m ""
+    m "¿Has reflexionado acerca de toda la vida y te has propuesto calcular... calcular todo lo que has malgastado? ¿La cantidad obscena de tiempo que se te ha escapado en un suspiro?"
 
 # game/script.rpy:6257
 translate Spanish mushroomSoloFinale_67d3f9f4:
 
     # m "Of course I don't mean the time spent having picnics or afternoon naps, or watching the sky. That time isn't wasted."
-    m ""
+    m "No me refiero, claro está, a los ratos en los que te fuiste de picnic, te echaste una siesta a media tarde o te quedaste con la mirada perdida en el cielo. Nada de ello cuenta como tiempo perdido."
 
 # game/script.rpy:6258
 translate Spanish mushroomSoloFinale_ac484070:
 
     # m "I mean the time spent doing things you don't want to do, for people you don't care about."
-    m ""
+    m "Me refiero a todos esos instantes en los que dedicaste a aquello que no querías hacer para gente que no te importa."
 
 # game/script.rpy:6261
 translate Spanish mushroomSoloFinale_af3e4721:
 
     # m "Those long decades spent paying rent, attending meetings, hunched over desks, travelling to work and back, doing all those petty grinding little tasks every day..."
-    m ""
+    m "Tantas décadas de pagar alquiler, acudir a reuniones, ponerte a horcajadas sobre un escritorio, viajes de fichar y plegar, y tantas menudencias agotadoras del día a día..."
 
 # game/script.rpy:6264
 translate Spanish mushroomSoloFinale_0358d82d:
 
     # m "It's horrifying. How incalculable a waste."
-    m ""
+    m "Me resulta aterrador, un desperdicio inconmensurable."
 
 # game/script.rpy:6265
 translate Spanish mushroomSoloFinale_9283d080:
 
     # "There was the sound of scratching. It seemed to come from somewhere inside you."
-    ""
+    "Se oyó un rasguido. Parecía provenir de alguna parte de tu interior."
 
 # game/script.rpy:6268
 translate Spanish mushroomSoloFinale_e623580c:
 
     # m "How many minutes and hours and days and years have vanished into that black yawning pit. It's impossible to even fit the number into my mind. It's nightmarish. The stars in the sky. The grains of sand on the beach... I can't even begin to take it in."
-    m ""
+    m "¿Cuántos minutos y horas y días y años se han perdido en ese pozo oscuro y sin fondo? La cifra total es tan elevada que ni siquiera la concibo. Espeluznante. Las estrellas del cielo, los granos de arena en la playa... Todo ello palidece en comparación."
 
 # game/script.rpy:6271
 translate Spanish mushroomSoloFinale_4d8958bc:
 
     # m "But every time you think about it, every time that number starts to creep into your mind, you think \"There's still time,\" don't you?"
-    m ""
+    m "Pero en cada ocasión que piensas en ello, cada vez que esa cifra cuasiinfinita ronda la linde de tu mente, piensas: «Aún estoy a tiempo», ¿a que sí?
 
 # game/script.rpy:6272
 translate Spanish mushroomSoloFinale_2e4babcb:
 
     # "The wine in your glasses rippled into complicated, twisting patterns. Like the entrails of beasts, from which omens might be read."
-    ""
+    "El vino en vuestras copas comienza a vibrar en patrones anómalos y retorcidos. Recuerda a las entrañas de las bestias de las que nacen presagios."
 
 # game/script.rpy:6275
 translate Spanish mushroomSoloFinale_4bd4047b:
 
     # m "There's still time to chase that dream, there are still years left to me, I'll make it someday, I can turn this around, it'll all work out in the end! I'll start tomorrow."
-    m ""
+    m "Aún tengo tiempo de seguir ese sueño, aún me quedan muchos años por delante, algún día lo lograré, estoy a tiempo de remontar, ¡y todo saldrá bien al final! Mañana mismo empiezo."
 
 # game/script.rpy:6278
 translate Spanish mushroomSoloFinale_2dad1985:
 
     # m "But there are no tomorrows left."
-    m ""
+    m "Hasta que ya no quedan mañanas."
 
 # game/script.rpy:6281
 translate Spanish mushroomSoloFinale_eb720100:
 
     # "The earth shook beneath you. You almost thought you heard the impact of great footfalls. Almost upon you now."
-    ""
+    "La tierra cruje debajo de ti. Te parece oír el choque de unas cascadas descomunales. Casi se ciernen sobre ti."
 
 # game/script.rpy:6282
 translate Spanish mushroomSoloFinale_cde4d293:
 
     # m "I can't say that anymore. It's done. The hours I spent are all the hours I'll ever have."
-    m ""
+    m "Pues bien; ya no puedo decir nada de ello. Se acabó. Las horas que gasté son las horas de las que dispuse."
 
 # game/script.rpy:6286
 translate Spanish mushroomSoloFinale_0a4efd83:
 
     # m "And... all throughout my life, the moments where I did something I really enjoyed were like small gasps of air between years of drowning."
-    m ""
+    m "Y... a lo largo de toda mi vida, los momentos en los que sí que hice algo fueron como bocanadas breves de aire entre años enteros de ahogarme a la deriva."
 
 # game/script.rpy:6287
 translate Spanish mushroomSoloFinale_bb90b6fd:
 
     # "The night was getting darker and darker."
-    ""
+    "La noche se volvía cada vez más y más oscura."
 
 # game/script.rpy:6290
 translate Spanish mushroomSoloFinale_66b6d466:
 
     # m "I had to plan them and save up for them and spend every day just trying to hold out for the next one. Those tiny, tiny moments where I got to be alive."
-    m ""
+    m "Debía planificarlos y ahorrarlos y contar los días entre respiro y respiro hasta que llegara al siguiente; al siguiente momento ínfimo en el que me sentía viva."
 
 # game/script.rpy:6293
 translate Spanish mushroomSoloFinale_ceeeff89:
 
     # "Something was very close to you now. You didn't dare look. There was a smell like something rotting. A sound like something coiling in the grass."
-    ""
+    "Estabas al alcance de algo. No te atrevías siquiera a mirar. El aire lo invadió una peste de putrefacción, un sonido como algo arrastrándose por la hierba."
 
 # game/script.rpy:6294
 translate Spanish mushroomSoloFinale_e7a1296b:
 
     # m "All I have left now is that number. That percentage of waste."
-    m ""
+    m "Lo único que me queda es ese número. Un porcentaje de desperdicio."
 
 # game/script.rpy:6302
 translate Spanish mushroomSoloFinale_4d511081:
 
     # m "It'll never get any smaller. It's done. It's all done."
-    m ""
+    m "Jamás se reducirá. Se acabó. Ya no queda nada más."
 
 # game/script.rpy:6303
 translate Spanish mushroomSoloFinale_55a88b9d:
 
     # "Tears ran down her cheeks. She made no effort to hide them anymore. "
-    ""
+    "Las lágrimas surcaron sus mejillas. Se negó el disimulo de ocultarlas."
 
 # game/script.rpy:6306
 translate Spanish mushroomSoloFinale_c54d062e:
 
     # m "Hold me, please."
-    m ""
+    m "Abrázame, te lo ruego."
 
 # game/script.rpy:6307
 translate Spanish mushroomSoloFinale_3f2f5267:
@@ -13546,56 +13546,56 @@ translate Spanish mushroomSoloFinale_3f2f5267:
 translate Spanish mushroomSoloFinale_956f51bf:
 
     # "You held her tight as you stared out into the night sky."
-    ""
+    "La sujetaste con firmeza mientras contemplabas el cielo nocturno."
 
 # game/script.rpy:6318
 translate Spanish mushroomSoloFinale_5ef5253d:
 
     # "It was pitch black. No stars or moon brightened that abyss."
-    ""
+    "Oscuridad plena. Ni estrellas ni luna que sirvieran de luceros en mitad de tal abismo."
 
 ##== She is eaten.
 # game/script.rpy:6319
 translate Spanish mushroomSoloFinale_a32a1cb0:
 
     # "You reached for the wine bottle, and realised there was none."
-    ""
+    "Extendiste el brazo para tomar la botella de vino, hasta que te diste cuenta de que no había nada."
 
 # game/script.rpy:6320
 translate Spanish mushroomSoloFinale_1ee46c02:
 
     # "There were no wineglasses. There was no food."
-    ""
+    "No quedaban copas de vino. No quedaba tampoco comida."
 
 # game/script.rpy:6321
 translate Spanish mushroomSoloFinale_7fd6d38c:
 
     # "You felt the touch of moss underneath you. There was no blanket."
-    ""
+    "Sentiste el musgo bajo tu cuerpo. No quedaba mantel."
 
 # game/script.rpy:6322
 translate Spanish mushroomSoloFinale_bbbfd3cc:
 
     # "You looked down."
-    ""
+    "Bajaste la mirada."
 
 # game/script.rpy:6323
 translate Spanish mushroomSoloFinale_929c0a1e:
 
     # "You were holding nothing at all. Your arms were embracing thin air."
-    ""
+    "No sostenías nada. Tus brazos abarcaban aire y nada más."
 
 # game/script.rpy:6324
 translate Spanish mushroomSoloFinale_3797dba5:
 
     # "Why were you here?"
-    ""
+    "¿Qué haces aquí?"
 
 # game/script.rpy:6325
 translate Spanish mushroomSoloFinale_9d0ca283:
 
     # "You must have needed a rest. A night outdoors. "
-    ""
+    "Echas en falta un descanso. Una noche al aire libre."
 
 # game/script.rpy:6326
 translate Spanish mushroomSoloFinale_485e9302:
@@ -13607,43 +13607,43 @@ translate Spanish mushroomSoloFinale_485e9302:
 translate Spanish mushroomSoloFinale_4a4fd086:
 
     # "No harm in that."
-    ""
+    "¿Qué tiene de malo?"
 
 # game/script.rpy:6328
 translate Spanish mushroomSoloFinale_2f810dd3:
 
     # "You stood up. Brushed away the moss. Breathed in the cool night air."
-    ""
+    "Te levantas. Te sacudes el musgo. Respiras una bocanada del aire fresco de la noche."
 
 # game/script.rpy:6329
 translate Spanish mushroomSoloFinale_d10fbeb6:
 
     # "You felt warm, full, and sad, for no reason you could name."
-    ""
+    "Sientes calidez, plenitud y pena, todo ello por razones ajenas a ti."
 
 # game/script.rpy:6330
 translate Spanish mushroomSoloFinale_463c28e9:
 
     # "Finally you began the long walk home in silence, with the dark night sky looming above you."
-    ""
+    "Al final, comienzas el largo paseo de vuelta a casa en silencio, mientras el manto de la noche te cubre."
 
 # game/script.rpy:6331
 translate Spanish mushroomSoloFinale_cd5d5a8a:
 
     # "There's nothing else left to tell."
-    ""
+    "Ya no queda nada más que contar."
 
 # game/script.rpy:6332
 translate Spanish mushroomSoloFinale_bd257120:
 
     # "That's the end."
-    ""
+    "Aquí tienes el final."
 
 # game/script.rpy:6334
 translate Spanish mushroomSoloFinale_9256611c:
 
     # "Run away with it now, as fast as you can."
-    ""
+    "Márchate con ello y no mires atrás."
     ##===== THE END.
     ##===--> Goes to the title page. The Mushroom disappears.
 
