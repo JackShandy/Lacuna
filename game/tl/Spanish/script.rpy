@@ -13456,7 +13456,7 @@ translate Spanish mushroomSoloFinale_e623580c:
 translate Spanish mushroomSoloFinale_4d8958bc:
 
     # m "But every time you think about it, every time that number starts to creep into your mind, you think \"There's still time,\" don't you?"
-    m "Pero en cada ocasión que piensas en ello, cada vez que esa cifra cuasiinfinita ronda la linde de tu mente, piensas: «Aún estoy a tiempo», ¿a que sí?
+    m "Pero en cada ocasión que piensas en ello, cada vez que esa cifra cuasiinfinita ronda la linde de tu mente, piensas: «Aún estoy a tiempo», ¿a que sí?"
 
 # game/script.rpy:6272
 translate Spanish mushroomSoloFinale_2e4babcb:
