@@ -3073,57 +3073,57 @@ translate Spanish toadIntro_6934c6ca:
 translate Spanish toadIntro_94e39276:
 
     # eg "Hold!"
-    eg ""
+    eg "¡Alto!"
 
 ##== If The Toad is one of the last characters left
 # game/script.rpy:2910
 translate Spanish toadIntro_11262a1a:
 
     # "There was a long pause."
-    ""
+    "Luego, una pausa larga."
 
 # game/script.rpy:2911
 translate Spanish toadIntro_e62182c5:
 
     # "You stood beside the carriage in an uncertain silence."
-    ""
+    "Permaneciste al lado del carruaje en un silencio incómodo."
 
 # game/script.rpy:2912
 translate Spanish toadIntro_f24eec59:
 
     # eg "I..."
-    eg ""
+    eg "Eh..."
 
 # game/script.rpy:2913
 translate Spanish toadIntro_d0ea7d1e:
 
     # eg "I forget what I'm supposed to say now."
-    eg ""
+    eg "Rábanos, se me ha olvidado qué debo decir."
 
 # game/script.rpy:2914
 translate Spanish toadIntro_b3bfbc68:
 
     # "His words came slowly. He seemed to be having difficulty speaking."
-    ""
+    "Sus palabras salen lentamente. Por lo que parece, le cuesta hablar."
 
 # game/script.rpy:2915
 translate Spanish toadIntro_14cc2cac:
 
     # pov "You're supposed to say, \"Where are you headed, fellow traveller?\""
-    pov ""
+    pov "Tienes que decir: «¿Adónde vas, viajante?»."
 
 # game/script.rpy:2916
 translate Spanish toadIntro_e67ff23c:
 
     # "The figure nodded gratefully."
-    ""
+    "La silueta asintió agradecida."
 
 ##== Otherwise:
 # game/script.rpy:2923
 translate Spanish toadIntro_94e39276_1:
 
     # eg "Hold!"
-    eg ""
+    eg "¡Alto!"
 
 # game/script.rpy:2925
 translate Spanish toadIntro_607d6bb0:
@@ -3153,71 +3153,71 @@ translate Spanish toadIntro_1a810ef5:
 translate Spanish strings:
     # game/script.rpy:2932
     old "If you told him about the festival, turn to page 12."
-    new ""
+    new "Si le hablas acerca del festival, ve a la página 12."
 
 # game/script.rpy:2935
 translate Spanish toadIntro_6c010a79:
 
     # eg "Why, that's exactly where I'm going!"
-    eg ""
+    eg "Vaya, ¡menuda casualidad, pues allí mismo me dirijo yo!"
 
 ##== If you say anything else:
 translate Spanish strings:
  # game/script.rpy:2932
     old "If you said \"The Glass Mountains\", turn to page 61."
-    new ""
+    new "Si le dices «A las montañas de cristal», ve a la página 61."
 
 # game/script.rpy:2937
 translate Spanish toadIntro_4834a92c:
 
     # eg "Nonsense! There's no reason to be travelling that way."
-    eg ""
+    eg "¡Paparruchas! Menudo sinsentido el de emprender la marcha hacia allá."
 
 # game/script.rpy:2938
 translate Spanish toadIntro_13222d06:
 
     # eg "I am heading to the village festival. You should join me."
-    eg ""
+    eg "Yo me dirijo al festival del pueblo. Deberías acompañarme."
 
 translate Spanish strings:
     # game/script.rpy:2932
     old "If you said \"The road of Pins and the road of Needles\", turn to page 61."
-    new ""
+    new "Si le dices «La senda de los alfileres y la senda de las agujas», ve a la página 61."
 
 # game/script.rpy:2940
 translate Spanish toadIntro_4834a92c_1:
 
     # eg "Nonsense! There's no reason to be travelling that way."
-    eg ""
+    eg "¡Paparruchas! Menudo sinsentido el de emprender la marcha hacia allá."
 
 # game/script.rpy:2941
 translate Spanish toadIntro_13222d06_1:
 
     # eg "I am heading to the village festival. You should join me."
-    eg ""
+    eg "Yo me dirijo al festival del pueblo. Deberías acompañarme."
 
 translate Spanish strings:
     # game/script.rpy:2932
     old "If you said \"The space between the trees\", turn to page 61."
-    new ""
+    new "Si le dices «Al hueco entre los árboles», ve a la página 61."
 
 # game/script.rpy:2943
 translate Spanish toadIntro_4834a92c_2:
 
     # eg "Nonsense! There's no reason to be travelling that way."
-    eg ""
+    eg "¡Paparruchas! Menudo sinsentido el de emprender la marcha hacia allá."
 
 # game/script.rpy:2944
 translate Spanish toadIntro_13222d06_2:
 
     # eg "I am heading to the village festival. You should join me."
-    eg ""
+    eg "Yo me dirijo al festival del pueblo. Deberías acompañarme."
 
 ##== If you don't answer
 translate Spanish strings:
      # game/script.rpy:2932
     old "If you said nothing, turn to page 57."
-    new ""
+    new "Si te mantienes en silencio, ve a la página 57."
 
 # game/script.rpy:2946
 translate Spanish toadIntro_9e03b6dc:
@@ -3241,18 +3241,18 @@ translate Spanish toadIntro_a3d08599:
 translate Spanish toadIntro_7d4b36f2:
 
     # "Your pig sniffed at the carriage suspiciously."
-    ""
+    "Tu cerdo olisqueó con suspicacia aquel carruaje."
 
 # game/script.rpy:2957
 translate Spanish toadIntro_b04f8ab9:
 
     # eg "This is no night to be walking out alone. Haven't you heard there's something in these woods?" nointeract
-    eg "" nointeract
+    eg "Esta noche no es amiga de los paseos en solitario, ¿o no te has enterado de que algo acecha en este bosque?" nointeract
 
 translate Spanish strings:
     # game/script.rpy:2956
     old "If you accepted the lift, turn to page 54."
-    new ""
+    new "Si aceptas que te lleve, ve a la página 54."
 
 # game/script.rpy:2975
 translate Spanish toadAccept_b74b7b8f:
@@ -12815,7 +12815,7 @@ translate Spanish mushroom1_fcabddfc:
 translate Spanish mushroom1_0f1646b8:
 
     # pov "Um... we only just met tonight."
-    pov "Pero... si nos hemos conocido esta misma nochne."
+    pov "Pero... si nos hemos conocido esta misma noche."
 
 ##== "The Other You's" - the mushroom thinks all humans are the same person with one conciousness, just with multiple bodies.
 # game/script.rpy:6077
@@ -33195,72 +33195,72 @@ translate Spanish end_0ae9bcd0_2:
 translate Spanish resetGame_e0648967:
 
     # "{color=#ffffff}You have come to a dark place.{/color}"
-    ""
+    "{color=#ffffff}Has dado a parar a un lugar oscuro.{/color}"
 
 ##== "Lacuna" = "A gap in the manuscript".
 # game/script.rpy:13159
 translate Spanish resetGame_3ebfa092:
 
     # "{color=#ffffff}A gap in the manuscript.{/color}"
-    ""
+    "{color=#ffffff}A un resquicio del manuscrito.{/color}"
 
 # game/script.rpy:13160
 translate Spanish resetGame_bc67556f:
 
     # "{color=#ffffff}Here, you can wipe everything away, and start again from the beginning.{/color}"
-    ""
+    "{color=#ffffff}Aquí podrás borrarlo todo y comenzar desde el principio.{/color}"
 
 # game/script.rpy:13161
 translate Spanish resetGame_78c5079c:
 
     # "{color=#ffffff}Like it never happened at all.{/color}"
-    ""
+    "{color=#ffffff}Tal como si nada de esto hubiera sucedido.{/color}"
 
 # game/script.rpy:13162
 translate Spanish resetGame_0fe0f4aa:
 
     # "{color=#ffffff}Are you sure you want to do this?{/color}"
-    ""
+    "{color=#ffffff}¿Seguro que quieres dar ese paso?{/color}"
 
 translate Spanish strings:
     # game/script.rpy:13166
     old "{color=#ffffff}You know it will never be like the first time.{/color}"
-    new ""
+    new "{color=#ffffff}You have come to a dark place.{/color}Ya sabes que nunca será igual que la primera vez."
 
     ##== Option A (Resets the game fully, deleting persistent data)
     # game/script.rpy:13166
     old "{color=#ffffff}Yes. I'm sure.{/color}"
-    new ""
+    new "{color=#ffffff}Sí, lo tengo claro.{/color}"
 
 # game/script.rpy:13169
 translate Spanish resetGame_7e6080f9:
 
     # "{color=#ffffff}Very well.{/color}"
-    ""
+    "{color=#ffffff}Sea pues.{/color}"
 
 # game/script.rpy:13170
 translate Spanish resetGame_13f27258:
 
     # "{color=#ffffff}Goodbye, for now.{/color}"
-    ""
+    "{color=#ffffff}Hasta luego.{/color}"
     ##==--> Resets the game
 
 translate Spanish strings:
     # game/script.rpy:13166
     old "{color=#ffffff}No. I want to remain here.{/color}"
-    new ""
+    new "{color=#ffffff}No, quiero quedarme aquí.{/color}"
 
 # game/script.rpy:13175
 translate Spanish resetGame_7e6080f9_1:
 
     # "{color=#ffffff}Very well.{/color}"
-    ""
+    "{color=#ffffff}Sea pues.{/color}"
 
 # game/script.rpy:13176
 translate Spanish resetGame_8caa7a1b:
 
     # "{color=#ffffff}Stay here a little longer.{/color}"
-    ""
+    "{color=#ffffff}Permanece un rato más.{/color}"
     ##==--> Does not reset the game.
 
 ##============================================================= INTERLUDE F: THE TITLES
