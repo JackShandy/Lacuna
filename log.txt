@@ -1,32 +1,42 @@
-2026-01-11 08:58:02 UTC
-Windows-10-10.0.19045
-Ren'Py 8.2.0.24012702
+2026-09-18 13:42:58 UTC
+Windows-10-10.0.19045-SP0
+Ren'Py 8.5.3.26051504
 
-Early init took 0.14s
-Loading error handling took 0.04s
-Loading script took 0.58s
-Loading save slot metadata took 0.03s
-Loading persistent took 0.00s
-Failed to initialize steam: Exception('Init returned false.')
-Running init code took 0.15s
-Loading analysis data took 0.01s
-Analyze and compile ATL took 0.01s
-Reloading save slot metadata took 0.02s
-Index archives took 0.00s
-Dump and make backups took 0.05s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc took 0.04s
+Early init took 51 ms
+Loading error handling took 29 ms
+Loading script took 344 ms
+Loading save slot metadata took 25 ms
+Loading persistent took 1 ms
+Initialized steam.
+Running init code took 254 ms
+Loading analysis data took 4 ms
+Analyze and compile ATL took 11 ms
+Reloading save slot metadata took 1 ms
+Dump and make backups took 49 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 50 ms
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.31s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.02s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.04s
+Creating interface object took 316 ms
+Init translation took 1 ms
+Cleaning stores took 0 ms
+Load screen analysis took 20 ms
+Analyze screens took 1 ms
+Save screen analysis took 0 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 245 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'NVIDIA Corporation'
+Renderer: 'NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2'
+Version: '4.6.0 NVIDIA 581.80'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 1920, 'current_h': 1080, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(600, 850) physical=(600, 850) drawable=(600, 850)
+Maximum texture size: 4096x4096

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/tl/Spanish/script.rpy", line 6859: translate strings statement expects a non-empty block.
-    translate Spanish strings:
-                              ^
+File "game/script.rpy", line 524: 'return' is not a keyword argument or valid child of the screen statement.
+    return()
+          ^
 
-Ren'Py Version: Ren'Py 8.2.0.24012702
-Sun Jan 11 18:54:14 2026
+Ren'Py Version: Ren'Py 8.5.3.26051504
+Fri Sep 18 22:30:13 2026

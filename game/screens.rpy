@@ -441,7 +441,8 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    if persistent.continueButton:
+    #if persistent.continueButton:
+    if renpy.list_saved_games(fast=True):
         add gui.main_menu_background
     else:
         add gui.main_menu_noContinue_background
@@ -466,11 +467,16 @@ screen main_menu():
     ## contents of the main menu are in the navigation screen.
     #use navigation
 
-    if persistent.continueButton == False:
+    #if persistent.continueButton == False:
+
+    #if persistent.continueButton == True:
+    #If there are any saved games, show the Continue button
+    if renpy.list_saved_games(fast=True):
+        imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), LoadMostRecent() hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
+    #Otherwise, show the Begin button
+    else:
         imagebutton auto "gui/mm_start_%s.png" xpos 25 ypos 321 focus_mask True action Play("sound", "audio/page-flip.mp3"), Start() hovered [ Play("sound", "audio/pencil.wav") ]
 
-    if persistent.continueButton == True:
-        imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), LoadMostRecent() hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
     #Old
     #imagebutton auto "gui/mm_load_%s.png" xpos 20 ypos 354 focus_mask True action Play("sound", "audio/page-flip.mp3"), FileLoad("quitsave", slot=True) hovered [ Play("sound", "audio/pencil.wav") ] #ShowMenu("load")
 
@@ -1161,7 +1167,7 @@ screen preferences():
                 vbox:
                     label _("Language")
                     textbutton "English" action Language(None)
-                    textbutton "Spanish" action Language("Spanish")
+                    #textbutton "Spanish" action Language("Spanish")
 
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.

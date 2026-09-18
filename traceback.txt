@@ -1,24 +1,90 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/tl/Spanish/script.rpy", line 33015, in script
-    old "If you turned back, turn to page 45."
-Exception: A translation for "If you turned back, turn to page 45." already exists at game/tl/Spanish/script.rpy:32945.
+  File "game/script.rpy", line 12525, in script
+    menu:
+  File "game/script.rpy", line 507, in execute
+    screen countdownCall:
+  File "game/script.rpy", line 507, in execute
+    screen countdownCall:
+  File "game/script.rpy", line 508, in execute
+    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Resturn(), Hide('countdownCall'), Show('countdown', _layer="over_screens"), SetVariable('time',58),]) #Show(bookBurnMovie, _layer="over_screens")
+  File "game/script.rpy", line 508, in keywords
+    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Resturn(), Hide('countdownCall'), Show('countdown', _layer="over_screens"), SetVariable('time',58),]) #Show(bookBurnMovie, _layer="over_screens")
+  File "game/script.rpy", line 508, in <module>
+    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Resturn(), Hide('countdownCall'), Show('countdown', _layer="over_screens"), SetVariable('time',58),]) #Show(bookBurnMovie, _layer="over_screens")
+NameError: name 'Resturn' is not defined. Did you mean: 'Return'?
 
 -- Full Traceback ------------------------------------------------------------
 
-Full traceback:
-  File "game/tl/Spanish/script.rpy", line 33015, in script
-    old "If you turned back, turn to page 45."
-  File "D:\Renpy\renpy-8.2.0-sdk\renpy\ast.py", line 2630, in execute
-    renpy.translation.add_string_translation(self.language, self.old, self.new, newloc)
-  File "D:\Renpy\renpy-8.2.0-sdk\renpy\translation\__init__.py", line 556, in add_string_translation
-    stl.add(old, new, newloc)
-  File "D:\Renpy\renpy-8.2.0-sdk\renpy\translation\__init__.py", line 496, in add
-    raise Exception("A translation for \"{}\" already exists at {}:{}.".format(
-Exception: A translation for "If you turned back, turn to page 45." already exists at game/tl/Spanish/script.rpy:32945.
+Traceback (most recent call last):
+  File "game/script.rpy", line 12525, in script
+    menu:
+  File "renpy/ast.py", line 1825, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+             ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/exports/menuexports.py", line 135, in menu
+    rv = renpy.store.menu(new_items)
+         ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "renpy/exports/menuexports.py", line 418, in display_menu
+    rv = renpy.ui.interact(mouse="menu", type=type, roll_forward=roll_forward)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/ui.py", line 306, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/display/core.py", line 2163, in interact
+    repeat, rv = self.interact_core(
+                 ~~~~~~~~~~~~~~~~~~^
+        preloads=preloads,
+        ^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "renpy/display/core.py", line 2709, in interact_core
+    root_widget.visit_all(lambda d: d.per_interact())
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 460, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 460, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 460, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/screen.py", line 503, in visit_all
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "renpy/display/core.py", line 2709, in <lambda>
+    root_widget.visit_all(lambda d: d.per_interact())
+                                    ~~~~~~~~~~~~~~^^ 
+  File "renpy/display/screen.py", line 514, in per_interact
+    self.update()
+    ~~~~~~~~~~~^^
+  File "renpy/display/screen.py", line 715, in update
+    self.screen.function(**self.scope)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "game/script.rpy", line 507, in execute
+    screen countdownCall:
+  File "game/script.rpy", line 507, in execute
+    screen countdownCall:
+  File "game/script.rpy", line 508, in execute
+    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Resturn(), Hide('countdownCall'), Show('countdown', _layer="over_screens"), SetVariable('time',58),]) #Show(bookBurnMovie, _layer="over_screens")
+  File "game/script.rpy", line 508, in keywords
+    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Resturn(), Hide('countdownCall'), Show('countdown', _layer="over_screens"), SetVariable('time',58),]) #Show(bookBurnMovie, _layer="over_screens")
+  File "renpy/python.py", line 1308, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1301, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "game/script.rpy", line 508, in <module>
+    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Resturn(), Hide('countdownCall'), Show('countdown', _layer="over_screens"), SetVariable('time',58),]) #Show(bookBurnMovie, _layer="over_screens")
+NameError: name 'Resturn' is not defined. Did you mean: 'Return'?
 
-Windows-10-10.0.19045 AMD64
-Ren'Py 8.2.0.24012702
+Windows-10-10.0.19045-SP0 AMD64
+Ren'Py 8.5.3.26051504
 The Wolf. 1.0
-Sun Jan 11 18:55:50 2026
+Fri Sep 18 22:26:54 2026

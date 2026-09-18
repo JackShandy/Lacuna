@@ -14,23 +14,23 @@
 
 
 if persistent.vanished == 0:
-    define config.name = _("The Thief, the Toad, the Witch & the Mushroom.")
+    define config.name = _("The Thief, the Witch, the Toad, & the Mushroom.")
 elif persistent.vanished == 1:
     if persistent.thiefVanished:
-        define config.name = _("The Toad, the Witch & the Mushroom.")
+        define config.name = _("The Witch, the Toad, & the Mushroom.")
     if persistent.toadVanished:
-        define config.name = _("The Thief, the Witch & the Mushroom.")
+        define config.name = _("The Thief, the Witch, & the Mushroom.")
     if persistent.witchVanished:
-        define config.name = _("The Thief, the Toad & the Mushroom.")
+        define config.name = _("The Thief, the Toad, & the Mushroom.")
     if persistent.mushroomVanished:
-        define config.name = _("The Thief, the Toad & the Witch.")
+        define config.name = _("The Thief, the Witch, & the Toad.")
 elif persistent.vanished == 2:
     if persistent.thiefVanished && persistent.toadVanished:
         define config.name = _("The Witch & the Mushroom.")
     if persistent.thiefVanished && persistent.witchVanished:
         define config.name = _("The Toad & the Mushroom.")
     if persistent.thiefVanished && persistent.mushroomVanished:
-        define config.name = _("The Toad & the Witch.")
+        define config.name = _("The Witch & the Toad.")
     if persistent.toadVanished && persistent.witchVanished:
         define config.name = _("The Thief & the Mushroom.")
     if persistent.toadVanished && persistent.mushroomVanished:

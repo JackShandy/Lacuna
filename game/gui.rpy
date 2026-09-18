@@ -12,6 +12,8 @@ init offset = -2
 init python:
     gui.init(600, 850)
 
+#Default language
+define config.default_language = None
 
 
 ################################################################################
