@@ -209,25 +209,25 @@ translate Spanish demoEnd_0ae9bcd0_2:
 translate Spanish chapter1_86267af8:
 
     # "This maybe happened, or maybe did not."
-    "TEST: SPANISH MODE: He/Him Pronouns"
+    "Quizá esta se trate de una historia veraz, o tan solo sea un cuento audaz."
 
 # game/script.rpy:1787
 translate Spanish chapter1_24b7f072:
 
     # "The time is long past, and much is forgot."
-    ""
+    "Pues mucho ha llovido desde aquello y poco se conserva ya."
 
 # game/script.rpy:1788
 translate Spanish chapter1_65071726:
 
     # "Back in the old days, when wishing worked, your mother lived in a vast forest teeming with strange figures."
-    ""
+    "En tiempos de Maricastaña, cuando los deseos aún se cumplían, tu madre vivía en un bosque frondoso y repleto de criaturas sorprendentes."
 
 # game/script.rpy:1790
 translate Spanish chapter1_388ccc4c:
 
     # "Yet she had little time to spend wondering about these odd folks, for she had twelve children and had to work night and day just to feed them."
-    ""
+    "Pero no gozaba de tiempo como para preguntarse el por qué de esos seres tan singulares, pues era madre de doce hijos y trabajaba día y noche para ponerles un plato en la mesa."
 
 # game/script.rpy:1791
 translate Spanish chapter1_16ca61e5:
@@ -239,19 +239,19 @@ translate Spanish chapter1_16ca61e5:
 translate Spanish chapter1_970a3da6:
 
     # "Neither here nor there, but long ago..."
-    ""
+    "Quizá esto ocurriera por aquí, o quizá por allá, pero es seguro que hace mucho ya..."
 
 # game/script.rpy:1794
 translate Spanish chapter1_641b60c1:
 
     # "Back in the old days, when the gods were real, your mother lived in a vast and mysterious rainforest full of strange figures."
-    ""
+    "En tiempo del rey Perico, cuando los dioses aún existían, tu madre vivía en un bosque lluvioso, con tantos misterios como criaturas sorprendentes lo habitaban."
 
 # game/script.rpy:1796
 translate Spanish chapter1_87ae7791:
 
     # "Yet she had little time to spend wondering about these odd folks, for she had ten children and had to work night and day just to feed them."
-    ""
+    "Pero no gozaba de tiempo como para preguntarse el por qué de esos seres tan singulares, pues era madre de diez hijos y trabajaba día y noche para ponerles un plato en la mesa."
 
 # game/script.rpy:1797
 translate Spanish chapter1_49ba8f0c:
@@ -264,19 +264,19 @@ translate Spanish chapter1_49ba8f0c:
 translate Spanish chapter1_546ca8a4:
 
     # "Once there was, and once there wasn't."
-    ""
+    "Érase una vez, así como no érase una vez."
 
 # game/script.rpy:1800
 translate Spanish chapter1_5d48c9d3:
 
     # "In the long-distant days of yore, when haystacks winnowed sieves, when genies played jereed in the old bathhouse, fleas were barbers, camels were town criers, I softly rocked my baby grandmother to sleep in her creaking cradle, in an exotic land, far, far away, there was a woman who lived in a vast rainforest full of strange, empty spaces."
-    ""
+    "En unos tiempos muy remotos y pasados ya, cuando los pajares tamizaban los granos, los genios jugaban al jereed en las antiguas casas de baños, las pulgas eran barberos, los camellos eran pregoneros y yo mecía suavemente a mi abuelita para que se durmiera en su mecedora chirriante; en una tierra exótica, muy, muy lejana, vivía una mujer en un bosque lluvioso y extenso repleto de rincones vacíos e inexplicables."
 
 # game/script.rpy:1802
 translate Spanish chapter1_568cb28a:
 
     # "Yet she had little time to think about these things, for she had four children and had to work day and night just to feed them."
-    ""
+    "Pero no gozaba de tiempo como para preguntarse el por qué de todo ello, pues era madre de cuatro hijos y trabajaba día y noche para ponerles un plato en la mesa"
 
 # game/script.rpy:1803
 translate Spanish chapter1_4b7aa14c:
@@ -289,19 +289,19 @@ translate Spanish chapter1_4b7aa14c:
 translate Spanish chapter1_b3459461:
 
     # "Listen closely."
-    ""
+    "Presta mucha atención."
 
 # game/script.rpy:1807
 translate Spanish chapter1_4588e156:
 
     # "I won't repeat myself again."
-    ""
+    "No volveré a repetírtelo."
 
 # game/script.rpy:1808
 translate Spanish chapter1_68fbbfc2:
 
     # "Back in the old days, when there was still a chance, your mother lived in a vast, empty forest."
-    ""
+    "En tiempos muy muy lejanos, cuando aún existía una oportunidad, tu madre vivía en un bosque tan extenso como vacío."
 ##============= CHARACTER BRIEF: Your Mum
 ##== Deliberately a shallow, blank character. Your protagonist is a self-insert character in this story, and your Mum is essentially a self-insert of your mum in real life. She is deliberately kept vague for that reason.
 ##== She has a moment to reflect on this at the very end of the story, if you talk to her as the book is burning. She reflects that despite everything, she has no real idea who you are at all.
@@ -315,7 +315,7 @@ translate Spanish chapter1_34777223:
 translate Spanish chapter1_8fcb249a:
 
     # "She had no idea what to do. She took you up in her arms and ran into the darkness of the forest, promising that she would ask the first man she met to be your Godfather."
-    ""
+    "Se quedó en blanco, sin saber qué hacer. Te arropó en sus brazos y se adentró en las tinieblas del bosque, mientras se juraba a sí misma que le pediría al primer hombre que pasara que te adoptara como padrino."
 
 ##====================================================== The Three Godparents
 ## This is taken from the classic Brother's Grimm Tale, Godfather Death. Also inspired by The Three Godfathers.
@@ -333,7 +333,7 @@ translate Spanish chapter1_8fcb249a:
 translate Spanish chapter1_167ac34b:
 
     # "In the darkness of the forest, she may or may not have met a man in white."
-    ""
+    "Entre las tinieblas del bosque, tal vez se encontrase allí con un hombre de blanco."
 
 ##=== This interjection is taken from a technique common to Grimm's stories, where the storyteller often cuts in with their own thoughts, feelings and opinions.
 ## These interjections come from The Wolf, who is telling the story. They are meant to feel a little strange  and offputting.
@@ -343,25 +343,25 @@ translate Spanish chapter1_167ac34b:
 translate Spanish chapter1_45c50df6:
 
     # "(Is anything certain these days?)"
-    ""
+    "(¿Hay alguna certeza hoy día?)."
 
 # game/script.rpy:1825
 translate Spanish chapter1_1feb23ba:
 
     # "His right hand held a dove. His other hand held a gun. His other hand held a crisp dollar bill. His other hand held a pillar of fire."
-    ""
+    "En la mano derecha sostenía una paloma; en la otra mano empuñaba una pistola; en la otra mano mostraba un billete arrugado; en la otra sujetaba un pilar hecho de fuego."
 
 # game/script.rpy:1826
 translate Spanish chapter1_22374aaa:
 
     # "His suit was perfect. His face was too bright to look upon. He already knew what was on her mind."
-    ""
+    "Iba de punta en blanco. Su rostro relucía hasta tal punto que apartaba cualquier mirada. Además, ya sabía lo que ella iba a pedirle."
 
 # game/script.rpy:1829
 translate Spanish chapter1_7eb2f7e4:
 
     # miw "Poor woman. Let me be the Godfather."
-    miw ""
+    miw "Pobre mujer. Deja que yo sea su padrino."
 
 ##=== Note that these pieces of code are for inserting the player's chosen pronouns: [hes] [Hes] [he] [He] [him] [Him]
 ## Supported pronouns are he/him, she/her, they/them.
@@ -371,37 +371,37 @@ translate Spanish chapter1_7eb2f7e4:
 translate Spanish chapter1_a2752b81:
 
     # miw "I shall hold this child, and make sure [hes] happy on this Earth for the rest of [his] days."
-    miw ""
+    miw "Cuidaré de esta criatura y me aseguraré de que sea feliz en este mundo hasta el fin de sus días."
 
 
 # game/script.rpy:1935
 translate Spanish firstMan_7384aeb5:
 
     # miw "I will ask only one thing: [He] must work hard, and earn every dollar, and obey me above all else." nointeract
-    miw "" nointeract
+    miw "Solo pido algo a cambio: que trabaje con esmero y se gane cada céntimo; y que me obedezca por encima de todas las cosas." nointeract
 
 translate Spanish strings:
     # game/script.rpy:1934
     old "If she said yes, turn to page 13."
-    new ""
+    new "Si contesta «Sí», ve a la página 13."
 
 # game/script.rpy:1940
 translate Spanish godYes_48d5fef0:
 
     # miw "As I have foreseen."
-    miw ""
+    miw "Así estaba escrito."
 
 # game/script.rpy:1941
 translate Spanish godYes_626c47fc:
 
     # "He bowed down and placed His great hand upon you, leaving His mark on your right hand."
-    ""
+    "Se agachó y posó Su magnífica mano sobre ti, tras lo que te trazó Su marca en la mano derecha."
 
 # game/script.rpy:1942
 translate Spanish godYes_22adc8da:
 
     # miw "You will name [him] [povname]."
-    miw ""
+    miw "Se llamará [povname]."
 
 ## This is an awkward one: In order to support they/them pronouns in english we need to have two slightly different versions of the same sentence.
 ## That's why there are two slightly different versions here: "The moment they turn eighteen." vs "The moment he turns eighteen."
@@ -424,25 +424,25 @@ translate Spanish godYes_2144befa:
 translate Spanish godYes_d59ce897:
 
     # "But He was talking to Himself."
-    ""
+    "Pero toda esta conversación ocurrió en solitario."
 
 # game/script.rpy:1956
 translate Spanish godYes_9c80220d:
 
     # "He looked around, holding the child."
-    ""
+    "Pues miró alrededor mientras sostenía a la criatura..."
 
 # game/script.rpy:1957
 translate Spanish godYes_eb4df7fc:
 
     # "There was no-one there."
-    ""
+    "...y nadie más había allí."
 
 # game/script.rpy:1961
 translate Spanish godYes_b45eef13:
 
     # "There never was.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
-    ""
+    "De hecho, nunca hubo nadie allí.{vspace=200}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado del Rey de Reyes.{/b}{/i}"
 ##=== If it isn't the 3rd run, your mother does not disappear.
 ## If you accept G-d as your godparent:
 
@@ -450,48 +450,48 @@ translate Spanish godYes_b45eef13:
 translate Spanish godYes_0ec3798f:
 
     # mum "Just make sure you're there for the christening."
-    mum ""
+    mum "Que no se te ocurra faltar a su bautizo."
 
 # game/script.rpy:1969
 translate Spanish godYes_3162b7ae:
 
     # "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Godchild of the King of Kings.{/b}{/i}"
-    ""
+    "Pero ya se había marchado.{vspace=200}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado del Rey de Reyes.{/b}{/i}"
 
 ## If you do not accept G-d as your godparent:
 translate Spanish strings:
     # game/script.rpy:1934
     old "If she said no, turn to page 14."
-    new ""
+    new "Si contesta «No», ve a la página 14."
 
 # game/script.rpy:1973
 translate Spanish godYes_ef733c9e:
 
     # mum "Then I don't want you as the Godfather. You give to the rich, and take from the poor. You are no Lord of mine."
-    mum ""
+    mum "No serás su padrino; tú, que das a los ricos y arrebatas a los pobres. No te reconozco como Señor mío."
 
 # game/script.rpy:1974
 translate Spanish godYes_54ec4d3b:
 
     # "(She said this foolish thing, with no understanding of how wisely the Lord distributes wealth and poverty.)"
-    ""
+    "(Soltó tal necedad sin ser consciente en lo más mínimo de la sabiduría con la que Él reparte riquezas y pobrezas)."
 
 # game/script.rpy:1975
 translate Spanish godYes_d9184f7f:
 
     # "Then she turned away from Him and ran into the forest."
-    ""
+    "Después, le dio la espalda y se apresuró hacia el bosque."
 
 translate Spanish strings:
     # game/script.rpy:1934
     old "If she asked the mysterious figure who He was, turn to page 11."
-    new ""
+    new "Si le pregunta al desconocido quién es, ve a la página 11."
 
 # game/script.rpy:1978
 translate Spanish godYes_a969500b:
 
     # miw "I am your dear Lord."
-    miw ""
+    miw "Soy tu Señor."
 
 ##============= Second Godparent: The Devil
 ##============= CHARACTER BRIEF: The Devil
@@ -503,66 +503,66 @@ translate Spanish godYes_a969500b:
 translate Spanish secondMan1_49cdd6d7:
 
     # "In the deeper darkness of the forest, she may or may not have met a man all in red."
-    ""
+    "En la hondura profunda del bosque, tal vez se encontrase allí con un hombre vestido por completo de rojo."
 
 # game/script.rpy:1984
 translate Spanish secondMan1_775bd3cf:
 
     # "(How can we be sure of anything but the greatness of G-d?)"
-    ""
+    "(¿Acaso la única certeza no es la grandeza de Dios?)."
 
 # game/script.rpy:1985
 translate Spanish secondMan1_941bd86c:
 
     # "All the jewels of the earth fell from His right hand, and all the pleasures of the world fell from His left, and His other hand held all the wonders of the universe, and His other hand held a fat cigar, and His other hand held a long knife black as coal dust, and His other hand held the most intoxicating spices, such that the King of Kings would cry to taste them, and His other hand held a single dead rose, and His other hand was in his pocket and out of view."
-    ""
+    "De su mano derecha se precipitaban todas las joyas de la tierra; de su izquierda, todos los placeres habidos en el mundo; en la otra sostenía todas las maravillas del universo; en la otra sujetaba un puro generoso; en la otra empuñaba un cuchillo negro como el tizne; en la otra, las especias más embriagadoras, aquellas que el mismísimo Rey de Reyes lloraría con tal de probarlas; en la otra sostenía una sola rosa marchita; y la otra estaba guardada en su bolsillo y fuera de la vista."
 
 # game/script.rpy:1986
 translate Spanish secondMan1_f38751b9:
 
     # mir "Poor woman. Let me be the Godfather."
-    mir ""
+    mir "Pobre mujer. Deja que yo sea su padrino."
 
 # game/script.rpy:1987
 translate Spanish secondMan1_895cb9b6:
 
     # mir "I'll make sure the child needs nothing, and wants everything. [He] shall live in wealth and comfort for all of [his] days, and devour only the richest meats for every meal."
-    mir ""
+    mir "Me aseguraré de que a esta criatura no le falte de nada y lo anhele todo. Vivirá rodeado de fortuna y comodidades por el resto de sus días; solo devorará las carnes más jugosas en cada comida."
 
 # game/script.rpy:1993
 translate Spanish secondMan2_2507629f:
 
     # mir "I only have one condition: [He] must promise to obey no master, and scorn the rule of law, and do as [he] wilt every day of [his] life." nointeract
-    mir "" nointeract
+    mir "Tan solo te planteo una condición, que es la siguiente: no responderá ante nadie: se burlará de cualquier ley y vivirá según sus caprichos cada día de su vida." nointeract
 
 translate Spanish strings:
     # game/script.rpy:1992
     old "If she said yes, turn to page 21."
-    new ""
+    new "Si contesta «Sí», ve a la página 21."
 ##== If you say yes:
 # game/script.rpy:1995
 translate Spanish secondMan2_5aebfe7f:
 
     # mum "Very well. Beggars can't be choosers, I suppose."
-    mum ""
+    mum "Sea, pues. Tampoco es que goces de muchas más opciones."
 
 # game/script.rpy:1996
 translate Spanish secondMan2_fc87549f:
 
     # mir "Excellent!"
-    mir ""
+    mir "¡Fantástico!"
 
 # game/script.rpy:1998
 translate Spanish devilYes_ae567744:
 
     # "He let out a great shrieking cackle and placed His mark upon you."
-    ""
+    "Emitió una carcajada estridente y te posó su marca."
 
 # game/script.rpy:1999
 translate Spanish devilYes_23d4e6d8:
 
     # mir "You will name [him] [povname]."
-    mir ""
+    mir "Se llamará [povname]."
 
 # game/script.rpy:2001
 translate Spanish devilYes_8549c713:
@@ -581,68 +581,68 @@ translate Spanish devilYes_3b27dcaa:
 translate Spanish devilYes_d59ce897:
 
     # "But He was talking to Himself."
-    ""
+    "Pero toda esta conversación ocurrió en solitario."
 
 # game/script.rpy:2011
 translate Spanish devilYes_9c80220d:
 
     # "He looked around, holding the child."
-    ""
+    "Pues miró alrededor mientras sostenía a la criatura..."
 
 # game/script.rpy:2012
 translate Spanish devilYes_eb4df7fc:
 
     # "There was no-one there."
-    ""
+    "...y nadie más había allí."
 
 # game/script.rpy:2016
 translate Spanish devilYes_2cca7200:
 
     # "There never was.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
-    ""
+    "De hecho, nunca hubo nadie allí.{vspace=200}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado del Diablo.{/b}{/i}"
 ##== Otherwise:
 # game/script.rpy:2020
 translate Spanish devilYes_1a953895:
 
     # mum "Just make sure you're there for the christening on Sunday."
-    mum ""
+    mum "Que no se te ocurra faltar a su bautizo el domingo."
 
 # game/script.rpy:2024
 translate Spanish devilYes_6e1fabdb:
 
     # "But He was already gone.{vspace=200}{i}In your notes, write down that {b}You are the Devil's Godchild.{/b}{/i}"
-    ""
+    "Pero ya se había marchado. {vspace=200}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado del Diablo.{/b}{/i}"
 ##== If you refuse:
 translate Spanish strings:
 
     # game/script.rpy:1992
     old "If she said no, turn to page 16."
-    new ""
+    new "Si contesta «No», ve a la página 16."
 
 # game/script.rpy:2028
 translate Spanish devilYes_7b1aab3f:
 
     # mum "Then I don't want you as the Godfather. You lie, and cheat, and lead good people astray."
-    mum ""
+    mum "No serás su padrino; tú, que mientes, corrompes y desvirtúas a la gente noble."
 
 # game/script.rpy:2029
 translate Spanish devilYes_2977bb76:
 
     # "She turned away from him, and raced deeper into the forest."
-    ""
+    "Después, le dio la espalda y se apresuró hacia el bosque."
 
 ##== If you ask who He is:
 translate Spanish strings:
 
     # game/script.rpy:1992
     old "If she asked the mysterious figure who He was, turn to page 18."
-    new ""
+    new "Si le pregunta al desconocido quién es, ve a la página 18."
 
 # game/script.rpy:2032
 translate Spanish devilYes_ec056025:
 
     # mir "Why, I am the Devil Himself."
-    mir ""
+    mir "Soy el Diablo, ni más ni menos."
 
 ##============= Third Godparent: Death
 ##============= CHARACTER BRIEF: Death
@@ -657,80 +657,80 @@ translate Spanish devilYes_ec056025:
 translate Spanish thirdMan1_e22642e2:
 
     # "In the deepest darkness of the forest, she may or may not have met a handsome woman all in black."
-    ""
+    "En la hondura más profunda del bosque, tal vez se encontrase allí con una mujer bella vestida toda de negro."
 
 ## This phrase is from One Thousand and One Nights
 # game/script.rpy:2038
 translate Spanish thirdMan1_1d4a7d85:
 
     # "(What can any of us know for certain, except that the mercies of the Almighty are vaster than the deepest ocean and more numerous than all the pebbles on the land?)"
-    ""
+    "(¿Qué certezas se nos guardan, salvo la de que las bondades del Todopoderoso son más extensas que el océano más profundo, y más abundantes que piedras componen el suelo?)."
 
 # game/script.rpy:2039
 translate Spanish thirdMan1_cdd9b922:
 
     # "Her limbs were broken. She had no hands."
-    ""
+    "Cada una de sus extremidades estaba rota. Carecía de manos."
 
 # game/script.rpy:2040
 translate Spanish thirdMan1_506f4703:
 
     # wib "Poor woman. Let me be the Godmother."
-    wib ""
+    wib "Pobre mujer. Deja que yo sea su madrina."
 
 # game/script.rpy:2041
 translate Spanish thirdMan1_3d60a888:
 
     # wib "The child will have nothing. [He] will need nothing."
-    wib ""
+    wib "La criatura no recibirá nada. Nada le hará falta."
 
 # game/script.rpy:2048
 translate Spanish thirdMan2_4fb461a1:
 
     # wib "[He] need make no promises. I have no demands." nointeract
-    wib "" nointeract
+    wib "No tendrá que cumplir nada, pues nada es lo que le exigiré." nointeract
 
 ##== If you say yes:
 translate Spanish strings:
     # game/script.rpy:2047
     old "If she said yes, turn to page 17."
-    new ""
+    new "Si contesta «Sí», ve a la página 17."
 
 # game/script.rpy:2050
 translate Spanish thirdMan2_6b7d28b9:
 
     # mum "You're just the right one. You take rich and poor without distinction."
-    mum ""
+    mum "Eres a quien he venido a buscar: arrebatas a los ricos y a los pobres por igual."
 
 # game/script.rpy:2051
 translate Spanish thirdMan2_307d657e:
 
     # wib "You did not have a choice."
-    wib ""
+    wib "Nunca tuviste otra elección."
 
 # game/script.rpy:2053
 translate Spanish deathYes_558f8670:
 
     # "In one swoop She bowed down and placed Her mark upon you."
-    ""
+    "Con un ademán súbito, se agachó y grabó en ti su marca."
 
 # game/script.rpy:2054
 translate Spanish deathYes_0c6c5d7e:
 
     # wib "You will name [him] [povname]."
-    wib ""
+    wib "Se llamará [povname]."
 
 # game/script.rpy:2056
 translate Spanish deathYes_81394059:
 
     # wib "The moment [he] turn eighteen, [he] will be mine."
-    wib ""
+    wib "Cuando cumpla los dieciocho, me pertenecerá."
 
 # game/script.rpy:2058
 translate Spanish deathYes_a5f420c0:
 
     # wib "The moment [he] turns eighteen, [he] will be mine."
-    wib ""
+    wib "Cuando cumpla los dieciocho, me pertenecerá."
 
 # game/script.rpy:2059
 translate Spanish deathYes_f7258784:
@@ -743,50 +743,50 @@ translate Spanish deathYes_f7258784:
 translate Spanish deathYes_dc1172e8:
 
     # "But She was talking to Herself."
-    ""
+    "Pero toda esta conversación ocurrió en solitario."
 
 # game/script.rpy:2067
 translate Spanish deathYes_630706ac:
 
     # "She looked around, holding the child."
-    ""
+    "Pues miró alrededor mientras sostenía a la criatura..."
 
 # game/script.rpy:2068
 translate Spanish deathYes_eb4df7fc:
 
     # "There was no-one there."
-    ""
+    "...y nadie más había allí."
 
 # game/script.rpy:2072
 translate Spanish deathYes_00936b23:
 
     # "There never was.{vspace=200}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
-    ""
+    "De hecho, nunca hubo nadie allí.{vspace=200}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado de la Muerte.{/b}{/i}"
 
 ##== Otherwise:
 # game/script.rpy:2076
 translate Spanish deathYes_1a953895:
 
     # mum "Just make sure you're there for the christening on Sunday."
-    mum ""
+    mum "Que no se te ocurra faltar a su bautizo el domingo."
 
 # game/script.rpy:2080
 translate Spanish deathYes_21b890d4:
 
     # "But She was already leaving. She crawled into the earth with Her long, broken legs trailing behind her, until she was swallowed up whole.{vspace=160}{i}In your notes, write down that {b}You are Death's Godchild.{/b}{/i}"
-    ""
+    "Pero ya se estaba marchando. Se arrastró de vuelta a la tierra mientras le colgaban las piernas rotas y alargadas, hasta que no quedó nada de ella. {vspace=160}{i}Dejas por escrito en tus notas lo siguiente: {b}eres el apadrinado de la Muerte.{/b}{/i}"
 
 translate Spanish strings:
 
     # game/script.rpy:2047
     old "If she said no, turn to page 25."
-    new ""
+    new "Si contesta «No», ve a la página 25."
 
 # game/script.rpy:2084
 translate Spanish deathYes_18f1893d:
 
     # mum "I don't want you as the Godmother. You take men before it is their time."
-    mum ""
+    mum "No serás su madrina; tú, que te llevas a cada cual antes de lo que corresponde."
 
 ##== If you refuse everyone:
 
@@ -794,214 +794,214 @@ translate Spanish deathYes_18f1893d:
 translate Spanish deathYes_b806ecbe:
 
     # wib "There is no-one else left to take [him]."
-    wib ""
+    wib "Nadie más queda para adoptarlo."
 
 # game/script.rpy:2086
 translate Spanish deathYes_da16cdc7:
 
     # wib "You must make your choice."
-    wib ""
+    wib "Debes tomar una decisión."
 
 ##== You must make a final choice between G-d, Death or The Devil
 translate Spanish strings:
 
     # game/script.rpy:2090
     old "Your mother looked around the dark forest in panic."
-    new ""
+    new "Tu madre miró asustada el bosque oscuro a su alrededor."
 
     # game/script.rpy:2090
     old "If she chose Death, turn to page 7."
-    new ""
+    new "Si escoge a la Muerte, ve a la página 7."
 
     # game/script.rpy:2090
     old "If she chose the Lord, turn to page 5."
-    new ""
+    new "Si escoge al Señor, ve a la página 5."
 
 # game/script.rpy:2093
 translate Spanish deathYes_bf0470a0:
 
     # "In desperation, she renounced her foolish pride and sought the protection of the Most High Himself."
-    ""
+    "Con una angustia profunda, apartó a un lado su orgullo necio y rogó la protección del Altísimo."
 
 translate Spanish strings:
 
     # game/script.rpy:2090
     old "If she chose the Devil, turn to page 6."
-    new ""
+    new "Si escoge al Diablo, ve a la página 6."
 
 # game/script.rpy:2096
 translate Spanish deathYes_2b04424f:
 
     # "In desperation, she turned back and sought the protection of the deceiver Himself."
-    ""
+    "Con una angustia profunda, dio media vuelta y rogó la protección del gran embaucador."
 
 # game/script.rpy:2099
 translate Spanish deathYes_5ad076f1:
 
     # mum "I'm sorry for my foolish words. Please, protect my child."
-    mum ""
+    mum "Lamento las tonterías que salieron de mi boca. Te lo ruego: vela por mi bebé."
 
 ##== If you ask who she is:
 translate Spanish strings:
 
     # game/script.rpy:2047
     old "If she asked the mysterious figure who She was, turn to page 18."
-    new ""
+    new "Si le pregunta a la desconocida quién es, ve a la página 18."
 
 # game/script.rpy:2119
 translate Spanish deathYes_14578651:
 
     # mum "I don't know you."
-    mum ""
+    mum "No te conozco."
 
 # game/script.rpy:2120
 translate Spanish deathYes_e14819bb:
 
     # wib "Everyone knows me."
-    wib ""
+    wib "Nadie me desconoce."
 
 # game/script.rpy:2121
 translate Spanish deathYes_c2da8e22:
 
     # "She tilted her head so that the moonlight fell upon it, and your mother saw that it was true. The woman was Lady Death Herself."
-    ""
+    "Ladeó la cabeza y la luz de la luna la bañó: tu madre la reconoció enseguida, pues era la mismísima Muerte."
 ##============= Your childhood
 # game/script.rpy:2132
 translate Spanish chapter2_6044d994:
 
     # "And so you grew up alone in an old cottage on stilts in the forest."
-    ""
+    "Creciste a solas en una cabaña vieja sobre pilotes en mitad del bosque."
 
 ##== Variation 3: Your mother has disappeared.
 # game/script.rpy:2134
 translate Spanish chapter2_b045f94d:
 
     # "There were many miraculous things in the house. The table was set. The larder was fully stocked. You had plenty of food to survive on."
-    ""
+    "Ocurrían un sinfín de milagros por toda la casa: la mesa estaba puesta; la despensa, repleta. No te faltaba comida como para sobrevivir."
 
 # game/script.rpy:2135
 translate Spanish chapter2_e56ce8ae:
 
     # "Where did it come from? You couldn't recall."
-    ""
+    "¿De dónde había salido? No tenías forma de recordarlo."
 
 # game/script.rpy:2136
 translate Spanish chapter2_b98e5bb0:
 
     # "The closets were filled with clothes of all sizes. In the bedroom was a hand-sewn patchwork quilt that fit just right."
-    ""
+    "Cada armario estaba hasta arriba de ropa de todas las tallas. En tu habitación encontraste un edredón tejido a parches que te cubría como a medida."
 
 # game/script.rpy:2137
 translate Spanish chapter2_e9c8165c:
 
     # "How did these things come to pass? You didn't trouble yourself with such thoughts. Whenever you encountered these miracles, you simply said:"
-    ""
+    "¿Cómo había aparecido todo esto? Tampoco le dabas muchas vueltas. Cada vez que te topabas de bruces con un milagro, lo resolvías con estas palabras tan sencillas:"
 
 # game/script.rpy:2138
 translate Spanish chapter2_97b69347:
 
     # pov "The House provides."
-    pov ""
+    pov "La casa provee."
 ##== If your mother has not disappeared:
 ## Godparent: G-d:
 # game/script.rpy:2145
 translate Spanish chapter2_3dffd2f9:
 
     # "And so you grew up as a kind and well-mannered child, and you made your mother proud."
-    ""
+    "Creciste como un niño bondadoso y educado. Tu madre estaba orgullosa de ti."
 
 # game/script.rpy:2146
 translate Spanish chapter2_2f687f84:
 
     # "You went to church every Sunday and worked hard every day of your life, and never did you succumb to the beast within. All the neighbours smiled and said \"That one has the mark of G-d upon [him].\""
-    ""
+    "Acudiste a misa cada domingo sin falta y trabajaste duro cada día. Jamás cediste ante tu bestia interior. Los vecinos sonreían a tu paso y decían: \«Ese muchacho lleva la marca de Dios»\."
 
 # game/script.rpy:2147
 translate Spanish chapter2_1cc42f8f:
 
     # "Your Godfather was as good as His word. He appeared at church for the christening, and blessed you."
-    ""
+    "Tu padrino cumplió con su palabra. Hizo acto de presencia en la iglesia para tu bautizo y te bendijo."
 
 # game/script.rpy:2148
 translate Spanish chapter2_92f79715:
 
     # "You soon found that luck was always in your favour, and everyone took to calling you \"Fortune's Favourite\"."
-    ""
+    "Pronto te diste cuenta de que la suerte te sonreía. La gente te conocía como «\Hijo de la Fortuna\»."
 
 ## Godparent: The Devil:
 # game/script.rpy:2150
 translate Spanish chapter2_5baad0da:
 
     # "And so you grew up as a wild and wilful child, and your drove your mother to distraction with your wickedness."
-    ""
+    "Creciste como un niño salvaje y caprichoso, que traía a tu madre de cabeza con mil y una travesuras."
 
 # game/script.rpy:2151
 translate Spanish chapter2_37fd813c:
 
     # "You obeyed no laws and no masters, and you roamed heedlessly across the hills and dales, cackling wildly and throwing mud in your wake, and all the neighbours said \"That one has the Devil's mark upon [him],\" and shut their doors."
-    ""
+    "No respetabas norma alguna, ni tampoco a autoridades; vagabas sin oficio ni beneficio por colinas y valles, a carcajada limpia y lanzando bolas de barro allá por donde pasaras. Los vecinos murmuraban de ti: \«Ese muchacho lleva la marca del Diablo»\, tras lo que cerraban sus puertas a cal y canto."
 
 # game/script.rpy:2153
 translate Spanish chapter2_6e654b5d:
 
     # "This so grieved your mother that she fell down dead."
-    ""
+    "El disgusto era tal para tu madre, que fue lo que la llevó a la tumba."
 
 # game/script.rpy:2155
 translate Spanish chapter2_01ceb1bc:
 
     # "In spite of this, you still did not mend your wicked ways. Your ill deeds were rewarded, for you soon found that you could scarcely trip over a stone without unearthing precious diamonds and gems, and you became rich beyond the dreams of avarice."
-    ""
+    "Pese a todo, ni por esas se te ocurrió recapacitar, y es que cada maldad que se te ocurría no quedaba sin recompensa. Pronto descubriste que un traspiés nunca era un revés, sino que la fortuna te sonreía y las riquezas fueron tantas que sonrojaban a cualquier avaricia."
 
 ## Godparent: Death:
 # game/script.rpy:2157
 translate Spanish chapter2_4c2ac8a5:
 
     # "And so you grew up as a solemn and quiet child, and you made your mother sick with worry with your gloomy ways."
-    ""
+    "Creciste como un niño serio y callado. Tu madre se echaba a llorar porque le preocupaba lo mustio que le habías salido."
 
 # game/script.rpy:2158
 translate Spanish chapter2_a72ded99:
 
     # "You ate very little and said even less, and every night you would stalk quietly through the forest shadows or sit for long hours watching insects crawl in stagnant ponds, and all the neighbours said \"That one has the mark of Death upon [him],\" and shut their doors."
-    ""
+    "Comías muy poco y hablabas aún menos. Cada noche, te ocultabas en silencio entre las tinieblas del bosque o te sentabas horas y horas para ver cómo "
 
 ## Variations based on which run it is (with less and less siblings each time):
 # game/script.rpy:2161
 translate Spanish chapter2_aa63c244:
 
     # "You lived with your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
-    ""
+    "Vivías junto a tus doce hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso."
 
 # game/script.rpy:2163
 translate Spanish chapter2_118fa042:
 
     # "You lived with your ten siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
-    ""
+    "Vivías junto a tus diez hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso."
 
 # game/script.rpy:2165
 translate Spanish chapter2_708424a6:
 
     # "You lived with your four siblings in a house on stilts on the banks of a muddy river in a vast rainforest."
-    ""
+    "Vivías junto a tus cuatro hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso."
 
 # game/script.rpy:2169
 translate Spanish chapter2_1ef7e51d:
 
     # "Your mother loved you very much, and you lived with her and your twelve siblings in a house on stilts on the banks of a muddy river in a vast rainforest. Each night you would fall fast asleep under the patchwork quilt she knitted for you."
-    ""
+    "Tu madre te quería muchísimo; vivías junto a ella y tus doce hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso. Cada noche te quedabas dormido bajo el edredón a parches que te había tejido."
 
 # game/script.rpy:2171
 translate Spanish chapter2_886aa581:
 
     # "Your mother loved you very much, and you lived with her and your ten siblings in a house on stilts on the banks of a muddy river in a vast rainforest. Each night you would fall fast asleep under the patchwork quilt she knitted for you."
-    ""
+    "Tu madre te quería muchísimo; vivías junto a ella y tus diez hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso. Cada noche te quedabas dormido bajo el edredón a parches que te había tejido."
 
 # game/script.rpy:2173
 translate Spanish chapter2_ad3787e6:
 
     # "Your mother loved you very much, and you lived with her and your four siblings in a house on stilts on the banks of a muddy river in a vast rainforest. Each night you would fall fast asleep under the patchwork quilt she knitted for you."
-    ""
+    "Tu madre te quería muchísimo; vivías junto a ella y tus cuatro hermanos en una casa sobre pilotes, en la ribera enfangada de un río que cortaba un extenso bosque lluvioso. Cada noche te quedabas dormido bajo el edredón a parches que te había tejido."
 ##========= The Map
 ## In this section, you are shown a map of the lands around your house and can get some early information on the four major characters.
 ## As characters disappear, the map erases itself and becomes empty. When someone has disappeared, the description changes to "There was nothing and no-one."
@@ -1014,77 +1014,77 @@ translate Spanish strings:
 translate Spanish mapOpens_8ffab238:
 
     # "The lands around your house were strange."
-    ""
+    "Las tierras que lindaban con tu casa eran variopintas."
 
 # game/script.rpy:1838
 translate Spanish characterIntros_e2406251:
 
     # "To the north lived a cunning thief."
-    ""
+    "Al norte vive une ladrone sutil."
 
 # game/script.rpy:1849
 translate Spanish characterIntros_7189d0ed:
 
     # "To the north, there was nothing and no-one."
-    ""
+    "Al norte no había nada, ni tampoco nadie."
 
 # game/script.rpy:1861
 translate Spanish characterIntros_ac8ef21c:
 
     # "To the west, a cackling witch."
-    ""
+    "Al oeste, una bruja risueña."
 
 # game/script.rpy:1871
 translate Spanish characterIntros_e8954f26:
 
     # "To the west, there was nothing and no-one."
-    ""
+    "Al oeste no había nada, ni tampoco nadie."
 
 # game/script.rpy:1884
 translate Spanish characterIntros_aa5a585f:
 
     # "To the east, a haughty toad."
-    ""
+    "Al este, un sapo socarrón."
 
 # game/script.rpy:1894
 translate Spanish characterIntros_ab0d41a8:
 
     # "To the east, there was nothing and no-one."
-    ""
+    "Al este no había nada, ni tampoco nadie."
 
 # game/script.rpy:1907
 translate Spanish characterIntros_37cd2d5d:
 
     # "To the south, a wise mushroom."
-    ""
+    "Al sur, una amanita sabia."
 
 # game/script.rpy:1918
 translate Spanish characterIntros_57906e1f:
 
     # "To the south, there was nothing and no-one."
-    ""
+    "Al sur no había nada, ni tampoco nadie."
 
 # game/script.rpy:2240
 translate Spanish neighbours_7189d0ed:
 
     # "To the north, there was nothing and no-one."
-    ""
+    "Al norte no había nada, ni tampoco nadie."
 
 translate Spanish strings:
 
     # game/script.rpy:2228
     old "The lands around your house were strange."
-    new ""
+    new "Las tierras que lindaban con tu casa eran variopintas."
 
     # game/script.rpy:2228
     old "To learn about the lands to the north, turn to page 10."
-    new ""
+    new "Para saber más sobre las tierras al norte, ve a la página 10."
 
 # game/script.rpy:2246
 translate Spanish neighbours_26f3d796:
 
     # "Do not ask lightly of the northern forest, my child."
-    ""
+    "No cometas el error de preguntar en vano por el bosque al norte, criatura."
 
 # game/script.rpy:2247
 translate Spanish neighbours_43364b91:
@@ -1096,7 +1096,7 @@ translate Spanish neighbours_43364b91:
 translate Spanish neighbours_9388ac02:
 
     # "The worst of them all was the Master Thief, a dextrous and sinister figure who was said to have all manner of powers."
-    ""
+    "Peor que todos ellos era le maestre ladrone; personaje diestre y siniestre que contaba en su haber con cualquier don, poder y talento."
 
 # game/script.rpy:2250
 translate Spanish neighbours_b41e88d8:
@@ -1114,175 +1114,175 @@ translate Spanish neighbours_cdac6370:
 translate Spanish neighbours_26777d35:
 
     # "Or so it was said."
-    ""
+    "Al menos, así era lo que se contaba."
 
 translate Spanish strings:
 
     # game/script.rpy:2228
     old "To learn about the lands to the east, turn to page 15."
-    new ""
+    new "Para saber más sobre las tierras al este, ve a la página 15."
 
 # game/script.rpy:2264
 translate Spanish neighbours_ab0d41a8:
 
     # "To the east, there was nothing and no-one."
-    ""
+    "Al este no había nada, ni tampoco nadie."
 
 # game/script.rpy:2270
 translate Spanish neighbours_4873ce8c:
 
     # "To the east, the river flowed down to the coast. The mangrove trees swayed in the summer heat, and the air thrummed with chanting in honour of the insect god, Karnopticon."
-    ""
+    "Al este fluía todo el caudal del río hasta la costa. Los manglares se mecían bajo el calor veraniego y el aire retumbaba con cantares en honor del dios insecto, Karnopticón."
 
 # game/script.rpy:2272
 translate Spanish neighbours_5970f551:
 
     # "On the edge of the swamp was a grand manor, owned by a noble frog lord."
-    ""
+    "Al borde del pantano se alzaba una mansión señorial, perteneciente a un honorable caballero sapo."
 
 # game/script.rpy:2273
 translate Spanish neighbours_7604fdd8:
 
     # "He was rarely seen, but people whispered that he was wiser than Solomon and richer than Midas. Kings and prophets would come from across the land to seek his counsel and gaze with envy upon the glittering spires of his house. To buy even a single gem from amoung the hundreds that adorned the manor would bankrupt any one of them."
-    ""
+    "Se le veía en contadas ocasiones, pero igualmente los rumores sobre su magnánima anfibiedad eran tales como que era más sabio que Salomón y más rico que Midas. Reyes y profetas peregrinaban desde todas partes en busca de su consejo, a la par que admiraban los relucientes capiteles de su hacienda. Una sola gema de entre los centenares que decoraban cada rincón valía más que la fortuna de cualquier visitante."
 
 # game/script.rpy:2274
 translate Spanish neighbours_26777d35_1:
 
     # "Or so it was said."
-    ""
+    "Al menos, así era lo que se contaba."
 
 translate Spanish strings:
 
     # game/script.rpy:2228
     old "To learn about the lands to the south, turn to page 20."
-    new ""
+    new "Para saber más sobre las tierras al sur, ve a la página 20."
 
 # game/script.rpy:2287
 translate Spanish neighbours_57906e1f:
 
     # "To the south, there was nothing and no-one."
-    ""
+    "Al sur no había nada, ni tampoco nadie."
 
 # game/script.rpy:2294
 translate Spanish neighbours_4e97d10c:
 
     # "Ah! In fact, the south river and the forest around it was watched over by a wise mushroom ambassador, who had owned these lands since before anyone could remember."
-    ""
+    "¡Ah! De hecho, el río del sur y el bosque circundante los guardaba una sabia embajadora amanita, dueña de tales tierras desde que el tiempo es tiempo."
 
 # game/script.rpy:2295
 translate Spanish neighbours_63aae58f:
 
     # "On cold clear nights, you could see her walking through the depths of the forest with her white veil and delicate waves of silver spores drifting behind her."
-    ""
+    "En las noches despejadas de brisa fresca aparece en lo hondo del bosque; velo blanco y ráfagas sutiles de esporas plateadas que flotan a su paso."
 
 # game/script.rpy:2296
 translate Spanish neighbours_f5a121f2:
 
     # "She allowed your family to live on the river and use her lands, under one condition."
-    ""
+    "Le había concedido permiso a tu familia para vivir en el río y valerse de sus tierras bajo una condición."
 
 ##== This line is from "The Porter and the Three Ladies of Baghdad" from 1001 nights - a small reference.
 # game/script.rpy:2297
 translate Spanish neighbours_3250871e:
 
     # m "Ask not of what concerns you not, lest you hear what pleases you not."
-    m ""
+    m "No preguntes de lo que no te atañe, salvo que quieras oír algo que te dañe."
 
 # game/script.rpy:2298
 translate Spanish neighbours_76287e37:
 
     # "Your family accepted her wishes, and so you let each other be."
-    ""
+    "Tu familia aceptó su voluntad y cada cual vivía sin medrar en los asuntos ajenos."
 
 # game/script.rpy:2299
 translate Spanish neighbours_0fda2368:
 
     # "She was often away brokering trade agreements and peace treaties and delicate alliances between the many trees and plants and old warring ferns of the forest."
-    ""
+    "Se la veía de tanto en cuanto resolviendo acuerdos de comercio, tratados de paz y alianzas delicadas entre la amalgama de árboles, plantas y los helechos vetustos y belicosos que habitaban el bosque."
 
 # game/script.rpy:2300
 translate Spanish neighbours_26777d35_2:
 
     # "Or so it was said."
-    ""
+    "Al menos, así era lo que se contaba."
 
 translate Spanish strings:
 
     # game/script.rpy:2228
     old "To learn about the lands to the west, turn to page 26."
-    new ""
+    new "Para saber más sobre las tierras al sur, ve a la página 26."
 
 # game/script.rpy:2315
 translate Spanish neighbours_e8954f26:
 
     # "To the west, there was nothing and no-one."
-    ""
+    "Al oeste no había nada, ni tampoco nadie."
 
 # game/script.rpy:2322
 translate Spanish neighbours_f28ab257:
 
     # "None dared venture to the western mountains, for all the lands around it were said to be home to a terrible witch."
-    ""
+    "Nadie se atrevía a adentrarse en las montañas al oeste, pues todas las tierras que lo componían guarecían a una bruja aterradora."
 
 # game/script.rpy:2323
 translate Spanish neighbours_4d72b4c9:
 
     # "Her hut lay deep under a secret lake, and she would emerge on moonless nights when the waters of that lake turned still and silver-green."
-    ""
+    "Su morada yacía en el fondo de un lago oculto. Salía las noches de luna nueva, cuando las aguas del lago estaban calmas como un plato y adoptaban tonos de verde plateado."
 
 # game/script.rpy:2324
 translate Spanish neighbours_2f0a37fb:
 
     # "The witches held their Sabbath on the mountain to the east, and when the sky was clear you could see the peak blaze with fire, and the Destroyer himself would emerge to dance in the firelight."
-    ""
+    "Las brujas albergaban su sabbat en la montaña al este. Cuando el cielo estaba despejado, se veía cómo la cima refulgía con fuego, y el mismísimo Destructor saltaba de él para bailar a la luz de la hoguera."
 
 # game/script.rpy:2325
 translate Spanish neighbours_26777d35_3:
 
     # "Or so it was said."
-    ""
+    "Al menos, así era lo que se contaba."
 
 translate Spanish strings:
     # game/script.rpy:2228
     old "To continue, return to page 9."
-    new ""
+    new "Para continuar, vuelve a la página 9."
 ##== This is slightly different based on how many people have disappeared.
 if persistent.vanished >= 3:
-    $introMenuSentence== "You woke every morning to silence." #Change this line in quotes to spanish
+    $introMenuSentence== «Cada mañana te despertaba el silencio». #Change this line in quotes to spanish
 else:
-    $introMenuSentence== "You woke every morning to the chorus of birds, and fell asleep every evening to the roaring of crickets." #Change this line in quotes to spanish
+    $introMenuSentence== «Cada mañana te despertaba el pío pío de los pájaros y cada noche te dormías con el crí crí de los grillos». #Change this line in quotes to spanish
 
 ##== If almost everyone has disappeared
 # game/script.rpy:2353
 translate Spanish introMenu_3ac479fb:
 
     # "Yours was a vast and silent land."
-    ""
+    "Vivías en unas tierras inmensas y silenciosas."
 
 # game/script.rpy:2354
 translate Spanish introMenu_6b7547c3:
 
     # "At times you could walk for days without seeing another soul."
-    ""
+    "A veces pasaban días y días de paseos constantes sin que te toparas con nadie más."
 
 # game/script.rpy:2355
 translate Spanish introMenu_b871e00c:
 
     # "You dared not venture out often. Whenever you did, you felt the pressure of that gigantic emptiness lurking just out of sight like a bottomless ocean, and fled quickly back to the safety of your home."
-    ""
+    "No te atrevías a viajar muy lejos, pues cada vez que dabas el paso, sentías la presión asfixiante del vacío descomunal que permanecía más allá de lo visible, cual océano sin fondo. Enseguida regresabas a la seguridad que te aportaba tu hogar."
 
 # game/script.rpy:2357
 translate Spanish introMenu_c830f6b6:
 
     # "The outside world was quiet. The land lay still."
-    ""
+    "El mundo exterior era silencio. La tierra era calma."
 
 # game/script.rpy:2358
 translate Spanish introMenu_94d8e2d4:
 
     # "But inside your body, your bones roiled and your flesh threatened riot."
-    ""
+    "Pero en los adentros de tu cuerpo, los huesos se te agitaban y tu carne ardía de frenesí."
 
 # game/script.rpy:2359
 translate Spanish introMenu_f700df26:
@@ -1294,26 +1294,26 @@ translate Spanish introMenu_f700df26:
 translate Spanish introMenu_74d3c3a3:
 
     # "Your skull was haunted by restless ghosts that cradled your brain and forced terrible thoughts into your mind at all hours; the bones in your spine became infested with sprites (which made your back crack in twisted and painful ways all through your long life) the blood in your veins was, of course, only a red water nixie that pulsed throughout your body, constantly seeking escape, and even your soul itself was simply a small shard of G-d, caught inside you and vibrating wildly. Not a single scrap of your own body, mind or soul was actually your own."
-    ""
+    "Tu cráneo era pasto de fantasmas penitentes que te acechaban el cerebro y te imponían pensamientos terribles a todas horas; los huesos de tu columna los plagaron duendes que te contorsionaban la espalda y la retorcían en mil dolores a lo largo de tu duradera vida; la sangre que corría por tus venas no era, claro está, sino ondinas de aguas rojas que fluían a través de tu cuerpo, siempre en busca de la salida; tu propia alma no era más que un fragmento ínfimo de Dios que estaba retenido en tu carne y trepidaba desbocado. No había ni la más mínima parte de tu cuerpo, mente o alma que te perteneciera como tal."
 
 # game/script.rpy:2361
 translate Spanish introMenu_a6a3cacd:
 
     # "There was no \"You\". Just a collection of monsters, writhing in borrowed skin."
-    ""
+    "\«Tú»\ no existías como tal. Eras una aglomeración de monstruos que se retorcían bajo una piel que no era suya."
 
 ##== If lots of people have disappeared
 # game/script.rpy:2363
 translate Spanish introMenu_4931fe8a:
 
     # "Your world was overrun. It festered. It swarmed."
-    ""
+    "Tu mundo estaba infestado. Infectado. Invadido."
 
 # game/script.rpy:2364
 translate Spanish introMenu_04ccbdb7:
 
     # "Every tree and lantern and street-corner was teeming with gutterlings, bat-folk, scab-eaters, rounds, lurks, sworlk, nathorn-hobs, lantern-lings, curselings, grimmel-dobbies, fold-overs, whisper kings, hook-takers, the cannibal wind howling 'cross the plains, ghost water pooling luminescent in underground caverns. Every house was haunted and every knife was drawn against the dark."
-    ""
+    "Cada árbol, farol y esquina de la calle estaba a rebosar de canalétidos, quiroáceos, comecostras, oróndicos, acechantes, suorquídeos, pintipúas, farolinos, maldictores, labragrimos, concaconvexos, susurreales, ganchaferros, del viento caníbal que aúlla tras las llanuras, o de agua espectral que forma charcos luminiscentes en grutas subterráneas. Cada casa estaba encantada y cada cuchillo con el filo virado a las sombras."
 
 # game/script.rpy:2365
 translate Spanish introMenu_55c1420d:
@@ -1326,7 +1326,7 @@ translate Spanish introMenu_55c1420d:
 translate Spanish introMenu_7c576d42:
 
     # "Yours was a many-haunted land, my child."
-    ""
+    "Tu tierra estaba acechada por encantos doquiera, criatura."
 
 # game/script.rpy:2368
 translate Spanish introMenu_f4f03c26:
@@ -1343,26 +1343,26 @@ translate Spanish introMenu_11f95f46:
 translate Spanish strings:
     # game/script.rpy:2349
     old "If you wonder whether you were happy there, turn to page 19."
-    new ""
+    new "Si te preguntas si eras feliz allí, ve a la página 19."
 
 # game/script.rpy:2375
 translate Spanish introMenu_0d7d6864:
 
     # "Well, it was a rich house, and you had everything you could ever want."
-    ""
+    "Bueno, era una casa de abundancia. Cualquier antojo que tuvieras no quedaba sin satisfacer."
 
 # game/script.rpy:2377
 translate Spanish introMenu_48440043:
 
     # "Well, it was a happy house."
-    ""
+    "Bueno, era una casa animada."
 
 ##== If 1 person has disappeared
 # game/script.rpy:2378
 translate Spanish introMenu_b2dea097:
 
     # "The house was always full of chatter from your ten siblings, and you were always cramped for space with all of them around."
-    ""
+    "La casa bullía con la algarabía de tus diez hermanos. Ibais muy justos de espacio cuando os juntabais todos."
 
 # game/script.rpy:2379
 translate Spanish introMenu_be73521b:
@@ -1374,7 +1374,7 @@ translate Spanish introMenu_be73521b:
 translate Spanish introMenu_0891572a:
 
     # "No matter how many people were around you, you felt like something was missing."
-    ""
+    "Porque por mucha gente que te rodeara, sentías que aún faltaba algo."
 
 ##== The festival happens for no known reason - this implies that the wolf has already been eating characters or concepts before the game begins.
 ##== Once, there was a reason for the festival - perhaps someone's birthday or an important event - but that reason has now been lost.
@@ -1382,13 +1382,13 @@ translate Spanish introMenu_0891572a:
 translate Spanish introMenu_b535dcee:
 
     # "Every year, on the day before your birthday, the village would throw a twilight festival for no reason anyone could name. On these nights you always felt strange."
-    ""
+    "Cada año, el día antes de tu cumpleaños, en la aldea se celebraba el festival del crepúsculo por alguna razón que escapaba al conocimiento de sus gentes. En noches así siempre sentías inquietud."
 
 # game/script.rpy:2382
 translate Spanish introMenu_61b53533:
 
     # "You would avoid the festival and stare deep into the woods all through the night."
-    ""
+    "Evitabas asomarte por el festival y pasabas la noche entera con la mirada fija en el bosque."
 
 ##== If 2 people have disappeared
 
@@ -1408,80 +1408,80 @@ translate Spanish introMenu_eddd3111:
 translate Spanish introMenu_270d3ca6:
 
     # "Underneath the old floorboards. Inside the crooked walls."
-    ""
+    "Bajo los tablones agrietados del suelo. Dentro de las paredes desniveladas."
 
 # game/script.rpy:2389
 translate Spanish introMenu_7bfc4222:
 
     # "Waiting for its time to come."
-    ""
+    "Aguarda el momento propicio."
 
 # game/script.rpy:2390
 translate Spanish introMenu_5b7b0f8b:
 
     # "Not long now."
-    ""
+    "Ya falta poco."
 
 ##== If 3 people have disappeared
 # game/script.rpy:2396
 translate Spanish introMenu_ab03be07:
 
     # "You lived a contented life. No-one bothered you. The stoop was full of fresh-cut logs for the fireplace. The house had many beds, so that you never lacked for a place to sleep."
-    ""
+    "Vivías con humildad. Nadie te molestaba. En el pórtico se acumulaban leños recién cortados para la hoguera. En la casa abundaban las camas, para que nunca te faltara dónde descansar."
 
 # game/script.rpy:2397
 translate Spanish introMenu_97b69347:
 
     # pov "The House provides."
-    pov ""
+    pov "La casa provee."
 
 # game/script.rpy:2398
 translate Spanish introMenu_7847b71d:
 
     # "You kept yourself busy and distracted as much as you could. But every day there came that terrible time when you finally had to lie down alone in bed."
-    ""
+    "Te mantenías ocupado y con distracciones todo lo que podías, pero cada día llegaba sin falta la hora temida, en la que debías acostarte en la cama a solas con tus pensamientos."
 
 # game/script.rpy:2399
 translate Spanish introMenu_c06a4f2d:
 
     # "As you lay awake in bed at night, you felt the silence."
-    ""
+    "Mientras yacías despierto en mitad de la noche, sentías el silencio."
 
 # game/script.rpy:2400
 translate Spanish introMenu_6192752c:
 
     # "It lurked behind everything. Like a shadow on the wall of something that you dared not turn around to see."
-    ""
+    "Acechaba detrás de todo cuanto había: era como la sombra que se refleja en una pared cuya fuente no te atreves a averiguar."
 
 # game/script.rpy:2401
 translate Spanish introMenu_7850b3e8:
 
     # "You found yourself leaving the taps going, the fire roaring, keeping the pots and pans rattling just to shut it out. Just so you couldn't hear what lay behind the sound."
-    ""
+    "Pronto te dio por dejar los grifos abiertos, el fuego encendido y con los cazos y las sartenes repiqueteando al viento con tal de llenar el vacío. No querías saber qué se ocultaba detrás de todo ello."
 
 # game/script.rpy:2410
 translate Spanish introMenu_8566e63a:
 
     # "Soon you could stand it no longer. You knew there would be a festival in town tonight (although you could not have said how you knew this)."
-    ""
+    "Hasta que no pudiste soportarlo más. Sabías que se celebraba un festival en la aldea aquella noche (aunque no te explicabas cómo estabas al tanto)."
 
 # game/script.rpy:2411
 translate Spanish introMenu_f78b0dd8:
 
     # "You searched the pantry and found a package wrapped up with a coinpurse, along with some bread and meat."
-    ""
+    "Rebuscaste en la despensa hasta dar con un paquete que contenía un monedero, así como algo de pan y carne."
 
 # game/script.rpy:2412
 translate Spanish introMenu_97b69347_1:
 
     # pov "The House provides."
-    pov ""
+    pov "La casa provee."
 
 translate Spanish strings:
 
     # game/script.rpy:2349
     old "To continue the story, turn to page 34."
-    new ""
+    new "Para continuar con la historia, ve a la página 34."
 
 # game/script.rpy:2420
 translate Spanish introMenu_b981911d:
@@ -1550,19 +1550,19 @@ translate Spanish introMenu_80bd3e95:
 translate Spanish introMenu_87ba52cf:
 
     # mum "A terrible wolf lurks out there, in the space between the trees."
-    mum ""
+    mum "Un lobo feroz acecha en la fronda, en el vacío entre los árboles."
 
 # game/script.rpy:2441
 translate Spanish mushroomIntro_53f99785:
 
     # "And so you took up your belongings and strode on down the road to the festival."
-    ""
+    "Guardaste tus pertenencias y emprendiste el camino que llevaba al festival."
 
 # game/script.rpy:2443
 translate Spanish mushroomIntro_8993a103:
 
     # "The twilight set in. The wet cool mist of the rainforest settled around you."
-    ""
+    "Llegó el crepúsculo. La neblina húmeda y fresca del bosque se posó a tu alrededor."
 
 # game/script.rpy:2444
 translate Spanish mushroomIntro_a65f7d99:
@@ -1574,7 +1574,7 @@ translate Spanish mushroomIntro_a65f7d99:
 translate Spanish mushroomIntro_a45b6992:
 
     # "No birdsong disturbed the peace."
-    ""
+    "No se oían cantos de pájaros que cortaran la quietud."
 
 # game/script.rpy:2447
 translate Spanish mushroomIntro_83a71b8c:
@@ -1606,43 +1606,43 @@ translate Spanish mushroomIntro_83ead349:
 translate Spanish mushroomIntro_9034bb1d:
 
     # "In the depths of the woods, you heard nothing."
-    ""
+    "En la hondura del bosque no oíste nada de nada."
 
 # game/script.rpy:2458
 translate Spanish mushroomIntro_5119f10c:
 
     # "You saw no-one."
-    ""
+    "No viste a nadie."
 
 # game/script.rpy:2459
 translate Spanish mushroomIntro_1b6ae7d8:
 
     # "You were alone."
-    ""
+    "Estabas a solas."
 
 # game/script.rpy:2460
 translate Spanish mushroomIntro_7e507a6d:
 
     # "You continued on down the empty road."
-    ""
+    "Proseguiste por el camino intransitado."
 
 # game/script.rpy:2465
 translate Spanish mushroomIntro_f8fe74f5:
 
     # "As you walked down the road, you saw the wise mushroom moving through the deep darkness of the trees, her pale spores flowing in a fog behind her."
-    ""
+    "Conforme recorrías el sendero, distinguiste a la amanita sabia entre los recovecos oscuros de los árboles; sus pálidas esporas se extendían como una niebla que dejaba tras de sí."
 translate Spanish strings:
 
     # game/script.rpy:2469
     old "In her left hand she held a small lantern, and in her right hand she held a crooked knife stained green."
-    new ""
+    new "Sujetaba en la mano izquierda un farolillo, mientras que en la derecha empuñaba un cuchillo gastado y sucio con manchas verdes."
 
 ##== If you ignore the mushroom and leave
 translate Spanish strings:
 
     # game/script.rpy:2469
     old "If you ignored her and followed the path like an honest Christian, turn to page 42."
-    new ""
+    new "Si la ignoras y sigues por el camino como un cristiano de bien, ve a la página 42."
 
 # game/script.rpy:2669
 translate Spanish basement_292e2963:
@@ -1654,13 +1654,13 @@ translate Spanish basement_292e2963:
 translate Spanish basement_28389284:
 
     # pov "Thank goodness that I know not to ask of what concerns me not! That could have led me to some kind of dangerous and magical adventure!\""
-    pov ""
+    pov "¡Menos mal que no indago sobre lo que no me atañe! ¡A saber qué aventura mágica a la par que peligrosa me hubiera aguardado!\""
 
 # game/script.rpy:2671
 translate Spanish basement_d14766b6:
 
     # "And so you continued on down the path, giving thanks to our Lord for your natural good sense."
-    ""
+    "Con lo cual, retomaste la ruta mientras le dabas las gracias a Nuestro Señor por tu buen juicio."
 
 ##== Once some people have disappeared, you get the chance to just walk into the forest where you can get information about the wolf.
 ##==---> All of these "Walk into the woods" options go to forest exploration scenes, which are later in the script.
@@ -1668,7 +1668,7 @@ translate Spanish strings:
 
     # game/script.rpy:2469
     old "If you turned and walked into the space between the trees, turn to page 40."
-    new ""
+    new "Si te desvías del camino y te adentras en el vacío entre los árboles, ve a la página 40."
 
 # game/script.rpy:2681
 translate Spanish basement_ca84aec7:
@@ -1679,13 +1679,13 @@ translate Spanish basement_ca84aec7:
 translate Spanish strings:
     # game/script.rpy:2469
     old "If you followed her, turn to page 25."
-    new ""
+    new "Si la sigues, ve a la página 25."
 
 # game/script.rpy:2472
 translate Spanish mushroomIntro_16f02ffc:
 
     # "You left the path and followed her from a distance."
-    ""
+    "Abandonaste el camino y la seguiste marcando una distancia prudencial."
 
 # game/script.rpy:2475
 translate Spanish mushroomIntro_9ca04211:
@@ -1697,7 +1697,7 @@ translate Spanish mushroomIntro_9ca04211:
 translate Spanish mushroomIntro_0c9134fa:
 
     # m "Gorge, guzzle, gulp and grab; never shall this wound scab.{vspace=160}{i}In your notes, write down that you {b}know the password.{/b}{/i}"
-    m ""
+    m "Emboca, engulle, embucha y empuña; que esta herida jamás conozca costra. {vspace=160}{i}Dejas por escrito en tus notas lo siguiente: {b}sabes cuál es el santo y seña.{/b}{/i}"
 
 translate Spanish strings:
 
@@ -1707,42 +1707,42 @@ translate Spanish strings:
 
     # game/script.rpy:2485
     old "If you went back to the path, turn to page 28."
-    new ""
+    new "Si das media vuelta y regresas al camino, ve a la página 28."
 
 # game/script.rpy:2677
 translate Spanish basement_0624b08b:
 
     # "You turned and kept on walking down the path, just as your mother taught you."
-    ""
+    "Te giraste y te ceñiste a tu camino, tal y como tu madre te había inculcado."
 translate Spanish strings:
 
     # game/script.rpy:2485
     old "If you entered the door, turn to page 26."
-    new ""
+    new "Si entras por la puerta, ve a la página 26."
 
 # game/script.rpy:2490
 translate Spanish mushroomIntro_c1514f47:
 
     # "You quickly snuck inside before the door closed behind you."
-    ""
+    "Te apresuraste a colarte antes de que la puerta se cerrara a tus espaldas."
 
 # game/script.rpy:2494
 translate Spanish mushroomIntro_7702fa80:
 
     # "Inside you were shocked to find the tree completely hollow. A boundless cavern was formed inside it, cold as ice despite the heat outside."
-    ""
+    "Dentro, te quedaste ojiplático al ver que el árbol estaba totalmente hueco. Se había formado una caverna sin fondo, en la que se propagaba un frío seco a pesar del calor que hacía afuera."
 
 # game/script.rpy:2495
 translate Spanish mushroomIntro_7cad57c0:
 
     # "The floor of the cavern was piled with rubies and pearls and glinting onyx and solid gold pieces, larger than your fist."
-    ""
+    "El suelo de la caverna estaba hasta los topes de rubíes, perlas, ónices relucientes y doblones de oro más grandes que tu puño."
 
 # game/script.rpy:2496
 translate Spanish mushroomIntro_85d6bd17:
 
     # "All across the room you saw lush silks and pillars of precious metals of every type and all manner of riches that would turn the King of Kings green with envy."
-    ""
+    "Por toda la sala descubriste sedas opulentas, pilares de metales preciosos de todo tipo y toda suerte de riquezas que dejarían al Rey de Reyes verde de envidia."
 
 # game/script.rpy:2497
 translate Spanish mushroomIntro_cf83b469:
@@ -1754,25 +1754,25 @@ translate Spanish mushroomIntro_cf83b469:
 translate Spanish mushroomIntro_5c8229e0:
 
     # "There was no sign of the mushroom anywhere."
-    ""
+    "No se veía a la amanita por ninguna parte."
 
 # game/script.rpy:2499
 translate Spanish mushroomIntro_df04bd84:
 
     # "In the stillness you heard muffled noises coming from a small black door, deep in the recesses of the cavern."
-    ""
+    "En plena quietud alcanzabas a oír unos sonidos ahogados que provenían del otro lado de una pequeña puerta negra, allá por una parte recóndita de la caverna."
 
 # game/script.rpy:2500
 translate Spanish mushroomIntro_857662e0:
 
     # "And the distant echo of some soft sound."
-    ""
+    "También el eco lejano de algún sonido tenue."
 
 # game/script.rpy:2501
 translate Spanish mushroomIntro_ce9f1473:
 
     # "It almost sounded like scratching. In the walls of the chamber."
-    ""
+    "Casi parecían arañazos. Rasgaduras en las paredes de la cámara."
 
 ##=== If you choose to leave immediately:
 
@@ -1780,19 +1780,19 @@ translate Spanish mushroomIntro_ce9f1473:
 translate Spanish mushroomIntro_95c44ec9:
 
     # "All at once you remembered the festival, and your Godparent, and the promise you made to your mother. This was no time to be dallying about exploring caverns! You had to find a way to escape your fate before midnight."
-    ""
+    "De súbito recordaste el festival, tu padrino y la promesa que forjaste con tu madre. ¡Era un momento pésimo para una caminata en las cavernas! Lo que apremiaba ahora era cómo librarte de tu destino antes de la medianoche."
 
 # game/script.rpy:2503
 translate Spanish mushroomIntro_e7369101:
 
     # "Run along now, child."
-    ""
+    "Aligera el paso, criatura."
 
 # game/script.rpy:2506
 translate Spanish mushroomIntro_1afcff0a:
 
     # "You left the cavern at once and continued on towards the festival."
-    ""
+    "Enseguida te marchaste de la caverna y pusiste rumbo nuevamente al festival."
 
 ##=== If you explore:
 
@@ -1838,7 +1838,7 @@ translate Spanish mushroomIntro_6d7616b8:
 translate Spanish mushroomIntro_cf9fb1aa:
 
     # m "I'm sure I remember telling you quite clearly never to darken my door again."
-    m ""
+    m "Creo haberte dicho que no volvieras a mancillar mi cancela."
 
 ##== This is her talking to herself. The mushroom has multiple selves that are all connected by the mycelial network underground, making them basically one being. That's why she thinks all humans are the same one being.
 
@@ -1846,13 +1846,13 @@ translate Spanish mushroomIntro_cf9fb1aa:
 translate Spanish mushroomIntro_a0f58d2c:
 
     # "She looked off to the side."
-    ""
+    "Apartó la mirada a un lado."
 
 # game/script.rpy:2517
 translate Spanish mushroomIntro_4e468d4f:
 
     # m "Yes, I'm just telling them now. One moment."
-    m ""
+    m "Sí. Eso mismo es lo que acabo de decir. Un momento."
 
 # game/script.rpy:2518
 translate Spanish mushroomIntro_8af21f74:
@@ -1864,31 +1864,31 @@ translate Spanish mushroomIntro_8af21f74:
 translate Spanish mushroomIntro_81136717:
 
     # m "Not without an invitation, at least."
-    m ""
+    m "Al menos, no sin que me inviten primero."
 
 # game/script.rpy:2525
 translate Spanish mushroomWater_f97915a4:
 
     # m "Out with it, then. What do you want?" nointeract
-    m "" nointeract
+    m "Desembucha, pues. ¿Qué quieres?" nointeract
 
 translate Spanish strings:
 
     # game/script.rpy:2524
     old "If you asked for some water, turn to page 33."
-    new ""
+    new "Si le pides un vaso de agua, ve a la página 33."
 
 # game/script.rpy:2527
 translate Spanish mushroomWater_86acea04:
 
     # pov "Just some water would be nice, please."
-    pov ""
+    pov "Un poco de agua si es tan amable, gracias."
 
 # game/script.rpy:2528
 translate Spanish mushroomWater_7067279c:
 
     # m "{i}Water?{/i} Really?"
-    m ""
+    m "{i}¿Agua?{/i} ¿Seguro?"
 
 ##== This joke is a bit high-concept but basically the mushroom has kind of a snooty art critic style of persona (before she entered the book she was a bohemian actress in france in the 1920's).
 ##== The joke is that she's critiquing you as if you were a work of art and finding you quite derivative and stale. You're not exactly pushing the medium forward.
@@ -1897,61 +1897,61 @@ translate Spanish mushroomWater_7067279c:
 translate Spanish mushroomWater_30247836:
 
     # m " How... conventional."
-    m ""
+    m "Qué... ortodoxo."
 
 # game/script.rpy:2530
 translate Spanish mushroomWater_e41b0490:
 
     # pov "What's wrong with water?"
-    pov ""
+    pov "¿Qué tiene de malo el agua?"
 
 # game/script.rpy:2531
 translate Spanish mushroomWater_8997755e:
 
     # m "Oh, nothing, nothing. It's fine. If you're into that sort of thing."
-    m ""
+    m "¿Mmm? No, no, nada. Todo correcto, si es lo que sacia tu sed."
 
 # game/script.rpy:2532
 translate Spanish mushroomWater_14df9559:
 
     # m "It's just a bit... derivative, isn't it? A bit played out."
-    m ""
+    m "Pero, qué se yo... ¿No te parece un patrón predecible? Es decir, se rige a una fórmula ya vista."
 
 # game/script.rpy:2533
 translate Spanish mushroomWater_48bff423:
 
     # m "You know, \"I'm a lumbering humanoid, I love digesting liquids in order to sustain my bodily functions, dah de dah de dah\", etc, etc. Is this really the type of harmful stereotype we want to play into?"
-    m ""
+    m "Lo que me transmites es: \Soy un ser humanoide de porte tosco. Me apasiona la digestión de líquidos para que mis funciones corporales se mantengan activas, blablablá.\ ¿Quieres caer en un estereotipo tan manido? ¿Seguro?"
 
 # game/script.rpy:2535
 translate Spanish mushroomWater_412bc256:
 
     # pov "Uh... I can drink something else-"
-    pov ""
+    pov "Eh... También puedo tomar otra cosa..."
 
 # game/script.rpy:2536
 translate Spanish mushroomWater_bfc74972:
 
     # m "No no, don't push yourself, it's fine. We can't all be innovators."
-    m ""
+    m "No, no, tampoco te fuerces. Lo pedido, pedido está. La innovación no está al alcance de cualquiera."
 
 # game/script.rpy:2537
 translate Spanish mushroomWater_30c8197a:
 
     # m "I'll go get the water. Please, have a seat and relax."
-    m ""
+    m "Voy a traerte el agua. Siéntate, como si estuvieras en tu casa."
 
 # game/script.rpy:2539
 translate Spanish mushroomWater_a269e671:
 
     # m "But do not, under any circumstances, go into the basement."
-    m ""
+    m "Ahora bien: ni se te ocurra, pero ni por casualidad, entrar en el sótano."
 
 # game/script.rpy:2540
 translate Spanish mushroomWater_81efd904:
 
     # "She waved to a small, black door set into the bark of the tree."
-    ""
+    "Gesticuló hacia una pequeña puerta negra integrada en la corteza del árbol."
 
 # game/script.rpy:2541
 translate Spanish mushroomWater_0ffea2ef:
@@ -1963,7 +1963,7 @@ translate Spanish mushroomWater_0ffea2ef:
 translate Spanish mushroomWater_10cf689e:
 
     # m "Be right back."
-    m ""
+    m "Enseguida vuelvo."
 
 ##== If you ask about "The other you"
 translate Spanish strings:
@@ -1988,7 +1988,7 @@ translate Spanish strings:
 translate Spanish mushroomWater_ce46a653:
 
     # m "Darling, you're confused, you're babbling, you're all over the place, please, you're a mess. More so than usual, even."
-    m ""
+    m "Cariño mío, estás aturullado, no atinas a juntar palabras y eres más disloque que persona; hazme el favor, recomponte, para variar."
 
 ##== The thief was here a moment ago.
 
@@ -1996,63 +1996,63 @@ translate Spanish mushroomWater_ce46a653:
 translate Spanish mushroomWater_2227cc3d:
 
     # m "You were here just a minute ago. The you with the mask and the long legs."
-    m ""
+    m "Has estado aquí no hará ni un minuto. Has venido con una máscara y esas piernas tan larguiruchas."
 
 # game/script.rpy:2553
 translate Spanish mushroomWater_35a730a4:
 
     # m "Perhaps you should sit down and take a moment."
-    m ""
+    m "Siéntate, que te vendrá bien un respiro."
 
 # game/script.rpy:2554
 translate Spanish mushroomWater_ce7b6a91:
 
     # m "Can I get you anything? Decaying plant matter? It's all the rage back home."
-    m ""
+    m "¿Te pongo algo? ¿Quieres compost? En mi tierra causa sensación."
 
 ##== If you ask about her riches:
 translate Spanish strings:
 
     # game/script.rpy:2524
     old "If you enquired about the untold riches of her domain (with the gleam of avarice in your heart) turn to page 30."
-    new ""
+    new "Si le preguntas sobre las riquezas incontables de sus terrenos (guiado por la codicia que late en tu corazón), ve a la página 30."
 
 # game/script.rpy:2559
 translate Spanish mushroomWater_8959758e:
 
     # "She looked vaguely around the glittering splendour before you."
-    ""
+    "Miró por encima el esplendor reluciente que se hallaba ante ti."
 
 # game/script.rpy:2560
 translate Spanish mushroomWater_acc4423c:
 
     # m "Oh, this?"
-    m ""
+    m "¿Estas bagatelas?"
 
 # game/script.rpy:2561
 translate Spanish mushroomWater_a9672d2f:
 
     # "She dismissed the mountains of jewels with a wave of her hand."
-    ""
+    "Desdeñó las montañas de joyas con un gesto de la mano."
 
 # game/script.rpy:2562
 translate Spanish mushroomWater_7d06819b:
 
     # m "I told you. All the wealth of the world falls to us in the end."
-    m ""
+    m "Si ya te lo he dicho: todas las fortunas del mundo llegan, al final, hasta nosotras."
 
 ##== If you apologise:
 translate Spanish strings:
 
     # game/script.rpy:2524
     old "If you apologised for intruding and swore to make amends, turn to page 35."
-    new ""
+    new "Si te disculpas por irrumpir y juras redimir tu error, ve a la página 35."
 
 # game/script.rpy:2566
 translate Spanish mushroomWater_71dac625:
 
     # m "My dear, an apology is as good to me as a beard to a turtle-dove."
-    m ""
+    m "Corazón, una disculpa me importa tanto como una tómbola a una tórtola."
 
 # game/script.rpy:2567
 translate Spanish mushroomWater_b5ae6c40:
@@ -2075,7 +2075,7 @@ translate Spanish strings:
 translate Spanish basement_ffc866a4:
 
     # "Naturally you opened the basement door."
-    ""
+    "Como resulta más que obvio, abriste la puerta del sótano."
 
 # game/script.rpy:2581
 translate Spanish basement_0ae9bcd0:
@@ -2087,61 +2087,61 @@ translate Spanish basement_0ae9bcd0:
 translate Spanish basement_0e1605c1:
 
     # "Within, you saw a most terrible sight."
-    ""
+    "Al otro lado, fuiste testigo de un panorama atroz."
 
 # game/script.rpy:2586
 translate Spanish basement_44516fd2:
 
     # "Seven mushroom corpses hung in the room, dripping black ichor, each being feasted upon by a fat blue-tongued lizard."
-    ""
+    "Siete cadáveres de amanitas pendían del techo de la sala; de sus cuerpos permeaba un icor negruzco, y cada una de ellas era sustento de un lagarto rotundo de lengua azul."
 
 # game/script.rpy:2587
 translate Spanish basement_1b752c58:
 
     # "Every one of them was identical to the lady Mushroom herself."
-    ""
+    "Todos y cada uno de ellos eran en su imagen y semejanza como la mismísima Amanita."
 
 # game/script.rpy:2588
 translate Spanish basement_e439a25d:
 
     # pov "W-what is this?"
-    pov ""
+    pov "¿Qué?... ¿Qué es todo esto?"
 
 # game/script.rpy:2589
 translate Spanish basement_157ce7ca:
 
     # m "Fool!"
-    m ""
+    m "¡¡¡Necio!!!"
 
 # game/script.rpy:2591
 translate Spanish basement_8815f661:
 
     # "The mushroom appeared from the earth before you with a terrible crash."
-    ""
+    "La amanita surgió desde la tierra con un crujido atronador."
 
 # game/script.rpy:2592
 translate Spanish basement_02c39077:
 
     # m "You have asked about what concerns you not, and so you will hear what pleases you not!"
-    m ""
+    m "Has indagado sobre lo que no te atañe; ¡pues bien, ahora oirás lo que te dañe!"
 
 # game/script.rpy:2594
 translate Spanish basement_818a3274:
 
     # m "I gave you fair warning, darling. Now all your milk will spoil, all your bread will burn, your socks will always be wet, and you will live in torment for the rest of your days!"
-    m ""
+    m "¿Acaso no te lo advertí, ricura? Escúchame bien: ¡toda la leche se te cuajará, todo el pan se te chamuscará, tus calcetines estarán húmedos siempre y vivirás atormentado hasta el fin de tus días!"
 
 # game/script.rpy:2595
 translate Spanish basement_74458d1e:
 
     # pov "Noooooooo!"
-    pov ""
+    pov "¡¡¡Noooooooo!!!"
 
 # game/script.rpy:2596
 translate Spanish basement_2257179c:
 
     # m "Don't say I didn't tell you so."
-    m ""
+    m "Ibas sobre aviso y solo tú tienes la culpa."
 
 # game/script.rpy:2597
 translate Spanish basement_9789e9da:
@@ -2153,47 +2153,47 @@ translate Spanish basement_9789e9da:
 translate Spanish basement_c5143696:
 
     # pov "Please, Lady Mushroom, spare me your curse. If you do, I will tell you a story, the likes of which would cause you to go white with astonishment if you were to hear it."
-    pov ""
+    pov "¡Se lo suplico, dama Amanita, no me maldiga! Concédame ese perdón y le contaré una historia tan intrigante que la dejará pálida de la impresión."
 
 # game/script.rpy:2599
 translate Spanish basement_409c98e8:
 
     # m "Ha! Please."
-    m ""
+    m "¡Ja! Ahórratela."
 
 # game/script.rpy:2600
 translate Spanish basement_b786f4e9:
 
     # m "I've talked with the ferns, who saw the dinosaurs rise and fall."
-    m ""
+    m "He hablado con los helechos, que fueron testigos del apogeo y la caída de los dinosaurios."
 
 # game/script.rpy:2601
 translate Spanish basement_16c088a0:
 
     # m "I am one with the mosses and lichens of the land who are even older still. I have talked to ancient trees who saw the inferno and the deluge and yet still stand."
-    m ""
+    m "Soy una con los musgos y los líquenes repartidos por toda esta tierra, que se remontan a tiempos aún más pretéritos. He hablado con árboles milenarios que vieron el infierno y vivieron el diluvio y permanecen erguidos."
 
 # game/script.rpy:2606
 translate Spanish basement_c362c855:
 
     # m "What could you possibly tell me that I don't already know?" nointeract
-    m "" nointeract
+    m "¿Qué me vas a contar tú que no sepa ya?" nointeract
 
 translate Spanish strings:
     # game/script.rpy:2605
     old "If you told her about the festival, turn to page 4."
-    new ""
+    new "Si le hablas del festival, ve a la página 4."
 
 # game/script.rpy:2608
 translate Spanish basement_370a3c58:
 
     # pov "I'm on my way to the festival, and there will be people there from all over this cryptic earth. Surely one of them will have a story you haven't heard before."
-    pov ""
+    pov "Voy de camino a un festival, en el que se junta gente de todas partes de estas tierras tan enigmáticas. Tal vez alguien de por allí me cuente una historia que desconoces."
 
 translate Spanish strings:
     # game/script.rpy:2605
     old "If you told her about your Godparent, turn to page 62."
-    new ""
+    new "Si le hablas de tu padrino, ve a la página 62."
 
 ##== This sentence changes based on your godparent.
 ##== God:
@@ -2201,50 +2201,50 @@ translate Spanish strings:
 translate Spanish basement_fcb480ef:
 
     # pov "I'm seeking a way to escape being taken by my Godfather, the old man in heaven. Surely the story of my adventure will be unique enough for you."
-    pov ""
+    pov "Busco la manera de librarme de las garras de mi padrino, el señor de los cielos. ¡Quizá la historia de mis aventuras le resulte lo bastante única!"
 
 ##== The Devil:
 # game/script.rpy:2613
 translate Spanish basement_f29c40bc:
 
     # pov "I'm seeking a way to escape my Godfather, Lucifer. Surely the story of my adventure will be unique enough for you."
-    pov ""
+    pov "Busco la manera de librarme de las garras de mi padrino, Lucifer. ¡Quizá la historia de mis aventuras le resulte lo bastante única!"
 
 ##== Death:
 # game/script.rpy:2615
 translate Spanish basement_2a858eeb:
 
     # pov "I'm seeking a way to escape my Godmother, Annihilation. Surely the story of my adventure will be unique enough for you."
-    pov ""
+    pov "Busco la manera de librarme de las garras de mi madrina, Aniquilación. ¡Quizá la historia de mis aventuras le resulte lo bastante única!"
 
 # game/script.rpy:2616
 translate Spanish basement_e09dccbc:
 
     # "The Mushroom grew quiet as she thought over your proposal, and you prayed to the Most High (May He watch over us always) to deliver you from this terrible situation."
-    ""
+    "La Amanita permaneció callada mientras rumiaba tu propuesta. Rezaste al Altísimo (que nos guarde por siempre) para que te salvara de esta situación tan trágica."
 # game/script.rpy:2617
 translate Spanish basement_2ce3b864:
 
     # m "Very well, dear. I'll let you go."
-    m ""
+    m "De acuerdo, dulzura. Dejaré que te marches."
 
 # game/script.rpy:2618
 translate Spanish basement_588b3ff0:
 
     # m "But be warned: If you fail to return to me this very night with the story you have promised me, then your punishment will be as tenfold."
-    m ""
+    m "Pero te lo advierto: como no regreses a mi vera esta misma noche con la historia que se me ha prometido, tu castigo será diez veces peor."
 
 # game/script.rpy:2619
 translate Spanish basement_40e3cc46:
 
     # m "You will be fated to trip over a stone and into the ocean and drown, and when you die, your ghost will come back as a wild dog, and harry your mother and father all day and night, nipping at their heels until they both fall into deep wells and turn into terrible black fish that will lie forever there at the bottom of those pits, moaning weakly and cursing the ungrateful child who brought them such devastation and woe."
-    m ""
+    m "Te condenaré a tropezar con una piedra y a precipitarte al océano, donde te ahogarás y morirás. Cuando mueras, tu fantasma se reencarnará en un perro callejero que atosigará a tu madre y a tu padre cada día y cada noche, mordisqueándoles los tobillos hasta que tropiecen también en pozos profundos y se conviertan en peces oscuros y abominables que yacerán por siempre en el fondo, mientras gimotean sin fuerzas y maldicen al hijo ingrato que les provocó tales desgracias y pesares."
 
 # game/script.rpy:2621
 translate Spanish basement_74458d1e_1:
 
     # pov "Noooooooo!"
-    pov ""
+    pov "¡¡¡Noooooooo!!!"
 
 # game/script.rpy:2622
 translate Spanish basement_6944a9b5:
@@ -2276,144 +2276,144 @@ translate Spanish basement_5c20ec0d:
 translate Spanish basement_4b916869:
 
     # "Now you had two burdens: To escape the grip of your Godmother, and to find a story that could satisfy the disdainful Mushroom."
-    ""
+    "Ahora te ataban dos cadenas: la primera, el yugo que tu madrina ejercía sobre ti, a lo que se sumaba una historia que impresionara a la Amanita escéptica."
 
 ##== Godfather:
 # game/script.rpy:2631
 translate Spanish basement_6ed50217:
 
     # "Now you had two burdens: To escape the grip of your Godfather, and to find a story that could satisfy the disdainful Mushroom."
-    ""
+    "Ahora te ataban dos cadenas: la primera, el yugo que tu padrino ejercía sobre ti, a lo que se sumaba una historia que impresionara a la Amanita escéptica."
 
 # game/script.rpy:2632
 translate Spanish basement_a207d478:
 
     # "\"Never again,\" you cried to yourself, \"Will I ask of what concerns me not!\""
-    ""
+    "\¡Nunca más!\—clamaste— \¡Nunca más indagaré sobre lo que no me atañe!\""
 
 ##== If you choose not to go into the basement
 translate Spanish strings:
 
     # game/script.rpy:2574
     old "If you sat patiently and waited for your tea, turn to page 86."
-    new ""
+    new "Si te sientas tranquilamente a esperar el té, ve a la página 86."
 
 # game/script.rpy:2635
 translate Spanish basement_690236e5:
 
     # "In an unlikely turn of events, you sat there and waited patiently, paying no mind to the mysterious door."
-    ""
+    "En un giro inesperado de los acontecimientos, te quedaste sentado y esperaste mano sobre mano, sin prestar atención a la puerta misteriosa."
 
 
 # game/script.rpy:2636
 translate Spanish basement_d2698305:
 
     # "(Some protagonist you turned out to be.)"
-    ""
+    "(¡Vaya protagonista de poca monta!)."
 
 # game/script.rpy:2637
 translate Spanish basement_f826fb25:
 
     # "Soon, the mushroom returned with a cup of water. You took a sip and then coughed violently."
-    ""
+    "La amanita no tardó en regresar con un vaso de agua. Diste un sorbo y empezaste a toser con fuerza."
 
 # game/script.rpy:2638
 translate Spanish basement_a1700cdc:
 
     # pov "Um, excuse me... this is full of compost."
-    pov ""
+    pov "¡Uf!... Disculpa, me lo has traído lleno de compost."
 
 # game/script.rpy:2639
 translate Spanish basement_e4b3252a:
 
     # m "Yes of course, darling. It's the latest thing."
-    m ""
+    m "Pues claro, hermosura; es el no va más."
 
 # game/script.rpy:2640
 translate Spanish basement_4c323bc0:
 
     # m "It's rich. It's bold. It's avant-garde. It may not be what you {i}want{/i} right now, but it is what you {i}need{/i}."
-    m ""
+    m "Fragante, impactante y rezuma frescor. Quizá no sea lo que te apetezca ahora mismo, pero te aseguro que es lo que necesitas. "
 
 # game/script.rpy:2641
 translate Spanish basement_41491814:
 
     # m "So, what brings you back here?"
-    m ""
+    m "Bueno, ¿qué te trae de vuelta por aquí?"
 
 
 # game/script.rpy:2643
 translate Spanish basement_9e883e92:
 
     # "You told her of the terrible dilemma with your Godfather, our Dear Lord."
-    ""
+    "Le hablaste acerca de la dicotomía a la que te enfrentabas por tu padrino, Nuestro Señor."
 
 # game/script.rpy:2645
 translate Spanish basement_6852de75:
 
     # "You told her of the terrible dilemma with your Godfather, Old Nick."
-    ""
+    "Le hablaste acerca de la dicotomía a la que te enfrentabas por tu padrino, el maligno."
 
 # game/script.rpy:2647
 translate Spanish basement_d4b95377:
 
     # "You told her of the terrible dilemma with your Godmother, who rides a pale horse."
-    ""
+    "Le hablaste acerca de la dicotomía a la que te enfrentabas por tu madrina, jinete de un caballo pálido."
 
 # game/script.rpy:2648
 translate Spanish basement_60c37906:
 
     # m "Hmm. Quite the story, darling."
-    m ""
+    m "Mmm... Qué historia más trepidante, corazón."
 
 # game/script.rpy:2649
 translate Spanish basement_99ad019c:
 
     # m "I must say, you could certainly work on the pacing. And I think the obvious analogy you've drawn for 13th century France and the fragmentation of the Carolingian Empire was a tad heavy-handed. But it's a good start."
-    m ""
+    m "Aunque debo decir que tienes pendiente lo de pulir el ritmo de la narrativa, por no hablar de lo obvia y forzada que resulta la analogía que has trazado de la Francia del siglo XIII y la división del Imperio Carolingio. Dicho lo cual, el comienzo promete."
 
 ##== If your godparent is death:
 # game/script.rpy:2651
 translate Spanish basement_28a3b94d:
 
     # m "I know a bit about pale-faced Death. Her house is not far from here. Perhaps -"
-    m ""
+    m "Sé alguna cosilla que otra de la pálida Muerte. Su casa no queda muy lejos de aquí, así que quizá..."
 
 # game/script.rpy:2652
 translate Spanish basement_c866934d:
 
     # "A large grandfather clock in the corner suddenly chimed, and she looked up with a start."
-    ""
+    "De repente resonó un reloj de antesala que decoraba la esquina, a lo que la amanita lo miró sobresaltada."
 
 # game/script.rpy:2653
 translate Spanish basement_4eff28c6:
 
     # m "Oh dear. Time marches on, even for me."
-    m ""
+    m "¡Ay, pardiez! El tiempo no perdona, ni tan siquiera a mí."
 
 # game/script.rpy:2654
 translate Spanish basement_03f57286:
 
     # m "I'm sorry to be so rude but I'd better be off. Come back after the festival, and I may be able to help."
-    m ""
+    m "Siento quedar de descortés, pero debo marcharme ya. Regresa tras el festival y quizá pueda ayudarte."
 
 # game/script.rpy:2655
 translate Spanish basement_7deece90:
 
     # m "Please take care of yourself, dear. All of yourself."
-    m ""
+    m "Ve con cuidado, corazón. No te descuides."
 
 # game/script.rpy:2656
 translate Spanish basement_2e118bf6:
 
     # "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
-    ""
+    "Y, antes de que pudieras responder a aquel cierre insólito, se llevó tu vaso y te acompañó a la salida en un tris."
 
 # game/script.rpy:2657
 translate Spanish basement_86cea738:
 
     # "You took up your bag and set off down the road once more."
-    ""
+    "Así, te pusiste la mochila y retomaste el camino."
 
 ##== If your godparent is not death:
 # game/script.rpy:2660
@@ -2426,37 +2426,37 @@ translate Spanish basement_bba90b8f:
 translate Spanish basement_c866934d_1:
 
     # "A large grandfather clock in the corner suddenly chimed, and she looked up with a start."
-    ""
+    "De repente resonó un reloj de antesala que decoraba la esquina, a lo que la amanita lo miró sobresaltada."
 
 # game/script.rpy:2662
 translate Spanish basement_4eff28c6_1:
 
     # m "Oh dear. Time marches on, even for me."
-    m ""
+    m "¡Ay, pardiez! El tiempo no me perdona ni tan siquiera a mí."
 
 # game/script.rpy:2663
 translate Spanish basement_03f57286_1:
 
     # m "I'm sorry to be so rude but I'd better be off. Come back after the festival, and I may be able to help."
-    m ""
+    m "Siento quedar de descortés, pero debo marcharme ya. Regresa tras el festival y quizá pueda ayudarte."
 
 # game/script.rpy:2664
 translate Spanish basement_7deece90_1:
 
     # m "Please take care of yourself, dear. All of yourself."
-    m ""
+    m "Ve con cuidado, corazón. No te descuides."
 
 # game/script.rpy:2665
 translate Spanish basement_2e118bf6_1:
 
     # "And before you could reply to this strange remark, she took your cup and ushered you out of the door in an instant."
-    ""
+    "Y, antes de que pudieras responder a aquel cierre insólito, se llevó tu vaso y te acompañó a la salida en un tris."
 
 # game/script.rpy:2666
 translate Spanish basement_86cea738_1:
 
     # "You took up your bag and set off down the road once more."
-    ""
+    "Así, te pusiste la mochila y retomaste el camino."
 ##========= The Thief
 
 ##== If The Thief has disappeared
@@ -2464,32 +2464,32 @@ translate Spanish basement_86cea738_1:
 translate Spanish thief1_9034bb1d:
 
     # "In the depths of the woods, you heard nothing."
-    ""
+    "En la hondura del bosque no oíste nada de nada."
 
 # game/script.rpy:2694
 translate Spanish thief1_5119f10c:
 
     # "You saw no-one."
-    ""
+    "No viste a nadie."
 
 # game/script.rpy:2695
 translate Spanish thief1_1b6ae7d8:
 
     # "You were alone."
-    ""
+    "Estabas a solas."
 
 # game/script.rpy:2696
 translate Spanish thief1_7e507a6d:
 
     # "You continued on down the empty road."
-    ""
+    "Proseguiste por el camino intransitado."
 
 ##== If The Thief has not disappeared
 # game/script.rpy:2703
 translate Spanish thief1_f6b59914:
 
     # "As you were walking down the road thusly, you came upon an old beggar-woman."
-    ""
+    "Conforme recorrías el susodicho sendero, te encontraste con una mendiga de edad avanzada."
 
 # game/script.rpy:2704
 translate Spanish thief1_dde7ec84:
@@ -2501,36 +2501,36 @@ translate Spanish thief1_dde7ec84:
 translate Spanish thief1_47fc6deb:
 
     # mys "... "
-    mys ""
+    mys "..."
 
 # game/script.rpy:2707
 translate Spanish thief1_fb1319c0:
 
     # mys "Sorry, uh - Ho! Young Traveller!"
-    mys ""
+    mys "Perdón, eh... ¡Alto, joven viajante!"
 
 # game/script.rpy:2713
 translate Spanish thief1_a568147b:
 
     # mys "Might you lend a hand for a frail old woman? The woods are dark tonight, and I thought I heard howling from the space between the trees." nointeract
-    mys "" nointeract
+    mys "¿Serías tan buena persona de socorrer a una viejecita deslánguida como yo? Los bosques están cubierto por un manto de sombras, por no hablar del aullido en el hueco entre los árboles." nointeract
 
 translate Spanish strings:
     # game/script.rpy:2712
     old "If you helped the old woman, turn to page 73."
-    new ""
+    new "Si ayudaste a la viejecita, ve a la página 73."
 
 # game/script.rpy:2719
 translate Spanish thiefAccept_54ca720c:
 
     # "You took the old woman's arm to support her weight."
-    ""
+    "Asiste el brazo de la viejecita para que se apoyara en ti."
 
 # game/script.rpy:2720
 translate Spanish thiefAccept_15e8af36:
 
     # mys "FOOOOOL!"
-    mys ""
+    mys "¡¡¡NEEECIOOO!!!"
 
 # game/script.rpy:2721
 translate Spanish thiefAccept_2d215876:
@@ -2542,13 +2542,13 @@ translate Spanish thiefAccept_2d215876:
 translate Spanish thiefAccept_63dc0024:
 
     # "In her stead stood the cunning and terrible form of the Master Thief!"
-    ""
+    "Pues donde antes se hallaba la anciana, ¡ahora se erguía la silueta astuta y aviesa de le maestre ladrone!"
 
 # game/script.rpy:2724
 translate Spanish thiefAccept_a71e913d:
 
     # "Their hands shook under their midnight cloak."
-    ""
+    "Las manos se le agitaban bajo su capa del crepúsculo."
 
 # game/script.rpy:2726
 translate Spanish thiefAccept_2a201133:
@@ -2560,19 +2560,19 @@ translate Spanish thiefAccept_2a201133:
 translate Spanish thiefAccept_dda5ff77:
 
     # t "That's right, it's me! Back again to steal your heart and tear this land asunder!"
-    t ""
+    t "En efecto, ¡era yo! ¡He regresado para robar tu corazón y arrasar con estas tierras!"
 
 # game/script.rpy:2730
 translate Spanish thiefAccept_4bb520e4:
 
     # t "They'll never catch me, no matter how they try. I have placed my head in the wolf's mouth and never felt the sting of its coiling jaws."
-    t ""
+    t "Nadie me atrapará, por mucho empeño que en ello ponga. He posado la cabeza en la boca del lobo ¡y jamás he notado enroscarse en mi carne sus afilados colmillos!"
 
 # game/script.rpy:2731
 translate Spanish thiefAccept_a86ce1da:
 
     # t "I have stolen fire and cheated death. I will live forever. There's nothing you can do to stop me now."
-    t ""
+    t "He robado el fuego y engañado a la muerte. Viviré por siempre. ¡Nada hay que puedas hacer para detenerme!"
 
 # game/script.rpy:2732
 translate Spanish thiefAccept_7da90713:
@@ -2584,7 +2584,7 @@ translate Spanish thiefAccept_7da90713:
 translate Spanish thiefAccept_938ec3b6:
 
     # t "No law shall stand and no magistrate shall ever know peace, for as long as my legs can run!"
-    t ""
+    t "No quedará ley sin vulnerar, ni tampoco juez que logre descansar, ¡mientras mis piernas corran sin cesar!"
 
 # game/script.rpy:2735
 translate Spanish thiefAccept_9a679437:
@@ -2600,11 +2600,11 @@ translate Spanish thiefAccept_b88b9611:
 translate Spanish strings:
     # game/script.rpy:2741
     old "Despair gripped you."
-    new ""
+    new "La desesperación te atenazó."
 
     # game/script.rpy:2741
     old "If you chased after them anyway, turn to page 37."
-    new ""
+    new "Si, pese a todo, decidiste echarte a la carrera, ve a la página 37."
 
 # game/script.rpy:2744
 translate Spanish thiefChase_fe640abd:
@@ -3073,57 +3073,57 @@ translate Spanish toadIntro_6934c6ca:
 translate Spanish toadIntro_94e39276:
 
     # eg "Hold!"
-    eg ""
+    eg "¡Alto!"
 
 ##== If The Toad is one of the last characters left
 # game/script.rpy:2910
 translate Spanish toadIntro_11262a1a:
 
     # "There was a long pause."
-    ""
+    "Luego, una pausa larga."
 
 # game/script.rpy:2911
 translate Spanish toadIntro_e62182c5:
 
     # "You stood beside the carriage in an uncertain silence."
-    ""
+    "Permaneciste al lado del carruaje en un silencio incómodo."
 
 # game/script.rpy:2912
 translate Spanish toadIntro_f24eec59:
 
     # eg "I..."
-    eg ""
+    eg "Eh..."
 
 # game/script.rpy:2913
 translate Spanish toadIntro_d0ea7d1e:
 
     # eg "I forget what I'm supposed to say now."
-    eg ""
+    eg "Rábanos, se me ha olvidado qué debo decir."
 
 # game/script.rpy:2914
 translate Spanish toadIntro_b3bfbc68:
 
     # "His words came slowly. He seemed to be having difficulty speaking."
-    ""
+    "Sus palabras salen lentamente. Por lo que parece, le cuesta hablar."
 
 # game/script.rpy:2915
 translate Spanish toadIntro_14cc2cac:
 
     # pov "You're supposed to say, \"Where are you headed, fellow traveller?\""
-    pov ""
+    pov "Tienes que decir: «¿Adónde vas, viajante?»."
 
 # game/script.rpy:2916
 translate Spanish toadIntro_e67ff23c:
 
     # "The figure nodded gratefully."
-    ""
+    "La silueta asintió agradecida."
 
 ##== Otherwise:
 # game/script.rpy:2923
 translate Spanish toadIntro_94e39276_1:
 
     # eg "Hold!"
-    eg ""
+    eg "¡Alto!"
 
 # game/script.rpy:2925
 translate Spanish toadIntro_607d6bb0:
@@ -3153,71 +3153,71 @@ translate Spanish toadIntro_1a810ef5:
 translate Spanish strings:
     # game/script.rpy:2932
     old "If you told him about the festival, turn to page 12."
-    new ""
+    new "Si le hablas acerca del festival, ve a la página 12."
 
 # game/script.rpy:2935
 translate Spanish toadIntro_6c010a79:
 
     # eg "Why, that's exactly where I'm going!"
-    eg ""
+    eg "Vaya, ¡menuda casualidad, pues allí mismo me dirijo yo!"
 
 ##== If you say anything else:
 translate Spanish strings:
  # game/script.rpy:2932
     old "If you said \"The Glass Mountains\", turn to page 61."
-    new ""
+    new "Si le dices «A las montañas de cristal», ve a la página 61."
 
 # game/script.rpy:2937
 translate Spanish toadIntro_4834a92c:
 
     # eg "Nonsense! There's no reason to be travelling that way."
-    eg ""
+    eg "¡Paparruchas! Menudo sinsentido el de emprender la marcha hacia allá."
 
 # game/script.rpy:2938
 translate Spanish toadIntro_13222d06:
 
     # eg "I am heading to the village festival. You should join me."
-    eg ""
+    eg "Yo me dirijo al festival del pueblo. Deberías acompañarme."
 
 translate Spanish strings:
     # game/script.rpy:2932
     old "If you said \"The road of Pins and the road of Needles\", turn to page 61."
-    new ""
+    new "Si le dices «La senda de los alfileres y la senda de las agujas», ve a la página 61."
 
 # game/script.rpy:2940
 translate Spanish toadIntro_4834a92c_1:
 
     # eg "Nonsense! There's no reason to be travelling that way."
-    eg ""
+    eg "¡Paparruchas! Menudo sinsentido el de emprender la marcha hacia allá."
 
 # game/script.rpy:2941
 translate Spanish toadIntro_13222d06_1:
 
     # eg "I am heading to the village festival. You should join me."
-    eg ""
+    eg "Yo me dirijo al festival del pueblo. Deberías acompañarme."
 
 translate Spanish strings:
     # game/script.rpy:2932
     old "If you said \"The space between the trees\", turn to page 61."
-    new ""
+    new "Si le dices «Al hueco entre los árboles», ve a la página 61."
 
 # game/script.rpy:2943
 translate Spanish toadIntro_4834a92c_2:
 
     # eg "Nonsense! There's no reason to be travelling that way."
-    eg ""
+    eg "¡Paparruchas! Menudo sinsentido el de emprender la marcha hacia allá."
 
 # game/script.rpy:2944
 translate Spanish toadIntro_13222d06_2:
 
     # eg "I am heading to the village festival. You should join me."
-    eg ""
+    eg "Yo me dirijo al festival del pueblo. Deberías acompañarme."
 
 ##== If you don't answer
 translate Spanish strings:
      # game/script.rpy:2932
     old "If you said nothing, turn to page 57."
-    new ""
+    new "Si te mantienes en silencio, ve a la página 57."
 
 # game/script.rpy:2946
 translate Spanish toadIntro_9e03b6dc:
@@ -3241,18 +3241,18 @@ translate Spanish toadIntro_a3d08599:
 translate Spanish toadIntro_7d4b36f2:
 
     # "Your pig sniffed at the carriage suspiciously."
-    ""
+    "Tu cerdo olisqueó con suspicacia aquel carruaje."
 
 # game/script.rpy:2957
 translate Spanish toadIntro_b04f8ab9:
 
     # eg "This is no night to be walking out alone. Haven't you heard there's something in these woods?" nointeract
-    eg "" nointeract
+    eg "Esta noche no es amiga de los paseos en solitario, ¿o no te has enterado de que algo acecha en este bosque?" nointeract
 
 translate Spanish strings:
     # game/script.rpy:2956
     old "If you accepted the lift, turn to page 54."
-    new ""
+    new "Si aceptas que te lleve, ve a la página 54."
 
 # game/script.rpy:2975
 translate Spanish toadAccept_b74b7b8f:
@@ -4578,31 +4578,31 @@ translate Spanish village_4bd430f5:
 translate Spanish strings:
     # game/script.rpy:3368
     old "If you talked to the Gutterlings, turn to page 56."
-    new ""
+    new "Si hablaste con los canalétidos, ve a la página 56."
 
 # game/script.rpy:3474
 translate Spanish village_bf29c358:
 
     # g "'Allo mate."
-    g ""
+    g "Mu güenas."
 
 # game/script.rpy:3475
 translate Spanish village_ede81146:
 
     # g "Here's a tip. If you talk to people multiple times, they might have more to say."
-    g ""
+    g "Un consejillo de nada: habla varias veces con cada cual, y quizá te suelte alguna frase más."
 
 # game/script.rpy:3476
 translate Spanish village_c258f1a7:
 
     # g "It's true! Try it on us."
-    g ""
+    g "¡Palabra de honor! Pruébalo con nosotros."
 
 # game/script.rpy:3478
 translate Spanish village_96af6c4e:
 
     # g "That's the spirit!"
-    g ""
+    g "¡Muy bien, con ese ánimo!"
 
 # game/script.rpy:3479
 translate Spanish village_f01aed0b:
@@ -4614,19 +4614,19 @@ translate Spanish village_f01aed0b:
 translate Spanish village_39a660ae:
 
     # g "Just make sure not to talk to a Gutterling six times, or it'll own your soul forever."
-    g ""
+    g "Ahora bien, nada de hablar seis veces con un canalétido, ¡o se quedará con tu alma y los restos de esta!"
 
 # game/script.rpy:3483
 translate Spanish village_eb073be0:
 
     # g "Yep. You definitely don't want to do that."
-    g ""
+    g "Pues sí. Te aconsejamos con el puño en el pecho que no lo hagas."
 
 # game/script.rpy:3485
 translate Spanish village_4b340443:
 
     # g "..."
-    g ""
+    g "..."
 
 ##== If you talk to them six times it takes you to a small story where you escape from their lair.
 ##== See section: gutterlingStory
@@ -4634,7 +4634,7 @@ translate Spanish village_4b340443:
 translate Spanish village_7952c538:
 
     # g "Gotcha!"
-    g ""
+    g "¡Zacatrasca!"
     ##==--> Goes to INTERLUDE G: gutterlingstory
 
 ##======= Location: The Banquet by the river. Many variations of this based on how many people have disappeared.
@@ -5674,7 +5674,7 @@ translate Spanish toadWitchJoin_4215a4db:
 translate Spanish toadWitchJoin_b75b353a:
 
     # f "Ah, have you changed your mind?"
-    f ""
+    f "Ah, ¿has cambiado de opinión?"
 
 translate Spanish strings:
     # game/script.rpy:3792
@@ -6504,7 +6504,7 @@ translate Spanish townExplore_cb54ad72:
 translate Spanish townExplore_f50146d0:
 
     # sm "You are alone now."
-    sm ""
+    sm "Estás totalmente a solas."
 
 # game/script.rpy:4137
 translate Spanish townExplore_bbbdd90e:
@@ -6516,7 +6516,7 @@ translate Spanish townExplore_bbbdd90e:
 translate Spanish townExplore_8ed307af:
 
     # sm "Your limbs are slowing."
-    sm ""
+    sm "Brazos y piernas comienzan a agotársete."
 
 # game/script.rpy:4139
 translate Spanish townExplore_37fdf235:
@@ -10035,7 +10035,7 @@ translate Spanish goblinTrain_05c96d8c:
 translate Spanish goblinTrain_8bb3d117:
 
     # goblin2 "On the house! Just for tonight."
-    goblin2 ""
+    goblin2 "¡Invita la casa! Pero solo por esta noche."
 
 ##== Option D:
 translate Spanish strings:
@@ -12785,188 +12785,188 @@ translate Spanish thiefSoloConvo2_64c0cb6a:
 translate Spanish mushroom1_71b11ae1:
 
     # m "You again? Have you returned with a tale for me?" nointeract
-    m "" nointeract
+    m "¿Otra vez? ¿Has regresado con una historia para mí?" nointeract
 
 # game/script.rpy:6072
 translate Spanish mushroom1_2f540422:
 
     # "The mushroom ushered you and your pig inside, and you both took a seat in the plush red armchairs. Your pig snuffled around, searching for truffles. You pretended to sip a cup of decaying leaf matter as you told your tale."
-    ""
+    "La amanita os guio a tu cerdo y a ti adentro, y os sentasteis en las lujosas butacas rojas. Tu cerdo olisqueó los alrededores, en busca de trufas. Tú, por tu parte, fingiste dar un sorbo de las hojas en descomposición en tu copa mientras narrabas el relato."
 
 # game/script.rpy:6074
 translate Spanish mushroom1_5fdfc9ea:
 
     # "The mushroom ushered you inside, and you both took a seat in the plush red armchairs. You pretended to sip a cup of decaying leaf matter as you told your tale."
-    ""
+    "La amanita te guio adentro, y os sentasteis en las lujosas butacas rojas. Fingiste dar un sorbo de las hojas en descomposición en tu copa mientras narrabas el relato."
 
 ##== Option A:
 translate Spanish strings:
     # game/script.rpy:6061
     old "If you told the tale of how you attempted to catch the Master Thief, turn to page 134."
-    new ""
+    new "Si contaste el relato de cómo intentaste atrapar a le maestre ladrone, ve a la página 134."
 
 # game/script.rpy:6075
 translate Spanish mushroom1_fcabddfc:
 
     # m "Well! Never in all the years I've known you have you ever told me a tale such as this!"
-    m ""
+    m "¡Vaya! En todos los años que te conozco, ¡jamás me hubiera esperado una historia semejante!"
 
 # game/script.rpy:6076
 translate Spanish mushroom1_0f1646b8:
 
     # pov "Um... we only just met tonight."
-    pov ""
+    pov "Pero... si nos hemos conocido esta misma noche."
 
 ##== "The Other You's" - the mushroom thinks all humans are the same person with one conciousness, just with multiple bodies.
 # game/script.rpy:6077
 translate Spanish mushroom1_7e478744:
 
     # m "You know what I mean. The other you's."
-    m ""
+    m "Tú ya me entiendes; a los otros túes."
 
 # game/script.rpy:6084
 translate Spanish mushroomTales_365c61a5:
 
     # m "I have to say, darling, your stories are improving. Still a bit flabby in the second act, but I was most intrigued by your subtle commentary on the innate oneness of being." nointeract
-    m "" nointeract
+    m "Debo decir, vida mía, que tus historias han ido de menos a más. Aún se te tambalea la narrativa en el segundo acto, pero me ha cautivado por completo ese trasfondo sutil sobre la unidad innata del ser." nointeract
 
 ##== Option B:
 translate Spanish strings:
     # game/script.rpy:6082
     old "If you ask the mushroom to lift the curse, turn to page 140."
-    new ""
+    new "Si le pides a la amanita que disipe la maldición, ve a la página 140."
 
 # game/script.rpy:6086
 translate Spanish mushroomTales_9e71025b:
 
     # m "Well, your tale still could have done with some improvement."
-    m ""
+    m "Debo decir que a tu historia aún le faltan unas cuantas puntadas."
 
 # game/script.rpy:6087
 translate Spanish mushroomTales_eaf8502b:
 
     # m "The plot was rambling, and the characterisation was flimsy at best."
-    m ""
+    m "La trama central hacía aguas, mientras que la caracterización me ha resultado mayormente arqueotípica."
 
 # game/script.rpy:6088
 translate Spanish mushroomTales_fdcd2844:
 
     # m "But I suppose a deal's a deal. I swear I will not curse you with a mushroom's curse."
-    m ""
+    m "Aun así, un trato es un trato. Juro que no te maldeciré con la maldición de las amanitas."
 
 # game/script.rpy:6089
 translate Spanish mushroomTales_a9106423:
 
     # m "This time."
-    m ""
+    m "Al menos, por esta vez."
 
 ##== Option C:
 translate Spanish strings:
     # game/script.rpy:6082
     old "If you ask the Mushroom about \"the other you's\", turn to page 138."
-    new ""
+    new "Si le preguntas a la amanita acerca de los otros túes, ve a la página 138."
 
 # game/script.rpy:6093
 translate Spanish mushroomTales_4bd0a45a:
 
     # m "No need to worry about it, darling. I'm just glad you decided to come clean about your plan to steal our treasure."
-    m ""
+    m "No te devanes los sesos con algo así, corazón. Me alegro de que te hayas sincerado sobre tu plan de robar nuestro tesoro."
 
 # game/script.rpy:6094
 translate Spanish mushroomTales_733cbce4:
 
     # pov "No no... it's the Master Thief who's planning to steal the treasure."
-    pov ""
+    pov "No, no... Si quien quiere robároslo es le maestre ladrone."
 
 # game/script.rpy:6095
 translate Spanish mushroomTales_7ac182c0:
 
     # m "Right, the \"Master Thief\" you. But of course you can just stop yourself from doing it, right?"
-    m ""
+    m "Claro, claro: tú, le maestre ladrone. Aunque sabes que no tienes por qué seguir adelante con ello, ¿no?"
 
 # game/script.rpy:6096
 translate Spanish mushroomTales_b3180f96:
 
     # pov "Uh - I - That's not..."
-    pov ""
+    pov "Eeeh... No, pero..."
 
 # game/script.rpy:6099
 translate Spanish mushroomThiefBattle_d26f90c9:
 
     # "At just that moment, you noticed your cup had disappeared from your hand and been replaced with an old gumboot full of pond scum."
-    ""
+    "En ese preciso instante, te percataste de que la copa había desaparecido de su mano; su lugar lo ocupaba una bota ajada de goma hasta los topes de aguachirle de estanque."
 
 # game/script.rpy:6101
 translate Spanish mushroomThiefBattle_b69669f4:
 
     # "Your pig squealed a warning."
-    ""
+    "Tu cerdo chirrió un aviso."
 
 # game/script.rpy:6103
 translate Spanish mushroomThiefBattle_487b2cc7:
 
     # "You looked around and saw a shadow flit across the wall."
-    ""
+    "Miraste a tu alrededor y viste cómo una sombra se agitaba a lo largo de la pared."
 
 # game/script.rpy:6104
 translate Spanish mushroomThiefBattle_4ecce603:
 
     # "Grabbing a nearby jewelled scimitar, you leapt up from your seat and swung around to clash swords with the Master Thief!"
-    ""
+    "Agarraste una cimitarra joyada que tenías a mano, saltaste de tu asiento ¡y empuñaste tu hoja, que chocó con la de le maestre ladrone!"
 
 # game/script.rpy:6105
 translate Spanish mushroomThiefBattle_61d488a0:
 
     # t "Haha! You're learning."
-    t ""
+    t "¡Ja, ja, ja! Has espabilado, según veo."
 
 # game/script.rpy:6106
 translate Spanish mushroomThiefBattle_6ad908dc:
 
     # t "There's still time, you know. Join me."
-    t ""
+    t "Aún estás a tiempo. Únete a mí."
 
 # game/script.rpy:6111
 translate Spanish mushroomThiefBattle_3087acec:
 
     # t "Together we'll spit in the face of the law and destroy the concept of private ownership once and for all." nointeract
-    t "" nointeract
+    t "Tú y yo escupiremos en toda la cara de la ley y destruiremos el concepto de propiedad privada de una vez por todas." nointeract
 
 ##== Option A:
 translate Spanish strings:
     # game/script.rpy:6110
     old "If you joined the thief, turn to page 126."
-    new ""
+    new "Si te uniste a le ladrone, ve a la página 126."
 
 # game/script.rpy:6113
 translate Spanish mushroomThiefBattle_5a4e463d:
 
     # "You hesitated... and then you dropped your sword."
-    ""
+    "Dudaste... y, luego, soltaste la espada."
 
 # game/script.rpy:6114
 translate Spanish mushroomThiefBattle_4194f500:
 
     # t "Excellent. Now..."
-    t ""
+    t "Magnífico. Ahora..."
     ##==--> Leads to CHAPTER 5 - A1: The Thief Finale
 
 ##== Option B:
     # game/script.rpy:6110
     old "If you refused, and defended the Mushroom's treasure, page 127."
-    new ""
+    new "Si te negaste y defendiste el tesoro de la amanita, ve a la página 127."
 
 # game/script.rpy:6117
 translate Spanish mushroomThiefBattle_d4b2f765:
 
     # pov "Never!"
-    pov ""
+    pov "¡Jamás!"
 
 # game/script.rpy:6118
 translate Spanish mushroomThiefBattle_e08adfb3:
 
     # "You pulled yourself up and fought fiercely across the glittering hills of treasure, gold pieces sliding away with every step."
-    ""
+    "Te mantuviste firme y luchaste con fiereza entre las relucientes montañas de tesoro. Cada paso levantaba un cúmulo de piezas de oro."
 
 # game/script.rpy:6120
 translate Spanish mushroomThiefBattle_90987862:
@@ -12978,7 +12978,7 @@ translate Spanish mushroomThiefBattle_90987862:
 translate Spanish mushroomThiefBattle_a454b8e3:
 
     # "The Master Thief effortlessly riposted your blows with one hand, while the other hand darted around grabbing nearby gems and stuffing them into their cloak."
-    ""
+    "Le maestre ladrone atajó con una mano y sin pestañear cada una de tus estocadas, mientras la otra la aprovechaba para afanarse cualquier gema a su alcance, tesoro que iba a parar a los adentros de su capa."
     ##==--> Leads to CHAPTER 5 - A2: The Mushroom Finale
 
 
@@ -12990,109 +12990,109 @@ translate Spanish mushroomThiefBattle_a454b8e3:
 translate Spanish mushroomSolo_644c2433:
 
     # "You walked through the woods."
-    ""
+    "Recorriste los bosques."
 
 # game/script.rpy:6131
 translate Spanish mushroomSolo_2c771d95:
 
     # "Soon you came upon an ancient strangler fig. You cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
-    ""
+    "Pronto diste a parar a un árbol estrangulador milenario. Cortaste las enredaderas y las flores del pantano para revelar una pequeña puerta azul, decorada con piedras de luna hermosas y grabados detallados."
 
 # game/script.rpy:6134
 translate Spanish mushroomSolo_2c771d95_1:
 
     # "Soon you came upon an ancient strangler fig. You cut the vines and swamp flowers from it to reveal a small blue door, inlaid with precious moonstone and intricate engravings."
-    ""
+    "Pronto diste a parar a un árbol estrangulador. Cortaste las enredaderas y las flores del pantano para revelar una pequeña puerta azul, decorada con piedras de luna hermosas y grabados detallados."
 
 # game/script.rpy:6136
 translate Spanish gilPathShowingMushroom_9806f9db:
 
     # "The words already lurked in your mind."
-    ""
+    "Las palabras ya plagaban tu mente."
 
 # game/script.rpy:6137
 translate Spanish gilPathShowingMushroom_9c3cc80d:
 
     # pov "Gorge, guzzle, gulp and grab; never shall this wound scab."
-    pov ""
+    pov "Emboca, engulle, embucha y empuña; que esta herida la hostigue una uña."
 
 # game/script.rpy:6138
 translate Spanish gilPathShowingMushroom_f5785ab5:
 
     # "With this, the door opened before you, and you vanished inside immediately."
-    ""
+    "Tras esto, la puerta se abrió frente a ti y te esfumaste enseguida en su interior."
 
 # game/script.rpy:6141
 translate Spanish gilPathShowingMushroom_b93f8c8d:
 
     # "Inside was a boundless cavern, cold as ice despite the heat outside."
-    ""
+    "Al otro lado encontraste una caverna sin límite, gélida como el hielo pese al calor del exterior."
 
 # game/script.rpy:6142
 translate Spanish gilPathShowingMushroom_7cad57c0:
 
     # "The floor of the cavern was piled with rubies and pearls and glinting onyx and solid gold pieces, larger than your fist."
-    ""
+    "El suelo de la caverna estaba repleto de rubíes y perlas y ónices relucientes y piezas sólidas de oro más grandes que tu puño."
 
 # game/script.rpy:6143
 translate Spanish gilPathShowingMushroom_85d6bd17:
 
     # "All across the room you saw lush silks and pillars of precious metals of every type and all manner of riches that would turn the King of Kings green with envy."
-    ""
+    "A lo largo de la estancia viste sedas espléndidas y pilares de metales preciosos de todo tipo y toda clase de fortunas que volverían al Rey de Reyes lívido de envidia."
 
 # game/script.rpy:6144
 translate Spanish gilPathShowingMushroom_cf83b469:
 
     # "The glimmering magenta incense smoke rolled across the room and coated it all in a dark haze, smelling of the most incredible spices and herbs and enchanting odours."
-    ""
+    "El humo destelleante y fucsia del incienso abarcaba la sala y lo cubría todo en una niebla sombría, a la vez que desprendía aroma a las especias y hierbas más increíbles, los olores más cautivadores."
 
 # game/script.rpy:6145
 translate Spanish gilPathShowingMushroom_67b7b86e:
 
     # m "Come. It's time."
-    m ""
+    m "Ven. Ya es la hora."
 
 # game/script.rpy:6146
 translate Spanish gilPathShowingMushroom_61268892:
 
     # "The mushroom startled you. She was holding a picnic basket. Her eyes were red."
-    ""
+    "La amanita te sobresalta. En sus manos sostiene una cesta de picnic. Tiene los ojos enrojecidos."
 
 # game/script.rpy:6147
 translate Spanish gilPathShowingMushroom_ad32521b:
 
     # pov "Time for what?"
-    pov ""
+    pov "¿Hora de qué?"
 
 # game/script.rpy:6148
 translate Spanish gilPathShowingMushroom_7f6a6732:
 
     # m "I think you know, darling. I think you can see where this is going by now."
-    m ""
+    m "Creo que ya lo sabes, vida mía. Creo que ya has intuido de qué trata todo esto."
 
 # game/script.rpy:6149
 translate Spanish gilPathShowingMushroom_a490aca6:
 
     # m "Carry those things for me please, will you?"
-    m ""
+    m "¿Eres tan amable de llevar eso de ahí?"
 
 # game/script.rpy:6150
 translate Spanish gilPathShowingMushroom_67fb587f:
 
     # "You looked down and say bottles of red wine placed by the door. Two wineglasses were next to them. A small, neat pile of napkins."
-    ""
+    "Miras hacia abajo y te encuentras botellas de vino tinto colocadas cerca de la puerta. Al lado de estas, un par de copas. También, una montañita bien montada de servilletas."
 
 # game/script.rpy:6151
 translate Spanish gilPathShowingMushroom_25daf377:
 
     # "Everything had been prepared long ago."
-    ""
+    "Todo lleva dispuesto bastante tiempo."
 
 # game/script.rpy:6152
 translate Spanish gilPathShowingMushroom_766c9ac9:
 
     # "You picked up the supplies. The mushroom linked her arm with yours, and in a blink you were travelling down. Down through the rocks and the pillars of the earth. Down into the last kingdom."
-    ""
+    "Recogiste las provisiones. La amanita aferró su brazo al tuyo y, en un abrir y cerrar de ojos, estabais descendiendo. Bajasteis por las rocas y los pilares de la tierra, hasta el último reino de todos."
 
 # game/script.rpy:6156
 translate Spanish gilPathShowingMushroom_158b3fcb:
@@ -13110,7 +13110,7 @@ translate Spanish gilPathShowingMushroom_e7bbdda7:
 translate Spanish gilPathShowingMushroom_ec7eee55:
 
     # m "Don't worry dear, I've picked out a spot. I've had it picked out for a long time."
-    m ""
+    m "No te preocupes, corazón; he escogido un lugar propicio. Lo tenía en mente desde hace mucho tiempo."
 
 # game/script.rpy:6161
 translate Spanish gilPathShowingMushroom_c56efae3:
@@ -13122,7 +13122,7 @@ translate Spanish gilPathShowingMushroom_c56efae3:
 translate Spanish gilPathShowingMushroom_fc1eaa63:
 
     # m "Here we are."
-    m ""
+    m "Ya hemos llegado."
 
 # game/script.rpy:6164
 translate Spanish gilPathShowingMushroom_fdae852d:
@@ -13134,19 +13134,19 @@ translate Spanish gilPathShowingMushroom_fdae852d:
 translate Spanish gilPathShowingMushroom_7b56d60d:
 
     # "You took out the wineglasses, and she uncorked the wine and poured a toast."
-    ""
+    "Sacaste las copas, mientras ella descorchaba el vino y lo servía para un brindis."
 
 # game/script.rpy:6166
 translate Spanish gilPathShowingMushroom_3ea8341e:
 
     # m "To us."
-    m ""
+    m "Por ti y por mí."
 
 # game/script.rpy:6167
 translate Spanish gilPathShowingMushroom_9161085a:
 
     # "She looked away and discretely wiped her eyes."
-    ""
+    "Apartó la mirada y se secó los ojos con disimulo."
 
 ##=== These lines trigger one by one as you talk to the mushroom. Things are slowly eaten out of the world.
 ##=== The stars slowly disappear from the sky as they are eaten by the wolf. The stars vanish from the background image, and never appear again - even in future playthroughs.
@@ -13172,84 +13172,84 @@ translate Spanish mushroomSoloConvo_adbf0d4e:
 translate Spanish mushroomSoloConvo_2a144bd9:
 
     # "Were there always this many stars in the sky? You found you couldn't recall."
-    ""
+    "¿Desde cuándo el cielo abarca tantísimas estrellas? Te diste cuenta de que no sabías la respuesta."
 
 translate Spanish strings:
     # game/script.rpy:6193
     old "You looked out into the night."
-    new ""
+    new "Tu mirada abarcó la noche."
 
     ##== Option A:
     # game/script.rpy:6193
     old "If you asked her what this was all about, turn to page 361."
-    new ""
+    new "Si le preguntaste qué le ocurre, ve a la página 361."
 
 # game/script.rpy:6196
 translate Spanish mushroomSoloConvo_92707f21:
 
     # m "I know you must be terribly worried. I'm sorry, dear."
-    m ""
+    m "Sé que debo tenerte muy pero que muy preocupado. Lo lamento, corazón."
 
 # game/script.rpy:6197
 translate Spanish mushroomSoloConvo_dfd398ce:
 
     # m "I just wanted to sit, look out at the stars, and enjoy some nice wine and company."
-    m ""
+    m "Tan solo quería sentarme, admirar las estrellas y disfrutar de un buen vino y mejor compañía."
 
 # game/script.rpy:6198
 translate Spanish mushroomSoloConvo_32e75684:
 
     # m "I've thought about this moment so many times. This is how I wanted it to be at the end."
-    m ""
+    m "He pensado largo y tendido sobre este momento en tantas ocasiones. Al final, quería que fuera de este modo."
 
 # game/script.rpy:6199
 translate Spanish mushroomSoloConvo_332b5627:
 
     # "She cut off a small sliver of aged truffle cheese and spread it on a water cracker, then looked at it doubtfully."
-    ""
+    "Cortó un trocito de queso viejo de trufas y lo extendió sobre una galletita, tras lo que lo miró con recelo."
 
 # game/script.rpy:6200
 translate Spanish mushroomSoloConvo_63d71012:
 
     # m "Oh, to hell with it. No harm in it now."
-    m ""
+    m "Bah, ¡qué más da! ¿Qué daño me va a hacer?"
 
 # game/script.rpy:6201
 translate Spanish mushroomSoloConvo_d47d6c10:
 
     # "She added an extra slice of cheese, a chilli and garlic olive, a piece of salami and a chunk of marinated artichoke heart onto the cracker, then gently eased the whole concoction into her mouth."
-    ""
+    "Añadió otra capa de queso, **, una loncha de salami y un trozo de alcachofa marinada a la galleta. Luego, embutió toda la mescolanza poco a poco en su paladar."
 
 ##== Option B:
 translate Spanish strings:
     # game/script.rpy:6193
     old "If you asked her about her thoughts, turn to page 362."
-    new ""
+    new "Si le preguntaste en qué estaba pensando, ve a la página 362."
 
 ##== She's asking about, whether she did the right thing when she took the Wolf's deal to stay in the book forever.
 # game/script.rpy:6206
 translate Spanish mushroomSoloConvo_ae77a96b:
 
     # m "Do you think I did the right thing?"
-    m ""
+    m "¿Crees que he hecho lo correcto?"
 
 # game/script.rpy:6207
 translate Spanish mushroomSoloConvo_761d1544:
 
     # pov "Uh - "
-    pov ""
+    pov "Eh..."
 
 # game/script.rpy:6208
 translate Spanish mushroomSoloConvo_3dcd0f88:
 
     # m "You don't know what I'm talking about. I'm sorry, I'm being quite self-indulgent, aren't I?"
-    m ""
+    m "Claro, no sabes de qué te hablo. Discúlpame, sé que estoy pasándome de caprichosa, ¿a que sí?"
 
 # game/script.rpy:6209
 translate Spanish mushroomSoloConvo_4abdcc18:
 
     # m "Well, you'll have to deal with it. This is my time and I'm going to be as self-indulgent as I damn well please."
-    m ""
+    m "Pues lástima, pero te aguantas. Este momento me pertenece y quiero ser todo lo caprichosa que me dé la real gana."
 
 # game/script.rpy:6210
 translate Spanish mushroomSoloConvo_d4d964c4:
@@ -13261,37 +13261,37 @@ translate Spanish mushroomSoloConvo_d4d964c4:
 translate Spanish mushroomSoloConvo_c97c556e:
 
     # m "It all seemed like the right choice at the time. But now it just feels like cowardice."
-    m ""
+    m "Todo ello me parecía la decisión adecuada en su momento. Ahora, en cambio, no me resulta sino cobardía."
 
 # game/script.rpy:6212
 translate Spanish mushroomSoloConvo_320fe3f6:
 
     # m "All those years I've spent in here. So many things I could have done in those years."
-    m ""
+    m "Todos los años que he pasado aquí. Podría haber hecho tanto en todo ese tiempo."
 
 # game/script.rpy:6213
 translate Spanish mushroomSoloConvo_24f40ddb:
 
     # m "No use worrying about it now, of course. No point."
-    m ""
+    m "Claro que ya no tiene sentido preocuparse por ello. ¿Para qué?"
 
 ##== Option C:
 translate Spanish strings:
     # game/script.rpy:6193
     old "If tried to convince her to run, turn to page 363."
-    new ""
+    new "Si intentaste convencerla para que huyera, ve a la página 363."
 
 # game/script.rpy:6218
 translate Spanish mushroomSoloConvo_9286cdf1:
 
     # pov "Let's get out of here. We need to find somewhere safe."
-    pov ""
+    pov "Vayámonos de aquí. Debemos buscar un lugar seguro."
 
 # game/script.rpy:6219
 translate Spanish mushroomSoloConvo_d9045485:
 
     # m "No, no, no. Darling, I appreciate your enthusiasm, but there's no point."
-    m ""
+    m "No, no, no. Cariño mío, te agradezco ese espíritu decidido, pero ¿para qué?"
 
 # game/script.rpy:6220
 translate Spanish mushroomSoloConvo_37ea91fa:
@@ -13303,7 +13303,7 @@ translate Spanish mushroomSoloConvo_37ea91fa:
 translate Spanish mushroomSoloConvo_ba9c2c92:
 
     # m "There never was an ending other than this. There never was a time other than this. No other place but this one."
-    m ""
+    m "Este era el único final que iba a darse. Este era el único momento para ello. Este lugar y ningún otro."
 
 ## A visual novel reference. The True Ending is usually the best possible ending.
 ## However, in this case the True Ending represents, to the Mushroom, the ultimate possible ending.
@@ -13312,55 +13312,55 @@ translate Spanish mushroomSoloConvo_ba9c2c92:
 translate Spanish mushroomSoloConvo_43a18cec:
 
     # m "This is the True Ending. At least for me."
-    m ""
+    m "Hemos llegado al final auténtico. Al menos, para mí."
 
 # game/script.rpy:6224
 translate Spanish mushroomSoloConvo_9859d3a7:
 
     # m "I made my decision a long time ago. And soon, I'm sure, you'll need to make yours."
-    m ""
+    m "Tomé esta decisión hace mucho tiempo. Estoy convencida de que pronto te tocará a ti también."
 
 ##== Option D:
 translate Spanish strings:
     # game/script.rpy:6193
     old "If you asked her what you should do next, turn to page 364."
-    new ""
+    new "Si le preguntaste sobre lo que deberías hacer, ve a la página 364."
 
 # game/script.rpy:6229
 translate Spanish mushroomSoloConvo_23e072c7:
 
     # m "Do? Well, the next thing to do is the move on to this lovely lemon delicious I've packed us. And pour me another glass, please."
-    m ""
+    m "¿Hacer, dices? Bueno, te propongo que pases a este postre de limón que nos he preparado. Y ya que estás, lléname la copa, gracias."
 
 # game/script.rpy:6230
 translate Spanish mushroomSoloConvo_6a186385:
 
     # pov "I know something's wrong here, but I don't -"
-    pov ""
+    pov "Sé que algo va mal, pero no entiendo qué..."
 
 # game/script.rpy:6231
 translate Spanish mushroomSoloConvo_b9bed351:
 
     # m "Shh. Shh, dear."
-    m ""
+    m "Shhh. Calla, vida mía."
 
 # game/script.rpy:6232
 translate Spanish mushroomSoloConvo_f67a8244:
 
     # m "All we can do now is sit back and finish off the rest of this food. That's it."
-    m ""
+    m "Lo único a nuestro alcance es quedarnos aquí y no dejar ni una miga de toda esta comida. Nada más."
 
 # game/script.rpy:6233
 translate Spanish mushroomSoloConvo_18887d99:
 
     # m "What happens after that, you'll have to figure out for yourself. Just as we did."
-    m ""
+    m "Lo que ocurra en adelante es algo que tendrás que deducir por tu cuenta. Así hicimos el resto."
 
 ##== Option E:
 translate Spanish strings:
     # game/script.rpy:6193
     old "If you relaxed and enjoyed the view in silence, turn to page 366."
-    new ""
+    new "Si te relajaste y disfrutaste de las vistas en silencio, ve a la página 366."
 
 # game/script.rpy:6238
 translate Spanish mushroomSoloConvo_15b51930:
@@ -13378,163 +13378,163 @@ translate Spanish mushroomSoloConvo_7d7b7bc5:
 translate Spanish mushroomSoloConvo_b7486ea3:
 
     # "The mushroom's pale spores began to lift out of her cap and away down the hill in the breeze."
-    ""
+    "Las esporas pálidas de la amanita comenzaron a sobresalir de su sombrero y a dispersarse colina abajo mecidas por la brisa."
 
 # game/script.rpy:6241
 translate Spanish mushroomSoloConvo_28a214fa:
 
     # m "Thank you for spending this time with me, darling."
-    m ""
+    m "Gracias por acompañarme en este momento, corazón."
 
 # game/script.rpy:6242
 translate Spanish mushroomSoloConvo_5d5098cb:
 
     # m "You could have gone anywhere, couldn't you? Stayed with anyone."
-    m ""
+    m "Lo digo porque podrías haber ido a cualquier otra parte, ¿a que sí? Podrías haber acompañado a cualquiera."
 
 # game/script.rpy:6243
 translate Spanish mushroomSoloConvo_ccd772b4:
 
     # m "I would ask you not to forget me. But I know that won't be possible. "
-    m ""
+    m "Debo rogarte que jamás me olvides. Por desgracia, sé que te pido un imposible."
 
 # game/script.rpy:6249
 translate Spanish mushroomSoloFinale_89f9a846:
 
     # "The mushroom fell back onto the picnic rug and spread out her arms."
-    ""
+    "La amanita se tumbó sobre el mantel del picnic y estiró los brazos."
 
 # game/script.rpy:6253
 translate Spanish mushroomSoloFinale_a6477309:
 
     # "You lay down to join her and looked up at the sky above. A great, long sigh slowly eased out of her."
-    ""
+    "Te acuestas para acompañarla y contemplas el cielo que se halla sobre vuestras cabezas. Luego, ella exhala poco a poco un suspiro sonoro y duradero."
 
 # game/script.rpy:6254
 translate Spanish mushroomSoloFinale_ddb2e5d3:
 
     # m "Have you ever looked back at your life and tried... tried to calculate the sheer volume of it that you've wasted? The just ungodly amount of time that you've let slip away?"
-    m ""
+    m "¿Has reflexionado acerca de toda la vida y te has propuesto calcular... calcular todo lo que has malgastado? ¿La cantidad obscena de tiempo que se te ha escapado en un suspiro?"
 
 # game/script.rpy:6257
 translate Spanish mushroomSoloFinale_67d3f9f4:
 
     # m "Of course I don't mean the time spent having picnics or afternoon naps, or watching the sky. That time isn't wasted."
-    m ""
+    m "No me refiero, claro está, a los ratos en los que te fuiste de picnic, te echaste una siesta a media tarde o te quedaste con la mirada perdida en el cielo. Nada de ello cuenta como tiempo perdido."
 
 # game/script.rpy:6258
 translate Spanish mushroomSoloFinale_ac484070:
 
     # m "I mean the time spent doing things you don't want to do, for people you don't care about."
-    m ""
+    m "Me refiero a todos esos instantes en los que dedicaste a aquello que no querías hacer para gente que no te importa."
 
 # game/script.rpy:6261
 translate Spanish mushroomSoloFinale_af3e4721:
 
     # m "Those long decades spent paying rent, attending meetings, hunched over desks, travelling to work and back, doing all those petty grinding little tasks every day..."
-    m ""
+    m "Tantas décadas de pagar alquiler, acudir a reuniones, ponerte a horcajadas sobre un escritorio, viajes de fichar y plegar, y tantas menudencias agotadoras del día a día..."
 
 # game/script.rpy:6264
 translate Spanish mushroomSoloFinale_0358d82d:
 
     # m "It's horrifying. How incalculable a waste."
-    m ""
+    m "Me resulta aterrador, un desperdicio inconmensurable."
 
 # game/script.rpy:6265
 translate Spanish mushroomSoloFinale_9283d080:
 
     # "There was the sound of scratching. It seemed to come from somewhere inside you."
-    ""
+    "Se oyó un rasguido. Parecía provenir de alguna parte de tu interior."
 
 # game/script.rpy:6268
 translate Spanish mushroomSoloFinale_e623580c:
 
     # m "How many minutes and hours and days and years have vanished into that black yawning pit. It's impossible to even fit the number into my mind. It's nightmarish. The stars in the sky. The grains of sand on the beach... I can't even begin to take it in."
-    m ""
+    m "¿Cuántos minutos y horas y días y años se han perdido en ese pozo oscuro y sin fondo? La cifra total es tan elevada que ni siquiera la concibo. Espeluznante. Las estrellas del cielo, los granos de arena en la playa... Todo ello palidece en comparación."
 
 # game/script.rpy:6271
 translate Spanish mushroomSoloFinale_4d8958bc:
 
     # m "But every time you think about it, every time that number starts to creep into your mind, you think \"There's still time,\" don't you?"
-    m ""
+    m "Pero en cada ocasión que piensas en ello, cada vez que esa cifra cuasiinfinita ronda la linde de tu mente, piensas: «Aún estoy a tiempo», ¿a que sí?"
 
 # game/script.rpy:6272
 translate Spanish mushroomSoloFinale_2e4babcb:
 
     # "The wine in your glasses rippled into complicated, twisting patterns. Like the entrails of beasts, from which omens might be read."
-    ""
+    "El vino en vuestras copas comienza a vibrar en patrones anómalos y retorcidos. Recuerda a las entrañas de las bestias de las que nacen presagios."
 
 # game/script.rpy:6275
 translate Spanish mushroomSoloFinale_4bd4047b:
 
     # m "There's still time to chase that dream, there are still years left to me, I'll make it someday, I can turn this around, it'll all work out in the end! I'll start tomorrow."
-    m ""
+    m "Aún tengo tiempo de seguir ese sueño, aún me quedan muchos años por delante, algún día lo lograré, estoy a tiempo de remontar, ¡y todo saldrá bien al final! Mañana mismo empiezo."
 
 # game/script.rpy:6278
 translate Spanish mushroomSoloFinale_2dad1985:
 
     # m "But there are no tomorrows left."
-    m ""
+    m "Hasta que ya no quedan mañanas."
 
 # game/script.rpy:6281
 translate Spanish mushroomSoloFinale_eb720100:
 
     # "The earth shook beneath you. You almost thought you heard the impact of great footfalls. Almost upon you now."
-    ""
+    "La tierra cruje debajo de ti. Te parece oír el choque de unas cascadas descomunales. Casi se ciernen sobre ti."
 
 # game/script.rpy:6282
 translate Spanish mushroomSoloFinale_cde4d293:
 
     # m "I can't say that anymore. It's done. The hours I spent are all the hours I'll ever have."
-    m ""
+    m "Pues bien; ya no puedo decir nada de ello. Se acabó. Las horas que gasté son las horas de las que dispuse."
 
 # game/script.rpy:6286
 translate Spanish mushroomSoloFinale_0a4efd83:
 
     # m "And... all throughout my life, the moments where I did something I really enjoyed were like small gasps of air between years of drowning."
-    m ""
+    m "Y... a lo largo de toda mi vida, los momentos en los que sí que hice algo fueron como bocanadas breves de aire entre años enteros de ahogarme a la deriva."
 
 # game/script.rpy:6287
 translate Spanish mushroomSoloFinale_bb90b6fd:
 
     # "The night was getting darker and darker."
-    ""
+    "La noche se volvía cada vez más y más oscura."
 
 # game/script.rpy:6290
 translate Spanish mushroomSoloFinale_66b6d466:
 
     # m "I had to plan them and save up for them and spend every day just trying to hold out for the next one. Those tiny, tiny moments where I got to be alive."
-    m ""
+    m "Debía planificarlos y ahorrarlos y contar los días entre respiro y respiro hasta que llegara al siguiente; al siguiente momento ínfimo en el que me sentía viva."
 
 # game/script.rpy:6293
 translate Spanish mushroomSoloFinale_ceeeff89:
 
     # "Something was very close to you now. You didn't dare look. There was a smell like something rotting. A sound like something coiling in the grass."
-    ""
+    "Estabas al alcance de algo. No te atrevías siquiera a mirar. El aire lo invadió una peste de putrefacción, un sonido como algo arrastrándose por la hierba."
 
 # game/script.rpy:6294
 translate Spanish mushroomSoloFinale_e7a1296b:
 
     # m "All I have left now is that number. That percentage of waste."
-    m ""
+    m "Lo único que me queda es ese número. Un porcentaje de desperdicio."
 
 # game/script.rpy:6302
 translate Spanish mushroomSoloFinale_4d511081:
 
     # m "It'll never get any smaller. It's done. It's all done."
-    m ""
+    m "Jamás se reducirá. Se acabó. Ya no queda nada más."
 
 # game/script.rpy:6303
 translate Spanish mushroomSoloFinale_55a88b9d:
 
     # "Tears ran down her cheeks. She made no effort to hide them anymore. "
-    ""
+    "Las lágrimas surcaron sus mejillas. Se negó el disimulo de ocultarlas."
 
 # game/script.rpy:6306
 translate Spanish mushroomSoloFinale_c54d062e:
 
     # m "Hold me, please."
-    m ""
+    m "Abrázame, te lo ruego."
 
 # game/script.rpy:6307
 translate Spanish mushroomSoloFinale_3f2f5267:
@@ -13546,56 +13546,56 @@ translate Spanish mushroomSoloFinale_3f2f5267:
 translate Spanish mushroomSoloFinale_956f51bf:
 
     # "You held her tight as you stared out into the night sky."
-    ""
+    "La sujetaste con firmeza mientras contemplabas el cielo nocturno."
 
 # game/script.rpy:6318
 translate Spanish mushroomSoloFinale_5ef5253d:
 
     # "It was pitch black. No stars or moon brightened that abyss."
-    ""
+    "Oscuridad plena. Ni estrellas ni luna que sirvieran de luceros en mitad de tal abismo."
 
 ##== She is eaten.
 # game/script.rpy:6319
 translate Spanish mushroomSoloFinale_a32a1cb0:
 
     # "You reached for the wine bottle, and realised there was none."
-    ""
+    "Extendiste el brazo para tomar la botella de vino, hasta que te diste cuenta de que no había nada."
 
 # game/script.rpy:6320
 translate Spanish mushroomSoloFinale_1ee46c02:
 
     # "There were no wineglasses. There was no food."
-    ""
+    "No quedaban copas de vino. No quedaba tampoco comida."
 
 # game/script.rpy:6321
 translate Spanish mushroomSoloFinale_7fd6d38c:
 
     # "You felt the touch of moss underneath you. There was no blanket."
-    ""
+    "Sentiste el musgo bajo tu cuerpo. No quedaba mantel."
 
 # game/script.rpy:6322
 translate Spanish mushroomSoloFinale_bbbfd3cc:
 
     # "You looked down."
-    ""
+    "Bajaste la mirada."
 
 # game/script.rpy:6323
 translate Spanish mushroomSoloFinale_929c0a1e:
 
     # "You were holding nothing at all. Your arms were embracing thin air."
-    ""
+    "No sostenías nada. Tus brazos abarcaban aire y nada más."
 
 # game/script.rpy:6324
 translate Spanish mushroomSoloFinale_3797dba5:
 
     # "Why were you here?"
-    ""
+    "¿Qué haces aquí?"
 
 # game/script.rpy:6325
 translate Spanish mushroomSoloFinale_9d0ca283:
 
     # "You must have needed a rest. A night outdoors. "
-    ""
+    "Echas en falta un descanso. Una noche al aire libre."
 
 # game/script.rpy:6326
 translate Spanish mushroomSoloFinale_485e9302:
@@ -13607,43 +13607,43 @@ translate Spanish mushroomSoloFinale_485e9302:
 translate Spanish mushroomSoloFinale_4a4fd086:
 
     # "No harm in that."
-    ""
+    "¿Qué tiene de malo?"
 
 # game/script.rpy:6328
 translate Spanish mushroomSoloFinale_2f810dd3:
 
     # "You stood up. Brushed away the moss. Breathed in the cool night air."
-    ""
+    "Te levantas. Te sacudes el musgo. Respiras una bocanada del aire fresco de la noche."
 
 # game/script.rpy:6329
 translate Spanish mushroomSoloFinale_d10fbeb6:
 
     # "You felt warm, full, and sad, for no reason you could name."
-    ""
+    "Sientes calidez, plenitud y pena, todo ello por razones ajenas a ti."
 
 # game/script.rpy:6330
 translate Spanish mushroomSoloFinale_463c28e9:
 
     # "Finally you began the long walk home in silence, with the dark night sky looming above you."
-    ""
+    "Al final, comienzas el largo paseo de vuelta a casa en silencio, mientras el manto de la noche te cubre."
 
 # game/script.rpy:6331
 translate Spanish mushroomSoloFinale_cd5d5a8a:
 
     # "There's nothing else left to tell."
-    ""
+    "Ya no queda nada más que contar."
 
 # game/script.rpy:6332
 translate Spanish mushroomSoloFinale_bd257120:
 
     # "That's the end."
-    ""
+    "Aquí tienes el final."
 
 # game/script.rpy:6334
 translate Spanish mushroomSoloFinale_9256611c:
 
     # "Run away with it now, as fast as you can."
-    ""
+    "Márchate con ello y no mires atrás."
     ##===== THE END.
     ##===--> Goes to the title page. The Mushroom disappears.
 
@@ -33195,72 +33195,72 @@ translate Spanish end_0ae9bcd0_2:
 translate Spanish resetGame_e0648967:
 
     # "{color=#ffffff}You have come to a dark place.{/color}"
-    ""
+    "{color=#ffffff}Has dado a parar a un lugar oscuro.{/color}"
 
 ##== "Lacuna" = "A gap in the manuscript".
 # game/script.rpy:13159
 translate Spanish resetGame_3ebfa092:
 
     # "{color=#ffffff}A gap in the manuscript.{/color}"
-    ""
+    "{color=#ffffff}A un resquicio del manuscrito.{/color}"
 
 # game/script.rpy:13160
 translate Spanish resetGame_bc67556f:
 
     # "{color=#ffffff}Here, you can wipe everything away, and start again from the beginning.{/color}"
-    ""
+    "{color=#ffffff}Aquí podrás borrarlo todo y comenzar desde el principio.{/color}"
 
 # game/script.rpy:13161
 translate Spanish resetGame_78c5079c:
 
     # "{color=#ffffff}Like it never happened at all.{/color}"
-    ""
+    "{color=#ffffff}Tal como si nada de esto hubiera sucedido.{/color}"
 
 # game/script.rpy:13162
 translate Spanish resetGame_0fe0f4aa:
 
     # "{color=#ffffff}Are you sure you want to do this?{/color}"
-    ""
+    "{color=#ffffff}¿Seguro que quieres dar ese paso?{/color}"
 
 translate Spanish strings:
     # game/script.rpy:13166
     old "{color=#ffffff}You know it will never be like the first time.{/color}"
-    new ""
+    new "{color=#ffffff}You have come to a dark place.{/color}Ya sabes que nunca será igual que la primera vez."
 
     ##== Option A (Resets the game fully, deleting persistent data)
     # game/script.rpy:13166
     old "{color=#ffffff}Yes. I'm sure.{/color}"
-    new ""
+    new "{color=#ffffff}Sí, lo tengo claro.{/color}"
 
 # game/script.rpy:13169
 translate Spanish resetGame_7e6080f9:
 
     # "{color=#ffffff}Very well.{/color}"
-    ""
+    "{color=#ffffff}Sea pues.{/color}"
 
 # game/script.rpy:13170
 translate Spanish resetGame_13f27258:
 
     # "{color=#ffffff}Goodbye, for now.{/color}"
-    ""
+    "{color=#ffffff}Hasta luego.{/color}"
     ##==--> Resets the game
 
 translate Spanish strings:
     # game/script.rpy:13166
     old "{color=#ffffff}No. I want to remain here.{/color}"
-    new ""
+    new "{color=#ffffff}No, quiero quedarme aquí.{/color}"
 
 # game/script.rpy:13175
 translate Spanish resetGame_7e6080f9_1:
 
     # "{color=#ffffff}Very well.{/color}"
-    ""
+    "{color=#ffffff}Sea pues.{/color}"
 
 # game/script.rpy:13176
 translate Spanish resetGame_8caa7a1b:
 
     # "{color=#ffffff}Stay here a little longer.{/color}"
-    ""
+    "{color=#ffffff}Permanece un rato más.{/color}"
     ##==--> Does not reset the game.
 
 ##============================================================= INTERLUDE F: THE TITLES
